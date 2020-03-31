@@ -1,68 +1,30 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### IDE
+React i pliki .jsx działają dobrze w IntelliJ Idea, jest to więc zalecane przeze mnie rozwiązanie z uwagi na fakt, że uczestnicy projektu są do tego IDE przyzwyczajeni. Nie jest wymagana instalacja żadnych pluginów ani wtyczek.
+Inne polecane IDE to np. [Rekit Studio](https://www.freecodecamp.org/news/introducing-rekit-studio-a-real-ide-for-react-and-redux-development-baf0c99cb542/), [Nuclide](https://nuclide.io/)
 
-## Available Scripts
+### Instrukcja uruchomienia projektu:
 
-In the project directory, you can run:
+1. Do działania projektu niezbędne są aplikacje [node.js](https://nodejs.org/en/download/) oraz [yarn](https://classic.yarnpkg.com/en/docs/install/#windows-stable), instalowane koniecznie w tej kolejności.
+2. Po zainstalowaniu, można przetestować działanie powyższych aplikacji przez komendy **npm -v i yarn -v**.
+3. Jeżeli obie aplikacje działają (może być konieczny restart konsoli lub aplikacji w której używa się konsoli (np. IntelliJ), wykonaj komendę **yarn install** (będąc w folderze z plikami projektu). Komenda instaluje potrzebne dependencje, biblioteki i zależności. Szczegóły instalowanych pakietów dostępne są w pliku package.json.
+4. Uruchomienie tak stworzonej aplikacji odbywa się przez komendę **yarn start**.
 
-### `yarn start`
+### Dodatkowe Informacje
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+* Po uruchomieniu aplikacji, jest ona domyślnie dostępna pod adresem [http://localhost:3000](http://localhost:3000).
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+* Komenda **yarn build** umożliwia zbudowanie wersji produkcyjnej aplikacji.
 
-### `yarn test`
+* Wyłączenie aplikacji najprościej wykonać jako CTRL+C w okienku konsoli. Można też ją zabić z perspektywy menadżera procesów systemu.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+* Po uruchomieniu urządzenie automatycznie wprowadza wszelkie **zapisane** zmiany w kodzie. Co za tym idzie, nie ma konieczności wyłączania i włączania yarn'a.
+Przeglądarka internetowa powinna samoistnie się odświeżyć po zapisaniu zmian w dowolnym pliku .jsx.
+W przypadku wystąpienia błędu kompilacji, treść jego pojawi się w przeglądarce. Pomocna może być konsola deweloperska używanej przeglądarki - niekiedy opisy błędów tam są dokładniejsze.
 
-### `yarn build`
+* Po naprawieniu błędu kompilacji może być konieczne ręczne odświeżenie strony w przeglądarce.
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Więcej informacji:
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+Na temat domyślnej konfiguracji więcej można przeczytać na [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Szersze informacje na temat samego frameworku można uzyskać na stronie [React documentation](https://reactjs.org/).

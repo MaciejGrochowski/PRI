@@ -31,7 +31,7 @@ class Table extends React.Component {
                 onRowClick={((evt, selectedRow) => this.setState({ selectedRow }))}
                 style={divStyle}
                 components={{
-                    Row: props => (<div>{console.log(props)}<span>{props.data.name}</span><span>{props.data.surname}</span></div>),
+                   // Row: props => (<div>{console.log(props)}<span>{props.data.name}</span><span>{props.data.surname}</span></div>),
                     Pagination: props => (
                         <TablePagination
                             {...props}

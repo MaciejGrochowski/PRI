@@ -3,10 +3,6 @@ import MaterialTable from "material-table";
 import styled from 'styled-components';
 import TablePagination from "@material-ui/core/TablePagination";
 
-const Title = styled.div`
-    background-color: red
-    `
-
 
 class Table extends React.Component {
 
@@ -27,11 +23,10 @@ class Table extends React.Component {
             <div>
                 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
             <MaterialTable
-                title={<Title>{title}</Title>}
                 onRowClick={((evt, selectedRow) => this.setState({ selectedRow }))}
                 style={divStyle}
                 components={{
-                   // Row: props => (<div>{console.log(props)}<span>{props.data.name}</span><span>{props.data.surname}</span></div>),
+                    // Row: props => (<div>{console.log(props)}<span>{props.data.name}</span><span>{props.data.surname}</span></div>),
                     Pagination: props => (
                         <TablePagination
                             {...props}
@@ -49,10 +44,10 @@ class Table extends React.Component {
                 data={data}
 
                 options={{
-                    toolbar: true,
-                    search: true,
+                    toolbar: false,
+                    search: false,
                     paging: true,
-                    filtering: true,
+                    filtering: false,
                     headerStyle: {
                         backgroundColor: 'black',
                         color: 'red',

@@ -2,6 +2,7 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Table from "./Table";
+import {Cat, Dog, randomStyle} from './example-global-styles.js'
 
 const columnConfig = () => (
     [
@@ -46,7 +47,12 @@ class App extends React.Component{
     return (
         <div className="App">
             <header className="App-header">
-            <Table
+                <Cat>Kotek</Cat>
+                <Cat color='blue'>Kotek niebieski</Cat>
+                <Dog>Piesek</Dog>
+            <div style={randomStyle}>ZIemniak</div>
+
+                <Table
             title={"Lista postaci"}
             columnsConfig={columnConfig()}
             data={this.state.data}

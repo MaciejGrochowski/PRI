@@ -13,9 +13,11 @@ public class NameService extends GeneralService {
     @Autowired
     NameRepository nameRepository;
 
+
+    //ToDo implementation saveOrUpdate
     public void save(Name name){
         Name nam = nameRepository.findByName(name.getName());
-        if(nam.getId() > 0) name.setId(nam.getId());
+        if(nam != null) name.setId(nam.getId());
         nameRepository.save(name);
 
 //        nameRepository.save(name);

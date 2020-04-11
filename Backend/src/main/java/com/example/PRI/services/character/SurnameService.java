@@ -12,6 +12,8 @@ public class SurnameService extends GeneralService {
     @Autowired
     SurnameRepository surnameRepository;
 
+
+    //ToDo implementation saveOrUpdate
     public void save(Surname surname){
         Surname sur = surnameRepository.findBySurname(surname.getSurname());
         if(sur.getId() > 0) surname.setId(sur.getId());

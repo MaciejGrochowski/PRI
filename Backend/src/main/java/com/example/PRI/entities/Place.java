@@ -10,7 +10,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import java.util.List;
 
-@Entity(name ="characters")
+@Entity(name ="places")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

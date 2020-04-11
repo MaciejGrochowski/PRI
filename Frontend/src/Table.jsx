@@ -49,10 +49,10 @@ class Table extends React.Component {
                 data={data}
 
                 options={{
-                    toolbar: false,
+                    toolbar: true,
                     search: true,
                     paging: true,
-                    // filtering: true,
+                    filtering: true,
                     headerStyle: {
                         backgroundColor: 'black',
                         color: 'red',

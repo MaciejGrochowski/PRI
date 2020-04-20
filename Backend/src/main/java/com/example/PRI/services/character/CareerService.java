@@ -6,6 +6,9 @@ import com.example.PRI.services.GeneralService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class CareerService extends GeneralService {
 
@@ -17,4 +20,8 @@ public class CareerService extends GeneralService {
     }
 
 
+    public List<String> getAllNames() {
+        List<String> output;
+        return careerRepository.findAll().stream().map(Career::getName).distinct().collect(Collectors.toList());
+    }
 }

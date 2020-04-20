@@ -1,30 +1,16 @@
 import React from 'react';
-import '../App.css';
-import Table from "../components/Table/Table";
-import {Cat, Dog, randomStyle} from '../commons/example-global-styles.js'
-import characterService from "../services/characterService";
-import {textsPolish} from "../commons/texts-pl";
+import '../../App.css';
+import Table from "../../components/Table/Table";
+import {Cat, Dog, randomStyle} from '../../commons/example-global-styles.js'
+import characterService from "../../services/characterService";
+import careerService from "../../services/careerService";
+import {textsPolish} from "../../commons/texts-pl";
+import Filter from "../../components/Filter/Filter";
+import {TextField} from "@material-ui/core";
+import MenuItem from "@material-ui/core/MenuItem";
+import DefaultMultipleAutocomplete from "../../components/Autocomplete/DefaultMultipleAutocomplete";
+import {columnConfig} from "./ColumnsConfig";
 
-const columnConfig = () => (
-    [
-        {
-            title: 'Imię', field: 'name',
-            removable: true,
-            cellStyle: {
-                backgroundColor: '#039be5',
-                color: 'green'
-            },
-            headerStyle: {
-                backgroundColor: 'blue',
-            }
-        },
-        { title: 'Nazwisko', field: 'surname', removable: true },
-        { title: 'Płeć', field: 'sex', lookup: {"MALE": "M", "FEMALE": "K"} },
-        { title: 'Rasa', field: 'race', lookup: {"HUMAN": "Człowiek", "DWARF": "Krasnolud", "ELF": "Elf", "HALFLING": "Niziołek"} },
-        { title: 'Profesja', field: 'careerName'},
-        { title: 'Miejsce pobytu', field: 'livePlace'}
-    ]
-)
 
 class CharactersListPage extends React.Component{
 
@@ -33,13 +19,24 @@ class CharactersListPage extends React.Component{
         this.state = {
             page: 0,
             countPerPage: 10,
-            count: 0
+            count: 0,
+            careerNames: ["test", "test2"]
         }
     }
 
     componentDidMount() {
         this.getAllCharactersByCountAndPage(this.state.countPerPage, this.state.page);
         this.getCountOfCharacters();
+        this.getCareerNames();
+    }
+
+    getCareerNames = () => {
+        careerService.getAllCareerNames()
+            .then(r => this.getCareerNamesSuccessHandler(r))
+    }
+
+    getCareerNamesSuccessHandler = response => {
+        this.setState({careerNames: response.data})
     }
 
     getCountOfCharacters = () => {
@@ -63,32 +60,39 @@ class CharactersListPage extends React.Component{
     }
 
     onChangePage = (page) => {
-        console.log("Changed Page")
-        console.log(page)
         this.setState({page: page})
         this.getAllCharactersByCountAndPage(this.state.countPerPage, page);
-
-
     }
 
     onChangeCountPerPage = countPerPage => {
-        console.log(countPerPage)
         this.setState({countPerPage: countPerPage, page: 1})
         this.getAllCharactersByCountAndPage(countPerPage, 1)
+    }
+
+    onFilter = data => {
+        console.log(document.getElementById('characterFilterName').value)
+        console.log(document.getElementById('characterFilterSurname').value)
+        console.log(document.getElementById('characterFilterSex').nextSibling.value)
+        console.log(document.getElementById('characterFilterRace').nextSibling.value)
+        console.log(Array.from(document.getElementsByClassName("characterFilterCareers")).map(c => c.textContent));
+        //ToDo Backend filtering
     }
 
     render(){
         return (
             <div className="App">
                 <header className="App-header">
-                    <Cat>Kotek</Cat>
-                    <Cat color='blue'>Kotek niebieski</Cat>
-                    <Dog>Piesek</Dog>
-                    <div style={randomStyle}>ZIemniak</div>
-
+                    {/*<Cat>Kotek</Cat>*/}
+                    {/*<Cat color='blue'>Kotek niebieski</Cat>*/}
+                    {/*<Dog>Piesek</Dog>*/}
+                    {/*<div style={randomStyle}>ZIemniak</div>*/}
+                    <Filter
+                        columnsConfig={columnConfig(this.state.careerNames)}
+                        onFilter={this.onFilter}
+                    />
                     <Table
                         title={"Lista postaci"}
-                        columnsConfig={columnConfig()}
+                        columnsConfig={columnConfig(this.state.careerNames)}
                         data={this.state.data}
                         noRecordsMessage={textsPolish.noRecordsOnCharactersList}
                         countPerPage={this.state.countPerPage}
@@ -100,7 +104,7 @@ class CharactersListPage extends React.Component{
                 </header>
             </div>
         )
-
     }
 }
+
 export default CharactersListPage;

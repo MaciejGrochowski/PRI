@@ -23,6 +23,4 @@ const getCharactersByCountAndPage = (count, page) => {
     return request.get(url);
 }
 
-
-
 export default characterService;

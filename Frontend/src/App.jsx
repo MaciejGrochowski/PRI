@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import CharactersListPage from "./pages/CharactersListPage";
+import CharactersListPage from "./pages/CharacterListPage/CharactersListPage";
 import {Route} from 'react-router'
 import Menu from "./components/Menu/Menu";
 import {BrowserRouter} from "react-router-dom";

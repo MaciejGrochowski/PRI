@@ -12,3 +12,5 @@ export const localApiUrl = "http://localhost:8080/app";
 export const apiUrl = localApiUrl;
 
 export const characterUrl = apiUrl + "/characters";
+
+export const careerUrl = apiUrl + "/careers"

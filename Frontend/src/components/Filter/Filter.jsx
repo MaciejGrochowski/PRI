@@ -14,7 +14,7 @@ class Filter extends React.Component {
             <div style={{backgroundColor: 'purple', width: '800px'}}>
                 {
                     columnsConfig && columnsConfig.map((item, i) => (
-                        item.filter
+                        <span style={{margin: '2px 2px 2px 2px'}}>{item.filter}</span>
                     ))
                 }
                 <button onClick={onFilter}>Filtruj</button>

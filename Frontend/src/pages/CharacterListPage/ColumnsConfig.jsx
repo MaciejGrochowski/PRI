@@ -27,7 +27,8 @@ export const columnConfig = (careerNames=[]) => (
             field: 'sex',
             lookup: {"MALE": "M", "FEMALE": "K"},
             filter: <span>
-                <TextField id="characterFilterSex" label="Płeć" defaultValue="MALE" select>
+                <TextField style = {{width: '120px'}} defaultValue="fill" id="characterFilterSex" label="Płeć" select>
+                        <MenuItem value={'fill'}>Dowolna</MenuItem>
                         <MenuItem value={'MALE'}>Mężczyzna</MenuItem>
                         <MenuItem value={'FEMALE'}>Kobieta</MenuItem>
                 </TextField>
@@ -38,13 +39,19 @@ export const columnConfig = (careerNames=[]) => (
             field: 'race',
             lookup: {"HUMAN": "Człowiek", "DWARF": "Krasnolud", "ELF": "Elf", "HALFLING": "Niziołek"},
             filter: <span>
-                <TextField id="characterFilterRace" label="Rasa" defaultValue="HUMAN" select>
+                <TextField id="characterFilterRace" defaultValue="fill" style = {{width: '120px'}} label="Rasa" select>
+                    <MenuItem value={'fill'}>Dowolna</MenuItem>
                     <MenuItem value={'HUMAN'}>Człowiek</MenuItem>
                     <MenuItem value={'ELF'}>Elf</MenuItem>
                     <MenuItem value={'DWARF'}>Krasnolud</MenuItem>
                     <MenuItem value={'HALFLING'}>Niziołek</MenuItem>
                     </TextField>
             </span>
+        },
+        {
+            title: 'Miejsce pobytu',
+            field: 'livePlace',
+            filter: <span><TextField label="Miejsce pobytu"/></span>
         },
         {
             title: 'Profesja',
@@ -54,11 +61,6 @@ export const columnConfig = (careerNames=[]) => (
                 options={careerNames}
                 id="characterFilterCareers"
             />
-        },
-        {
-            title: 'Miejsce pobytu',
-            field: 'livePlace',
-            filter: <span><TextField label="Miejsce pobytu"/></span>
         }
     ]
 )

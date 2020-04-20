@@ -30,15 +30,25 @@ class CharactersListPage extends React.Component{
 
     constructor() {
         super();
-        this.state = {}
+        this.state = {
+            page: 0,
+            countPerPage: 10,
+            count: 0
+        }
     }
 
     componentDidMount() {
-        this.getAllCharacters();
+        this.getAllCharactersByCountAndPage(this.state.countPerPage, this.state.page);
+        this.getCountOfCharacters();
     }
 
-    getAllCharacters = () => {
-        characterService.getAllCharacters()
+    getCountOfCharacters = () => {
+        characterService.getCountOfCharacters()
+            .then(r => this.setState({count: r.data}))
+    }
+
+    getAllCharactersByCountAndPage = (count, page) => {
+        characterService.getCharactersByCountAndPage(count, page)
             .then(r => this.getAllCharactersSuccessHandler(r.data))
             .catch(e => this.getAllCharactersErrorHandler(e))
     }
@@ -50,6 +60,21 @@ class CharactersListPage extends React.Component{
 
     getAllCharactersSuccessHandler = data => {
         this.setState({data: data})
+    }
+
+    onChangePage = (page) => {
+        console.log("Changed Page")
+        console.log(page)
+        this.setState({page: page})
+        this.getAllCharactersByCountAndPage(this.state.countPerPage, page);
+
+
+    }
+
+    onChangeCountPerPage = countPerPage => {
+        console.log(countPerPage)
+        this.setState({countPerPage: countPerPage, page: 1})
+        this.getAllCharactersByCountAndPage(countPerPage, 1)
     }
 
     render(){
@@ -66,6 +91,11 @@ class CharactersListPage extends React.Component{
                         columnsConfig={columnConfig()}
                         data={this.state.data}
                         noRecordsMessage={textsPolish.noRecordsOnCharactersList}
+                        countPerPage={this.state.countPerPage}
+                        page={this.state.page}
+                        ownOnChangePage={this.onChangePage}
+                        onChangeCountPerPage={this.onChangeCountPerPage}
+                        count={this.state.count}
                     />
                 </header>
             </div>

@@ -15,12 +15,12 @@ class Table extends React.Component {
     }
 
     componentDidUpdate(prevProps, prevState){
-        console.log(prevState.rowsPerPage);
-        console.log(this.state.rowsPerPage);
+        // console.log(prevState.rowsPerPage);
+        // console.log(this.state.rowsPerPage);
     }
 
     render(){
-        const {columnsConfig=[], data=[], noRecordsMessage="Brak danych"} = this.props;
+        const {columnsConfig=[], data=[], noRecordsMessage="Brak danych", onChangeCountPerPage, ownOnChangePage, count, page} = this.props;
         const divStyle = {
             backgroundColor: 'blue'
         };
@@ -43,12 +43,21 @@ class Table extends React.Component {
                         <TablePagination
                             {...props}
                             labelRowsPerPage={<div style={{fontSize: 22}}>{props.labelRowsPerPage}</div>}
-                            // count={5} ToDo pobieranie z serwera pełnej liczby
+                            count={count}
                             // rowsPerPage={this.state.rowsPerPage}
                             // rowsPerPageOptions={[10,30,50]}
                             onChangeRowsPerPage={event => {
                                 props.onChangeRowsPerPage(event);
-                                this.setState({rowsPerPage: event.target.value});}}
+                                onChangeCountPerPage(event.target.value)
+                                // this.setState({rowsPerPage: event.target.value});
+                            }}
+                            page={page}
+                            onChangePage={(event, page) => {
+                            props.onChangePage(event, page);
+                            ownOnChangePage(page)
+
+                            }
+                            }
                             labelDisplayedRows={row => <div
                                 style={{fontSize: 30}}>{props.labelDisplayedRows(row)}</div>}
                             SelectProps={{

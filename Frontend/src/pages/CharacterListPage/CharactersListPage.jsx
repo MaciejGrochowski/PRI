@@ -79,11 +79,15 @@ class CharactersListPage extends React.Component{
     }
 
     render(){
+        const divStyle = {
+            backgroundColor: '#292F2F',
+            width: '600px !important',
+        };
         return (
             <div className="App">
                 <header className="App-header">
                     {/*<Cat>Kotek</Cat>*/}
-                    {/*<Cat color='blue'>Kotek niebieski</Cat>*/}
+                    {/*<Cat color='#292F2F'>Kotek niebieski</Cat>*/}
                     {/*<Dog>Piesek</Dog>*/}
                     {/*<div style={randomStyle}>ZIemniak</div>*/}
                     <Filter
@@ -91,6 +95,7 @@ class CharactersListPage extends React.Component{
                         onFilter={this.onFilter}
                     />
                     <Table
+                    style = {divStyle}
                         title={"Lista postaci"}
                         columnsConfig={columnConfig(this.state.careerNames)}
                         data={this.state.data}

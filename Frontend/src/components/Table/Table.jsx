@@ -22,10 +22,11 @@ class Table extends React.Component {
     render(){
         const {columnsConfig=[], data=[], noRecordsMessage="Brak danych", onChangeCountPerPage, ownOnChangePage, count, page} = this.props;
         const divStyle = {
-            backgroundColor: 'blue'
+            backgroundColor: '#292F2F',
+            width: '600px',
         };
         return(
-            <div>
+            <div style = {divStyle}>
                 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
                 <MaterialTable
                 onRowClick={((evt, selectedRow) => this.setState({ selectedRow }))}
@@ -59,10 +60,11 @@ class Table extends React.Component {
                             }
                             }
                             labelDisplayedRows={row => <div
-                                style={{fontSize: 30}}>{props.labelDisplayedRows(row)}</div>}
+                                style={{fontSize: 30, backgroundColor: 'blue'}}>{props.labelDisplayedRows(row)}</div>}
                             SelectProps={{
                                 style: {
-                                    fontSize: 22
+                                    fontSize: 22,
+                                    backgroundColor: 'red',
                                 }
                             }}/>)
                 }}
@@ -71,6 +73,7 @@ class Table extends React.Component {
                 data={data}
 
                 options={{
+                    selection: true,
                     toolbar: false,
                     search: false,
                     paging: true,
@@ -79,14 +82,18 @@ class Table extends React.Component {
                     pageSizeOptions: [10, 30, 50],
                     paginationType: "stepped",
                     headerStyle: {
-                        backgroundColor: 'black',
-                        color: 'red',
-                        marginTop: '-5px'
+                        backgroundColor: '#292F2F',
+                        backfaceVisibility: 'hidden',
+                        color: '#FFD859',
+                        marginTop: '-5px',
                     },
                     rowStyle: rowData => ({
+                        backgroundColor: 'red',
+                        color: 'white',
                         margin: '0 !important',
                         padding: '0 !important',
-                        backgroundColor: (this.state.selectedRow && this.state.selectedRow.tableData.id === rowData.tableData.id) ? 'blue' : 'brown'})
+                        backgroundColor: (this.state.selectedRow && this.state.selectedRow.tableData.id === rowData.tableData.id) ? '#FFD859' : '#292F2F'}),
+                         
                 }}
 
             />

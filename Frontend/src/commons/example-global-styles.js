@@ -22,7 +22,7 @@ export const Cat = styled.div`
   align-items: center;
   position: relative;
   background: inherit;
-  color: ${props => props.color ? props.color : 'red'};
+  color: ${props => props.color ? props.color : 'blue'};
   border: none;
   transition: 200ms ease;
   cursor: pointer;
@@ -39,7 +39,7 @@ export const Dog = styled.button`
 // Korzystanie: <div style={randomStyle]>chomik</div>
 // Ważne - wszystkie CSSowe myślniki działają tylko z camelCase (np. background-color -> backgroundColor)
 export const randomStyle = {
-    backgroundColor: 'blue',
+    backgroundColor: 'yellow',
     color: 'red',
     marginTop: '2px',
     justifyContent: 'center'

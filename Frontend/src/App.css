@@ -14,7 +14,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color:#292F2F;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -25,7 +25,19 @@
 }
 
 .App-link {
-  color: #61dafb;
+  color: #FFD859;
+}
+.material-icons{
+  color: white;
+}
+
+.MuiTableSortLabel-root{
+  border-bottom: solid!important;
+}
+
+.MuiTableSortLabel-iconDirectionAsc{
+  color: white;
+  visibility: visible;
 }
 
 @keyframes App-logo-spin {
@@ -36,3 +48,4 @@
     transform: rotate(360deg);
   }
 }
+

@@ -8,12 +8,8 @@ export const columnConfig = (careerNames=[]) => (
         {
             title: 'Imię', field: 'name',
             removable: true,
-            cellStyle: {
-                backgroundColor: '#039be5',
-                color: 'green'
-            },
             headerStyle: {
-                backgroundColor: 'blue',
+                backgroundColor: '#292F2F',
             },
             filter: <span><TextField label="Imię" id="characterFilterName"/></span>
         },

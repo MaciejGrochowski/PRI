@@ -1,0 +1,13 @@
+.filter{
+    /* background-color: purple!important; */
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    min-width: 700px;
+}
+
+.ziemniak{
+    display: block;
+    backface-visibility: hidden;
+    margin-block: 10px!important;
+}

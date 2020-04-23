@@ -21,12 +21,11 @@
 
 .selectPops{
     font-size: 22px;
-     background-color: tomato;
+
 
 }
 
 .rowDataStyles{
-    background-color: 'red';
     color: 'white';
     margin: '0 !important';
     padding: '0 !important';

@@ -13,6 +13,11 @@
   }
 }
 
+.sc-AxiKw{
+  background-color: #292F2F!important;
+  border: #FFD859!important;
+}
+
 .App-header {
   background-color:#292F2F;
   min-height: 100vh;
@@ -24,15 +29,57 @@
   color: white;
 }
 
+.MuiFormLabel-root{
+
+  color: #FFD859!important;
+
+}
+.MuiInput-underline:after{
+  border-bottom:  #FFD859!important;
+}
+
+.MuiInputBase-root{
+  color: #FFD859!important;
+}
+
+.MuiSelect-icon{
+  color:  rgb(206, 200, 180)!important;
+}
+.MuiSvgIcon-root{
+  color:  #FFD859!important;
+}
+.MuiButton-label{
+  color: #FFD859!important;
+}
+
+.material-icons{
+  color:  #FFD859!important;
+}
+
 .App-link {
   color: #FFD859;
 }
-.material-icons{
-  color: white;
+
+/* .MuiTableCell-root{
+background-color: #292F2F;
+} */
+.MuiTableRow-root{
+background-color: #292F2F;
+color: white;
 }
 
+.MuiTableRow-root:hover{
+  background-color: #292F2F!important;
+  color: white!important;
+}
 .MuiTableSortLabel-root{
   border-bottom: solid!important;
+}
+.MuiTableSortLabel-root:hover{
+  color: #FFD859!important;
+}
+.MuiTableSortLabel-root.MuiTableSortLabel-active{
+  color: #FFD859!important;
 }
 
 .MuiTableSortLabel-iconDirectionAsc{

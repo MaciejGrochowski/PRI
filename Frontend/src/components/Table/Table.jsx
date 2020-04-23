@@ -1,6 +1,7 @@
 import React from "react";
 import MaterialTable from "material-table";
 import mystyle from"../../styles/tables.css";
+import {headerStyle} from"../../styles/tables.css";
 import styled from 'styled-components';
 import TablePagination from "@material-ui/core/TablePagination";
 
@@ -22,11 +23,22 @@ class Table extends React.Component {
 
     render(){
         const {columnsConfig=[], data=[], noRecordsMessage="Brak danych", onChangeCountPerPage, ownOnChangePage, count, page} = this.props;
-        const rowStyle = mystyle.rowDataStyles;
-        // const divStyle = {
-        //     backgroundColor: '#292F2F',
-        //     width: '600px',
-        // };
+
+        const divStyle = {
+            textDecoration: "none",
+            backgroundColor: '#292F2F',
+            width: '600px',
+            color: '#FFD859',
+        };
+
+        const rowStyle = {
+            textDecoration: "none",
+            backgroundColor: '#292F2F',
+            color: '#FFD859',
+            // "&:hover": {
+            //     backgroundColor: '#FFD859'
+            //   }
+        };
         return(
             <div styleName = {mystyle.table}>
                 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
@@ -64,11 +76,13 @@ class Table extends React.Component {
                             labelDisplayedRows={row => <div
                                 style={mystyle.labelDisplayedRows}>{props.labelDisplayedRows(row)}</div>}
                                 SelectProps={{
-                                style: {
-                                //tutaj też chcę mieć mystyle.selectPops
-                                    fontSize: 22,
-                                    backgroundColor: 'red',
-                                    }
+                                style: divStyle,
+                                //{
+                                // //tutaj też chcę mieć mystyle.selectPops
+                                //     fontSize: 22,
+                                //     backgroundColor: 'blue',
+                                //     backfaceVisibility: 'hidden',
+                                //     }
                                 }}/>)
                     }}
                 
@@ -86,24 +100,22 @@ class Table extends React.Component {
                     pageSize: this.state.rowsPerPage,
                     pageSizeOptions: [10, 30, 50],
                     paginationType: "stepped",
-                    headerStyle: 
+                    headerStyle: divStyle,
                     //tutaj chcę mieć mystyle.headerStyle
-                     {
+                    //  {
 
-                        backgroundColor: '#292F2F',
-                        backfaceVisibility: 'hidden',
-                        color: '#FFD859',
-                        marginTop: '-5px',
-                    },
+                    //     backgroundColor: '#292F2F',
+                    //     backfaceVisibility: 'hidden',
+                    //     color: '#FFD859',
+                    //     marginTop: '-5px',
+                    // },
                     rowStyle: rowData => ({
-                    //tutaj chcę mieć mystyle.rowData
-                        backgroundColor: 'red',
-                        color: 'white',
-                        margin: '0 !important',
-                        padding: '0 !important',
-                        backgroundColor: (this.state.selectedRow && this.state.selectedRow.tableData.id === rowData.tableData.id) ? '#FFD859' : '#292F2F'}),
-                         
+                        ...rowStyle,
+                        backgroundColor: (this.state.selectedRow && this.state.selectedRow.tableData.id === rowData.tableData.id) ? 'red!important' : 'blue!important'}),
+
                 }}
+                        //),
+                         
 
             />
             </div>

@@ -1,0 +1,33 @@
+.table{
+    background-color: '#292F2F';
+    width: '600px';
+}
+
+
+.display-rows{
+    background-color: teal;
+}
+
+.headerStyle{
+    background-color: '#292F2F';
+    backface-visibility: 'hidden';
+    color: '#FFD859';
+    margin-top: '-5px';
+}
+
+.displayRow{
+    background-color: yellowgreen;
+}
+
+.selectPops{
+    font-size: 22px;
+     background-color: tomato;
+
+}
+
+.rowDataStyles{
+    background-color: 'red';
+    color: 'white';
+    margin: '0 !important';
+    padding: '0 !important';
+}

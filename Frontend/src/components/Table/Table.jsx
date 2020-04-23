@@ -1,5 +1,6 @@
 import React from "react";
 import MaterialTable from "material-table";
+import mystyle from"../../styles/tables.css";
 import styled from 'styled-components';
 import TablePagination from "@material-ui/core/TablePagination";
 
@@ -21,16 +22,17 @@ class Table extends React.Component {
 
     render(){
         const {columnsConfig=[], data=[], noRecordsMessage="Brak danych", onChangeCountPerPage, ownOnChangePage, count, page} = this.props;
-        const divStyle = {
-            backgroundColor: '#292F2F',
-            width: '600px',
-        };
+        const rowStyle = mystyle.rowDataStyles;
+        // const divStyle = {
+        //     backgroundColor: '#292F2F',
+        //     width: '600px',
+        // };
         return(
-            <div style = {divStyle}>
+            <div styleName = {mystyle.table}>
                 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
                 <MaterialTable
                 onRowClick={((evt, selectedRow) => this.setState({ selectedRow }))}
-                style={divStyle}
+                style={mystyle.table}
                 localization={{
                     body: {
                         emptyDataSourceMessage: noRecordsMessage
@@ -43,7 +45,7 @@ class Table extends React.Component {
                     Pagination: props => (
                         <TablePagination
                             {...props}
-                            labelRowsPerPage={<div style={{fontSize: 22}}>{props.labelRowsPerPage}</div>}
+                            labelRowsPerPage={<div style={mystyle.table}>{props.labelRowsPerPage}</div>}
                             count={count}
                             // rowsPerPage={this.state.rowsPerPage}
                             // rowsPerPageOptions={[10,30,50]}
@@ -60,19 +62,22 @@ class Table extends React.Component {
                             }
                             }
                             labelDisplayedRows={row => <div
-                                style={{fontSize: 30, backgroundColor: 'blue'}}>{props.labelDisplayedRows(row)}</div>}
-                            SelectProps={{
+                                style={mystyle.labelDisplayedRows}>{props.labelDisplayedRows(row)}</div>}
+                                SelectProps={{
                                 style: {
+                                //tutaj też chcę mieć mystyle.selectPops
                                     fontSize: 22,
                                     backgroundColor: 'red',
-                                }
-                            }}/>)
-                }}
+                                    }
+                                }}/>)
+                    }}
+                
 
                 columns={columnsConfig}
                 data={data}
 
                 options={{
+                //tutaj chcę mieć mystyle
                     selection: true,
                     toolbar: false,
                     search: false,
@@ -81,13 +86,17 @@ class Table extends React.Component {
                     pageSize: this.state.rowsPerPage,
                     pageSizeOptions: [10, 30, 50],
                     paginationType: "stepped",
-                    headerStyle: {
+                    headerStyle: 
+                    //tutaj chcę mieć mystyle.headerStyle
+                     {
+
                         backgroundColor: '#292F2F',
                         backfaceVisibility: 'hidden',
                         color: '#FFD859',
                         marginTop: '-5px',
                     },
                     rowStyle: rowData => ({
+                    //tutaj chcę mieć mystyle.rowData
                         backgroundColor: 'red',
                         color: 'white',
                         margin: '0 !important',

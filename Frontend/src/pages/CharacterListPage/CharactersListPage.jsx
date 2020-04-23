@@ -10,7 +10,8 @@ import {TextField} from "@material-ui/core";
 import MenuItem from "@material-ui/core/MenuItem";
 import DefaultMultipleAutocomplete from "../../components/Autocomplete/DefaultMultipleAutocomplete";
 import {columnConfig} from "./ColumnsConfig";
-
+import "../../styles/globalStyles.css";
+import "../../styles/tables.css";
 
 class CharactersListPage extends React.Component{
 
@@ -84,7 +85,7 @@ class CharactersListPage extends React.Component{
             width: '600px !important',
         };
         return (
-            <div className="App">
+            <div className="GlobalStyles">
                 <header className="App-header">
                     {/*<Cat>Kotek</Cat>*/}
                     {/*<Cat color='#292F2F'>Kotek niebieski</Cat>*/}

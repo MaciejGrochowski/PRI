@@ -5,7 +5,14 @@ import {apiUrl, characterUrl, request} from "./util";
 const characterService = {
     getAllCharacters: () => getAllCharacters(),
     getCharactersByCountAndPage: (count, page) => getCharactersByCountAndPage(count, page),
-    getCountOfCharacters: () => getCountOfCharacters()
+    getCountOfCharacters: () => getCountOfCharacters(),
+    getCharacters: (requestBody) => getCharacters(requestBody)
+}
+
+const getCharacters = requestBody => {
+    const url = characterUrl + "/paged";
+    return request.post(url, requestBody )
+
 }
 
 const getCountOfCharacters = () => {

@@ -1,12 +1,13 @@
 package com.example.PRI.controllers;
 
 import com.example.PRI.controllers.annotations.Get;
+import com.example.PRI.controllers.annotations.Post;
 import com.example.PRI.dtos.characters.CharacterDefaultAttributesOutputDto;
+import com.example.PRI.dtos.characters.CharacterListFilterInputDto;
+import com.example.PRI.dtos.characters.CharacterListOutputDto;
 import com.example.PRI.services.character.CharacterService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -32,9 +33,9 @@ public class CharacterController {
         characterService.saveExampleCharacters();
     }
 
-    @Get("/{count}/{page}")
-    public List<CharacterDefaultAttributesOutputDto> getSomeCharactersPaged(@PathVariable Integer count, @PathVariable Integer page) {
-        return characterService.getSomeCharactersPaged(count, page);
+    @Post("/paged") //ToDo to powinno być getem, ale jeśli będzie getem to nie może mieć RequestBody :/
+    public CharacterListOutputDto getSomeCharactersPaged(@RequestBody CharacterListFilterInputDto characterListInput) {
+        return characterService.getSomeCharactersPaged(characterListInput);
     }
 
     @Get("/example")

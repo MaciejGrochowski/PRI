@@ -20,13 +20,14 @@ class CharactersListPage extends React.Component{
             page: 0,
             countPerPage: 10,
             count: 0,
-            careerNames: ["test", "test2"]
+            careerNames: ["test", "test2"],
+            sortBy: null,
+            data: []
         }
     }
 
     componentDidMount() {
-        this.getAllCharactersByCountAndPage(this.state.countPerPage, this.state.page);
-        this.getCountOfCharacters();
+        this.getCharacters();
         this.getCareerNames();
     }
 
@@ -39,34 +40,14 @@ class CharactersListPage extends React.Component{
         this.setState({careerNames: response.data})
     }
 
-    getCountOfCharacters = () => {
-        characterService.getCountOfCharacters()
-            .then(r => this.setState({count: r.data}))
+    onChangePage = async page => {
+        await this.setState({page: page})
+        this.getCharacters();
     }
 
-    getAllCharactersByCountAndPage = (count, page) => {
-        characterService.getCharactersByCountAndPage(count, page)
-            .then(r => this.getAllCharactersSuccessHandler(r.data))
-            .catch(e => this.getAllCharactersErrorHandler(e))
-    }
-
-    getAllCharactersErrorHandler = error => {
-        console.error("Błąd przy pobieraniu postaci");
-        console.error(error);
-    }
-
-    getAllCharactersSuccessHandler = data => {
-        this.setState({data: data})
-    }
-
-    onChangePage = (page) => {
-        this.setState({page: page})
-        this.getAllCharactersByCountAndPage(this.state.countPerPage, page);
-    }
-
-    onChangeCountPerPage = countPerPage => {
-        this.setState({countPerPage: countPerPage, page: 1})
-        this.getAllCharactersByCountAndPage(countPerPage, 1)
+    onChangeCountPerPage = async countPerPage => {
+        await this.setState({countPerPage: countPerPage, page: 1})
+        this.getCharacters();
     }
 
     onFilter = data => {
@@ -77,6 +58,42 @@ class CharactersListPage extends React.Component{
         console.log(Array.from(document.getElementsByClassName("characterFilterCareers")).map(c => c.textContent));
         //ToDo Backend filtering
     }
+
+    onOrderChange = async (param1, param2) => {
+        if(param1 === -1){
+            await this.setState({sortBy: null})
+        }
+        else{
+            const config = columnConfig()
+            await this.setState({sortBy: config[param1].field})
+        }
+        await this.setState({sortOrder: param2})
+
+        this.getCharacters()
+
+    }
+
+    getCharacters = () => {
+        console.log(this.state)
+        const requestBody = {
+            sortedBy: this.state.sortBy,
+            filter: {maciek: "tru"},
+            isAscending: this.state.sortOrder === "asc",
+            currentPage: this.state.page,
+            rowsPerPage: this.state.countPerPage
+        }
+
+        characterService.getCharacters(requestBody)
+            .then(r => this.getCharactersSuccessHandler(r))
+    }
+
+    getCharactersSuccessHandler = response => {
+        this.setState({
+            count: response.data.totalCount,
+            data: response.data.list
+        })
+    }
+
 
     render(){
         const divStyle = {
@@ -105,6 +122,7 @@ class CharactersListPage extends React.Component{
                         ownOnChangePage={this.onChangePage}
                         onChangeCountPerPage={this.onChangeCountPerPage}
                         count={this.state.count}
+                        onOrderChange={this.onOrderChange}
                     />
                 </header>
             </div>

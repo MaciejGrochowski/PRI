@@ -20,7 +20,7 @@ class Table extends React.Component {
     }
 
     render(){
-        const {columnsConfig=[], data=[], noRecordsMessage="Brak danych", onChangeCountPerPage, ownOnChangePage, count, page} = this.props;
+        const {columnsConfig=[], data=[], noRecordsMessage="Brak danych", onChangeCountPerPage, ownOnChangePage, count, page, onOrderChange} = this.props;
         const divStyle = {
             backgroundColor: '#292F2F',
             width: '600px',
@@ -36,6 +36,7 @@ class Table extends React.Component {
                         emptyDataSourceMessage: noRecordsMessage
                     }
                 }}
+                onOrderChange={(orderedColumnId, orderDirection) => onOrderChange(orderedColumnId, orderDirection)}
 
 
                 components={{
@@ -88,7 +89,6 @@ class Table extends React.Component {
                         marginTop: '-5px',
                     },
                     rowStyle: rowData => ({
-                        backgroundColor: 'red',
                         color: 'white',
                         margin: '0 !important',
                         padding: '0 !important',

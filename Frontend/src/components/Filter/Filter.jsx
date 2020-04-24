@@ -11,9 +11,6 @@ class Filter extends React.Component {
     render(){
 
         const {columnsConfig, onFilter} = this.props;
-        const containerStyle = {
-            backfaceVisibility: 'hidden',
-        };
         return (
             <div class = "filter">
                 {

@@ -9,5 +9,5 @@
 .ziemniak{
     display: block;
     backface-visibility: hidden;
-    margin-block: 10px!important;
+    margin: 10px;
 }

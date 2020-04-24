@@ -19,11 +19,11 @@
 }
 
 .MuiTableSortLabel-root{
-  color: #FFD859!important;
+color: #FFD859!important;
 }
 
 .MuiTableSortLabel{
-  color: #FFD859!important;
+color: #FFD859!important;
 }
 
 .App-header {
@@ -73,7 +73,6 @@ background-color: #292F2F;
 } */
 .MuiTableRow-root{
 background-color: #292F2F;
-color: white;
 }
 
 .MuiTableRow-root:hover{

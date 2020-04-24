@@ -9,9 +9,6 @@ export const columnConfig = (careerNames=[]) => (
         {
             title: 'Imię', field: 'name',
             removable: true,
-            headerStyle: {
-                backgroundColor: '#292F2F',
-            },
             filter: <div class = "ziemniak"><TextField label="Imię" id="characterFilterName"/></div>
         },
         {
@@ -24,7 +21,7 @@ export const columnConfig = (careerNames=[]) => (
             field: 'sex',
             lookup: {"MALE": "M", "FEMALE": "K"},
             filter: <div class = "ziemniak">
-                <TextField style = {{width: '120px'}} defaultValue="fill" id="characterFilterSex" label="Płeć" select>
+                <TextField defaultValue="fill" id="characterFilterSex" label="Płeć" select>
                         <MenuItem value={'fill'}>Dowolna</MenuItem>
                         <MenuItem value={'MALE'}>Mężczyzna</MenuItem>
                         <MenuItem value={'FEMALE'}>Kobieta</MenuItem>
@@ -36,7 +33,7 @@ export const columnConfig = (careerNames=[]) => (
             field: 'race',
             lookup: {"HUMAN": "Człowiek", "DWARF": "Krasnolud", "ELF": "Elf", "HALFLING": "Niziołek"},
             filter: <div class = "ziemniak">
-                <TextField id="characterFilterRace" defaultValue="fill" style = {{width: '120px'}} label="Rasa" select>
+                <TextField id="characterFilterRace" defaultValue="fill" label="Rasa" select>
                     <MenuItem value={'fill'}>Dowolna</MenuItem>
                     <MenuItem value={'HUMAN'}>Człowiek</MenuItem>
                     <MenuItem value={'ELF'}>Elf</MenuItem>
@@ -54,11 +51,12 @@ export const columnConfig = (careerNames=[]) => (
         {
             title: 'Profesja',
             field: 'careerName',
-            filter: <div className="ziemniak"><DefaultMultipleAutocomplete
+            filter: <div class = "ziemniak"> <DefaultMultipleAutocomplete
                 labelName="Profesje"
                 options={careerNames}
                 id="characterFilterCareers"
-            /></div>
+            />
+            </div>
         }
     ]
 )

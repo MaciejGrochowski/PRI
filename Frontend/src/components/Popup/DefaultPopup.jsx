@@ -1,5 +1,8 @@
 import React from 'react';
 import Modal from 'react-modal';
+import test from '../../styles/popup.css';
+import button from "../../styles/buttons.css";
+import popup from "../../styles/popup.css";
 
 const customStyles = {
     content: {
@@ -8,7 +11,10 @@ const customStyles = {
         right: 'auto',
         bottom: 'auto',
         marginRight: '-50%',
-        transform: 'translate(-50%, -50%)'
+        transform: 'translate(-50%, -50%)',
+        backgroundColor: '#292F2F',
+        color: 'white',
+
     }
 };
 
@@ -20,6 +26,7 @@ class DefaultPopup extends React.Component {
         const {isOpen, title} = this.props;
         return (
             <div>
+
                 <Modal
                     isOpen={isOpen}
                     onAfterOpen={() => console.log("open")}
@@ -29,11 +36,19 @@ class DefaultPopup extends React.Component {
                 >
                     <div>I am a modal</div>
                     <form>
-                        <input/>
-                        <button>tab navigation</button>
-                        <button>stays</button>
-                        <button>inside</button>
-                        <button>the modal</button>
+                        <label className="container">Raz
+                            <input type="checkbox"/>
+                            <span className = "checkmark"></span>
+                        </label>
+                        <label className="container">Dwa
+                            <input type="checkbox"/>
+                            <span className = "checkmark"></span>
+                        </label>
+                        <label className="container">Trzy
+                            <input type="checkbox"/>
+                            <span className = "checkmark"></span>
+                        </label>
+                        <button className = "button">close</button>
                     </form>
                 </Modal>
             </div>

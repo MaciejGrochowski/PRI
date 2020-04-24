@@ -1,7 +1,7 @@
 import React from "react";
 import MaterialTable from "material-table";
 import mystyle from"../../styles/tables.css";
-import {headerStyle} from"../../styles/tables.css";
+import headerStyle from"../../styles/tables.css";
 import styled from 'styled-components';
 import TablePagination from "@material-ui/core/TablePagination";
 
@@ -27,7 +27,6 @@ class Table extends React.Component {
         const divStyle = {
             textDecoration: "none",
             backgroundColor: '#292F2F',
-            width: '600px',
             color: '#FFD859',
         };
 
@@ -35,7 +34,7 @@ class Table extends React.Component {
             textDecoration: "none",
             backgroundColor: '#292F2F',
             color: '#FFD859',
-            width: '60px!important',
+            width: '60px',
             // "&:hover": {
             //     backgroundColor: '#FFD859'
             //   }

@@ -90,25 +90,27 @@ class CharactersListPage extends React.Component{
         const divStyle = {
             backgroundColor: '#292F2F',
             width: '600px !important',
+            position: 'relative',
         };
         return (
-            <div className="GlobalStyles">
+            <div className="globalStyles">
                 <header className="App-header">
-                    {/*<Cat>Kotek</Cat>*/}
-                    {/*<Cat color='#292F2F'>Kotek niebieski</Cat>*/}
-                    {/*<Dog>Piesek</Dog>*/}
-                    {/*<div style={randomStyle}>ZIemniak</div>*/}
                     <Filter
                         columnsConfig={columnConfig(this.state.careerNames)}
                         onFilter={this.onFilter}
                     />
-                    <button onClick={this.expandFilterList}>Dostosuj</button>
-                    <DefaultPopup
+                    <button className= "button" onClick={this.expandFilterList}>Dostosuj</button>
+                    <DefaultPopup 
+                    isOpen={this.state.showModal}
+                    contentLabel="onRequestClose Example"
+                    onRequestClose={this.handleCloseModal}
+                    className="Modal"
+                    overlayClassName="Overlay"
+                    
                     title="Przykład"
                     isOpen={this.state.isFilterListExpanded}
-
                     />
-                    <OwnPopup/>
+                    
                     <Table
                     style = {divStyle}
                         title={"Lista postaci"}
@@ -121,7 +123,7 @@ class CharactersListPage extends React.Component{
                         onChangeCountPerPage={this.onChangeCountPerPage}
                         count={this.state.count}
                     />
-                </header>
+                    </header>
             </div>
         )
     }

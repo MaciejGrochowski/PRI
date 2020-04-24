@@ -2,7 +2,7 @@ import React from "react";
 import MaterialTable from "material-table";
 import styled from 'styled-components';
 import TablePagination from "@material-ui/core/TablePagination";
-
+import mystyle from "../../styles/tables.css";
 
 class Table extends React.Component {
 

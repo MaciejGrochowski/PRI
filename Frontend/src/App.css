@@ -18,6 +18,14 @@
   border: #FFD859!important;
 }
 
+.MuiTableSortLabel-root{
+  color: #FFD859!important;
+}
+
+.MuiTableSortLabel{
+  color: #FFD859!important;
+}
+
 .App-header {
   background-color:#292F2F;
   min-height: 100vh;

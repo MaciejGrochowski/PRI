@@ -54,11 +54,11 @@ export const columnConfig = (careerNames=[]) => (
         {
             title: 'Profesja',
             field: 'careerName',
-            filter: <DefaultMultipleAutocomplete
+            filter: <div className="ziemniak"><DefaultMultipleAutocomplete
                 labelName="Profesje"
                 options={careerNames}
                 id="characterFilterCareers"
-            />
+            /></div>
         }
     ]
 )

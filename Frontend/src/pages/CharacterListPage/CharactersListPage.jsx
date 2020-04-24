@@ -12,6 +12,8 @@ import DefaultMultipleAutocomplete from "../../components/Autocomplete/DefaultMu
 import {columnConfig} from "./ColumnsConfig";
 import "../../styles/globalStyles.css";
 import "../../styles/tables.css";
+import DefaultPopup from "../../components/Popup/DefaultPopup";
+import OwnPopup from "../../components/Popup/OwnPopup";
 
 class CharactersListPage extends React.Component{
 
@@ -21,7 +23,8 @@ class CharactersListPage extends React.Component{
             page: 0,
             countPerPage: 10,
             count: 0,
-            careerNames: ["test", "test2"]
+            careerNames: ["test", "test2"],
+            isFilterListExpanded: false
         }
     }
 
@@ -79,6 +82,10 @@ class CharactersListPage extends React.Component{
         //ToDo Backend filtering
     }
 
+    expandFilterList = () => {
+        this.setState({isFilterListExpanded: true})
+    }
+
     render(){
         const divStyle = {
             backgroundColor: '#292F2F',
@@ -95,6 +102,13 @@ class CharactersListPage extends React.Component{
                         columnsConfig={columnConfig(this.state.careerNames)}
                         onFilter={this.onFilter}
                     />
+                    <button onClick={this.expandFilterList}>Dostosuj</button>
+                    <DefaultPopup
+                    title="Przykład"
+                    isOpen={this.state.isFilterListExpanded}
+
+                    />
+                    <OwnPopup/>
                     <Table
                     style = {divStyle}
                         title={"Lista postaci"}

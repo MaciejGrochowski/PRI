@@ -19,17 +19,29 @@ const menuItems = [
 
 class Menu extends React.Component {
 
+    constructor() {
+        super();
+        this.state = {
+            isExpanded: false
+        }
+    }
+
+    onExpanded = () => {
+        this.setState({
+            isExpanded: !this.state.isExpanded
+        })
+    }
+
     render(){
         return (
             <div className="menuBody">
                 {
-                    menuItems && menuItems.map((item, i) => (
+                    this.state.isExpanded ? menuItems && menuItems.map((item, i) => (
                     <Link className="menuLink" to={item.link}><ItemMenu>{item.label}</ItemMenu></Link>
-                ))
-
-
+                )) : ""
                 }
 
+                <button onClick={this.onExpanded}>Menu</button>
 
 
             </div>

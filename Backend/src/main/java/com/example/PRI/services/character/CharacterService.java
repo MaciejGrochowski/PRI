@@ -2,6 +2,8 @@ package com.example.PRI.services.character;
 
 import com.example.PRI.converters.CharacterConverter;
 import com.example.PRI.dtos.characters.CharacterDefaultAttributesOutputDto;
+import com.example.PRI.dtos.characters.CharacterListFilterInputDto;
+import com.example.PRI.dtos.characters.CharacterListOutputDto;
 import com.example.PRI.entities.Place;
 import com.example.PRI.entities.character.*;
 import com.example.PRI.entities.character.Character;
@@ -14,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -109,11 +112,30 @@ public class CharacterService extends GeneralService {
     }
 
 
-    public List<CharacterDefaultAttributesOutputDto> getSomeCharactersPaged(Integer count, Integer page) {
-        Pageable pageable = PageRequest.of(page, count);
+    public CharacterListOutputDto getSomeCharactersPaged(CharacterListFilterInputDto requestInfo) {
+        Pageable pageable;
+        if(requestInfo.getSortedBy() == null) pageable = PageRequest.of(requestInfo.getCurrentPage(), requestInfo.getRowsPerPage());
+        else{
+            if(requestInfo.getIsAscending())
+                pageable = PageRequest.of(requestInfo.getCurrentPage(),
+                        requestInfo.getRowsPerPage(), Sort.by(requestInfo.getSortedBy()).ascending());
+            else
+                pageable = PageRequest.of(requestInfo.getCurrentPage(),
+                        requestInfo.getRowsPerPage(), Sort.by(requestInfo.getSortedBy()).descending());
+        }
+
+        //ToDo query umiejące sortować po wartościach klucza obcego
+//        Page<Character> tmp = characterRepository.findAllNormalSorted(pageable);
+
+
+        CharacterListOutputDto output = new CharacterListOutputDto();
         Page<Character> characters = characterRepository.findAll(pageable);
-        List<CharacterDefaultAttributesOutputDto> output = new ArrayList<>();
-        characters.get().forEach(c -> output.add(CharacterConverter.convert(c)));
+        List<CharacterDefaultAttributesOutputDto> outputData = new ArrayList<>();
+        characters.get().forEach(c -> outputData.add(CharacterConverter.convert(c)));
+
+        output.setList(outputData);
+        output.setTotalCount(characters.getTotalElements());
+
         return output;
     }
 

@@ -2,6 +2,8 @@ import React from "react";
 import {Link} from "react-router-dom";
 import {fronendUrls} from "../../commons/urls";
 import {ItemMenu} from "./ExampleMenu.style";
+import "../../styles/menu.css";
+import "../../styles/globalStyles.css";
 
 const menuItems = [
     {
@@ -18,17 +20,30 @@ const menuItems = [
 
 class Menu extends React.Component {
 
+    constructor() {
+        super();
+        this.state = {
+            isExpanded: false
+        }
+    }
+
+    onExpanded = () => {
+        this.setState({
+            isExpanded: !this.state.isExpanded
+        })
+    }
+
     render(){
         return (
-            <div>
+            <div className ="globalStyles">
+            <div className="menuBody">
                 {
-                    menuItems && menuItems.map((item, i) => (
-                    <Link to={item.link}><ItemMenu>{item.label}</ItemMenu></Link>
-                ))
-
-
+                    this.state.isExpanded ? menuItems && menuItems.map((item, i) => (
+                    <Link className="menuLink" to={item.link}><ItemMenu>{item.label}</ItemMenu></Link>
+                )) : ""
                 }
-
+            </div>
+                <button className="menubutton" onClick={this.onExpanded}>Menu</button>
 
 
             </div>

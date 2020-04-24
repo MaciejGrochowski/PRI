@@ -1,0 +1,17 @@
+.menuBody{
+    background-color: #222222;
+    padding: 20px;
+    display: flex;
+}
+
+.menuLink{
+    display: block;
+    backface-visibility: hidden;
+    color: white;
+    padding: 20px;
+    text-decoration: none;
+}
+
+.menuLink:hover{
+    color: #FFD859;
+}

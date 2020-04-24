@@ -22,15 +22,26 @@ class Table extends React.Component {
     render(){
         const {columnsConfig=[], data=[], noRecordsMessage="Brak danych", onChangeCountPerPage, ownOnChangePage, count, page, onOrderChange} = this.props;
         const divStyle = {
+            textDecoration: "none",
             backgroundColor: '#292F2F',
-            width: '600px',
+            color: '#FFD859',
+        };
+
+        const rowStyle = {
+            textDecoration: "none",
+            backgroundColor: '#292F2F',
+            color: '#FFD859',
+            width: '60px',
+            // "&:hover": {
+            //     backgroundColor: '#FFD859'
+            //   }
         };
         return(
-            <div style = {divStyle}>
+            <div styleName = {mystyle.table}>
                 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
                 <MaterialTable
                 onRowClick={((evt, selectedRow) => this.setState({ selectedRow }))}
-                style={divStyle}
+                style={mystyle.table}
                 localization={{
                     body: {
                         emptyDataSourceMessage: noRecordsMessage
@@ -44,7 +55,7 @@ class Table extends React.Component {
                     Pagination: props => (
                         <TablePagination
                             {...props}
-                            labelRowsPerPage={<div style={{fontSize: 22}}>{props.labelRowsPerPage}</div>}
+                            labelRowsPerPage={<div style={mystyle.table}>{props.labelRowsPerPage}</div>}
                             count={count}
                             // rowsPerPage={this.state.rowsPerPage}
                             // rowsPerPageOptions={[10,30,50]}
@@ -61,14 +72,18 @@ class Table extends React.Component {
                             }
                             }
                             labelDisplayedRows={row => <div
-                                style={{fontSize: 30, backgroundColor: 'blue'}}>{props.labelDisplayedRows(row)}</div>}
-                            SelectProps={{
-                                style: {
-                                    fontSize: 22,
-                                    backgroundColor: 'red',
-                                }
-                            }}/>)
-                }}
+                                style={mystyle.labelDisplayedRows}>{props.labelDisplayedRows(row)}</div>}
+                                SelectProps={{
+                                style: divStyle,
+                                //{
+                                // //tutaj też chcę mieć mystyle.selectPops
+                                //     fontSize: 22,
+                                //     backgroundColor: 'blue',
+                                //     backfaceVisibility: 'hidden',
+                                //     }
+                                }}/>)
+                    }}
+
 
                 columns={columnsConfig}
                 data={data}
@@ -82,19 +97,22 @@ class Table extends React.Component {
                     pageSize: this.state.rowsPerPage,
                     pageSizeOptions: [10, 30, 50],
                     paginationType: "stepped",
-                    headerStyle: {
-                        backgroundColor: '#292F2F',
-                        backfaceVisibility: 'hidden',
-                        color: '#FFD859',
-                        marginTop: '-5px',
-                    },
+                    headerStyle: divStyle,
+                    //tutaj chcę mieć mystyle.headerStyle
+                    //  {
+
+                    //     backgroundColor: '#292F2F',
+                    //     backfaceVisibility: 'hidden',
+                    //     color: '#FFD859',
+                    //     marginTop: '-5px',
+                    // },
                     rowStyle: rowData => ({
-                        color: 'white',
-                        margin: '0 !important',
-                        padding: '0 !important',
-                        backgroundColor: (this.state.selectedRow && this.state.selectedRow.tableData.id === rowData.tableData.id) ? '#FFD859' : '#292F2F'}),
-                         
+                        ...rowStyle,
+                        backgroundColor: (this.state.selectedRow && this.state.selectedRow.tableData.id === rowData.tableData.id) ? 'red!important' : 'blue!important'}),
+
                 }}
+                        //),
+
 
             />
             </div>

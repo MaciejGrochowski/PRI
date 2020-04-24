@@ -10,7 +10,10 @@ import {TextField} from "@material-ui/core";
 import MenuItem from "@material-ui/core/MenuItem";
 import DefaultMultipleAutocomplete from "../../components/Autocomplete/DefaultMultipleAutocomplete";
 import {columnConfig} from "./ColumnsConfig";
-
+import "../../styles/globalStyles.css";
+import "../../styles/tables.css";
+import DefaultPopup from "../../components/Popup/DefaultPopup";
+import OwnPopup from "../../components/Popup/OwnPopup";
 
 class CharactersListPage extends React.Component{
 
@@ -95,22 +98,35 @@ class CharactersListPage extends React.Component{
     }
 
 
+    expandFilterList = () => {
+        this.setState({isFilterListExpanded: true})
+    }
+
     render(){
         const divStyle = {
             backgroundColor: '#292F2F',
             width: '600px !important',
+            position: 'relative',
         };
         return (
-            <div className="App">
+            <div className="globalStyles">
                 <header className="App-header">
-                    {/*<Cat>Kotek</Cat>*/}
-                    {/*<Cat color='#292F2F'>Kotek niebieski</Cat>*/}
-                    {/*<Dog>Piesek</Dog>*/}
-                    {/*<div style={randomStyle}>ZIemniak</div>*/}
                     <Filter
                         columnsConfig={columnConfig(this.state.careerNames)}
                         onFilter={this.onFilter}
                     />
+                    <button className= "button" onClick={this.expandFilterList}>Dostosuj</button>
+                    <DefaultPopup
+                    isOpen={this.state.showModal}
+                    contentLabel="onRequestClose Example"
+                    onRequestClose={this.handleCloseModal}
+                    className="Modal"
+                    overlayClassName="Overlay"
+
+                    title="Przykład"
+                    isOpen={this.state.isFilterListExpanded}
+                    />
+
                     <Table
                     style = {divStyle}
                         title={"Lista postaci"}

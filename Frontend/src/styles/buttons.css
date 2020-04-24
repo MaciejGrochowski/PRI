@@ -1,0 +1,36 @@
+.button {
+    background-color: #292F2F; 
+    color: #FFD859; 
+    border: 2px solid #FFD859;
+    border-radius: 25%;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+  }
+  
+  .button:hover {
+    background-color: #FFD859;
+    color: #292F2F;
+  }
+
+  .menubutton{
+    background-color: #FFD859;
+    color: #292F2F;
+    border: 2px solid #FFD859;
+    text-align: center;
+    text-decoration: none;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 25%;
+
+  }
+
+  .menubutton:hover {
+    background-color: #292F2F; 
+    color: #FFD859; 
+  }

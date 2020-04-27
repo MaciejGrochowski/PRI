@@ -8,6 +8,7 @@ import com.example.PRI.entities.Place;
 import com.example.PRI.entities.character.*;
 import com.example.PRI.entities.character.Character;
 import com.example.PRI.enums.Race;
+import com.example.PRI.enums.Religion;
 import com.example.PRI.enums.Sex;
 import com.example.PRI.repositories.character.CharacterRepository;
 import com.example.PRI.services.GeneralService;
@@ -107,6 +108,7 @@ public class CharacterService extends GeneralService {
             c.setLivePlace(places.get(rand.nextInt(places.size())));
             c.setHeight(150 + rand.nextInt(50));
             c.setWeight(50 + rand.nextInt(50));
+            c.setReligion(Religion.SIGMAR);
             this.save(c);
         }
     }
@@ -125,9 +127,9 @@ public class CharacterService extends GeneralService {
         }
 
         //ToDo query umiejące sortować po wartościach klucza obcego
-//        Page<Character> tmp = characterRepository.findAllNormalSorted(pageable);
+        Page<Character> tmp1 = characterRepository.findAll(pageable);
 
-
+        List<Character> tmp = characterRepository.findAll();
         CharacterListOutputDto output = new CharacterListOutputDto();
         Page<Character> characters = characterRepository.findAll(pageable);
         List<CharacterDefaultAttributesOutputDto> outputData = new ArrayList<>();

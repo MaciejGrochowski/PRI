@@ -4,8 +4,9 @@ import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
 public enum Sex {
-    MALE(0.5, 0.5, 0.9, 0.5),
-    FEMALE(0.5, 0.5, 0.1, 0.5);
+
+    FEMALE(0.5, 0.5, 0.1, 0.5),
+    MALE(0.5, 0.5, 0.9, 0.5);
 
     double ifHumanChance;
     double ifHalflingChance;

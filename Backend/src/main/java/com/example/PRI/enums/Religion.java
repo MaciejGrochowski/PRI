@@ -1,6 +1,6 @@
 package com.example.PRI.enums;
 
-public enum Religion {
+public enum Religion { //ToDo to musi być alfabetycznie
     SIGMAR,
     ULRIC,
     TAALRHYA,

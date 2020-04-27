@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @AllArgsConstructor
-public enum StarSign {
+public enum StarSign { //ToDo to musi być alfabetycznie
     WYMUND_THE_ANCHORITE("Wymund the Anchorite", "Wymenos", "Sign of Enduring",	"22/12", "7/1"),
     THE_BIG_CROSS("The Big Cross", "Azurins", "Sign of Clarity", "8/1", "27/1"),
     THE_LIMNERS_LINE("The Limner's Line", "Verros", "Sign of Precision", "28/1", "15/2"),

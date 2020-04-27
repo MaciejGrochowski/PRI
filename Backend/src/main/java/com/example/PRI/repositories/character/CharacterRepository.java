@@ -15,6 +15,8 @@ public interface CharacterRepository extends PagingAndSortingRepository<Characte
 
     public Page<Character> findByHeight(int height, Pageable pageable);
 
+    public List<Character> findAll();
+
 
     //ToDo query które zadziała
     @Query(value = "SELECT c, n.name FROM Character c " +

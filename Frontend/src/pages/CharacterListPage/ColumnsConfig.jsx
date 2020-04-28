@@ -92,7 +92,8 @@ export const columnConfig = (careerNames=[], birthPlaces=[], starSigns=[], emoti
 
         {
             title: 'Emocje',
-            field: 'starSign',
+            field: 'emotions',
+            sorting: false,
             filter: <div className="ziemniak"><DefaultMultipleAutocomplete
                 labelName="Emocje"
                 options={emotions}
@@ -118,6 +119,7 @@ export const columnConfig = (careerNames=[], birthPlaces=[], starSigns=[], emoti
 
         {
             title: 'Umiejętności',
+            sorting: false,
             field: 'skills',
             filter: <div className="ziemniak"><DefaultMultipleAutocomplete
                 labelName="Umiejętności"
@@ -128,6 +130,7 @@ export const columnConfig = (careerNames=[], birthPlaces=[], starSigns=[], emoti
         {
             title: 'Zdolności',
             field: 'talents',
+            sorting: false,
             filter: <div className="ziemniak"><DefaultMultipleAutocomplete
                 labelName="Zdolności"
                 options={talents}
@@ -138,6 +141,7 @@ export const columnConfig = (careerNames=[], birthPlaces=[], starSigns=[], emoti
         {
             title: 'Cechy charakteru',
             field: 'personalities',
+            sorting: false,
             filter: <div className="ziemniak"><DefaultMultipleAutocomplete
                 labelName="Cechy charakteru"
                 options={personalities}
@@ -149,6 +153,7 @@ export const columnConfig = (careerNames=[], birthPlaces=[], starSigns=[], emoti
         {
             title: 'Cechy wyglądu',
             field: 'apperances',
+            sorting: false,
             filter: <div className="ziemniak"><DefaultMultipleAutocomplete
                 labelName="Cechy wyglądu"
                 options={apperances}

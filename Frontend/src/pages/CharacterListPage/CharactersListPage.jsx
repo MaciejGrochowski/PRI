@@ -102,32 +102,32 @@ class CharactersListPage extends React.Component{
 
     onFilter = async data => {
         let filterObject = {}
-        const name = document.getElementById('characterFilterName').value;
-        if(name && name!=="") filterObject = {...filterObject, name: name}
+        const name = document.getElementById('characterFilterName');
+        if(name && name.value!=="") filterObject = {...filterObject, name: name.value}
 
-        const surname = document.getElementById('characterFilterSurname').value;
-        if(surname && surname!=="") filterObject = {...filterObject, surname: surname}
+        const surname = document.getElementById('characterFilterSurname');
+        if(surname && surname.value!=="") filterObject = {...filterObject, surname: surname.value}
 
-        const sex = document.getElementById('characterFilterSex').nextSibling.value;
-        if(sex && !(sex==='fill')) filterObject = {...filterObject, sex: sex}
+        const sex = document.getElementById('characterFilterSex').nextSibling;
+        if(sex && sex.value!=='fill') filterObject = {...filterObject, sex: sex.value}
 
-        const race = document.getElementById('characterFilterRace').nextSibling.value;
-        if(race && !(race==='fill')) filterObject = {...filterObject, race: race}
+        const race = document.getElementById('characterFilterRace').nextSibling;
+        if(race && race.value!=='fill') filterObject = {...filterObject, race: race.value}
 
         const careers = Array.from(document.getElementsByClassName("characterFilterCareers")).map(c => c.textContent);
         if(careers.length > 0) filterObject = {...filterObject, careers: this.mapFilterArrayToString(careers, this.state.careerNames)}
 
-        const eyeColor = document.getElementById('characterFilterEyeColor').value;
-        if (eyeColor && eyeColor !== "") filterObject = {...filterObject, eyeColor: eyeColor}
+        const eyeColor = document.getElementById('characterFilterEyeColor');
+        if (eyeColor && eyeColor.value !== "") filterObject = {...filterObject, eyeColor: eyeColor.value}
 
-        const prediction = document.getElementById('characterFilterPrediction').value;
-        if(prediction && prediction !== "") filterObject = {...filterObject, prediction: prediction};
+        const prediction = document.getElementById('characterFilterPrediction');
+        if(prediction && prediction.value !== "") filterObject = {...filterObject, prediction: prediction.value};
 
-        const hairColor = document.getElementById('characterFilterHairColor').value;
-        if (hairColor && hairColor !== "") filterObject = {...filterObject, hairColor: hairColor};
+        const hairColor = document.getElementById('characterFilterHairColor');
+        if (hairColor && hairColor.value !== "") filterObject = {...filterObject, hairColor: hairColor.value};
 
-        const livePlace = document.getElementById('characterFilterLivePlace').value;
-        if(livePlace && livePlace !== "") filterObject = {...filterObject, livePlace: livePlace}
+        const livePlace = document.getElementById('characterFilterLivePlace');
+        if(livePlace && livePlace.value !== "") filterObject = {...filterObject, livePlace: livePlace.value}
 
         const birthPlace = Array.from(document.getElementsByClassName("characterFilterBirthPlaces")).map(c => c.textContent)
         if(birthPlace.length > 0) filterObject = {...filterObject, birthPlace: this.mapFilterArrayToString(birthPlace, this.state.placeNames)}
@@ -173,7 +173,11 @@ class CharactersListPage extends React.Component{
         await this.setState({sortOrder: param2})
 
         this.getCharacters()
+    }
 
+    saveChangeColumns = async data => {
+        await this.setState({visibilityProperties: data, isFilterListExpanded: false})
+        this.setColumnsConfig();
     }
 
     getCharacters = () => {
@@ -219,8 +223,9 @@ class CharactersListPage extends React.Component{
                         expandFilterList={this.expandFilterList}
                     isOpen={this.state.showModal}
                     contentLabel="onRequestClose Example"
-                    onRequestClose={this.handleCloseModal}
+                    onRequestClose={this.handleClose}
                     className="Modal"
+                        onSave={this.saveChangeColumns}
                     overlayClassName="Overlay"
                     columnsConfig={this.state.columnsConfig}
                     title="Przykład"

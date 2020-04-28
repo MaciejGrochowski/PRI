@@ -4,7 +4,7 @@ import ziemniak from "../../styles/filters.css";
 import DefaultMultipleAutocomplete from "../../components/Autocomplete/DefaultMultipleAutocomplete";
 import React from "react";
 
-export const columnConfig = (careerNames=[], birthPlaces=[], starSigns=[], emotions=[], religions=[], skills=[], talents=[], personalities=[], apperances=[], visibilityProperties) => (
+export const columnConfig = (careerNames=[], birthPlaces=[], starSigns=[], emotions=[], religions=[], skills=[], talents=[], personalities=[], apperances=[], visibilityProperties={}) => (
     [
         {
             title: 'Imię', field: 'name',

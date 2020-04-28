@@ -22,8 +22,17 @@ const customStyles = {
 
 class DefaultPopup extends React.Component {
 
-    save = data => {
-        console.log(data);
+    save = columnsConfig => {
+        // console.log(document.getElementById("nameVisibilityCheckbox").checked);
+        let object = {}
+        const form = document.getElementById("visibilityCharactersColumns");
+
+        for (let i=0; i<columnsConfig.length ; i++){
+            const fieldName = columnsConfig[i].field;
+            const checked = form.getElementsByTagName("input")[i].checked;
+            object[fieldName] = checked;
+        }
+        this.props.onSave(object)
     }
 
     render() {
@@ -38,18 +47,16 @@ class DefaultPopup extends React.Component {
                     style={customStyles}
                     contentLabel={title}
                 >
-                    <form>
+                    <form id="visibilityCharactersColumns">
                         {columnsConfig && columnsConfig.map((item, i) => (
                             <label className="container">{item.title}
-                                <input type="checkbox" defaultChecked={!item.hidden}/>
+                                <input type="checkbox" defaultChecked={!item.hidden} id={item.field + "VisibilityCheckbox"}/>
                                 <span className="checkmark"/>
                             </label>
                         ))
                         }
-
-                        {/*ToDo Czemu button ten powoduje ponowne załadowanie strony?!*/}
-                        <button type="submit" className="button" onClick={this.save}>zapisz</button>
                     </form>
+                    <button type="submit" className="button" onClick={() => this.save(columnsConfig)}>Jestem ziemniakiem</button>
                 </Modal>
             </div>
         );

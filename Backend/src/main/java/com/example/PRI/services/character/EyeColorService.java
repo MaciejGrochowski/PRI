@@ -15,6 +15,8 @@ public class EyeColorService extends GeneralService {
     @Autowired
     EyeColorRepository eyeColorRepository;
 
+    public void save(EyeColor ey){eyeColorRepository.save(ey);}
+
     public Optional<EyeColor> findByName(String eyeColor) {
         return Optional.ofNullable(eyeColorRepository.findByColor(eyeColor));
     }

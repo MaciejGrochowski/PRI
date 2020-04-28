@@ -14,6 +14,8 @@ public class PersonalityService extends GeneralService {
     @Autowired
     PersonalityRepository personalityRepository;
 
+    public void save(Personality per){personalityRepository.save(per);}
+
     public List<Personality> findByNameIn(List<String> personalityListString) {
         return personalityRepository.findByNameIn(personalityListString);
     }

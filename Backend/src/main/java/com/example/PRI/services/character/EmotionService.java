@@ -14,6 +14,8 @@ public class EmotionService extends GeneralService {
     @Autowired
     EmotionRepository emotionRepository;
 
+    public void save(Emotion e){ emotionRepository.save(e);}
+
     public List<Emotion> findByNameIn(List<String> dominatingEmotionsListString) {
         return emotionRepository.findByNameIn(dominatingEmotionsListString);
     }

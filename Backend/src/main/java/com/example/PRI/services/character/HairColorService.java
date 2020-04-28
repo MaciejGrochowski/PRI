@@ -14,6 +14,8 @@ public class HairColorService extends GeneralService {
     @Autowired
     HairColorRepository hairColorRepository;
 
+    public void save(HairColor h){hairColorRepository.save(h);}
+
     public Optional<HairColor> findByName(String hairColor) {
         return Optional.ofNullable(hairColorRepository.findByColor(hairColor));
     }

@@ -14,6 +14,8 @@ public class SkillService extends GeneralService {
     @Autowired
     SkillRepository skillRepository;
 
+    public void save(Skill s){ skillRepository.save(s);}
+
     public List<Skill> findByNameIn(List<String> skillsListString) {
         return skillRepository.findByNameIn(skillsListString);
     }

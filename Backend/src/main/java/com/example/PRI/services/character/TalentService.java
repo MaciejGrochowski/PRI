@@ -23,7 +23,6 @@ public class TalentService extends GeneralService {
         return Optional.ofNullable(talentRepository.findByName(name));
     }
 
-
     public List<Talent> findByNameIn(List<String> talentsListString) {
         return talentRepository.findByNameIn(talentsListString);
     }

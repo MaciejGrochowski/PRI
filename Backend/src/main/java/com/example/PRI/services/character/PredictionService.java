@@ -14,6 +14,8 @@ public class PredictionService extends GeneralService {
     @Autowired
     PredictionRepository predictionRepository;
 
+    public void save(Prediction pre) {predictionRepository.save(pre);}
+
     public Optional<Prediction> findByText(String prediction) {
         return Optional.ofNullable(predictionRepository.findByText(prediction));
     }

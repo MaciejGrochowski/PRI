@@ -15,7 +15,7 @@ class Filter extends React.Component {
             <div class = "filter">
                 {
                     columnsConfig && columnsConfig.map((item, i) => (
-                        <span>{item.filter}</span>
+                        !item.hidden &&<span>{item.filter}</span>
                     ))
                 }
                 <button class = "button" onClick={onFilter}>Filtruj</button>

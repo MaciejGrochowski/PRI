@@ -13,4 +13,6 @@ export const apiUrl = localApiUrl;
 
 export const characterUrl = apiUrl + "/characters";
 
-export const careerUrl = apiUrl + "/careers"
+export const careerUrl = apiUrl + "/careers";
+
+export const placeUrl = apiUrl + "/places";

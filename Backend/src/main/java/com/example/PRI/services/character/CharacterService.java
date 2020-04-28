@@ -171,8 +171,6 @@ public class CharacterService extends GeneralService {
 
         Specification<Character> specifications = this.getSpecificationsFromFilter(requestInfo);
 
-
-
         Page<Character> charactersFilteredPage = characterRepository.findAll(specifications, pageable);
 
         charactersFilteredPage.forEach(c -> System.out.println(c.getName().getName() + ", " + c.getId() + " " + c.getTalents().size()));
@@ -190,7 +188,7 @@ public class CharacterService extends GeneralService {
 
     private Specification<Character> getSpecificationsFromFilter(CharacterListFilterInputDto requestInfo) {
         Specification<Character> specifications = CharacterSpecifications.getAll();
-        if(requestInfo.getFilters().size() == 0) return specifications;
+        if(requestInfo.getFilters()==null || requestInfo.getFilters().size() == 0) return specifications;
 
         if(requestInfo.getFilters().containsKey("name")){
             Optional<Name> name = nameService.findByName(requestInfo.getFilters().get("name"));

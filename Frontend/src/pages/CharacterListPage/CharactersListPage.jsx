@@ -4,6 +4,7 @@ import Table from "../../components/Table/Table";
 import {Cat, Dog, randomStyle} from '../../commons/example-global-styles.js'
 import characterService from "../../services/characterService";
 import careerService from "../../services/careerService";
+import placeService from "../../services/placeService";
 import {textsPolish} from "../../commons/texts-pl";
 import Filter from "../../components/Filter/Filter";
 import {TextField} from "@material-ui/core";
@@ -24,20 +25,28 @@ class CharactersListPage extends React.Component{
             countPerPage: 10,
             count: 0,
             careerNames: [],
+            placeNames: [],
             sortBy: null,
-            data: []
+            data: [],
+            filterObject: null
         }
     }
 
     componentDidMount() {
         this.getCharacters();
-        this.getCareerNames();
+        this.getAutoCompleteCharacters();
     }
 
-    getCareerNames = () => {
+    getAutoCompleteCharacters = () => {
         careerService.getAllCareerNames()
             .then(r => this.getCareerNamesSuccessHandler(r))
+        placeService.getAllPlaceNames()
+            .then(r => this.getPlaceNamesSuccessHandler(r))
     }
+
+    getPlaceNamesSuccessHandler = response => {
+        this.setState({placeNames: response.data})
+}
 
     getCareerNamesSuccessHandler = response => {
         this.setState({careerNames: response.data})
@@ -53,12 +62,48 @@ class CharactersListPage extends React.Component{
         this.getCharacters();
     }
 
-    onFilter = data => {
-        console.log(document.getElementById('characterFilterName').value)
-        console.log(document.getElementById('characterFilterSurname').value)
-        console.log(document.getElementById('characterFilterSex').nextSibling.value)
-        console.log(document.getElementById('characterFilterRace').nextSibling.value)
-        console.log(Array.from(document.getElementsByClassName("characterFilterCareers")).map(c => c.textContent));
+    mapFilterArrayToString = (array, options) => {
+        let string = ""
+        for (const element in array){
+            const name = options[element]
+            string = string + name + ","
+        }
+        return string.substring(0, string.length-1);
+    }
+
+    onFilter = async data => {
+        let filterObject = {}
+        const name = document.getElementById('characterFilterName').value;
+        if(name && name!=="") filterObject = {...filterObject, name: name}
+
+        const surname = document.getElementById('characterFilterSurname').value;
+        if(surname && surname!=="") filterObject = {...filterObject, surname: surname}
+
+        const sex = document.getElementById('characterFilterSex').nextSibling.value;
+        if(sex && !(sex==='fill')) filterObject = {...filterObject, sex: sex}
+
+        const race = document.getElementById('characterFilterRace').nextSibling.value;
+        if(race && !(race==='fill')) filterObject = {...filterObject, race: race}
+
+        const careers = Array.from(document.getElementsByClassName("characterFilterCareers")).map(c => c.textContent);
+        if(careers.length > 0) filterObject = {...filterObject, careers: this.mapFilterArrayToString(careers, this.state.careerNames)}
+
+        const eyeColor = document.getElementById('characterFilterEyeColor').value;
+        if (eyeColor && eyeColor !== "") filterObject = {...filterObject, eyeColor: eyeColor}
+
+        const hairColor = document.getElementById('characterFilterHairColor').value;
+        if (hairColor && hairColor !== "") filterObject = {...filterObject, hairColor: hairColor};
+
+        const livePlace = document.getElementById('characterFilterLivePlace').value;
+        if(livePlace && livePlace !== "") filterObject = {...filterObject, livePlace: livePlace}
+
+        const birthPlace = Array.from(document.getElementsByClassName("characterFilterBirthPlaces")).map(c => c.textContent)
+        if(birthPlace.length > 0) filterObject = {...filterObject, birthPlace: this.mapFilterArrayToString(birthPlace, this.state.placeNames)}
+
+        await this.setState({filterObject: filterObject})
+
+        this.getCharacters();
+
         //ToDo Backend filtering
     }
 
@@ -80,7 +125,7 @@ class CharactersListPage extends React.Component{
         console.log(this.state)
         const requestBody = {
             sortedBy: this.state.sortBy,
-            filter: {maciek: "tru"},
+            filters: this.state.filterObject,
             isAscending: this.state.sortOrder === "asc",
             currentPage: this.state.page,
             rowsPerPage: this.state.countPerPage
@@ -112,7 +157,7 @@ class CharactersListPage extends React.Component{
             <div className="globalStyles">
                 <header className="App-header">
                     <Filter
-                        columnsConfig={columnConfig(this.state.careerNames)}
+                        columnsConfig={columnConfig(this.state.careerNames, this.state.placeNames)}
                         onFilter={this.onFilter}
                     />
                     <button className= "button" onClick={this.expandFilterList}>Dostosuj</button>

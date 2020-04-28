@@ -4,7 +4,7 @@ import ziemniak from "../../styles/filters.css";
 import DefaultMultipleAutocomplete from "../../components/Autocomplete/DefaultMultipleAutocomplete";
 import React from "react";
 
-export const columnConfig = (careerNames=[]) => (
+export const columnConfig = (careerNames=[], birthPlaces=[], starSigns=[], emotions=[], religions=[], skills=[], talents=[], personalities=[], apperances=[]) => (
     [
         {
             title: 'Imię', field: 'name',
@@ -46,7 +46,7 @@ export const columnConfig = (careerNames=[]) => (
             title: 'Miejsce pobytu',
             cellStyle: {width: '700px'},
             field: 'livePlace',
-            filter: <div class = "ziemniak"><TextField label="Miejsce pobytu"/></div>
+            filter: <div class = "ziemniak"><TextField id="characterFilterLivePlace" label="Miejsce pobytu"/></div>
         },
         {
             title: 'Profesja',
@@ -71,9 +71,95 @@ export const columnConfig = (careerNames=[]) => (
         },
 
         {
+            title: 'Miejsce urodzenia',
+            field: 'birthPlace',
+            filter: <div className="ziemniak"><DefaultMultipleAutocomplete
+                labelName="Miejsce urodzenia"
+                options={birthPlaces}
+                id="characterFilterBirthPlaces"
+            /></div>
+        },
+
+        {
+            title: 'Znak gwiezdny',
+            field: 'starSign',
+            filter: <div className="ziemniak"><DefaultMultipleAutocomplete
+                labelName="Znak gwiezdny"
+                options={starSigns}
+                id="characterFilterStarSigns"
+            /></div>
+        },
+
+        {
+            title: 'Emocje',
+            field: 'starSign',
+            filter: <div className="ziemniak"><DefaultMultipleAutocomplete
+                labelName="Emocje"
+                options={emotions}
+                id="characterFilterEmotions"
+            /></div>
+        },
+
+        {
+            title: 'Religia',
+            field: 'religion',
+            filter: <div className="ziemniak"><DefaultMultipleAutocomplete
+                labelName="Religia"
+                options={religions}
+                id="characterFilterReligions"
+            /></div>
+        },
+
+        {
+            title: 'Przepowiednia',
+            field: 'prediction',
+            filter: <div className="ziemniak"><TextField label="Przepowiednia" id="characterFilterPrediction"/></div>
+        },
+
+        {
+            title: 'Umiejętności',
+            field: 'skills',
+            filter: <div className="ziemniak"><DefaultMultipleAutocomplete
+                labelName="Umiejętności"
+                options={skills}
+                id="characterFilterSkills"
+            /></div>
+        },
+        {
+            title: 'Zdolności',
+            field: 'talents',
+            filter: <div className="ziemniak"><DefaultMultipleAutocomplete
+                labelName="Zdolności"
+                options={talents}
+                id="characterFilterTalents"
+            /></div>
+        },
+
+        {
+            title: 'Cechy charakteru',
+            field: 'personalities',
+            filter: <div className="ziemniak"><DefaultMultipleAutocomplete
+                labelName="Cechy charakteru"
+                options={personalities}
+                id="characterFilterPersonalities"
+            /></div>
+        },
 
 
-        }
+        {
+            title: 'Cechy wyglądu',
+            field: 'apperances',
+            filter: <div className="ziemniak"><DefaultMultipleAutocomplete
+                labelName="Cechy wyglądu"
+                options={apperances}
+                id="characterFilterApperances"
+            /></div>
+        },
+
+
+
+
+
 
 
     ]

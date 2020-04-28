@@ -37,13 +37,13 @@ public class CharacterSpecifications {
         };
     }
 
-    public static Specification<Character> getByTalent(Talent talent) { //DZIAŁA!!
-        return (root, query, cb) -> {
-            Join<Character, Talent> talents = root.join("talents");
-            return cb.equal(talents.get("name"), talent.getName());
-            //ToDo identyczne zapytania dla innych cech postaci, które mogą być filtrowane przez obiekt
-        };
-    }
+//    public static Specification<Character> getByTalent(Talent talent) { //DZIAŁA!!
+//        return (root, query, cb) -> {
+//            Join<Character, Talent> talents = root.join("talents");
+//            return cb.equal(talents.get("name"), talent.getName());
+//            //ToDo identyczne zapytania dla innych cech postaci, które mogą być filtrowane przez obiekt
+//        };
+//    }
 
     public static Specification<Character> getByTalents(List<Talent> talentList){
         return (root, query, cb) -> {
@@ -60,25 +60,25 @@ public class CharacterSpecifications {
 
     public static Specification<Character> getByEyeColor(EyeColor eyeColor) {
         return (root, query, criteriaBuilder) -> {
-            return criteriaBuilder.equal(root.get("eye_color"), eyeColor);
+            return criteriaBuilder.equal(root.get("eyeColor"), eyeColor);
         };
     }
 
     public static Specification<Character> getByHairColor(HairColor hairColor) {
         return (root, query, criteriaBuilder) -> {
-            return criteriaBuilder.equal(root.get("hair_color"), hairColor);
+            return criteriaBuilder.equal(root.get("hairColor"), hairColor);
         };
     }
 
     public static Specification<Character> getByBirthPlace(Place place) {
         return (root, query, criteriaBuilder) -> {
-            return criteriaBuilder.equal(root.get("birth_place"), place);
+            return criteriaBuilder.equal(root.get("birthPlace"), place);
         };
     }
 
     public static Specification<Character> getByStarSign(StarSign starSign) {
         return (root, query, criteriaBuilder) -> {
-            return criteriaBuilder.equal(root.get("star_sign"), starSign);
+            return criteriaBuilder.equal(root.get("starSign"), starSign);
         };
     }
 
@@ -137,7 +137,7 @@ public class CharacterSpecifications {
 
     public static Specification<Character> getByLivePlace(Place place) {
         return (root, query, criteriaBuilder) -> {
-            return criteriaBuilder.equal(root.get("live_place"), place);
+            return criteriaBuilder.equal(root.get("livePlace"), place);
         };
     }
 }

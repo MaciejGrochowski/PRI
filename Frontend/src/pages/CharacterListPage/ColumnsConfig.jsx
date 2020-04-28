@@ -57,6 +57,24 @@ export const columnConfig = (careerNames=[]) => (
                 id="characterFilterCareers"
             />
             </div>
+        },
+        {
+            title: 'Kolor oczu',
+            field: 'eyeColor',
+            filter: <div className="ziemniak"><TextField label="Kolor oczu" id="characterFilterEyeColor"/></div>
+        },
+
+        {
+            title: 'Kolor włosów',
+            field: 'hairColor',
+            filter: <div className="ziemniak"><TextField label="Kolor włosów" id="characterFilterHairColor"/></div>
+        },
+
+        {
+
+
         }
+
+
     ]
 )

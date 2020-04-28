@@ -47,6 +47,9 @@ public class CharacterService extends GeneralService {
     HairColorService hairColorService;
 
     @Autowired
+    PersonalityService personalityService;
+
+    @Autowired
     EmotionService emotionService;
 
     @Autowired
@@ -60,6 +63,9 @@ public class CharacterService extends GeneralService {
 
     @Autowired
     SkillService skillService;
+
+    @Autowired
+    ApperanceService apperanceService;
 
     public List<CharacterDefaultAttributesOutputDto> getAllCharacters() {
         Iterable<Character> characters = characterRepository.findAll();
@@ -266,6 +272,28 @@ public class CharacterService extends GeneralService {
             List<String> skillsListString = new ArrayList<>(Arrays.asList(skillsData.split(",")));
             List<Skill> skills = skillService.findByNameIn(skillsListString);
             if(skills.size() > 0) specifications = specifications.and(CharacterSpecifications.getBySkills(skills));
+            else return specifications.and(CharacterSpecifications.GetNoone());
+        }
+
+        if(requestInfo.getFilters().containsKey("personality")){
+            String personalityData = requestInfo.getFilters().get("personality");
+            List<String> personalityListString = new ArrayList<>(Arrays.asList(personalityData.split(",")));
+            List<Personality> personalities = personalityService.findByNameIn(personalityListString);
+            if(personalities.size() > 0) specifications = specifications.and(CharacterSpecifications.getByPersonalities(personalities));
+            else return specifications.and(CharacterSpecifications.GetNoone());
+        }
+
+        if(requestInfo.getFilters().containsKey("apperance")){
+            String apperanceData = requestInfo.getFilters().get("apperance");
+            List<String> apperanceListString = new ArrayList<>(Arrays.asList(apperanceData.split(",")));
+            List<Apperance> apperances = apperanceService.findByNameIn(apperanceListString);
+            if(apperances.size() > 0) specifications = specifications.and(CharacterSpecifications.getByApperances(apperances));
+            else return specifications.and(CharacterSpecifications.GetNoone());
+        }
+
+        if(requestInfo.getFilters().containsKey("livePlace")){
+            Optional<Place> livePlace = placeService.findByName(requestInfo.getFilters().get("livePlace"));
+            if(livePlace.isPresent()) specifications = specifications.and(CharacterSpecifications.getByLivePlace(livePlace.get()));
             else return specifications.and(CharacterSpecifications.GetNoone());
         }
 

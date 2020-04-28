@@ -23,7 +23,7 @@ class CharactersListPage extends React.Component{
             page: 0,
             countPerPage: 10,
             count: 0,
-            careerNames: ["test", "test2"],
+            careerNames: [],
             sortBy: null,
             data: []
         }

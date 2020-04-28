@@ -120,4 +120,24 @@ public class CharacterSpecifications {
             return career.in(skills);
         };
     }
+
+    public static Specification<Character> getByPersonalities(List<Personality> personalities) {
+        return (root, query, cb) -> {
+            Join<Character, Talent> personality = root.join("personalities");
+            return personality.in(personalities);
+        };
+    }
+
+    public static Specification<Character> getByApperances(List<Apperance> apperances) {
+        return (root, query, cb) -> {
+            Join<Character, Talent> apperance = root.join("apperances");
+            return apperance.in(apperances);
+        };
+    }
+
+    public static Specification<Character> getByLivePlace(Place place) {
+        return (root, query, criteriaBuilder) -> {
+            return criteriaBuilder.equal(root.get("live_place"), place);
+        };
+    }
 }

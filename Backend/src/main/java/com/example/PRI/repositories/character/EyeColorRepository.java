@@ -7,4 +7,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface EyeColorRepository extends CrudRepository<EyeColor, Long> {
 
+    EyeColor findByColor(String eyeColor);
 }

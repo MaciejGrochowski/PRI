@@ -7,4 +7,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface PredictionRepository extends CrudRepository<Prediction, Long> {
 
+    Prediction findByText(String prediction);
 }

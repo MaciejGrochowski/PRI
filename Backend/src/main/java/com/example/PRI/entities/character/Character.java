@@ -76,8 +76,21 @@ public class Character extends GeneralEntity {
     @ManyToMany
     List<Talent> talents;
 
-    @OneToOne
-    Statistics endStats; //Statystyki z rozwoju można odczytać z listy profesji
+    Integer endWeaponSkills;
+    Integer endBallisticSkills;
+    Integer endStrength;
+    Integer endToughness;
+    Integer endAgility;
+    Integer endIntelligence;
+    Integer endWillPower;
+    Integer endFellowship;
+    Integer endAttacks;
+    Integer endWounds; // żywotność
+    Integer endMagic; // magia
+    Integer endMovement; // szybkość
+
+//    @OneToOne
+//    Statistics endStats; //Statystyki z rozwoju można odczytać z listy profesji
 
     @ManyToMany
     List<Personality> personality;

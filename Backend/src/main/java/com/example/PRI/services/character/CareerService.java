@@ -24,4 +24,8 @@ public class CareerService extends GeneralService {
         List<String> output;
         return careerRepository.findAll().stream().map(Career::getName).distinct().collect(Collectors.toList());
     }
+
+    public List<Career> findByNameIn(List<String> currentCareersListString) {
+        return careerRepository.findByNameIn(currentCareersListString);
+    }
 }

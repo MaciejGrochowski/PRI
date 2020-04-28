@@ -10,6 +10,7 @@ import com.example.PRI.entities.character.Character;
 import com.example.PRI.enums.Race;
 import com.example.PRI.enums.Religion;
 import com.example.PRI.enums.Sex;
+import com.example.PRI.enums.StarSign;
 import com.example.PRI.repositories.character.CharacterRepository;
 import com.example.PRI.repositories.character.NameRepository;
 import com.example.PRI.services.GeneralService;
@@ -43,7 +44,22 @@ public class CharacterService extends GeneralService {
     PlaceService placeService;
 
     @Autowired
+    HairColorService hairColorService;
+
+    @Autowired
+    EmotionService emotionService;
+
+    @Autowired
     TalentService talentService;
+
+    @Autowired
+    PredictionService predictionService;
+
+    @Autowired
+    EyeColorService eyeColorService;
+
+    @Autowired
+    SkillService skillService;
 
     public List<CharacterDefaultAttributesOutputDto> getAllCharacters() {
         Iterable<Character> characters = characterRepository.findAll();
@@ -123,7 +139,9 @@ public class CharacterService extends GeneralService {
     NameRepository nameRepository;
 
 
-    /*Example JSON to Send and test:
+    /*
+    POST: localhost:8080/app/characters/paged
+    Example JSON to Send and test:
     {
         "sortedBy": "name",
             "isAscending": true,
@@ -180,6 +198,81 @@ public class CharacterService extends GeneralService {
             else return specifications.and(CharacterSpecifications.GetNoone());
         }
 
+        if(requestInfo.getFilters().containsKey("race")){
+            Race race = Race.valueOf(requestInfo.getFilters().get("race")); //ToDo Rasa spoza enuma powoduje błąd
+            specifications = specifications.and(CharacterSpecifications.getByRace(race));
+        }
+
+        if(requestInfo.getFilters().containsKey("eyeColor")){
+            Optional<EyeColor> eyeColor = eyeColorService.findByName(requestInfo.getFilters().get("eyeColor"));
+            if(eyeColor.isPresent()) specifications = specifications.and(CharacterSpecifications.getByEyeColor(eyeColor.get()));
+            else return specifications.and(CharacterSpecifications.GetNoone());
+        }
+
+        if(requestInfo.getFilters().containsKey("hairColor")){
+            Optional<HairColor> hairColor = hairColorService.findByName(requestInfo.getFilters().get("hairColor"));
+            if(hairColor.isPresent()) specifications = specifications.and(CharacterSpecifications.getByHairColor(hairColor.get()));
+            else return specifications.and(CharacterSpecifications.GetNoone());
+        }
+
+        if(requestInfo.getFilters().containsKey("birthPlace")){
+            Optional<Place> birthPlace = placeService.findByName(requestInfo.getFilters().get("birthPlace"));
+            if(birthPlace.isPresent()) specifications = specifications.and(CharacterSpecifications.getByBirthPlace(birthPlace.get()));
+            else return specifications.and(CharacterSpecifications.GetNoone());
+        }
+
+        //ToDo Filtrowanie po dacie urodzenia
+
+        if(requestInfo.getFilters().containsKey("starSign")){
+            StarSign starSign = StarSign.valueOf(requestInfo.getFilters().get("starSign"));
+            specifications = specifications.and(CharacterSpecifications.getByStarSign(starSign));
+        }
+
+        if(requestInfo.getFilters().containsKey("dominatingEmotions")){
+            String dominatingEmotionsData = requestInfo.getFilters().get("dominatingEmotions");
+            List<String> dominatingEmotionsListString = new ArrayList<>(Arrays.asList(dominatingEmotionsData.split(",")));
+            List<Emotion> dominatingEmotions = emotionService.findByNameIn(dominatingEmotionsListString);
+            if(dominatingEmotions.size() > 0) specifications = specifications.and(CharacterSpecifications.getByEmotions(dominatingEmotions));
+            else return specifications.and(CharacterSpecifications.GetNoone());
+        }
+
+        if(requestInfo.getFilters().containsKey("sex")){
+            Sex sex = Sex.valueOf(requestInfo.getFilters().get("sex"));
+            specifications = specifications.and(CharacterSpecifications.getBySex(sex));
+        }
+
+        if(requestInfo.getFilters().containsKey("religion")){
+            Religion religion = Religion.valueOf(requestInfo.getFilters().get("religion"));
+            specifications = specifications.and(CharacterSpecifications.getByReligion(religion));
+        }
+
+        if(requestInfo.getFilters().containsKey("prediction")){
+            Optional<Prediction> prediction = predictionService.findByText(requestInfo.getFilters().get("prediction"));
+            if(prediction.isPresent()) specifications = specifications.and(CharacterSpecifications.getByPrediction(prediction.get()));
+            else return specifications.and(CharacterSpecifications.GetNoone());
+        }
+
+        if(requestInfo.getFilters().containsKey("careers")){ //ToDo rozważyć czy nie rozdzielić profesji początkowych i poprzednich
+            String careerData = requestInfo.getFilters().get("careers");
+            List<String> careersListString = new ArrayList<>(Arrays.asList(careerData.split(",")));
+            List<Career> careers = careerService.findByNameIn(careersListString);
+            if(careers.size() > 0) specifications = specifications.and(CharacterSpecifications.getByCareer(careers));
+            else return specifications.and(CharacterSpecifications.GetNoone());
+        }
+
+
+        if(requestInfo.getFilters().containsKey("skills")){
+            String skillsData = requestInfo.getFilters().get("careers");
+            List<String> skillsListString = new ArrayList<>(Arrays.asList(skillsData.split(",")));
+            List<Skill> skills = skillService.findByNameIn(skillsListString);
+            if(skills.size() > 0) specifications = specifications.and(CharacterSpecifications.getBySkills(skills));
+            else return specifications.and(CharacterSpecifications.GetNoone());
+        }
+
+
+        //ToDo Filtry po statystykach liczbowych (Wzrost, waga, statystyki)
+
+
         if(requestInfo.getFilters().containsKey("talents")){
             String talentsData = requestInfo.getFilters().get("talents");
             //Przerabiam String[] na Arraylistę, pozbywając się przy okazji przecinków
@@ -188,7 +281,6 @@ public class CharacterService extends GeneralService {
             List<Talent> talentsList = talentService.findByNameIn(talentsListString);
             if(talentsList.size() > 0) specifications = specifications.and(CharacterSpecifications.getByTalents(talentsList));
             else return specifications.and(CharacterSpecifications.GetNoone()); //Jeśli nie istnieją talenty jak w filtrze, to nic nie spełnia wymagań
-
         }
 
         return specifications;

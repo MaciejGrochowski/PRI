@@ -7,4 +7,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface HairColorRepository extends CrudRepository<HairColor, Long> {
 
+    HairColor findByColor(String hairColor);
 }

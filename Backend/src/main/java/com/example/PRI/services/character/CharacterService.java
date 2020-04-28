@@ -80,7 +80,7 @@ public class CharacterService extends GeneralService {
     public void save(Character character){
         nameService.save(character.getName());
         careerService.save(character.getCareers().get(character.getCareers().size()-1));
-        placeService.save(character.getLivePlace());
+//        placeService.save(character.getLivePlace());
         if (character.getSurname() != null) surnameService.save(character.getSurname());
         characterRepository.save(character);
     }
@@ -115,9 +115,12 @@ public class CharacterService extends GeneralService {
 
         Place p1 = new Place();p1.setName("Altdorf");
         places.add(p1);
+        placeService.save(p1);
         Place p2 = new Place();p2.setName("Nuln");
         places.add(p2);
+        placeService.save(p2);
         Place p3 = new Place();p3.setName("Averheim");
+        placeService.save(p3);
         places.add(p3);
 
 
@@ -301,14 +304,19 @@ public class CharacterService extends GeneralService {
 
         List<Surname> surnames = new ArrayList<>();
         Surname sur1 = new Surname("Mohl", true, true, true,true, false,false,false,false, 0.5);
+        surnameService.save(sur1);
         surnames.add(sur1);
         Surname sur2 = new Surname("Keffermüller", true, true, true,true, false,true,true,false, 0.2);
+        surnameService.save(sur2);
         surnames.add(sur2);
         Surname sur3 = new Surname("Krüger", true, true, true,true, true,false,false,false, 0.3);
+        surnameService.save(sur3);
         surnames.add(sur3);
         Surname sur4 = new Surname("Vertalen", true, true, true,true, true,true,true,false, 0.6);
+        surnameService.save(sur4);
         surnames.add(sur4);
         Surname sur5 = new Surname("Yorck von Wartenburg", true, true, true,true, false,false,false,false, 0.3);
+        surnameService.save(sur5);
         surnames.add(sur5);
 
 

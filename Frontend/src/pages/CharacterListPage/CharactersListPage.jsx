@@ -194,10 +194,43 @@ class CharactersListPage extends React.Component{
             .then(r => this.getCharactersSuccessHandler(r))
     }
 
+    mapArrayToString = array => {
+        let output = "";
+        for (const i in array){
+            output = output + array[i];
+        }
+        return output;
+    }
+
+    mapSkillsToString = skills => {
+        let output = ""
+        for (const i in skills){
+            output = output + skills[i].name;
+        }
+        return output;
+    }
+
     getCharactersSuccessHandler = response => {
+        let data = [];
+        for (const i in response.data.list){
+            let element = response.data.list[i];
+            let object = {name: element.name, birthPlace: element.birthPlace, race: element.race, eyeColor: element.eyeColor,
+            hairColor: element.hairColor, birthDate: element.birthDate, starSign: element.starSign,
+                dominatingEmotions: this.mapArrayToString(element.dominatingEmotions), sex: element.sex,
+                religion: element.religion, height: element.height, weight: element.weight, surname: element.surname,
+                prediction: element.prediction, careerName: element.careers[element.careers.length-1],
+                talents: this.mapArrayToString(element.talents), personalities: this.mapArrayToString(element.personality),
+                apperances: this.mapArrayToString(element.apperance), livePlace: element.livePlace,
+                skills: this.mapSkillsToString(element.skills)
+            }
+            data.push(object)
+        }
+
+
+
         this.setState({
             count: response.data.totalCount,
-            data: response.data.list
+            data: data
         })
     }
 

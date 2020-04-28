@@ -245,7 +245,7 @@ public class CharacterService extends GeneralService {
             specifications = specifications.and(CharacterSpecifications.getBySex(sex));
         }
 
-        if(requestInfo.getFilters().containsKey("religion")){
+        if(requestInfo.getFilters().containsKey("religion")){ //ToDo religii może być więcej niż 1
             Religion religion = Religion.valueOf(requestInfo.getFilters().get("religion"));
             specifications = specifications.and(CharacterSpecifications.getByReligion(religion));
         }
@@ -266,7 +266,7 @@ public class CharacterService extends GeneralService {
 
 
         if(requestInfo.getFilters().containsKey("skills")){
-            String skillsData = requestInfo.getFilters().get("careers");
+            String skillsData = requestInfo.getFilters().get("skills");
             List<String> skillsListString = new ArrayList<>(Arrays.asList(skillsData.split(",")));
             List<Skill> skills = skillService.findByNameIn(skillsListString);
             if(skills.size() > 0) specifications = specifications.and(CharacterSpecifications.getBySkills(skills));

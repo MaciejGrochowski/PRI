@@ -28,7 +28,14 @@ class CharactersListPage extends React.Component{
             placeNames: [],
             sortBy: null,
             data: [],
-            filterObject: null
+            filterObject: null,
+            starSigns: null,
+            apperances: null,
+            personalities: null,
+            talents: null,
+            skills: null,
+            religions: null,
+            emotions: null
         }
     }
 
@@ -42,6 +49,9 @@ class CharactersListPage extends React.Component{
             .then(r => this.getCareerNamesSuccessHandler(r))
         placeService.getAllPlaceNames()
             .then(r => this.getPlaceNamesSuccessHandler(r))
+
+
+        //ToDo apperances, personalities, talents, skills, religions, emotions, starSigns
     }
 
     getPlaceNamesSuccessHandler = response => {
@@ -91,6 +101,9 @@ class CharactersListPage extends React.Component{
         const eyeColor = document.getElementById('characterFilterEyeColor').value;
         if (eyeColor && eyeColor !== "") filterObject = {...filterObject, eyeColor: eyeColor}
 
+        const prediction = document.getElementById('characterFilterPrediction').value;
+        if(prediction && prediction !== "") filterObject = {...filterObject, prediction: prediction};
+
         const hairColor = document.getElementById('characterFilterHairColor').value;
         if (hairColor && hairColor !== "") filterObject = {...filterObject, hairColor: hairColor};
 
@@ -99,6 +112,29 @@ class CharactersListPage extends React.Component{
 
         const birthPlace = Array.from(document.getElementsByClassName("characterFilterBirthPlaces")).map(c => c.textContent)
         if(birthPlace.length > 0) filterObject = {...filterObject, birthPlace: this.mapFilterArrayToString(birthPlace, this.state.placeNames)}
+
+
+
+        const starSign = Array.from(document.getElementsByClassName("characterFilterStarSigns")).map(c => c.textContent)
+        if(starSign.length > 0) filterObject = {...filterObject, starSign: this.mapFilterArrayToString(starSign, this.state.starSigns)}
+
+        const emotions = Array.from(document.getElementsByClassName("characterFilterEmotions")).map(c => c.textContent)
+        if(emotions.length > 0) filterObject = {...filterObject, dominatingEmotions: this.mapFilterArrayToString(emotions, this.state.emotions)}
+
+        const religions = Array.from(document.getElementsByClassName("characterFilterReligions")).map(c => c.textContent)
+        if(religions.length > 0) filterObject = {...filterObject, religion: this.mapFilterArrayToString(religions, this.state.religions)}
+
+        const skills = Array.from(document.getElementsByClassName("characterFilterSkills")).map(c => c.textContent)
+        if(skills.length > 0) filterObject = {...filterObject, skills: this.mapFilterArrayToString(skills, this.state.skills)}
+
+        const talents = Array.from(document.getElementsByClassName("characterFilterTalents")).map(c => c.textContent)
+        if(talents.length > 0) filterObject = {...filterObject, talents: this.mapFilterArrayToString(talents, this.state.talents)}
+
+        const personalities = Array.from(document.getElementsByClassName("characterFilterPersonalities")).map(c => c.textContent)
+        if(personalities.length > 0) filterObject = {...filterObject, personalities: this.mapFilterArrayToString(personalities, this.state.personalities)}
+
+        const apperances = Array.from(document.getElementsByClassName("characterFilterApperances")).map(c => c.textContent)
+        if(apperances.length > 0) filterObject = {...filterObject, apperances: this.mapFilterArrayToString(apperances, this.state.apperances)}
 
         await this.setState({filterObject: filterObject})
 

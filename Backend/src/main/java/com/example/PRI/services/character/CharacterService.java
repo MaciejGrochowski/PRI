@@ -79,6 +79,7 @@ public class CharacterService extends GeneralService {
 
     public void save(Character character){
         nameService.save(character.getName());
+
         careerService.save(character.getCareers().get(character.getCareers().size()-1));
 //        placeService.save(character.getLivePlace());
         if (character.getSurname() != null) surnameService.save(character.getSurname());
@@ -381,7 +382,7 @@ public class CharacterService extends GeneralService {
 
         Specification<Character> specifications = this.getSpecificationsFromFilter(requestInfo);
 
-        Page<Character> charactersFilteredPage = characterRepository.findAll(specifications, pageable);
+        Page<Character> charactersFilteredPage = characterRepository.findAll(specifications, pageable); //ToDo Konwersja typów
 
         charactersFilteredPage.forEach(c -> System.out.println(c.getName().getName() + ", " + c.getId() + " " + c.getTalents().size()));
         //Szybkie sprawdzenie czy ktoś w nowej wersji istnieje i

@@ -223,7 +223,7 @@ class CharactersListPage extends React.Component{
                 apperances: this.mapArrayToString(element.apperance), livePlace: element.livePlace,
                 skills: this.mapSkillsToString(element.skills)
             }
-            data.push(object)
+            data.push(object) //ToDo ta konwersja obiektów powinna się odbywać na backendzie!!!
         }
 
 

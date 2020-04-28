@@ -7,11 +7,13 @@ import com.example.PRI.services.GeneralService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class NameService extends GeneralService {
 
     @Autowired
-    NameRepository nameRepository;
+    private NameRepository nameRepository;
 
 
     //ToDo implementation saveOrUpdate
@@ -23,6 +25,9 @@ public class NameService extends GeneralService {
 //        nameRepository.save(name);
     }
 
+    public Optional<Name> findByName(String name){
+        return Optional.ofNullable(nameRepository.findByName(name));
+    }
 
 
 }

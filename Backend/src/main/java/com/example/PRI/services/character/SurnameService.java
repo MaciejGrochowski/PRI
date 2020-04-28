@@ -6,11 +6,13 @@ import com.example.PRI.services.GeneralService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class SurnameService extends GeneralService {
 
     @Autowired
-    SurnameRepository surnameRepository;
+    private SurnameRepository surnameRepository;
 
 
     //ToDo implementation saveOrUpdate
@@ -18,6 +20,10 @@ public class SurnameService extends GeneralService {
         Surname sur = surnameRepository.findBySurname(surname.getSurname());
         if(sur.getId() > 0) surname.setId(sur.getId());
         surnameRepository.save(surname);
+    }
+
+    public Optional<Surname> findBySurname(String surname){
+        return Optional.ofNullable(surnameRepository.findBySurname(surname));
     }
 
 }

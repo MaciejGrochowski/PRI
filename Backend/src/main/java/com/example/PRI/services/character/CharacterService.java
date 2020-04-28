@@ -11,6 +11,7 @@ import com.example.PRI.enums.Race;
 import com.example.PRI.enums.Religion;
 import com.example.PRI.enums.Sex;
 import com.example.PRI.repositories.character.CharacterRepository;
+import com.example.PRI.repositories.character.NameRepository;
 import com.example.PRI.services.GeneralService;
 import com.example.PRI.services.PlaceService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,12 +19,10 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 @Service
 public class CharacterService extends GeneralService {
@@ -42,6 +41,9 @@ public class CharacterService extends GeneralService {
 
     @Autowired
     PlaceService placeService;
+
+    @Autowired
+    TalentService talentService;
 
     public List<CharacterDefaultAttributesOutputDto> getAllCharacters() {
         Iterable<Character> characters = characterRepository.findAll();
@@ -96,10 +98,14 @@ public class CharacterService extends GeneralService {
         Place p3 = new Place();p3.setName("Averheim");
         places.add(p3);
 
+        Talent t = new Talent("hamster", "hamster");
+        talentService.save(t);
+
         Random rand = new Random();
 
         for(int i=0;i<100;i++){
             Character c = new Character();
+            if(rand.nextInt(5) < 3) c.setTalents(Collections.singletonList(t));
             c.setName(names.get(rand.nextInt(names.size())));
             c.setSurname(null);
             c.setCareers(Collections.singletonList(careers.get(rand.nextInt(careers.size()))));
@@ -113,7 +119,20 @@ public class CharacterService extends GeneralService {
         }
     }
 
+    @Autowired
+    NameRepository nameRepository;
 
+
+    /*Example JSON to Send and test:
+    {
+        "sortedBy": "name",
+            "isAscending": true,
+            "filters": {"name": "Otto", "talents": "hamster"},
+        "currentPage": 0,
+            "rowsPerPage": 25
+    }
+
+     */
     public CharacterListOutputDto getSomeCharactersPaged(CharacterListFilterInputDto requestInfo) {
         Pageable pageable;
         if(requestInfo.getSortedBy() == null) pageable = PageRequest.of(requestInfo.getCurrentPage(), requestInfo.getRowsPerPage());
@@ -126,19 +145,53 @@ public class CharacterService extends GeneralService {
                         requestInfo.getRowsPerPage(), Sort.by(requestInfo.getSortedBy()).descending());
         }
 
-        //ToDo query umiejące sortować po wartościach klucza obcego
-        Page<Character> tmp1 = characterRepository.findAll(pageable);
+        Specification<Character> specifications = this.getSpecificationsFromFilter(requestInfo);
 
-        List<Character> tmp = characterRepository.findAll();
+
+
+        Page<Character> charactersFilteredPage = characterRepository.findAll(specifications, pageable);
+
+        charactersFilteredPage.forEach(c -> System.out.println(c.getName().getName() + ", " + c.getId() + " " + c.getTalents().size()));
+        //Szybkie sprawdzenie czy ktoś w nowej wersji istnieje i
+
         CharacterListOutputDto output = new CharacterListOutputDto();
-        Page<Character> characters = characterRepository.findAll(pageable);
         List<CharacterDefaultAttributesOutputDto> outputData = new ArrayList<>();
-        characters.get().forEach(c -> outputData.add(CharacterConverter.convert(c)));
+        charactersFilteredPage.get().forEach(c -> outputData.add(CharacterConverter.convert(c)));
 
         output.setList(outputData);
-        output.setTotalCount(characters.getTotalElements());
+        output.setTotalCount(charactersFilteredPage.getTotalElements());
 
         return output;
+    }
+
+    private Specification<Character> getSpecificationsFromFilter(CharacterListFilterInputDto requestInfo) {
+        Specification<Character> specifications = CharacterSpecifications.getAll();
+        if(requestInfo.getFilters().size() == 0) return specifications;
+
+        if(requestInfo.getFilters().containsKey("name")){
+            Optional<Name> name = nameService.findByName(requestInfo.getFilters().get("name"));
+            if(name.isPresent()) specifications = specifications.and(CharacterSpecifications.getByName(name.get()));
+            else return specifications.and(CharacterSpecifications.GetNoone());
+        }
+
+        if(requestInfo.getFilters().containsKey("surname")){
+            Optional<Surname> surname = surnameService.findBySurname(requestInfo.getFilters().get("surname"));
+            if(surname.isPresent()) specifications = specifications.and(CharacterSpecifications.getBySurname(surname.get()));
+            else return specifications.and(CharacterSpecifications.GetNoone());
+        }
+
+        if(requestInfo.getFilters().containsKey("talents")){
+            String talentsData = requestInfo.getFilters().get("talents");
+            //Przerabiam String[] na Arraylistę, pozbywając się przy okazji przecinków
+            List<String> talentsListString = new ArrayList<String>(Arrays.asList(talentsData.split(",")));
+            //Pobieram listę obiektów typu talents
+            List<Talent> talentsList = talentService.findByNameIn(talentsListString);
+            if(talentsList.size() > 0) specifications = specifications.and(CharacterSpecifications.getByTalents(talentsList));
+            else return specifications.and(CharacterSpecifications.GetNoone()); //Jeśli nie istnieją talenty jak w filtrze, to nic nie spełnia wymagań
+
+        }
+
+        return specifications;
     }
 
     public Long getCountCharacters() {

@@ -22,11 +22,15 @@ const customStyles = {
 
 class DefaultPopup extends React.Component {
 
+    save = data => {
+        console.log(data);
+    }
+
     render() {
-        const {isOpen, title} = this.props;
+        const {isOpen, title, expandFilterList, columnsConfig} = this.props;
         return (
             <div>
-
+                <button className="button" onClick={expandFilterList}>Dostosuj</button>
                 <Modal
                     isOpen={isOpen}
                     onAfterOpen={() => console.log("open")}
@@ -34,21 +38,17 @@ class DefaultPopup extends React.Component {
                     style={customStyles}
                     contentLabel={title}
                 >
-                    <div>I am a modal</div>
                     <form>
-                        <label className="container">Raz
-                            <input type="checkbox"/>
-                            <span className = "checkmark"></span>
-                        </label>
-                        <label className="container">Dwa
-                            <input type="checkbox"/>
-                            <span className = "checkmark"></span>
-                        </label>
-                        <label className="container">Trzy
-                            <input type="checkbox"/>
-                            <span className = "checkmark"></span>
-                        </label>
-                        <button className = "button">close</button>
+                        {columnsConfig && columnsConfig.map((item, i) => (
+                            <label className="container">{item.title}
+                                <input type="checkbox" defaultChecked={!item.hidden}/>
+                                <span className="checkmark"/>
+                            </label>
+                        ))
+                        }
+
+                        {/*ToDo Czemu button ten powoduje ponowne załadowanie strony?!*/}
+                        <button type="submit" className="button" onClick={this.save}>zapisz</button>
                     </form>
                 </Modal>
             </div>

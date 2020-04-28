@@ -4,21 +4,24 @@ import ziemniak from "../../styles/filters.css";
 import DefaultMultipleAutocomplete from "../../components/Autocomplete/DefaultMultipleAutocomplete";
 import React from "react";
 
-export const columnConfig = (careerNames=[], birthPlaces=[], starSigns=[], emotions=[], religions=[], skills=[], talents=[], personalities=[], apperances=[]) => (
+export const columnConfig = (careerNames=[], birthPlaces=[], starSigns=[], emotions=[], religions=[], skills=[], talents=[], personalities=[], apperances=[], visibilityProperties) => (
     [
         {
             title: 'Imię', field: 'name',
             removable: true,
+            hidden: !visibilityProperties.name,
             filter: <div class = "ziemniak"><TextField label="Imię" id="characterFilterName"/></div>
         },
         {
             title: 'Nazwisko',
             field: 'surname',
+            hidden: !visibilityProperties.surname,
             filter: <div class = "ziemniak"><TextField label="Nazwisko" id="characterFilterSurname"/></div>
         },
         {
             title: 'Płeć',
             field: 'sex',
+            hidden: !visibilityProperties.sex,
             lookup: {"MALE": "M", "FEMALE": "K"},
             filter: <div class = "ziemniak">
                 <TextField defaultValue="fill" id="characterFilterSex" label="Płeć" select>
@@ -31,6 +34,7 @@ export const columnConfig = (careerNames=[], birthPlaces=[], starSigns=[], emoti
         {
             title: 'Rasa',
             field: 'race',
+            hidden: !visibilityProperties.race,
             lookup: {"HUMAN": "Człowiek", "DWARF": "Krasnolud", "ELF": "Elf", "HALFLING": "Niziołek"},
             filter: <div class = "ziemniak">
                 <TextField id="characterFilterRace" defaultValue="fill" label="Rasa" select>
@@ -45,12 +49,14 @@ export const columnConfig = (careerNames=[], birthPlaces=[], starSigns=[], emoti
         {
             title: 'Miejsce pobytu',
             cellStyle: {width: '700px'},
+            hidden: !visibilityProperties.livePlace,
             field: 'livePlace',
             filter: <div class = "ziemniak"><TextField id="characterFilterLivePlace" label="Miejsce pobytu"/></div>
         },
         {
             title: 'Profesja',
             field: 'careerName',
+            hidden: !visibilityProperties.career,
             filter: <div class = "ziemniak"> <DefaultMultipleAutocomplete
                 labelName="Profesje"
                 options={careerNames}
@@ -61,18 +67,21 @@ export const columnConfig = (careerNames=[], birthPlaces=[], starSigns=[], emoti
         {
             title: 'Kolor oczu',
             field: 'eyeColor',
+            hidden: !visibilityProperties.eyeColor,
             filter: <div className="ziemniak"><TextField label="Kolor oczu" id="characterFilterEyeColor"/></div>
         },
 
         {
             title: 'Kolor włosów',
             field: 'hairColor',
+            hidden: !visibilityProperties.hairColor,
             filter: <div className="ziemniak"><TextField label="Kolor włosów" id="characterFilterHairColor"/></div>
         },
 
         {
             title: 'Miejsce urodzenia',
             field: 'birthPlace',
+            hidden: !visibilityProperties.birthPlace,
             filter: <div className="ziemniak"><DefaultMultipleAutocomplete
                 labelName="Miejsce urodzenia"
                 options={birthPlaces}
@@ -83,6 +92,7 @@ export const columnConfig = (careerNames=[], birthPlaces=[], starSigns=[], emoti
         {
             title: 'Znak gwiezdny',
             field: 'starSign',
+            hidden: !visibilityProperties.starSign,
             filter: <div className="ziemniak"><DefaultMultipleAutocomplete
                 labelName="Znak gwiezdny"
                 options={starSigns}
@@ -93,6 +103,7 @@ export const columnConfig = (careerNames=[], birthPlaces=[], starSigns=[], emoti
         {
             title: 'Emocje',
             field: 'emotions',
+            hidden: !visibilityProperties.emotions,
             sorting: false,
             filter: <div className="ziemniak"><DefaultMultipleAutocomplete
                 labelName="Emocje"
@@ -104,6 +115,7 @@ export const columnConfig = (careerNames=[], birthPlaces=[], starSigns=[], emoti
         {
             title: 'Religia',
             field: 'religion',
+            hidden: !visibilityProperties.religion,
             filter: <div className="ziemniak"><DefaultMultipleAutocomplete
                 labelName="Religia"
                 options={religions}
@@ -114,12 +126,14 @@ export const columnConfig = (careerNames=[], birthPlaces=[], starSigns=[], emoti
         {
             title: 'Przepowiednia',
             field: 'prediction',
+            hidden: !visibilityProperties.prediction,
             filter: <div className="ziemniak"><TextField label="Przepowiednia" id="characterFilterPrediction"/></div>
         },
 
         {
             title: 'Umiejętności',
             sorting: false,
+            hidden: !visibilityProperties.skills,
             field: 'skills',
             filter: <div className="ziemniak"><DefaultMultipleAutocomplete
                 labelName="Umiejętności"
@@ -130,6 +144,7 @@ export const columnConfig = (careerNames=[], birthPlaces=[], starSigns=[], emoti
         {
             title: 'Zdolności',
             field: 'talents',
+            hidden: !visibilityProperties.talents,
             sorting: false,
             filter: <div className="ziemniak"><DefaultMultipleAutocomplete
                 labelName="Zdolności"
@@ -141,6 +156,7 @@ export const columnConfig = (careerNames=[], birthPlaces=[], starSigns=[], emoti
         {
             title: 'Cechy charakteru',
             field: 'personalities',
+            hidden: !visibilityProperties.personalities,
             sorting: false,
             filter: <div className="ziemniak"><DefaultMultipleAutocomplete
                 labelName="Cechy charakteru"
@@ -153,6 +169,7 @@ export const columnConfig = (careerNames=[], birthPlaces=[], starSigns=[], emoti
         {
             title: 'Cechy wyglądu',
             field: 'apperances',
+            hidden: !visibilityProperties.apperances,
             sorting: false,
             filter: <div className="ziemniak"><DefaultMultipleAutocomplete
                 labelName="Cechy wyglądu"

@@ -29,19 +29,38 @@ class CharactersListPage extends React.Component{
             sortBy: null,
             data: [],
             filterObject: null,
-            starSigns: null,
-            apperances: null,
-            personalities: null,
-            talents: null,
-            skills: null,
-            religions: null,
-            emotions: null
+            starSigns: [],
+            apperances: [],
+            personalities: [],
+            talents: [],
+            skills: [],
+            religions: [],
+            emotions: [],
+            visibilityProperties: {
+                name: true,
+                surname: true,
+                livePlace: true,
+                sex: true,
+                race: true,
+                career: true
+            },
+            columnsConfig: []
+
         }
     }
 
-    componentDidMount() {
+    async componentDidMount() {
         this.getCharacters();
-        this.getAutoCompleteCharacters();
+        await this.getAutoCompleteCharacters();
+        this.setColumnsConfig()
+    }
+
+    setColumnsConfig = () => {
+        this.setState({
+            columnsConfig: columnConfig(this.state.careerNames, this.state.placeNames, this.state.starSigns,
+                this.state.emotions, this.state.religions, this.state.skills, this.state.talents, this.state.personalities,
+                this.state.apperances, this.state.visibilityProperties)
+        })
     }
 
     getAutoCompleteCharacters = () => {
@@ -193,17 +212,17 @@ class CharactersListPage extends React.Component{
             <div className="globalStyles">
                 <header className="App-header">
                     <Filter
-                        columnsConfig={columnConfig(this.state.careerNames, this.state.placeNames)}
+                        columnsConfig={this.state.columnsConfig}
                         onFilter={this.onFilter}
                     />
-                    <button className= "button" onClick={this.expandFilterList}>Dostosuj</button>
                     <DefaultPopup
+                        expandFilterList={this.expandFilterList}
                     isOpen={this.state.showModal}
                     contentLabel="onRequestClose Example"
                     onRequestClose={this.handleCloseModal}
                     className="Modal"
                     overlayClassName="Overlay"
-
+                    columnsConfig={this.state.columnsConfig}
                     title="Przykład"
                     isOpen={this.state.isFilterListExpanded}
                     />
@@ -211,7 +230,7 @@ class CharactersListPage extends React.Component{
                     <Table
                     style = {divStyle}
                         title={"Lista postaci"}
-                        columnsConfig={columnConfig(this.state.careerNames)}
+                        columnsConfig={this.state.columnsConfig}
                         data={this.state.data}
                         noRecordsMessage={textsPolish.noRecordsOnCharactersList}
                         countPerPage={this.state.countPerPage}

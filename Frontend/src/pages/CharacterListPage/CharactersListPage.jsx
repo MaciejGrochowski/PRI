@@ -15,6 +15,8 @@ import "../../styles/globalStyles.css";
 import "../../styles/tables.css";
 import DefaultPopup from "../../components/Popup/DefaultPopup";
 import OwnPopup from "../../components/Popup/OwnPopup";
+import {starSigns} from "../../enums/StarSigns";
+import {religions} from "../../enums/Religions";
 
 class CharactersListPage extends React.Component{
 
@@ -30,13 +32,6 @@ class CharactersListPage extends React.Component{
             data: [],
             autocompleteData: {},
             filterObject: null,
-            starSigns: [],
-            apperances: [],
-            personalities: [],
-            talents: [],
-            skills: [],
-            religions: [],
-            emotions: [],
             visibilityProperties: {
                 name: true,
                 surname: true,
@@ -69,28 +64,10 @@ class CharactersListPage extends React.Component{
     getAutoCompleteCharacters = async () => {
         await characterService.getAutocompleteFilters()
             .then(r => this.getAutocompleteFiltersSuccessHandler(r));
-        //
-        // await careerService.getAllCareerNames()
-        //     .then(r => this.getCareerNamesSuccessHandler(r))
-        // await placeService.getAllPlaceNames()
-        //     .then(r => this.getPlaceNamesSuccessHandler(r))
-
-        //ToDo Może jedno zapytanie na wszystkie autocomplete wystarczy?
-        //ToDo rozważyć czy autocomplety nie powinny asynchronicznie pobierać danych (dopiero po kliknięciu na nie)
-        //ToDo rozważyć czy awaitowanie nie spowalnia za bardzo aplikacji.
-        //ToDo apperances, personalities, talents, skills, religions, emotions, starSigns
     }
 
     getAutocompleteFiltersSuccessHandler = response => {
         this.setState({autocompleteData: response.data})
-    }
-
-    getPlaceNamesSuccessHandler = response => {
-        this.setState({placeNames: response.data})
-}
-
-    getCareerNamesSuccessHandler = response => {
-        this.setState({careerNames: response.data})
     }
 
     onChangePage = async page => {
@@ -147,25 +124,25 @@ class CharactersListPage extends React.Component{
 
 
         const starSign = Array.from(document.getElementsByClassName("characterFilterStarSigns")).map(c => c.textContent)
-        if(starSign.length > 0) filterObject = {...filterObject, starSign: this.mapFilterArrayToString(starSign, this.state.starSigns)}
+        if(starSign.length > 0) filterObject = {...filterObject, starSign: this.mapFilterArrayToString(starSign, starSigns)}
 
         const emotions = Array.from(document.getElementsByClassName("characterFilterEmotions")).map(c => c.textContent)
-        if(emotions.length > 0) filterObject = {...filterObject, dominatingEmotions: this.mapFilterArrayToString(emotions, this.state.emotions)}
+        if(emotions.length > 0) filterObject = {...filterObject, dominatingEmotions: this.mapFilterArrayToString(emotions, this.state.autocompleteData.emotionNames)}
 
-        const religions = Array.from(document.getElementsByClassName("characterFilterReligions")).map(c => c.textContent)
-        if(religions.length > 0) filterObject = {...filterObject, religion: this.mapFilterArrayToString(religions, this.state.religions)}
+        const religion = Array.from(document.getElementsByClassName("characterFilterReligions")).map(c => c.textContent)
+        if(religion.length > 0) filterObject = {...filterObject, religion: this.mapFilterArrayToString(religion, religions)}
 
         const skills = Array.from(document.getElementsByClassName("characterFilterSkills")).map(c => c.textContent)
-        if(skills.length > 0) filterObject = {...filterObject, skills: this.mapFilterArrayToString(skills, this.state.skills)}
+        if(skills.length > 0) filterObject = {...filterObject, skills: this.mapFilterArrayToString(skills, this.state.autocompleteData.skillNames)}
 
         const talents = Array.from(document.getElementsByClassName("characterFilterTalents")).map(c => c.textContent)
-        if(talents.length > 0) filterObject = {...filterObject, talents: this.mapFilterArrayToString(talents, this.state.talents)}
+        if(talents.length > 0) filterObject = {...filterObject, talents: this.mapFilterArrayToString(talents, this.state.talentNames)}
 
         const personalities = Array.from(document.getElementsByClassName("characterFilterPersonalities")).map(c => c.textContent)
-        if(personalities.length > 0) filterObject = {...filterObject, personalities: this.mapFilterArrayToString(personalities, this.state.personalities)}
+        if(personalities.length > 0) filterObject = {...filterObject, personalities: this.mapFilterArrayToString(personalities, this.state.personalityNames)}
 
         const apperances = Array.from(document.getElementsByClassName("characterFilterApperances")).map(c => c.textContent)
-        if(apperances.length > 0) filterObject = {...filterObject, apperances: this.mapFilterArrayToString(apperances, this.state.apperances)}
+        if(apperances.length > 0) filterObject = {...filterObject, apperances: this.mapFilterArrayToString(apperances, this.state.apperanceNames)}
 
         await this.setState({filterObject: filterObject})
 

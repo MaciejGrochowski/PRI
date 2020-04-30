@@ -10,4 +10,7 @@ import java.util.List;
 public interface SkillRepository extends CrudRepository<Skill, Long> {
 
     List<Skill> findByNameIn(List<String> skillsListString);
+
+    List<Skill> findAll();
+
 }

@@ -1,5 +1,6 @@
 package com.example.PRI.services.character;
 
+import com.example.PRI.entities.character.Apperance;
 import com.example.PRI.entities.character.Talent;
 import com.example.PRI.repositories.character.TalentRepository;
 import com.example.PRI.services.GeneralService;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class TalentService extends GeneralService {
@@ -26,4 +28,9 @@ public class TalentService extends GeneralService {
     public List<Talent> findByNameIn(List<String> talentsListString) {
         return talentRepository.findByNameIn(talentsListString);
     }
+
+    public List<String> getAllNames() {
+        return talentRepository.findAll().stream().map(Talent::getName).distinct().collect(Collectors.toList());
+    }
+
 }

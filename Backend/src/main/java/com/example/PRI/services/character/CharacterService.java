@@ -1,6 +1,7 @@
 package com.example.PRI.services.character;
 
 import com.example.PRI.converters.CharacterConverter;
+import com.example.PRI.dtos.characters.AutocompleteFilterCharactersOutputDto;
 import com.example.PRI.dtos.characters.CharacterDefaultAttributesOutputDto;
 import com.example.PRI.dtos.characters.CharacterListFilterInputDto;
 import com.example.PRI.dtos.characters.CharacterListOutputDto;
@@ -71,13 +72,13 @@ public class CharacterService extends GeneralService {
         Iterable<Character> characters = characterRepository.findAll();
         List<CharacterDefaultAttributesOutputDto> output = new ArrayList<>();
 
-        for(Character character : characters){
+        for (Character character : characters) {
             output.add(CharacterConverter.convert(character));
         }
         return output;
     }
 
-    public void save(Character character){
+    public void save(Character character) {
         nameService.save(character.getName());
 
         careerService.save(character.getCurrentCareer());
@@ -86,7 +87,7 @@ public class CharacterService extends GeneralService {
         characterRepository.save(character);
     }
 
-    public void saveExampleCharacters(){
+    public void saveExampleCharacters() {
         List<Name> names = new ArrayList<>();
         names.add(new Name("Wolfgang", true, false, false, true, false, false, false, 0.1, 0.2));
         names.add(new Name("Johann", true, false, false, true, false, false, false, 0.1, 0.2));
@@ -99,28 +100,49 @@ public class CharacterService extends GeneralService {
 
 
         List<Career> careers = new ArrayList<>();
-        Career c1 = new Career(); c1.setName("Chłop"); c1.setBaseProfession(true); c1.setExitChance(0.1);
+        Career c1 = new Career();
+        c1.setName("Chłop");
+        c1.setBaseProfession(true);
+        c1.setExitChance(0.1);
         careers.add(c1);
-        Career c2 = new Career(); c2.setName("Żołnierz"); c1.setBaseProfession(true); c1.setExitChance(0.1);
+        Career c2 = new Career();
+        c2.setName("Żołnierz");
+        c1.setBaseProfession(true);
+        c1.setExitChance(0.1);
         careers.add(c2);
-        Career c3 = new Career(); c3.setName("Mieszczanin"); c3.setBaseProfession(true); c3.setExitChance(0.1);
+        Career c3 = new Career();
+        c3.setName("Mieszczanin");
+        c3.setBaseProfession(true);
+        c3.setExitChance(0.1);
         careers.add(c3);
-        Career c4 = new Career(); c4.setName("Rzemieślnik"); c4.setBaseProfession(true); c4.setExitChance(0.1);
+        Career c4 = new Career();
+        c4.setName("Rzemieślnik");
+        c4.setBaseProfession(true);
+        c4.setExitChance(0.1);
         careers.add(c4);
-        Career c5 = new Career(); c5.setName("Oprych"); c5.setBaseProfession(true); c5.setExitChance(0.1);
+        Career c5 = new Career();
+        c5.setName("Oprych");
+        c5.setBaseProfession(true);
+        c5.setExitChance(0.1);
         careers.add(c5);
-        Career c6 = new Career(); c6.setName("Sługa"); c6.setBaseProfession(true); c6.setExitChance(0.1);
+        Career c6 = new Career();
+        c6.setName("Sługa");
+        c6.setBaseProfession(true);
+        c6.setExitChance(0.1);
         careers.add(c6);
 
         List<Place> places = new ArrayList<>();
 
-        Place p1 = new Place();p1.setName("Altdorf");
+        Place p1 = new Place();
+        p1.setName("Altdorf");
         places.add(p1);
         placeService.save(p1);
-        Place p2 = new Place();p2.setName("Nuln");
+        Place p2 = new Place();
+        p2.setName("Nuln");
         places.add(p2);
         placeService.save(p2);
-        Place p3 = new Place();p3.setName("Averheim");
+        Place p3 = new Place();
+        p3.setName("Averheim");
         placeService.save(p3);
         places.add(p3);
 
@@ -304,29 +326,28 @@ public class CharacterService extends GeneralService {
         predictions.add(pre4);
 
         List<Surname> surnames = new ArrayList<>();
-        Surname sur1 = new Surname("Mohl", true, true, true,true, false,false,false,false, 0.5);
+        Surname sur1 = new Surname("Mohl", true, true, true, true, false, false, false, false, 0.5);
         surnameService.save(sur1);
         surnames.add(sur1);
-        Surname sur2 = new Surname("Keffermüller", true, true, true,true, false,true,true,false, 0.2);
+        Surname sur2 = new Surname("Keffermüller", true, true, true, true, false, true, true, false, 0.2);
         surnameService.save(sur2);
         surnames.add(sur2);
-        Surname sur3 = new Surname("Krüger", true, true, true,true, true,false,false,false, 0.3);
+        Surname sur3 = new Surname("Krüger", true, true, true, true, true, false, false, false, 0.3);
         surnameService.save(sur3);
         surnames.add(sur3);
-        Surname sur4 = new Surname("Vertalen", true, true, true,true, true,true,true,false, 0.6);
+        Surname sur4 = new Surname("Vertalen", true, true, true, true, true, true, true, false, 0.6);
         surnameService.save(sur4);
         surnames.add(sur4);
-        Surname sur5 = new Surname("Yorck von Wartenburg", true, true, true,true, false,false,false,false, 0.3);
+        Surname sur5 = new Surname("Yorck von Wartenburg", true, true, true, true, false, false, false, false, 0.3);
         surnameService.save(sur5);
         surnames.add(sur5);
 
 
-
         Random rand = new Random();
 
-        for(int i=0;i<100;i++){
+        for (int i = 0; i < 100; i++) {
             Character c = new Character();
-            if(rand.nextInt(5) < 3) c.setTalents(Collections.singletonList(t));
+            if (rand.nextInt(5) < 3) c.setTalents(Collections.singletonList(t));
             c.setName(names.get(rand.nextInt(names.size())));
             c.setSurname(null);
             c.setCurrentCareer(careers.get(rand.nextInt(careers.size())));
@@ -370,9 +391,10 @@ public class CharacterService extends GeneralService {
      */
     public CharacterListOutputDto getSomeCharactersPaged(CharacterListFilterInputDto requestInfo) {
         Pageable pageable;
-        if(requestInfo.getSortedBy() == null) pageable = PageRequest.of(requestInfo.getCurrentPage(), requestInfo.getRowsPerPage());
-        else{
-            if(requestInfo.getIsAscending())
+        if (requestInfo.getSortedBy() == null)
+            pageable = PageRequest.of(requestInfo.getCurrentPage(), requestInfo.getRowsPerPage());
+        else {
+            if (requestInfo.getIsAscending())
                 pageable = PageRequest.of(requestInfo.getCurrentPage(),
                         requestInfo.getRowsPerPage(), Sort.by(requestInfo.getSortedBy()).ascending());
             else
@@ -399,110 +421,119 @@ public class CharacterService extends GeneralService {
 
     private Specification<Character> getSpecificationsFromFilter(CharacterListFilterInputDto requestInfo) {
         Specification<Character> specifications = CharacterSpecifications.getAll();
-        if(requestInfo.getFilters()==null || requestInfo.getFilters().size() == 0) return specifications;
+        if (requestInfo.getFilters() == null || requestInfo.getFilters().size() == 0) return specifications;
 
-        if(requestInfo.getFilters().containsKey("name")){
+        if (requestInfo.getFilters().containsKey("name")) {
             Optional<Name> name = nameService.findByName(requestInfo.getFilters().get("name"));
-            if(name.isPresent()) specifications = specifications.and(CharacterSpecifications.getByName(name.get()));
+            if (name.isPresent()) specifications = specifications.and(CharacterSpecifications.getByName(name.get()));
             else return specifications.and(CharacterSpecifications.GetNoone());
         }
 
-        if(requestInfo.getFilters().containsKey("surname")){
+        if (requestInfo.getFilters().containsKey("surname")) {
             Optional<Surname> surname = surnameService.findBySurname(requestInfo.getFilters().get("surname"));
-            if(surname.isPresent()) specifications = specifications.and(CharacterSpecifications.getBySurname(surname.get()));
+            if (surname.isPresent())
+                specifications = specifications.and(CharacterSpecifications.getBySurname(surname.get()));
             else return specifications.and(CharacterSpecifications.GetNoone());
         }
 
-        if(requestInfo.getFilters().containsKey("race")){
+        if (requestInfo.getFilters().containsKey("race")) {
             Race race = Race.valueOf(requestInfo.getFilters().get("race")); //ToDo Rasa spoza enuma powoduje błąd
             specifications = specifications.and(CharacterSpecifications.getByRace(race));
         }
 
-        if(requestInfo.getFilters().containsKey("eyeColor")){
+        if (requestInfo.getFilters().containsKey("eyeColor")) {
             Optional<EyeColor> eyeColor = eyeColorService.findByName(requestInfo.getFilters().get("eyeColor"));
-            if(eyeColor.isPresent()) specifications = specifications.and(CharacterSpecifications.getByEyeColor(eyeColor.get()));
+            if (eyeColor.isPresent())
+                specifications = specifications.and(CharacterSpecifications.getByEyeColor(eyeColor.get()));
             else return specifications.and(CharacterSpecifications.GetNoone());
         }
 
-        if(requestInfo.getFilters().containsKey("hairColor")){
+        if (requestInfo.getFilters().containsKey("hairColor")) {
             Optional<HairColor> hairColor = hairColorService.findByName(requestInfo.getFilters().get("hairColor"));
-            if(hairColor.isPresent()) specifications = specifications.and(CharacterSpecifications.getByHairColor(hairColor.get()));
+            if (hairColor.isPresent())
+                specifications = specifications.and(CharacterSpecifications.getByHairColor(hairColor.get()));
             else return specifications.and(CharacterSpecifications.GetNoone());
         }
 
-        if(requestInfo.getFilters().containsKey("birthPlace")){
+        if (requestInfo.getFilters().containsKey("birthPlace")) {
             Optional<Place> birthPlace = placeService.findByName(requestInfo.getFilters().get("birthPlace"));
-            if(birthPlace.isPresent()) specifications = specifications.and(CharacterSpecifications.getByBirthPlace(birthPlace.get()));
+            if (birthPlace.isPresent())
+                specifications = specifications.and(CharacterSpecifications.getByBirthPlace(birthPlace.get()));
             else return specifications.and(CharacterSpecifications.GetNoone());
         }
 
         //ToDo Filtrowanie po dacie urodzenia
 
-        if(requestInfo.getFilters().containsKey("starSign")){
+        if (requestInfo.getFilters().containsKey("starSign")) {
             StarSign starSign = StarSign.valueOf(requestInfo.getFilters().get("starSign"));
             specifications = specifications.and(CharacterSpecifications.getByStarSign(starSign));
         }
 
-        if(requestInfo.getFilters().containsKey("dominatingEmotions")){
+        if (requestInfo.getFilters().containsKey("dominatingEmotions")) {
             String dominatingEmotionsData = requestInfo.getFilters().get("dominatingEmotions");
             List<String> dominatingEmotionsListString = new ArrayList<>(Arrays.asList(dominatingEmotionsData.split(",")));
             List<Emotion> dominatingEmotions = emotionService.findByNameIn(dominatingEmotionsListString);
-            if(dominatingEmotions.size() > 0) specifications = specifications.and(CharacterSpecifications.getByEmotions(dominatingEmotions));
+            if (dominatingEmotions.size() > 0)
+                specifications = specifications.and(CharacterSpecifications.getByEmotions(dominatingEmotions));
             else return specifications.and(CharacterSpecifications.GetNoone());
         }
 
-        if(requestInfo.getFilters().containsKey("sex")){
+        if (requestInfo.getFilters().containsKey("sex")) {
             Sex sex = Sex.valueOf(requestInfo.getFilters().get("sex"));
             specifications = specifications.and(CharacterSpecifications.getBySex(sex));
         }
 
-        if(requestInfo.getFilters().containsKey("religion")){ //ToDo religii może być więcej niż 1
+        if (requestInfo.getFilters().containsKey("religion")) { //ToDo religii może być więcej niż 1
             Religion religion = Religion.valueOf(requestInfo.getFilters().get("religion"));
             specifications = specifications.and(CharacterSpecifications.getByReligion(religion));
         }
 
-        if(requestInfo.getFilters().containsKey("prediction")){
+        if (requestInfo.getFilters().containsKey("prediction")) {
             Optional<Prediction> prediction = predictionService.findByText(requestInfo.getFilters().get("prediction"));
-            if(prediction.isPresent()) specifications = specifications.and(CharacterSpecifications.getByPrediction(prediction.get()));
+            if (prediction.isPresent())
+                specifications = specifications.and(CharacterSpecifications.getByPrediction(prediction.get()));
             else return specifications.and(CharacterSpecifications.GetNoone());
         }
 
-        if(requestInfo.getFilters().containsKey("careers")){ //ToDo rozważyć czy nie rozdzielić profesji początkowych i poprzednich
+        if (requestInfo.getFilters().containsKey("careers")) { //ToDo rozważyć czy nie rozdzielić profesji początkowych i poprzednich
             String careerData = requestInfo.getFilters().get("careers");
             List<String> careersListString = new ArrayList<>(Arrays.asList(careerData.split(",")));
             List<Career> careers = careerService.findByNameIn(careersListString);
-            if(careers.size() > 0) specifications = specifications.and(CharacterSpecifications.getByCareer(careers));
+            if (careers.size() > 0) specifications = specifications.and(CharacterSpecifications.getByCareer(careers));
             else return specifications.and(CharacterSpecifications.GetNoone());
         }
 
 
-        if(requestInfo.getFilters().containsKey("skills")){
+        if (requestInfo.getFilters().containsKey("skills")) {
             String skillsData = requestInfo.getFilters().get("skills");
             List<String> skillsListString = new ArrayList<>(Arrays.asList(skillsData.split(",")));
             List<Skill> skills = skillService.findByNameIn(skillsListString);
-            if(skills.size() > 0) specifications = specifications.and(CharacterSpecifications.getBySkills(skills));
+            if (skills.size() > 0) specifications = specifications.and(CharacterSpecifications.getBySkills(skills));
             else return specifications.and(CharacterSpecifications.GetNoone());
         }
 
-        if(requestInfo.getFilters().containsKey("personality")){
+        if (requestInfo.getFilters().containsKey("personality")) {
             String personalityData = requestInfo.getFilters().get("personality");
             List<String> personalityListString = new ArrayList<>(Arrays.asList(personalityData.split(",")));
             List<Personality> personalities = personalityService.findByNameIn(personalityListString);
-            if(personalities.size() > 0) specifications = specifications.and(CharacterSpecifications.getByPersonalities(personalities));
+            if (personalities.size() > 0)
+                specifications = specifications.and(CharacterSpecifications.getByPersonalities(personalities));
             else return specifications.and(CharacterSpecifications.GetNoone());
         }
 
-        if(requestInfo.getFilters().containsKey("apperance")){
+        if (requestInfo.getFilters().containsKey("apperance")) {
             String apperanceData = requestInfo.getFilters().get("apperance");
             List<String> apperanceListString = new ArrayList<>(Arrays.asList(apperanceData.split(",")));
             List<Apperance> apperances = apperanceService.findByNameIn(apperanceListString);
-            if(apperances.size() > 0) specifications = specifications.and(CharacterSpecifications.getByApperances(apperances));
+            if (apperances.size() > 0)
+                specifications = specifications.and(CharacterSpecifications.getByApperances(apperances));
             else return specifications.and(CharacterSpecifications.GetNoone());
         }
 
-        if(requestInfo.getFilters().containsKey("livePlace")){
+        if (requestInfo.getFilters().containsKey("livePlace")) {
             Optional<Place> livePlace = placeService.findByName(requestInfo.getFilters().get("livePlace"));
-            if(livePlace.isPresent()) specifications = specifications.and(CharacterSpecifications.getByLivePlace(livePlace.get()));
+            if (livePlace.isPresent())
+                specifications = specifications.and(CharacterSpecifications.getByLivePlace(livePlace.get()));
             else return specifications.and(CharacterSpecifications.GetNoone());
         }
 
@@ -510,14 +541,16 @@ public class CharacterService extends GeneralService {
         //ToDo Filtry po statystykach liczbowych (Wzrost, waga, statystyki)
 
 
-        if(requestInfo.getFilters().containsKey("talents")){
+        if (requestInfo.getFilters().containsKey("talents")) {
             String talentsData = requestInfo.getFilters().get("talents");
             //Przerabiam String[] na Arraylistę, pozbywając się przy okazji przecinków
             List<String> talentsListString = new ArrayList<String>(Arrays.asList(talentsData.split(",")));
             //Pobieram listę obiektów typu talents
             List<Talent> talentsList = talentService.findByNameIn(talentsListString);
-            if(talentsList.size() > 0) specifications = specifications.and(CharacterSpecifications.getByTalents(talentsList));
-            else return specifications.and(CharacterSpecifications.GetNoone()); //Jeśli nie istnieją talenty jak w filtrze, to nic nie spełnia wymagań
+            if (talentsList.size() > 0)
+                specifications = specifications.and(CharacterSpecifications.getByTalents(talentsList));
+            else
+                return specifications.and(CharacterSpecifications.GetNoone()); //Jeśli nie istnieją talenty jak w filtrze, to nic nie spełnia wymagań
         }
 
         return specifications;
@@ -527,12 +560,20 @@ public class CharacterService extends GeneralService {
         return characterRepository.count();
     }
 
-    public List<CharacterDefaultAttributesOutputDto> getByHeight(){
+    public List<CharacterDefaultAttributesOutputDto> getByHeight() {
         Pageable pageable = PageRequest.of(0, 5);
         Page<Character> characters = characterRepository.findByHeight(180, pageable);
         List<CharacterDefaultAttributesOutputDto> output = new ArrayList<>();
         characters.get().forEach(c -> output.add(CharacterConverter.convert(c)));
         return output;
 
+    }
+
+    public AutocompleteFilterCharactersOutputDto getAutoCompletes() {
+        return new AutocompleteFilterCharactersOutputDto(placeService.getAllNames(),
+                careerService.getAllNames(), apperanceService.getAllNames(),
+                personalityService.getAllNames(), talentService.getAllNames(),
+                skillService.getAllNames(), emotionService.getAllNames()
+        );
     }
 }

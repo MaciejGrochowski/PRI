@@ -2,6 +2,7 @@ package com.example.PRI.controllers;
 
 import com.example.PRI.controllers.annotations.Get;
 import com.example.PRI.controllers.annotations.Post;
+import com.example.PRI.dtos.characters.AutocompleteFilterCharactersOutputDto;
 import com.example.PRI.dtos.characters.CharacterDefaultAttributesOutputDto;
 import com.example.PRI.dtos.characters.CharacterListFilterInputDto;
 import com.example.PRI.dtos.characters.CharacterListOutputDto;
@@ -42,4 +43,10 @@ public class CharacterController {
     public List<CharacterDefaultAttributesOutputDto> getSomeCharactersByHeight() {
         return characterService.getByHeight();
     }
+
+    @Get("/autocomplete/filters")
+    public AutocompleteFilterCharactersOutputDto getAutocomplete(){
+        return characterService.getAutoCompletes();
+    }
+
 }

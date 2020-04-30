@@ -3,8 +3,10 @@ import MenuItem from "@material-ui/core/MenuItem";
 import ziemniak from "../../styles/filters.css";
 import DefaultMultipleAutocomplete from "../../components/Autocomplete/DefaultMultipleAutocomplete";
 import React from "react";
+import {religions} from "../../enums/Religions";
+import {starSigns} from "../../enums/StarSigns";
 
-export const columnConfig = (careerNames=[], birthPlaces=[], starSigns=[], emotions=[], religions=[], skills=[], talents=[], personalities=[], apperances=[], visibilityProperties={}) => (
+export const columnConfig = (autocompleteData={}, visibilityProperties={}) => (
     [
         {
             title: 'Imię', field: 'name',
@@ -59,7 +61,7 @@ export const columnConfig = (careerNames=[], birthPlaces=[], starSigns=[], emoti
             hidden: !visibilityProperties.career,
             filter: <div class = "ziemniak"> <DefaultMultipleAutocomplete
                 labelName="Profesje"
-                options={careerNames}
+                options={autocompleteData.careerNames}
                 id="characterFilterCareers"
             />
             </div>
@@ -84,7 +86,7 @@ export const columnConfig = (careerNames=[], birthPlaces=[], starSigns=[], emoti
             hidden: !visibilityProperties.birthPlace,
             filter: <div className="ziemniak"><DefaultMultipleAutocomplete
                 labelName="Miejsce urodzenia"
-                options={birthPlaces}
+                options={autocompleteData.placeNames}
                 id="characterFilterBirthPlaces"
             /></div>
         },
@@ -107,7 +109,7 @@ export const columnConfig = (careerNames=[], birthPlaces=[], starSigns=[], emoti
             sorting: false,
             filter: <div className="ziemniak"><DefaultMultipleAutocomplete
                 labelName="Emocje"
-                options={emotions}
+                options={autocompleteData.emotionNames}
                 id="characterFilterEmotions"
             /></div>
         },
@@ -137,7 +139,7 @@ export const columnConfig = (careerNames=[], birthPlaces=[], starSigns=[], emoti
             field: 'skills',
             filter: <div className="ziemniak"><DefaultMultipleAutocomplete
                 labelName="Umiejętności"
-                options={skills}
+                options={autocompleteData.skillNames}
                 id="characterFilterSkills"
             /></div>
         },
@@ -148,7 +150,7 @@ export const columnConfig = (careerNames=[], birthPlaces=[], starSigns=[], emoti
             sorting: false,
             filter: <div className="ziemniak"><DefaultMultipleAutocomplete
                 labelName="Zdolności"
-                options={talents}
+                options={autocompleteData.talentNames}
                 id="characterFilterTalents"
             /></div>
         },
@@ -160,7 +162,7 @@ export const columnConfig = (careerNames=[], birthPlaces=[], starSigns=[], emoti
             sorting: false,
             filter: <div className="ziemniak"><DefaultMultipleAutocomplete
                 labelName="Cechy charakteru"
-                options={personalities}
+                options={autocompleteData.personalityNames}
                 id="characterFilterPersonalities"
             /></div>
         },
@@ -173,7 +175,7 @@ export const columnConfig = (careerNames=[], birthPlaces=[], starSigns=[], emoti
             sorting: false,
             filter: <div className="ziemniak"><DefaultMultipleAutocomplete
                 labelName="Cechy wyglądu"
-                options={apperances}
+                options={autocompleteData.apperanceNames}
                 id="characterFilterApperances"
             /></div>
         },

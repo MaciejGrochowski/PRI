@@ -28,6 +28,7 @@ class CharactersListPage extends React.Component{
             placeNames: [],
             sortBy: null,
             data: [],
+            autocompleteData: {},
             filterObject: null,
             starSigns: [],
             apperances: [],
@@ -57,22 +58,27 @@ class CharactersListPage extends React.Component{
 
     setColumnsConfig = () => {
         this.setState({
-            columnsConfig: columnConfig(this.state.careerNames, this.state.placeNames, this.state.starSigns,
-                this.state.emotions, this.state.religions, this.state.skills, this.state.talents, this.state.personalities,
-                this.state.apperances, this.state.visibilityProperties)
+            columnsConfig: columnConfig(this.state.autocompleteData, this.state.visibilityProperties)
         })
     }
 
     getAutoCompleteCharacters = async () => {
-        await careerService.getAllCareerNames()
-            .then(r => this.getCareerNamesSuccessHandler(r))
-        await placeService.getAllPlaceNames()
-            .then(r => this.getPlaceNamesSuccessHandler(r))
+        await characterService.getAutocompleteFilters()
+            .then(r => this.getAutocompleteFiltersSuccessHandler(r));
+        //
+        // await careerService.getAllCareerNames()
+        //     .then(r => this.getCareerNamesSuccessHandler(r))
+        // await placeService.getAllPlaceNames()
+        //     .then(r => this.getPlaceNamesSuccessHandler(r))
 
         //ToDo Może jedno zapytanie na wszystkie autocomplete wystarczy?
         //ToDo rozważyć czy autocomplety nie powinny asynchronicznie pobierać danych (dopiero po kliknięciu na nie)
         //ToDo rozważyć czy awaitowanie nie spowalnia za bardzo aplikacji.
         //ToDo apperances, personalities, talents, skills, religions, emotions, starSigns
+    }
+
+    getAutocompleteFiltersSuccessHandler = response => {
+        this.setState({autocompleteData: response.data})
     }
 
     getPlaceNamesSuccessHandler = response => {

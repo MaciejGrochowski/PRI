@@ -6,13 +6,18 @@ const characterService = {
     getAllCharacters: () => getAllCharacters(),
     getCharactersByCountAndPage: (count, page) => getCharactersByCountAndPage(count, page),
     getCountOfCharacters: () => getCountOfCharacters(),
-    getCharacters: (requestBody) => getCharacters(requestBody)
+    getCharacters: (requestBody) => getCharacters(requestBody),
+    getAutocompleteFilters: () => getAutocompleteFilters()
+}
+
+const getAutocompleteFilters = () => {
+    const url = characterUrl + "/autocomplete/filters"
+    return request.get(url)
 }
 
 const getCharacters = requestBody => {
     const url = characterUrl + "/paged";
     return request.post(url, requestBody )
-
 }
 
 const getCountOfCharacters = () => {

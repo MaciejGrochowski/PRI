@@ -12,4 +12,6 @@ public interface TalentRepository extends CrudRepository<Talent, Long> {
     Talent findByName(String name);
 
     List<Talent> findByNameIn(List<String> talentsListString);
+
+    List<Talent> findAll();
 }

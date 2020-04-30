@@ -10,4 +10,6 @@ import java.util.List;
 public interface PersonalityRepository extends CrudRepository<Personality, Long> {
 
     List<Personality> findByNameIn(List<String> personalityListString);
+
+    List<Personality> findAll();
 }

@@ -89,6 +89,11 @@ background-color: #292F2F;
   color: #FFD859!important;
 }
 
+.MTableHeader-header-36{
+  z-index: 0!important;
+}
+/*ToDo to rozwiązanie tymczasowe - może w pewnych sytuacjach się zepsuć (Wiersz sortujący tabelę) */
+
 .MuiTableSortLabel-iconDirectionAsc{
   color: white;
   visibility: visible;

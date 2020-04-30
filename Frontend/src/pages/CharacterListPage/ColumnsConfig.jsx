@@ -55,7 +55,7 @@ export const columnConfig = (careerNames=[], birthPlaces=[], starSigns=[], emoti
         },
         {
             title: 'Profesja',
-            field: 'careerName',
+            field: 'currentCareer',
             hidden: !visibilityProperties.career,
             filter: <div class = "ziemniak"> <DefaultMultipleAutocomplete
                 labelName="Profesje"

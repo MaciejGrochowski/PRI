@@ -80,7 +80,7 @@ public class CharacterService extends GeneralService {
     public void save(Character character){
         nameService.save(character.getName());
 
-        careerService.save(character.getCareers().get(character.getCareers().size()-1));
+        careerService.save(character.getCurrentCareer());
 //        placeService.save(character.getLivePlace());
         if (character.getSurname() != null) surnameService.save(character.getSurname());
         characterRepository.save(character);
@@ -329,7 +329,7 @@ public class CharacterService extends GeneralService {
             if(rand.nextInt(5) < 3) c.setTalents(Collections.singletonList(t));
             c.setName(names.get(rand.nextInt(names.size())));
             c.setSurname(null);
-            c.setCareers(Collections.singletonList(careers.get(rand.nextInt(careers.size()))));
+            c.setCurrentCareer(careers.get(rand.nextInt(careers.size())));
             c.setSex(Sex.MALE);
             c.setRace(Race.HUMAN);
             c.setLivePlace(places.get(rand.nextInt(places.size())));

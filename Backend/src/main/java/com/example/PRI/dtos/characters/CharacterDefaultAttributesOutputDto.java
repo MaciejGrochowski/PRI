@@ -18,6 +18,8 @@ public class CharacterDefaultAttributesOutputDto {
 
     String eyeColor;
 
+    String currentCareer;
+
     String hairColor;
 
     ImperialDate birthDate;

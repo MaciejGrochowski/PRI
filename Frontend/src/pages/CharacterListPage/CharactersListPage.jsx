@@ -63,13 +63,15 @@ class CharactersListPage extends React.Component{
         })
     }
 
-    getAutoCompleteCharacters = () => {
-        careerService.getAllCareerNames()
+    getAutoCompleteCharacters = async () => {
+        await careerService.getAllCareerNames()
             .then(r => this.getCareerNamesSuccessHandler(r))
-        placeService.getAllPlaceNames()
+        await placeService.getAllPlaceNames()
             .then(r => this.getPlaceNamesSuccessHandler(r))
 
-
+        //ToDo Może jedno zapytanie na wszystkie autocomplete wystarczy?
+        //ToDo rozważyć czy autocomplety nie powinny asynchronicznie pobierać danych (dopiero po kliknięciu na nie)
+        //ToDo rozważyć czy awaitowanie nie spowalnia za bardzo aplikacji.
         //ToDo apperances, personalities, talents, skills, religions, emotions, starSigns
     }
 
@@ -158,8 +160,6 @@ class CharactersListPage extends React.Component{
         await this.setState({filterObject: filterObject})
 
         this.getCharacters();
-
-        //ToDo Backend filtering
     }
 
     onOrderChange = async (param1, param2) => {
@@ -218,7 +218,7 @@ class CharactersListPage extends React.Component{
             hairColor: element.hairColor, birthDate: element.birthDate, starSign: element.starSign,
                 dominatingEmotions: this.mapArrayToString(element.dominatingEmotions), sex: element.sex,
                 religion: element.religion, height: element.height, weight: element.weight, surname: element.surname,
-                prediction: element.prediction, careerName: element.careers[element.careers.length-1],
+                prediction: element.prediction, currentCareer: element.currentCareer,
                 talents: this.mapArrayToString(element.talents), personalities: this.mapArrayToString(element.personality),
                 apperances: this.mapArrayToString(element.apperance), livePlace: element.livePlace,
                 skills: this.mapSkillsToString(element.skills)

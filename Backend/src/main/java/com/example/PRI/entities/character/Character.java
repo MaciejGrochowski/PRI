@@ -68,7 +68,11 @@ public class Character extends GeneralEntity {
     Prediction prediction;
 
     @ManyToMany
-    List<Career> careers;
+    List<Career> previousCareers;
+
+    @ManyToOne
+    @JoinColumn(name = "career", referencedColumnName ="name")
+    Career currentCareer;
 
     @ManyToMany
     List<Skill> skills;

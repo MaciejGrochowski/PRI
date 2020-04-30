@@ -16,7 +16,8 @@ public class CharacterConverter {
         output.setSurname(character.getSurname()!=null ? character.getSurname().getSurname() : "");
         output.setRace(character.getRace()==null ? "" : character.getRace().name());
         output.setSex(character.getSex().name());
-        output.setCareers(character.getCareers().stream().map(Career::getName).collect(Collectors.toList()));
+        output.setCurrentCareer(character.getCurrentCareer().getName());
+//        output.setCareers(character.getCareers().stream().map(Career::getName).collect(Collectors.toList()));
         output.setLivePlace(character.getLivePlace().getName());
         output.setApperance(character.getApperance().stream().map(Apperance::getName).collect(Collectors.toList()));
 //        output.setBaseStats(convert(character.getEndStats())); ToDo BaseStats jako odrębne pola w klasie!!

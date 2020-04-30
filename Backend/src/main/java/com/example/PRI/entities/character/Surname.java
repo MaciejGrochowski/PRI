@@ -5,10 +5,11 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
+import javax.persistence.*;
 
 @Entity(name ="surnames")
+@DiscriminatorColumn(name = GeneralEntity.DISCRIMINATOR_COLUMN, discriminatorType = DiscriminatorType.STRING, length = 255)
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

@@ -2,11 +2,11 @@
     background-color: #292F2F; 
     color: #FFD859; 
     border: 2px solid #FFD859;
-    border-radius: 25%;
+    border-radius: 40%;
     padding: 16px 32px;
     text-align: center;
     text-decoration: none;
-    display: block;
+    display: inline-block;
     font-size: 16px;
     margin: 4px 2px;
     transition-duration: 0.4s;

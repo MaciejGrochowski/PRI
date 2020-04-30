@@ -18,4 +18,6 @@ public interface CharacterRepository extends PagingAndSortingRepository<Characte
 
     public Page<Character> findAll();
 
+
+
 }

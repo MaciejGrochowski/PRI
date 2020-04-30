@@ -1,12 +1,8 @@
 .table{
     background-color: '#292F2F';
-    width: '600px';
+    min-width: 80%;
 }
 
-
-.display-rows{
-    background-color: teal;
-}
 
 .headerStyle{
     background-color: '#292F2F';
@@ -15,13 +11,8 @@
     margin-top: '-5px';
 }
 
-.displayRow{
-    background-color: yellowgreen;
-}
-
 .selectPops{
     font-size: 22px;
-
 
 }
 

@@ -1,9 +1,17 @@
+
+
+.filter-menu{
+display: block;
+}
 .filter{
-    /* background-color: purple!important; */
     display: flex;
+    margin-left: 10%;
+    margin-right: 10%;
+
+    display: inline-flex;
+    flex-wrap: wrap;
     align-items: flex-start;
-    justify-content: space-evenly;
-    min-width: 700px;
+    justify-content: space-between;
 }
 
 .ziemniak{

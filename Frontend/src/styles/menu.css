@@ -1,6 +1,5 @@
 .menuBody{
     background-color: #222222;
-    padding: 20px;
     display: flex;
 }
 
@@ -10,6 +9,7 @@
     color: white;
     padding: 20px;
     text-decoration: none;
+    padding: 20px;
 }
 
 .menuLink:hover{

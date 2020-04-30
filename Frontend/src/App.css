@@ -18,6 +18,13 @@
   border: #FFD859!important;
 }
 
+.MuiTable-root{
+  background-color: #292F2F;
+}
+.MuiTablePagination-root{
+  color: white!important;
+}
+
 .MuiTableSortLabel-root{
 color: #FFD859!important;
 }
@@ -49,6 +56,9 @@ color: #FFD859!important;
 .MuiInputBase-root{
   color: #FFD859!important;
 }
+.MuiIconButton-colorSecondary{
+  color: #FFD859!important;
+}
 
 .MuiSelect-icon{
   color:  rgb(206, 200, 180)!important;
@@ -68,9 +78,16 @@ color: #FFD859!important;
   color: #FFD859;
 }
 
-/* .MuiTableCell-root{
+.MuiTableCell-root{
 background-color: #292F2F;
-} */
+width: min-content!important;
+} 
+
+.MuiTableCell-root.MuiTableCell-footer{
+ width: initial!important;
+
+}
+
 .MuiTableRow-root{
 background-color: #292F2F;
 }

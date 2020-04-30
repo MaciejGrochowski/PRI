@@ -55,14 +55,11 @@ class Table extends React.Component {
                     Pagination: props => (
                         <TablePagination
                             {...props}
-                            labelRowsPerPage={<div style={mystyle.table}>{props.labelRowsPerPage}</div>}
+                            labelRowsPerPage={<div styleNName="table">{props.labelRowsPerPage}</div>}
                             count={count}
-                            // rowsPerPage={this.state.rowsPerPage}
-                            // rowsPerPageOptions={[10,30,50]}
                             onChangeRowsPerPage={event => {
                                 props.onChangeRowsPerPage(event);
                                 onChangeCountPerPage(event.target.value)
-                                // this.setState({rowsPerPage: event.target.value});
                             }}
                             page={page}
                             onChangePage={(event, page) => {
@@ -75,12 +72,6 @@ class Table extends React.Component {
                                 style={mystyle.labelDisplayedRows}>{props.labelDisplayedRows(row)}</div>}
                                 SelectProps={{
                                 style: divStyle,
-                                //{
-                                // //tutaj też chcę mieć mystyle.selectPops
-                                //     fontSize: 22,
-                                //     backgroundColor: 'blue',
-                                //     backfaceVisibility: 'hidden',
-                                //     }
                                 }}/>)
                     }}
 
@@ -98,14 +89,6 @@ class Table extends React.Component {
                     pageSizeOptions: [10, 30, 50],
                     paginationType: "stepped",
                     headerStyle: divStyle,
-                    //tutaj chcę mieć mystyle.headerStyle
-                    //  {
-
-                    //     backgroundColor: '#292F2F',
-                    //     backfaceVisibility: 'hidden',
-                    //     color: '#FFD859',
-                    //     marginTop: '-5px',
-                    // },
                     rowStyle: rowData => ({
                         ...rowStyle,
                         backgroundColor: (this.state.selectedRow && this.state.selectedRow.tableData.id === rowData.tableData.id) ? 'red!important' : 'blue!important'}),

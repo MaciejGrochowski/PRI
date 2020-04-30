@@ -21,6 +21,8 @@ public abstract class GeneralEntity implements Serializable, Cloneable {
     @GeneratedValue(strategy = GenerationType.IDENTITY) //this create id nr separate for each table
     private long id;
 
+    public static final String DISCRIMINATOR_COLUMN = "classname";
+
     public GeneralEntity copy(long userId){
         GeneralEntity cloned = null;
         try {

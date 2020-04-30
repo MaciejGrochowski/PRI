@@ -48,15 +48,18 @@ class DefaultPopup extends React.Component {
                     contentLabel={title}
                 >
                     <form id="visibilityCharactersColumns">
+                        <div className = "popup-body">
                         {columnsConfig && columnsConfig.map((item, i) => (
                             <label className="container">{item.title}
                                 <input type="checkbox" defaultChecked={!item.hidden} id={item.field + "VisibilityCheckbox"}/>
                                 <span className="checkmark"/>
                             </label>
+                            
                         ))
                         }
+                        </div>
                     </form>
-                    <button type="submit" className="button" onClick={() => this.save(columnsConfig)}>Jestem ziemniakiem</button>
+                    <button type="submit" className="button" onClick={() => this.save(columnsConfig)}>Zastosuj</button>
                 </Modal>
             </div>
         );

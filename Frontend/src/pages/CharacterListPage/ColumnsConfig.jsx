@@ -61,7 +61,7 @@ export const columnConfig = (autocompleteData={}, visibilityProperties={}) => (
             hidden: !visibilityProperties.career,
             filter: <div class = "ziemniak"> <DefaultMultipleAutocomplete
                 labelName="Profesje"
-                options={autocompleteData.careerNames}
+                options={autocompleteData.careerNames || []}
                 id="characterFilterCareers"
             />
             </div>
@@ -86,7 +86,7 @@ export const columnConfig = (autocompleteData={}, visibilityProperties={}) => (
             hidden: !visibilityProperties.birthPlace,
             filter: <div className="ziemniak"><DefaultMultipleAutocomplete
                 labelName="Miejsce urodzenia"
-                options={autocompleteData.placeNames}
+                options={autocompleteData.placeNames || []}
                 id="characterFilterBirthPlaces"
             /></div>
         },
@@ -109,7 +109,7 @@ export const columnConfig = (autocompleteData={}, visibilityProperties={}) => (
             sorting: false,
             filter: <div className="ziemniak"><DefaultMultipleAutocomplete
                 labelName="Emocje"
-                options={autocompleteData.emotionNames}
+                options={autocompleteData.emotionNames || []}
                 id="characterFilterEmotions"
             /></div>
         },
@@ -139,7 +139,7 @@ export const columnConfig = (autocompleteData={}, visibilityProperties={}) => (
             field: 'skills',
             filter: <div className="ziemniak"><DefaultMultipleAutocomplete
                 labelName="Umiejętności"
-                options={autocompleteData.skillNames}
+                options={autocompleteData.skillNames || []}
                 id="characterFilterSkills"
             /></div>
         },
@@ -150,7 +150,7 @@ export const columnConfig = (autocompleteData={}, visibilityProperties={}) => (
             sorting: false,
             filter: <div className="ziemniak"><DefaultMultipleAutocomplete
                 labelName="Zdolności"
-                options={autocompleteData.talentNames}
+                options={autocompleteData.talentNames || []}
                 id="characterFilterTalents"
             /></div>
         },
@@ -162,7 +162,7 @@ export const columnConfig = (autocompleteData={}, visibilityProperties={}) => (
             sorting: false,
             filter: <div className="ziemniak"><DefaultMultipleAutocomplete
                 labelName="Cechy charakteru"
-                options={autocompleteData.personalityNames}
+                options={autocompleteData.personalityNames || []}
                 id="characterFilterPersonalities"
             /></div>
         },
@@ -175,7 +175,7 @@ export const columnConfig = (autocompleteData={}, visibilityProperties={}) => (
             sorting: false,
             filter: <div className="ziemniak"><DefaultMultipleAutocomplete
                 labelName="Cechy wyglądu"
-                options={autocompleteData.apperanceNames}
+                options={autocompleteData.apperanceNames || []}
                 id="characterFilterApperances"
             /></div>
         },

@@ -52,8 +52,12 @@ class CharactersListPage extends React.Component{
 
     async componentDidMount() {
         this.getCharacters();
-        await this.getAutoCompleteCharacters();
+        this.getAutoCompleteCharacters();
         this.setColumnsConfig()
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if(prevState.autocompleteData !== this.state.autocompleteData) this.setColumnsConfig();
     }
 
     setColumnsConfig = () => {

@@ -221,6 +221,10 @@ class CharactersListPage extends React.Component{
         })
     }
 
+    onClosePopup = () => {
+        this.setState({isFilterListExpanded: false})
+    }
+
 
     expandFilterList = () => {
         this.setState({isFilterListExpanded: true})
@@ -242,8 +246,7 @@ class CharactersListPage extends React.Component{
                     <DefaultPopup
                         expandFilterList={this.expandFilterList}
                     isOpen={this.state.showModal}
-                    contentLabel="onRequestClose Example"
-                    onRequestClose={this.handleClose}
+                    onRequestClose={this.onClosePopup}
                     className="Modal"
                         onSave={this.saveChangeColumns}
                     overlayClassName="Overlay"

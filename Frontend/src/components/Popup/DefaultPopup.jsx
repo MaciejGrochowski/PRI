@@ -23,7 +23,6 @@ const customStyles = {
 class DefaultPopup extends React.Component {
 
     save = columnsConfig => {
-        // console.log(document.getElementById("nameVisibilityCheckbox").checked);
         let object = {}
         const form = document.getElementById("visibilityCharactersColumns");
 
@@ -36,14 +35,14 @@ class DefaultPopup extends React.Component {
     }
 
     render() {
-        const {isOpen, title, expandFilterList, columnsConfig} = this.props;
+        const {isOpen, title, expandFilterList, columnsConfig, onRequestClose} = this.props;
         return (
             <div>
                 <button className="button" onClick={expandFilterList}>Dostosuj</button>
                 <Modal
                     isOpen={isOpen}
-                    onAfterOpen={() => console.log("open")}
-                    onRequestClose={() => console.log("close")}
+                    // onAfterOpen={() => console.log("open")}
+                    onRequestClose={() => onRequestClose()}
                     style={customStyles}
                     contentLabel={title}
                 >

@@ -455,7 +455,7 @@ public class CharacterService extends GeneralService {
             else return specifications.and(CharacterSpecifications.GetNoone());
         }
 
-        if (requestInfo.getFilters().containsKey("birthPlace")) {
+        if (requestInfo.getFilters().containsKey("birthPlace")) { //ToDo więcej miejsc urodzenia autocomplete
             Optional<Place> birthPlace = placeService.findByName(requestInfo.getFilters().get("birthPlace"));
             if (birthPlace.isPresent())
                 specifications = specifications.and(CharacterSpecifications.getByBirthPlace(birthPlace.get()));
@@ -464,7 +464,7 @@ public class CharacterService extends GeneralService {
 
         //ToDo Filtrowanie po dacie urodzenia
 
-        if (requestInfo.getFilters().containsKey("starSign")) {
+        if (requestInfo.getFilters().containsKey("starSign")) { //ToDo Autocomplete
             StarSign starSign = StarSign.valueOf(requestInfo.getFilters().get("starSign"));
             specifications = specifications.and(CharacterSpecifications.getByStarSign(starSign));
         }
@@ -531,11 +531,23 @@ public class CharacterService extends GeneralService {
         }
 
         if (requestInfo.getFilters().containsKey("livePlace")) {
-            Optional<Place> livePlace = placeService.findByName(requestInfo.getFilters().get("livePlace"));
-            if (livePlace.isPresent())
-                specifications = specifications.and(CharacterSpecifications.getByLivePlace(livePlace.get()));
+            String livePlacesData = requestInfo.getFilters().get("livePlace");
+            List<String> livePlacesListString = new ArrayList<>(Arrays.asList(livePlacesData.split(",")));
+            List<Place> places = placeService.findByNameIn(livePlacesListString);
+            if(places.size() > 0){
+                specifications = specifications.and(CharacterSpecifications.getByLivePlaces(places));
+            }
             else return specifications.and(CharacterSpecifications.GetNoone());
         }
+//        if (requestInfo.getFilters().containsKey("dominatingEmotions")) {
+//            String dominatingEmotionsData = requestInfo.getFilters().get("dominatingEmotions");
+//            List<String> dominatingEmotionsListString = new ArrayList<>(Arrays.asList(dominatingEmotionsData.split(",")));
+//            List<Emotion> dominatingEmotions = emotionService.findByNameIn(dominatingEmotionsListString);
+//            if (dominatingEmotions.size() > 0)
+//                specifications = specifications.and(CharacterSpecifications.getByEmotions(dominatingEmotions));
+//            else return specifications.and(CharacterSpecifications.GetNoone());
+//        }
+
 
 
         //ToDo Filtry po statystykach liczbowych (Wzrost, waga, statystyki)

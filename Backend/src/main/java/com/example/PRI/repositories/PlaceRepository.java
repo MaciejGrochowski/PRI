@@ -12,4 +12,6 @@ public interface PlaceRepository extends CrudRepository<Place, Long> {
     Place findByName(String birthPlace);
 
     List<Place> findAll();
+
+    List<Place> findByNameIn(List<String> placesList);
 }

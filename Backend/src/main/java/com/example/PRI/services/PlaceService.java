@@ -28,4 +28,8 @@ public class PlaceService extends GeneralService {
         List<String> tmp = placeRepository.findAll().stream().map(Place::getName).distinct().collect(Collectors.toList());
         return tmp;
     }
+
+    public List<Place> findByNameIn(List<String> placesList) {
+        return placeRepository.findByNameIn(placesList);
+    }
 }

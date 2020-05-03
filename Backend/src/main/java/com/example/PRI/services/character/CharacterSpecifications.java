@@ -141,4 +141,11 @@ public class CharacterSpecifications {
             return criteriaBuilder.equal(root.get("livePlace"), place);
         };
     }
+
+    public static Specification<Character> getByLivePlaces(List<Place> places) {
+        return (root, query, cb) -> {
+//            Join<Character, Place> places = root.join("livePlace");
+            return root.get("livePlace").in(places);
+        };
+    }
 }

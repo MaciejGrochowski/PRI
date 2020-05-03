@@ -85,7 +85,8 @@ class CharactersListPage extends React.Component{
         console.log(options);
         let string = ""
         for (const element in array){
-            const name = options[element]
+            let name;
+            name=array[element]; //ToDo prawdopodobnie jest lepsza metoda, ale wymaga analizy
             string = string + name + ","
         }
         return string.substring(0, string.length-1);
@@ -142,7 +143,7 @@ class CharactersListPage extends React.Component{
         if(talents.length > 0) filterObject = {...filterObject, talents: this.mapFilterArrayToString(talents, this.state.autocompleteData.talentNames)}
 
         const personalities = Array.from(document.getElementsByClassName("characterFilterPersonalities")).map(c => c.textContent)
-        if(personalities.length > 0) filterObject = {...filterObject, personalities: this.mapFilterArrayToString(personalities, this.state.personalityNames)}
+        if(personalities.length > 0) filterObject = {...filterObject, personalities: this.mapFilterArrayToString(personalities, this.state.autocompleteData.personalityNames)}
 
         const apperances = Array.from(document.getElementsByClassName("characterFilterApperances")).map(c => c.textContent)
         if(apperances.length > 0) filterObject = {...filterObject, apperances: this.mapFilterArrayToString(apperances, this.state.apperanceNames)}

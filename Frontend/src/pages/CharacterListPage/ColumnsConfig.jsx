@@ -5,7 +5,7 @@ import DefaultMultipleAutocomplete from "../../components/Autocomplete/DefaultMu
 import React from "react";
 import {religions} from "../../enums/Religions";
 import {starSigns} from "../../enums/StarSigns";
-
+//ToDo Więcej autocompletów...
 export const columnConfig = (autocompleteData={}, visibilityProperties={}) => (
     [
         {

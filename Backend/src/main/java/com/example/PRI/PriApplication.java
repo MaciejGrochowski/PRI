@@ -1,3 +1,4 @@
+
 package com.example.PRI;
 
 import org.springframework.boot.SpringApplication;
@@ -8,9 +9,11 @@ import java.lang.*;
 @SpringBootApplication
 public class PriApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(PriApplication.class, args);
-		System.out.println("Działa");
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(PriApplication.class, args);
+        System.out.println("Działa");
+
+
+    }
 
 }

@@ -20,7 +20,7 @@ class Filter extends React.Component {
                     ))
                 }
             </div>
-                <button class = "button" onClick={onFilter}>Filtruj</button>
+                <button className = "button" onClick={onFilter}>Filtruj</button>
                 
 </div>
 

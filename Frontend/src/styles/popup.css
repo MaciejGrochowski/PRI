@@ -6,7 +6,10 @@
     min-width: 10%;
     align-items: center;
   } */
+.dostosuj-button{
+  transform: translate(-50%, -50%);
 
+}
   .container {
     display: block;
     position: relative;
@@ -14,6 +17,8 @@
     margin-bottom: 12px;
     cursor: pointer;
     font-size: 22px;
+    max-height: 80%;
+    max-width: 80%;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;

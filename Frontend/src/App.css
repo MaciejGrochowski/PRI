@@ -18,6 +18,10 @@
   border: #FFD859!important;
 }
 
+.MuiTableCell-body{
+  color: #FFD859!important;
+}
+
 .MuiTable-root{
   background-color: #292F2F;
 }

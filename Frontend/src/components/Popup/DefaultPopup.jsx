@@ -37,7 +37,7 @@ class DefaultPopup extends React.Component {
     render() {
         const {isOpen, title, expandFilterList, columnsConfig, onRequestClose} = this.props;
         return (
-            <div>
+            <div className = "dostosuj-button">
                 <button className="button" onClick={expandFilterList}>Dostosuj</button>
                 <Modal
                     isOpen={isOpen}

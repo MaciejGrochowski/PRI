@@ -6,6 +6,7 @@ import Menu from "./components/Menu/Menu";
 import {BrowserRouter} from "react-router-dom";
 import {fronendUrls} from "./commons/urls";
 import HistoriesListPage from "./pages/HistoriesListPage";
+import MainPage from "./pages/MainPage";
 
 class App extends React.Component{
 
@@ -13,6 +14,7 @@ class App extends React.Component{
     return (
             <BrowserRouter history={this.props.history}>
                 <Menu/>
+        <Route path={"/"} component={MainPage}/>
         <Route path={fronendUrls.characterList} component={CharactersListPage} />
         <Route path={fronendUrls.historyList} component={HistoriesListPage} />
             </BrowserRouter>

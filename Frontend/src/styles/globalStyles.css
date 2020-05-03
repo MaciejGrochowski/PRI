@@ -5,3 +5,11 @@
     font-size: medium;
     text-align: right;
 }
+
+.plainPage{
+    position: fixed;
+    height: -webkit-fill-available;
+    width: -webkit-fill-available;
+    background-color: #292F2F;
+    color: white;
+}

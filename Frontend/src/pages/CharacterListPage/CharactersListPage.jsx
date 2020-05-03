@@ -1,20 +1,13 @@
 import React from 'react';
 import '../../App.css';
 import Table from "../../components/Table/Table";
-import {Cat, Dog, randomStyle} from '../../commons/example-global-styles.js'
 import characterService from "../../services/characterService";
-import careerService from "../../services/careerService";
-import placeService from "../../services/placeService";
 import {textsPolish} from "../../commons/texts-pl";
 import Filter from "../../components/Filter/Filter";
-import {TextField} from "@material-ui/core";
-import MenuItem from "@material-ui/core/MenuItem";
-import DefaultMultipleAutocomplete from "../../components/Autocomplete/DefaultMultipleAutocomplete";
 import {columnConfig} from "./ColumnsConfig";
 import "../../styles/globalStyles.css";
 import "../../styles/tables.css";
 import DefaultPopup from "../../components/Popup/DefaultPopup";
-import OwnPopup from "../../components/Popup/OwnPopup";
 import {starSigns} from "../../enums/StarSigns";
 import {religions} from "../../enums/Religions";
 
@@ -41,7 +34,6 @@ class CharactersListPage extends React.Component{
                 currentCareer: true
             },
             columnsConfig: []
-
         }
     }
 
@@ -76,13 +68,11 @@ class CharactersListPage extends React.Component{
     }
 
     onChangeCountPerPage = async countPerPage => {
-        await this.setState({countPerPage: countPerPage, page: 1})
+        await this.setState({countPerPage: countPerPage, page: 0})
         this.getCharacters();
     }
 
     mapFilterArrayToString = (array, options) => {
-        console.log(array);
-        console.log(options);
         let string = ""
         for (const element in array){
             let name;

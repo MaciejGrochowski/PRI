@@ -11,7 +11,7 @@ class App extends React.Component{
 
     render(){
     return (
-            <BrowserRouter>
+            <BrowserRouter history={this.props.history}>
                 <Menu/>
         <Route path={fronendUrls.characterList} component={CharactersListPage} />
         <Route path={fronendUrls.historyList} component={HistoriesListPage} />

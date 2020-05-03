@@ -148,4 +148,16 @@ public class CharacterSpecifications {
             return root.get("livePlace").in(places);
         };
     }
+
+    public static Specification<Character> getByReligions(List<Religion> religions) {
+        return (root, query, cb) -> {
+            return root.get("religion").in(religions);
+        };
+    }
+
+    public static Specification<Character> getByBirthPlaces(List<Place> birthPlaces) {
+        return (root, query, cb) -> {
+            return root.get("birthPlace").in(birthPlaces);
+        };
+    }
 }

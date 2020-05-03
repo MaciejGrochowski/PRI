@@ -30,7 +30,7 @@ public class CharacterConverter {
         output.setHeight(character.getHeight());
         output.setPersonality(character.getPersonality().stream().map(Personality::getName).collect(Collectors.toList()));
         output.setPrediction(character.getPrediction() == null ? "" : character.getPrediction().getText());
-        output.setReligion(character.getReligion()==null ? "" : character.getReligion().name());
+        output.setReligion(character.getReligion()==null ? "" : character.getReligion().getGodName());
         output.setSkills(character.getSkills().stream().map(CharacterConverter::convert).collect(Collectors.toList()));
         output.setStarSign(character.getStarSign()==null ? "" : character.getStarSign().getShortName());
         output.setTalents(character.getTalents().stream().map(Talent::getName).collect(Collectors.toList()));

@@ -25,6 +25,7 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class CharacterService extends GeneralService {
@@ -225,7 +226,7 @@ public class CharacterService extends GeneralService {
         emotionService.save(e7);
         Emotion e8 = new Emotion("nienawiść");
         emotionService.save(e8);
-        Emotion e9 = new Emotion("strachć");
+        Emotion e9 = new Emotion("strach");
         emotionService.save(e9);
 
         emotions.add(e1);
@@ -437,7 +438,7 @@ public class CharacterService extends GeneralService {
         }
 
         if (requestInfo.getFilters().containsKey("race")) {
-            Race race = Race.valueOf(requestInfo.getFilters().get("race")); //ToDo Rasa spoza enuma powoduje błąd
+            Race race = Race.valueOf(requestInfo.getFilters().get("race"));
             specifications = specifications.and(CharacterSpecifications.getByRace(race));
         }
 
@@ -456,11 +457,18 @@ public class CharacterService extends GeneralService {
         }
 
         if (requestInfo.getFilters().containsKey("birthPlace")) { //ToDo więcej miejsc urodzenia autocomplete
-            Optional<Place> birthPlace = placeService.findByName(requestInfo.getFilters().get("birthPlace"));
-            if (birthPlace.isPresent())
-                specifications = specifications.and(CharacterSpecifications.getByBirthPlace(birthPlace.get()));
+            String birthPlaceData = requestInfo.getFilters().get("birthPlace");
+            List<String> birthPlacesListString = new ArrayList<>(Arrays.asList(birthPlaceData.split(",")));
+            List<Place> birthPlaces = placeService.findByNameIn(birthPlacesListString);
+            if (birthPlaces.size() > 0)
+                specifications = specifications.and(CharacterSpecifications.getByBirthPlaces(birthPlaces));
             else return specifications.and(CharacterSpecifications.GetNoone());
         }
+
+//        if (requestInfo.getFilters().containsKey("dominatingEmotions")) {
+//        }
+
+
 
         //ToDo Filtrowanie po dacie urodzenia
 
@@ -484,9 +492,12 @@ public class CharacterService extends GeneralService {
         }
 
         if (requestInfo.getFilters().containsKey("religion")) { //ToDo religii może być więcej niż 1
-            Religion religion = Religion.valueOf(requestInfo.getFilters().get("religion"));
-            specifications = specifications.and(CharacterSpecifications.getByReligion(religion));
-        }
+            String religionsData = requestInfo.getFilters().get("religion");
+            List<String> religionsListString = new ArrayList<>(Arrays.asList(religionsData.split(",")));
+            List<Religion> religions = religionsListString.stream().map(Religion::findByGodName).collect(Collectors.toList());
+            if (religions.size() > 0) specifications = specifications.and(CharacterSpecifications.getByReligions(religions));
+            else return specifications.and(CharacterSpecifications.GetNoone());
+}
 
         if (requestInfo.getFilters().containsKey("prediction")) {
             Optional<Prediction> prediction = predictionService.findByText(requestInfo.getFilters().get("prediction"));
@@ -495,7 +506,7 @@ public class CharacterService extends GeneralService {
             else return specifications.and(CharacterSpecifications.GetNoone());
         }
 
-        if (requestInfo.getFilters().containsKey("careers")) { //ToDo rozważyć czy nie rozdzielić profesji początkowych i poprzednich
+        if (requestInfo.getFilters().containsKey("careers")) { //ToDo to jest po profesjach końcowych!!
             String careerData = requestInfo.getFilters().get("careers");
             List<String> careersListString = new ArrayList<>(Arrays.asList(careerData.split(",")));
             List<Career> careers = careerService.findByNameIn(careersListString);
@@ -539,15 +550,6 @@ public class CharacterService extends GeneralService {
             }
             else return specifications.and(CharacterSpecifications.GetNoone());
         }
-//        if (requestInfo.getFilters().containsKey("dominatingEmotions")) {
-//            String dominatingEmotionsData = requestInfo.getFilters().get("dominatingEmotions");
-//            List<String> dominatingEmotionsListString = new ArrayList<>(Arrays.asList(dominatingEmotionsData.split(",")));
-//            List<Emotion> dominatingEmotions = emotionService.findByNameIn(dominatingEmotionsListString);
-//            if (dominatingEmotions.size() > 0)
-//                specifications = specifications.and(CharacterSpecifications.getByEmotions(dominatingEmotions));
-//            else return specifications.and(CharacterSpecifications.GetNoone());
-//        }
-
 
 
         //ToDo Filtry po statystykach liczbowych (Wzrost, waga, statystyki)

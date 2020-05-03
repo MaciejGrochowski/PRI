@@ -521,8 +521,8 @@ public class CharacterService extends GeneralService {
             else return specifications.and(CharacterSpecifications.GetNoone());
         }
 
-        if (requestInfo.getFilters().containsKey("apperance")) {
-            String apperanceData = requestInfo.getFilters().get("apperance");
+        if (requestInfo.getFilters().containsKey("apperances")) {
+            String apperanceData = requestInfo.getFilters().get("apperances");
             List<String> apperanceListString = new ArrayList<>(Arrays.asList(apperanceData.split(",")));
             List<Apperance> apperances = apperanceService.findByNameIn(apperanceListString);
             if (apperances.size() > 0)

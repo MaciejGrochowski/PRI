@@ -512,8 +512,8 @@ public class CharacterService extends GeneralService {
             else return specifications.and(CharacterSpecifications.GetNoone());
         }
 
-        if (requestInfo.getFilters().containsKey("personality")) {
-            String personalityData = requestInfo.getFilters().get("personality");
+        if (requestInfo.getFilters().containsKey("personalities")) {
+            String personalityData = requestInfo.getFilters().get("personalities");
             List<String> personalityListString = new ArrayList<>(Arrays.asList(personalityData.split(",")));
             List<Personality> personalities = personalityService.findByNameIn(personalityListString);
             if (personalities.size() > 0)

@@ -71,7 +71,7 @@ public class Character extends GeneralEntity {
     List<Career> previousCareers;
 
     @ManyToOne
-    @JoinColumn(name = "career", referencedColumnName ="name")
+    @JoinColumn(name = "currentCareer", referencedColumnName ="name")
     Career currentCareer;
 
     @ManyToMany

@@ -84,7 +84,7 @@ public class CharacterSpecifications {
 
     public static Specification<Character> getByEmotions(List<Emotion> dominatingEmotions) {
         return (root, query, cb) -> {
-            Join<Character, Talent> talents = root.join("emotions");
+            Join<Character, Emotion> talents = root.join("dominatingEmotions");
             return talents.in(dominatingEmotions);
         };
     }
@@ -109,28 +109,29 @@ public class CharacterSpecifications {
 
     public static Specification<Character> getByCareer(List<Career> careers) {
         return (root, query, cb) -> {
-            Join<Character, Talent> career = root.join("careers");
+            Join<Character, Career> career = root.join("currentCareer");
+            
             return career.in(careers);
         };
     }
 
     public static Specification<Character> getBySkills(List<Skill> skills) {
         return (root, query, cb) -> {
-            Join<Character, Talent> career = root.join("skills");
+            Join<Character, Skill> career = root.join("skills");
             return career.in(skills);
         };
     }
 
     public static Specification<Character> getByPersonalities(List<Personality> personalities) {
-        return (root, query, cb) -> {
-            Join<Character, Talent> personality = root.join("personalities");
+        return (root, query, cb) -> {//ToDo te Joiny WYMAGAJĄ W root.join NAZWY z ENTITY!!!!!
+            Join<Character, Personality> personality = root.join("personality");
             return personality.in(personalities);
         };
     }
 
     public static Specification<Character> getByApperances(List<Apperance> apperances) {
         return (root, query, cb) -> {
-            Join<Character, Talent> apperance = root.join("apperances");
+            Join<Character, Apperance> apperance = root.join("apperance");
             return apperance.in(apperances);
         };
     }

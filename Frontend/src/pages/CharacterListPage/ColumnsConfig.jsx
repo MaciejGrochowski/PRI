@@ -104,8 +104,8 @@ export const columnConfig = (autocompleteData={}, visibilityProperties={}) => (
 
         {
             title: 'Emocje',
-            field: 'emotions',
-            hidden: !visibilityProperties.emotions,
+            field: 'dominatingEmotions',
+            hidden: !visibilityProperties.dominatingEmotions,
             sorting: false,
             filter: <div className="ziemniak"><DefaultMultipleAutocomplete
                 labelName="Emocje"

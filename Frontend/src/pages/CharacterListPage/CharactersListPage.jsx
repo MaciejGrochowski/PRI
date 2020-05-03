@@ -148,7 +148,7 @@ class CharactersListPage extends React.Component{
         const apperances = Array.from(document.getElementsByClassName("characterFilterApperances")).map(c => c.textContent)
         if(apperances.length > 0) filterObject = {...filterObject, apperances: this.mapFilterArrayToString(apperances, this.state.apperanceNames)}
 
-        await this.setState({filterObject: filterObject})
+        await this.setState({filterObject: filterObject, page: 0})
 
         this.getCharacters();
     }

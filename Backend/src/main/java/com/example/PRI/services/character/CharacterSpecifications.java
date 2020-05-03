@@ -110,8 +110,8 @@ public class CharacterSpecifications {
     public static Specification<Character> getByCareer(List<Career> careers) {
         return (root, query, cb) -> {
             Join<Character, Career> career = root.join("currentCareer");
-            
-            return career.in(careers);
+            return root.get("currentCareer").in(careers);
+//            return career.in(careers);
         };
     }
 

@@ -119,8 +119,8 @@ class CharactersListPage extends React.Component{
         const hairColor = document.getElementById('characterFilterHairColor');
         if (hairColor && hairColor.value !== "") filterObject = {...filterObject, hairColor: hairColor.value};
 
-        const livePlace = document.getElementById('characterFilterLivePlace');
-        if(livePlace && livePlace.value !== "") filterObject = {...filterObject, livePlace: livePlace.value}
+        const livePlace = Array.from(document.getElementsByClassName("characterFilterLivePlaces")).map(c => c.textContent)
+        if(livePlace.length > 0) filterObject = {...filterObject, livePlace: this.mapFilterArrayToString(livePlace, this.state.placeNames)}
 
         const birthPlace = Array.from(document.getElementsByClassName("characterFilterBirthPlaces")).map(c => c.textContent)
         if(birthPlace.length > 0) filterObject = {...filterObject, birthPlace: this.mapFilterArrayToString(birthPlace, this.state.placeNames)}

@@ -53,7 +53,11 @@ export const columnConfig = (autocompleteData={}, visibilityProperties={}) => (
             cellStyle: {width: '700px'},
             hidden: !visibilityProperties.livePlace,
             field: 'livePlace',
-            filter: <div class = "ziemniak"><TextField ifd="characterFilterLivePlace" label="Miejsce pobytu"/></div>
+            filter: <div className="ziemniak"><DefaultMultipleAutocomplete
+            labelName="Miejsce pobytu"
+            options={autocompleteData.placeNames || []}
+            id="characterFilterLivePlaces"
+            /></div>
         },
         {
             title: 'Profesja',

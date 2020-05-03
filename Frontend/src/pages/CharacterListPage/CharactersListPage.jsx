@@ -38,7 +38,7 @@ class CharactersListPage extends React.Component{
                 livePlace: true,
                 sex: true,
                 race: true,
-                career: true
+                currentCareer: true
             },
             columnsConfig: []
 
@@ -81,6 +81,8 @@ class CharactersListPage extends React.Component{
     }
 
     mapFilterArrayToString = (array, options) => {
+        console.log(array);
+        console.log(options);
         let string = ""
         for (const element in array){
             const name = options[element]
@@ -97,14 +99,15 @@ class CharactersListPage extends React.Component{
         const surname = document.getElementById('characterFilterSurname');
         if(surname && surname.value!=="") filterObject = {...filterObject, surname: surname.value}
 
-        const sex = document.getElementById('characterFilterSex').nextSibling;
-        if(sex && sex.value!=='fill') filterObject = {...filterObject, sex: sex.value}
+        const sex = document.getElementById('characterFilterSex');
+        if(sex && sex.nextSibling && sex.nextSibling.value!=='fill') filterObject = {...filterObject, sex: sex.nextSibling.value}
 
-        const race = document.getElementById('characterFilterRace').nextSibling;
-        if(race && race.value!=='fill') filterObject = {...filterObject, race: race.value}
+        const race = document.getElementById('characterFilterRace');
+        if(race && race.nextSibling && race.nextSibling.value!=='fill') filterObject = {...filterObject, race: race.nextSibling.value}
 
+        console.log(this.state)
         const careers = Array.from(document.getElementsByClassName("characterFilterCareers")).map(c => c.textContent);
-        if(careers.length > 0) filterObject = {...filterObject, careers: this.mapFilterArrayToString(careers, this.state.careerNames)}
+        if(careers.length > 0) filterObject = {...filterObject, careers: this.mapFilterArrayToString(careers, this.state.autocompleteData.careerNames)}
 
         const eyeColor = document.getElementById('characterFilterEyeColor');
         if (eyeColor && eyeColor.value !== "") filterObject = {...filterObject, eyeColor: eyeColor.value}
@@ -136,7 +139,7 @@ class CharactersListPage extends React.Component{
         if(skills.length > 0) filterObject = {...filterObject, skills: this.mapFilterArrayToString(skills, this.state.autocompleteData.skillNames)}
 
         const talents = Array.from(document.getElementsByClassName("characterFilterTalents")).map(c => c.textContent)
-        if(talents.length > 0) filterObject = {...filterObject, talents: this.mapFilterArrayToString(talents, this.state.talentNames)}
+        if(talents.length > 0) filterObject = {...filterObject, talents: this.mapFilterArrayToString(talents, this.state.autocompleteData.talentNames)}
 
         const personalities = Array.from(document.getElementsByClassName("characterFilterPersonalities")).map(c => c.textContent)
         if(personalities.length > 0) filterObject = {...filterObject, personalities: this.mapFilterArrayToString(personalities, this.state.personalityNames)}
@@ -168,7 +171,6 @@ class CharactersListPage extends React.Component{
     }
 
     getCharacters = () => {
-        console.log(this.state)
         const requestBody = {
             sortedBy: this.state.sortBy,
             filters: this.state.filterObject,

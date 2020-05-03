@@ -14,7 +14,7 @@ class App extends React.Component{
     return (
             <BrowserRouter history={this.props.history}>
                 <Menu/>
-        <Route path={"/"} component={MainPage}/>
+        <Route path={fronendUrls.mainPage} exact={true} component={MainPage}/>
         <Route path={fronendUrls.characterList} component={CharactersListPage} />
         <Route path={fronendUrls.historyList} component={HistoriesListPage} />
             </BrowserRouter>

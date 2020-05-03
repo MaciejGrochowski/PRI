@@ -456,7 +456,7 @@ public class CharacterService extends GeneralService {
             else return specifications.and(CharacterSpecifications.GetNoone());
         }
 
-        if (requestInfo.getFilters().containsKey("birthPlace")) { //ToDo więcej miejsc urodzenia autocomplete
+        if (requestInfo.getFilters().containsKey("birthPlace")) {
             String birthPlaceData = requestInfo.getFilters().get("birthPlace");
             List<String> birthPlacesListString = new ArrayList<>(Arrays.asList(birthPlaceData.split(",")));
             List<Place> birthPlaces = placeService.findByNameIn(birthPlacesListString);
@@ -464,10 +464,6 @@ public class CharacterService extends GeneralService {
                 specifications = specifications.and(CharacterSpecifications.getByBirthPlaces(birthPlaces));
             else return specifications.and(CharacterSpecifications.GetNoone());
         }
-
-//        if (requestInfo.getFilters().containsKey("dominatingEmotions")) {
-//        }
-
 
 
         //ToDo Filtrowanie po dacie urodzenia

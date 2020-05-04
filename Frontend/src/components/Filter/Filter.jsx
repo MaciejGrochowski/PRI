@@ -10,19 +10,22 @@ class Filter extends React.Component {
 
     render(){
 
+
         const {columnsConfig, onFilter} = this.props;
         return (
-            <div class = "filter-menu">
-            <div class = "filter">
-                {
-                    columnsConfig && columnsConfig.map((item, i) => (
-                        !item.hidden &&<span>{item.filter}</span>
-                    ))
-                }
-            </div>
-                <button className = "button" onClick={onFilter}>Filtruj</button>
+            <div className = "filter-menu">
+                <div className = "filter">
+                    {
+                        columnsConfig && columnsConfig.map((item, i) => (
+                            !item.hidden &&<span styleName = "filter">{item.filter}</span>
+                        ))
+                    }
+                </div>
+                <div className = "filter-button">
+                    <button className = "button" onClick={onFilter}>Filtruj</button>
+                </div>
                 
-</div>
+            </div>
 
         )
     }

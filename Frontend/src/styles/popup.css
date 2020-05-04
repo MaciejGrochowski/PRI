@@ -1,11 +1,9 @@
   
-  /* .popup-body{
-    display: inline-flex;
+  .popup-body{
+    display: flex;
     flex-wrap: wrap;
-    max-width: 50%;
-    min-width: 10%;
-    align-items: center;
-  } */
+    justify-content: left;
+  }
 .dostosuj-button{
   transform: translate(-50%, -50%);
 
@@ -14,11 +12,12 @@
     display: block;
     position: relative;
     padding-left: 35px;
-    margin-bottom: 12px;
+
     cursor: pointer;
     font-size: 22px;
-    max-height: 80%;
-    max-width: 80%;
+    margin: 10px;
+    height: 5%;
+    width: 20%;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;

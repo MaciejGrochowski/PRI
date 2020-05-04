@@ -2,16 +2,14 @@
 
 .filter-menu{
 display: block;
+flex-direction: column;
+justify-content: center;
+
 }
 .filter{
-    display: flex;
-    margin-left: 10%;
-    margin-right: 10%;
-
     display: inline-flex;
     flex-wrap: wrap;
-    align-items: flex-start;
-    justify-content: space-between;
+    justify-content: left;
 }
 
 .ziemniak{

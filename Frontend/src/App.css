@@ -22,6 +22,16 @@
   color: #FFD859!important;
 }
 
+.ReactModal__Content{
+max-height: 70%!important;
+max-width: 70%!important;
+}
+
+.MuiMenu-list{
+  background-color:#292F2F!important;
+  color:#FFD859!important;
+}
+
 .MuiTable-root{
   background-color: #292F2F;
 }
@@ -37,6 +47,9 @@ color: #FFD859!important;
 color: #FFD859!important;
 }
 
+.MuiFormControl-root{
+  border-bottom: solid 1px #FFD859!important;
+}
 .App-header {
   background-color:#292F2F;
   min-height: 100vh;

@@ -31,7 +31,7 @@ class Table extends React.Component {
             textDecoration: "none",
             backgroundColor: '#292F2F',
             color: '#FFD859',
-            width: '60px',
+            width: '5%',
             // "&:hover": {
             //     backgroundColor: '#FFD859'
             //   }

@@ -49,7 +49,7 @@ class DefaultPopup extends React.Component {
                     <form id="visibilityCharactersColumns">
                         <div className = "popup-body">
                         {columnsConfig && columnsConfig.map((item, i) => (
-                            <label className="container">{item.title}
+                            <label className="container"><div className = "label">{item.title}</div>
                                 <input type="checkbox" defaultChecked={!item.hidden} id={item.field + "VisibilityCheckbox"}/>
                                 <span className="checkmark"/>
                             </label>

@@ -6,7 +6,7 @@ class HistoriesListPage extends React.Component {
 
     render(){
         return (
-            <div>
+            <div className = "plainPage">
                 Historie
             </div>
         )

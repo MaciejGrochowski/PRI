@@ -36,3 +36,7 @@
     background-color: #292F2F; 
     color: #FFD859; 
   }
+
+  .filter-button{
+    display: block;
+  }

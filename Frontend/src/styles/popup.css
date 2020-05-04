@@ -5,7 +5,8 @@
     justify-content: left;
   }
 .dostosuj-button{
-  transform: translate(-50%, -50%);
+  display: block;
+  justify-content: right;
 
 }
   .container {

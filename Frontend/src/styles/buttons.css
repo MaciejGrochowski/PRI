@@ -38,5 +38,6 @@
   }
 
   .filter-button{
-    display: block;
+    display: flex;
+    justify-content: center;
   }

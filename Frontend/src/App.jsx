@@ -19,7 +19,6 @@ class App extends React.Component{
         <Route path={fronendUrls.historyList} component={HistoriesListPage} />
             </BrowserRouter>
         )
-
   }
 }
 export default App;

@@ -10,6 +10,7 @@ import "../../styles/tables.css";
 import DefaultPopup from "../../components/Popup/DefaultPopup";
 import {starSigns} from "../../enums/StarSigns";
 import {religions} from "../../enums/Religions";
+import {table} from "../../styles/tables.css"
 
 class CharactersListPage extends React.Component{
 
@@ -224,14 +225,15 @@ class CharactersListPage extends React.Component{
     }
 
     render(){
-        const divStyle = {
-            backgroundColor: '#292F2F',
-            width: '600px !important',
-            position: 'relative',
+        const test = {
+            backgroundColor: 'red',
+            // backgroundColor: '#292F2F',
+            // position: 'relative',
         };
         return (
             <div className="globalStyles">
                 <header className="App-header">
+
                     <Filter
                         columnsConfig={this.state.columnsConfig}
                         onFilter={this.onFilter}
@@ -247,9 +249,9 @@ class CharactersListPage extends React.Component{
                     title="Przykład"
                     isOpen={this.state.isFilterListExpanded}
                     />
-
+                    <div className="table">
                     <Table
-                    style = {divStyle}
+                    style = {table}
                         title={"Lista postaci"}
                         columnsConfig={this.state.columnsConfig}
                         data={this.state.data}
@@ -261,6 +263,7 @@ class CharactersListPage extends React.Component{
                         count={this.state.count}
                         onOrderChange={this.onOrderChange}
                     />
+                    </div>
                 </header>
             </div>
         )

@@ -2,6 +2,7 @@ package com.example.PRI.services;
 
 import com.example.PRI.entities.Place;
 import com.example.PRI.entities.character.Career;
+import com.example.PRI.entities.character.Name;
 import com.example.PRI.repositories.PlaceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,6 +18,8 @@ public class PlaceService extends GeneralService {
     PlaceRepository placeRepository;
 
     public void save(Place place){
+        Place pla = placeRepository.findByName(place.getName());
+        if(pla != null) place.setId(pla.getId());
         placeRepository.save(place);
     }
 

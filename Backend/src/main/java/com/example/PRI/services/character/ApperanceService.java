@@ -1,7 +1,10 @@
 package com.example.PRI.services.character;
 
+import ch.qos.logback.core.joran.action.AppenderAction;
 import com.example.PRI.entities.character.Apperance;
 import com.example.PRI.entities.character.Career;
+import com.example.PRI.entities.character.EyeColor;
+import com.example.PRI.entities.character.HairColor;
 import com.example.PRI.repositories.character.ApperanceRepository;
 import com.example.PRI.services.GeneralService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +21,8 @@ public class ApperanceService extends GeneralService {
     ApperanceRepository apperanceRepository;
 
     public void save(Apperance app) {
+        Apperance appear = apperanceRepository.findByName(app.getName());
+        if(appear != null) app.setId(appear.getId());
         apperanceRepository.save(app);
     }
 

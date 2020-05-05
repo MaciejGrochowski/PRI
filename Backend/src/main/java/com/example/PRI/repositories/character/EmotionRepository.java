@@ -12,4 +12,6 @@ public interface EmotionRepository extends CrudRepository<Emotion, Long> {
     List<Emotion> findByNameIn(List<String> dominatingEmotionsListString);
 
     List<Emotion> findAll();
+
+    Emotion findByName(String name);
 }

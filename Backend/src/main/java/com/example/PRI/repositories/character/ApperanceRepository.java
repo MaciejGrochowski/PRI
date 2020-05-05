@@ -12,4 +12,6 @@ public interface ApperanceRepository extends CrudRepository<Apperance, Long> {
     List<Apperance> findByNameIn(List<String> apperanceListString);
 
     List<Apperance> findAll();
+
+    Apperance findByName(String name);
 }

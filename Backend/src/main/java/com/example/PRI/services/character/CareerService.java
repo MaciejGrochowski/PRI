@@ -1,6 +1,7 @@
 package com.example.PRI.services.character;
 
 import com.example.PRI.entities.character.Career;
+import com.example.PRI.entities.character.Personality;
 import com.example.PRI.repositories.character.CareerRepository;
 import com.example.PRI.services.GeneralService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,8 @@ public class CareerService extends GeneralService {
     CareerRepository careerRepository;
 
     public void save(Career career){
+        Career caree = careerRepository.findByName(career.getName());
+        if(caree != null) career.setId(caree.getId());
         careerRepository.save(career);
     }
 

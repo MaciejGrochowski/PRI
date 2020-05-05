@@ -1,5 +1,6 @@
 package com.example.PRI.services.character;
 
+import com.example.PRI.entities.character.EyeColor;
 import com.example.PRI.entities.character.Prediction;
 import com.example.PRI.repositories.character.PredictionRepository;
 import com.example.PRI.services.GeneralService;
@@ -14,7 +15,10 @@ public class PredictionService extends GeneralService {
     @Autowired
     PredictionRepository predictionRepository;
 
-    public void save(Prediction pre) {predictionRepository.save(pre);}
+    public void save(Prediction pre) {
+        Prediction predict = predictionRepository.findByText(pre.getText());
+        if(predict != null) pre.setId(predict.getId());
+        predictionRepository.save(pre);}
 
     public Optional<Prediction> findByText(String prediction) {
         return Optional.ofNullable(predictionRepository.findByText(prediction));

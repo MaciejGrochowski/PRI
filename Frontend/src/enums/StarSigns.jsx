@@ -1,4 +1,8 @@
 export const starSigns = [
-    "Znak1",
-    "ToDo enum do wypełnienia"
+    "Drakonos",
+    "Bębniarz",
+    "Dudy",
+    "Dwa byki"
 ]
+
+//ToDo reszta znaków

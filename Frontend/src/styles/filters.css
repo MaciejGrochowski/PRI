@@ -4,6 +4,7 @@
 display: block;
 flex-direction: column;
 justify-content: center;
+max-width: 90%;
 margin: 1%;
 
 }
@@ -14,7 +15,7 @@ margin: 1%;
 }
 
 .ziemniak{
-    display: block;
+    display: inline-block;
     backface-visibility: hidden;
-    margin: 10px;
+    margin-left: 10px;
 }

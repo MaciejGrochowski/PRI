@@ -8,7 +8,13 @@
   
 .dostosuj-button{
   display: block;
+  }
 
+.label{
+  display: block;
+  padding-left: 5%;
+  padding-top: 1%;
+  margin-left: 10%;
 }
   .container {
     display: block;

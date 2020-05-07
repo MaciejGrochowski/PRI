@@ -13,15 +13,6 @@
   }
 }
 
-.ecYwMN{
-  background-color: #292F2F!important;
-  border: #FFD859!important;
-}
-
-.sc-AxiKw{
-  background-color: #292F2F!important;
-  border: #FFD859!important;
-}
 
 .MuiTableCell-body{
   color: #FFD859!important;
@@ -77,7 +68,7 @@ color: #FFD859!important;
 
 .MuiInputBase-root{
   color: #FFD859!important;
-  
+
 }
 .MuiIconButton-colorSecondary{
   color: #FFD859!important;
@@ -104,6 +95,7 @@ color: #FFD859!important;
 .MuiTableCell-root{
 background-color: #292F2F;
 width: min-content!important;
+text-align: center!important;
 } 
 
 .MuiTableCell-root.MuiTableCell-footer{
@@ -116,8 +108,7 @@ background-color: #292F2F;
 }
 
 .MuiTableRow-root:hover{
-  background-color: #292F2F!important;
-  color: white!important;
+  color: #292F2F!important;
 }
 .MuiTableSortLabel-root{
   border-bottom: solid!important;
@@ -129,19 +120,15 @@ background-color: #292F2F;
   color: #FFD859!important;
 }
 
-.MTableHeader-header-36{
-  /* z-index: 0!important; */
+.MuiAutocomplete-noOptions{
+  background-color: #292F2F;
+  color:#FFD859!important; 
 }
-/*ToDo to rozwiązanie tymczasowe - może w pewnych sytuacjach się zepsuć (Wiersz sortujący tabelę) */
 
 .MuiTableSortLabel-iconDirectionAsc{
   color: white;
   visibility: visible;
 }
-/*testy*/
-/* .MuiAutocomplete-popper{
-  background-color: #292F2F!important;
-} */
 
 .MuiAutocomplete-listbox{
   background-color: #292F2F;

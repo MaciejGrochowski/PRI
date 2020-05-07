@@ -15,9 +15,10 @@ export const Tag = styled(({ label, onDelete, id, ...props }) => (
   display: flex;
   align-items: center;
   height: 24px;
+  color: #FFD859;
   line-height: 22px;
-  background-color: #fafafa;
-  border: 1px solid #e8e8e8;
+  background-color: #292F2F;
+  border: 1px solid #FFD859;
   border-radius: 2px;
   box-sizing: content-box;
   padding: 0 4px 0 10px;
@@ -26,8 +27,9 @@ export const Tag = styled(({ label, onDelete, id, ...props }) => (
   overflow: hidden;
 
   &:focus {
-    border-color: #40a9ff;
-    background-color: #e6f7ff;
+    background-color: #292F2F;
+    border: 1px solid #FFD859;
+    color: #FFD859;
   }
 
   & span {

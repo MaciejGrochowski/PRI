@@ -77,6 +77,7 @@ color: #FFD859!important;
 
 .MuiInputBase-root{
   color: #FFD859!important;
+  
 }
 .MuiIconButton-colorSecondary{
   color: #FFD859!important;
@@ -129,13 +130,22 @@ background-color: #292F2F;
 }
 
 .MTableHeader-header-36{
-  z-index: 0!important;
+  /* z-index: 0!important; */
 }
 /*ToDo to rozwiązanie tymczasowe - może w pewnych sytuacjach się zepsuć (Wiersz sortujący tabelę) */
 
 .MuiTableSortLabel-iconDirectionAsc{
   color: white;
   visibility: visible;
+}
+/*testy*/
+/* .MuiAutocomplete-popper{
+  background-color: #292F2F!important;
+} */
+
+.MuiAutocomplete-listbox{
+  background-color: #292F2F;
+  color:#FFD859!important; 
 }
 
 @keyframes App-logo-spin {

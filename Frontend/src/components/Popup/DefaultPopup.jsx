@@ -58,7 +58,9 @@ class DefaultPopup extends React.Component {
                         }
                         </div>
                     </form>
+                    <div className="flex-center-element">
                     <button type="submit" className="button" onClick={() => this.save(columnsConfig)}>Zastosuj</button>
+                    </div>
                 </Modal>
             </div>
         );

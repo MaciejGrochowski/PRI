@@ -3,6 +3,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: left;
+    padding: 3%;
   }
   
 .dostosuj-button{
@@ -12,12 +13,11 @@
   .container {
     display: block;
     position: relative;
-    padding-left: 35px;
-
+    padding-left: 3%;
     cursor: pointer;
-    font-size: 22px;
-    margin: 10px;
-    height: 5%;
+    font-size: 18px;
+    margin: 1%;
+    height: 7%;
     width: 20%;
     -webkit-user-select: none;
     -moz-user-select: none;

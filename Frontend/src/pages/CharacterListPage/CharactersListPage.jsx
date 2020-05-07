@@ -226,8 +226,8 @@ class CharactersListPage extends React.Component{
 
     render(){
         const test = {
-            backgroundColor: 'red',
-            // backgroundColor: '#292F2F',
+            //backgroundColor: 'red',
+            backgroundColor: '#292F2F',
             // position: 'relative',
         };
         return (

@@ -7,7 +7,14 @@ const characterService = {
     getCharactersByCountAndPage: (count, page) => getCharactersByCountAndPage(count, page),
     getCountOfCharacters: () => getCountOfCharacters(),
     getCharacters: (requestBody) => getCharacters(requestBody),
-    getAutocompleteFilters: () => getAutocompleteFilters()
+    getAutocompleteFilters: () => getAutocompleteFilters(),
+    getCharacterById: id => getCharacterById(id)
+}
+
+const getCharacterById = id => {
+    const url = characterUrl + "/character/" + id;
+    return request.get(url)
+
 }
 
 const getAutocompleteFilters = () => {

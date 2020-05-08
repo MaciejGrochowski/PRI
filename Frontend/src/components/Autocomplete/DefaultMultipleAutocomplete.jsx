@@ -29,6 +29,7 @@ class DefaultMultipleAutocomplete extends React.Component {
             <Autocomplete
                 multiple
                 options={options}
+                noOptionsText={"Brak opcji"}
                 style={{ width: 300 }}
                 renderInput={(params) => (
                     <TextField {...params} label={labelName}/>

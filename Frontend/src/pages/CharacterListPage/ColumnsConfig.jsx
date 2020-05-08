@@ -188,7 +188,5 @@ export const columnConfig = (autocompleteData={}, visibilityProperties={}) => (
 
 
 
-
-
     ]
 )

@@ -7,5 +7,6 @@ export const apiUrls = {
 export const fronendUrls = {
     mainPage: '/',
     characterList: '/characters',
-    historyList: '/historyList'
+    historyList: '/histories',
+    characterDetails: '/characterDetails'
 }

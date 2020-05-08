@@ -26,6 +26,27 @@ public enum StarSign { //ToDo to musi być alfabetycznie
 //    The Bone Saw (Grimoire) 	Alyoi 	Sign of Skill and Learning 	16/11 - 1/12
 //    The Witchling Star 	Solkios 	Sign of Magic 	2/12 - 21/12
 //
+    //TODO!! Name - Polskie nazwy, znaczenie przetłumaczyć, ShortName do usunięcia, Daty przepisać
+//    Bębniarz – Znak Zabawy i Radości
+//    Dudy – Znak Oszustwa
+//    Dwa Byki – Znak Płodności i Rzemiosła
+//    Głupiec Mummit – Znak Instynktu
+//    Gwiazda Uroku – Znak Magii
+//    Gwiazda Wieczorna – Znak Tajemnicy i Iluzji
+//    Kocioł Rhyi – Znak Łaski, Śmierci i Tworzenia
+//    Lancet – Znak Nauki i Talentu
+//    Mędrzec Marmit – Znak Mądrości
+//    Pas Grungniego – Znak Sprawności Wojennej
+//    Rozbity Wóz – Znak Dumy
+//    Smok Dragomas – Znak Odwagi
+//    Sznur Limnera – Znak Dokładności
+//    Tancerka – Znak Miłości i Pożądania
+//    Tłusty Kozioł – Znak Ukrytej Namiętności
+//    Vobist Ulotny – Znak Ciemności i Niepewności
+//    Wielki Krzyż – Znak Czystości
+//    Wół Gnuthus – Znak Wiernej Służby
+//    Wymund Pustelnik – Znak Wytrzymałości
+//    Złoty Kogut – Znak Kupców i Bogactwa
 
 
 
@@ -54,5 +75,13 @@ public enum StarSign { //ToDo to musi być alfabetycznie
 
     public String getEndDate() {
         return endDate;
+    }
+
+    public static StarSign findByName(String s) {
+        for (StarSign sign : StarSign.values()){
+            if (sign.name.equals(s) || sign.shortName.equals(s))
+                return sign;
+        }
+        return null;
     }
 }

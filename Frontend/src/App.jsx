@@ -8,6 +8,7 @@ import {fronendUrls} from "./commons/urls";
 import HistoriesListPage from "./pages/HistoriesListPage";
 import MainPage from "./pages/MainPage";
 import CharacterDetailsPage from "./pages/CharacterDetailsPage/CharacterDetailsPage";
+import CharacterGeneratorPage from "./pages/CharacterGeneratorPage/CharacterGeneratorPage";
 
 class App extends React.Component{
 
@@ -19,6 +20,8 @@ class App extends React.Component{
         <Route path={fronendUrls.characterList} component={CharactersListPage} />
         <Route path={fronendUrls.historyList} component={HistoriesListPage} />
         <Route path={fronendUrls.characterDetails} component={CharacterDetailsPage} />
+        <Route path={fronendUrls.characterGenerator} component={CharacterGeneratorPage} />
+
             </BrowserRouter>
         )
   }

@@ -13,6 +13,10 @@ const menuItems = [
     {
         label: 'Historie',
         link: fronendUrls.historyList
+    },
+    {
+        label: 'Generator',
+        link: fronendUrls.characterGenerator
     }
 
 ]

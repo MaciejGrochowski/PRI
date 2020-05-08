@@ -8,5 +8,6 @@ export const fronendUrls = {
     mainPage: '/',
     characterList: '/characters',
     historyList: '/histories',
-    characterDetails: '/characterDetails'
+    characterDetails: '/characterDetails',
+    characterGenerator: '/generator'
 }

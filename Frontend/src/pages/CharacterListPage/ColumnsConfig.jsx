@@ -57,6 +57,7 @@ export const columnConfig = (autocompleteData={}, visibilityProperties={}) => (
             labelName="Miejsce pobytu"
             options={autocompleteData.placeNames || []}
             id="characterFilterLivePlaces"
+            multiple
             /></div>
         },
         {
@@ -67,6 +68,7 @@ export const columnConfig = (autocompleteData={}, visibilityProperties={}) => (
                 labelName="Profesje"
                 options={autocompleteData.careerNames || []}
                 id="characterFilterCareers"
+                multiple
             />
             </div>
         },
@@ -92,6 +94,7 @@ export const columnConfig = (autocompleteData={}, visibilityProperties={}) => (
                 labelName="Miejsce urodzenia"
                 options={autocompleteData.placeNames || []}
                 id="characterFilterBirthPlaces"
+                multiple
             /></div>
         },
 
@@ -103,6 +106,7 @@ export const columnConfig = (autocompleteData={}, visibilityProperties={}) => (
                 labelName="Znak gwiezdny"
                 options={starSigns}
                 id="characterFilterStarSigns"
+                multiple
             /></div>
         },
 
@@ -115,6 +119,7 @@ export const columnConfig = (autocompleteData={}, visibilityProperties={}) => (
                 labelName="Emocje"
                 options={autocompleteData.emotionNames || []}
                 id="characterFilterEmotions"
+                multiple
             /></div>
         },
 
@@ -126,6 +131,7 @@ export const columnConfig = (autocompleteData={}, visibilityProperties={}) => (
                 labelName="Religia"
                 options={religions}
                 id="characterFilterReligions"
+                multiple
             /></div>
         },
 
@@ -145,6 +151,7 @@ export const columnConfig = (autocompleteData={}, visibilityProperties={}) => (
                 labelName="Umiejętności"
                 options={autocompleteData.skillNames || []}
                 id="characterFilterSkills"
+                multiple
             /></div>
         },
         {
@@ -156,6 +163,7 @@ export const columnConfig = (autocompleteData={}, visibilityProperties={}) => (
                 labelName="Zdolności"
                 options={autocompleteData.talentNames || []}
                 id="characterFilterTalents"
+                multiple
             /></div>
         },
 
@@ -168,6 +176,7 @@ export const columnConfig = (autocompleteData={}, visibilityProperties={}) => (
                 labelName="Cechy charakteru"
                 options={autocompleteData.personalityNames || []}
                 id="characterFilterPersonalities"
+                multiple
             /></div>
         },
 
@@ -181,6 +190,7 @@ export const columnConfig = (autocompleteData={}, visibilityProperties={}) => (
                 labelName="Cechy wyglądu"
                 options={autocompleteData.apperanceNames || []}
                 id="characterFilterApperances"
+                multiple
             /></div>
         },
 

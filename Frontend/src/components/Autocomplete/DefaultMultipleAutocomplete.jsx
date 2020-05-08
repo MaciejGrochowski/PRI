@@ -27,7 +27,7 @@ class DefaultMultipleAutocomplete extends React.Component {
 
         return(
             <Autocomplete
-                multiple
+                multiple={this.props.multiple}
                 options={options}
                 noOptionsText={"Brak opcji"}
                 style={{ width: 300 }}

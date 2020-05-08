@@ -92,7 +92,7 @@ public class CharacterConverter {
         output.setStarSign(character.getStarSign().getShortName());
         output.setDominatingEmotions(getStringFromArrayProperties(character.getDominatingEmotions().stream().map(Emotion::getName).collect(Collectors.toList())));
         output.setSex(character.getSex());
-        output.setReligion(character.getReligion());
+        output.setReligion(character.getReligion().getGodName());
         output.setWeight(character.getWeight());
         output.setHeight(character.getHeight());
         output.setSurname(character.getSurname() != null ? character.getSurname().getSurname() : "");

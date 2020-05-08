@@ -480,8 +480,11 @@ public class CharacterService extends GeneralService {
         //ToDo Filtrowanie po dacie urodzenia
 
         if (requestInfo.getFilters().containsKey("starSign")) { //ToDo Autocomplete
-            StarSign starSign = StarSign.valueOf(requestInfo.getFilters().get("starSign"));
-            specifications = specifications.and(CharacterSpecifications.getByStarSign(starSign));
+            String starSign = requestInfo.getFilters().get("starSign");
+            List<String> starSignListString = new ArrayList(Arrays.asList(starSign.split(",")));
+            List<StarSign> starSigns = starSignListString.stream().map(StarSign::findByName).collect(Collectors.toList());
+            if(starSigns.size() > 0) specifications.and(CharacterSpecifications.getByStarSigns(starSign));
+            else return specifications.and(CharacterSpecifications.GetNoone());
         }
 
         if (requestInfo.getFilters().containsKey("dominatingEmotions")) {
@@ -498,7 +501,7 @@ public class CharacterService extends GeneralService {
             specifications = specifications.and(CharacterSpecifications.getBySex(sex));
         }
 
-        if (requestInfo.getFilters().containsKey("religion")) { //ToDo religii może być więcej niż 1
+        if (requestInfo.getFilters().containsKey("religion")) {
             String religionsData = requestInfo.getFilters().get("religion");
             List<String> religionsListString = new ArrayList<>(Arrays.asList(religionsData.split(",")));
             List<Religion> religions = religionsListString.stream().map(Religion::findByGodName).collect(Collectors.toList());

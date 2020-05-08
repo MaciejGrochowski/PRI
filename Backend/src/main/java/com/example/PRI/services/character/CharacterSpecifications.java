@@ -160,4 +160,10 @@ public class CharacterSpecifications {
             return root.get("birthPlace").in(birthPlaces);
         };
     }
+
+    public static Specification<Character> getByStarSigns(String starSign) {
+        return (root, query, cb) -> {
+            return root.get("starSign").in(starSign);
+        };
+    }
 }

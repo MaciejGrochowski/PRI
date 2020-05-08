@@ -39,7 +39,7 @@ public class CharacterDetailsOutputDto {
 
     Sex sex;
 
-    Religion religion;
+    String religion;
 
     int weight;
     int height;

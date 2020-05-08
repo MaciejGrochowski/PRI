@@ -83,6 +83,7 @@ public class CharacterConverter {
         output.setBirthPlace(character.getBirthPlace().getName());
         output.setRace(character.getRace());
         output.setEyeColor(character.getEyeColor().getColor());
+        output.setHairColor(character.getHairColor().getColor());
         if (character.getBirthDate() != null){
             output.setDayOfBirth(String.valueOf(character.getBirthDate().getDay()));
             output.setMonthOfBirth(String.valueOf(character.getBirthDate().getMonth()));

@@ -202,7 +202,7 @@ class CharactersListPage extends React.Component{
                 prediction: element.prediction, currentCareer: element.currentCareer,
                 talents: this.mapArrayToString(element.talents), personalities: this.mapArrayToString(element.personality),
                 apperances: this.mapArrayToString(element.apperance), livePlace: element.livePlace,
-                skills: this.mapSkillsToString(element.skills)
+                skills: this.mapSkillsToString(element.skills), id: element.id
             }
             data.push(object) //ToDo ta konwersja obiektów powinna się odbywać na backendzie!!!
         }
@@ -222,6 +222,11 @@ class CharactersListPage extends React.Component{
 
     expandFilterList = () => {
         this.setState({isFilterListExpanded: true})
+    }
+
+    onDetailsClick = rowData => {
+        console.log(rowData);
+        window.open("/characterDetails/" + rowData.id);
     }
 
     render(){
@@ -261,6 +266,7 @@ class CharactersListPage extends React.Component{
                         ownOnChangePage={this.onChangePage}
                         onChangeCountPerPage={this.onChangeCountPerPage}
                         count={this.state.count}
+                        onDetailsClick={this.onDetailsClick}
                         onOrderChange={this.onOrderChange}
                     />
                     </div>

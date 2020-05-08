@@ -1,6 +1,5 @@
 import React from "react";
 import MaterialTable from "material-table";
-import styled from 'styled-components';
 import TablePagination from "@material-ui/core/TablePagination";
 import mystyle from "../../styles/tables.css";
 
@@ -9,18 +8,32 @@ class Table extends React.Component {
     constructor() {
         super();
         this.state={
-            selectedRow: null,
-            rowsPerPage: 10
+            rowsPerPage: 10,
+            isDetails: false
         }
     }
 
+    componentDidMount() {
+    }
+
+
     componentDidUpdate(prevProps, prevState){
-        // console.log(prevState.rowsPerPage);
-        // console.log(this.state.rowsPerPage);
+        if(this.props.columnsConfig !== prevProps.columnsConfig && this.props.onDetailsClick) {
+            let columnsConfig = this.props.columnsConfig
+            columnsConfig.push(
+                {
+                    title: 'Detale',
+                    field: '',
+                    render: rowData => <button onClick={() => this.props.onDetailsClick(rowData)}>Detale</button>,
+                })
+            this.setState({columnsConfig: columnsConfig})
+        }
     }
 
     render(){
-        const {columnsConfig=[], data=[], noRecordsMessage="Brak danych", onChangeCountPerPage, ownOnChangePage, count, page, onOrderChange} = this.props;
+        const {data=[], noRecordsMessage="Brak danych", onChangeCountPerPage, ownOnChangePage, count, page, onOrderChange} = this.props;
+        let columnsConfig = this.state.columnsConfig;
+
         const divStyle = {
             textDecoration: "none",
             backgroundColor: '#292F2F',
@@ -40,7 +53,6 @@ class Table extends React.Component {
             <div styleName = {mystyle.table}>
                 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
                 <MaterialTable
-                onRowClick={((evt, selectedRow) => this.setState({ selectedRow }))}
                 style={mystyle.table}
                 localization={{
                     body: {
@@ -89,12 +101,8 @@ class Table extends React.Component {
                     pageSizeOptions: [10, 30, 50],
                     paginationType: "stepped",
                     headerStyle: divStyle,
-                    rowStyle: rowData => ({
-                        ...rowStyle,
-                        backgroundColor: (this.state.selectedRow && this.state.selectedRow.tableData.id === rowData.tableData.id) ? 'red!important' : 'blue!important'}),
-
-                }}
-                        //),
+                }
+                }
 
 
             />

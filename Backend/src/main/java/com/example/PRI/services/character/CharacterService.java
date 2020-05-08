@@ -1,10 +1,7 @@
 package com.example.PRI.services.character;
 
 import com.example.PRI.converters.CharacterConverter;
-import com.example.PRI.dtos.characters.AutocompleteFilterCharactersOutputDto;
-import com.example.PRI.dtos.characters.CharacterDefaultAttributesOutputDto;
-import com.example.PRI.dtos.characters.CharacterListFilterInputDto;
-import com.example.PRI.dtos.characters.CharacterListOutputDto;
+import com.example.PRI.dtos.characters.*;
 import com.example.PRI.entities.Place;
 import com.example.PRI.entities.character.*;
 import com.example.PRI.entities.character.Character;
@@ -36,6 +33,8 @@ public class CharacterService extends GeneralService {
     @Autowired
     NameService nameService;
 
+
+
     @Autowired
     SurnameService surnameService;
 
@@ -65,6 +64,9 @@ public class CharacterService extends GeneralService {
 
     @Autowired
     SkillService skillService;
+
+    @Autowired
+    StatisticsService statisticsService;
 
     @Autowired
     ApperanceService apperanceService;
@@ -99,37 +101,46 @@ public class CharacterService extends GeneralService {
         names.add(new Name("Felix", true, false, false, true, false, false, false, 0.1, 0.2));
         names.add(new Name("Magnus", true, false, false, true, false, false, false, 0.1, 0.2));
 
+        Statistics stats = new Statistics(0,0,0,0,0,0,0,0,0,0,0,0);
+
+        statisticsService.save(stats);
 
         List<Career> careers = new ArrayList<>();
         Career c1 = new Career();
         c1.setName("Chłop");
         c1.setBaseProfession(true);
         c1.setExitChance(0.1);
+        c1.setStatistics(stats);
         careers.add(c1);
         Career c2 = new Career();
         c2.setName("Żołnierz");
         c1.setBaseProfession(true);
         c1.setExitChance(0.1);
+        c2.setStatistics(stats);
         careers.add(c2);
         Career c3 = new Career();
         c3.setName("Mieszczanin");
         c3.setBaseProfession(true);
         c3.setExitChance(0.1);
+        c3.setStatistics(stats);
         careers.add(c3);
         Career c4 = new Career();
         c4.setName("Rzemieślnik");
         c4.setBaseProfession(true);
         c4.setExitChance(0.1);
+        c4.setStatistics(stats);
         careers.add(c4);
         Career c5 = new Career();
         c5.setName("Oprych");
         c5.setBaseProfession(true);
         c5.setExitChance(0.1);
+        c5.setStatistics(stats);
         careers.add(c5);
         Career c6 = new Career();
         c6.setName("Sługa");
         c6.setBaseProfession(true);
         c6.setExitChance(0.1);
+        c6.setStatistics(stats);
         careers.add(c6);
 
         List<Place> places = new ArrayList<>();
@@ -224,7 +235,7 @@ public class CharacterService extends GeneralService {
         emotionService.save(e6);
         Emotion e7 = new Emotion("euforia");
         emotionService.save(e7);
-        Emotion e8 = new Emotion("nienawiść");
+        Emotion e8 = new Emotion("rozpacz");
         emotionService.save(e8);
         Emotion e9 = new Emotion("strach");
         emotionService.save(e9);
@@ -585,5 +596,10 @@ public class CharacterService extends GeneralService {
                 personalityService.getAllNames(), talentService.getAllNames(),
                 skillService.getAllNames(), emotionService.getAllNames()
         );
+    }
+
+    public CharacterDetailsOutputDto getDetailsById(Long id) {
+        Optional<Character> c = characterRepository.findById(id);
+        return c.map(CharacterConverter::convertDetails).orElse(null);
     }
 }

@@ -12,6 +12,8 @@ import java.util.List;
 @NoArgsConstructor
 public class CharacterDefaultAttributesOutputDto {
 
+    Long id;
+
     String birthPlace;
 
     String race;

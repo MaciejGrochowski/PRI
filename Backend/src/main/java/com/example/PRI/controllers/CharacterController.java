@@ -2,10 +2,7 @@ package com.example.PRI.controllers;
 
 import com.example.PRI.controllers.annotations.Get;
 import com.example.PRI.controllers.annotations.Post;
-import com.example.PRI.dtos.characters.AutocompleteFilterCharactersOutputDto;
-import com.example.PRI.dtos.characters.CharacterDefaultAttributesOutputDto;
-import com.example.PRI.dtos.characters.CharacterListFilterInputDto;
-import com.example.PRI.dtos.characters.CharacterListOutputDto;
+import com.example.PRI.dtos.characters.*;
 import com.example.PRI.services.character.CharacterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -49,4 +46,9 @@ public class CharacterController {
         return characterService.getAutoCompletes();
     }
 
+    @Get("/character/{id}")
+    public CharacterDetailsOutputDto getDetailsById(@PathVariable Long id){
+        CharacterDetailsOutputDto output = characterService.getDetailsById(id);
+        return output;
+    }
 }

@@ -1,6 +1,7 @@
 package com.example.PRI.jsonDeserializationController;
 
 import com.example.PRI.entities.character.Name;
+import com.example.PRI.entities.character.Skill;
 import com.example.PRI.entities.character.Surname;
 import com.example.PRI.entities.character.Talent;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -8,6 +9,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.example.PRI.services.character.NameService;
 import com.example.PRI.services.character.SurnameService;
 import com.example.PRI.services.character.TalentService;
+import com.example.PRI.services.character.SkillService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -29,6 +31,9 @@ public class DeserializationController {
 
     @Autowired
     TalentService talentService;
+
+    @Autowired
+    SkillService skillService;
 
     @RequestMapping("/json/name")
     public void nameDeserializationAndDatabaseUpdate() throws IOException {
@@ -66,6 +71,19 @@ public class DeserializationController {
         });
         for (Talent talent : listTalent) {
             talentService.save(talent);
+        }
+    }
+
+    @RequestMapping("/json/skill")
+    public void skillDeserializationAndDatabaseUpdate() throws IOException {
+        ObjectMapper objectMapper = new ObjectMapper();
+
+        String path = "src/jsons/skill.json";
+        String contents = Files.readString(Paths.get(path));
+        List<Skill> listSkill = objectMapper.readValue(contents, new TypeReference<List<Skill>>() {
+        });
+        for (Skill skill : listSkill) {
+            skillService.save(skill);
         }
     }
 }

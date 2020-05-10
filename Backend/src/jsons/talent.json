@@ -1,0 +1,489 @@
+[{"id": 1,
+    "name": "Artylerzysta",
+    "properties": ""
+},
+    {"id": 2,
+        "name": "Bardzo silny",
+        "properties": ""
+    },
+    {"id": 3,
+        "name": "Bardzo szybki",
+        "properties": ""
+    },
+    {"id": 4,
+        "name": "Bijatyka",
+        "properties": ""
+    },
+    {"id": 5,
+        "name": "Błyskawiczne przeładowanie",
+        "properties": ""
+    },
+    {"id": 6,
+        "name": "Błyskawiczny blok",
+        "properties": ""
+    },
+    {"id": 7,
+        "name": "Błyskotliwość",
+        "properties": ""
+    },
+    {"id": 8,
+        "name": "Brawura",
+        "properties": ""
+    },
+    {"id": 9,
+        "name": "Broń naturalna",
+        "properties": ""
+    },
+    {"id": 10,
+        "name": "Bystry wzrok",
+        "properties": ""
+    },
+    {"id": 11,
+        "name": "Charyzmatyczny",
+        "properties": ""
+    },
+    {"id": 12,
+        "name": "Chirurgia",
+        "properties": ""
+    },
+    {"id": 13,
+        "name": "Chodu!",
+        "properties": ""
+    },
+    {"id": 14,
+        "name": "Czarnoksięstwo",
+        "properties": ""
+    },
+    {"id": 15,
+        "name": "Człowiek-guma",
+        "properties": ""
+    },
+    {"id": 16,
+        "name": "Czuły słuch",
+        "properties": ""
+    },
+    {"id": 17,
+        "name": "Dotyk mocy",
+        "properties": ""
+    },
+    {"id": 18,
+        "name": "Etykieta",
+        "properties": ""
+    },
+    {"id": 19,
+        "name": "Geniusz arytmetyczny",
+        "properties": ""
+    },
+    {"id": 20,
+        "name": "Grotołaz",
+        "properties": ""
+    },
+    {"id": 21,
+        "name": "Groźny",
+        "properties": ""
+    },
+    {"id": 22,
+        "name": "Gusła",
+        "properties": ""
+    },
+    {"id": 23,
+        "name": "Intrygant",
+        "properties": ""
+    },
+    {"id": 24,
+        "name": "Krasnoludzki fach",
+        "properties": ""
+    },
+    {"id": 25,
+        "name": "Krasowmówstwo",
+        "properties": ""
+    },
+    {"id": 26,
+        "name": "Krzepki",
+        "properties": ""
+    },
+    {"id": 27,
+        "name": "Latanie",
+        "properties": ""
+    },
+    {"id": 28,
+        "name": "Lewitacja",
+        "properties": ""
+    },
+    {"id": 29,
+        "name": "Łotrzyk",
+        "properties": ""
+    },
+    {"id": 30,
+        "name": "Magia czarnoksięska",
+        "properties": ""
+    },
+    {"id": 31,
+        "name": "Magia kapłańska",
+        "properties": ""
+    },
+    {"id": 32,
+        "name": "Magia powszechna",
+        "properties": ""
+    },
+    {"id": 33,
+        "name": "Magia prosta",
+        "properties": ""
+    },
+    {"id": 34,
+        "name": "Magia tajemna",
+        "properties": ""
+    },
+    {"id": 35,
+        "name": "Medytacja",
+        "properties": ""
+    },
+    {"id": 36,
+        "name": "Morderczy atak",
+        "properties": ""
+    },
+    {"id": 37,
+        "name": "Morderczy pocisk",
+        "properties": ""
+    },
+    {"id": 38,
+        "name": "Naśladowca",
+        "properties": ""
+    },
+    {"id": 39,
+        "name": "Niepokojący",
+        "properties": ""
+    },
+    {"id": 40,
+        "name": "Nieustraszony",
+        "properties": ""
+    },
+    {"id": 41,
+        "name": "Niezwykle odporny",
+        "properties": ""
+    },
+    {"id": 42,
+        "name": "Obieżyświat",
+        "properties": ""
+    },
+    {"id": 43,
+        "name": "Oburęczność",
+        "properties": ""
+    },
+    {"id": 44,
+        "name": "Odporność na Chaos",
+        "properties": ""
+    },
+    {"id": 45,
+        "name": "Odporność na choroby",
+        "properties": ""
+    },
+    {"id": 46,
+        "name": "Odporność na magię",
+        "properties": ""
+    },
+    {"id": 47,
+        "name": "Odporność na trucizny",
+        "properties": ""
+    },
+    {"id": 48,
+        "name": "Odporność psychiczna",
+        "properties": ""
+    },
+    {"id": 49,
+        "name": "Odwaga",
+        "properties": ""
+    },
+    {"id": 50,
+        "name": "Ogłuszanie",
+        "properties": ""
+    },
+    {"id": 51,
+        "name": "Opanowanie",
+        "properties": ""
+    },
+    {"id": 52,
+        "name": "Ożywieniec",
+        "properties": ""
+    },
+    {"id": 53,
+        "name": "Pancerz wiary",
+        "properties": ""
+    },
+    {"id": 54,
+        "name": "Poliglota",
+        "properties": ""
+    },
+    {"id": 55,
+        "name": "Przemawianie",
+        "properties": ""
+    },
+    {"id": 56,
+        "name": "Przerażający",
+        "properties": ""
+    },
+    {"id": 57,
+        "name": "Rozbrajanie",
+        "properties": ""
+    },
+    {"id": 58,
+        "name": "Silny cios",
+        "properties": ""
+    },
+    {"id": 59,
+        "name": "Straszny",
+        "properties": ""
+    },
+    {"id": 60,
+        "name": "Strzał mierzony",
+        "properties": ""
+    },
+    {"id": 61,
+        "name": "Strzał precyzyjny",
+        "properties": ""
+    },
+    {"id": 62,
+        "name": "Strzelec wyborowy",
+        "properties": ""
+    },
+    {"id": 63,
+        "name": "Szał bojowy",
+        "properties": ""
+    },
+    {"id": 64,
+        "name": "Szczęście",
+        "properties": ""
+    },
+    {"id": 65,
+        "name": "Szósty zmysł",
+        "properties": ""
+    },
+    {"id": 66,
+        "name": "Szybki refleks",
+        "properties": ""
+    },
+    {"id": 67,
+        "name": "Szybkie wyciągnięcie",
+        "properties": ""
+    },
+    {"id": 68,
+        "name": "Talen artystyczny",
+        "properties": ""
+    },
+    {"id": 69,
+        "name": "Twardziel",
+        "properties": ""
+    },
+    {"id": 70,
+        "name": "Ulicznik",
+        "properties": ""
+    },
+    {"id": 71,
+        "name": "Urodzony wojownik",
+        "properties": ""
+    },
+    {"id": 72,
+        "name": "Wędrowiec",
+        "properties": ""
+    },
+    {"id": 73,
+        "name": "Widzenie w ciemności",
+        "properties": ""
+    },
+    {"id": 74,
+        "name": "Woltyżerka",
+        "properties": ""
+    },
+    {"id": 75,
+        "name": "Wyczucie kierunku",
+        "properties": ""
+    },
+    {"id": 76,
+        "name": "Wykrywanie pułapek",
+        "properties": ""
+    },
+    {"id": 77,
+        "name": "Wyostrzone zmysły",
+        "properties": ""
+    },
+    {"id": 78,
+        "name": "Zapasy",
+        "properties": ""
+    },
+    {"id": 79,
+        "name": "Zapiekła nienawiść",
+        "properties": ""
+    },
+    {"id": 80,
+        "name": "Żyłka handlowa",
+        "properties": ""
+    },
+    {"id": 81,
+        "name": "Broń specjalna (arkan)",
+        "properties": ""
+    },
+    {"id": 82,
+        "name": "Broń specjalna (bicz)",
+        "properties": ""
+    },
+    {"id": 83,
+        "name": "Broń specjalna (bolas)",
+        "properties": ""
+    },
+    {"id": 84,
+        "name": "Broń specjalna (dwuręczna)",
+        "properties": ""
+    },
+    {"id": 85,
+        "name": "Broń specjalna (improwizowana)",
+        "properties": ""
+    },
+    {"id": 86,
+        "name": "Broń specjalna (jednoręczna)",
+        "properties": ""
+    },
+    {"id": 87,
+        "name": "Broń specjalna (długi łuk)",
+        "properties": ""
+    },
+    {"id": 88,
+        "name": "Broń specjalna (elfi łuk)",
+        "properties": ""
+    },
+    {"id": 89,
+        "name": "Broń specjalna (garłacz)",
+        "properties": ""
+    },
+    {"id": 90,
+        "name": "Broń specjalna (Halabarda)",
+        "properties": ""
+    },
+    {"id": 91,
+        "name": "Broń specjalna (kij)",
+        "properties": ""
+    },
+    {"id": 92,
+        "name": "Broń specjalna (kopia)",
+        "properties": ""
+    },
+    {"id": 93,
+        "name": "Broń specjalna (korbacz lub morgenstern)",
+        "properties": ""
+    },
+    {"id": 94,
+        "name": "Broń specjalna (krótki łuk)",
+        "properties": ""
+    },
+    {"id": 95,
+        "name": "Broń specjalna (kule do broni palnej)",
+        "properties": ""
+    },
+    {"id": 96,
+        "name": "Broń specjalna (kusza)",
+        "properties": ""
+    },
+    {"id": 97,
+        "name": "Broń specjalna (kusza pistoletowa)",
+        "properties": ""
+    },
+    {"id": 98,
+        "name": "Broń specjalna (kusza samopowtarzalna)",
+        "properties": ""
+    },
+    {"id": 99,
+        "name": "Broń specjalna (lanca)",
+        "properties": ""
+    },
+    {"id": 100,
+        "name": "Broń specjalna (lewak)",
+        "properties": ""
+    },
+    {"id": 101,
+        "name": "Broń specjalna (łamacz mieczy)",
+        "properties": ""
+    },
+    {"id": 102,
+        "name": "Broń specjalna (łuk)",
+        "properties": ""
+    },
+    {"id": 103,
+        "name": "Broń specjalna (muszkiet hochlandzki)",
+        "properties": ""
+    },
+    {"id": 104,
+        "name": "Broń specjalna (nóż lub gwiazdka do rzucania)",
+        "properties": ""
+    },
+    {"id": 105,
+        "name": "Broń specjalna (oszczep)",
+        "properties": ""
+    },
+    {"id": 106,
+        "name": "Broń specjalna (pistolet)",
+        "properties": ""
+    },
+    {"id": 107,
+        "name": "Broń specjalna (proca)",
+        "properties": ""
+    },
+    {"id": 108,
+        "name": "Broń specjalna (proca drzewcowa)",
+        "properties": ""
+    },
+    {"id": 109,
+        "name": "Broń specjalna (proch)",
+        "properties": ""
+    },
+    {"id": 110,
+        "name": "Broń specjalna (puklerz)",
+        "properties": ""
+    },
+    {"id": 111,
+        "name": "Broń specjalna (rapier)",
+        "properties": ""
+    },
+    {"id": 112,
+        "name": "Broń specjalna (rękawice lub kastety)",
+        "properties": ""
+    },
+    {"id": 113,
+        "name": "Broń specjalna (rusznica)",
+        "properties": ""
+    },
+    {"id": 114,
+        "name": "Broń specjalna (rusznica lub pistolet wielostrzałowy)",
+        "properties": ""
+    },
+    {"id": 115,
+        "name": "Broń specjalna (sieć)",
+        "properties": ""
+    },
+    {"id": 116,
+        "name": "Broń specjalna (strzała lub bełt)",
+        "properties": ""
+    },
+    {"id": 117,
+        "name": "Broń specjalna (szpada)",
+        "properties": ""
+    },
+    {"id": 118,
+        "name": "Broń specjalna (sztylet)",
+        "properties": ""
+    },
+    {"id": 119,
+        "name": "Broń specjalna (tarcza)",
+        "properties": ""
+    },
+    {"id": 120,
+        "name": "Broń specjalna (topór lub młot do rzucania)",
+        "properties": ""
+    },
+    {"id": 121,
+        "name": "Broń specjalna (walka bez broni)",
+        "properties": ""
+    },
+    {"id": 122,
+        "name": "Broń specjalna (włócznia)",
+        "properties": ""
+    }
+]

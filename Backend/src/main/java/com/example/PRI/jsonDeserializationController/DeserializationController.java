@@ -8,6 +8,7 @@ import com.example.PRI.services.character.SurnameService;
 import com.example.PRI.services.character.TalentService;
 import com.example.PRI.services.character.SkillService;
 import com.example.PRI.services.character.PredictionService;
+import com.example.PRI.services.character.HairColorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -35,6 +36,9 @@ public class DeserializationController {
 
     @Autowired
     PredictionService predictionService;
+
+    @Autowired
+    HairColorService hairColorService;
 
     @RequestMapping("/json/name")
     public void nameDeserializationAndDatabaseUpdate() throws IOException {
@@ -94,10 +98,23 @@ public class DeserializationController {
 
         String path = "src/jsons/prediction.json";
         String contents = Files.readString(Paths.get(path));
-        List<Prediction> predictionSkill = objectMapper.readValue(contents, new TypeReference<List<Prediction>>() {
+        List<Prediction> listPrediction = objectMapper.readValue(contents, new TypeReference<List<Prediction>>() {
         });
-        for (Prediction prediction : predictionSkill) {
+        for (Prediction prediction : listPrediction) {
             predictionService.save(prediction);
+        }
+    }
+
+    @RequestMapping("/json/haircolor")
+    public void hairColorDeserializationAndDatabaseUpdate() throws IOException {
+        ObjectMapper objectMapper = new ObjectMapper();
+
+        String path = "src/jsons/hairColor.json";
+        String contents = Files.readString(Paths.get(path));
+        List<HairColor> listhairColor = objectMapper.readValue(contents, new TypeReference<List<HairColor>>() {
+        });
+        for (HairColor hairColor : listhairColor) {
+            hairColorService.save(hairColor);
         }
     }
 }

@@ -1,0 +1,1478 @@
+[{"id": 1,
+  "name": "Brzuchomówstwo",
+  "level": 0
+},
+  {"id": 2,
+    "name": "Brzuchomówstwo",
+    "level": 10
+  },
+  {"id": 3,
+    "name": "Brzuchomówstwo",
+    "level": 20
+  },
+  {"id": 4,
+    "name": "Charakteryzacja",
+    "level": 0
+  },
+  {"id": 5,
+    "name": "Charakteryzacja",
+    "level": 10
+  },
+  {"id": 6,
+    "name": "Charakteryzacja",
+    "level": 20
+  },
+  {"id": 7,
+    "name": "Czytanie i pisanie",
+    "level": 0
+  },
+  {"id": 8,
+    "name": "Czytanie i pisanie",
+    "level": 10
+  },
+  {"id": 9,
+    "name": "Czytanie i pisanie",
+    "level": 20
+  },
+  {"id": 10,
+    "name": "Czytanie z warg",
+    "level": 0
+  },
+  {"id": 11,
+    "name": "Czytanie z warg",
+    "level": 10
+  },
+  {"id": 12,
+    "name": "Czytanie z warg",
+    "level": 20
+  },
+  {"id": 13,
+    "name": "Dowodzenie",
+    "level": 0
+  },
+  {"id": 14,
+    "name": "Dowodzenie",
+    "level": 10
+  },
+  {"id": 15,
+    "name": "Dowodzenie",
+    "level": 20
+  },
+  {"id": 16,
+    "name": "Gadanina",
+    "level": 0
+  },
+  {"id": 17,
+    "name": "Gadanina",
+    "level": 10
+  },
+  {"id": 18,
+    "name": "Gadanina",
+    "level": 20
+  },
+  {"id": 19,
+    "name": "Hazard",
+    "level": 0
+  },
+  {"id": 20,
+    "name": "Hazard",
+    "level": 10
+  },
+  {"id": 21,
+    "name": "Hazard",
+    "level": 20
+  },
+  {"id": 22,
+    "name": "Hipnoza",
+    "level": 0
+  },
+  {"id": 23,
+    "name": "Hipnoza",
+    "level": 10
+  },
+  {"id": 24,
+    "name": "Hipnoza",
+    "level": 20
+  },
+  {"id": 25,
+    "name": "Jeździectwo",
+    "level": 0
+  },
+  {"id": 26,
+    "name": "Jeździectwo",
+    "level": 10
+  },
+  {"id": 27,
+    "name": "Jeździectwo",
+    "level": 20
+  },
+  {"id": 28,
+    "name": "Język tajemny",
+    "level": 0
+  },
+  {"id": 29,
+    "name": "Język tajemny",
+    "level": 10
+  },
+  {"id": 30,
+    "name": "Język tajemny",
+    "level": 20
+  },
+  {"id": 31,
+    "name": "Kuglarstwo (akrobatyka)",
+    "level": 0
+  },
+  {"id": 32,
+    "name": "Kuglarstwo (akrobatyka)",
+    "level": 10
+  },
+  {"id": 33,
+    "name": "Kuglarstwo (akrobatyka)",
+    "level": 20
+  },
+  {"id": 31,
+    "name": "Kuglarstwo (aktorstwo)",
+    "level": 0
+  },
+  {"id": 32,
+    "name": "Kuglarstwo (aktorstwo)",
+    "level": 10
+  },
+  {"id": 33,
+    "name": "Kuglarstwo (aktorstwo)",
+    "level": 20
+  },
+  {"id": 34,
+    "name": "Kuglarstwo (błaznowanie)",
+    "level": 0
+  },
+  {"id": 35,
+    "name": "Kuglarstwo (błaznowanie)",
+    "level": 10
+  },
+  {"id": 36,
+    "name": "Kuglarstwo (błaznowanie)",
+    "level": 20
+  },
+  {"id": 37,
+    "name": "Kuglarstwo (gawędziarstwo)",
+    "level": 0
+  },
+  {"id": 38,
+    "name": "Kuglarstwo (gawędziarstwo)",
+    "level": 10
+  },
+  {"id": 39,
+    "name": "Kuglarstwo (gawędziarstwo)",
+    "level": 20
+  },
+  {"id": 40,
+    "name": "Kuglarstwo (komendianctwo)",
+    "level": 0
+  },
+  {"id": 41,
+    "name": "Kuglarstwo (komendianctwo)",
+    "level": 10
+  },
+  {"id": 42,
+    "name": "Kuglarstwo (komendianctwo)",
+    "level": 20
+  },
+  {"id": 43,
+    "name": "Kuglarstwo (mimika)",
+    "level": 0
+  },
+  {"id": 44,
+    "name": "Kuglarstwo (mimika)",
+    "level": 10
+  },
+  {"id": 45,
+    "name": "Kuglarstwo (mimika)",
+    "level": 20
+  },
+  {"id": 46,
+    "name": "Kuglarstwo (muzykalność)",
+    "level": 0
+  },
+  {"id": 47,
+    "name": "Kuglarstwo (muzykalność)",
+    "level": 10
+  },
+  {"id": 48,
+    "name": "Kuglarstwo (muzykalność)",
+    "level": 20
+  },
+  {"id": 49,
+    "name": "Kuglarstwo (połykanie ognia)",
+    "level": 0
+  },
+  {"id": 50,
+    "name": "Kuglarstwo (połykanie ognia)",
+    "level": 10
+  },
+  {"id": 51,
+    "name": "Kuglarstwo (połykanie ognia)",
+    "level": 20
+  },
+  {"id": 52,
+    "name": "Kuglarstwo (śpiew)",
+    "level": 0
+  },
+  {"id": 53,
+    "name": "Kuglarstwo (śpiew)",
+    "level": 10
+  },
+  {"id": 54,
+    "name": "Kuglarstwo (śpiew)",
+    "level": 20
+  },
+  {"id": 55,
+    "name": "Kuglarstwo (taniec)",
+    "level": 0
+  },
+  {"id": 56,
+    "name": "Kuglarstwo (taniec)",
+    "level": 10
+  },
+  {"id": 57,
+    "name": "Kuglarstwo (taniec)",
+    "level": 20
+  },
+  {"id": 58,
+    "name": "Kuglarstwo (wróżenie z dłoni)",
+    "level": 0
+  },
+  {"id": 59,
+    "name": "Kuglarstwo (wróżenie z dłoni)",
+    "level": 10
+  },
+  {"id": 60,
+    "name": "Kuglarstwo (wróżenie z dłoni)",
+    "level": 20
+  },
+  {"id": 61,
+    "name": "Kuglarstwo (żonglerka)",
+    "level": 0
+  },
+  {"id": 62,
+    "name": "Kuglarstwo (żonglerka)",
+    "level": 10
+  },
+  {"id": 63,
+    "name": "Kuglarstwo (żonglerka)",
+    "level": 20
+  },
+  {"id": 64,
+    "name": "Leczenie",
+    "level": 0
+  },
+  {"id": 65,
+    "name": "Leczenie",
+    "level": 10
+  },
+  {"id": 66,
+    "name": "Leczenie",
+    "level": 20
+  },
+  {"id": 67,
+    "name": "Mocna głowa",
+    "level": 0
+  },
+  {"id": 68,
+    "name": "Mocna głowa",
+    "level": 10
+  },
+  {"id": 69,
+    "name": "Mocna głowa",
+    "level": 20
+  },
+  {"id": 70,
+    "name": "Nauka (alchemia)",
+    "level": 0
+  },
+  {"id": 71,
+    "name": "Nauka (alchemia)",
+    "level": 10
+  },
+  {"id": 72,
+    "name": "Nauka (alchemia)",
+    "level": 20
+  },
+  {"id": 73,
+    "name": "Nauka (astronomia)",
+    "level": 0
+  },
+  {"id": 74,
+    "name": "Nauka (astronomia)",
+    "level": 10
+  },
+  {"id": 75,
+    "name": "Nauka (astronomia)",
+    "level": 20
+  },
+  {"id": 76,
+    "name": "Nauka (demonologia)",
+    "level": 0
+  },
+  {"id": 77,
+    "name": "Nauka (demonologia)",
+    "level": 10
+  },
+  {"id": 78,
+    "name": "Nauka (demonologia)",
+    "level": 20
+  },
+  {"id": 79,
+    "name": "Nauka (filozofia)",
+    "level": 0
+  },
+  {"id": 80,
+    "name": "Nauka (filozofia)",
+    "level": 10
+  },
+  {"id": 81,
+    "name": "Nauka (filozofia)",
+    "level": 20
+  },
+  {"id": 82,
+    "name": "Nauka (genealogia/heraldyka)",
+    "level": 0
+  },
+  {"id": 83,
+    "name": "Nauka (genealogia/heraldyka)",
+    "level": 10
+  },
+  {"id": 84,
+    "name": "Nauka (genealogia/heraldyka)",
+    "level": 20
+  },
+  {"id": 85,
+    "name": "Nauka (historia)",
+    "level": 0
+  },
+  {"id": 86,
+    "name": "Nauka (historia)",
+    "level": 10
+  },
+  {"id": 87,
+    "name": "Nauka (historia)",
+    "level": 20
+  },
+  {"id": 88,
+    "name": "Nauka (magia)",
+    "level": 0
+  },
+  {"id": 89,
+    "name": "Nauka (magia)",
+    "level": 10
+  },
+  {"id": 90,
+    "name": "Nauka (magia)",
+    "level": 20
+  },
+  {"id": 91,
+    "name": "Nauka (matematyka)",
+    "level": 0
+  },
+  {"id": 92,
+    "name": "Nauka (matematyka)",
+    "level": 10
+  },
+  {"id": 93,
+    "name": "Nauka (matematyka)",
+    "level": 20
+  },
+  {"id": 94,
+    "name": "Nauka (nekromancja)",
+    "level": 0
+  },
+  {"id": 95,
+    "name": "Nauka (nekromancja)",
+    "level": 10
+  },
+  {"id": 96,
+    "name": "Nauka (nekromancja)",
+    "level": 20
+  },
+  {"id": 97,
+    "name": "Nauka (prawo)",
+    "level": 0
+  },
+  {"id": 98,
+    "name": "Nauka (prawo)",
+    "level": 10
+  },
+  {"id": 99,
+    "name": "Nauka (prawo)",
+    "level": 20
+  },
+  {"id": 100,
+    "name": "Nauka (runy)",
+    "level": 0
+  },
+  {"id": 101,
+    "name": "Nauka (runy)",
+    "level": 10
+  },
+  {"id": 102,
+    "name": "Nauka (runy)",
+    "level": 20
+  },
+  {"id": 103,
+    "name": "Nauka (strategia/taktyka)",
+    "level": 0
+  },
+  {"id": 104,
+    "name": "Nauka (strategia/taktyka)",
+    "level": 10
+  },
+  {"id": 105,
+    "name": "Nauka (strategia/taktyka)",
+    "level": 20
+  },
+  {"id": 106,
+    "name": "Nauka (sztuka)",
+    "level": 0
+  },
+  {"id": 107,
+    "name": "Nauka (sztuka)",
+    "level": 10
+  },
+  {"id": 108,
+    "name": "Nauka (sztuka)",
+    "level": 20
+  },
+  {"id": 109,
+    "name": "Nauka (teologia)",
+    "level": 0
+  },
+  {"id": 110,
+    "name": "Nauka (teologia)",
+    "level": 10
+  },
+  {"id": 111,
+    "name": "Nauka (teologia)",
+    "level": 20
+  },
+  {"id": 112,
+    "name": "Nawigacja",
+    "level": 0
+  },
+  {"id": 113,
+    "name": "Nawigacja",
+    "level": 10
+  },
+  {"id": 114,
+    "name": "Nawigacja",
+    "level": 20
+  },
+  {"id": 115,
+    "name": "Opieka nad zwierzętami",
+    "level": 0
+  },
+  {"id": 116,
+    "name": "Opieka nad zwierzętami",
+    "level": 10
+  },
+  {"id": 117,
+    "name": "Opieka nad zwierzętami",
+    "level": 20
+  },
+  {"id": 118,
+    "name": "Oswajanie",
+    "level": 0
+  },
+  {"id": 119,
+    "name": "Oswajanie",
+    "level": 10
+  },
+  {"id": 120,
+    "name": "Oswajanie",
+    "level": 20
+  },
+  {"id": 121,
+    "name": "Otwieranie zamków",
+    "level": 0
+  },
+  {"id": 122,
+    "name": "Otwieranie zamków",
+    "level": 10
+  },
+  {"id": 123,
+    "name": "Otwieranie zamków",
+    "level": 20
+  },
+  {"id": 124,
+    "name": "Plotkowanie",
+    "level": 0
+  },
+  {"id": 125,
+    "name": "Plotkowanie",
+    "level": 10
+  },
+  {"id": 126,
+    "name": "Plotkowanie",
+    "level": 20
+  },
+  {"id": 127,
+    "name": "Pływanie",
+    "level": 0
+  },
+  {"id": 128,
+    "name": "Pływanie",
+    "level": 10
+  },
+  {"id": 129,
+    "name": "Pływanie",
+    "level": 20
+  },
+  {"id": 127,
+    "name": "Powożenie",
+    "level": 0
+  },
+  {"id": 128,
+    "name": "Powożenie",
+    "level": 10
+  },
+  {"id": 129,
+    "name": "Powożenie",
+    "level": 20
+  },
+  {"id": 130,
+    "name": "Przekonywanie",
+    "level": 0
+  },
+  {"id": 131,
+    "name": "Przekonywanie",
+    "level": 10
+  },
+  {"id": 132,
+    "name": "Przekonywanie",
+    "level": 20
+  },
+  {"id": 133,
+    "name": "Przeszukiwanie",
+    "level": 0
+  },
+  {"id": 134,
+    "name": "Przeszukiwanie",
+    "level": 10
+  },
+  {"id": 135,
+    "name": "Przeszukiwanie",
+    "level": 20
+  },
+  {"id": 136,
+    "name": "Rzemiosło (aptekarstwo)",
+    "level": 0
+  },
+  {"id": 137,
+    "name": "Rzemiosło (aptekarstwo)",
+    "level": 10
+  },
+  {"id": 138,
+    "name": "Rzemiosło (aptekarstwo)",
+    "level": 20
+  },
+  {"id": 139,
+    "name": "Rzemiosło (bednarstwo)",
+    "level": 0
+  },
+  {"id": 140,
+    "name": "Rzemiosło (bednarstwo)",
+    "level": 10
+  },
+  {"id": 141,
+    "name": "Rzemiosło (bednarstwo)",
+    "level": 20
+  },
+  {"id": 142,
+    "name": "Rzemiosło (garbarstwo)",
+    "level": 0
+  },
+  {"id": 143,
+    "name": "Rzemiosło (garbarstwo)",
+    "level": 10
+  },
+  {"id": 144,
+    "name": "Rzemiosło (garbarstwo)",
+    "level": 20
+  },
+  {"id": 145,
+    "name": "Rzemiosło (gotowanie)",
+    "level": 0
+  },
+  {"id": 146,
+    "name": "Rzemiosło (gotowanie)",
+    "level": 10
+  },
+  {"id": 147,
+    "name": "Rzemiosło (gotowanie)",
+    "level": 20
+  },
+  {"id": 148,
+    "name": "Rzemiosło (górnictwo)",
+    "level": 0
+  },
+  {"id": 149,
+    "name": "Rzemiosło (górnictwo)",
+    "level": 10
+  },
+  {"id": 150,
+    "name": "Rzemiosło (górnictwo)",
+    "level": 20
+  },
+  {"id": 151,
+    "name": "Rzemiosło (handel)",
+    "level": 0
+  },
+  {"id": 152,
+    "name": "Rzemiosło (handel)",
+    "level": 10
+  },
+  {"id": 153,
+    "name": "Rzemiosło (handel)",
+    "level": 20
+  },
+  {"id": 154,
+    "name": "Rzemiosło (jubilerstwo)",
+    "level": 0
+  },
+  {"id": 155,
+    "name": "Rzemiosło (jubilerstwo)",
+    "level": 10
+  },
+  {"id": 156,
+    "name": "Rzemiosło (jubilerstwo)",
+    "level": 20
+  },
+  {"id": 157,
+    "name": "Rzemiosło (kaligrafia)",
+    "level": 0
+  },
+  {"id": 158,
+    "name": "Rzemiosło (kaligrafia)",
+    "level": 10
+  },
+  {"id": 159,
+    "name": "Rzemiosło (kaligrafia)",
+    "level": 20
+  },
+  {"id": 160,
+    "name": "Rzemiosło (kamieniarstwo)",
+    "level": 0
+  },
+  {"id": 161,
+    "name": "Rzemiosło (kamieniarstwo)",
+    "level": 10
+  },
+  {"id": 162,
+    "name": "Rzemiosło (kamieniarstwo)",
+    "level": 20
+  },
+  {"id": 163,
+    "name": "Rzemiosło (kartografia)",
+    "level": 0
+  },
+  {"id": 164,
+    "name": "Rzemiosło (kartografia)",
+    "level": 10
+  },
+  {"id": 165,
+    "name": "Rzemiosło (kartografia)",
+    "level": 20
+  },
+  {"id": 166,
+    "name": "Rzemiosło (kowalstwo)",
+    "level": 0
+  },
+  {"id": 167,
+    "name": "Rzemiosło (kowalstwo)",
+    "level": 10
+  },
+  {"id": 168,
+    "name": "Rzemiosło (kowalstwo)",
+    "level": 20
+  },
+  {"id": 169,
+    "name": "Rzemiosło (krawiectwo)",
+    "level": 0
+  },
+  {"id": 170,
+    "name": "Rzemiosło (krawiectwo)",
+    "level": 10
+  },
+  {"id": 171,
+    "name": "Rzemiosło (krawiectwo)",
+    "level": 20
+  },
+  {"id": 172,
+    "name": "Rzemiosło (młynarstwo)",
+    "level": 0
+  },
+  {"id": 173,
+    "name": "Rzemiosło (młynarstwo)",
+    "level": 10
+  },
+  {"id": 174,
+    "name": "Rzemiosło (młynarstwo)",
+    "level": 20
+  },
+  {"id": 175,
+    "name": "Rzemiosło (piwowarstwo)",
+    "level": 0
+  },
+  {"id": 176,
+    "name": "Rzemiosło (piwowarstwo)",
+    "level": 10
+  },
+  {"id": 177,
+    "name": "Rzemiosło (piwowarstwo)",
+    "level": 20
+  },
+  {"id": 178,
+    "name": "Rzemiosło (płatnerstwo)",
+    "level": 0
+  },
+  {"id": 179,
+    "name": "Rzemiosło (płatnerstwo)",
+    "level": 10
+  },
+  {"id": 180,
+    "name": "Rzemiosło (płatnerstwo)",
+    "level": 20
+  },
+  {"id": 181,
+    "name": "Rzemiosło (rusznikarstwo)",
+    "level": 0
+  },
+  {"id": 182,
+    "name": "Rzemiosło (rusznikarstwo)",
+    "level": 10
+  },
+  {"id": 183,
+    "name": "Rzemiosło (rusznikarstwo)",
+    "level": 20
+  },
+  {"id": 184,
+    "name": "Rzemiosło (rymarstwo)",
+    "level": 0
+  },
+  {"id": 185,
+    "name": "Rzemiosło (rymarstwo)",
+    "level": 10
+  },
+  {"id": 186,
+    "name": "Rzemiosło (rymarstwo)",
+    "level": 20
+  },
+  {"id": 187,
+    "name": "Rzemiosło (stolarstwo)",
+    "level": 0
+  },
+  {"id": 188,
+    "name": "Rzemiosło (stolarstwo)",
+    "level": 10
+  },
+  {"id": 189,
+    "name": "Rzemiosło (stolarstwo)",
+    "level": 20
+  },
+  {"id": 190,
+    "name": "Rzemiosło (sztuknictwo)",
+    "level": 0
+  },
+  {"id": 191,
+    "name": "Rzemiosło (sztuknictwo)",
+    "level": 10
+  },
+  {"id": 192,
+    "name": "Rzemiosło (sztuknictwo)",
+    "level": 20
+  },
+  {"id": 193,
+    "name": "Rzemiosło (szewstwo)",
+    "level": 0
+  },
+  {"id": 194,
+    "name": "Rzemiosło (szewstwo)",
+    "level": 10
+  },
+  {"id": 195,
+    "name": "Rzemiosło (szewstwo)",
+    "level": 20
+  },
+  {"id": 196,
+    "name": "Rzemiosło (sztuka)",
+    "level": 0
+  },
+  {"id": 197,
+    "name": "Rzemiosło (sztuka)",
+    "level": 10
+  },
+  {"id": 198,
+    "name": "Rzemiosło (sztuka)",
+    "level": 20
+  },
+  {"id": 199,
+    "name": "Rzemiosło (świecarstwo)",
+    "level": 0
+  },
+  {"id": 200,
+    "name": "Rzemiosło (świecarstwo)",
+    "level": 10
+  },
+  {"id": 201,
+    "name": "Rzemiosło (świecarstwo)",
+    "level": 20
+  },
+  {"id": 202,
+    "name": "Rzemiosło (uprawa ziemi)",
+    "level": 0
+  },
+  {"id": 203,
+    "name": "Rzemiosło (uprawa ziemi)",
+    "level": 10
+  },
+  {"id": 204,
+    "name": "Rzemiosło (uprawa ziemi)",
+    "level": 20
+  },
+  {"id": 205,
+    "name": "Rzemiosło (wyrób łuków)",
+    "level": 0
+  },
+  {"id": 206,
+    "name": "Rzemiosło (wyrób łuków)",
+    "level": 10
+  },
+  {"id": 207,
+    "name": "Rzemiosło (wyrób łuków)",
+    "level": 20
+  },
+  {"id": 208,
+    "name": "Rzemiosło (zielarstwo)",
+    "level": 0
+  },
+  {"id": 209,
+    "name": "Rzemiosło (zielarstwo)",
+    "level": 10
+  },
+  {
+    "id": 210,
+    "name": "Rzemiosło (zielarstwo)",
+    "level": 20
+  },
+  {"id": 211,
+    "name": "Rzemiosło (złotnictwo)",
+    "level": 0
+  },
+  {"id": 212,
+    "name": "Rzemiosło (złotnictwo)",
+    "level": 10
+  },
+  {"id": 213,
+    "name": "Rzemiosło (złotnictwo)",
+    "level": 20
+  },
+  {"id": 214,
+    "name": "Sekretne znaki (łowców)",
+    "level": 0
+  },
+  {"id": 215,
+    "name": "Sekretne znaki (łowców)",
+    "level": 10
+  },
+  {"id": 216,
+    "name": "Sekretne znaki (łowców)",
+    "level": 20
+  },
+  {"id": 217,
+    "name": "Sekretne znaki (rycerzy zakonnych)",
+    "level": 0
+  },
+  {"id": 218,
+    "name": "Sekretne znaki (rycerzy zakonnych)",
+    "level": 10
+  },
+  {"id": 219,
+    "name": "Sekretne znaki (rycerzy zakonnych)",
+    "level": 20
+  },
+  {"id": 220,
+    "name": "Sekretne znaki (złodziei)",
+    "level": 0
+  },
+  {"id": 221,
+    "name": "Sekretne znaki (złodziei)",
+    "level": 10
+  },
+  {"id": 222,
+    "name": "Sekretne znaki (złodziei)",
+    "level": 20
+  },
+  {"id": 223,
+    "name": "Sekretne znaki (zwiadowców)",
+    "level": 0
+  },
+  {"id": 224,
+    "name": "Sekretne znaki (zwiadowców)",
+    "level": 10
+  },
+  {"id": 225,
+    "name": "Sekretne znaki (zwiadowców)",
+    "level": 20
+  },
+  {"id": 226,
+    "name": "Sekretny język (bitewny)",
+    "level": 0
+  },
+  {"id": 227,
+    "name": "Sekretny język (bitewny)",
+    "level": 10
+  },
+  {"id": 228,
+    "name": "Sekretny język (bitewny)",
+    "level": 20
+  },
+  {"id": 229,
+    "name": "Sekretny język (łowców)",
+    "level": 0
+  },
+  {"id": 230,
+    "name": "Sekretny język (łowców)",
+    "level": 10
+  },
+  {"id": 231,
+    "name": "Sekretny język (łowców)",
+    "level": 20
+  },
+  {"id": 232,
+    "name": "Sekretny język (złodziejski)",
+    "level": 0
+  },
+  {"id": 233,
+    "name": "Sekretny język (złodziejski)",
+    "level": 10
+  },
+  {"id": 234,
+    "name": "Sekretny język (złodziejski)",
+    "level": 20
+  },
+  {"id": 235,
+    "name": "Skradanie się",
+    "level": 0
+  },
+  {"id": 236,
+    "name": "Skradanie się",
+    "level": 10
+  },
+  {"id": 237,
+    "name": "Skradanie się",
+    "level": 20
+  },
+  {"id": 238,
+    "name": "Splatanie magii",
+    "level": 0
+  },
+  {"id": 239,
+    "name": "Splatanie magii",
+    "level": 10
+  },
+  {"id": 240,
+    "name": "Splatanie magii",
+    "level": 20
+  },
+  {"id": 241,
+    "name": "Spostrzegawczość",
+    "level": 0
+  },
+  {"id": 242,
+    "name": "Spostrzegawczość",
+    "level": 10
+  },
+  {"id": 243,
+    "name": "Spostrzegawczość",
+    "level": 20
+  },
+  {"id": 244,
+    "name": "Sztuka przetrwania",
+    "level": 0
+  },
+  {"id": 245,
+    "name": "Sztuka przetrwania",
+    "level": 10
+  },
+  {"id": 246,
+    "name": "Sztuka przetrwania",
+    "level": 20
+  },
+  {"id": 247,
+    "name": "Śledzenie",
+    "level": 0
+  },
+  {"id": 248,
+    "name": "Śledzenie",
+    "level": 10
+  },
+  {"id": 249,
+    "name": "Śledzenie",
+    "level": 20
+  },
+  {"id": 250,
+    "name": "Targowanie",
+    "level": 0
+  },
+  {"id": 251,
+    "name": "Targowanie",
+    "level": 10
+  },
+  {"id": 252,
+    "name": "Targowanie",
+    "level": 20
+  },
+  {"id": 253,
+    "name": "Torturowanie",
+    "level": 0
+  },
+  {"id": 254,
+    "name": "Torturowanie",
+    "level": 10
+  },
+  {"id": 255,
+    "name": "Torturowanie",
+    "level": 20
+  },
+  {"id": 256,
+    "name": "Tresura",
+    "level": 0
+  },
+  {"id": 257,
+    "name": "Tresura",
+    "level": 10
+  },
+  {"id": 258,
+    "name": "Tresura",
+    "level": 20
+  },
+  {"id": 259,
+    "name": "Tropienie",
+    "level": 0
+  },
+  {"id": 260,
+    "name": "Tropienie",
+    "level": 10
+  },
+  {"id": 261,
+    "name": "Tropienie",
+    "level": 20
+  },
+  {"id": 262,
+    "name": "Ukrywanie się",
+    "level": 0
+  },
+  {"id": 263,
+    "name": "Ukrywanie się",
+    "level": 10
+  },
+  {"id": 264,
+    "name": "Ukrywanie się",
+    "level": 20
+  },
+  {"id": 265,
+    "name": "Unik",
+    "level": 0
+  },
+  {"id": 266,
+    "name": "Unik",
+    "level": 10
+  },
+  {"id": 267,
+    "name": "Unik",
+    "level": 20
+  },
+  {"id": 268,
+    "name": "Warzenie trucizn",
+    "level": 0
+  },
+  {"id": 269,
+    "name": "Warzenie trucizn",
+    "level": 10
+  },
+  {"id": 270,
+    "name": "Warzenie trucizn",
+    "level": 20
+  },
+  {"id": 271,
+    "name": "Wiedza (Bretonia)",
+    "level": 0
+  },
+  {"id": 272,
+    "name": "Wiedza (Bretonia)",
+    "level": 10
+  },
+  {"id": 273,
+    "name": "Wiedza (Bretonia)",
+    "level": 20
+  },
+  {"id": 274,
+    "name": "Wiedza (Estalia)",
+    "level": 0
+  },
+  {"id": 275,
+    "name": "Wiedza (Estalia)",
+    "level": 10
+  },
+  {"id": 276,
+    "name": "Wiedza (Estalia)",
+    "level": 20
+  },
+  {"id": 277,
+    "name": "Wiedza (Imperium)",
+    "level": 0
+  },
+  {"id": 278,
+    "name": "Wiedza (Imperium)",
+    "level": 10
+  },
+  {"id": 279,
+    "name": "Wiedza (Imperium)",
+    "level": 20
+  },
+  {"id": 280,
+    "name": "Wiedza (Jałowa Kraina)",
+    "level": 0
+  },
+  {"id": 281,
+    "name": "Wiedza (Jałowa Kraina)",
+    "level": 10
+  },
+  {"id": 282,
+    "name": "Wiedza (Jałowa Kraina)",
+    "level": 20
+  },
+  {"id": 283,
+    "name": "Wiedza (Kislev)",
+    "level": 0
+  },
+  {"id": 284,
+    "name": "Wiedza (Kislev)",
+    "level": 10
+  },
+  {"id": 285,
+    "name": "Wiedza (Kislev)",
+    "level": 20
+  },
+  {"id": 286,
+    "name": "Wiedza (Księstwa Graniczne)",
+    "level": 0
+  },
+  {"id": 287,
+    "name": "Wiedza (Księstwa Graniczne)",
+    "level": 10
+  },
+  {"id": 288,
+    "name": "Wiedza (Księstwa Graniczne)",
+    "level": 20
+  },
+  {"id": 289,
+    "name": "Wiedza (Norska)",
+    "level": 0
+  },
+  {"id": 290,
+    "name": "Wiedza (Norska)",
+    "level": 10
+  },
+  {"id": 291,
+    "name": "Wiedza (Norska)",
+    "level": 20
+  },
+  {"id": 292,
+    "name": "Wiedza (Tilea)",
+    "level": 0
+  },
+  {"id": 293,
+    "name": "Wiedza (Tilea)",
+    "level": 10
+  },
+  {"id": 294,
+    "name": "Wiedza (Tilea)",
+    "level": 20
+  },
+  {"id": 295,
+    "name": "Wiedza (elfy)",
+    "level": 0
+  },
+  {"id": 296,
+    "name": "Wiedza (elfy)",
+    "level": 10
+  },
+  {"id": 297,
+    "name": "Wiedza (elfy)",
+    "level": 20
+  },
+  {"id": 298,
+    "name": "Wiedza (krasnoludy)",
+    "level": 0
+  },
+  {"id": 299,
+    "name": "Wiedza (krasnoludy)",
+    "level": 10
+  },
+  {"id": 300,
+    "name": "Wiedza (krasnoludy)",
+    "level": 20
+  },
+  {"id": 301,
+    "name": "Wiedza (niziołki)",
+    "level": 0
+  },
+  {"id": 302,
+    "name": "Wiedza (niziołki)",
+    "level": 10
+  },
+  {"id": 303,
+    "name": "Wiedza (niziołki)",
+    "level": 20
+  },
+  {"id": 304,
+    "name": "Wiedza (ogry)",
+    "level": 0
+  },
+  {"id": 305,
+    "name": "Wiedza (ogry)",
+    "level": 10
+  },
+  {"id": 306,
+    "name": "Wiedza (ogry)",
+    "level": 20
+  },
+  {"id": 307,
+    "name": "Wioślarstwo",
+    "level": 0
+  },
+  {"id": 308,
+    "name": "Wioślarstwo",
+    "level": 10
+  },
+  {"id": 309,
+    "name": "Wioślarstwo",
+    "level": 20
+  },
+  {"id": 310,
+    "name": "Wspinaczka",
+    "level": 0
+  },
+  {"id": 311,
+    "name": "Wspinaczka",
+    "level": 10
+  },
+  {"id": 312,
+    "name": "Wspinaczka",
+    "level": 20
+  },
+  {"id": 313,
+    "name": "Wycena",
+    "level": 0
+  },
+  {"id": 314,
+    "name": "Wycena",
+    "level": 10
+  },
+  {"id": 315,
+    "name": "Wycena",
+    "level": 20
+  },
+  {"id": 316,
+    "name": "Wykrywanie magii",
+    "level": 0
+  },
+  {"id": 317,
+    "name": "Wykrywanie magii",
+    "level": 10
+  },
+  {"id": 318,
+    "name": "Wykrywanie magii",
+    "level": 20
+  },
+  {"id": 319,
+    "name": "Zastawianie pułapek",
+    "level": 0
+  },
+  {"id": 320,
+    "name": "Zastawianie pułapek",
+    "level": 10
+  },
+  {"id": 321,
+    "name": "Zastawianie pułapek",
+    "level": 20
+  },
+  {"id": 322,
+    "name": "Zastraszanie",
+    "level": 0
+  },
+  {"id": 323,
+    "name": "Zastraszanie",
+    "level": 10
+  },
+  {"id": 324,
+    "name": "Zastraszanie",
+    "level": 20
+  },
+  {"id": 325,
+    "name": "Znajomość języka (Bretonia)",
+    "level": 0
+  },
+  {"id": 326,
+    "name": "Znajomość języka (Bretonia)",
+    "level": 10
+  },
+  {"id": 327,
+    "name": "Znajomość języka (Bretonia)",
+    "level": 20
+  },
+  {"id": 328,
+    "name": "Znajomość języka (elfi)",
+    "level": 0
+  },
+  {"id": 329,
+    "name": "Znajomość języka (elfi)",
+    "level": 10
+  },
+  {"id": 330,
+    "name": "Znajomość języka (elfi)",
+    "level": 20
+  },
+  {"id": 331,
+    "name": "Znajomość języka (Estalia)",
+    "level": 0
+  },
+  {"id": 332,
+    "name": "Znajomość języka (Estalia)",
+    "level": 10
+  },
+  {"id": 333,
+    "name": "Znajomość języka (Estalia)",
+    "level": 20
+  },
+  {"id": 334,
+    "name": "Znajomość języka (krasnoludzki)",
+    "level": 0
+  },
+  {"id": 335,
+    "name": "Znajomość języka (krasnoludzki)",
+    "level": 10
+  },
+  {"id": 336,
+    "name": "Znajomość języka (krasnoludzki)",
+    "level": 20
+  },
+  {"id": 337,
+    "name": "Znajomość języka (Kislev)",
+    "level": 0
+  },
+  {"id": 338,
+    "name": "Znajomość języka (Kislev)",
+    "level": 10
+  },
+  {"id": 339,
+    "name": "Znajomość języka (Kislev)",
+    "level": 20
+  },
+  {"id": 340,
+    "name": "Znajomość języka (Norska)",
+    "level": 0
+  },
+  {"id": 341,
+    "name": "Znajomość języka (Norska)",
+    "level": 10
+  },
+  {"id": 342,
+    "name": "Znajomość języka (Norska)",
+    "level": 20
+  },
+  {"id": 343,
+    "name": "Znajomość języka (Tilea)",
+    "level": 0
+  },
+  {"id": 344,
+    "name": "Znajomość języka (Tilea)",
+    "level": 10
+  },
+  {"id": 345,
+    "name": "Znajomość języka (Tilea)",
+    "level": 20
+  },
+  {"id": 346,
+    "name": "Znajomość języka (Imperium)",
+    "level": 0
+  },
+  {"id": 347,
+    "name": "Znajomość języka (Imperium)",
+    "level": 10
+  },
+  {"id": 348,
+    "name": "Znajomość języka (Imperium)",
+    "level": 20
+  },
+  {"id": 349,
+    "name": "Znajomość języka (orki, gobliny, hobgobliny)",
+    "level": 0
+  },
+  {"id": 350,
+    "name": "Znajomość języka (orki, gobliny, hobgobliny)",
+    "level": 10
+  },
+  {"id": 351,
+    "name": "Znajomość języka (orki, gobliny, hobgobliny)",
+    "level": 20
+  },
+  {"id": 352,
+    "name": "Znajomość języka (ogry)",
+    "level": 0
+  },
+  {"id": 353,
+    "name": "Znajomość języka (ogry)",
+    "level": 10
+  },
+  {"id": 354,
+    "name": "Znajomość języka (ogry)",
+    "level": 20
+  },
+  {"id": 355,
+    "name": "Znajomość języka (zwierzoludzie i inne istoty chaosu)",
+    "level": 0
+  },
+  {"id": 356,
+    "name": "Znajomość języka (zwierzoludzie i inne istoty chaosu)",
+    "level": 10
+  },
+  {"id": 357,
+    "name": "Znajomość języka (zwierzoludzie i inne istoty chaosu)",
+    "level": 20
+  },
+  {"id": 358,
+    "name": "Zwinne palce",
+    "level": 0
+  },
+  {"id": 359,
+    "name": "Zwinne palce",
+    "level": 10
+  },
+  {"id": 360,
+    "name": "Zwinne palce",
+    "level": 20
+  },
+  {"id": 361,
+    "name": "Żeglarstwo",
+    "level": 0
+  },
+  {"id": 362,
+    "name": "Żeglarstwo",
+    "level": 10
+  },
+  {"id": 363,
+    "name": "Żeglarstwo",
+    "level": 20
+  }
+]

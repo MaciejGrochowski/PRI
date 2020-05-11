@@ -1,15 +1,13 @@
 package com.example.PRI.jsonDeserializationController;
 
-import com.example.PRI.entities.character.Name;
-import com.example.PRI.entities.character.Skill;
-import com.example.PRI.entities.character.Surname;
-import com.example.PRI.entities.character.Talent;
+import com.example.PRI.entities.character.*;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.example.PRI.services.character.NameService;
 import com.example.PRI.services.character.SurnameService;
 import com.example.PRI.services.character.TalentService;
 import com.example.PRI.services.character.SkillService;
+import com.example.PRI.services.character.PredictionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -34,6 +32,9 @@ public class DeserializationController {
 
     @Autowired
     SkillService skillService;
+
+    @Autowired
+    PredictionService predictionService;
 
     @RequestMapping("/json/name")
     public void nameDeserializationAndDatabaseUpdate() throws IOException {
@@ -84,6 +85,19 @@ public class DeserializationController {
         });
         for (Skill skill : listSkill) {
             skillService.save(skill);
+        }
+    }
+
+    @RequestMapping("/json/prediction")
+    public void predictionDeserializationAndDatabaseUpdate() throws IOException {
+        ObjectMapper objectMapper = new ObjectMapper();
+
+        String path = "src/jsons/prediction.json";
+        String contents = Files.readString(Paths.get(path));
+        List<Prediction> predictionSkill = objectMapper.readValue(contents, new TypeReference<List<Prediction>>() {
+        });
+        for (Prediction prediction : predictionSkill) {
+            predictionService.save(prediction);
         }
     }
 }

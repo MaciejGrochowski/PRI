@@ -17,7 +17,7 @@ public class Apperance extends GeneralEntity {
 
     @Column(unique = true)
     String name;
-
+    String type;
     double probability;
 
     //ToDiscuss - Na cechy wyglądu wpływa wiara, płeć, rasa i profesje - jak to zbudować?

@@ -38,6 +38,9 @@ public class DeserializationController {
     @Autowired
     EyeColorService eyeColorService;
 
+    @Autowired
+    ApperanceService apperanceService;
+
     @RequestMapping("/json/name")
     public void nameDeserializationAndDatabaseUpdate() throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
@@ -126,6 +129,19 @@ public class DeserializationController {
         });
         for (EyeColor eyeColor : listEyeColor) {
             eyeColorService.save(eyeColor);
+        }
+    }
+
+    @RequestMapping("/json/apperance")
+    public void appearanceDeserializationAndDatabaseUpdate() throws IOException {
+        ObjectMapper objectMapper = new ObjectMapper();
+
+        String path = "src/jsons/appearance.json";
+        String contents = Files.readString(Paths.get(path));
+        List<Apperance> listAperance = objectMapper.readValue(contents, new TypeReference<List<Apperance>>() {
+        });
+        for (Apperance apperance : listAperance) {
+            apperanceService.save(apperance);
         }
     }
 }

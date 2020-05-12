@@ -287,15 +287,15 @@ public class CharacterService extends GeneralService {
         haircolors.add(hai5);
 
         List<Apperance> apperances = new ArrayList<>();
-        Apperance ap1 = new Apperance("blizna pod okiem", 0.1);
+        Apperance ap1 = new Apperance("blizna pod okiem", "test", 0.1);
         apperanceService.save(ap1);
-        Apperance ap2 = new Apperance("brak ręki", 0.3);
+        Apperance ap2 = new Apperance("brak ręki","test", 0.3);
         apperanceService.save(ap2);
-        Apperance ap3 = new Apperance("znamię na nodze", 0.2);
+        Apperance ap3 = new Apperance("znamię na nodze","test", 0.2);
         apperanceService.save(ap3);
-        Apperance ap4 = new Apperance("blizna na plecach", 0.5);
+        Apperance ap4 = new Apperance("blizna na plecach", "test", 0.5);
         apperanceService.save(ap4);
-        Apperance ap5 = new Apperance("długie rzęsy", 0.4);
+        Apperance ap5 = new Apperance("długie rzęsy", "test", 0.4);
         apperanceService.save(ap5);
 
         apperances.add(ap1);

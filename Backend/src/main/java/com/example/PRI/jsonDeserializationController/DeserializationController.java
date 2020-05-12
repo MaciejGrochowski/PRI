@@ -12,7 +12,11 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
+import java.util.stream.Collectors;
 
 @RestController
 public class DeserializationController {
@@ -49,6 +53,82 @@ public class DeserializationController {
         for (Name name : listName) {
             nameService.save(name);
         }
+    }
+
+    public static void main(String[] args) throws IOException {
+        ObjectMapper objectMapper = new ObjectMapper();
+
+        String path = "src/jsons/name.json";
+        String contents = Files.readString(Paths.get(path));
+        List<Name> listName = objectMapper.readValue(contents, new TypeReference<List<Name>>() {
+        });
+
+
+        List<Name> malePopularNames = listName.stream().filter(n -> n.isHalfling() && n.getProbabilityNotGentry() > 0.01 && n.isMale()).collect(Collectors.toList());
+        List<Name> femalePopularNames = listName.stream().filter(n -> n.isHalfling() && n.getProbabilityNotGentry() > 0.01 && n.isFemale()).collect(Collectors.toList());
+        double malePopularChance = malePopularNames.stream().mapToDouble(Name::getProbabilityNotGentry).sum();
+        double femalePopularChance = femalePopularNames.stream().mapToDouble(Name::getProbabilityNotGentry).sum();
+
+        System.out.println(malePopularChance);
+        System.out.println(femalePopularChance);
+
+
+
+        List<Name> maleNames = listName.stream().filter(n -> n.isHalfling() && n.getProbabilityNotGentry() <= 0.01 && n.isMale()).collect(Collectors.toList());
+        List<Name> femaleNames = listName.stream().filter(n -> n.isHalfling() && n.getProbabilityNotGentry() <= 0.01 && n.isFemale()).collect(Collectors.toList());
+
+        double averageProbability = (1-malePopularChance)/maleNames.size();
+        Random generator = new Random();
+        DecimalFormat twoDForm = new DecimalFormat("#.####");
+
+
+        for (Name name: maleNames){
+        double probability = Double.parseDouble(twoDForm.format((averageProbability/2 + generator.nextDouble()*averageProbability*1.5)).replace(",", "."));
+        name.setUsedByGenerator(true);
+        name.setProbabilityNotGentry(probability);
+        }
+
+        while(maleNames.stream().mapToDouble(Name::getProbabilityNotGentry).sum() + malePopularChance != 1){
+            double sum = maleNames.stream().mapToDouble(Name::getProbabilityNotGentry).sum() + malePopularChance;
+            System.out.println(sum);
+            int randomIndex = generator.nextInt(maleNames.size());
+            Name name = maleNames.get(randomIndex);
+            if (sum > 1 && name.getProbabilityNotGentry() > 0.001) maleNames.get(randomIndex).setProbabilityNotGentry(name.getProbabilityNotGentry()- 0.0001);
+            if (sum < 1) maleNames.get(randomIndex).setProbabilityNotGentry(name.getProbabilityNotGentry() + 0.0001);
+        }
+
+        averageProbability = (1-femalePopularChance)/femaleNames.size();
+
+        for (Name name: femaleNames){
+            double probability = Double.parseDouble(twoDForm.format((averageProbability/2 + generator.nextDouble()*averageProbability*1.5)).replace(",", "."));
+            name.setUsedByGenerator(true);
+            name.setProbabilityNotGentry(probability);
+        }
+
+        while(femaleNames.stream().mapToDouble(Name::getProbabilityNotGentry).sum() + femalePopularChance != 1){
+            double sum = femaleNames.stream().mapToDouble(Name::getProbabilityNotGentry).sum() + femalePopularChance;
+            System.out.println(sum);
+            int randomIndex = generator.nextInt(femaleNames.size());
+            Name name = femaleNames.get(randomIndex);
+            if (sum > 1 && name.getProbabilityNotGentry() > 0.001) femaleNames.get(randomIndex).setProbabilityNotGentry(name.getProbabilityNotGentry()- 0.0001);
+            if (sum < 1) femaleNames.get(randomIndex).setProbabilityNotGentry(name.getProbabilityNotGentry() + 0.0001);
+        }
+
+        List<Name> output = new ArrayList<>();
+        output.addAll(femaleNames);
+        output.addAll(maleNames);
+        output.addAll(malePopularNames);
+        output.addAll(femalePopularNames);
+
+        for (Name name: output){
+            name.setProbabilityNotGentry(Double.parseDouble(twoDForm.format(name.getProbabilityNotGentry()).replace(",", ".")));
+        }
+
+        objectMapper.writeValue(new File("target/halflingNames.json"), output);
+
+
+
+
     }
 
     @RequestMapping("/json/surname")

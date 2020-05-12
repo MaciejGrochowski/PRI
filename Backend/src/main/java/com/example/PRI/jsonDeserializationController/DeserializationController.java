@@ -1,14 +1,9 @@
 package com.example.PRI.jsonDeserializationController;
 
 import com.example.PRI.entities.character.*;
+import com.example.PRI.services.character.*;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.example.PRI.services.character.NameService;
-import com.example.PRI.services.character.SurnameService;
-import com.example.PRI.services.character.TalentService;
-import com.example.PRI.services.character.SkillService;
-import com.example.PRI.services.character.PredictionService;
-import com.example.PRI.services.character.HairColorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -39,6 +34,9 @@ public class DeserializationController {
 
     @Autowired
     HairColorService hairColorService;
+
+    @Autowired
+    EyeColorService eyeColorService;
 
     @RequestMapping("/json/name")
     public void nameDeserializationAndDatabaseUpdate() throws IOException {
@@ -111,10 +109,23 @@ public class DeserializationController {
 
         String path = "src/jsons/hairColor.json";
         String contents = Files.readString(Paths.get(path));
-        List<HairColor> listhairColor = objectMapper.readValue(contents, new TypeReference<List<HairColor>>() {
+        List<HairColor> listHairColor = objectMapper.readValue(contents, new TypeReference<List<HairColor>>() {
         });
-        for (HairColor hairColor : listhairColor) {
+        for (HairColor hairColor : listHairColor) {
             hairColorService.save(hairColor);
+        }
+    }
+
+    @RequestMapping("/json/eyecolor")
+    public void eyeColorDeserializationAndDatabaseUpdate() throws IOException {
+        ObjectMapper objectMapper = new ObjectMapper();
+
+        String path = "src/jsons/eyeColor.json";
+        String contents = Files.readString(Paths.get(path));
+        List<EyeColor> listEyeColor = objectMapper.readValue(contents, new TypeReference<List<EyeColor>>() {
+        });
+        for (EyeColor eyeColor : listEyeColor) {
+            eyeColorService.save(eyeColor);
         }
     }
 }

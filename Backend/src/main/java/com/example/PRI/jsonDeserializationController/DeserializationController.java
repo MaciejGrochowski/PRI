@@ -45,6 +45,9 @@ public class DeserializationController {
     @Autowired
     ApperanceService apperanceService;
 
+    @Autowired
+    PersonalityService personalityService;
+
     @RequestMapping("/json/name")
     public void nameDeserializationAndDatabaseUpdate() throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
@@ -222,6 +225,18 @@ public class DeserializationController {
         });
         for (Apperance apperance : listAperance) {
             apperanceService.save(apperance);
+        }
+    }
+    @RequestMapping("/json/personality")
+    public void personalityDeserializationAndDatabaseUpdate() throws IOException {
+        ObjectMapper objectMapper = new ObjectMapper();
+
+        String path = "src/jsons/personality.json";
+        String contents = Files.readString(Paths.get(path));
+        List<Personality> listPersonality = objectMapper.readValue(contents, new TypeReference<List<Personality>>() {
+        });
+        for (Personality personality : listPersonality) {
+            personalityService.save(personality);
         }
     }
 }

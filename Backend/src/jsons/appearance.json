@@ -75,9 +75,9 @@
     "type": "dlon",
     "probability": 0.06},
   {"id": 20,
-    "name": "Sześć palców",
-    "type": "dlon",
-    "probability": 0.0001},
+    "name": "Monobrew",
+    "type": "brwi",
+    "probability": 0.0021},
   {"id": 21,
     "name": "Tubalny głos",
     "type": "glos",
@@ -893,5 +893,9 @@
   {"id": 224,
     "name": "Wysoki",
     "type": "ogolne",
-    "probability": 0.0025}
+    "probability": 0.0025},
+  {"id": 225,
+    "name": "Długie nogi",
+    "type": "nogi",
+    "probability": 0.0055}
 ]

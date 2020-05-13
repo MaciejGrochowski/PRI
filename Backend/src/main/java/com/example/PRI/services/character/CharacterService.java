@@ -305,15 +305,15 @@ public class CharacterService extends GeneralService {
         apperances.add(ap5);
 
         List<Personality> personalities = new ArrayList<>();
-        Personality per1 = new Personality("złośliwy", 0.3);
+        Personality per1 = new Personality("złośliwy", "test", 0.3);
         personalityService.save(per1);
-        Personality per2 = new Personality("wesoły", 0.2);
+        Personality per2 = new Personality("wesoły", "test", 0.2);
         personalityService.save(per2);
-        Personality per3 = new Personality("optymista", 0.5);
+        Personality per3 = new Personality("optymista", "test",0.5);
         personalityService.save(per3);
-        Personality per4 = new Personality("pesymista", 0.6);
+        Personality per4 = new Personality("pesymista","test", 0.6);
         personalityService.save(per4);
-        Personality per5 = new Personality("lekkoduch", 0.8);
+        Personality per5 = new Personality("lekkoduch", "test",0.8);
         personalityService.save(per5);
 
         personalities.add(per1);

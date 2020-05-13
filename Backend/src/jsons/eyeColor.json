@@ -1,99 +1,99 @@
 [{"id": 1,
   "color": "Szary",
-  "chanceIfElf": 0.0,
-  "chanceIfDwarf": 0.1,
-  "chanceIfHuman": 0.1,
-  "changeIfHalfling": 0.0
+  "chanceIfElf": 0.01,
+  "chanceIfDwarf": 0.09,
+  "chanceIfHuman": 0.096,
+  "changeIfHalfling": 0.01
 },
   {"id": 2,
     "color": "Ciemnoniebieski",
-    "chanceIfElf": 0.0,
-    "chanceIfDwarf": 0.1,
-    "chanceIfHuman": 0.1,
-    "changeIfHalfling": 0.0
+    "chanceIfElf": 0.01,
+    "chanceIfDwarf": 0.09,
+    "chanceIfHuman": 0.096,
+    "changeIfHalfling": 0.01
   },
   {"id": 3,
     "color": "Niebieski",
-    "chanceIfElf": 0.1,
-    "chanceIfDwarf": 0.0,
-    "chanceIfHuman": 0.1,
-    "changeIfHalfling": 0.1
+    "chanceIfElf": 0.096,
+    "chanceIfDwarf": 0.01,
+    "chanceIfHuman": 0.096,
+    "changeIfHalfling": 0.082
   },
   {"id": 4,
     "color": "Zielony",
-    "chanceIfElf": 0.1,
-    "chanceIfDwarf": 0.0,
-    "chanceIfHuman": 0.1,
-    "changeIfHalfling": 0.0
+    "chanceIfElf": 0.096,
+    "chanceIfDwarf": 0.01,
+    "chanceIfHuman": 0.096,
+    "changeIfHalfling": 0.01
   },
   {"id": 5,
     "color": "Piwny",
-    "chanceIfElf": 0.0,
-    "chanceIfDwarf": 0.1,
-    "chanceIfHuman": 0.1,
-    "changeIfHalfling": 0.0
+    "chanceIfElf": 0.01,
+    "chanceIfDwarf": 0.09,
+    "chanceIfHuman": 0.096,
+    "changeIfHalfling": 0.01
   },
   {"id": 6,
     "color": "Jasnobrązowy",
-    "chanceIfElf": 0.0,
-    "chanceIfDwarf": 0.2,
-    "chanceIfHuman": 0.1,
-    "changeIfHalfling": 0.2
+    "chanceIfElf": 0.01,
+    "chanceIfDwarf": 0.19,
+    "chanceIfHuman": 0.096,
+    "changeIfHalfling": 0.182
   },
   {"id": 7,
     "color": "Brązowy",
-    "chanceIfElf": 0.1,
-    "chanceIfDwarf": 0.2,
-    "chanceIfHuman": 0.1,
-    "changeIfHalfling": 0.2
+    "chanceIfElf": 0.096,
+    "chanceIfDwarf": 0.19,
+    "chanceIfHuman": 0.096,
+    "changeIfHalfling": 0.182
   },
   {"id": 8,
     "color": "Ciemnobrązowy",
-    "chanceIfElf": 0.1,
-    "chanceIfDwarf": 0.2,
-    "chanceIfHuman": 0.1,
-    "changeIfHalfling": 0.3
+    "chanceIfElf": 0.096,
+    "chanceIfDwarf": 0.19,
+    "chanceIfHuman": 0.096,
+    "changeIfHalfling": 0.282
   },
   {"id": 9,
     "color": "Fioletowy",
-    "chanceIfElf": 0.1,
-    "chanceIfDwarf": 0.1,
-    "chanceIfHuman": 0.1,
-    "changeIfHalfling": 0.0
+    "chanceIfElf": 0.096,
+    "chanceIfDwarf": 0.09,
+    "chanceIfHuman": 0.096,
+    "changeIfHalfling": 0.01
   },
   {"id": 10,
     "color": "Czarny",
-    "chanceIfElf": 0.1,
-    "chanceIfDwarf": 0.0,
-    "chanceIfHuman": 0.1,
-    "changeIfHalfling": 0.0
+    "chanceIfElf": 0.096,
+    "chanceIfDwarf": 0.01,
+    "chanceIfHuman": 0.096,
+    "changeIfHalfling": 0.01
   },
   {"id": 11,
     "color": "Szaroniebieski",
-    "chanceIfElf": 0.1,
-    "chanceIfDwarf": 0.0,
-    "chanceIfHuman": 0.0,
-    "changeIfHalfling": 0.0
+    "chanceIfElf": 0.096,
+    "chanceIfDwarf": 0.01,
+    "chanceIfHuman": 0.01,
+    "changeIfHalfling": 0.01
   },
   {"id": 12,
     "color": "Orzechowy",
-    "chanceIfElf": 0.1,
-    "chanceIfDwarf": 0.0,
-    "chanceIfHuman": 0.0,
-    "changeIfHalfling": 0.2
+    "chanceIfElf": 0.096,
+    "chanceIfDwarf": 0.01,
+    "chanceIfHuman": 0.01,
+    "changeIfHalfling": 0.182
   },
   {"id": 13,
     "color": "Kasztanowy",
-    "chanceIfElf": 0.1,
-    "chanceIfDwarf": 0.0,
-    "chanceIfHuman": 0.0,
-    "changeIfHalfling": 0.0
+    "chanceIfElf": 0.096,
+    "chanceIfDwarf": 0.01,
+    "chanceIfHuman": 0.01,
+    "changeIfHalfling": 0.01
   },
   {"id": 14,
     "color": "Srebrny",
-    "chanceIfElf": 0.1,
-    "chanceIfDwarf": 0.0,
-    "chanceIfHuman": 0.0,
-    "changeIfHalfling": 0.0
+    "chanceIfElf": 0.096,
+    "chanceIfDwarf": 0.01,
+    "chanceIfHuman": 0.01,
+    "changeIfHalfling": 0.01
   }
 ]

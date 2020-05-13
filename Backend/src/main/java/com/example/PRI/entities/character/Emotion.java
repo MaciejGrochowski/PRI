@@ -15,4 +15,5 @@ import javax.persistence.Entity;
 public class Emotion extends GeneralEntity {
     @Column(unique = true)
     String name;
+    String type;
 }

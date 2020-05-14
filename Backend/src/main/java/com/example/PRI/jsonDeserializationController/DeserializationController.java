@@ -1,6 +1,8 @@
 package com.example.PRI.jsonDeserializationController;
 
+import com.example.PRI.entities.Place;
 import com.example.PRI.entities.character.*;
+import com.example.PRI.services.PlaceService;
 import com.example.PRI.services.character.*;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -47,6 +49,9 @@ public class DeserializationController {
 
     @Autowired
     PersonalityService personalityService;
+
+    @Autowired
+    PlaceService placeService;
 
     @RequestMapping("/json/name")
     public void nameDeserializationAndDatabaseUpdate() throws IOException {
@@ -237,6 +242,19 @@ public class DeserializationController {
         });
         for (Personality personality : listPersonality) {
             personalityService.save(personality);
+        }
+    }
+
+    @RequestMapping("/json/place")
+    public void placeDeserializationAndDatabaseUpdate() throws IOException {
+        ObjectMapper objectMapper = new ObjectMapper();
+
+        String path = "src/jsons/place.json";
+        String contents = Files.readString(Paths.get(path));
+        List<Place> listPlace = objectMapper.readValue(contents, new TypeReference<List<Place>>() {
+        });
+        for (Place place : listPlace) {
+            placeService.save(place);
         }
     }
 }

@@ -24,7 +24,7 @@
     "name": "Averheim",
     "placeType": "TOWN",
     "parent": {"id": 3},
-    "properties": "isRiver: true, isCapital: true, isRoad: true, isPopularRoad: true"
+    "properties": "isRiver: true,isCapital: true,isRoad: true,isPopularRoad: true"
   },
   {
     "id": 5,
@@ -66,14 +66,14 @@
     "name": "Agbeiten",
     "placeType": "SMALLTOWN",
     "parent": {"id": 3},
-    "properties": "isRiver: true, isRoad: true"
+    "properties": "isRiver: true,isRoad: true"
   },
   {
     "id": 11,
     "name": "Ensdorf",
     "placeType": "VILLIAGE",
     "parent": {"id": 3},
-    "properties": "isRiver: true, isRoad: true"
+    "properties": "isRiver: true,isRoad: true"
   },
   {
     "id": 12,
@@ -115,7 +115,7 @@
     "name": "Colmfähre",
     "placeType": "SMALLTOWN",
     "parent": {"id": 3},
-    "properties": "isRiver: true, isRoad: true"
+    "properties": "isRiver: true,isRoad: true"
   },
   {
     "id": 18,
@@ -129,28 +129,28 @@
     "name": "Grenzstadt",
     "placeType": "TOWN",
     "parent": {"id": 3},
-    "properties": "isRiver: true, isRoad: true, isPopularRoad: true"
+    "properties": "isRiver: true,isRoad: true,isPopularRoad: true"
   },
   {
     "id": 20,
     "name": "Buch",
     "placeType": "VILLIAGE",
     "parent": {"id": 3},
-    "properties": "isRoad: true, isPopularRoad: true"
+    "properties": "isRoad: true,isPopularRoad: true"
   },
   {
     "id": 21,
     "name": "Dorfbach",
     "placeType": "VILLIAGE",
     "parent": {"id": 3},
-    "properties": "isHill: true, isRoad: true, isPopularRoad: true"
+    "properties": "isHill: true,isRoad: true,isPopularRoad: true"
   },
   {
     "id": 22,
     "name": "Heideck",
     "placeType": "SMALLTOWN",
     "parent": {"id": 3},
-    "properties": "isRoad: true, isPopularRoad: true"
+    "properties": "isRoad: true,isPopularRoad: true"
   },
   {
     "id": 23,
@@ -164,28 +164,28 @@
     "name": "Hocheleben",
     "placeType": "SMALLTOWN",
     "parent": {"id": 3},
-    "properties": "isRiver: true, isRoad: true"
+    "properties": "isRiver: true,isRoad: true"
   },
   {
     "id": 25,
     "name": "Kulz",
     "placeType": "VILLIAGE",
     "parent": {"id": 3},
-    "properties": "isRoad: true, isPopularRoad: true"
+    "properties": "isRoad: true,isPopularRoad: true"
   },
   {
     "id": 26,
     "name": "Spalt",
     "placeType": "VILLIAGE",
     "parent": {"id": 3},
-    "properties": "isRiver: true, isRoad: true, isPopularRoad: true"
+    "properties": "isRiver: true,isRoad: true,isPopularRoad: true"
   },
   {
     "id": 27,
     "name": "Lengenfeld",
     "placeType": "SMALLTOWN",
     "parent": {"id": 3},
-    "properties": "isRiver: true, isRoad: true"
+    "properties": "isRiver: true,isRoad: true"
   },
   {
     "id": 28,
@@ -206,7 +206,7 @@
     "name": "Longingbruck",
     "placeType": "SMALLTOWN",
     "parent": {"id": 3},
-    "properties": "isRiver: true, isRoad: true"
+    "properties": "isRiver: true,isRoad: true"
   },
   {
     "id": 31,
@@ -234,14 +234,14 @@
     "name": "Pfungzig",
     "placeType": "TOWN",
     "parent": {"id": 3},
-    "properties": "isRiver: true, isRoad: true"
+    "properties": "isRiver: true,isRoad: true"
   },
   {
     "id": 35,
     "name": "Dietfurt",
     "placeType": "VILLIAGE",
     "parent": {"id": 3},
-    "properties": "isHill: true, isRoad: true"
+    "properties": "isHill: true,isRoad: true"
   },
   {
     "id": 36,
@@ -262,7 +262,7 @@
     "name": "Streissen",
     "placeType": "TOWN",
     "parent": {"id": 3},
-    "properties": "isForest: true, isRiver:true, isRoad: true"
+    "properties": "isForest: true,isRiver:true, isRoad: true"
   },
   {
     "id": 39,
@@ -290,14 +290,14 @@
     "name": "Siegenhausen",
     "placeType": "VILLIAGE",
     "parent": {"id": 3},
-    "properties": "isForest: true, isRoad: true"
+    "properties": "isForest: true,isRoad: true"
   },
   {
     "id": 43,
     "name": "Wuppertal",
     "placeType": "TOWN",
     "parent": {"id": 3},
-    "properties": "isForest: true, isRiver: true, isRoad: true"
+    "properties": "isForest: true,isRiver: true,isRoad: true"
   },
   {
     "id": 44,
@@ -318,6 +318,13 @@
     "name": "Thann",
     "placeType": "VILLIAGE",
     "parent": {"id": 3},
-    "properties": "isForest: true, isRoad: true"
+    "properties": "isForest: true,isRoad: true"
+  },
+  {
+    "id": 47,
+    "name": "Hochland",
+    "placeType": "LAND",
+    "parent": {"id": 2},
+    "properties": ""
   }
 ]

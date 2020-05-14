@@ -17,10 +17,6 @@ public class Place extends GeneralEntity {
     //Nazwa miejsca
     String name;
 
-    //Dzieci miejsca - co się w miejscu znajduje.
-    @OneToMany
-    List<Place> childs;
-
     /*
     Rodzic miejsca - np rodzicem miasta jest 'województwo', rodzicem województwa jest państwo.
     Ważne - ktoś może mieć miejsce urodzenia zdefiniowane tylko do np. województwa
@@ -39,10 +35,10 @@ public class Place extends GeneralEntity {
     isMountains (W górach częściej krasnoludy i górnicy)
     isRiver (Przy wodzie częściej rybacy, przewoźnicy, bosmani, skill pływanie itd)
     isLake (czy przy jeziozie)
-    isSea (czy przy m)
-    isCapital
-    isSwamp
-    isHill
+    isSea (czy przy morzu)
+    isCapital (czy jest stolicą)
+    isSwamp (czy jest przy bagnie)
+    isHill (czy jest przyy wzgórzu)
     isRoad (czy jest przy drodzę)
     isPopularRoad (czy jest przy głównej drodzę)
     Dodatkowo przy module "Miejsca" można myśleć o poinformowaniu o tym.

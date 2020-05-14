@@ -7,7 +7,6 @@ public enum PlaceType {
     SMALLTOWN, //Miasteczko
     STATETOWN, // Wolne miasto
     CITY, //Miasto
-    METROPOLY, // Metropolia / stolica landu / wolne miasto
     LAND, //Land (niemiecki - województwo)
     COUNTRY //Państwo
 }

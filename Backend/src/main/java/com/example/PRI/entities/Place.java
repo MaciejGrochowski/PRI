@@ -37,7 +37,14 @@ public class Place extends GeneralEntity {
     Miejsce może mieć różne cechy wpływające na generowanie, np.
     isForest (Przy lesie częściej są elfy, myśliwi i łowcy)
     isMountains (W górach częściej krasnoludy i górnicy)
-    isWater (Przy wodzie częściej rybacy, przewoźnicy, bosmani, skill pływanie itd)
+    isRiver (Przy wodzie częściej rybacy, przewoźnicy, bosmani, skill pływanie itd)
+    isLake (czy przy jeziozie)
+    isSea (czy przy m)
+    isCapital
+    isSwamp
+    isHill
+    isRoad (czy jest przy drodzę)
+    isPopularRoad (czy jest przy głównej drodzę)
     Dodatkowo przy module "Miejsca" można myśleć o poinformowaniu o tym.
     Nie znamy póki co poziomu szczegółowości ani ilości tego, więc lepiej nie kolumny.
     Format zapisu: JSON(?)

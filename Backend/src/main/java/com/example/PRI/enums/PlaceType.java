@@ -5,7 +5,7 @@ public enum PlaceType {
     VILLIAGE, // Wioska
     TOWN, //Miasto
     SMALLTOWN, //Miasteczko
-    STATETOWN, // Wolne miasto
+    CITYSTATE, // Wolne miasto
     CITY, //Miasto
     LAND, //Land (niemiecki - województwo)
     COUNTRY //Państwo

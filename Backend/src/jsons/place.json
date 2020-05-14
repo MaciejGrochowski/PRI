@@ -1,0 +1,323 @@
+[{
+  "id": 1,
+  "name": "Świat",
+  "placeType": null,
+  "parent":null,
+  "properties": ""
+},
+  {
+    "id": 2,
+    "name": "Imperium",
+    "placeType": "COUNTRY",
+    "parent": {"id": 1},
+    "properties": ""
+  },
+  {
+    "id": 3,
+    "name": "Averland",
+    "placeType": "LAND",
+    "parent": {"id": 2},
+    "properties": ""
+  },
+  {
+    "id": 4,
+    "name": "Averheim",
+    "placeType": "TOWN",
+    "parent": {"id": 3},
+    "properties": "isRiver: true, isCapital: true, isRoad: true, isPopularRoad: true"
+  },
+  {
+    "id": 5,
+    "name": "Friedendorf",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 3},
+    "properties": ""
+  },
+  {
+    "id": 6,
+    "name": "Monheim",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 3},
+    "properties": ""
+  },
+  {
+    "id": 7,
+    "name": "Ruhgsdorf",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 3},
+    "properties": ""
+  },
+  {
+    "id": 8,
+    "name": "Sorghof",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 3},
+    "properties": ""
+  },
+  {
+    "id": 9,
+    "name": "Tannfeld",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 3},
+    "properties": "isRoad: true"
+  },
+  {
+    "id": 10,
+    "name": "Agbeiten",
+    "placeType": "SMALLTOWN",
+    "parent": {"id": 3},
+    "properties": "isRiver: true, isRoad: true"
+  },
+  {
+    "id": 11,
+    "name": "Ensdorf",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 3},
+    "properties": "isRiver: true, isRoad: true"
+  },
+  {
+    "id": 12,
+    "name": "Naabeck",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 3},
+    "properties": "isRoad: true"
+  },
+  {
+    "id": 13,
+    "name": "Bernloch",
+    "placeType": "SMALLTOWN",
+    "parent": {"id": 3},
+    "properties": "isRoad: true"
+  },
+  {
+    "id": 14,
+    "name": "Jehlfeld",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 3},
+    "properties": ""
+  },
+  {
+    "id": 15,
+    "name": "Bieswang",
+    "placeType": "SMALLTOWN",
+    "parent": {"id": 3},
+    "properties": "isRoad: true"
+  },
+  {
+    "id": 16,
+    "name": "Hirshhügel",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 3},
+    "properties": ""
+  },
+  {
+    "id": 17,
+    "name": "Colmfähre",
+    "placeType": "SMALLTOWN",
+    "parent": {"id": 3},
+    "properties": "isRiver: true, isRoad: true"
+  },
+  {
+    "id": 18,
+    "name": "Volsbach",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 3},
+    "properties": ""
+  },
+  {
+    "id": 19,
+    "name": "Grenzstadt",
+    "placeType": "TOWN",
+    "parent": {"id": 3},
+    "properties": "isRiver: true, isRoad: true, isPopularRoad: true"
+  },
+  {
+    "id": 20,
+    "name": "Buch",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 3},
+    "properties": "isRoad: true, isPopularRoad: true"
+  },
+  {
+    "id": 21,
+    "name": "Dorfbach",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 3},
+    "properties": "isHill: true, isRoad: true, isPopularRoad: true"
+  },
+  {
+    "id": 22,
+    "name": "Heideck",
+    "placeType": "SMALLTOWN",
+    "parent": {"id": 3},
+    "properties": "isRoad: true, isPopularRoad: true"
+  },
+  {
+    "id": 23,
+    "name": "Willenfeld",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 3},
+    "properties": ""
+  },
+  {
+    "id": 24,
+    "name": "Hocheleben",
+    "placeType": "SMALLTOWN",
+    "parent": {"id": 3},
+    "properties": "isRiver: true, isRoad: true"
+  },
+  {
+    "id": 25,
+    "name": "Kulz",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 3},
+    "properties": "isRoad: true, isPopularRoad: true"
+  },
+  {
+    "id": 26,
+    "name": "Spalt",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 3},
+    "properties": "isRiver: true, isRoad: true, isPopularRoad: true"
+  },
+  {
+    "id": 27,
+    "name": "Lengenfeld",
+    "placeType": "SMALLTOWN",
+    "parent": {"id": 3},
+    "properties": "isRiver: true, isRoad: true"
+  },
+  {
+    "id": 28,
+    "name": "Gebenbach",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 3},
+    "properties": ""
+  },
+  {
+    "id": 29,
+    "name": "Mantel",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 3},
+    "properties": "isRoad: true"
+  },
+  {
+    "id": 30,
+    "name": "Longingbruck",
+    "placeType": "SMALLTOWN",
+    "parent": {"id": 3},
+    "properties": "isRiver: true, isRoad: true"
+  },
+  {
+    "id": 31,
+    "name": "Tandern",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 3},
+    "properties": "isForest: true"
+  },
+  {
+    "id": 32,
+    "name": "Zang",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 3},
+    "properties": ""
+  },
+  {
+    "id": 33,
+    "name": "Zang",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 3},
+    "properties": ""
+  },
+  {
+    "id": 34,
+    "name": "Pfungzig",
+    "placeType": "TOWN",
+    "parent": {"id": 3},
+    "properties": "isRiver: true, isRoad: true"
+  },
+  {
+    "id": 35,
+    "name": "Dietfurt",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 3},
+    "properties": "isHill: true, isRoad: true"
+  },
+  {
+    "id": 36,
+    "name": "Essing",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 3},
+    "properties": ""
+  },
+  {
+    "id": 37,
+    "name": "Zell",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 3},
+    "properties": "isRoad: true"
+  },
+  {
+    "id": 38,
+    "name": "Streissen",
+    "placeType": "TOWN",
+    "parent": {"id": 3},
+    "properties": "isForest: true, isRiver:true, isRoad: true"
+  },
+  {
+    "id": 39,
+    "name": "Dachbach",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 3},
+    "properties": ""
+  },
+  {
+    "id": 40,
+    "name": "Eining",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 3},
+    "properties": "isRoad: true"
+  },
+  {
+    "id": 41,
+    "name": "Pilsach",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 3},
+    "properties": ""
+  },
+  {
+    "id": 42,
+    "name": "Siegenhausen",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 3},
+    "properties": "isForest: true, isRoad: true"
+  },
+  {
+    "id": 43,
+    "name": "Wuppertal",
+    "placeType": "TOWN",
+    "parent": {"id": 3},
+    "properties": "isForest: true, isRiver: true, isRoad: true"
+  },
+  {
+    "id": 44,
+    "name": "Gerzen",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 3},
+    "properties": "isHill: true"
+  },
+  {
+    "id": 45,
+    "name": "Mühlfeld",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 3},
+    "properties": ""
+  },
+  {
+    "id": 46,
+    "name": "Thann",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 3},
+    "properties": "isForest: true, isRoad: true"
+  }
+]

@@ -792,8 +792,330 @@
   {
     "id": 114,
     "name": "Nordland",
-    "placeType": "SMALLTOWN",
+    "placeType": "LAND",
     "parent": {"id": 2},
+    "properties": ""
+  },
+  {
+    "id": 115,
+    "name": "Salzenmund",
+    "placeType": "TOWN",
+    "parent": {"id": 114},
+    "properties": "isForest: true,isRiver: true,isRoad: true"
+  },
+  {
+    "id": 116,
+    "name": "Beeckerhoven",
+    "placeType": "SMALLTOWN",
+    "parent": {"id": 114},
+    "properties": "isForest: true,isRoad: true,isPopularRoad: true"
+  },
+  {
+    "id": 117,
+    "name": "Grafenrich",
+    "placeType": "SMALLTOWN",
+    "parent": {"id": 114},
+    "properties": "isForest: true,isRiver: true,isHill: true"
+  },
+  {
+    "id": 118,
+    "name": "Kurtwallen",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 114},
     "properties": "isForest: true,isRiver: true"
+  },
+  {
+    "id": 119,
+    "name": "Dietershafe",
+    "placeType": "TOWN",
+    "parent": {"id": 114},
+    "properties": "isForest: true,isSea: true,isRoad: true"
+  },
+  {
+    "id": 120,
+    "name": "Frote",
+    "placeType": "SMALLTOWN",
+    "parent": {"id": 114},
+    "properties": "isForest: true,isRoad: true"
+  },
+  {
+    "id": 121,
+    "name": "Hargendorf",
+    "placeType": "SMALLTOWN",
+    "parent": {"id": 114},
+    "properties": "isForest: true,isSea: true,isRoad: true"
+  },
+  {
+    "id": 122,
+    "name": "Beilen",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 114},
+    "properties": "isForest: true,isHill: true,isRoad: true"
+  },
+  {
+    "id": 123,
+    "name": "Schlaghügel",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 114},
+    "properties": "isHill: true"
+  },
+  {
+    "id": 124,
+    "name": "Ueblingen",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 114},
+    "properties": "isForest: true,isRoad: true"
+  },
+  {
+    "id": 125,
+    "name": "Luftberg",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 114},
+    "properties": "isForest: true,isRoad: true"
+  },
+  {
+    "id": 126,
+    "name": "Neue Emskrank",
+    "placeType": "SMALLTOWN",
+    "parent": {"id": 114},
+    "properties": "isRiver: true,isSea: true,isRoad: true"
+  },
+  {
+    "id": 127,
+    "name": "Heiligdorf",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 114},
+    "properties": "isSea: true,isRoad: true"
+  },
+  {
+    "id": 128,
+    "name": "Norden",
+    "placeType": "TOWN",
+    "parent": {"id": 114},
+    "properties": "isSea: true,isRoad: true,isPopularRoad: true"
+  },
+  {
+    "id": 129,
+    "name": "Beelen",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 114},
+    "properties": "isForest: true"
+  },
+  {
+    "id": 130,
+    "name": "Gelting",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 114},
+    "properties": "isRoad: true"
+  },
+  {
+    "id": 131,
+    "name": "Kreideklippe",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 114},
+    "properties": "isSea: true,isRoad: true"
+  },
+  {
+    "id": 132,
+    "name": "Salzmorast",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 114},
+    "properties": "isHill: true,isRoad: true"
+  },
+  {
+    "id": 133,
+    "name": "Schoten",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 114},
+    "properties": "isForest: true,isRoad: true,isPopularRoad: true"
+  },
+  {
+    "id": 134,
+    "name": "Wilhelmskoog",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 114},
+    "properties": "isRiver: true,isSea: true,isRoad: true"
+  },
+  {
+    "id": 135,
+    "name": "Ockholm",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 114},
+    "properties": "isRiver: true,isRoad: true"
+  },
+  {
+    "id": 136,
+    "name": "Ostermark",
+    "placeType": "LAND",
+    "parent": {"id": 2},
+    "properties": ""
+  },
+  {
+    "id": 137,
+    "name": "Bechafen",
+    "placeType": "TOWN",
+    "parent": {"id": 136},
+    "properties": "isForest: true, isRiver: true,isCapital: true,isRoad: true"
+  },
+  {
+    "id": 138,
+    "name": "Dorna",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 136},
+    "properties": "isForest: true"
+  },
+  {
+    "id": 139,
+    "name": "Münkenhof",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 136},
+    "properties": "isForest: true: isRiver"
+  },
+  {
+    "id": 140,
+    "name": "Reitwein",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 136},
+    "properties": "isRoad: true"
+  },
+  {
+    "id": 141,
+    "name": "Rugenbuttle",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 136},
+    "properties": "isForest: true,isRoad: true"
+  },
+  {
+    "id": 142,
+    "name": "Bissendorf",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 136},
+    "properties": "isForest: true,isRiver: true,isRoad: true"
+  },
+  {
+    "id": 143,
+    "name": "Tauer",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 136},
+    "properties": "isForest: true,isRoad: true"
+  },
+  {
+    "id": 144,
+    "name": "Eisental",
+    "placeType": "SMALLTOWN",
+    "parent": {"id": 136},
+    "properties": "isForest: true,isRiver: true,isRoad: true"
+  },
+  {
+    "id": 145,
+    "name": "Mielau",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 136},
+    "properties": "isRiver: true"
+  },
+  {
+    "id": 146,
+    "name": "Essen",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 136},
+    "properties": "isRiver: true"
+  },
+  {
+    "id": 147,
+    "name": "Fortenhaf",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 136},
+    "properties": "isRiver: true,isHill: true"
+  },
+  {
+    "id": 148,
+    "name": "Gerdouen",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 136},
+    "properties": "isForest: true,isRiver: true"
+  },
+  {
+    "id": 149,
+    "name": "Rheden",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 136},
+    "properties": "isRiver: true"
+  },
+  {
+    "id": 150,
+    "name": "Heffengen",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 136},
+    "properties": "isRiver: true,isRoad: true"
+  },
+  {
+    "id": 151,
+    "name": "Elbing",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 136},
+    "properties": "isRoad: true"
+  },
+  {
+    "id": 152,
+    "name": "Nagenhof",
+    "placeType": "SMALLTOWN",
+    "parent": {"id": 136},
+    "properties": "isRoad: true"
+  },
+  {
+    "id": 153,
+    "name": "Buckow",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 136},
+    "properties": "isRiver: true"
+  },
+  {
+    "id": 154,
+    "name": "Weiler",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 136},
+    "properties": "isRiver: true,isRoad: true"
+  },
+  {
+    "id": 155,
+    "name": "Remer",
+    "placeType": "SMALLTOWN",
+    "parent": {"id": 136},
+    "properties": "isRiver: true,isRoad: true"
+  },
+  {
+    "id": 156,
+    "name": "Zeisholz",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 136},
+    "properties": ""
+  },
+  {
+    "id": 157,
+    "name": "Sokh",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 64},
+    "properties": "isMountains: true,isRoad: true"
+  },
+  {
+    "id": 158,
+    "name": "Fällenblatt",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 105},
+    "properties": "isRiver: true,isRoad: true"
+  },
+  {
+    "id": 159,
+    "name": "Oldenlitz",
+    "placeType": "SMALLTOWN",
+    "parent": {"id": 114},
+    "properties": "isForest: true,isRiver: true,isHill: true,isRoad: true"
+  },
+  {
+    "id": 160,
+    "name": "Ostland",
+    "placeType": "LAND",
+    "parent": {"id": 2},
+    "properties": ""
   }
 ]

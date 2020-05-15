@@ -224,107 +224,220 @@
   },
   {
     "id": 33,
-    "name": "Zang",
-    "placeType": "VILLIAGE",
-    "parent": {"id": 3},
-    "properties": ""
-  },
-  {
-    "id": 34,
     "name": "Pfungzig",
     "placeType": "TOWN",
     "parent": {"id": 3},
     "properties": "isRiver: true,isRoad: true"
   },
   {
-    "id": 35,
+    "id": 34,
     "name": "Dietfurt",
     "placeType": "VILLIAGE",
     "parent": {"id": 3},
     "properties": "isHill: true,isRoad: true"
   },
   {
-    "id": 36,
+    "id": 35,
     "name": "Essing",
     "placeType": "VILLIAGE",
     "parent": {"id": 3},
     "properties": ""
   },
   {
-    "id": 37,
+    "id": 36,
     "name": "Zell",
     "placeType": "VILLIAGE",
     "parent": {"id": 3},
     "properties": "isRoad: true"
   },
   {
-    "id": 38,
+    "id": 37,
     "name": "Streissen",
     "placeType": "TOWN",
     "parent": {"id": 3},
     "properties": "isForest: true,isRiver:true, isRoad: true"
   },
   {
-    "id": 39,
+    "id": 38,
     "name": "Dachbach",
     "placeType": "VILLIAGE",
     "parent": {"id": 3},
     "properties": ""
   },
   {
-    "id": 40,
+    "id": 39,
     "name": "Eining",
     "placeType": "VILLIAGE",
     "parent": {"id": 3},
     "properties": "isRoad: true"
   },
   {
-    "id": 41,
+    "id": 40,
     "name": "Pilsach",
     "placeType": "VILLIAGE",
     "parent": {"id": 3},
     "properties": ""
   },
   {
-    "id": 42,
+    "id": 41,
     "name": "Siegenhausen",
     "placeType": "VILLIAGE",
     "parent": {"id": 3},
     "properties": "isForest: true,isRoad: true"
   },
   {
-    "id": 43,
+    "id": 42,
     "name": "Wuppertal",
     "placeType": "TOWN",
     "parent": {"id": 3},
     "properties": "isForest: true,isRiver: true,isRoad: true"
   },
   {
-    "id": 44,
+    "id": 43,
     "name": "Gerzen",
     "placeType": "VILLIAGE",
     "parent": {"id": 3},
     "properties": "isHill: true"
   },
   {
-    "id": 45,
+    "id": 44,
     "name": "Mühlfeld",
     "placeType": "VILLIAGE",
     "parent": {"id": 3},
     "properties": ""
   },
   {
-    "id": 46,
+    "id": 45,
     "name": "Thann",
     "placeType": "VILLIAGE",
     "parent": {"id": 3},
     "properties": "isForest: true,isRoad: true"
   },
   {
-    "id": 47,
+    "id": 46,
     "name": "Hochland",
     "placeType": "LAND",
     "parent": {"id": 2},
     "properties": ""
+  },
+  {
+    "id": 47,
+    "name": "Hergig",
+    "placeType": "TOWN",
+    "parent": {"id": 46},
+    "properties": "isForest: true,isRiver: true,isCapital: true,isRoad: true"
+  },
+  {
+    "id": 48,
+    "name": "Dunstigfurt",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 46},
+    "properties": "isForest: true,isRiver: true"
+  },
+  {
+    "id": 49,
+    "name": "Müden",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 46},
+    "properties": "isForest: true,isRiver: true,isHill: true,isRoad: true"
+  },
+  {
+    "id": 50,
+    "name": "Stöckse",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 46},
+    "properties": "isForest: true,isRiver: true,isHill: true,isRoad: true"
+  },
+  {
+    "id": 51,
+    "name": "Vodf",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 46},
+    "properties": "isRiver: true,isHill: true,isRoad: true"
+  },
+  {
+    "id": 52,
+    "name": "Bergendorf",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 46},
+    "properties": "isForest: true,isRiver: true,"
+  },
+  {
+    "id": 53,
+    "name": "Ahresdorf",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 46},
+    "properties": "isForest: true,isRiver: true,"
+  },
+  {
+    "id": 54,
+    "name": "Wannsingen",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 46},
+    "properties": "isForest: true,isRiver: true,isRoad: true"
+  },
+  {
+    "id": 55,
+    "name": "Breder",
+    "placeType": "SMALLTOWN",
+    "parent": {"id": 46},
+    "properties": "isForest: true,isMountains: true,isRiver: true,isRoad: true"
+  },
+  {
+    "id": 56,
+    "name": "Esk",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 46},
+    "properties": "isMountains: true,isRoad: true"
+  },
+  {
+    "id": 57,
+    "name": "Gruyden",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 46},
+    "properties": "isForest: true,isRoad: true"
+  },
+  {
+    "id": 58,
+    "name": "Barwedel",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 46},
+    "properties": "isForest: true,isRoad: true"
+  },
+  {
+    "id": 59,
+    "name": "Koerin",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 46},
+    "properties": "isForest: true,isHill: true,isRoad: true"
+  },
+  {
+    "id": 60,
+    "name": "Krudenwald",
+    "placeType": "TOWN",
+    "parent": {"id": 46},
+    "properties": "isForest: true,isRoad: true"
+  },
+  {
+    "id": 61,
+    "name": "Garssen",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 46},
+    "properties": "isRiver: true,isRoad: true"
+  },
+  {
+    "id": 62,
+    "name": "Hovelhof",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 46},
+    "properties": "isMountains: true,isRoad: true"
+  },
+  {
+    "id": 63,
+    "name": "Selmigerholz",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 46},
+    "properties": "isForest: true,isRoad: true"
   }
+
 ]

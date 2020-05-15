@@ -33,8 +33,6 @@ public class CharacterService extends GeneralService {
     @Autowired
     NameService nameService;
 
-
-
     @Autowired
     SurnameService surnameService;
 
@@ -70,6 +68,10 @@ public class CharacterService extends GeneralService {
 
     @Autowired
     ApperanceService apperanceService;
+
+//    public Character generate(){
+//        new CharacterBirthPlaceService().generateBirthPlace(new Character(), placeService);
+//    }
 
     public List<CharacterDefaultAttributesOutputDto> getAllCharacters() {
         Iterable<Character> characters = characterRepository.findAll();

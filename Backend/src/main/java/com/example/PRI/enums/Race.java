@@ -11,4 +11,8 @@ public enum Race {
 
     String name;
     String properties;
+
+    public String getProperties() {
+        return properties;
+    }
 }

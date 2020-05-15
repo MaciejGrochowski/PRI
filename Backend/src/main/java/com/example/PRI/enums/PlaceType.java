@@ -8,5 +8,7 @@ public enum PlaceType {
     CITYSTATE, // Wolne miasto
     CITY, //Miasto
     LAND, //Land (niemiecki - województwo)
-    COUNTRY //Państwo
+    COUNTRY, //Państwo
+    ELFPLACES,
+    DWARFPLACES
 }

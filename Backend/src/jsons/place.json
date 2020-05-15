@@ -1117,5 +1117,187 @@
     "placeType": "LAND",
     "parent": {"id": 2},
     "properties": ""
+  },
+  {
+    "id": 161,
+    "name": "Wolfenburg",
+    "placeType": "TOWN",
+    "parent": {"id": 160},
+    "properties": "isRiver: true,isCapital: true,isHill: true,isRoad: true"
+  },
+  {
+    "id": 162,
+    "name": "Dassel",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 160},
+    "properties": "isForest: true,isRoad: true"
+  },
+  {
+    "id": 163,
+    "name": "Felde",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 160},
+    "properties": "isForest: true,isRoad: true"
+  },
+  {
+    "id": 164,
+    "name": "Grünackeren",
+    "placeType": "SMALLTOWN",
+    "parent": {"id": 160},
+    "properties": "isForest: true,isRoad: true"
+  },
+  {
+    "id": 165,
+    "name": "Melbeck",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 160},
+    "properties": "isMountains: true,isRoad: true"
+  },
+  {
+    "id": 166,
+    "name": "Ristedt",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 160},
+    "properties": "isForest: true,isRiver: true,isRoad: true"
+  },
+  {
+    "id": 167,
+    "name": "Wendorf",
+    "placeType": "SMALLTOWN",
+    "parent": {"id": 160},
+    "properties": "isForest: true,isRoad: true"
+  },
+  {
+    "id": 168,
+    "name": "Boven",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 160},
+    "properties": "isForest: true,isRoad: true"
+  },
+  {
+    "id": 169,
+    "name": "Birkewiese",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 160},
+    "properties": "isRoad: true"
+  },
+  {
+    "id": 170,
+    "name": "Ferlangen",
+    "placeType": "TOWN",
+    "parent": {"id": 160},
+    "properties": "isForest: true,isHill: true,isRoad: true"
+  },
+  {
+    "id": 171,
+    "name": "Aukrug",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 160},
+    "properties": "isForest: true,isHill: true,isRoad: true"
+  },
+  {
+    "id": 172,
+    "name": "Dunkelpfad",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 160},
+    "properties": "isHill: true,isRoad: true"
+  },
+  {
+    "id": 173,
+    "name": "Fleckeby",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 160},
+    "properties": "isForest: true,isRoad: true"
+  },
+  {
+    "id": 174,
+    "name": "Hasselhund",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 160},
+    "properties": "isForest: true,isHill: true,isRoad: true"
+  },
+  {
+    "id": 175,
+    "name": "Kurst",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 160},
+    "properties": "isForest: true,isRoad: true"
+  },
+  {
+    "id": 176,
+    "name": "Levudaldorf",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 160},
+    "properties": "isForest: true,isRoad: true"
+  },
+  {
+    "id": 177,
+    "name": "Lubrecht",
+    "placeType": "SMALLTOWN",
+    "parent": {"id": 160},
+    "properties": "isForest: true,isRoad: true"
+  },
+  {
+    "id": 178,
+    "name": "Öbelstein",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 160},
+    "properties": "isForest: true,isHill: true,isRoad: true"
+  },
+  {
+    "id": 179,
+    "name": "Salkalten",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 160},
+    "properties": "isSea: true,isRoad: true"
+  },
+  {
+    "id": 180,
+    "name": "Verborgenbucht",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 160},
+    "properties": "isSea: true,isRoad: true"
+  },
+  {
+    "id": 181,
+    "name": "Smallhof",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 160},
+    "properties": "isForest: true,isRoad: true"
+  },
+  {
+    "id": 182,
+    "name": "Vandengart",
+    "placeType": "SMALLTOWN",
+    "parent": {"id": 160},
+    "properties": "isForest: true,isRoad: true"
+  },
+  {
+    "id": 183,
+    "name": "Wurzen",
+    "placeType": "SMALLTOWN",
+    "parent": {"id": 160},
+    "properties": "isForest: true,isRiver: true,isRoad: true"
+  },
+  {
+    "id": 184,
+    "name": "Csenger",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 160},
+    "properties": "isForest: true"
+  },
+  {
+    "id": 185,
+    "name": "Dorog",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 160},
+    "properties": "isForest: true,isRoad: true"
+  },
+  {
+    "id": 186,
+    "name": "Zundap",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 160},
+    "properties": "isForest: true,isRoad: true"
   }
 ]

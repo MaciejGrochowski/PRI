@@ -438,6 +438,307 @@
     "placeType": "VILLIAGE",
     "parent": {"id": 46},
     "properties": "isForest: true,isRoad: true"
+  },
+  {
+    "id": 64,
+    "name": "Middenland",
+    "placeType": "LAND",
+    "parent": {"id": 2},
+    "properties": ""
+  },
+  {
+    "id": 65,
+    "name": "Middenheim",
+    "placeType": "CITY",
+    "parent": {"id": 64},
+    "properties": "isForest: true,isCapital: true,isHill: true,isRoad: true,isPopularRoad: true"
+  },
+  {
+    "id": 66,
+    "name": "Arenberg",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 64},
+    "properties": "isForest: true,isHill: true"
+  },
+  {
+    "id": 67,
+    "name": "Elsterweld",
+    "placeType": "SMALLTOWN",
+    "parent": {"id": 64},
+    "properties": "isForest: true,isHill: true"
+  },
+  {
+    "id": 68,
+    "name": "Grevenfeld",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 64},
+    "properties": "isForest: true,isHill: true,isRoad: true,isPopularRoad: true"
+  },
+  {
+    "id": 69,
+    "name": "Holzbeck",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 64},
+    "properties": "isForest: true,isRoad: true"
+  },
+  {
+    "id": 70,
+    "name": "Hunxe",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 64},
+    "properties": "isForest: true,isRoad: true,isPopularRoad: true"
+  },
+  {
+    "id": 71,
+    "name": "Immelscheld",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 64},
+    "properties": "isForest: true,isRoad: true"
+  },
+  {
+    "id": 72,
+    "name": "Jagerhausen",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 64},
+    "properties": "isForest: true,isHill: true"
+  },
+  {
+    "id": 73,
+    "name": "Lindenheim",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 64},
+    "properties": "isForest: true,isHill: true"
+  },
+  {
+    "id": 74,
+    "name": "Norderingen",
+    "placeType": "SMALLTOWN",
+    "parent": {"id": 64},
+    "properties": "isForest: true"
+  },
+  {
+    "id": 75,
+    "name": "Schoninghagen",
+    "placeType": "SMALLTOWN",
+    "parent": {"id": 64},
+    "properties": "isForest: true,isRoad: true,isPopularRoad: true"
+  },
+  {
+    "id": 76,
+    "name": "Ahlenhof",
+    "placeType": "TOWN",
+    "parent": {"id": 64},
+    "properties": "isRiver: true,isHill: true"
+  },
+  {
+    "id": 77,
+    "name": "Bad Hohne",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 64},
+    "properties": "isForest: true,isRiver: true"
+  },
+  {
+    "id": 78,
+    "name": "Leer",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 64},
+    "properties": "isForest: true,isRiver: true, isHill: true,"
+  },
+  {
+    "id": 79,
+    "name": "Suderberg",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 64},
+    "properties": "isForest: true"
+  },
+  {
+    "id": 80,
+    "name": "Carroburg",
+    "placeType": "TOWN",
+    "parent": {"id": 64},
+    "properties": "isForest: true,isRiver: true,isRoad: true"
+  },
+  {
+    "id": 81,
+    "name": "Barenfähre",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 64},
+    "properties": "isForest: true,isRiver: true"
+  },
+  {
+    "id": 82,
+    "name": "Dunkelbild",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 64},
+    "properties": "isForest: true,isRiver: true,isRoad: true"
+  },
+  {
+    "id": 83,
+    "name": "Schattenlas",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 64},
+    "properties": "isForest: true,isRiver: true"
+  },
+  {
+    "id": 84,
+    "name": "Senden",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 64},
+    "properties": "isForest: true,isRoad: true"
+  },
+  {
+    "id": 85,
+    "name": "Weidemarkt",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 64},
+    "properties": "isForest: true,isRiver: true"
+  },
+  {
+    "id": 86,
+    "name": "Delberz",
+    "placeType": "TOWN",
+    "parent": {"id": 64},
+    "properties": "isRiver: true,isHill: true,isRoad: true,isPopularRoad: true"
+  },
+  {
+    "id": 87,
+    "name": "Mittelmund",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 64},
+    "properties": "isForest: true,isRoad: true,isPopularRoad: true"
+  },
+  {
+    "id": 88,
+    "name": "Schwarzmarkt",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 64},
+    "properties": "isHill: true,isRoad: true,isPopularRoad: true"
+  },
+  {
+    "id": 89,
+    "name": "Turmgever",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 64},
+    "properties": "isHill: true,isRoad: true"
+  },
+  {
+    "id": 90,
+    "name": "Grimminhagen",
+    "placeType": "TOWN",
+    "parent": {"id": 64},
+    "properties": "isHill: true,isRoad: true"
+  },
+  {
+    "id": 91,
+    "name": "Fintel",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 64},
+    "properties": "isRiver: true,isRoad: true"
+  },
+  {
+    "id": 92,
+    "name": "Harsum",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 64},
+    "properties": "isForest: true,isRoad: true"
+  },
+  {
+    "id": 93,
+    "name": "Rosche",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 64},
+    "properties": "isForest: true,isRiver: true"
+  },
+  {
+    "id": 94,
+    "name": "Winsen",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 64},
+    "properties": "isForest: true,isRoad: true"
+  },
+  {
+    "id": 95,
+    "name": "Grubentreich",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 64},
+    "properties": "isHill: true"
+  },
+  {
+    "id": 96,
+    "name": "Kammendun",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 64},
+    "properties": "isRiver: true,isSwamp: true,isRoad: true,isPopularRoad: true"
+  },
+  {
+    "id": 97,
+    "name": "Leichlinberg",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 64},
+    "properties": "isHill: true"
+  },
+  {
+    "id": 98,
+    "name": "Pritzstock",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 64},
+    "properties": "isHill: true"
+  },
+  {
+    "id": 99,
+    "name": "Scheinfeld",
+    "placeType": "SMALLTOWN",
+    "parent": {"id": 64},
+    "properties": "isForest: true,isRiver: true,isRoad: true"
+  },
+  {
+    "id": 100,
+    "name": "Hupstedt",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 64},
+    "properties": "isForest: true,isRoad: true"
+  },
+  {
+    "id": 101,
+    "name": "Uder",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 64},
+    "properties": "isForest: true"
+  },
+  {
+    "id": 102,
+    "name": "Schoppendorf",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 64},
+    "properties": "isRiver: true,isHill: true"
+  },
+  {
+    "id": 103,
+    "name": "Langwiese",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 64},
+    "properties": "isForest: true"
+  },
+  {
+    "id": 104,
+    "name": "Untergard",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 64},
+    "properties": "isForest: true,isRiver: true,isHill: true,isRoad: true"
+  },
+  {
+    "id": 105,
+    "name": "Mootland",
+    "placeType": "LAND",
+    "parent": {"id": 2},
+    "properties": ""
+  },
+  {
+    "id": 106,
+    "name": "Eicheschatten",
+    "placeType": "TOWN",
+    "parent": {"id": 105},
+    "properties": "isRiver: true,isHill: true,isRoad"
   }
 
 ]

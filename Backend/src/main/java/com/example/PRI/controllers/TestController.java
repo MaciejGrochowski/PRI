@@ -7,8 +7,8 @@ import com.example.PRI.controllers.annotations.Put;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-//przyklad
 import javax.validation.Valid;
+
 
 @RestController
 @RequestMapping(value = "/app")
@@ -16,7 +16,7 @@ public class TestController {
 
     @Get
     public String testGet(){
-        return "Success";
+        return "GET";
     }
 
     @Post

@@ -3,6 +3,7 @@ package com.example.PRI.services;
 import com.example.PRI.entities.Place;
 import com.example.PRI.entities.character.Career;
 import com.example.PRI.entities.character.Name;
+import com.example.PRI.enums.PlaceType;
 import com.example.PRI.repositories.PlaceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -34,5 +35,17 @@ public class PlaceService extends GeneralService {
 
     public List<Place> findByNameIn(List<String> placesList) {
         return placeRepository.findByNameIn(placesList);
+    }
+
+    public List<Place> getCapitols() {
+        return placeRepository.findByPropertiesLike("%isCapitol: true%");
+    }
+
+    public List<Place> getCities() {
+        return placeRepository.findByPlaceType(PlaceType.CITY);
+    }
+
+    public List<Place> getByType(PlaceType type) {
+        return placeRepository.findByPlaceType(type);
     }
 }

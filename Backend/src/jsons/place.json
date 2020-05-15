@@ -738,7 +738,62 @@
     "name": "Eicheschatten",
     "placeType": "TOWN",
     "parent": {"id": 105},
-    "properties": "isRiver: true,isHill: true,isRoad"
+    "properties": "isRiver: true,isHill: true,isRoad: true"
+  },
+  {
+    "id": 107,
+    "name": "Birnbaum",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 105},
+    "properties": "isRiver: true,isRoad: true"
+  },
+  {
+    "id": 108,
+    "name": "Dreiflussen",
+    "placeType": "SMALLTOWN",
+    "parent": {"id": 105},
+    "properties": "isRiver: true,isRoad: true"
+  },
+  {
+    "id": 109,
+    "name": "Einsamholz",
+    "placeType": "SMALLTOWN",
+    "parent": {"id": 105},
+    "properties": "isRiver: true"
+  },
+  {
+    "id": 110,
+    "name": "Gipfel",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 105},
+    "properties": "isRiver: true,isRoad: true"
+  },
+  {
+    "id": 111,
+    "name": "Grünhügel",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 105},
+    "properties": "isRiver: true,isRoad: true"
+  },
+  {
+    "id": 112,
+    "name": "Heukern",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 105},
+    "properties": "isForest: true,isRiver: true,isRoad: true"
+  },
+  {
+    "id": 113,
+    "name": "Sauerapfel",
+    "placeType": "SMALLTOWN",
+    "parent": {"id": 105},
+    "properties": "isForest: true,isRiver: true"
+  },
+  {
+    "id": 114,
+    "name": "Nordland",
+    "placeType": "SMALLTOWN",
+    "parent": {"id": 2},
+    "properties": "isForest: true,isRiver: true"
   }
-
 ]

@@ -14,13 +14,18 @@ public class CharacterGenerator extends GeneralService {
     @Autowired
     private CharacterBirthPlaceGenerator characterBirthPlaceGenerator;
 
+    @Autowired
+    private SurnameGenerator surnameGenerator;
+
     public Character generateFullCharacter(){
 
         CharacterBuilder characterBuilder = new CharacterBuilder();
         characterBuilder.initialize()
                 .buildBirthPlace(characterBirthPlaceGenerator)
                 .buildRace(new RaceGenerator())
-                .buildSex(new SexGenerator());
+                .buildSex(new SexGenerator())
+                .buildSurname(surnameGenerator)
+        ;
 
         Character generated = characterBuilder.getCharacter();
 

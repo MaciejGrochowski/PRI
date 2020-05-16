@@ -1414,10 +1414,10 @@
   },
   {
     "id": 203,
-    "name": "Rechtlich",
-    "placeType": "VILLIAGE",
+    "name": "Blutroch",
+    "placeType": "SMALLTOWN",
     "parent": {"id": 187},
-    "properties": "isForest: true,isHill: true,isRoad: true"
+    "properties": "isForest: true,isHill: true,isRoad: true,isPopularRoad: true"
   },
   {
     "id": 204,
@@ -1754,8 +1754,48 @@
     "placeType": "SMALLTOWN",
     "parent": {"id": 187},
     "properties": "isForest: true,isRiver: true"
+  },
+  {
+    "id": 252,
+    "name": "Kemperbad",
+    "placeType": "TOWN",
+    "parent": {"id": 187},
+    "properties": "isForest: true,isRiver: true"
+  },
+  {
+    "id": 253,
+    "name": "Berghof",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 187},
+    "properties": "isForest: true,isRiver: true"
+  },
+  {
+    "id": 254,
+    "name": "Brandenburg",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 187},
+    "properties": "isForest: true,isRiver: true"
+  },
+  {
+    "id": 255,
+    "name": "Jungbach",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 187},
+    "properties": "isForest: true,isRiver: true"
+  },
+  {
+    "id": 256,
+    "name": "Ostwald",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 187},
+    "properties": "isForest: true"
+  },
+  {
+    "id": 257,
+    "name": "Stockhausen",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 187},
+    "properties": "isForest: true,isRiver: true"
   }
-
-
 
 ]

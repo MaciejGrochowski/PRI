@@ -13,9 +13,12 @@
   }
 }
 
+.MuiFormControl-root{
+  margin-top: 2%!important;
+}
 
 .MuiTableCell-body{
-  color: #FFD859!important;
+  color: white!important;
 }
 
 .ReactModal__Content{

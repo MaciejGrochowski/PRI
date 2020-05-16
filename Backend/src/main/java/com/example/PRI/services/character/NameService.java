@@ -7,6 +7,7 @@ import com.example.PRI.services.GeneralService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -30,4 +31,7 @@ public class NameService extends GeneralService {
     }
 
 
+    public List<Name> findByIsDwarf() {
+        return nameRepository.findByIsDwarf(true);
+    }
 }

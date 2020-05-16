@@ -223,23 +223,23 @@ public class CharacterService extends GeneralService {
         skills.add(s8);
 
         List<Emotion> emotions = new ArrayList<>();
-        Emotion e1 = new Emotion("gniew", "test");
+        Emotion e1 = new Emotion("gniew", "test", 0.011);
         emotionService.save(e1);
-        Emotion e2 = new Emotion("radość", "test");
+        Emotion e2 = new Emotion("radość", "test", 0.011);
         emotionService.save(e2);
-        Emotion e3 = new Emotion("frustracja", "test");
+        Emotion e3 = new Emotion("frustracja", "test", 0.011);
         emotionService.save(e3);
-        Emotion e4 = new Emotion("nienawiść", "test");
+        Emotion e4 = new Emotion("nienawiść", "test", 0.011);
         emotionService.save(e4);
-        Emotion e5 = new Emotion("samotność", "test");
+        Emotion e5 = new Emotion("samotność", "test", 0.011);
         emotionService.save(e5);
-        Emotion e6 = new Emotion("nerwowość", "test");
+        Emotion e6 = new Emotion("nerwowość", "test", 0.011);
         emotionService.save(e6);
-        Emotion e7 = new Emotion("euforia", "test");
+        Emotion e7 = new Emotion("euforia", "test", 0.011);
         emotionService.save(e7);
-        Emotion e8 = new Emotion("rozpacz", "test");
+        Emotion e8 = new Emotion("rozpacz", "test", 0.011);
         emotionService.save(e8);
-        Emotion e9 = new Emotion("strach", "test");
+        Emotion e9 = new Emotion("strach", "test", 0.011);
         emotionService.save(e9);
 
         emotions.add(e1);

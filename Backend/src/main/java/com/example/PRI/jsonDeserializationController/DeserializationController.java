@@ -53,6 +53,9 @@ public class DeserializationController {
     @Autowired
     PlaceService placeService;
 
+    @Autowired
+    EmotionService emotionService;
+
     @RequestMapping("/json/name")
     public void nameDeserializationAndDatabaseUpdate() throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
@@ -263,6 +266,19 @@ public class DeserializationController {
         });
         for (Place place : listPlace) {
             placeService.save(place);
+        }
+    }
+
+    @RequestMapping("/json/emotion")
+    public void emotionDeserializationAndDatabaseUpdate() throws IOException {
+        ObjectMapper objectMapper = new ObjectMapper();
+
+        String path = "src/jsons/emotion.json";
+        String contents = Files.readString(Paths.get(path));
+        List<Emotion> listEmotion = objectMapper.readValue(contents, new TypeReference<List<Emotion>>() {
+        });
+        for (Emotion emotion : listEmotion) {
+            emotionService.save(emotion);
         }
     }
 }

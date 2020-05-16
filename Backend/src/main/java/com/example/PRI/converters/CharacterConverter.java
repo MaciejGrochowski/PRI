@@ -23,7 +23,7 @@ public class CharacterConverter {
         output.setName(character.getName().getName());
         output.setSurname(character.getSurname()!=null ? character.getSurname().getSurname() : "");
         output.setRace(character.getRace()==null ? "" : character.getRace().name());
-        output.setSex(character.getSex().name());
+        output.setSex(character.getSex().name()); //ToDo używać getName i wprowadzić poprawkę na frontendzie
         output.setCurrentCareer(character.getCurrentCareer().getName());
 //        output.setCareers(character.getCareers().stream().map(Career::getName).collect(Collectors.toList()));
         output.setLivePlace(character.getLivePlace().getName());

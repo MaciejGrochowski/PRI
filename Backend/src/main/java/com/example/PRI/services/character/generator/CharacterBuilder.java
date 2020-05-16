@@ -46,7 +46,15 @@ public class CharacterBuilder {
 
     public CharacterBuilder buildRace(RaceGenerator service){
         Map<String, String> newProps = service.generateRace(character, properties);
+        this.putAllProperties(newProps);
+        return this;
+    }
 
+
+
+    public CharacterBuilder buildSex(SexGenerator service) {
+        Map<String, String> newProps = service.generateSex(character, properties);
+        this.putAllProperties(newProps);
         return this;
     }
 
@@ -77,7 +85,5 @@ public class CharacterBuilder {
 
 
     }
-
-
 
 }

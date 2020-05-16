@@ -1796,6 +1796,320 @@
     "placeType": "VILLIAGE",
     "parent": {"id": 187},
     "properties": "isForest: true,isRiver: true"
+  },
+  {
+    "id": 258,
+    "name": "Stirland",
+    "placeType": "LAND",
+    "parent": {"id": 2},
+    "properties": ""
+  },
+  {
+    "id": 259,
+    "name": "Wurtbad",
+    "placeType": "TOWN",
+    "parent": {"id": 258},
+    "properties": "isForest: true,isRiver: true,isCapital: true,isRoad: true,isPopularRoad: true"
+  },
+  {
+    "id": 260,
+    "name": "Biberhof",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 258},
+    "properties": "isForest: true"
+  },
+  {
+    "id": 261,
+    "name": "Julbach",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 258},
+    "properties": "isForest: true"
+  },
+  {
+    "id": 262,
+    "name": "Oberwil",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 258},
+    "properties": "isForest: true,isRiver: true"
+  },
+  {
+    "id": 263,
+    "name": "Tarshof",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 258},
+    "properties": "isRoad: true,isPopularRoad: true"
+  },
+  {
+    "id": 264,
+    "name": "Blutdorf",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 258},
+    "properties": "isForest: true,isRoad: true"
+  },
+  {
+    "id": 265,
+    "name": "Kirchham",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 258},
+    "properties": "isForest: true,isRoad: true"
+  },
+  {
+    "id": 266,
+    "name": "Drakenhof",
+    "placeType": "SMALLTOWN",
+    "parent": {"id": 258},
+    "properties": "isRiver: true,isRoad: true"
+  },
+  {
+    "id": 267,
+    "name": "Flensburg",
+    "placeType": "SMALLTOWN",
+    "parent": {"id": 258},
+    "properties": "isHill: true,isRoad: true"
+  },
+  {
+    "id": 268,
+    "name": "Lochen",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 258},
+    "properties": "isHill: true,isRoad: true"
+  },
+  {
+    "id": 269,
+    "name": "Ramsau",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 258},
+    "properties": "isHill: true,isRoad: true"
+  },
+  {
+    "id": 270,
+    "name": "Franzen",
+    "placeType": "SMALLTOWN",
+    "parent": {"id": 258},
+    "properties": "isRiver: true"
+  },
+  {
+    "id": 271,
+    "name": "Chrobok",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 258},
+    "properties": ""
+  },
+  {
+    "id": 272,
+    "name": "Russbach",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 258},
+    "properties": ""
+  },
+  {
+    "id": 273,
+    "name": "Halstedt",
+    "placeType": "SMALLTOWN",
+    "parent": {"id": 258},
+    "properties": "isHill: true,isRoad: true"
+  },
+  {
+    "id": 274,
+    "name": "Raab",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 258},
+    "properties": "isHill: true,isRoad: true"
+  },
+  {
+    "id": 275,
+    "name": "Tenneck",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 258},
+    "properties": "isHill: true,isRoad: true"
+  },
+  {
+    "id": 276,
+    "name": "Leicheburg",
+    "placeType": "SMALLTOWN",
+    "parent": {"id": 258},
+    "properties": "isRiver: true,isHill: true,isRoad: true"
+  },
+  {
+    "id": 277,
+    "name": "Naubonum",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 258},
+    "properties": "isHill: true,isRoad: true"
+  },
+  {
+    "id": 278,
+    "name": "Swartzhafen",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 258},
+    "properties": "isHill: true,isRoad: true"
+  },
+  {
+    "id": 2798,
+    "name": "Marburg",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 258},
+    "properties": "isForest: true,isRiver: true"
+  },
+  {
+    "id": 280,
+    "name": "Oehling",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 258},
+    "properties": "isForest: true,isRiver: true"
+  },
+  {
+    "id": 281,
+    "name": "Nachthaften",
+    "placeType": "SMALLTOWN",
+    "parent": {"id": 258},
+    "properties": "isRiver: true,isHill: true,isRoad: true"
+  },
+  {
+    "id": 282,
+    "name": "Pfaffbach",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 258},
+    "properties": "isRiver: true"
+  },
+  {
+    "id": 283,
+    "name": "Schramleben",
+    "placeType": "SMALLTOWN",
+    "parent": {"id": 258},
+    "properties": "isRiver: true,isRoad: true"
+  },
+  {
+    "id": 284,
+    "name": "Falkenhausen",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 258},
+    "properties": "isRoad: true"
+  },
+  {
+    "id": 285,
+    "name": "Hutten",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 258},
+    "properties": "isRiver: true,isRoad: true"
+  },
+  {
+    "id": 286,
+    "name": "Pappenheim",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 258},
+    "properties": "isRoad: true"
+  },
+  {
+    "id": 287,
+    "name": "Siegfriedhof",
+    "placeType": "SMALLTOWN",
+    "parent": {"id": 258},
+    "properties": "isForest: true,isRiver: true"
+  },
+  {
+    "id": 288,
+    "name": "Sigmaringen",
+    "placeType": "SMALLTOWN",
+    "parent": {"id": 258},
+    "properties": "isRiver: true,isRoad: true"
+  },
+  {
+    "id": 289,
+    "name": "Hardenburg",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 258},
+    "properties": "isRoad: true"
+  },
+  {
+    "id": 290,
+    "name": "Kaunitz",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 258},
+    "properties": "isRiver: true"
+  },
+  {
+    "id": 291,
+    "name": "Steuben",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 258},
+    "properties": "isRoad: true"
+  },
+  {
+    "id": 292,
+    "name": "Tempelhof",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 258},
+    "properties": "isRiver: true,isSwamp: true"
+  },
+  {
+    "id": 293,
+    "name": "Vanhaldenhof",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 258},
+    "properties": "isForest: true,isRiver: true,isSwamp: true"
+  },
+  {
+    "id": 294,
+    "name": "Waldenhof",
+    "placeType": "TOWN",
+    "parent": {"id": 258},
+    "properties": "isRiver: true,isRoad: true"
+  },
+  {
+    "id": 295,
+    "name": "Egling",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 258},
+    "properties": "isRiver: true,isSwamp: true,isRoad: true"
+  },
+  {
+    "id": 296,
+    "name": "Hundham",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 258},
+    "properties": "isRiver: true,isRoad: true"
+  },
+  {
+    "id": 297,
+    "name": "Mikalsdorf",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 258},
+    "properties": "isSwamp: true,isRoad: true"
+  },
+  {
+    "id": 298,
+    "name": "Regakhof",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 258},
+    "properties": "isRiver: true,isRoad: true"
+  },
+  {
+    "id": 299,
+    "name": "Thyrnau",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 258},
+    "properties": "isRiver: true,isRoad: true"
+  },
+  {
+    "id": 300,
+    "name": "Wördern",
+    "placeType": "SMALLTOWN",
+    "parent": {"id": 258},
+    "properties": "isHill: true,isRoad: true,isPopularRoad: true"
+  },
+  {
+    "id": 301,
+    "name": "Kelham",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 258},
+    "properties": ""
+  },
+  {
+    "id": 302,
+    "name": "Nussbach",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 258},
+    "properties": "isRiver: true"
   }
-
 ]

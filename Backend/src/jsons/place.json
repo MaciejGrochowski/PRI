@@ -2111,5 +2111,467 @@
     "placeType": "VILLIAGE",
     "parent": {"id": 258},
     "properties": "isRiver: true"
+  },
+  {
+    "id": 303,
+    "name": "Talabecland",
+    "placeType": "LAND",
+    "parent": {"id": 2},
+    "properties": ""
+  },
+  {
+    "id": 304,
+    "name": "Küsel",
+    "placeType": "TOWN",
+    "parent": {"id": 303},
+    "properties": "isForest: true,isRiver: true,isCapital: true,isRoad: true"
+  },
+  {
+    "id": 305,
+    "name": "Dreetz",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 303},
+    "properties": "isForest: true,isHill: true"
+  },
+  {
+    "id": 306,
+    "name": "Lohrafurt",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 303},
+    "properties": "isForest: true,isRiver: true"
+  },
+  {
+    "id": 307,
+    "name": "Uckrofurt",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 303},
+    "properties": "isForest: true"
+  },
+  {
+    "id": 308,
+    "name": "Bek",
+    "placeType": "SMALLTOWN",
+    "parent": {"id": 303},
+    "properties": "isRiver: true,isHill: true"
+  },
+  {
+    "id": 309,
+    "name": "Freital",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 303},
+    "properties": "isForest: true,isRoad: true"
+  },
+  {
+    "id": 310,
+    "name": "Viernau",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 303},
+    "properties": "isRiver: true,isRoad: true"
+  },
+  {
+    "id": 311,
+    "name": "Garndorf",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 303},
+    "properties": "isForest: true,isRiver: true"
+  },
+  {
+    "id": 312,
+    "name": "Torpin",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 303},
+    "properties": "isForest: true,isRiver: true"
+  },
+  {
+    "id": 313,
+    "name": "Werder",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 303},
+    "properties": "isForest: true,isRiver: true"
+  },
+  {
+    "id": 314,
+    "name": "Gersedorf",
+    "placeType": "SMALLTOWN",
+    "parent": {"id": 303},
+    "properties": "isForest: true,isRiver: true,isRoad: true"
+  },
+  {
+    "id": 315,
+    "name": "Dohna",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 303},
+    "properties": "isForest: true"
+  },
+  {
+    "id": 316,
+    "name": "Sabritz",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 303},
+    "properties": "isForest: true,isHill: true"
+  },
+  {
+    "id": 317,
+    "name": "Hermsdorf",
+    "placeType": "SMALLTOWN",
+    "parent": {"id": 303},
+    "properties": "isForest: true,isRiver: true,isRoad: true"
+  },
+  {
+    "id": 318,
+    "name": "Radische",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 303},
+    "properties": "isForest: true,isRoad: true"
+  },
+  {
+    "id": 319,
+    "name": "Krugenheim",
+    "placeType": "TOWN",
+    "parent": {"id": 303},
+    "properties": "isForest: true,isRiver: true,isRoad: true"
+  },
+  {
+    "id": 320,
+    "name": "Hazelhof",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 303},
+    "properties": "isForest: true,isRoad: true"
+  },
+  {
+    "id": 321,
+    "name": "Kiel",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 303},
+    "properties": "isHill: true,isRoad: true"
+  },
+  {
+    "id": 322,
+    "name": "Trautenau",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 303},
+    "properties": "isForest: true,isRoad: true"
+  },
+  {
+    "id": 323,
+    "name": "Lieske",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 303},
+    "properties": "isForest: true,isRoad: true"
+  },
+  {
+    "id": 324,
+    "name": "Ossino",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 303},
+    "properties": "isForest: true,isRoad: true"
+  },
+  {
+    "id": 325,
+    "name": "Rangenhof",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 303},
+    "properties": "isForest: true,isRiver: true,isRoad: true"
+  },
+  {
+    "id": 326,
+    "name": "Gostahof",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 303},
+    "properties": "isForest: true,isRoad: true"
+  },
+  {
+    "id": 327,
+    "name": "Zützen",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 303},
+    "properties": "isForest: true"
+  },
+  {
+    "id": 328,
+    "name": "Ravenstein",
+    "placeType": "SMALLTOWN",
+    "parent": {"id": 303},
+    "properties": "isForest: true,isRiver: true,isRoad: true"
+  },
+  {
+    "id": 329,
+    "name": "Klepzig",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 303},
+    "properties": "isForest: true,isRiver: true"
+  },
+  {
+    "id": 330,
+    "name": "Unterbaum",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 303},
+    "properties": "isRiver: true"
+  },
+  {
+    "id": 331,
+    "name": "Volgen",
+    "placeType": "TOWN",
+    "parent": {"id": 303},
+    "properties": "isForest: true,isRiver: true,isRoad: true"
+  },
+  {
+    "id": 332,
+    "name": "Brasthof",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 303},
+    "properties": "isForest: true,isRiver: true"
+  },
+  {
+    "id": 333,
+    "name": "Esselfurt",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 303},
+    "properties": "isForest: true,isRiver: true"
+  },
+  {
+    "id": 334,
+    "name": "Priestlicheim",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 303},
+    "properties": "isForest: true"
+  },
+  {
+    "id": 335,
+    "name": "Ripdorf",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 303},
+    "properties": "isHill: true"
+  },
+  {
+    "id": 336,
+    "name": "Sudenheim",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 303},
+    "properties": "isForest: true,isRoad: true"
+  },
+  {
+    "id": 337,
+    "name": "Zeder",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 303},
+    "properties": "isForest: true,isRiver: true"
+  },
+  {
+    "id": 338,
+    "name": "Welleborn",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 303},
+    "properties": "isForest: true,isRiver: true"
+  },
+  {
+    "id": 339,
+    "name": "Missen",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 303},
+    "properties": "isForest: true,isRoad: true"
+  },
+  {
+    "id": 340,
+    "name": "Sydow",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 303},
+    "properties": "isForest: true,isRoad: true"
+  },
+  {
+    "id": 341,
+    "name": "Zurin",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 303},
+    "properties": "isForest: true,isRiver: true,isRoad: true"
+  },
+  {
+    "id": 342,
+    "name": "Sarno",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 303},
+    "properties": "isForest: true,isRoad: true"
+  },
+  {
+    "id": 343,
+    "name": "Talabheim",
+    "placeType": "CITYSTATE",
+    "parent": {"id": 303},
+    "properties": "isForest: true,isRiver: true,isSwamp: true,isHill: true,isRoad: true"
+  },
+  {
+    "id": 344,
+    "name": "Bachra",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 303},
+    "properties": "isForest: true"
+  },
+  {
+    "id": 345,
+    "name": "Bad Dankerode",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 303},
+    "properties": "isForest: true,isRiver: true,isHill: true,isRoad: true"
+  },
+  {
+    "id": 346,
+    "name": "Bad Tennsalza",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 303},
+    "properties": "isForest: true,isRiver: true,isRoad: true"
+  },
+  {
+    "id": 347,
+    "name": "Breitblatt",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 303},
+    "properties": "isRiver: true,isHill: true,isRoad: true"
+  },
+  {
+    "id": 348,
+    "name": "Grossreiche",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 303},
+    "properties": "isForest: true,isRiver: true"
+  },
+  {
+    "id": 349,
+    "name": "Gründach",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 303},
+    "properties": "isRiver: true,isRoad: true"
+  },
+  {
+    "id": 350,
+    "name": "Harferfähre",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 303},
+    "properties": "isForest: true,isRiver: true,isRoad: true"
+  },
+  {
+    "id": 351,
+    "name": "Hernhausen",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 303},
+    "properties": "isForest: true,isRiver: true,isRoad: true"
+  },
+  {
+    "id": 352,
+    "name": "Klarfeld",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 303},
+    "properties": "isHill: true"
+  },
+  {
+    "id": 353,
+    "name": "Kutzleben",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 303},
+    "properties": "isForest: true,isRiver: true"
+  },
+  {
+    "id": 354,
+    "name": "Liebstedt",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 303},
+    "properties": "isForest: true,isRiver: true,isRoad: true"
+  },
+  {
+    "id": 355,
+    "name": "Rotha",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 303},
+    "properties": "isForest: true,isRiver: true,isRoad: true"
+  },
+  {
+    "id": 356,
+    "name": "Sprötau",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 303},
+    "properties": "isForest: true,isRiver: true,isRoad: true"
+  },
+  {
+    "id": 357,
+    "name": "Sumpfrand",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 303},
+    "properties": "isSwamp: true,isHill: true,isRoad: true"
+  },
+  {
+    "id": 358,
+    "name": "Talagaad",
+    "placeType": "SMALLTOWN",
+    "parent": {"id": 303},
+    "properties": "isForest: true,isRiver: true,isRoad: true"
+  },
+  {
+    "id": 359,
+    "name": "Urhausen",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 303},
+    "properties": "isForest: true,isRiver: true,isRoad: true"
+  },
+  {
+    "id": 360,
+    "name": "Vateresche",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 303},
+    "properties": "isForest: true,isHill: true"
+  },
+  {
+    "id": 361,
+    "name": "Waldfährte",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 303},
+    "properties": "isForest: true,isRiver: true,isRoad: true"
+  },
+  {
+    "id": 362,
+    "name": "Wissenland",
+    "placeType": "LAND",
+    "parent": {"id": 2},
+    "properties": ""
+  },
+  {
+    "id": 363,
+    "name": "Wissenburg",
+    "placeType": "TOWN",
+    "parent": {"id": 362},
+    "properties": "isRiver: true,isCapital: true,isRoad: true"
+  },
+  {
+    "id": 364,
+    "name": "Dotternbach",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 362},
+    "properties": "isMountains: true,isRiver: true"
+  },
+  {
+    "id": 365,
+    "name": "Haigerbach",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 362},
+    "properties": "isRiver: true"
+  },
+  {
+    "id": 366,
+    "name": "Maselhof",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 362},
+    "properties": "isRiver: true"
+  },
+  {
+    "id": 367,
+    "name": "Rohrhausen",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 362},
+    "properties": ""
+  },
+  {
+    "id": 368,
+    "name": "Weningen",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 362},
+    "properties": "isRoad: true"
   }
 ]

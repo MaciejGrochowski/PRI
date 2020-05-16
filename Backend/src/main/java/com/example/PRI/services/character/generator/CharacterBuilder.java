@@ -50,11 +50,16 @@ public class CharacterBuilder {
         return this;
     }
 
-
-
     public CharacterBuilder buildSex(SexGenerator service) {
         Map<String, String> newProps = service.generateSex(character, properties);
         this.putAllProperties(newProps);
+        return this;
+    }
+
+    public CharacterBuilder buildSurname(SurnameGenerator service) {
+        Map<String, String> newProps = service.generateSurname(character, properties);
+        this.putAllProperties(newProps);
+
         return this;
     }
 

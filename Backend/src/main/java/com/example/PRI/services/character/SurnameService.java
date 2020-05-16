@@ -6,6 +6,7 @@ import com.example.PRI.services.GeneralService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -26,4 +27,15 @@ public class SurnameService extends GeneralService {
         return Optional.ofNullable(surnameRepository.findBySurname(surname));
     }
 
+    public List<Surname> findHalflingSurnames() {
+        return surnameRepository.findByIsHalfling(true);
+    }
+
+    public List<Surname> findElfSurnames() {
+        return surnameRepository.findByIsElf(true);
+    }
+
+    public List<Surname> findHumanSurnames() {
+        return surnameRepository.findByIsHuman(true);
+    }
 }

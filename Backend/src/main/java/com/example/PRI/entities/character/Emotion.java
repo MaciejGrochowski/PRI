@@ -16,4 +16,5 @@ public class Emotion extends GeneralEntity {
     @Column(unique = true)
     String name;
     String type;
+    Double probability;
 }

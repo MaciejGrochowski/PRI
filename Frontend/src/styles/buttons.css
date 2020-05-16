@@ -18,6 +18,21 @@
     color: #292F2F;
   }
 
+  .detaleButton{
+    background-color: #292F2F;
+    color: #FFD859;
+    border-radius: 20%;
+    border: 2px solid #FFD859;
+    text-decoration: none;
+    transition-duration: 0.4s;
+    cursor: pointer;
+  }
+
+  .detaleButton:hover {
+    background-color: #FFD859;
+    color: #292F2F;
+  }
+
   .menubutton{
     background-color: #FFD859;
     color: #292F2F;
@@ -46,4 +61,36 @@
   .flex-center-element{
     display: flex;
     justify-content: center;
+  }
+
+  .green-button{
+    color: greenyellow;
+    border: greenyellow;
+    background-color: #292F2F; ;
+    border-radius: 20%;
+    border: 2px solid greenyellow;
+    text-decoration: none;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    margin: 5%;
+  }
+.green-button:hover{
+  background-color: greenyellow;
+  color: #292F2F; 
+}
+  .red-button{
+    color: tomato;
+    border: tomato;
+    background-color:#292F2F;
+    border-radius: 20%;
+    border: 2px solid tomato;
+    text-decoration: none;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    margin: 5%;
+  }
+
+  .red-button:hover{
+    background-color: tomato;
+    color: #292F2F; 
   }

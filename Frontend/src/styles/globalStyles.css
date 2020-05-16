@@ -10,9 +10,42 @@
     position: fixed;
     min-height: 100%;
     min-width: 100%;
-    padding: 100px;
+    padding: 5%;
+    padding-top: 5%;
     height: -webkit-fill-available;
     width: -webkit-fill-available;
     background-color: #292F2F;
     color: white;
+}
+
+.flex-element{
+    display: flex;
+}
+
+.block-element{
+    display: inline-block;
+    width: 45%;
+}
+
+.flex-component{
+    display: flex;
+    padding: 1%;
+    width: max-content;
+    border-bottom: solid 1px white;
+}
+
+.yellow-color{
+    color: #FFD859;
+}
+
+.sub-title{
+    display: block;
+    font-size: large;
+    margin-top: 4%;
+    margin-bottom: 2%;
+}
+
+.wrap-element{
+    display: block;
+    flex-wrap: wrap;
 }

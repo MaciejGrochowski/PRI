@@ -2,7 +2,7 @@ import React from "react";
 import MaterialTable from "material-table";
 import TablePagination from "@material-ui/core/TablePagination";
 import mystyle from "../../styles/tables.css";
-
+import button from "../../styles/buttons.css";
 class Table extends React.Component {
 
     constructor() {
@@ -24,7 +24,7 @@ class Table extends React.Component {
                 {
                     title: 'Detale',
                     field: '',
-                    render: rowData => <button onClick={() => this.props.onDetailsClick(rowData)}>Detale</button>,
+                    render: rowData => <button className = "detaleButton" onClick={() => this.props.onDetailsClick(rowData)}>Detale</button>,
                 })
             this.setState({columnsConfig: columnsConfig})
         }

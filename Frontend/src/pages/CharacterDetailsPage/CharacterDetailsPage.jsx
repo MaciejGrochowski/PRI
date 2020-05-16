@@ -4,7 +4,7 @@ import characterService from "../../services/characterService";
 import CharacterDetailsStatsView from "../../components/CharacterDetails/CharacterDetailsStatsView";
 import CharacterDetailsSkillsView from "../../components/CharacterDetails/CharacterDetailsSkillsView";
 import CharacterDetailsCombatStatsView from "../../components/CharacterDetails/CharacterDetailsCombatStatsView";
-
+import pageName from "../../styles/page.css"
 
 class CharacterDetailsPage extends React.Component {
 
@@ -44,13 +44,15 @@ class CharacterDetailsPage extends React.Component {
     render(){
         return (
             <div className = "plainPage">
-            <div>{this.state.characterData.name + " " + this.state.characterData.surname} </div>
-
+            <div className = "pageName">{this.state.characterData.name + " " + this.state.characterData.surname} </div>
+            <div className = "flex-element">
+            <div className = "block-element">
                 <CharacterDetailsStatsView
                 title="Statystyki"
                 data={this.state.characterData}
                 />
-
+                </div>
+            <div className = "block-element">
                 <CharacterDetailsSkillsView
                 title="Umiejętności"
                 data={this.state.characterData.skills}
@@ -66,7 +68,8 @@ class CharacterDetailsPage extends React.Component {
                 data={this.state.characterData}
 
                 />
-
+            </div>
+            </div>
             </div>
         )
     }

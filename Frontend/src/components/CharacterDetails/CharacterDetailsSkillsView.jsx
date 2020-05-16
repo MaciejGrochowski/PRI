@@ -10,8 +10,8 @@ class CharacterDetailsSkillsView extends React.Component {
         const {data, title} = this.props;
         console.log(data);
         return (
-            <div>
-                <div>{title}</div>
+            <div className = "flex-element">
+                <div className="sub-title">{title}</div>
                 {data !== undefined && data.map((item, i) => (
                     <div>
                         <span>{item.name}</span>

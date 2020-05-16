@@ -6,7 +6,7 @@ class CharacterDetailsCombatStatsView extends React.Component {
         const {data, title} = this.props;
         return (
             <div>
-                <div>{title}</div>
+                <div className = "sub-title">{title}</div>
 
                 <span>BaseWW </span> <span>{data.baseWeaponSkills}</span>
                 <span>BaseUS </span> <span>{data.baseBallisticSkills}</span>

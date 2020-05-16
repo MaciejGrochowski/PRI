@@ -1,17 +1,26 @@
 .menuBody{
     background-color: #222222;
     display: flex;
+    padding-left: 3%;
 }
-
+.menu-title{
+    font-size: large;
+    padding-bottom: 5%;
+    text-align: left;
+}
 .menuLink{
     display: block;
     backface-visibility: hidden;
     color: white;
-    padding: 20px;
     text-decoration: none;
-    padding: 20px;
+    margin-left: 25%;
+    padding: 1%;
 }
-
+.menu-column{
+    display: block;
+    padding: 2%;
+    margin-left: 10%;
+}
 .menuLink:hover{
     color: #FFD859;
 }

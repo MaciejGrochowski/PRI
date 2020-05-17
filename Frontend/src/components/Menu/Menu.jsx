@@ -44,7 +44,7 @@ class Menu extends React.Component {
         return (
             <div>
             <div className ="globalStyles">
-            <div className="menuBody">
+                {this.state.isExpanded && (<div className="menuBody">
                 {/* <div className= "menu-column">
                     <div className = "menu-title">Moje</div>
                     <div className = "menuLink">Postaci</div>
@@ -86,7 +86,7 @@ class Menu extends React.Component {
 
 
 
-            </div>
+            </div>)}
                 <button className="menubutton" onClick={this.onExpanded}>Menu</button>
             </div>
             </div>

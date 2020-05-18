@@ -44,24 +44,14 @@ class CharacterDetailsPage extends React.Component {
     render(){
         return (
             <div className = "globalStyles">
-                <div className = "plainPage">
+                <div className = "pageWithContext">
             <div className = "pageName">{this.state.characterData.name + " " + this.state.characterData.surname} </div>
             <div className = "flex-element">
             <div className = "block-element">
+
                 <CharacterDetailsStatsView
                 title="Statystyki"
                 data={this.state.characterData}
-                />
-                </div>
-            <div className = "block-element">
-                <CharacterDetailsSkillsView
-                title="Umiejętności"
-                data={this.state.characterData.skills}
-                />
-
-                <CharacterDetailsSkillsView
-                    title="Zdolności"
-                    data={this.state.characterData.talents}
                 />
 
                 <CharacterDetailsCombatStatsView
@@ -69,6 +59,19 @@ class CharacterDetailsPage extends React.Component {
                 data={this.state.characterData}
 
                 />
+
+                </div>
+            <div className = "block-element">
+                <div className = "historie"></div>
+                <CharacterDetailsSkillsView
+                title="Umiejętności"
+                data={this.state.characterData.skills}
+                />
+                <CharacterDetailsSkillsView
+                    title="Zdolności"
+                    data={this.state.characterData.talents}
+                />
+
             </div>
             </div>
             </div>

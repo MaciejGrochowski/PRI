@@ -7,6 +7,16 @@
     
 }
 
+.pageWithContext{
+    background-color: #292F2F!important;
+    color: white;
+    font-size: medium;
+    text-align: left;
+    padding: 5%;
+    padding-top: 5%;
+
+}
+
 .plainPage{
     background-color: #292F2F!important;
     color: white;
@@ -14,7 +24,7 @@
     text-align: left;
     padding: 5%;
     padding-top: 5%;
-    /* position: fixed;
+    position: fixed;
     overflow: auto;
     min-height: 100%;
     min-width: 100%;
@@ -23,7 +33,7 @@
     height: -webkit-fill-available;
     width: -webkit-fill-available;
     background-color: #292F2F;
-    color: white; */
+    color: white;
 
 }
 
@@ -32,18 +42,21 @@
 }
 
 .block-element{
-    display: inline-block;
-    width: 45%;
+    width: -webkit-fill-available;
+    width: -moz-available;
 }
 
 .flex-component{
     display: flex;
     padding: 1%;
+    margin-bottom: 2%;
     width: max-content;
     border-bottom: solid 1px white;
 }
 
 .yellow-color{
+    display: block;
+    padding-left: auto;
     color: #FFD859;
 }
 
@@ -55,6 +68,28 @@
 }
 
 .wrap-element{
-    display: block;
+    display: inline-block;
     flex-wrap: wrap;
+}
+
+.stats-name{
+    display: block;
+    width: auto;
+    margin-right: 10px;
+}
+
+.list-decoration{
+    display: block;
+    border-left: solid 2px #FFD859!important;
+}
+
+.skill-name{
+    width: max-content;
+    padding-left: 10%;
+}
+
+.standard-component{
+    display: block;
+    padding-bottom: 20%;
+    margin-bottom: 20%;
 }

@@ -11,14 +11,15 @@ import {months} from "../../enums/Months";
 import generatorService from "../../services/generatorService";
 
 const mygrid = {
-    width: '30px',
-    height: "30px",
-    border: 'solid 1px white',
-    borderRadius: '25%',
-    marginBotton: '5%',
-    marginTop: '5%',
-    textAlign: 'center',
+        width: '30px',
+        height: "30px",
+        border: 'solid 1px white',
+        borderRadius: '25%',
+        marginBotton: '5%',
+        marginTop:'5%',
+        textAlign: 'center',
 };
+
 
 
 class CharacterGeneratorPage extends React.Component {
@@ -202,7 +203,7 @@ class CharacterGeneratorPage extends React.Component {
 
     render() {
         return (
-            <div className="plainPage">
+            <div className="pageWithContext">
                 <div className="pageName">Tworzenie postaci</div>
                 <div className="block-element">
                     <div className="flex-element">
@@ -522,12 +523,8 @@ class CharacterGeneratorPage extends React.Component {
                             <button className="green-button" onClick={this.save}>Zapisz</button>
                             <button className="red-button">Anuluj</button>
                         </div>
-                    </div>
-
-                </div>
-                {/* block-element na umiejętności bojowe
-            ToDo na tej samej zasadzie inne skille bojowe. Pamiętać, że drugi element jest disabled (cechy z rozwoju zawsze zależą od profesji i będą autocompletowane) */
-                }
+            </div>
+            </div>
             </div>
         )
     }

@@ -11,25 +11,31 @@ class CharacterDetailsStatsView extends React.Component {
             <div>
                 <div className="sub-title">{title}</div>
                 <div className = "wrap-element">
-                <div className="flex-component"><div className = "block-element">Imię</div> <div className = "block-element yellow-color" >{data.name}</div></div>
-                <div className="flex-component"><div className = "block-element">Nazwisko</div> <div className = "block-element yellow-color">{data.surname}</div></div>
-                <div className="flex-component"><div className = "block-element">Profesja</div> <div className = "block-element yellow-color">{data.currentCareer}</div></div>
-                <div className="flex-component"><div className = "block-element">Poprzednie profesje</div> <div className = "block-element yellow-color">{data.previousCareers}</div></div>
-                <div className="flex-component"><div className = "block-element">Miejsce pobytu</div> <div className = "block-element yellow-color">{data.livePlace}</div></div>
-                <div className="flex-component"><div className = "block-element">Miejsce urodzenia</div> <div className = "block-element yellow-color">{data.birthPlace}</div></div>
-                <div className="flex-component"><div className = "block-element">Rasa</div> <div className = "block-element yellow-color">{data.race}</div></div>
-                <div className="flex-component"><div className = "block-element">Płeć</div> <div className = "block-element yellow-color">{data.sex}</div></div>
-                <div className="flex-component"><div className = "block-element">Data urodzenia</div> <div className = "block-element yellow-color">TUTAJ PÓKI CO NULL</div></div>
-                <div className="flex-component"><div className = "block-element">Wzrost</div> <div className = "block-element yellow-color">{data.height}</div></div>
-                <div className="flex-component"><div className = "block-element">Waga</div> <div className = "block-element yellow-color">{data.weight}</div></div>
-                <div className="flex-component"><div className = "block-element">Znak gwiezdny</div> <div className = "block-element yellow-color">{data.starSign}</div></div>
-                <div className="flex-component"><div className = "block-element">Kolor oczu</div> <div className = "block-element yellow-color">{data.eyeColor}</div></div>
-                <div className="flex-component"><div className = "block-element">Kolor włosów</div> <div className = "block-element yellow-color">{data.hairColor}</div></div>
-                <div className="flex-component"><div className = "block-element">Cechy charakteru</div> <div className = "block-element yellow-color">{data.personality}</div></div>
-                <div className="flex-component"><div className = "block-element">Cechy wyglądu</div> <div className = "block-element yellow-color">{data.apperance}</div></div>
-                <div className="flex-component"><div className = "block-element">Emocje</div> <div className = "block-element yellow-color">{data.dominatingEmotions}</div></div>
-                <div className="flex-component"><div className = "block-element">Wiara</div> <div className = "block-element yellow-color">{data.religion}</div></div>
-                <div className="flex-component"><div className = "block-element">Przepowiednia</div> <div className = "block-element yellow-color">{data.prediction}</div></div>
+                    <div className="flex-element">
+                        <div className = "block-element"><div className="flex-component"><div className = "stats-name">Imię</div><div className = "yellow-color" >{data.name}</div></div></div>
+                        <div className = "block-element"><div className="flex-component"><div className = "stats-name">Nazwisko</div> <div className = "yellow-color">{data.surname}</div></div></div>
+                    </div>
+                <div className="flex-component"><div className = "stats-name">Profesja</div> <div className = "yellow-color">{data.currentCareer}</div></div>
+                <div className="flex-component"><div className = "stats-name">Poprzednie profesje</div> <div className = "yellow-color">{data.previousCareers}</div></div>
+                <div className="flex-component"><div className = "stats-name">Miejsce pobytu</div> <div className = "yellow-color">{data.livePlace}</div></div>
+                <div className="flex-component"><div className = "stats-name">Miejsce urodzenia</div> <div className = "yellow-color">{data.birthPlace}</div></div>
+                <div className="flex-element">
+                <div className = "block-element"><div className="flex-component"><div className = "stats-name">Rasa</div> <div className = "yellow-color">{data.race}</div></div></div>
+                <div className = "block-element"><div className="flex-component"><div className = "stats-name">Płeć</div> <div className = "yellow-color">{data.sex}</div></div></div>
+                </div>
+                <div className="flex-component"><div className = "stats-name">Data urodzenia</div> <div className = "yellow-color">TUTAJ PÓKI CO NULL</div></div>
+                <div className="flex-element">
+                <div className = "block-element"><div className="flex-component"><div className = "stats-name">Wzrost</div> <div className = "yellow-color">{data.height}</div></div></div>
+                <div className = "block-element"><div className="flex-component"><div className = "stats-name">Waga</div> <div className = "yellow-color">{data.weight}</div></div></div>
+                <div className = "block-element"><div className="flex-component"><div className = "stats-name">Znak gwiezdny</div> <div className = "yellow-color">{data.starSign}</div></div></div>
+                </div>
+                <div className="flex-component"><div className = "stats-name">Kolor oczu</div> <div className = "yellow-color">{data.eyeColor}</div></div>
+                <div className="flex-component"><div className = "stats-name">Kolor włosów</div> <div className = "yellow-color">{data.hairColor}</div></div>
+                <div className="flex-component"><div className = "stats-name">Cechy charakteru</div> <div className = "yellow-color">{data.personality}</div></div>
+                <div className="flex-component"><div className = "stats-name">Cechy wyglądu</div> <div className = "yellow-color">{data.apperance}</div></div>
+                <div className="flex-component"><div className = "stats-name">Emocje</div> <div className = "yellow-color">{data.dominatingEmotions}</div></div>
+                <div className="flex-component"><div className = "stats-name">Wiara</div> <div className = "yellow-color">{data.religion}</div></div>
+                <div className="flex-component"><div className = "stats-name">Przepowiednia</div> <div className = "yellow-color">{data.prediction}</div></div>
 
                 </div>
             </div>

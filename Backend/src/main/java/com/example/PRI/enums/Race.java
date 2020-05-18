@@ -38,4 +38,8 @@ public enum Race {
     public String getProperties() {
         return properties;
     }
+
+    public String getName() {
+        return name;
+    }
 }

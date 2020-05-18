@@ -81,7 +81,7 @@ public class CharacterConverter {
         CharacterDetailsOutputDto output = new CharacterDetailsOutputDto();
 
         output.setBirthPlace(character.getBirthPlace().getName());
-        output.setRace(character.getRace());
+        output.setRace(character.getRace().getName());
         output.setEyeColor(character.getEyeColor().getColor());
         output.setHairColor(character.getHairColor().getColor());
         if (character.getBirthDate() != null){
@@ -91,7 +91,7 @@ public class CharacterConverter {
         }
         output.setStarSign(character.getStarSign().getShortName());
         output.setDominatingEmotions(getStringFromArrayProperties(character.getDominatingEmotions().stream().map(Emotion::getName).collect(Collectors.toList())));
-        output.setSex(character.getSex());
+        output.setSex(character.getSex().getName());
         output.setReligion(character.getReligion().getGodName());
         output.setWeight(character.getWeight());
         output.setHeight(character.getHeight());

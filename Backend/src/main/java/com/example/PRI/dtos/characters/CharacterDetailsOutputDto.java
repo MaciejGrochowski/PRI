@@ -23,7 +23,7 @@ public class CharacterDetailsOutputDto {
 
     String birthPlace;
 
-    Race race;
+    String race;
 
     String eyeColor;
 
@@ -37,7 +37,7 @@ public class CharacterDetailsOutputDto {
 
     String dominatingEmotions;
 
-    Sex sex;
+    String sex;
 
     String religion;
 

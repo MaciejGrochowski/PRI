@@ -24,13 +24,15 @@ class DefaultMultipleAutocomplete extends React.Component {
 
     render() {
         const {options, labelName, id } = this.props;
+        const width = this.props.width ? this.props.width : 300;
 
         return(
             <Autocomplete
                 multiple={this.props.multiple}
                 options={options}
+                id={this.props.multiple ? "ToDo here should be randomId" : id}
                 noOptionsText={"Brak opcji"}
-                style={{ width: 300 }}
+                style={{ width: width }}
                 disabled={this.props.disabled}
                 renderInput={(params) => (
                     <TextField {...params} label={labelName}/>

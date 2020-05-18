@@ -97,7 +97,6 @@ class CharactersListPage extends React.Component{
         const race = document.getElementById('characterFilterRace');
         if(race && race.nextSibling && race.nextSibling.value!=='fill') filterObject = {...filterObject, race: race.nextSibling.value}
 
-        console.log(this.state)
         const careers = Array.from(document.getElementsByClassName("characterFilterCareers")).map(c => c.textContent);
         if(careers.length > 0) filterObject = {...filterObject, careers: this.mapFilterArrayToString(careers, this.state.autocompleteData.careerNames)}
 

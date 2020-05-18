@@ -17,3 +17,5 @@ export const characterUrl = apiUrl + "/characters";
 export const careerUrl = apiUrl + "/careers";
 
 export const placeUrl = apiUrl + "/places";
+
+export const generatorUrl = apiUrl + "/generator";

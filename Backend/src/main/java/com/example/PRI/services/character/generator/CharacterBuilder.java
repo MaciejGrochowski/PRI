@@ -59,9 +59,14 @@ public class CharacterBuilder {
     public CharacterBuilder buildSurname(SurnameGenerator service) {
         Map<String, String> newProps = service.generateSurname(character, properties);
         this.putAllProperties(newProps);
-
         return this;
     }
+
+    public CharacterBuilder buildBaseStats(StatisticsGenerator service) {
+        service.generateBaseStats(character, properties);
+        return this;
+    }
+
 
 
     private void putAllProperties(Map<String, String> newProps){

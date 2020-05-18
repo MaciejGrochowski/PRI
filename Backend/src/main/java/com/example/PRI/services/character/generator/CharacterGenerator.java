@@ -1,5 +1,7 @@
 package com.example.PRI.services.character.generator;
 
+import com.example.PRI.converters.CharacterGeneratorConverter;
+import com.example.PRI.dtos.characters.CharacterInputDto;
 import com.example.PRI.enums.Race;
 import com.example.PRI.services.GeneralService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +27,7 @@ public class CharacterGenerator extends GeneralService {
                 .buildRace(new RaceGenerator())
                 .buildSex(new SexGenerator())
                 .buildSurname(surnameGenerator)
+                .buildBaseStats(new StatisticsGenerator())
         ;
 
         Character generated = characterBuilder.getCharacter();
@@ -35,7 +38,10 @@ public class CharacterGenerator extends GeneralService {
     }
 
 
+    public Integer save(CharacterInputDto characterInputDto) {
+        Character character = CharacterGeneratorConverter.convert(characterInputDto);
 
 
-
+        return 0;
+    }
 }

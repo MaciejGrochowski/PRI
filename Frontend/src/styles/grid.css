@@ -19,7 +19,8 @@
 }
 .grid-name-element{
     display: block;
-    padding: 10%;
+    padding: 5%;
     text-align: left;
     margin: auto;
+    justify-content: center;
 }

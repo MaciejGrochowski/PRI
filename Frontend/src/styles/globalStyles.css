@@ -39,6 +39,7 @@
 
 .flex-element{
     display: flex;
+    justify-content: flex-end;
 }
 
 .block-element{
@@ -48,6 +49,7 @@
 
 .flex-component{
     display: flex;
+    justify-content: space-evenly;
     padding: 1%;
     margin-bottom: 2%;
     width: max-content;
@@ -70,6 +72,7 @@
 .wrap-element{
     display: inline-block;
     flex-wrap: wrap;
+    width: 80%;
 }
 
 .stats-name{
@@ -79,13 +82,23 @@
 }
 
 .list-decoration{
-    display: block;
+    display: flex;
+    flex-direction: column;
     border-left: solid 2px #FFD859!important;
 }
 
+.skill{
+    display: flex;
+    padding-left: 5%;
+}
+
 .skill-name{
-    width: max-content;
-    padding-left: 10%;
+    display: block;
+
+}
+
+.skill-lvl{
+    display: block;
 }
 
 .standard-component{

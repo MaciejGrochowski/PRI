@@ -30,6 +30,8 @@ public class Career extends GeneralEntity {
     @ManyToMany
     List<Career> careerExits; //Gdzie można dalej pójść
 
+    String dominatingStat;
+
     //ToDiscuss - Jak to opisać?
     //Profesja wpływa na cechy wyglądu, np. blizny są częstsze u wojowników.
     //Profesja wpływa na cechy charakteru, np. kapłan będzie częściej religijny, złodziej częściej chciwy

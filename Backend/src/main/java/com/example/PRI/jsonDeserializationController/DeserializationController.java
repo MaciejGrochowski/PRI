@@ -56,6 +56,12 @@ public class DeserializationController {
     @Autowired
     EmotionService emotionService;
 
+    @Autowired
+    CareerService careerService;
+
+    @Autowired
+    StatisticsService statisticsService;
+
     @RequestMapping("/json/name")
     public void nameDeserializationAndDatabaseUpdate() throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
@@ -279,6 +285,37 @@ public class DeserializationController {
         });
         for (Emotion emotion : listEmotion) {
             emotionService.save(emotion);
+        }
+    }
+
+    @RequestMapping("/json/statistics")
+    public void statisticsDeserializationAndDatabaseUpdate() throws IOException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        String path = "src/jsons/statistics.json";
+        String contents = Files.readString(Paths.get(path));
+        List<Statistics> listStatistics = objectMapper.readValue(contents, new TypeReference<List<Statistics>>() {
+        });
+        for (Statistics statistics : listStatistics) {
+            statisticsService.save(statistics);
+        }
+    }
+
+    @RequestMapping("/json/career")
+    public void carrierDeserializationAndDatabaseUpdate() throws IOException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        String path = "src/jsons/career_base.json";
+        String contents = Files.readString(Paths.get(path));
+        List<Career> listCareer = objectMapper.readValue(contents, new TypeReference<List<Career>>() {
+        });
+        for (Career career : listCareer) {
+            careerService.save(career);
+        }
+        String path2 = "src/jsons/career_full.json";
+        String contents2 = Files.readString(Paths.get(path2));
+        List<Career> listCareer2 = objectMapper.readValue(contents2, new TypeReference<List<Career>>() {
+        });
+        for (Career career : listCareer2) {
+            careerService.save(career);
         }
     }
 }

@@ -1,0 +1,25 @@
+.block-grid{
+    display: block;
+    margin-top: 2%;
+}
+
+.grid{
+    display: flex;
+    align-items: stretch;
+    flex-basis: 100%;
+}
+.grid-column{
+    text-align: center;
+    display: grid;
+    margin: 2%;
+}
+
+.grid-element{
+    display: block;
+}
+.grid-name-element{
+    display: block;
+    padding: 10%;
+    text-align: left;
+    margin: auto;
+}

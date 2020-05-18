@@ -14,6 +14,7 @@ const mygrid = {
         borderRadius: '25%',
         marginBotton: '5%',
         marginTop:'5%',
+        textAlign: 'center',
 };
 
 

@@ -1,0 +1,19 @@
+
+.pageName{
+    font-size: xx-large;
+    color: #FFD859;
+    text-decoration: underline;
+    padding-bottom: 3%;
+}
+
+.white-caption{
+    color: white;
+    font-size: large;
+    justify-content: center;
+    margin-right: 10%;
+}
+
+.generator-element{
+    margin: 1%;
+}
+

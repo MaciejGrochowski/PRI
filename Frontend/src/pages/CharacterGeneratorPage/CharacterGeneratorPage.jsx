@@ -14,6 +14,7 @@ const mygrid = {
         borderRadius: '25%',
         marginBotton: '5%',
         marginTop:'5%',
+        textAlign: 'center',
 };
 
 
@@ -51,11 +52,12 @@ class CharacterGeneratorPage extends React.Component {
                     <div className = "flex-element">
                 <div className = "block-element">
                     <div className="flex-element">
-                        <div className = "generator-element"><TextField label="Imię" id="characterGeneratorName"/></div>
-                        <div className = "generator-element"><TextField label="Nazwisko" id="characterGeneratorSurname"/></div>
+                        <div className = "generator-element"><TextField label="Imię" id="characterGeneratorName" disabled/></div>
+                        <div className = "generator-element"><TextField label="Nazwisko" id="characterGeneratorSurname" disabled/></div>
                     </div>
                 <div className = "generator-element"><DefaultMultipleAutocomplete
                     labelName="Profesja"
+                    disabled={true}
                     options={this.state.autocompleteData.careerNames || []}
                     id="characterGeneratorCurrentCareer"
                 /></div>
@@ -186,45 +188,45 @@ class CharacterGeneratorPage extends React.Component {
                         </div>
                         <div className="grid-column">
                             <div className = "grid-name-element title-column">US</div>
-                            <div className = "grid-element"><TextField style= {mygrid} id="characterGeneratorBaseWeaponSkills"/></div>
-                            <div className = "grid-element"><TextField style= {mygrid} id="characterGeneratorCareerWeaponSkills" disabled/></div>
-                            <div className = "grid-element"><TextField style= {mygrid} id="characterGeneratorEndWeaponSkills"/></div>
+                            <div className = "grid-element"><TextField style= {mygrid} id="characterGeneratorBaseBallisticSkills"/></div>
+                            <div className = "grid-element"><TextField style= {mygrid} id="characterGeneratorCareerBallisticSkills" disabled/></div>
+                            <div className = "grid-element"><TextField style= {mygrid} id="characterGeneratorEndBallisticSkills"/></div>
                         </div>
                         <div className="grid-column">
                             <div className = "grid-name-element title-column">K</div>
-                            <div className = "grid-element"><TextField style= {mygrid} id="characterGeneratorBaseWeaponSkills"/></div>
-                            <div className = "grid-element"><TextField style= {mygrid} id="characterGeneratorCareerWeaponSkills" disabled/></div>
-                            <div className = "grid-element"><TextField style= {mygrid} id="characterGeneratorEndWeaponSkills"/></div>
+                            <div className = "grid-element"><TextField style= {mygrid} id="characterGeneratorBaseStrength"/></div>
+                            <div className = "grid-element"><TextField style= {mygrid} id="characterGeneratorCareerStrength" disabled/></div>
+                            <div className = "grid-element"><TextField style= {mygrid} id="characterGeneratorEndStrength"/></div>
                         </div>
                         <div className="grid-column">
                             <div className = "grid-name-element title-column">ODP</div>
-                            <div className = "grid-element"><TextField style= {mygrid} id="characterGeneratorBaseWeaponSkills"/></div>
+                            <div className = "grid-element"><TextField style= {mygrid} id="characterGeneratorBaseToughness"/></div>
                             <div className = "grid-element"><TextField style= {mygrid} id="characterGeneratorCareerWeaponSkills" disabled/></div>
-                            <div className = "grid-element"><TextField style= {mygrid} id="characterGeneratorEndWeaponSkills"/></div>
+                            <div className = "grid-element"><TextField style= {mygrid} id="characterGeneratorEndToughness"/></div>
                         </div>
                         <div className="grid-column">
                             <div className = "grid-name-element title-column">ZR</div>
-                            <div className = "grid-element"><TextField style= {mygrid} id="characterGeneratorBaseWeaponSkills"/></div>
-                            <div className = "grid-element"><TextField style= {mygrid} id="characterGeneratorCareerWeaponSkills" disabled/></div>
-                            <div className = "grid-element"><TextField style= {mygrid} id="characterGeneratorEndWeaponSkills"/></div>
+                            <div className = "grid-element"><TextField style= {mygrid} id="characterGeneratorBaseAgility"/></div>
+                            <div className = "grid-element"><TextField style= {mygrid} id="characterGeneratorCareerAgility" disabled/></div>
+                            <div className = "grid-element"><TextField style= {mygrid} id="characterGeneratorEndAgility"/></div>
                         </div>
                         <div className="grid-column">
                             <div className = "grid-name-element title-column">INT</div>
-                            <div className = "grid-element"><TextField style= {mygrid} id="characterGeneratorBaseWeaponSkills"/></div>
-                            <div className = "grid-element"><TextField style= {mygrid} id="characterGeneratorCareerWeaponSkills" disabled/></div>
-                            <div className = "grid-element"><TextField style= {mygrid} id="characterGeneratorEndWeaponSkills"/></div>
+                            <div className = "grid-element"><TextField style= {mygrid} id="characterGeneratorBaseIntelligence"/></div>
+                            <div className = "grid-element"><TextField style= {mygrid} id="characterGeneratorCareerIntelligence" disabled/></div>
+                            <div className = "grid-element"><TextField style= {mygrid} id="characterGeneratorEndIntelligence"/></div>
                         </div>
                         <div className="grid-column">
                             <div className = "grid-name-element title-column">SW</div>
-                            <div className = "grid-element"><TextField style= {mygrid} id="characterGeneratorBaseWeaponSkills"/></div>
-                            <div className = "grid-element"><TextField style= {mygrid} id="characterGeneratorCareerWeaponSkills" disabled/></div>
-                            <div className = "grid-element"><TextField style= {mygrid} id="characterGeneratorEndWeaponSkills"/></div>
+                            <div className = "grid-element"><TextField style= {mygrid} id="characterGeneratorBaseWillPower"/></div>
+                            <div className = "grid-element"><TextField style= {mygrid} id="characterGeneratorCareerWillPower" disabled/></div>
+                            <div className = "grid-element"><TextField style= {mygrid} id="characterGeneratorEndWillPower"/></div>
                         </div>
                         <div className="grid-column">
-                            <div className = "grid-name-element title-column">ODG</div>
-                            <div className = "grid-element"><TextField style= {mygrid} id="characterGeneratorBaseWeaponSkills"/></div>
-                            <div className = "grid-element"><TextField style= {mygrid} id="characterGeneratorCareerWeaponSkills" disabled/></div>
-                            <div className = "grid-element"><TextField style= {mygrid} id="characterGeneratorEndWeaponSkills"/></div>
+                            <div className = "grid-name-element title-column">OGD</div>
+                            <div className = "grid-element"><TextField style= {mygrid} id="characterGeneratorBaseFellowship"/></div>
+                            <div className = "grid-element"><TextField style= {mygrid} id="characterGeneratorCareerFellowship" disabled/></div>
+                            <div className = "grid-element"><TextField style= {mygrid} id="characterGeneratorEndFellowship"/></div>
                         </div>
                         </div>
                     </div>
@@ -238,39 +240,39 @@ class CharacterGeneratorPage extends React.Component {
                         </div>
                         <div className="grid-column">
                             <div className = "grid-name-element title-column">A</div>
-                            <div className = "grid-element"><TextField style= {mygrid} id="characterGeneratorBaseWeaponSkills"/></div>
-                            <div className = "grid-element"><TextField style= {mygrid} id="characterGeneratorCareerWeaponSkills" disabled/></div>
-                            <div className = "grid-element"><TextField style= {mygrid} id="characterGeneratorEndWeaponSkills"/></div>
+                            <div className = "grid-element"><TextField style= {mygrid} id="characterGeneratorBaseAttacks"/></div>
+                            <div className = "grid-element"><TextField style= {mygrid} id="characterGeneratorCareerAttacks" disabled/></div>
+                            <div className = "grid-element"><TextField style= {mygrid} id="characterGeneratorEndAttacks"/></div>
                         </div>
                         <div className="grid-column">
                             <div className = "grid-name-element title-column">ŻYW</div>
-                            <div className = "grid-element"><TextField style= {mygrid} id="characterGeneratorBaseWeaponSkills"/></div>
-                            <div className = "grid-element"><TextField style= {mygrid} id="characterGeneratorCareerWeaponSkills" disabled/></div>
-                            <div className = "grid-element"><TextField style= {mygrid} id="characterGeneratorEndWeaponSkills"/></div>
+                            <div className = "grid-element"><TextField style= {mygrid} id="characterGeneratorBaseWounds"/></div>
+                            <div className = "grid-element"><TextField style= {mygrid} id="characterGeneratorCareerWounds" disabled/></div>
+                            <div className = "grid-element"><TextField style= {mygrid} id="characterGeneratorEndWounds"/></div>
                         </div>
                         <div className="grid-column">
                             <div className = "grid-name-element title-column">S</div>
-                            <div className = "grid-element"><TextField style= {mygrid} id="characterGeneratorBaseWeaponSkills"/></div>
-                            <div className = "grid-element"><TextField style= {mygrid} id="characterGeneratorCareerWeaponSkills" disabled/></div>
-                            <div className = "grid-element"><TextField style= {mygrid} id="characterGeneratorEndWeaponSkills"/></div>
+                            <div className = "grid-element"><TextField style= {mygrid} id="characterGeneratorBaseStrengthBonus" disabled/></div>
+                            <div className = "grid-element"><TextField style= {mygrid} id="characterGeneratorCareerStrengthBonus" disabled/></div>
+                            <div className = "grid-element"><TextField style= {mygrid} id="characterGeneratorEndStrengthBonus" disabled/></div>
                         </div>
                         <div className="grid-column">
                             <div className = "grid-name-element title-column">WT</div>
-                            <div className = "grid-element"><TextField style= {mygrid} id="characterGeneratorBaseWeaponSkills"/></div>
-                            <div className = "grid-element"><TextField style= {mygrid} id="characterGeneratorCareerWeaponSkills" disabled/></div>
-                            <div className = "grid-element"><TextField style= {mygrid} id="characterGeneratorEndWeaponSkills"/></div>
+                            <div className = "grid-element"><TextField style= {mygrid} id="characterGeneratorBaseToughnessBonus" disabled/></div>
+                            <div className = "grid-element"><TextField style= {mygrid} id="characterGeneratorCareerToughnessBonus" disabled/></div>
+                            <div className = "grid-element"><TextField style= {mygrid} id="characterGeneratorEndToughnessBonus" disabled/></div>
                         </div>
                         <div className="grid-column">
                             <div className = "grid-name-element title-column">SZ</div>
-                            <div className = "grid-element"><TextField style= {mygrid} id="characterGeneratorBaseWeaponSkills"/></div>
-                            <div className = "grid-element"><TextField style= {mygrid} id="characterGeneratorCareerWeaponSkills" disabled/></div>
-                            <div className = "grid-element"><TextField style= {mygrid} id="characterGeneratorEndWeaponSkills"/></div>
+                            <div className = "grid-element"><TextField style= {mygrid} id="characterGeneratorBaseMovement"/></div>
+                            <div className = "grid-element"><TextField style= {mygrid} id="characterGeneratorCareerMovement" disabled/></div>
+                            <div className = "grid-element"><TextField style= {mygrid} id="characterGeneratorEndMovement"/></div>
                         </div>
                         <div className="grid-column">
                             <div className = "grid-name-element title-column">M</div>
-                            <div className = "grid-element"><TextField style= {mygrid} id="characterGeneratorBaseWeaponSkills"/></div>
-                            <div className = "grid-element"><TextField style= {mygrid} id="characterGeneratorCareerWeaponSkills" disabled/></div>
-                            <div className = "grid-element"><TextField style= {mygrid} id="characterGeneratorEndWeaponSkills"/></div>
+                            <div className = "grid-element"><TextField style= {mygrid} id="characterGeneratorBaseMagic"/></div>
+                            <div className = "grid-element"><TextField style= {mygrid} id="characterGeneratorCareerMagic" disabled/></div>
+                            <div className = "grid-element"><TextField style= {mygrid} id="characterGeneratorEndMagic"/></div>
                         </div>
                         </div></div>
                     <div className = "flex-element">

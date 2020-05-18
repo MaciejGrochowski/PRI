@@ -43,7 +43,8 @@ class CharacterDetailsPage extends React.Component {
 
     render(){
         return (
-            <div className = "plainPage">
+            <div className = "globalStyles">
+                <div className = "plainPage">
             <div className = "pageName">{this.state.characterData.name + " " + this.state.characterData.surname} </div>
             <div className = "flex-element">
             <div className = "block-element">
@@ -68,6 +69,7 @@ class CharacterDetailsPage extends React.Component {
                 data={this.state.characterData}
 
                 />
+            </div>
             </div>
             </div>
             </div>

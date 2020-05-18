@@ -8,7 +8,6 @@ class CharacterDetailsSkillsView extends React.Component {
 
     render(){
         const {data, title} = this.props;
-        console.log(data);
         return (
             <div className = "standard-component">
                 <div className="sub-title">{title}</div>

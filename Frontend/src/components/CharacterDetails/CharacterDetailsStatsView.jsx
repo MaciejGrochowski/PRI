@@ -23,7 +23,7 @@ class CharacterDetailsStatsView extends React.Component {
                 <div className = "block-element"><div className="flex-component"><div className = "stats-name">Rasa</div> <div className = "yellow-color">{data.race}</div></div></div>
                 <div className = "block-element"><div className="flex-component"><div className = "stats-name">Płeć</div> <div className = "yellow-color">{data.sex}</div></div></div>
                 </div>
-                <div className="flex-component"><div className = "stats-name">Data urodzenia</div> <div className = "yellow-color">TUTAJ PÓKI CO NULL</div></div>
+                <div className="flex-component"><div className = "stats-name">Data urodzenia</div> <div className = "yellow-color">-</div></div>
                 <div className="flex-element">
                 <div className = "block-element"><div className="flex-component"><div className = "stats-name">Wzrost</div> <div className = "yellow-color">{data.height}</div></div></div>
                 <div className = "block-element"><div className="flex-component"><div className = "stats-name">Waga</div> <div className = "yellow-color">{data.weight}</div></div></div>

@@ -474,30 +474,6 @@ class CharacterGeneratorPage extends React.Component {
                                                                              id="characterGeneratorEndWounds"/></div>
                                 </div>
                                 <div className="grid-column">
-                                    <div className="grid-name-element title-column">S</div>
-                                    <div className="grid-element"><TextField style={mygrid}
-                                                                             id="characterGeneratorBaseStrengthBonus"
-                                                                             disabled/></div>
-                                    <div className="grid-element"><TextField style={mygrid}
-                                                                             id="characterGeneratorCareerStrengthBonus"
-                                                                             disabled/></div>
-                                    <div className="grid-element"><TextField style={mygrid}
-                                                                             id="characterGeneratorEndStrengthBonus"
-                                                                             disabled/></div>
-                                </div>
-                                <div className="grid-column">
-                                    <div className="grid-name-element title-column">WT</div>
-                                    <div className="grid-element"><TextField style={mygrid}
-                                                                             id="characterGeneratorBaseToughnessBonus"
-                                                                             disabled/></div>
-                                    <div className="grid-element"><TextField style={mygrid}
-                                                                             id="characterGeneratorCareerToughnessBonus"
-                                                                             disabled/></div>
-                                    <div className="grid-element"><TextField style={mygrid}
-                                                                             id="characterGeneratorEndToughnessBonus"
-                                                                             disabled/></div>
-                                </div>
-                                <div className="grid-column">
                                     <div className="grid-name-element title-column">SZ</div>
                                     <div className="grid-element"><TextField style={mygrid}
                                                                              id="characterGeneratorBaseMovement"/></div>

@@ -1474,5 +1474,17 @@
   {"id": 363,
     "name": "Żeglarstwo",
     "level": 20
+  },
+  {"id": 364,
+    "name": "Znajomość języka (klasyczny)",
+    "level": 0
+  },
+  {"id": 365,
+    "name": "Znajomość języka (klasyczny)",
+    "level": 10
+  },
+  {"id": 366,
+    "name": "Znajomość języka (klasyczny)",
+    "level": 20
   }
 ]

@@ -11,7 +11,7 @@ public enum Race {
             "averageHeight:165"
             ),
     ELF("Elf",
-            "{Agility:10," +
+            "Agility:10," +
                     "BallisticSkill:10," +
                     "Wounds:-1," +
                     "Skills:{}," +
@@ -32,10 +32,11 @@ public enum Race {
     HALFLING("Niziołek",
             "Agility:10," +
                     "BallisticSkill:10," +
+                    "WeaponSkill:-10," +
                     "Strength:-10," +
                     "Toughness:-10," +
                     "Fellowship:10," +
-                    "Wounds:-1," +
+                    "Wounds:-2," +
                     "Skills:{}," +
                     "Talents:{},"+
                     "averageWeight:50,"+

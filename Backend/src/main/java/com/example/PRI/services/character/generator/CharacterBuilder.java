@@ -85,6 +85,12 @@ public class CharacterBuilder {
         return this;
     }
 
+    public CharacterBuilder buildHairColor(HairColorGenerator service) {
+        Map<String, String> newProps = service.generateHairColor(character, properties);
+        putAllProperties(newProps);
+        return this;
+    }
+
 
     private void putAllProperties(Map<String, String> newProps){
         for(String key: newProps.keySet()){
@@ -112,5 +118,4 @@ public class CharacterBuilder {
 
 
     }
-
 }

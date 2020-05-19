@@ -9,6 +9,7 @@ import com.example.PRI.services.GeneralService;
 import com.example.PRI.services.character.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import com.example.PRI.entities.character.Character;
 
 import java.util.*;
 
@@ -39,6 +40,9 @@ public class CharacterGenerator extends GeneralService {
     @Autowired
     private PredictionService predictionService;
 
+    @Autowired
+    private HairColorGenerator hairColorGenerator;
+
     public Character generateFullCharacter(){
 
         CharacterBuilder characterBuilder = new CharacterBuilder();
@@ -51,6 +55,7 @@ public class CharacterGenerator extends GeneralService {
                 .buildHeight(new HeightGenerator())
                 .buildWeight(new WeightGenerator())
                 .buildEyeColor(eyeColorGenerator)
+                .buildHairColor(hairColorGenerator)
         ;
 
         Character generated = characterBuilder.getCharacter();

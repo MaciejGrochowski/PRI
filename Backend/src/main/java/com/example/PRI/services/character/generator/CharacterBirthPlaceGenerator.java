@@ -27,15 +27,18 @@ public class CharacterBirthPlaceGenerator extends GeneralService {
         Double placeTypeRand = rand.nextDouble();
         Place generatedPlace;
 
-        generatedPlace = generateBirthPlace(PlaceType.VILLIAGE);
-        generatedPlace = generateBirthPlace(PlaceType.SMALLTOWN);
-        generatedPlace = generateBirthPlace(PlaceType.TOWN);
-        generatedPlace = generateBirthPlace(PlaceType.CITY);
-        generatedPlace = generateBirthPlace(PlaceType.CITYSTATE);
-        generatedPlace = generateBirthPlace(PlaceType.ELFPLACES);
-        generatedPlace = generateBirthPlace(PlaceType.DWARFPLACES);
-        generatedPlace = generateBirthPlaceCapitol();
-        if(generatedPlace == null) throw new CharacterGenerationException("BirthPlaceGenerator generated null", new NullPointerException());
+        if(placeTypeRand < 0.1) generatedPlace = generateBirthPlace(PlaceType.VILLIAGE);
+        else if (placeTypeRand < 0.22) generatedPlace = generateBirthPlace(PlaceType.SMALLTOWN);
+        else if (placeTypeRand < 0.62) generatedPlace = generateBirthPlace(PlaceType.TOWN);
+        else if (placeTypeRand < 0.69) generatedPlace = generateBirthPlace(PlaceType.CITY);
+        else if (placeTypeRand < 0.90) generatedPlace = generateBirthPlace(PlaceType.CITYSTATE);
+//        else if (placeTypeRand < 0.905) generatedPlace = generateBirthPlace(PlaceType.ELFPLACES); ToDo ElfPlaces
+//        else if (placeTypeRand < 0.91) generatedPlace = generateBirthPlace(PlaceType.DWARFPLACES); ToDo DwarfPlaces
+        else generatedPlace = generateBirthPlaceCapitol();
+        if(generatedPlace == null){
+            System.err.println(placeTypeRand);
+            throw new CharacterGenerationException("BirthPlaceGenerator generated null", new NullPointerException());
+        }
 
         character.setBirthPlace(generatedPlace);
 

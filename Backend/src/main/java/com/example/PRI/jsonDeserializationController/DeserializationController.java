@@ -318,5 +318,21 @@ public class DeserializationController {
             careerService.save(career);
         }
     }
+    @RequestMapping("/json/all")
+    public void UpdateAll() throws IOException {
+        nameDeserializationAndDatabaseUpdate();
+        surnameDeserializationAndDatabaseUpdate();
+        talentDeserializationAndDatabaseUpdate();
+        skillDeserializationAndDatabaseUpdate();
+        predictionDeserializationAndDatabaseUpdate();
+        hairColorDeserializationAndDatabaseUpdate();
+        eyeColorDeserializationAndDatabaseUpdate();
+        appearanceDeserializationAndDatabaseUpdate();
+        personalityDeserializationAndDatabaseUpdate();
+        placeDeserializationAndDatabaseUpdate();
+        emotionDeserializationAndDatabaseUpdate();
+        statisticsDeserializationAndDatabaseUpdate();
+        carrierDeserializationAndDatabaseUpdate();
+    }
 }
 

@@ -4,25 +4,32 @@ import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
 public enum Race {
-    HUMAN("człowiek",
+    HUMAN("Człowiek",
             "Skills:{}," +
-            "Talents:{}"),
-    ELF("elf",
+            "Talents:{}," +
+            "averageWeight:60," +
+            "averageHeight:165"
+            ),
+    ELF("Elf",
             "{Agility:10," +
                     "BallisticSkill:10," +
                     "Wounds:-1," +
                     "Skills:{}," +
-                    "Talents:{}"),
-    DWARF("krasnolud",
+                    "Talents:{}," +
+                    "averageWeight:60,"+
+                    "averageHeight:175"),
+    DWARF("Krasnolud",
             "Mężczyzna:0.8," +
                     "Agility:-10," +
                     "Strength:10," +
                     "WeaponSkill:10," +
                     "Fellowship:-10," +
-                    "Wounds: 1," +
+                    "Wounds:1," +
                     "Skills:{}," +
-                    "Talents:{}"),
-    HALFLING("niziołek",
+                    "Talents:{}," +
+                    "averageWeight:65,"+
+                    "averageHeight:145"),
+    HALFLING("Niziołek",
             "Agility:10," +
                     "BallisticSkill:10," +
                     "Strength:-10," +
@@ -30,7 +37,9 @@ public enum Race {
                     "Fellowship:10," +
                     "Wounds:-1," +
                     "Skills:{}," +
-                    "Talents:{}");
+                    "Talents:{},"+
+                    "averageWeight:50,"+
+                    "averageHeight:115");
 
     String name;
     String properties;

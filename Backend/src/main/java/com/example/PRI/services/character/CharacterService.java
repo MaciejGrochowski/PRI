@@ -599,7 +599,8 @@ public class CharacterService extends GeneralService {
         return new AutocompleteFilterCharactersOutputDto(placeService.getAllNames(),
                 careerService.getAllNames(), apperanceService.getAllNames(),
                 personalityService.getAllNames(), talentService.getAllNames(),
-                skillService.getAllNames(), emotionService.getAllNames()
+                skillService.getAllNames(), emotionService.getAllNames(),
+                eyeColorService.getAllColors(), hairColorService.getAllColors()
         );
     }
 

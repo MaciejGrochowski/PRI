@@ -37,6 +37,24 @@
 
 }
 
+.Mui-disabled{
+    border-bottom: solid grey;
+    /* color: grey!important; */
+}
+.Mui-disabled .MuiSvgIcon-root{
+    color: grey!important
+  }
+
+
+.MuiFormLabel-root.Mui-disabled{
+    color: grey!important;
+    border-bottom: none!important
+}
+
+.flex-div{
+    display: flex;
+}
+
 .flex-element{
     display: flex;
     justify-content: flex-end;

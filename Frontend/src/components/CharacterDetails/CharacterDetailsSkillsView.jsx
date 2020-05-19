@@ -13,9 +13,9 @@ class CharacterDetailsSkillsView extends React.Component {
                 <div className="sub-title">{title}</div>
                 <div className="list-decoration">
                 {data !== undefined && data.map((item, i) => (
-                    <div className = "skill-name">
-                        <span>{item.name}</span>
-                        {item.level ? <span>{item.level}</span> : ""}
+                    <div className = "skill">
+                        <div className = "skill-name">{item.name}</div>
+                        {item.level ? <div className = "skill-lvl">{item.level}</div> : ""}
                     </div>
 
                 ))

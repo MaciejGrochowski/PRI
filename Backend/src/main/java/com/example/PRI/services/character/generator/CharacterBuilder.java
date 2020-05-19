@@ -67,6 +67,23 @@ public class CharacterBuilder {
         return this;
     }
 
+    public CharacterBuilder buildWeight(WeightGenerator service) {
+        Map<String, String> newProps = service.generateWeight(character, properties);
+        putAllProperties(newProps);
+        return this;
+    }
+
+    public CharacterBuilder buildHeight(HeightGenerator service) {
+        Map<String, String> newProps = service.generateHeight(character, properties);
+        putAllProperties(newProps);
+        return this;
+    }
+
+    public CharacterBuilder buildEyeColor(EyeColorGenerator service) {
+        Map<String, String> newProps = service.generateEyeColor(character, properties);
+        putAllProperties(newProps);
+        return this;
+    }
 
 
     private void putAllProperties(Map<String, String> newProps){

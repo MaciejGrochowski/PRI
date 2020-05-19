@@ -5,8 +5,8 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public enum Sex {
 
-    FEMALE("Kobieta", ""),
-    MALE("Mężczyzna", "");
+    FEMALE("Kobieta", "averageWeight:-5,averageHeight:-5"),
+    MALE("Mężczyzna", "averageWeight:5,averageHeight:5");
 
     String name;
     String properties;

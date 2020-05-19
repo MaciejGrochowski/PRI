@@ -17,4 +17,6 @@ public class AutocompleteFilterCharactersOutputDto {
     List<String> talentNames;
     List<String> skillNames;
     List<String> emotionNames;
+    List<String> hairColors;
+    List<String> eyeColors;
 }

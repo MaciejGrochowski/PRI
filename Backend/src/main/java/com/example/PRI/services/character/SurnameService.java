@@ -24,7 +24,7 @@ public class SurnameService extends GeneralService {
     }
 
     public Optional<Surname> findBySurname(String surname){
-        return Optional.ofNullable(surnameRepository.findBySurname(surname));
+        return Optional.ofNullable(surnameRepository.findBySurname(surname)); //ToDo surname??
     }
 
     public List<Surname> findHalflingSurnames() {

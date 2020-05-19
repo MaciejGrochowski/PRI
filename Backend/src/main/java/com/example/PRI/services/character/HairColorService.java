@@ -7,7 +7,9 @@ import com.example.PRI.services.GeneralService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class HairColorService extends GeneralService {
@@ -23,5 +25,13 @@ public class HairColorService extends GeneralService {
 
     public Optional<HairColor> findByName(String hairColor) {
         return Optional.ofNullable(hairColorRepository.findByColor(hairColor));
+    }
+
+    public List<HairColor> findAll(){
+        return hairColorRepository.findAll();
+    }
+
+    public List<String> getAllColors() {
+        return findAll().stream().map(HairColor::getColor).collect(Collectors.toList());
     }
 }

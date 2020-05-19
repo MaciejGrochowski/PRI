@@ -1,19 +1,14 @@
 package com.example.PRI.services.character.generator;
 
+import com.example.PRI.converters.CharacterGeneratorConverter;
 import com.example.PRI.dtos.characters.CharacterInputDto;
-import com.example.PRI.entities.character.*;
-import com.example.PRI.entities.character.Character;
-import com.example.PRI.enums.Sex;
+import com.example.PRI.enums.Race;
 import com.example.PRI.services.GeneralService;
-import com.example.PRI.services.character.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import com.example.PRI.entities.character.Character;
 
-import javax.xml.stream.events.Namespace;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Optional;
 
 @Service
 public class CharacterGenerator extends GeneralService {
@@ -25,19 +20,7 @@ public class CharacterGenerator extends GeneralService {
     private SurnameGenerator surnameGenerator;
 
     @Autowired
-    SurnameService surnameService;
-
-    @Autowired
-    NameService nameService;
-
-    @Autowired
-    PredictionService predictionService;
-
-    @Autowired
-    CareerService careerService;
-
-    @Autowired
-    CharacterService characterService;
+    private EyeColorGenerator eyeColorGenerator;
 
     public Character generateFullCharacter(){
 
@@ -48,6 +31,9 @@ public class CharacterGenerator extends GeneralService {
                 .buildSex(new SexGenerator())
                 .buildSurname(surnameGenerator)
                 .buildBaseStats(new StatisticsGenerator())
+                .buildHeight(new HeightGenerator())
+                .buildWeight(new WeightGenerator())
+                .buildEyeColor(eyeColorGenerator)
         ;
 
         Character generated = characterBuilder.getCharacter();
@@ -58,67 +44,10 @@ public class CharacterGenerator extends GeneralService {
     }
 
 
-    public long save(CharacterInputDto characterInputDto) {
-        Character character = new Character();
-        nameConvert(characterInputDto.getName(),character);
-        surnameConvert(characterInputDto.getSurname(),character);
-        predictionConvert(characterInputDto.getPrediction(),character);
-        currentCareerConvert(characterInputDto.getCurrentCareer(),character);
-        //characterService.save(character);
+    public Integer save(CharacterInputDto characterInputDto) {
+        Character character = CharacterGeneratorConverter.convert(characterInputDto);
 
 
-        return character.getId();
-    }
-
-    public Optional<Surname> surnameConvert(String surNew, Character character){
-        Optional<Surname> surname = surnameService.findBySurname(surNew);
-        surname.ifPresent(character::setSurname);
-        if (!surname.isPresent() && surNew != null){
-            Surname surnameNew = new Surname();
-            surnameNew.setSurname(surNew);
-            surnameService.save(surnameNew);
-            character.setSurname(surnameNew);
-        }
-        return surname;
-    }
-
-    public Optional<Name> nameConvert(String inputName, Character character){
-        Optional<Name> nameOptional = nameService.findByName(inputName);
-        nameOptional.ifPresent(character::setName);
-        if (!nameOptional.isPresent() && inputName != null){
-            Name nameNew = new Name();
-            nameNew.setName(inputName);
-            nameService.save(nameNew);
-            character.setName(nameNew);
-        }
-        else {
-            throw new IllegalArgumentException();
-        }
-        return nameOptional;
-    }
-
-    public Optional<Prediction> predictionConvert(String inputPrediction, Character character){
-        Optional<Prediction> prediction = predictionService.findByText(inputPrediction);
-        prediction.ifPresent(character::setPrediction);
-        if (!prediction.isPresent() && inputPrediction != null){
-            Prediction predictionNew = new Prediction();
-            predictionNew.setText(inputPrediction);
-            predictionService.save(predictionNew);
-            character.setPrediction(predictionNew);
-        }
-        return prediction;
-    }
-
-    public Career currentCareerConvert(String inputCurrentCareer, Character character){
-        List<String> stringList = new ArrayList<>();
-        stringList.add(inputCurrentCareer);
-        List <Career> careerList = careerService.findByNameIn(stringList);
-        if (careerList != null){
-            character.setCurrentCareer(careerList.get(0));
-            return careerList.get(0);
-        }
-        else {
-            throw new IllegalArgumentException();
-        }
+        return 0;
     }
 }

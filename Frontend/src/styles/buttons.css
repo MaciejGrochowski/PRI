@@ -18,6 +18,10 @@
     color: #292F2F;
   }
 
+  button:disabled{
+    color: grey!important;
+  }
+
   .detaleButton{
     background-color: #292F2F;
     color: #FFD859;
@@ -26,7 +30,22 @@
     text-decoration: none;
     transition-duration: 0.4s;
     cursor: pointer;
+    height: fit-content;
+    margin-top: auto;
   }
+
+  .detaleButton:disabled {
+    color: grey;
+    border:solid 2px grey;
+    background-color: #292F2F;
+  }
+
+  .detaleButton:disabled:hover {
+    color: gray;
+    border:solid 2px gray;
+    background-color: #292F2F;
+  }
+
 
   .detaleButton:hover {
     background-color: #FFD859;

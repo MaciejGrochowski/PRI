@@ -10,6 +10,10 @@ import characterService from "../../services/characterService";
 import {months} from "../../enums/Months";
 import generatorService from "../../services/generatorService";
 
+
+import ReactDOM from 'react-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {faSyncAlt} from '@fortawesome/free-solid-svg-icons';
 const mygrid = {
         width: '30px',
         height: "30px",
@@ -20,7 +24,7 @@ const mygrid = {
         textAlign: 'center',
 };
 
-
+const element = <FontAwesomeIcon icon={faSyncAlt} />
 
 class CharacterGeneratorPage extends React.Component {
 
@@ -201,58 +205,72 @@ class CharacterGeneratorPage extends React.Component {
     }
 
 
+
     render() {
         return (
             <div className="pageWithContext">
                 <div className="pageName">Tworzenie postaci</div>
                 <div className="block-element">
-                    <div className="flex-element">
+                    <div className="flex-div">
                         <div className="white-caption">Statystyki:</div>
                         <button className="detaleButton">Generuj losowe</button>
                     </div>
                 </div>
-                <div className="flex-element">
+                <div className="flex-div">
                     <div className="block-element">
-                        <div className="flex-element">
+                        <div className="flex-div">
                             <div className="generator-element"><TextField label="Imię" id="characterGeneratorName"/>
                             </div>
+                            <button className="detaleButton"><span>{element}</span></button>
                             <div className="generator-element"><TextField label="Nazwisko"
                                                                           id="characterGeneratorSurname"/></div>
+                        <button className="detaleButton"><span>{element}</span></button>   
                         </div>
                         <div className="generator-element"><DefaultMultipleAutocomplete
                             labelName="Profesja"
-                            // disabled={true}
+                            disabled={true}
                             options={this.state.autocompleteData.careerNames || []}
                             id="characterGeneratorCurrentCareer"
-                        /></div>
+                        />
+                        <button className="detaleButton" disabled><span>{element}</span></button></div>
                         <div className="generator-element"><DefaultMultipleAutocomplete
                             labelName="Miejsce pobytu"
                             options={this.state.autocompleteData.placeNames || []}
                             id="characterGeneratorLivePlace"
-                        /></div>
+                        />
+                        <button className="detaleButton"><span>{element}</span></button>
+                        </div>
                         <div className="generator-element"><DefaultMultipleAutocomplete
                             labelName="Miejsce urodzenia"
                             options={this.state.autocompleteData.placeNames || []}
                             id="characterGeneratorBirthPlace"
-                        /></div>
+                        />
+                        <button className="detaleButton"><span>{element}</span></button>
+                        </div>
 
                         <div className="generator-element"><DefaultMultipleAutocomplete
                             labelName="Rasa"
                             options={["Człowiek", "Elf", "Krasnolud", "Niziołek"]}
                             id="characterGeneratorRace"
                             width={135}
-                        /></div>
+                        />
+                        <button className="detaleButton"><span>{element}</span></button>
+                        </div>
 
                         <div className="generator-element"><DefaultMultipleAutocomplete
                             labelName="Płeć"
                             options={["Mężczyzna", "Kobieta"]}
                             id="characterGeneratorSex"
                             width={138}
-                        /></div>
+                        />
+                        <button className="detaleButton"><span>{element}</span></button>
+                        </div>
 
-                        <div className="flex-element">
+                        <div className="flex-div">
                             <div className="generator-element"><TextField label="Dzień urodzenia"
-                                                                          id="characterGeneratorDayOfBirth"/></div>
+                                                                          id="characterGeneratorDayOfBirth"/>
+                            <button className="detaleButton"><span>{element}</span></button>
+                        </div>
 
 
                             <div className="generator-element"><DefaultMultipleAutocomplete
@@ -260,15 +278,21 @@ class CharacterGeneratorPage extends React.Component {
                                 options={months}
                                 id="characterGeneratorMonthOfBirth"
                                 width={150}
-                            /></div>
+                            />
+                            <button className="detaleButton"><span>{element}</span></button>
+                            </div>
                             <div className="generator-element"><TextField label="Rok urodzenia"
-                                                                          id="characterGeneratorYearOfBirth"/></div>
+                                                                          id="characterGeneratorYearOfBirth"/>
+                            <button className="detaleButton"><span>{element}</span></button>
+                            </div>
 
                         </div>
-                        <div className="flex-element">
+                        <div className="flex-div">
                             <div className="generator-element"><TextField label="Wzrost" id="characterGeneratorHeight"/>
+                            <button className="detaleButton"><span>{element}</span></button>
                             </div>
                             <div className="generator-element"><TextField label="Waga" id="characterGeneratorWeight"/>
+                            <button className="detaleButton"><span>{element}</span></button>
                             </div>
                         </div>
 
@@ -276,47 +300,61 @@ class CharacterGeneratorPage extends React.Component {
                             labelName="Kolor oczu"
                             options={this.state.autocompleteData.eyeColors || []}
                             id="characterGeneratorEyeColor"
-                        /></div>
+                        />
+                        <button className="detaleButton"><span>{element}</span></button>
+                        </div>
 
                         <div className="generator-element"><DefaultMultipleAutocomplete
                             labelName="Kolor włosów"
                             options={this.state.autocompleteData.hairColors || []}
                             id="characterGeneratorHairColor"
-                        /></div>
+                        />
+                        <button className="detaleButton"><span>{element}</span></button>
+                        </div>
 
                         <div className="generator-element"><DefaultMultipleAutocomplete
                             labelName="Cechy charakteru"
                             options={this.state.autocompleteData.personalityNames || []}
                             id="characterGeneratorPersonality"
                             multiple
-                        /></div>
+                        />
+                        <button className="detaleButton"><span>{element}</span></button>
+                        </div>
 
                         <div className="generator-element"><DefaultMultipleAutocomplete
                             labelName="Cechy wyglądu"
                             options={this.state.autocompleteData.apperanceNames || []}
                             id="characterGeneratorApperances"
                             multiple
-                        /></div>
+                        />
+                        <button className="detaleButton"><span>{element}</span></button>
+                        </div>
 
                         <div className="generator-element"><DefaultMultipleAutocomplete
                             labelName="Poprzednie profesje"
                             options={this.state.autocompleteData.careerNames || []}
                             id="characterGeneratorPreviousCareers"
                             multiple
-                        /></div>
+                        />
+                        <button className="detaleButton"><span>{element}</span></button>
+                        </div>
 
                         <div className="generator-element"><DefaultMultipleAutocomplete
                             labelName="Dominujące emocje"
                             options={this.state.autocompleteData.emotionNames || []}
                             id="characterGeneratorEmotions"
                             multiple
-                        /></div>
+                        />
+                        <button className="detaleButton"><span>{element}</span></button>
+                        </div>
 
                         <div className="generator-element"><DefaultMultipleAutocomplete
                             labelName="Religia"
                             options={religions || []}
                             id="characterGeneratorReligion"
-                        /></div>
+                        />
+                        <button className="detaleButton"><span>{element}</span></button>
+                        </div>
                         {/*<div className = "generator-element"><div className="ziemniak">*/}
                         {/*    <TextField id="characterGeneratorReligion" defaultValue="0" label="Religia" select>*/}
                         {/*        {religions && religions.map((item, i) => (*/}
@@ -331,20 +369,31 @@ class CharacterGeneratorPage extends React.Component {
                             options={this.state.autocompleteData.skillNames || []}
                             id="characterGeneratorSkills"
                             multiple
-                        /></div>
+                        />
+                        <button className="detaleButton"><span>{element}</span></button>
+                        </div>
 
                         <               div className="generator-element"><DefaultMultipleAutocomplete
                             labelName="Zdolności"
                             options={this.state.autocompleteData.talentNames || []}
                             id="characterGeneratorTalents"
                             multiple
-                        /></div>
+                        />
+                        <button className="detaleButton"><span>{element}</span></button>
+                        </div>
 
                         <div className="generator-element"><TextField label="Przepowiednia"
-                                                                      id="characterGeneratorPrediction"/></div>
+                                                                      id="characterGeneratorPrediction"/>
+                        <button className="detaleButton"><span>{element}</span></button>
+                        </div>
                     </div>
                     <div className="block-element">
+
                         <div className="white-caption">Umiejętności bojowe</div>
+                        <div className = "block-component">
+                        <button className="detaleButton" disabled>Wylosuj statystyki Bazowe <span>{element}</span></button>
+                        <button className="detaleButton">Wylosuj statystyki Obecnie <span>{element}</span></button>
+                        </div>
                         <div className="block-grid">
                             <div className="grid">
                                 <div className="grid-column">
@@ -495,7 +544,7 @@ class CharacterGeneratorPage extends React.Component {
                                 </div>
                             </div>
                         </div>
-                        <div className="flex-element">
+                        <div className="flex-div">
                             <button className="green-button" onClick={this.save}>Zapisz</button>
                             <button className="red-button">Anuluj</button>
                         </div>

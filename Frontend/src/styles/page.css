@@ -14,6 +14,7 @@
 }
 
 .generator-element{
+    display: flex;
     margin: 1%;
 }
 

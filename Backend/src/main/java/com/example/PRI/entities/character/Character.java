@@ -32,7 +32,7 @@ public class Character extends GeneralEntity {
     @JoinColumn(name="eye_color", referencedColumnName="color")
     EyeColor eyeColor;
 
-    @ManyToOne(cascade=CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name="hair_color", referencedColumnName="color")
     HairColor hairColor;
 

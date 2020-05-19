@@ -42,6 +42,9 @@ public class CharacterGenerator extends GeneralService {
     @Autowired
     private HairColorService hairColorService;
 
+    @Autowired
+    private EyeColorService eyeColorService;
+
     public Character generateFullCharacter(){
 
         CharacterBuilder characterBuilder = new CharacterBuilder();
@@ -73,6 +76,7 @@ public class CharacterGenerator extends GeneralService {
         currentCareerConvert("Akolita",character);
         previousCareersConvert(characterInputDto.getPreviousCareers(),character);
         hairColorConverter(characterInputDto.getHairColor(),character);
+        eyeColorConverter(characterInputDto.getEyeColor(),character);
         characterService.save(character);
 
 
@@ -91,7 +95,7 @@ public class CharacterGenerator extends GeneralService {
         return surname;
     }
 
-    public Optional<Name> nameConvert(String inputName, Character character){
+    public Optional<Name> nameConvert(String inputName, Character character){//Exeption ma problem :CCCC To Do
         Optional<Name> nameOptional = nameService.findByName(inputName);
         nameOptional.ifPresent(character::setName);
         if (!nameOptional.isPresent() && inputName != null){
@@ -99,9 +103,6 @@ public class CharacterGenerator extends GeneralService {
             nameNew.setName(inputName);
             nameService.save(nameNew);
             character.setName(nameNew);
-        }
-        else {
-            throw new IllegalArgumentException();
         }
         return nameOptional;
     }
@@ -132,8 +133,8 @@ public class CharacterGenerator extends GeneralService {
     }
 
     public List<Career> previousCareersConvert(String inputPreviousCareers, Character character){
-        List<Career> nullCareer = null;
         if(inputPreviousCareers == null){
+            character.setPreviousCareers(null);
             return null;
         }
         List<String> stringList = Arrays.asList(inputPreviousCareers.split(","));
@@ -151,10 +152,25 @@ public class CharacterGenerator extends GeneralService {
             HairColor hairColorNew = new HairColor();
             hairColorNew.setColor(inputHairColor);
             character.setHairColor(hairColorNew);
-            return hairColor;
+            //return hairColor;
         }
-        else {
+        if(hairColor.get() == null) {
             throw new IllegalArgumentException();
         }
+        return hairColor;
+    }
+
+    public Optional<EyeColor> eyeColorConverter(String inputeyeColor, Character character){
+        Optional<EyeColor> eyeColor = eyeColorService.findByName(inputeyeColor);
+        eyeColor.ifPresent(character::setEyeColor);
+        if (!eyeColor.isPresent() && inputeyeColor != null){
+            EyeColor eyeColorNew = new EyeColor();
+            eyeColorNew.setColor(inputeyeColor);
+            character.setEyeColor(eyeColorNew);
+        }
+       if(eyeColor.get() == null) {
+            throw new IllegalArgumentException();
+        }
+        return eyeColor;
     }
 }

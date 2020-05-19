@@ -72,7 +72,7 @@ public class CharacterGenerator extends GeneralService {
         //currentCareerConvert(characterInputDto.getCurrentCareer(),character);
         currentCareerConvert("Akolita",character);
         previousCareersConvert(characterInputDto.getPreviousCareers(),character);
-        //hairColorConverter(characterInputDto.getHairColor(),character);
+        hairColorConverter(characterInputDto.getHairColor(),character);
         characterService.save(character);
 
 

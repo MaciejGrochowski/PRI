@@ -39,6 +39,9 @@ public class CharacterGenerator extends GeneralService {
     @Autowired
     private PredictionService predictionService;
 
+    @Autowired
+    private HairColorService hairColorService;
+
     public Character generateFullCharacter(){
 
         CharacterBuilder characterBuilder = new CharacterBuilder();
@@ -66,9 +69,10 @@ public class CharacterGenerator extends GeneralService {
         nameConvert(characterInputDto.getName(),character);
         surnameConvert(characterInputDto.getSurname(),character);
         predictionConvert(characterInputDto.getPrediction(),character);
-        currentCareerConvert(characterInputDto.getCurrentCareer(),character);
-        //currentCareerConvert("Akolita",character);
+        //currentCareerConvert(characterInputDto.getCurrentCareer(),character);
+        currentCareerConvert("Akolita",character);
         previousCareersConvert(characterInputDto.getPreviousCareers(),character);
+        //hairColorConverter(characterInputDto.getHairColor(),character);
         characterService.save(character);
 
 
@@ -128,11 +132,29 @@ public class CharacterGenerator extends GeneralService {
     }
 
     public List<Career> previousCareersConvert(String inputPreviousCareers, Character character){
+        List<Career> nullCareer = null;
+        if(inputPreviousCareers == null){
+            return null;
+        }
         List<String> stringList = Arrays.asList(inputPreviousCareers.split(","));
-        List<Career> careerList = careerService.findByNameIn(stringList);;
+        List<Career> careerList = careerService.findByNameIn(stringList);
         if (careerList != null){
             character.setPreviousCareers(careerList);
         }
         return careerList;
+    }
+
+    public Optional<HairColor> hairColorConverter(String inputHairColor, Character character){
+        Optional<HairColor> hairColor = hairColorService.findByName(inputHairColor);
+        hairColor.ifPresent(character::setHairColor);
+        if (!hairColor.isPresent() && inputHairColor != null){
+            HairColor hairColorNew = new HairColor();
+            hairColorNew.setColor(inputHairColor);
+            character.setHairColor(hairColorNew);
+            return hairColor;
+        }
+        else {
+            throw new IllegalArgumentException();
+        }
     }
 }

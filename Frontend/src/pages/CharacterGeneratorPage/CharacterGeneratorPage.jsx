@@ -93,6 +93,12 @@ class CharacterGeneratorPage extends React.Component {
         const monthOfBirth = document.getElementById('characterGeneratorMonthOfBirth');
         if (monthOfBirth && monthOfBirth.value !== "") output = {...output, monthOfBirth: monthOfBirth.value}
 
+        const eyeColor = document.getElementById('characterGeneratorEyeColor');
+        if (eyeColor && eyeColor.value !== "") output = {...output, eyeColor: eyeColor.value}
+
+        const hairColor = document.getElementById('characterGeneratorHairColor');
+        if (hairColor && hairColor.value !== "") output = {...output, hairColor: hairColor.value}
+
         const yearOfBirth = document.getElementById('characterGeneratorYearOfBirth');
         if (yearOfBirth && yearOfBirth.value !== "") output = {...output, yearOfBirth: yearOfBirth.value}
 

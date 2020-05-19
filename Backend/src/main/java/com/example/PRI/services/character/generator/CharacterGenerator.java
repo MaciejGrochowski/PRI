@@ -1,19 +1,18 @@
 package com.example.PRI.services.character.generator;
 
 import com.example.PRI.dtos.characters.CharacterInputDto;
-import com.example.PRI.entities.character.Name;
-import com.example.PRI.entities.character.Prediction;
-import com.example.PRI.entities.character.Surname;
+import com.example.PRI.entities.character.*;
+import com.example.PRI.entities.character.Character;
+import com.example.PRI.enums.Sex;
 import com.example.PRI.services.GeneralService;
-import com.example.PRI.services.character.NameService;
-import com.example.PRI.services.character.PredictionService;
-import com.example.PRI.services.character.SurnameService;
+import com.example.PRI.services.character.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.example.PRI.entities.character.Character;
 
 import javax.xml.stream.events.Namespace;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -33,6 +32,12 @@ public class CharacterGenerator extends GeneralService {
 
     @Autowired
     PredictionService predictionService;
+
+    @Autowired
+    CareerService careerService;
+
+    @Autowired
+    CharacterService characterService;
 
     public Character generateFullCharacter(){
 
@@ -55,9 +60,11 @@ public class CharacterGenerator extends GeneralService {
 
     public long save(CharacterInputDto characterInputDto) {
         Character character = new Character();
-        //nameConvert(characterInputDto.getName(),character);
+        nameConvert(characterInputDto.getName(),character);
         surnameConvert(characterInputDto.getSurname(),character);
         predictionConvert(characterInputDto.getPrediction(),character);
+        currentCareerConvert(characterInputDto.getCurrentCareer(),character);
+        //characterService.save(character);
 
 
         return character.getId();
@@ -75,7 +82,7 @@ public class CharacterGenerator extends GeneralService {
         return surname;
     }
 
-   /* public Optional<Name> nameConvert(String inputName, Character character){
+    public Optional<Name> nameConvert(String inputName, Character character){
         Optional<Name> nameOptional = nameService.findByName(inputName);
         nameOptional.ifPresent(character::setName);
         if (!nameOptional.isPresent() && inputName != null){
@@ -88,7 +95,7 @@ public class CharacterGenerator extends GeneralService {
             throw new IllegalArgumentException();
         }
         return nameOptional;
-    }*/
+    }
 
     public Optional<Prediction> predictionConvert(String inputPrediction, Character character){
         Optional<Prediction> prediction = predictionService.findByText(inputPrediction);
@@ -100,5 +107,18 @@ public class CharacterGenerator extends GeneralService {
             character.setPrediction(predictionNew);
         }
         return prediction;
+    }
+
+    public Career currentCareerConvert(String inputCurrentCareer, Character character){
+        List<String> stringList = new ArrayList<>();
+        stringList.add(inputCurrentCareer);
+        List <Career> careerList = careerService.findByNameIn(stringList);
+        if (careerList != null){
+            character.setCurrentCareer(careerList.get(0));
+            return careerList.get(0);
+        }
+        else {
+            throw new IllegalArgumentException();
+        }
     }
 }

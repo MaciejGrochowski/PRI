@@ -72,6 +72,9 @@ public class CharacterGenerator extends GeneralService {
     @Autowired
     private TalentService talentService;
 
+    @Autowired
+    private EmotionService emotionService;
+
 
     public Character generateFullCharacter(){
 
@@ -116,15 +119,14 @@ public class CharacterGenerator extends GeneralService {
                  birthMonthConverter(characterInputDto.getMonthOfBirth()),
                  birthYearConverter(characterInputDto.getYearOfBirth()),
                  character);
-        //System.out.println(birthYearConverter(characterInputDto.getYearOfBirth()));
         heightConverter(characterInputDto.getHeight(),character);
         weightConverter(characterInputDto.getWeight(),character);
         personalityListConvert(characterInputDto.getPersonality(),character);
         apperanceConvert(characterInputDto.getApperance(),character);
         skillsConvert(characterInputDto.getSkills(),character);
         talentsConvert(characterInputDto.getTalents(),character);
+        dominantingEmotionConvert(characterInputDto.getDominatingEmotions(),character);
         characterService.save(character);
-
 
         return character.getId();
     }
@@ -407,16 +409,29 @@ public class CharacterGenerator extends GeneralService {
         return skillList;
     }
 
-    public List<Talent> talentsConvert(String inputtalents, Character character){
-        if(inputtalents == null){
+    public List<Talent> talentsConvert(String inputTalents, Character character){
+        if(inputTalents == null){
             character.setTalents(null);
             return null;
         }
-        List<String> stringList = Arrays.asList(inputtalents.split(","));
+        List<String> stringList = Arrays.asList(inputTalents.split(","));
         List<Talent> talentList = talentService.findByNameIn(stringList);
         if (talentList != null){
             character.setTalents(talentList);
         }
         return talentList;
+    }
+
+    public List<Emotion> dominantingEmotionConvert(String inputEmotion, Character character){
+        if(inputEmotion == null){
+            character.setDominatingEmotions(null);
+            return null;
+        }
+        List<String> stringList = Arrays.asList(inputEmotion.split(","));
+        List<Emotion> emotionList = emotionService.findByNameIn(stringList);
+        if (emotionList != null){
+            character.setDominatingEmotions(emotionList);
+        }
+        return emotionList;
     }
 }

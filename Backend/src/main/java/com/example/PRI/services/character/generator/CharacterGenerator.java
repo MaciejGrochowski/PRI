@@ -6,6 +6,7 @@ import com.example.PRI.entities.Place;
 import com.example.PRI.entities.character.*;
 import com.example.PRI.entities.character.Character;
 import com.example.PRI.enums.Race;
+import com.example.PRI.enums.Religion;
 import com.example.PRI.enums.Sex;
 import com.example.PRI.services.GeneralService;
 import com.example.PRI.services.PlaceService;
@@ -88,6 +89,7 @@ public class CharacterGenerator extends GeneralService {
         livePlaceConverter(characterInputDto.getLivePlace(),character);
         sexConverter(characterInputDto.getSex(),character);
         raceConverter(characterInputDto.getRace(),character);
+        religionConverter(characterInputDto.getReligion(),character);
         characterService.save(character);
 
 
@@ -236,5 +238,14 @@ public class CharacterGenerator extends GeneralService {
         else if (raceInput.compareTo("Niziołek") == 0) { newRace = Race.HALFLING;}
         character.setRace(newRace);
         return newRace;
+    }
+
+    public Religion religionConverter(String religionInput, Character character) {
+        if(religionInput == null) {
+            throw new IllegalArgumentException();
+        }
+        Religion newReligion = Religion.findByGodName(religionInput);
+        character.setReligion(newReligion);
+        return newReligion;
     }
 }

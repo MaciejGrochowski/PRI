@@ -66,6 +66,12 @@ public class CharacterGenerator extends GeneralService {
     @Autowired
     private ApperanceService apperanceService;
 
+    @Autowired
+    private SkillService skillService;
+
+    @Autowired
+    private TalentService talentService;
+
 
     public Character generateFullCharacter(){
 
@@ -115,6 +121,8 @@ public class CharacterGenerator extends GeneralService {
         weightConverter(characterInputDto.getWeight(),character);
         personalityListConvert(characterInputDto.getPersonality(),character);
         apperanceConvert(characterInputDto.getApperance(),character);
+        skillsConvert(characterInputDto.getSkills(),character);
+        talentsConvert(characterInputDto.getTalents(),character);
         characterService.save(character);
 
 
@@ -384,5 +392,31 @@ public class CharacterGenerator extends GeneralService {
             character.setApperance(apperanceList);
         }
         return apperanceList;
+    }
+
+    public List<Skill> skillsConvert(String inputSkills, Character character){
+        if(inputSkills == null){
+            character.setSkills(null);
+            return null;
+        }
+        List<String> stringList = Arrays.asList(inputSkills.split(","));
+        List<Skill> skillList = skillService.findByNameIn(stringList);
+        if (skillList != null){
+            character.setSkills(skillList);
+        }
+        return skillList;
+    }
+
+    public List<Talent> talentsConvert(String inputtalents, Character character){
+        if(inputtalents == null){
+            character.setTalents(null);
+            return null;
+        }
+        List<String> stringList = Arrays.asList(inputtalents.split(","));
+        List<Talent> talentList = talentService.findByNameIn(stringList);
+        if (talentList != null){
+            character.setTalents(talentList);
+        }
+        return talentList;
     }
 }

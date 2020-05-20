@@ -457,4 +457,30 @@ public class CharacterSaveService {
 
         return newEndIntelligence;
     }
+
+    public Integer endWillPowerConvert(String endWillPower, Character character){
+        if (endWillPower == null) throw new IllegalArgumentException();
+        Integer newEndWillPower = null;
+        if (endWillPower.matches("[0-9]+")){
+            newEndWillPower = Integer.parseInt(endWillPower);
+            if (newEndWillPower < 99) character.setEndWillPower(newEndWillPower);
+            else throw new IllegalArgumentException();
+        }
+        else throw new IllegalArgumentException();
+
+        return newEndWillPower;
+    }
+
+    public Integer endFellowshipConvert(String endFellowship, Character character){
+        if (endFellowship == null) throw new IllegalArgumentException();
+        Integer newEndFellowship = null;
+        if (endFellowship.matches("[0-9]+")){
+            newEndFellowship = Integer.parseInt(endFellowship);
+            if (newEndFellowship < 99) character.setEndFellowship(newEndFellowship);
+            else throw new IllegalArgumentException();
+        }
+        else throw new IllegalArgumentException();
+
+        return newEndFellowship;
+    }
 }

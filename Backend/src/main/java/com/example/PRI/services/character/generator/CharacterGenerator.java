@@ -134,6 +134,8 @@ public class CharacterGenerator extends GeneralService {
         characterSaveService.endToughnessConvert(characterInputDto.getEndToughness(),character);
         characterSaveService.endAgilityConvert(characterInputDto.getEndAgility(),character);
         characterSaveService.endIntelligenceConvert(characterInputDto.getEndIntelligence(),character);
+        characterSaveService.endWillPowerConvert(characterInputDto.getEndWillPower(),character);
+        characterSaveService.endFellowshipConvert(characterInputDto.getEndFellowship(),character);
 
         characterService.save(character);
 

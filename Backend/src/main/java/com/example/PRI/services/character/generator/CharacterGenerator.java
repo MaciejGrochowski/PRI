@@ -2,10 +2,12 @@ package com.example.PRI.services.character.generator;
 
 import com.example.PRI.converters.CharacterGeneratorConverter;
 import com.example.PRI.dtos.characters.CharacterInputDto;
+import com.example.PRI.entities.Place;
 import com.example.PRI.entities.character.*;
 import com.example.PRI.entities.character.Character;
 import com.example.PRI.enums.Race;
 import com.example.PRI.services.GeneralService;
+import com.example.PRI.services.PlaceService;
 import com.example.PRI.services.character.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -45,6 +47,9 @@ public class CharacterGenerator extends GeneralService {
     @Autowired
     private EyeColorService eyeColorService;
 
+    @Autowired
+    private PlaceService placeService;
+
     public Character generateFullCharacter(){
 
         CharacterBuilder characterBuilder = new CharacterBuilder();
@@ -77,6 +82,7 @@ public class CharacterGenerator extends GeneralService {
         previousCareersConvert(characterInputDto.getPreviousCareers(),character);
         hairColorConverter(characterInputDto.getHairColor(),character);
         eyeColorConverter(characterInputDto.getEyeColor(),character);
+        bornPlaceConverter(characterInputDto.getBirthPlace(),character);
         characterService.save(character);
 
 
@@ -172,5 +178,19 @@ public class CharacterGenerator extends GeneralService {
             throw new IllegalArgumentException();
         }
         return eyeColor;
+    }
+
+    public Optional<Place> bornPlaceConverter(String bornPlaceColor, Character character) {
+        Optional<Place> bornPlace = placeService.findByName(bornPlaceColor);
+        bornPlace.ifPresent(character::setBirthPlace);
+        if (!bornPlace.isPresent() && bornPlaceColor != null){
+            Place bornPlaceNew = new Place();
+            bornPlaceNew.setName(bornPlaceColor);
+            character.setBirthPlace(bornPlaceNew);
+        }
+        if(bornPlace.get() == null) {
+            throw new IllegalArgumentException();
+        }
+        return bornPlace;
     }
 }

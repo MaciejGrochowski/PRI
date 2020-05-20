@@ -87,6 +87,7 @@ public class CharacterGenerator extends GeneralService {
         bornPlaceConverter(characterInputDto.getBirthPlace(),character);
         livePlaceConverter(characterInputDto.getLivePlace(),character);
         sexConverter(characterInputDto.getSex(),character);
+        raceConverter(characterInputDto.getRace(),character);
         characterService.save(character);
 
 
@@ -214,14 +215,26 @@ public class CharacterGenerator extends GeneralService {
 
 
     public Sex sexConverter(String sexInput, Character character) {
+        if(sexInput == null) {
+            throw new IllegalArgumentException();
+        }
         Sex newSex = Sex.MALE;
         if (sexInput.compareTo("Kobieta") == 0){
             newSex = Sex.FEMALE;
         }
-        if(sexInput == null) {
-            throw new IllegalArgumentException();
-        }
         character.setSex(newSex);
         return newSex;
+    }
+
+    public Race raceConverter(String raceInput, Character character) {
+        if(raceInput == null) {
+            throw new IllegalArgumentException();
+        }
+        Race newRace = Race.HUMAN;
+        if (raceInput.compareTo("Elf") == 0){ newRace = Race.ELF; }
+        else if(raceInput.compareTo("Krasnolud") == 0){ newRace = Race.DWARF;}
+        else if (raceInput.compareTo("Niziołek") == 0) { newRace = Race.HALFLING;}
+        character.setRace(newRace);
+        return newRace;
     }
 }

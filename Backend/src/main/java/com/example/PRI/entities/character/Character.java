@@ -36,8 +36,8 @@ public class Character extends GeneralEntity {
     @JoinColumn(name="hair_color", referencedColumnName="color")
     HairColor hairColor;
 
-    @ManyToOne
-    @JoinColumn(name="birth_date", referencedColumnName="year")
+    @ManyToOne(cascade = {CascadeType.MERGE},fetch = FetchType.LAZY)
+    @JoinColumn(name="birth_date")
     ImperialDate birthDate;
 
     StarSign starSign;
@@ -52,8 +52,8 @@ public class Character extends GeneralEntity {
 
     Religion religion;
 
-    int weight;
-    int height;
+    Integer weight;
+    Integer height;
 
     @ManyToOne
     @JoinColumn(name="surname", referencedColumnName="surname")

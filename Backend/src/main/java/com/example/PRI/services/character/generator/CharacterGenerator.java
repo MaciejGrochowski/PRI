@@ -6,14 +6,17 @@ import com.example.PRI.entities.ImperialDate;
 import com.example.PRI.entities.Place;
 import com.example.PRI.entities.character.*;
 import com.example.PRI.entities.character.Character;
+import com.example.PRI.enums.Month;
 import com.example.PRI.enums.Race;
 import com.example.PRI.enums.Religion;
 import com.example.PRI.enums.Sex;
 import com.example.PRI.services.GeneralService;
+import com.example.PRI.services.ImperialDateService;
 import com.example.PRI.services.PlaceService;
 import com.example.PRI.services.character.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
 
@@ -53,6 +56,9 @@ public class CharacterGenerator extends GeneralService {
     @Autowired
     private PlaceService placeService;
 
+    @Autowired
+    private ImperialDateService imperialDateService;
+
 
     public Character generateFullCharacter(){
 
@@ -76,6 +82,7 @@ public class CharacterGenerator extends GeneralService {
     }
 
 
+    @Transactional
     public long save(CharacterInputDto characterInputDto) {
         Character character = new Character();
         nameConvert(characterInputDto.getName(),character);
@@ -91,7 +98,12 @@ public class CharacterGenerator extends GeneralService {
         sexConverter(characterInputDto.getSex(),character);
         raceConverter(characterInputDto.getRace(),character);
         religionConverter(characterInputDto.getReligion(),character);
-        System.out.println(birthYearConverter(characterInputDto.getYearOfBirth()));
+        imperialDateConverter
+                (birthDayConverter(characterInputDto.getDayOfBirth()),
+                 birthMonthConverter(characterInputDto.getMonthOfBirth()),
+                 birthYearConverter(characterInputDto.getYearOfBirth()),
+                 character);
+        //System.out.println(birthYearConverter(characterInputDto.getYearOfBirth()));
         characterService.save(character);
 
 
@@ -110,7 +122,8 @@ public class CharacterGenerator extends GeneralService {
         return surname;
     }
 
-    public Optional<Name> nameConvert(String inputName, Character character){//Exeption ma problem :CCCC To Do
+    public Optional<Name> nameConvert(String inputName, Character character){ //ToDo Exeption ma problem :CCCC
+        if (inputName ==  null) throw new IllegalArgumentException();
         Optional<Name> nameOptional = nameService.findByName(inputName);
         nameOptional.ifPresent(character::setName);
         if (!nameOptional.isPresent() && inputName != null){
@@ -222,10 +235,10 @@ public class CharacterGenerator extends GeneralService {
         if(sexInput == null) {
             throw new IllegalArgumentException();
         }
-        Sex newSex = Sex.MALE;
-        if (sexInput.compareTo("Kobieta") == 0){
-            newSex = Sex.FEMALE;
-        }
+        Sex newSex = null;
+        if (sexInput.equals("Kobieta")) newSex = Sex.FEMALE;
+        else if (sexInput.equals("Mężczyzna")) newSex = Sex.MALE;
+        if (newSex == null) throw new IllegalArgumentException();
         character.setSex(newSex);
         return newSex;
     }
@@ -234,19 +247,19 @@ public class CharacterGenerator extends GeneralService {
         if(raceInput == null) {
             throw new IllegalArgumentException();
         }
-        Race newRace = Race.HUMAN;
-        if (raceInput.compareTo("Elf") == 0){ newRace = Race.ELF; }
-        else if(raceInput.compareTo("Krasnolud") == 0){ newRace = Race.DWARF;}
-        else if (raceInput.compareTo("Niziołek") == 0) { newRace = Race.HALFLING;}
+        Race newRace = null;
+        if (raceInput.equals("Elf")){ newRace = Race.ELF; }
+        else if(raceInput.equals("Krasnolud")){ newRace = Race.DWARF;}
+        else if (raceInput.equals("Niziołek")) { newRace = Race.HALFLING;}
+        else if (raceInput.equals("Człowiek")) { newRace = Race.HUMAN;}
+        if (newRace == null) throw new IllegalArgumentException();
         character.setRace(newRace);
         return newRace;
     }
 
     public Religion religionConverter(String religionInput, Character character) {
-        if(religionInput == null) {
-            throw new IllegalArgumentException();
-        }
         Religion newReligion = Religion.findByGodName(religionInput);
+        if (newReligion == null) throw new IllegalArgumentException();
         character.setReligion(newReligion);
         return newReligion;
     }
@@ -272,7 +285,7 @@ public class CharacterGenerator extends GeneralService {
         if(yearInput == null) {
             throw new IllegalArgumentException();
         }
-        short year = 0;
+        int year = 0;
         if (yearInput.matches("[0-9]*")){
             year = Short.parseShort(yearInput);
             if (year < 0 || year > 3000){
@@ -283,5 +296,20 @@ public class CharacterGenerator extends GeneralService {
             throw new IllegalArgumentException();
         }
         return year;
+    }
+
+    public Month birthMonthConverter(String birthMonthInput) {
+        if(birthMonthInput == null) {
+            throw new IllegalArgumentException();
+        }
+        Month newMonth = Month.findByMonthName(birthMonthInput);
+        return newMonth;
+    }
+
+    public ImperialDate imperialDateConverter(int day, Month month, int year, Character character) {
+        ImperialDate newDate = new ImperialDate(day,month,year);
+        ImperialDate x = imperialDateService.save(newDate);
+        character.setBirthDate(x);
+        return newDate;
     }
 }

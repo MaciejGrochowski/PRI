@@ -13,9 +13,9 @@ import javax.persistence.Entity;
 @NoArgsConstructor
 public class ImperialDate extends GeneralEntity {
 
-    int day; //uwaga - liczba dni w miesiącu jest różna dla różnych miesięcy, niezbędna walidacja
+    Integer day; //uwaga - liczba dni w miesiącu jest różna dla różnych miesięcy, niezbędna walidacja
     Month month;
-    short year;
+    Integer year;
 
 
 }

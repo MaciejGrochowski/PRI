@@ -20,6 +20,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -82,13 +83,13 @@ public class CharacterService extends GeneralService {
         }
         return output;
     }
-
+    @Transactional
     public void save(Character character) {
-        nameService.save(character.getName());
+//        nameService.save(character.getName());
 
-        careerService.save(character.getCurrentCareer());
+//        careerService.save(character.getCurrentCareer());
 //        placeService.save(character.getLivePlace());
-        if (character.getSurname() != null) surnameService.save(character.getSurname());
+//        if (character.getSurname() != null) surnameService.save(character.getSurname());
         characterRepository.save(character);
     }
 

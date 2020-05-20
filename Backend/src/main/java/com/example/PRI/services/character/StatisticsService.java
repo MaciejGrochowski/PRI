@@ -14,7 +14,13 @@ public class StatisticsService extends GeneralService {
     @Autowired
     StatisticsRepository statisticsRepository;
 
-    public void save(Statistics stats) {
+    public Statistics save(Statistics stats) {
+        Statistics statsNew = statisticsRepository.findByWeaponSkillAndBallisticSkillAndStrengthAndToughnessAndAgilityAndIntelligenceAndWillPowerAndFellowshipAndAttacksAndWoundsAndMagicAndMovement
+                (stats.getWeaponSkill(),stats.getBallisticSkill(),stats.getStrength(),stats.getToughness(), stats.getAgility(),stats.getIntelligence()
+                        ,stats.getWillPower(),stats.getFellowship(),stats.getAttacks(),stats.getWounds(),stats.getMagic(),stats.getMovement());
+        if (statsNew != null) stats.setId(statsNew.getId());
         statisticsRepository.save(stats);
+        return stats;
     }
+
 }

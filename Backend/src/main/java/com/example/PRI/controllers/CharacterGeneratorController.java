@@ -11,8 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.example.PRI.entities.character.Character;
 
-import java.util.Date;
-
 
 @RestController
 @RequestMapping(value = "/app/generator")
@@ -35,11 +33,9 @@ public class CharacterGeneratorController {
     }
 
     @Post("/save")
-    public Integer save(@RequestBody CharacterInputDto character){
+    public long save(@RequestBody CharacterInputDto character){
 
-        characterGenerator.save(character);
-
-        return 0;
+        return characterGenerator.save(character);
     }
 
 

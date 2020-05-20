@@ -42,7 +42,7 @@ public class Character extends GeneralEntity {
 
     StarSign starSign;
 
-    @OneToOne
+    @OneToOne(cascade = {CascadeType.MERGE},fetch = FetchType.LAZY)
     Statistics baseStats;
 
     @ManyToMany

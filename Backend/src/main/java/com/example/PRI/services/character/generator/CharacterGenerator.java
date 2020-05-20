@@ -140,6 +140,7 @@ public class CharacterGenerator extends GeneralService {
         characterSaveService.endWoundsConvert(characterInputDto.getEndWounds(),character);
         characterSaveService.endMovementConvert(characterInputDto.getEndMovement(),character);
         characterSaveService.endMagicConvert(characterInputDto.getEndMagic(),character);
+        characterSaveService.baseStatisticsConvert(characterInputDto,character);
         characterService.save(character);
 
         return character.getId();

@@ -13,21 +13,21 @@ import javax.persistence.Entity;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Statistics extends GeneralEntity {
-    int weaponSkill; //walka wręcz
-    int ballisticSkill; //umiejętności strzeleckie
-    int strength; // krzepa
-    int toughness; // odporność
-    int agility; // zręczność
-    int intelligence; //inteligencja
-    int willPower; // siła woli
-    int fellowship; // ogłada
-    int attacks; // ataki
-    int wounds; // żywotność
-    int magic; // magia
-    int movement; // szybkość
+    Integer weaponSkill; //walka wręcz
+    Integer ballisticSkill; //umiejętności strzeleckie
+    Integer strength; // krzepa
+    Integer toughness; // odporność
+    Integer agility; // zręczność
+    Integer intelligence; //inteligencja
+    Integer willPower; // siła woli
+    Integer fellowship; // ogłada
+    Integer attacks; // ataki
+    Integer wounds; // żywotność
+    Integer magic; // magia
+    Integer movement; // szybkość
 
-    int getStrengthBonus(){ return strength/10; } // siła
-    int getToughnessBonus(){ return toughness/10; } // wytrzymałość
+    Integer getStrengthBonus(){ return strength/10; } // siła
+    Integer getToughnessBonus(){ return toughness/10; } // wytrzymałość
 
 
 }

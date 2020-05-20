@@ -1,5 +1,6 @@
 package com.example.PRI.services.character;
 
+import com.example.PRI.dtos.characters.CharacterInputDto;
 import com.example.PRI.entities.ImperialDate;
 import com.example.PRI.entities.Place;
 import com.example.PRI.entities.character.*;
@@ -75,11 +76,14 @@ public class CharacterSaveService {
     @Autowired
     private EmotionService emotionService;
 
+    @Autowired
+    private StatisticsService statisticsService;
 
-    public Optional<Surname> surnameConvert(String surNew, Character character){
+
+    public Optional<Surname> surnameConvert(String surNew, Character character) {
         Optional<Surname> surname = surnameService.findBySurname(surNew);
         surname.ifPresent(character::setSurname);
-        if (!surname.isPresent() && surNew != null){
+        if (!surname.isPresent() && surNew != null) {
             Surname surnameNew = new Surname();
             surnameNew.setSurname(surNew);
             surnameService.save(surnameNew);
@@ -88,11 +92,11 @@ public class CharacterSaveService {
         return surname;
     }
 
-    public Optional<Name> nameConvert(String inputName, Character character){
-        if (inputName ==  null) throw new IllegalArgumentException();
+    public Optional<Name> nameConvert(String inputName, Character character) {
+        if (inputName == null) throw new IllegalArgumentException();
         Optional<Name> nameOptional = nameService.findByName(inputName);
         nameOptional.ifPresent(character::setName);
-        if (!nameOptional.isPresent() && inputName != null){
+        if (!nameOptional.isPresent() && inputName != null) {
             Name nameNew = new Name();
             nameNew.setName(inputName);
             nameService.save(nameNew);
@@ -101,10 +105,10 @@ public class CharacterSaveService {
         return nameOptional;
     }
 
-    public Optional<Prediction> predictionConvert(String inputPrediction, Character character){
+    public Optional<Prediction> predictionConvert(String inputPrediction, Character character) {
         Optional<Prediction> prediction = predictionService.findByText(inputPrediction);
         prediction.ifPresent(character::setPrediction);
-        if (!prediction.isPresent() && inputPrediction != null){
+        if (!prediction.isPresent() && inputPrediction != null) {
             Prediction predictionNew = new Prediction();
             predictionNew.setText(inputPrediction);
             predictionService.save(predictionNew);
@@ -113,56 +117,55 @@ public class CharacterSaveService {
         return prediction;
     }
 
-    public Career currentCareerConvert(String inputCurrentCareer, Character character){
+    public Career currentCareerConvert(String inputCurrentCareer, Character character) {
         List<String> stringList = new ArrayList<>();
         stringList.add(inputCurrentCareer);
-        List <Career> careerList = careerService.findByNameIn(stringList);
-        if (careerList != null){
+        List<Career> careerList = careerService.findByNameIn(stringList);
+        if (careerList != null) {
             character.setCurrentCareer(careerList.get(0));
             return careerList.get(0);
-        }
-        else {
+        } else {
             throw new IllegalArgumentException();
         }
     }
 
-    public List<Career> previousCareersConvert(String inputPreviousCareers, Character character){
-        if(inputPreviousCareers == null){
+    public List<Career> previousCareersConvert(String inputPreviousCareers, Character character) {
+        if (inputPreviousCareers == null) {
             character.setPreviousCareers(null);
             return null;
         }
         List<String> stringList = Arrays.asList(inputPreviousCareers.split(","));
         List<Career> careerList = careerService.findByNameIn(stringList);
-        if (careerList != null){
+        if (careerList != null) {
             character.setPreviousCareers(careerList);
         }
         return careerList;
     }
 
-    public Optional<HairColor> hairColorConverter(String inputHairColor, Character character){
+    public Optional<HairColor> hairColorConverter(String inputHairColor, Character character) {
         Optional<HairColor> hairColor = hairColorService.findByName(inputHairColor);
         hairColor.ifPresent(character::setHairColor);
-        if (!hairColor.isPresent() && inputHairColor != null){
+        if (!hairColor.isPresent() && inputHairColor != null) {
             HairColor hairColorNew = new HairColor();
             hairColorNew.setColor(inputHairColor);
             character.setHairColor(hairColorNew);
             //return hairColor;
         }
-        if(hairColor.get() == null) {
+        if (hairColor.get() == null) {
             throw new IllegalArgumentException();
         }
         return hairColor;
     }
 
-    public Optional<EyeColor> eyeColorConverter(String inputeyeColor, Character character){
+    public Optional<EyeColor> eyeColorConverter(String inputeyeColor, Character character) {
         Optional<EyeColor> eyeColor = eyeColorService.findByName(inputeyeColor);
         eyeColor.ifPresent(character::setEyeColor);
-        if (!eyeColor.isPresent() && inputeyeColor != null){
+        if (!eyeColor.isPresent() && inputeyeColor != null) {
             EyeColor eyeColorNew = new EyeColor();
             eyeColorNew.setColor(inputeyeColor);
             character.setEyeColor(eyeColorNew);
         }
-        if(eyeColor.get() == null) {
+        if (eyeColor.get() == null) {
             throw new IllegalArgumentException();
         }
         return eyeColor;
@@ -171,12 +174,12 @@ public class CharacterSaveService {
     public Optional<Place> bornPlaceConverter(String bornPlaceInput, Character character) {
         Optional<Place> bornPlace = placeService.findByName(bornPlaceInput);
         bornPlace.ifPresent(character::setBirthPlace);
-        if (!bornPlace.isPresent() && bornPlaceInput != null){
+        if (!bornPlace.isPresent() && bornPlaceInput != null) {
             Place bornPlaceNew = new Place();
             bornPlaceNew.setName(bornPlaceInput);
             character.setBirthPlace(bornPlaceNew);
         }
-        if(bornPlace.get() == null) {
+        if (bornPlace.get() == null) {
             throw new IllegalArgumentException();
         }
         return bornPlace;
@@ -185,12 +188,12 @@ public class CharacterSaveService {
     public Optional<Place> livePlaceConverter(String livePlaceInput, Character character) {
         Optional<Place> livePlace = placeService.findByName(livePlaceInput);
         livePlace.ifPresent(character::setLivePlace);
-        if (!livePlace.isPresent() && livePlaceInput != null){
+        if (!livePlace.isPresent() && livePlaceInput != null) {
             Place bornPlaceNew = new Place();
             bornPlaceNew.setName(livePlaceInput);
             character.setLivePlace(bornPlaceNew);
         }
-        if(livePlace.get() == null) {
+        if (livePlace.get() == null) {
             throw new IllegalArgumentException();
         }
         return livePlace;
@@ -198,7 +201,7 @@ public class CharacterSaveService {
 
 
     public Sex sexConverter(String sexInput, Character character) {
-        if(sexInput == null) {
+        if (sexInput == null) {
             throw new IllegalArgumentException();
         }
         Sex newSex = null;
@@ -210,14 +213,19 @@ public class CharacterSaveService {
     }
 
     public Race raceConverter(String raceInput, Character character) {
-        if(raceInput == null) {
+        if (raceInput == null) {
             throw new IllegalArgumentException();
         }
         Race newRace = null;
-        if (raceInput.equals("Elf")){ newRace = Race.ELF; }
-        else if(raceInput.equals("Krasnolud")){ newRace = Race.DWARF;}
-        else if (raceInput.equals("Niziołek")) { newRace = Race.HALFLING;}
-        else if (raceInput.equals("Człowiek")) { newRace = Race.HUMAN;}
+        if (raceInput.equals("Elf")) {
+            newRace = Race.ELF;
+        } else if (raceInput.equals("Krasnolud")) {
+            newRace = Race.DWARF;
+        } else if (raceInput.equals("Niziołek")) {
+            newRace = Race.HALFLING;
+        } else if (raceInput.equals("Człowiek")) {
+            newRace = Race.HUMAN;
+        }
         if (newRace == null) throw new IllegalArgumentException();
         character.setRace(newRace);
         return newRace;
@@ -231,41 +239,39 @@ public class CharacterSaveService {
     }
 
     public int birthDayConverter(String dayInput) {
-        if(dayInput == null) {
+        if (dayInput == null) {
             throw new IllegalArgumentException();
         }
         int day = 0;
-        if (dayInput.matches("[0-9]+")){
+        if (dayInput.matches("[0-9]+")) {
             day = Integer.parseInt(dayInput);
-            if (day < 1 || day > 34){
+            if (day < 1 || day > 34) {
                 throw new IllegalArgumentException();
             }
-        }
-        else {
+        } else {
             throw new IllegalArgumentException();
         }
         return day;
     }
 
     public int birthYearConverter(String yearInput) {
-        if(yearInput == null) {
+        if (yearInput == null) {
             throw new IllegalArgumentException();
         }
         int year = 0;
-        if (yearInput.matches("[0-9]*")){
+        if (yearInput.matches("[0-9]*")) {
             year = Short.parseShort(yearInput);
-            if (year < 0 || year > 3000){
+            if (year < 0 || year > 3000) {
                 throw new IllegalArgumentException();
             }
-        }
-        else {
+        } else {
             throw new IllegalArgumentException();
         }
         return year;
     }
 
     public Month birthMonthConverter(String birthMonthInput) {
-        if(birthMonthInput == null) {
+        if (birthMonthInput == null) {
             throw new IllegalArgumentException();
         }
         Month newMonth = Month.findByMonthName(birthMonthInput);
@@ -273,7 +279,7 @@ public class CharacterSaveService {
     }
 
     public ImperialDate imperialDateConverter(int day, Month month, int year, Character character) {
-        ImperialDate newDate = new ImperialDate(day,month,year);
+        ImperialDate newDate = new ImperialDate(day, month, year);
         ImperialDate x = imperialDateService.save(newDate);
         character.setBirthDate(x);
         return newDate;
@@ -282,16 +288,14 @@ public class CharacterSaveService {
     public Integer heightConverter(String height, Character character) {
         if (height == null) throw new IllegalArgumentException();
         Integer newHeight = null;
-        if (height.matches("[0-9]*")){
+        if (height.matches("[0-9]*")) {
             newHeight = Integer.parseInt(height);
-            if (newHeight < 50 || newHeight > 300){
+            if (newHeight < 50 || newHeight > 300) {
                 throw new IllegalArgumentException();
-            }
-            else {
+            } else {
                 character.setHeight(newHeight);
             }
-        }
-        else {
+        } else {
             throw new IllegalArgumentException();
         }
         return newHeight;
@@ -300,239 +304,317 @@ public class CharacterSaveService {
     public Integer weightConverter(String weight, Character character) {
         if (weight == null) throw new IllegalArgumentException();
         Integer newWeight = null;
-        if (weight.matches("[0-9]*")){
+        if (weight.matches("[0-9]*")) {
             newWeight = Integer.parseInt(weight);
-            if (newWeight < 10 || newWeight > 800){
+            if (newWeight < 10 || newWeight > 800) {
                 throw new IllegalArgumentException();
-            }
-            else {
+            } else {
                 character.setWeight(newWeight);
             }
-        }
-        else {
+        } else {
             throw new IllegalArgumentException();
         }
         return newWeight;
     }
 
-    public List<Personality> personalityListConvert(String inputPersonality, Character character){
-        if(inputPersonality == null){
+    public List<Personality> personalityListConvert(String inputPersonality, Character character) {
+        if (inputPersonality == null) {
             character.setPersonality(null);
             return null;
         }
         List<String> stringList = Arrays.asList(inputPersonality.split(","));
         List<Personality> personalityList = personalityService.findByNameIn(stringList);
-        if (personalityList != null){
+        if (personalityList != null) {
             character.setPersonality(personalityList);
         }
         return personalityList;
     }
 
-    public List<Apperance> apperanceConvert(String inputApperance, Character character){
-        if(inputApperance == null){
+    public List<Apperance> apperanceConvert(String inputApperance, Character character) {
+        if (inputApperance == null) {
             character.setApperance(null);
             return null;
         }
         List<String> stringList = Arrays.asList(inputApperance.split(","));
         List<Apperance> apperanceList = apperanceService.findByNameIn(stringList);
-        if (apperanceList != null){
+        if (apperanceList != null) {
             character.setApperance(apperanceList);
         }
         return apperanceList;
     }
 
-    public List<Skill> skillsConvert(String inputSkills, Character character){
-        if(inputSkills == null){
+    public List<Skill> skillsConvert(String inputSkills, Character character) {
+        if (inputSkills == null) {
             character.setSkills(null);
             return null;
         }
         List<String> stringList = Arrays.asList(inputSkills.split(","));
         List<Skill> skillList = skillService.findByNameIn(stringList);
-        if (skillList != null){
+        if (skillList != null) {
             character.setSkills(skillList);
         }
         return skillList;
     }
 
-    public List<Talent> talentsConvert(String inputTalents, Character character){
-        if(inputTalents == null){
+    public List<Talent> talentsConvert(String inputTalents, Character character) {
+        if (inputTalents == null) {
             character.setTalents(null);
             return null;
         }
         List<String> stringList = Arrays.asList(inputTalents.split(","));
         List<Talent> talentList = talentService.findByNameIn(stringList);
-        if (talentList != null){
+        if (talentList != null) {
             character.setTalents(talentList);
         }
         return talentList;
     }
 
-    public List<Emotion> dominantingEmotionConvert(String inputEmotion, Character character){
-        if(inputEmotion == null){
+    public List<Emotion> dominantingEmotionConvert(String inputEmotion, Character character) {
+        if (inputEmotion == null) {
             character.setDominatingEmotions(null);
             return null;
         }
         List<String> stringList = Arrays.asList(inputEmotion.split(","));
         List<Emotion> emotionList = emotionService.findByNameIn(stringList);
-        if (emotionList != null){
+        if (emotionList != null) {
             character.setDominatingEmotions(emotionList);
         }
         return emotionList;
     }
 
-    public Integer endWeaponSkillConvert(String WeaponSkill, Character character){
+    public Integer endWeaponSkillConvert(String WeaponSkill, Character character) {
         if (WeaponSkill == null) throw new IllegalArgumentException();
         Integer newWeaponSkill = null;
-        if (WeaponSkill.matches("[0-9]+")){
+        if (WeaponSkill.matches("[0-9]+")) {
             newWeaponSkill = Integer.parseInt(WeaponSkill);
             if (newWeaponSkill < 99) character.setEndWeaponSkills(newWeaponSkill);
             else throw new IllegalArgumentException();
-        }
-        else throw new IllegalArgumentException();
+        } else throw new IllegalArgumentException();
 
         return newWeaponSkill;
     }
 
-    public Integer endBallisticSkillsConvert(String BallisticSkills, Character character){
+    public Integer endBallisticSkillsConvert(String BallisticSkills, Character character) {
         if (BallisticSkills == null) throw new IllegalArgumentException();
         Integer newBallisticSkill = null;
-        if (BallisticSkills.matches("[0-9]+")){
+        if (BallisticSkills.matches("[0-9]+")) {
             newBallisticSkill = Integer.parseInt(BallisticSkills);
             if (newBallisticSkill < 99) character.setEndBallisticSkills(newBallisticSkill);
             else throw new IllegalArgumentException();
-        }
-        else throw new IllegalArgumentException();
+        } else throw new IllegalArgumentException();
 
         return newBallisticSkill;
     }
 
-    public Integer endStrengthConvert(String endStrength, Character character){
+    public Integer endStrengthConvert(String endStrength, Character character) {
         if (endStrength == null) throw new IllegalArgumentException();
         Integer newEndStrength = null;
-        if (endStrength.matches("[0-9]+")){
+        if (endStrength.matches("[0-9]+")) {
             newEndStrength = Integer.parseInt(endStrength);
             if (newEndStrength < 99) character.setEndStrength(newEndStrength);
             else throw new IllegalArgumentException();
-        }
-        else throw new IllegalArgumentException();
+        } else throw new IllegalArgumentException();
 
         return newEndStrength;
     }
 
-    public Integer endToughnessConvert(String endToughness, Character character){
+    public Integer endToughnessConvert(String endToughness, Character character) {
         if (endToughness == null) throw new IllegalArgumentException();
         Integer newEndToughness = null;
-        if (endToughness.matches("[0-9]+")){
+        if (endToughness.matches("[0-9]+")) {
             newEndToughness = Integer.parseInt(endToughness);
             if (newEndToughness < 99) character.setEndToughness(newEndToughness);
             else throw new IllegalArgumentException();
-        }
-        else throw new IllegalArgumentException();
+        } else throw new IllegalArgumentException();
 
         return newEndToughness;
     }
 
-    public Integer endAgilityConvert(String endAgility, Character character){
+    public Integer endAgilityConvert(String endAgility, Character character) {
         if (endAgility == null) throw new IllegalArgumentException();
         Integer newEndAgility = null;
-        if (endAgility.matches("[0-9]+")){
+        if (endAgility.matches("[0-9]+")) {
             newEndAgility = Integer.parseInt(endAgility);
             if (newEndAgility < 99) character.setEndAgility(newEndAgility);
             else throw new IllegalArgumentException();
-        }
-        else throw new IllegalArgumentException();
+        } else throw new IllegalArgumentException();
 
         return newEndAgility;
     }
 
-    public Integer endIntelligenceConvert(String endIntelligence, Character character){
+    public Integer endIntelligenceConvert(String endIntelligence, Character character) {
         if (endIntelligence == null) throw new IllegalArgumentException();
         Integer newEndIntelligence = null;
-        if (endIntelligence.matches("[0-9]+")){
+        if (endIntelligence.matches("[0-9]+")) {
             newEndIntelligence = Integer.parseInt(endIntelligence);
             if (newEndIntelligence < 99) character.setEndIntelligence(newEndIntelligence);
             else throw new IllegalArgumentException();
-        }
-        else throw new IllegalArgumentException();
+        } else throw new IllegalArgumentException();
 
         return newEndIntelligence;
     }
 
-    public Integer endWillPowerConvert(String endWillPower, Character character){
+    public Integer endWillPowerConvert(String endWillPower, Character character) {
         if (endWillPower == null) throw new IllegalArgumentException();
         Integer newEndWillPower = null;
-        if (endWillPower.matches("[0-9]+")){
+        if (endWillPower.matches("[0-9]+")) {
             newEndWillPower = Integer.parseInt(endWillPower);
             if (newEndWillPower < 99) character.setEndWillPower(newEndWillPower);
             else throw new IllegalArgumentException();
-        }
-        else throw new IllegalArgumentException();
+        } else throw new IllegalArgumentException();
 
         return newEndWillPower;
     }
 
-    public Integer endFellowshipConvert(String endFellowship, Character character){
+    public Integer endFellowshipConvert(String endFellowship, Character character) {
         if (endFellowship == null) throw new IllegalArgumentException();
         Integer newEndFellowship = null;
-        if (endFellowship.matches("[0-9]+")){
+        if (endFellowship.matches("[0-9]+")) {
             newEndFellowship = Integer.parseInt(endFellowship);
             if (newEndFellowship < 99) character.setEndFellowship(newEndFellowship);
             else throw new IllegalArgumentException();
-        }
-        else throw new IllegalArgumentException();
+        } else throw new IllegalArgumentException();
 
         return newEndFellowship;
     }
 
-    public Integer endAttacksConvert(String endAttack, Character character){
+    public Integer endAttacksConvert(String endAttack, Character character) {
         if (endAttack == null) throw new IllegalArgumentException();
         Integer newEndAttack = null;
-        if (endAttack.matches("[0-9]+")){
+        if (endAttack.matches("[0-9]+")) {
             newEndAttack = Integer.parseInt(endAttack);
             if (newEndAttack < 99) character.setEndAttacks(newEndAttack);
             else throw new IllegalArgumentException();
-        }
-        else throw new IllegalArgumentException();
+        } else throw new IllegalArgumentException();
 
         return newEndAttack;
     }
 
-    public Integer endWoundsConvert(String endWound, Character character){
+    public Integer endWoundsConvert(String endWound, Character character) {
         if (endWound == null) throw new IllegalArgumentException();
         Integer newEndWound = null;
-        if (endWound.matches("[0-9]+")){
+        if (endWound.matches("[0-9]+")) {
             newEndWound = Integer.parseInt(endWound);
             if (newEndWound < 99) character.setEndWounds(newEndWound);
             else throw new IllegalArgumentException();
-        }
-        else throw new IllegalArgumentException();
+        } else throw new IllegalArgumentException();
 
         return newEndWound;
     }
 
-    public Integer endMovementConvert(String endMovement, Character character){
+    public Integer endMovementConvert(String endMovement, Character character) {
         if (endMovement == null) throw new IllegalArgumentException();
         Integer newEndMovement = null;
-        if (endMovement.matches("[0-9]+")){
+        if (endMovement.matches("[0-9]+")) {
             newEndMovement = Integer.parseInt(endMovement);
             if (newEndMovement < 99) character.setEndMovement(newEndMovement);
             else throw new IllegalArgumentException();
-        }
-        else throw new IllegalArgumentException();
+        } else throw new IllegalArgumentException();
 
         return newEndMovement;
     }
 
-    public Integer endMagicConvert(String endMagic, Character character){
+    public Integer endMagicConvert(String endMagic, Character character) {
         if (endMagic == null) throw new IllegalArgumentException();
         Integer newEndMagic = null;
-        if (endMagic.matches("[0-9]+")){
+        if (endMagic.matches("[0-9]+")) {
             newEndMagic = Integer.parseInt(endMagic);
             if (newEndMagic < 99) character.setEndMagic(newEndMagic);
             else throw new IllegalArgumentException();
-        }
-        else throw new IllegalArgumentException();
+        } else throw new IllegalArgumentException();
 
         return newEndMagic;
+    }
+
+    public Statistics baseStatisticsConvert(CharacterInputDto characterInputDto, Character character) {
+        if (characterInputDto.getBaseWeaponSkills() == null || characterInputDto.getBaseBallisticSkills() == null ||
+                characterInputDto.getBaseStrength() == null || characterInputDto.getBaseToughness() == null ||
+                characterInputDto.getBaseAgility() == null || characterInputDto.getBaseIntelligence() == null ||
+                characterInputDto.getBaseWillPower() == null || characterInputDto.getBaseFellowship() == null ||
+                characterInputDto.getBaseAttacks() == null || characterInputDto.getBaseWounds() == null ||
+                characterInputDto.getBaseMagic() == null || characterInputDto.getBaseMovement() == null
+        ) throw new IllegalArgumentException();
+
+        Statistics newStatistics = new Statistics();
+
+
+        if (characterInputDto.getBaseWeaponSkills().matches("[0-9]+")) {
+            Integer baseWeaponSkills = Integer.parseInt(characterInputDto.getBaseWeaponSkills());
+            if (baseWeaponSkills < 99) newStatistics.setWeaponSkill(baseWeaponSkills);
+            else throw new IllegalArgumentException();
+        } else throw new IllegalArgumentException();
+
+
+        if (characterInputDto.getBaseBallisticSkills().matches("[0-9]+")) {
+            Integer baseBallisticSkills = Integer.parseInt(characterInputDto.getBaseBallisticSkills());
+            if (baseBallisticSkills < 99) newStatistics.setBallisticSkill(baseBallisticSkills);
+            else throw new IllegalArgumentException();
+        } else throw new IllegalArgumentException();
+
+
+        if (characterInputDto.getBaseStrength().matches("[0-9]+")) {
+            Integer baseStrength = Integer.parseInt(characterInputDto.getBaseStrength());
+            if (baseStrength < 99) newStatistics.setStrength(baseStrength);
+            else throw new IllegalArgumentException();
+        } else throw new IllegalArgumentException();
+
+
+        if (characterInputDto.getBaseToughness().matches("[0-9]+")) {
+            Integer baseToughness = Integer.parseInt(characterInputDto.getBaseToughness());
+            if (baseToughness < 99) newStatistics.setToughness(baseToughness);
+            else throw new IllegalArgumentException();
+        } else throw new IllegalArgumentException();
+
+        if (characterInputDto.getBaseAgility().matches("[0-9]+")) {
+            Integer baseAgility = Integer.parseInt(characterInputDto.getBaseAgility());
+            if (baseAgility < 99) newStatistics.setAgility(baseAgility);
+            else throw new IllegalArgumentException();
+        } else throw new IllegalArgumentException();
+
+        if (characterInputDto.getBaseIntelligence().matches("[0-9]+")) {
+            Integer baseIntelligence = Integer.parseInt(characterInputDto.getBaseIntelligence());
+            if (baseIntelligence < 99) newStatistics.setIntelligence(baseIntelligence);
+            else throw new IllegalArgumentException();
+        } else throw new IllegalArgumentException();
+
+        if (characterInputDto.getBaseWillPower().matches("[0-9]+")) {
+            Integer baseWillPower = Integer.parseInt(characterInputDto.getBaseWillPower());
+            if (baseWillPower < 99) newStatistics.setWillPower(baseWillPower);
+            else throw new IllegalArgumentException();
+        } else throw new IllegalArgumentException();
+
+        if (characterInputDto.getBaseFellowship().matches("[0-9]+")) {
+            Integer baseFellowship = Integer.parseInt(characterInputDto.getBaseFellowship());
+            if (baseFellowship < 99) newStatistics.setFellowship(baseFellowship);
+            else throw new IllegalArgumentException();
+        } else throw new IllegalArgumentException();
+
+        if (characterInputDto.getBaseAttacks().matches("[0-9]+")) {
+            Integer baseAttacks = Integer.parseInt(characterInputDto.getBaseAttacks());
+            if (baseAttacks < 99) newStatistics.setAttacks(baseAttacks);
+            else throw new IllegalArgumentException();
+        } else throw new IllegalArgumentException();
+
+        if (characterInputDto.getBaseWounds().matches("[0-9]+")) {
+            Integer baseWounds = Integer.parseInt(characterInputDto.getBaseWounds());
+            if (baseWounds < 99) newStatistics.setWounds(baseWounds);
+            else throw new IllegalArgumentException();
+        } else throw new IllegalArgumentException();
+
+        if (characterInputDto.getBaseMovement().matches("[0-9]+")) {
+            Integer baseMovement = Integer.parseInt(characterInputDto.getBaseMovement());
+            if (baseMovement < 99) newStatistics.setMovement(baseMovement);
+            else throw new IllegalArgumentException();
+        } else throw new IllegalArgumentException();
+
+        if (characterInputDto.getBaseMagic().matches("[0-9]+")) {
+            Integer baseMagic = Integer.parseInt(characterInputDto.getBaseMagic());
+            if (baseMagic < 99) newStatistics.setMagic(baseMagic);
+            else throw new IllegalArgumentException();
+        } else throw new IllegalArgumentException();
+
+        character.setBaseStats(newStatistics);
+        statisticsService.save(newStatistics);
+        return newStatistics;
     }
 }

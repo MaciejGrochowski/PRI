@@ -59,6 +59,9 @@ public class CharacterGenerator extends GeneralService {
     @Autowired
     private ImperialDateService imperialDateService;
 
+    @Autowired
+    private PersonalityService personalityService;
+
 
     public Character generateFullCharacter(){
 
@@ -106,6 +109,7 @@ public class CharacterGenerator extends GeneralService {
         //System.out.println(birthYearConverter(characterInputDto.getYearOfBirth()));
         heightConverter(characterInputDto.getHeight(),character);
         weightConverter(characterInputDto.getWeight(),character);
+        personalityListConvert(characterInputDto.getPersonality(),character);
         characterService.save(character);
 
 
@@ -349,5 +353,18 @@ public class CharacterGenerator extends GeneralService {
             throw new IllegalArgumentException();
         }
         return newWeight;
+    }
+
+    public List<Personality> personalityListConvert(String inputPersonality, Character character){
+        if(inputPersonality == null){
+            character.setPreviousCareers(null);
+            return null;
+        }
+        List<String> stringList = Arrays.asList(inputPersonality.split(","));
+        List<Personality> personalityList = personalityService.findByNameIn(stringList);
+        if (personalityList != null){
+            character.setPersonality(personalityList);
+        }
+        return personalityList;
     }
 }

@@ -207,9 +207,15 @@ class CharacterGeneratorPage extends React.Component {
 
     save = () => {
         let characterInput = this.getDataFromForm();
-        generatorService.save(characterInput);
+        generatorService.save(characterInput)
+            .then(r => this.saveSuccessHandler(r))
     }
 
+    saveSuccessHandler = response => {
+        this.setState({generated: true, href: "/characterDetails/" + response.data})
+        console.log(response.data);
+        window.open("/characterDetails/" + response.data);
+    }
 
 
     render() {
@@ -552,6 +558,7 @@ class CharacterGeneratorPage extends React.Component {
                         <div className="flex-div">
                             <button className="green-button" onClick={this.save}>Zapisz</button>
                             <button className="red-button">Anuluj</button>
+                            {this.state.generated &&<div>Aby zobaczyć wygenerowaną postać, kliknij <a href={this.state.href}>tutaj</a></div>}
                         </div>
             </div>
             </div>

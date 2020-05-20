@@ -91,6 +91,18 @@ public class CharacterBuilder {
         return this;
     }
 
+    public CharacterBuilder buildBirthDate(BirthDateGenerator service) {
+        Map<String, String> newProps = service.generateBirthDate(character, properties);
+        putAllProperties(newProps);
+        return this;
+    }
+
+    public CharacterBuilder buildEmotions(EmotionGenerator service) {
+        Map<String, String> newProps = service.generateEmotions(character, properties);
+        putAllProperties(newProps);
+        return this;
+    }
+
 
     private void putAllProperties(Map<String, String> newProps){
         for(String key: newProps.keySet()){

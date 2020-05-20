@@ -109,4 +109,13 @@
     "chanceIfDwarf": 0.094,
     "chanceIfHuman": 0.01,
     "changeIfHalfling": 0.01
-  }]
+  },
+
+  {"id": 11,
+    "color": "Siwy",
+    "chanceIfElf": 0.0,
+    "chanceIfDwarf": 0.0,
+    "chanceIfHuman": 0.0,
+    "changeIfHalfling": 0.0
+  }
+]

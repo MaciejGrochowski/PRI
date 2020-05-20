@@ -129,7 +129,7 @@
   {"id": 33,
     "name": "Obcy akcent",
     "type": "glos",
-    "probability": 0.0011},
+    "probability": 0.0},
   {"id": 34,
     "name": "Piskliwy głos",
     "type": "glos",

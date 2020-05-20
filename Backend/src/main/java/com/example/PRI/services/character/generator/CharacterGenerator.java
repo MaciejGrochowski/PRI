@@ -34,6 +34,15 @@ public class CharacterGenerator extends GeneralService {
     private EyeColorGenerator eyeColorGenerator;
 
     @Autowired
+    private EmotionGenerator emotionGenerator;
+
+//    @Autowired
+//    private BirthDateGenerator birthDateGenerator;
+
+    @Autowired
+    private HairColorGenerator hairColorGenerator;
+
+    @Autowired
     private CareerService careerService;
 
     @Autowired
@@ -88,9 +97,12 @@ public class CharacterGenerator extends GeneralService {
                 .buildSex(new SexGenerator())
                 .buildSurname(surnameGenerator)
                 .buildBaseStats(new StatisticsGenerator())
+                .buildBirthDate(new BirthDateGenerator())
                 .buildHeight(new HeightGenerator())
                 .buildWeight(new WeightGenerator())
                 .buildEyeColor(eyeColorGenerator)
+                .buildHairColor(hairColorGenerator)
+                .buildEmotions(emotionGenerator)
         ;
 
         Character generated = characterBuilder.getCharacter();

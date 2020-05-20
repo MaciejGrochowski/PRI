@@ -21,23 +21,33 @@ public class HairColorGenerator extends GeneralService {
         Collections.shuffle(hairColors);
         Map<String, String> newProps = new HashMap<>();
         double randomRoll = new Random().nextDouble();
-        boolean strangeColor = (new Random().nextDouble() ) < 0.0005;
+        boolean strangeColor = (new Random().nextDouble()) < 0.0002;
         HairColor generated = null;
-        if(!strangeColor) {
+        if (!strangeColor) {
             for (HairColor hairColor : hairColors) {
-                double chance=0;
-                if(character.getRace().equals(Race.ELF)) chance=hairColor.getChanceIfElf();
-                if(character.getRace().equals(Race.HALFLING)) chance=hairColor.getChangeIfHalfling();
-                if(character.getRace().equals(Race.DWARF)) chance=hairColor.getChanceIfDwarf();
-                if(character.getRace().equals(Race.HUMAN)) chance=hairColor.getChanceIfHuman();
-                randomRoll-=chance;
-                if(randomRoll <= 0){
-                    generated = hairColor;
-                    break;
+                if (properties.containsKey("Włosy " + hairColor.getColor())) {
+                    double chance = Double.parseDouble(properties.get("Włosy " + hairColor.getColor()));
+                    if (new Random().nextDouble() < chance) {
+                        generated = hairColor;
+                    }
                 }
             }
-        }
-        else{
+
+            if (generated == null) {
+                for (HairColor hairColor : hairColors) {
+                    double chance = 0;
+                    if (character.getRace().equals(Race.ELF)) chance = hairColor.getChanceIfElf();
+                    if (character.getRace().equals(Race.HALFLING)) chance = hairColor.getChangeIfHalfling();
+                    if (character.getRace().equals(Race.DWARF)) chance = hairColor.getChanceIfDwarf();
+                    if (character.getRace().equals(Race.HUMAN)) chance = hairColor.getChanceIfHuman();
+                    randomRoll -= chance;
+                    if (randomRoll <= 0) {
+                        generated = hairColor;
+                        break;
+                    }
+                }
+            }
+        } else {
             generated = hairColors.get(0);
             System.err.println("Wygenerowano ultra rzadki kolor - nie jest to zaimplementowane..."); //ToDo implement strange colors
             newProps.put("hairColor", generated.getColor());

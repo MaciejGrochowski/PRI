@@ -31,4 +31,7 @@ public class EmotionService extends GeneralService {
         return emotionRepository.findAll().stream().map(Emotion::getName).distinct().collect(Collectors.toList());
     }
 
+    public List<Emotion> findAll() {
+        return emotionRepository.findAll();
+    }
 }

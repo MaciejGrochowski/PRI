@@ -6,6 +6,7 @@ import com.example.PRI.entities.Place;
 import com.example.PRI.entities.character.*;
 import com.example.PRI.entities.character.Character;
 import com.example.PRI.enums.Race;
+import com.example.PRI.enums.Sex;
 import com.example.PRI.services.GeneralService;
 import com.example.PRI.services.PlaceService;
 import com.example.PRI.services.character.*;
@@ -50,6 +51,7 @@ public class CharacterGenerator extends GeneralService {
     @Autowired
     private PlaceService placeService;
 
+
     public Character generateFullCharacter(){
 
         CharacterBuilder characterBuilder = new CharacterBuilder();
@@ -84,6 +86,7 @@ public class CharacterGenerator extends GeneralService {
         eyeColorConverter(characterInputDto.getEyeColor(),character);
         bornPlaceConverter(characterInputDto.getBirthPlace(),character);
         livePlaceConverter(characterInputDto.getLivePlace(),character);
+        sexConverter(characterInputDto.getSex(),character);
         characterService.save(character);
 
 
@@ -181,12 +184,12 @@ public class CharacterGenerator extends GeneralService {
         return eyeColor;
     }
 
-    public Optional<Place> bornPlaceConverter(String bornPlaceColor, Character character) {
-        Optional<Place> bornPlace = placeService.findByName(bornPlaceColor);
+    public Optional<Place> bornPlaceConverter(String bornPlaceInput, Character character) {
+        Optional<Place> bornPlace = placeService.findByName(bornPlaceInput);
         bornPlace.ifPresent(character::setBirthPlace);
-        if (!bornPlace.isPresent() && bornPlaceColor != null){
+        if (!bornPlace.isPresent() && bornPlaceInput != null){
             Place bornPlaceNew = new Place();
-            bornPlaceNew.setName(bornPlaceColor);
+            bornPlaceNew.setName(bornPlaceInput);
             character.setBirthPlace(bornPlaceNew);
         }
         if(bornPlace.get() == null) {
@@ -195,17 +198,30 @@ public class CharacterGenerator extends GeneralService {
         return bornPlace;
     }
 
-    public Optional<Place> livePlaceConverter(String livePlaceColor, Character character) {
-        Optional<Place> livePlace = placeService.findByName(livePlaceColor);
+    public Optional<Place> livePlaceConverter(String livePlaceInput, Character character) {
+        Optional<Place> livePlace = placeService.findByName(livePlaceInput);
         livePlace.ifPresent(character::setLivePlace);
-        if (!livePlace.isPresent() && livePlaceColor != null){
+        if (!livePlace.isPresent() && livePlaceInput != null){
             Place bornPlaceNew = new Place();
-            bornPlaceNew.setName(livePlaceColor);
+            bornPlaceNew.setName(livePlaceInput);
             character.setLivePlace(bornPlaceNew);
         }
         if(livePlace.get() == null) {
             throw new IllegalArgumentException();
         }
         return livePlace;
+    }
+
+
+    public Sex sexConverter(String sexInput, Character character) {
+        Sex newSex = Sex.MALE;
+        if (sexInput.compareTo("Kobieta") == 0){
+            newSex = Sex.FEMALE;
+        }
+        if(sexInput == null) {
+            throw new IllegalArgumentException();
+        }
+        character.setSex(newSex);
+        return newSex;
     }
 }

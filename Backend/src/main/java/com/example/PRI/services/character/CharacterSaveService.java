@@ -444,4 +444,17 @@ public class CharacterSaveService {
 
         return newEndAgility;
     }
+
+    public Integer endIntelligenceConvert(String endIntelligence, Character character){
+        if (endIntelligence == null) throw new IllegalArgumentException();
+        Integer newEndIntelligence = null;
+        if (endIntelligence.matches("[0-9]+")){
+            newEndIntelligence = Integer.parseInt(endIntelligence);
+            if (newEndIntelligence < 99) character.setEndIntelligence(newEndIntelligence);
+            else throw new IllegalArgumentException();
+        }
+        else throw new IllegalArgumentException();
+
+        return newEndIntelligence;
+    }
 }

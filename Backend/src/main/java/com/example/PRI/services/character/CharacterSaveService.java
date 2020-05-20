@@ -431,4 +431,17 @@ public class CharacterSaveService {
 
         return newEndToughness;
     }
+
+    public Integer endAgilityConvert(String endAgility, Character character){
+        if (endAgility == null) throw new IllegalArgumentException();
+        Integer newEndAgility = null;
+        if (endAgility.matches("[0-9]+")){
+            newEndAgility = Integer.parseInt(endAgility);
+            if (newEndAgility < 99) character.setEndAgility(newEndAgility);
+            else throw new IllegalArgumentException();
+        }
+        else throw new IllegalArgumentException();
+
+        return newEndAgility;
+    }
 }

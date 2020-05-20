@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class CharacterSaveService {
@@ -349,9 +350,16 @@ public class CharacterSaveService {
             return null;
         }
         List<String> stringList = Arrays.asList(inputSkills.split(","));
-        List<Skill> skillList = skillService.findByNameIn(stringList);
-        if (skillList != null) {
-            character.setSkills(skillList);
+        List<Skill> skillList = skillService.findByNameIn(stringList.stream().map(s -> s.split(" +")[0]).collect(Collectors.toList()));
+        List<Skill> characterSkills = new ArrayList<>();
+        for(String skillString : stringList){
+            String name = skillString.split(" +")[0];
+            String level = skillString.split(" +")[1];
+            Optional<Skill> maybeSkill = skillList.stream().filter(s -> s.getName().equals(name) && s.getLevel().toString().equals(level)).findFirst();
+            maybeSkill.ifPresent(characterSkills::add);
+        }
+        if (characterSkills.size() > 0) {
+            character.setSkills(characterSkills);
         }
         return skillList;
     }

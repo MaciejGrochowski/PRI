@@ -23,7 +23,7 @@ public class SkillService extends GeneralService {
     }
 
     public List<String> getAllNames() {
-        return skillRepository.findAll().stream().map(Skill::getName).distinct().collect(Collectors.toList());
+        return skillRepository.findAll().stream().map(s -> s.getName() + " +" + s.getLevel().toString()).distinct().collect(Collectors.toList());
     }
 
 }

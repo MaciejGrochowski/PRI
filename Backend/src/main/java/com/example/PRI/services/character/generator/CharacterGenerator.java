@@ -2,6 +2,7 @@ package com.example.PRI.services.character.generator;
 
 import com.example.PRI.converters.CharacterGeneratorConverter;
 import com.example.PRI.dtos.characters.CharacterInputDto;
+import com.example.PRI.entities.ImperialDate;
 import com.example.PRI.entities.Place;
 import com.example.PRI.entities.character.*;
 import com.example.PRI.entities.character.Character;
@@ -90,6 +91,7 @@ public class CharacterGenerator extends GeneralService {
         sexConverter(characterInputDto.getSex(),character);
         raceConverter(characterInputDto.getRace(),character);
         religionConverter(characterInputDto.getReligion(),character);
+        System.out.println(birthYearConverter(characterInputDto.getYearOfBirth()));
         characterService.save(character);
 
 
@@ -247,5 +249,39 @@ public class CharacterGenerator extends GeneralService {
         Religion newReligion = Religion.findByGodName(religionInput);
         character.setReligion(newReligion);
         return newReligion;
+    }
+
+    public int birthDayConverter(String dayInput) {
+        if(dayInput == null) {
+            throw new IllegalArgumentException();
+        }
+        int day = 0;
+        if (dayInput.matches("[0-9]+")){
+            day = Integer.parseInt(dayInput);
+            if (day < 1 || day > 34){
+                throw new IllegalArgumentException();
+            }
+        }
+        else {
+            throw new IllegalArgumentException();
+        }
+        return day;
+    }
+
+    public int birthYearConverter(String yearInput) {
+        if(yearInput == null) {
+            throw new IllegalArgumentException();
+        }
+        short year = 0;
+        if (yearInput.matches("[0-9]*")){
+            year = Short.parseShort(yearInput);
+            if (year < 0 || year > 3000){
+                throw new IllegalArgumentException();
+            }
+        }
+        else {
+            throw new IllegalArgumentException();
+        }
+        return year;
     }
 }

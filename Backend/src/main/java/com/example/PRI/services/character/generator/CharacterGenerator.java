@@ -104,6 +104,7 @@ public class CharacterGenerator extends GeneralService {
                  birthYearConverter(characterInputDto.getYearOfBirth()),
                  character);
         //System.out.println(birthYearConverter(characterInputDto.getYearOfBirth()));
+        heightConverter(characterInputDto.getHeight(),character);
         characterService.save(character);
 
 
@@ -311,5 +312,23 @@ public class CharacterGenerator extends GeneralService {
         ImperialDate x = imperialDateService.save(newDate);
         character.setBirthDate(x);
         return newDate;
+    }
+
+    public Integer heightConverter(String height, Character character) {
+        if (height == null) throw new IllegalArgumentException();
+        Integer newHeight = null;
+        if (height.matches("[0-9]*")){
+            newHeight = Integer.parseInt(height);
+            if (newHeight < 50 || newHeight > 300){
+                throw new IllegalArgumentException();
+            }
+            else {
+                character.setHeight(newHeight);
+            }
+        }
+        else {
+            throw new IllegalArgumentException();
+        }
+        return newHeight;
     }
 }

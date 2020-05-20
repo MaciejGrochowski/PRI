@@ -83,6 +83,7 @@ public class CharacterGenerator extends GeneralService {
         hairColorConverter(characterInputDto.getHairColor(),character);
         eyeColorConverter(characterInputDto.getEyeColor(),character);
         bornPlaceConverter(characterInputDto.getBirthPlace(),character);
+        livePlaceConverter(characterInputDto.getLivePlace(),character);
         characterService.save(character);
 
 
@@ -192,5 +193,19 @@ public class CharacterGenerator extends GeneralService {
             throw new IllegalArgumentException();
         }
         return bornPlace;
+    }
+
+    public Optional<Place> livePlaceConverter(String livePlaceColor, Character character) {
+        Optional<Place> livePlace = placeService.findByName(livePlaceColor);
+        livePlace.ifPresent(character::setLivePlace);
+        if (!livePlace.isPresent() && livePlaceColor != null){
+            Place bornPlaceNew = new Place();
+            bornPlaceNew.setName(livePlaceColor);
+            character.setLivePlace(bornPlaceNew);
+        }
+        if(livePlace.get() == null) {
+            throw new IllegalArgumentException();
+        }
+        return livePlace;
     }
 }

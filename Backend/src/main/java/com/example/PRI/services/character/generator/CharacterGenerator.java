@@ -105,6 +105,7 @@ public class CharacterGenerator extends GeneralService {
                  character);
         //System.out.println(birthYearConverter(characterInputDto.getYearOfBirth()));
         heightConverter(characterInputDto.getHeight(),character);
+        weightConverter(characterInputDto.getWeight(),character);
         characterService.save(character);
 
 
@@ -123,7 +124,7 @@ public class CharacterGenerator extends GeneralService {
         return surname;
     }
 
-    public Optional<Name> nameConvert(String inputName, Character character){ //ToDo Exeption ma problem :CCCC
+    public Optional<Name> nameConvert(String inputName, Character character){
         if (inputName ==  null) throw new IllegalArgumentException();
         Optional<Name> nameOptional = nameService.findByName(inputName);
         nameOptional.ifPresent(character::setName);
@@ -330,5 +331,23 @@ public class CharacterGenerator extends GeneralService {
             throw new IllegalArgumentException();
         }
         return newHeight;
+    }
+
+    public Integer weightConverter(String weight, Character character) {
+        if (weight == null) throw new IllegalArgumentException();
+        Integer newWeight = null;
+        if (weight.matches("[0-9]*")){
+            newWeight = Integer.parseInt(weight);
+            if (newWeight < 10 || newWeight > 800){
+                throw new IllegalArgumentException();
+            }
+            else {
+                character.setWeight(newWeight);
+            }
+        }
+        else {
+            throw new IllegalArgumentException();
+        }
+        return newWeight;
     }
 }

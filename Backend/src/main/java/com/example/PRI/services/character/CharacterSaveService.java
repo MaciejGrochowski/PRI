@@ -483,4 +483,56 @@ public class CharacterSaveService {
 
         return newEndFellowship;
     }
+
+    public Integer endAttacksConvert(String endAttack, Character character){
+        if (endAttack == null) throw new IllegalArgumentException();
+        Integer newEndAttack = null;
+        if (endAttack.matches("[0-9]+")){
+            newEndAttack = Integer.parseInt(endAttack);
+            if (newEndAttack < 99) character.setEndAttacks(newEndAttack);
+            else throw new IllegalArgumentException();
+        }
+        else throw new IllegalArgumentException();
+
+        return newEndAttack;
+    }
+
+    public Integer endWoundsConvert(String endWound, Character character){
+        if (endWound == null) throw new IllegalArgumentException();
+        Integer newEndWound = null;
+        if (endWound.matches("[0-9]+")){
+            newEndWound = Integer.parseInt(endWound);
+            if (newEndWound < 99) character.setEndWounds(newEndWound);
+            else throw new IllegalArgumentException();
+        }
+        else throw new IllegalArgumentException();
+
+        return newEndWound;
+    }
+
+    public Integer endMovementConvert(String endMovement, Character character){
+        if (endMovement == null) throw new IllegalArgumentException();
+        Integer newEndMovement = null;
+        if (endMovement.matches("[0-9]+")){
+            newEndMovement = Integer.parseInt(endMovement);
+            if (newEndMovement < 99) character.setEndMovement(newEndMovement);
+            else throw new IllegalArgumentException();
+        }
+        else throw new IllegalArgumentException();
+
+        return newEndMovement;
+    }
+
+    public Integer endMagicConvert(String endMagic, Character character){
+        if (endMagic == null) throw new IllegalArgumentException();
+        Integer newEndMagic = null;
+        if (endMagic.matches("[0-9]+")){
+            newEndMagic = Integer.parseInt(endMagic);
+            if (newEndMagic < 99) character.setEndMagic(newEndMagic);
+            else throw new IllegalArgumentException();
+        }
+        else throw new IllegalArgumentException();
+
+        return newEndMagic;
+    }
 }

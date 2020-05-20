@@ -18,6 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.nio.channels.AcceptPendingException;
 import java.util.*;
 
 @Service
@@ -61,6 +62,9 @@ public class CharacterGenerator extends GeneralService {
 
     @Autowired
     private PersonalityService personalityService;
+
+    @Autowired
+    private ApperanceService apperanceService;
 
 
     public Character generateFullCharacter(){
@@ -110,6 +114,7 @@ public class CharacterGenerator extends GeneralService {
         heightConverter(characterInputDto.getHeight(),character);
         weightConverter(characterInputDto.getWeight(),character);
         personalityListConvert(characterInputDto.getPersonality(),character);
+        apperanceConvert(characterInputDto.getApperance(),character);
         characterService.save(character);
 
 
@@ -357,7 +362,7 @@ public class CharacterGenerator extends GeneralService {
 
     public List<Personality> personalityListConvert(String inputPersonality, Character character){
         if(inputPersonality == null){
-            character.setPreviousCareers(null);
+            character.setPersonality(null);
             return null;
         }
         List<String> stringList = Arrays.asList(inputPersonality.split(","));
@@ -366,5 +371,18 @@ public class CharacterGenerator extends GeneralService {
             character.setPersonality(personalityList);
         }
         return personalityList;
+    }
+
+    public List<Apperance> apperanceConvert(String inputApperance, Character character){
+        if(inputApperance == null){
+            character.setApperance(null);
+            return null;
+        }
+        List<String> stringList = Arrays.asList(inputApperance.split(","));
+        List<Apperance> apperanceList = apperanceService.findByNameIn(stringList);
+        if (apperanceList != null){
+            character.setApperance(apperanceList);
+        }
+        return apperanceList;
     }
 }

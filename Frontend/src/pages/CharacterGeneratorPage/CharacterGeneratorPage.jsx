@@ -234,11 +234,10 @@ class CharacterGeneratorPage extends React.Component {
                         </div>
                         <div className="generator-element"><DefaultMultipleAutocomplete
                             labelName="Profesja"
-                            disabled={true}
                             options={this.state.autocompleteData.careerNames || []}
                             id="characterGeneratorCurrentCareer"
                         />
-                        <button className="detaleButton" disabled><span>{element}</span></button></div>
+                        <button className="detaleButton"><span>{element}</span></button></div>
                         <div className="generator-element"><DefaultMultipleAutocomplete
                             labelName="Miejsce pobytu"
                             options={this.state.autocompleteData.placeNames || []}

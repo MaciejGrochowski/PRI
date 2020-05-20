@@ -44,6 +44,20 @@ public class CharacterInputDto {
     String endMagic; // magia
     String endMovement; // szybkość
 
+    String baseWeaponSkills;
+    String baseBallisticSkills;
+    String baseStrength;
+    String baseToughness;
+    String baseAgility;
+    String baseIntelligence;
+    String baseWillPower;
+    String baseFellowship;
+    String baseAttacks;
+    String baseWounds; // żywotność
+    String baseMagic; // magia
+    String baseMovement; // szybkość
+
+
     String personality;
     String apperance;
 

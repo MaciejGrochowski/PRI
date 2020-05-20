@@ -126,6 +126,9 @@ public class CharacterGenerator extends GeneralService {
         skillsConvert(characterInputDto.getSkills(),character);
         talentsConvert(characterInputDto.getTalents(),character);
         dominantingEmotionConvert(characterInputDto.getDominatingEmotions(),character);
+        WeaponSkillConvert(characterInputDto.getEndWeaponSkills(),character);
+        BallisticSkillsConvert(characterInputDto.getEndBallisticSkills(),character);
+
         characterService.save(character);
 
         return character.getId();
@@ -433,5 +436,31 @@ public class CharacterGenerator extends GeneralService {
             character.setDominatingEmotions(emotionList);
         }
         return emotionList;
+    }
+
+    public Integer WeaponSkillConvert(String WeaponSkill, Character character){
+        if (WeaponSkill == null) throw new IllegalArgumentException();
+        Integer newWeaponSkill = null;
+        if (WeaponSkill.matches("[0-9]+")){
+            newWeaponSkill = Integer.parseInt(WeaponSkill);
+            if (newWeaponSkill < 99) character.setEndWeaponSkills(newWeaponSkill);
+            else throw new IllegalArgumentException();
+        }
+        else throw new IllegalArgumentException();
+
+        return newWeaponSkill;
+    }
+
+    public Integer BallisticSkillsConvert(String BallisticSkills, Character character){
+        if (BallisticSkills == null) throw new IllegalArgumentException();
+        Integer newBallisticSkill = null;
+        if (BallisticSkills.matches("[0-9]+")){
+            newBallisticSkill = Integer.parseInt(BallisticSkills);
+            if (newBallisticSkill < 99) character.setEndBallisticSkills(newBallisticSkill);
+            else throw new IllegalArgumentException();
+        }
+        else throw new IllegalArgumentException();
+
+        return newBallisticSkill;
     }
 }

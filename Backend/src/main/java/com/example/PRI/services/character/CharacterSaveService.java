@@ -280,7 +280,7 @@ public class CharacterSaveService {
         ImperialDate newDate = new ImperialDate(day, month, year);
         ImperialDate x = imperialDateService.save(newDate);
         character.setBirthDate(x);
-        saveStarSign(character, x);
+//        saveStarSign(character, x); ToDo po przetłumaczeniu odkomentuj
         return newDate;
     }
 

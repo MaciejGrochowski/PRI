@@ -30,9 +30,16 @@ public class CharacterConverter {
         output.setApperance(character.getApperance().stream().map(Apperance::getName).collect(Collectors.toList()));
 //        output.setBaseStats(convert(character.getEndStats())); ToDo BaseStats jako odrębne pola w klasie!!
         output.setDayOfBirth(character.getBirthDate().getDay().toString());
-        output.setMonthOfBirth(character.getBirthDate().getMonth().getMonthName());
-        output.setYearOfBirth(character.getBirthDate().getYear().toString());
-        output.setBirthPlace(character.getBirthPlace()==null ? "" : character.getBirthPlace().getName());
+        if (character.getBirthDate() != null){
+            output.setDayOfBirth(String.valueOf(character.getBirthDate().getDay()));
+            if(character.getBirthDate().getMonth() != null) output.setMonthOfBirth(String.valueOf(character.getBirthDate().getMonth().getMonthName()));
+            output.setYearOfBirth(String.valueOf(character.getBirthDate().getYear()));
+        }
+
+
+//        output.setMonthOfBirth(character.getBirthDate().getMonth().getMonthName());
+//        output.setYearOfBirth(character.getBirthDate().getYear().toString());
+//        output.setBirthPlace(character.getBirthPlace()==null ? "" : character.getBirthPlace().getName());
         output.setCreatedBy(character.getCreatedBy()==null ? "" : character.getCreatedBy().getUsername());
         output.setDominatingEmotions(character.getDominatingEmotions().stream().map(Emotion::getName).collect(Collectors.toList()));
         output.setEyeColor(character.getEyeColor()==null ? "" : character.getEyeColor().getColor());

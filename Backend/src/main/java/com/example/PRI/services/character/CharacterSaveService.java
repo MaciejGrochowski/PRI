@@ -5,10 +5,7 @@ import com.example.PRI.entities.ImperialDate;
 import com.example.PRI.entities.Place;
 import com.example.PRI.entities.character.*;
 import com.example.PRI.entities.character.Character;
-import com.example.PRI.enums.Month;
-import com.example.PRI.enums.Race;
-import com.example.PRI.enums.Religion;
-import com.example.PRI.enums.Sex;
+import com.example.PRI.enums.*;
 import com.example.PRI.services.ImperialDateService;
 import com.example.PRI.services.PlaceService;
 import com.example.PRI.services.character.generator.CharacterBirthPlaceGenerator;
@@ -283,7 +280,37 @@ public class CharacterSaveService {
         ImperialDate newDate = new ImperialDate(day, month, year);
         ImperialDate x = imperialDateService.save(newDate);
         character.setBirthDate(x);
+        saveStarSign(character, x);
         return newDate;
+    }
+
+    private StarSign saveStarSign(Character character, ImperialDate date) {
+        Integer day = date.getDay();
+        StarSign characterStarSign = null;
+        String month = date.getMonth().getMonthName();
+        List<StarSign> starSigns = Arrays.asList(StarSign.values());
+        starSigns = starSigns.stream().filter(s -> s.getStartDate().split(" ")[1].equals(month) || s.getEndDate().split(" ")[1].equals(month)).collect(Collectors.toList());
+
+        for(StarSign starSign : starSigns){
+            Integer startDay = Integer.valueOf(starSign.getStartDate().split(" ")[0]);
+            Integer endDay = Integer.valueOf(starSign.getEndDate().split(" ")[0]);
+            String startMonth = starSign.getStartDate().split(" ")[1];
+            String endMonth = starSign.getEndDate().split(" ")[1];
+            if(startMonth.equals(endMonth)){
+                if(day > startDay && day < endDay){
+                    characterStarSign = starSign;
+                    break;
+                }
+            }
+            else{
+                if((startMonth.equals(month) && day > startDay) || (endMonth.equals(month) && day < endDay) ){
+                    characterStarSign = starSign;
+                    break;
+                }
+            }
+        }
+        character.setStarSign(characterStarSign);
+        return characterStarSign;
     }
 
     public Integer heightConverter(String height, Character character) {

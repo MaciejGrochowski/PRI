@@ -29,7 +29,9 @@ public class CharacterConverter {
         output.setLivePlace(character.getLivePlace().getName());
         output.setApperance(character.getApperance().stream().map(Apperance::getName).collect(Collectors.toList()));
 //        output.setBaseStats(convert(character.getEndStats())); ToDo BaseStats jako odrębne pola w klasie!!
-//        output.setBirthDate(character.getBirthDate());
+        output.setDayOfBirth(character.getBirthDate().getDay().toString());
+        output.setMonthOfBirth(character.getBirthDate().getMonth().getMonthName());
+        output.setYearOfBirth(character.getBirthDate().getYear().toString());
         output.setBirthPlace(character.getBirthPlace()==null ? "" : character.getBirthPlace().getName());
         output.setCreatedBy(character.getCreatedBy()==null ? "" : character.getCreatedBy().getUsername());
         output.setDominatingEmotions(character.getDominatingEmotions().stream().map(Emotion::getName).collect(Collectors.toList()));
@@ -86,7 +88,7 @@ public class CharacterConverter {
         output.setHairColor(character.getHairColor().getColor());
         if (character.getBirthDate() != null){
             output.setDayOfBirth(String.valueOf(character.getBirthDate().getDay()));
-            output.setMonthOfBirth(String.valueOf(character.getBirthDate().getMonth()));
+            output.setMonthOfBirth(String.valueOf(character.getBirthDate().getMonth().getMonthName()));
             output.setYearOfBird(String.valueOf(character.getBirthDate().getYear()));
         }
         output.setStarSign(character.getStarSign() == null ? "" : character.getStarSign().getShortName());

@@ -24,7 +24,11 @@ public class CharacterDefaultAttributesOutputDto {
 
     String hairColor;
 
-    ImperialDate birthDate;
+//    ImperialDate birthDate;
+
+    String dayOfBirth;
+    String monthOfBirth;
+    String yearOfBirth;
 
     String starSign;
 

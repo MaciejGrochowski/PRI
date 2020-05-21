@@ -27,7 +27,7 @@ public enum Month {
         return output.orElse(null);
     }
 
-    public String getGodName(){
+    public String getMonthName(){
         return this.monthName;
     }
     }

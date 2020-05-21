@@ -70,7 +70,7 @@ public class Character extends GeneralEntity {
     @ManyToMany
     List<Career> previousCareers;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.MERGE},fetch = FetchType.LAZY)
     @JoinColumn(name = "currentCareer", referencedColumnName ="name")
     Career currentCareer;
 

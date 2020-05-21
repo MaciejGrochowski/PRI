@@ -645,21 +645,6 @@
   },
   {
     "id": 44,
-    "weaponSkill": 5,
-    "ballisticSkill": 10,
-    "strength": 0,
-    "toughness": 5,
-    "agility": 10,
-    "intelligence": 0,
-    "willPower": 10,
-    "fellowship": 0,
-    "attacks": 0,
-    "wounds": 2,
-    "magic": 0,
-    "movement": 0
-  },
-  {
-    "id": 45,
     "weaponSkill": 15,
     "ballisticSkill": 0,
     "strength": 5,
@@ -674,7 +659,7 @@
     "movement": 0
   },
   {
-    "id": 46,
+    "id": 45,
     "weaponSkill": 10,
     "ballisticSkill": 5,
     "strength": 0,
@@ -689,7 +674,7 @@
     "movement": 0
   },
   {
-    "id": 47,
+    "id": 46,
     "weaponSkill": 5,
     "ballisticSkill": 0,
     "strength": 5,
@@ -704,7 +689,7 @@
     "movement": 0
   },
   {
-    "id": 48,
+    "id": 47,
     "weaponSkill": 10,
     "ballisticSkill": 0,
     "strength": 5,
@@ -719,7 +704,7 @@
     "movement": 0
   },
   {
-    "id": 49,
+    "id": 48,
     "weaponSkill": 0,
     "ballisticSkill": 0,
     "strength": 0,
@@ -734,7 +719,7 @@
     "movement": 0
   },
   {
-    "id": 50,
+    "id": 49,
     "weaponSkill": 5,
     "ballisticSkill": 0,
     "strength": 5,
@@ -749,7 +734,7 @@
     "movement": 0
   },
   {
-    "id": 51,
+    "id": 50,
     "weaponSkill": 5,
     "ballisticSkill": 10,
     "strength": 0,
@@ -764,7 +749,7 @@
     "movement": 0
   },
   {
-    "id": 52,
+    "id": 51,
     "weaponSkill": 5,
     "ballisticSkill": 5,
     "strength": 0,
@@ -779,7 +764,7 @@
     "movement": 0
   },
   {
-    "id": 53,
+    "id": 52,
     "weaponSkill": 5,
     "ballisticSkill": 10,
     "strength": 0,
@@ -794,7 +779,7 @@
     "movement": 0
   },
   {
-    "id": 54,
+    "id": 53,
     "weaponSkill": 10,
     "ballisticSkill": 0,
     "strength": 5,
@@ -809,7 +794,7 @@
     "movement": 0
   },
   {
-    "id": 55,
+    "id": 54,
     "weaponSkill": 5,
     "ballisticSkill": 5,
     "strength": 5,
@@ -824,7 +809,7 @@
     "movement": 0
   },
   {
-    "id": 56,
+    "id": 55,
     "weaponSkill": 5,
     "ballisticSkill": 5,
     "strength": 0,
@@ -839,22 +824,7 @@
     "movement": 0
   },
   {
-    "id": 57,
-    "weaponSkill": 0,
-    "ballisticSkill": 0,
-    "strength": 0,
-    "toughness": 0,
-    "agility": 10,
-    "intelligence": 10,
-    "willPower": 5,
-    "fellowship": 10,
-    "attacks": 0,
-    "wounds": 2,
-    "magic": 0,
-    "movement": 0
-  },
-  {
-    "id": 58,
+    "id": 56,
     "weaponSkill": 10,
     "ballisticSkill": 5,
     "strength": 10,
@@ -869,7 +839,7 @@
     "movement": 0
   },
   {
-    "id": 59,
+    "id": 57,
     "weaponSkill": 10,
     "ballisticSkill": 10,
     "strength": 0,
@@ -884,7 +854,7 @@
     "movement": 0
   },
   {
-    "id": 60,
+    "id": 58,
     "weaponSkill": 10,
     "ballisticSkill": 10,
     "strength": 10,
@@ -899,7 +869,7 @@
     "movement": 0
   },
   {
-    "id": 61,
+    "id": 59,
     "weaponSkill": 20,
     "ballisticSkill": 20,
     "strength": 15,
@@ -914,7 +884,7 @@
     "movement": 0
   },
   {
-    "id": 62,
+    "id": 60,
     "weaponSkill": 15,
     "ballisticSkill": 15,
     "strength": 5,
@@ -929,7 +899,7 @@
     "movement": 0
   },
   {
-    "id": 63,
+    "id": 61,
     "weaponSkill": 25,
     "ballisticSkill": 15,
     "strength": 10,
@@ -944,7 +914,7 @@
     "movement": 0
   },
   {
-    "id": 64,
+    "id": 62,
     "weaponSkill": 10,
     "ballisticSkill": 10,
     "strength": 0,
@@ -959,7 +929,7 @@
     "movement": 0
   },
   {
-    "id": 65,
+    "id": 63,
     "weaponSkill": 15,
     "ballisticSkill": 0,
     "strength": 10,
@@ -974,7 +944,7 @@
     "movement": 0
   },
   {
-    "id": 66,
+    "id": 64,
     "weaponSkill": 15,
     "ballisticSkill": 15,
     "strength": 10,
@@ -989,7 +959,7 @@
     "movement": 0
   },
   {
-    "id": 67,
+    "id": 65,
     "weaponSkill": 10,
     "ballisticSkill": 10,
     "strength": 0,
@@ -1004,7 +974,7 @@
     "movement": 0
   },
   {
-    "id": 68,
+    "id": 66,
     "weaponSkill": 5,
     "ballisticSkill": 5,
     "strength": 0,
@@ -1019,7 +989,7 @@
     "movement": 0
   },
   {
-    "id": 69,
+    "id": 67,
     "weaponSkill": 40,
     "ballisticSkill": 40,
     "strength": 25,
@@ -1034,7 +1004,7 @@
     "movement": 0
   },
   {
-    "id": 70,
+    "id": 68,
     "weaponSkill": 10,
     "ballisticSkill": 10,
     "strength": 5,
@@ -1049,7 +1019,7 @@
     "movement": 0
   },
   {
-    "id": 71,
+    "id": 69,
     "weaponSkill": 20,
     "ballisticSkill": 30,
     "strength": 10,
@@ -1064,7 +1034,7 @@
     "movement": 0
   },
   {
-    "id": 72,
+    "id": 70,
     "weaponSkill": 10,
     "ballisticSkill": 15,
     "strength": 5,
@@ -1079,7 +1049,7 @@
     "movement": 0
   },
   {
-    "id": 73,
+    "id": 71,
     "weaponSkill": 25,
     "ballisticSkill": 20,
     "strength": 15,
@@ -1094,7 +1064,7 @@
     "movement": 0
   },
   {
-    "id": 74,
+    "id": 72,
     "weaponSkill": 10,
     "ballisticSkill": 10,
     "strength": 5,
@@ -1109,7 +1079,7 @@
     "movement": 0
   },
   {
-    "id": 75,
+    "id": 73,
     "weaponSkill": 10,
     "ballisticSkill": 5,
     "strength": 5,
@@ -1124,7 +1094,7 @@
     "movement": 0
   },
   {
-    "id": 76,
+    "id": 74,
     "weaponSkill": 20,
     "ballisticSkill": 20,
     "strength": 15,
@@ -1139,7 +1109,7 @@
     "movement": 0
   },
   {
-    "id": 77,
+    "id": 75,
     "weaponSkill": 10,
     "ballisticSkill": 10,
     "strength": 5,
@@ -1154,7 +1124,7 @@
     "movement": 0
   },
   {
-    "id": 78,
+    "id": 76,
     "weaponSkill": 20,
     "ballisticSkill": 30,
     "strength": 15,
@@ -1169,7 +1139,7 @@
     "movement": 0
   },
   {
-    "id": 79,
+    "id": 77,
     "weaponSkill": 30,
     "ballisticSkill": 30,
     "strength": 15,
@@ -1184,7 +1154,7 @@
     "movement": 0
   },
   {
-    "id": 80,
+    "id": 78,
     "weaponSkill": 20,
     "ballisticSkill": 20,
     "strength": 10,
@@ -1199,7 +1169,7 @@
     "movement": 0
   },
   {
-    "id": 81,
+    "id": 79,
     "weaponSkill": 10,
     "ballisticSkill": 10,
     "strength": 10,
@@ -1214,7 +1184,7 @@
     "movement": 0
   },
   {
-    "id": 82,
+    "id": 80,
     "weaponSkill": 0,
     "ballisticSkill": 0,
     "strength": 10,
@@ -1229,7 +1199,7 @@
     "movement": 0
   },
   {
-    "id": 83,
+    "id": 81,
     "weaponSkill": 20,
     "ballisticSkill": 20,
     "strength": 10,
@@ -1244,7 +1214,7 @@
     "movement": 0
   },
   {
-    "id": 84,
+    "id": 82,
     "weaponSkill": 10,
     "ballisticSkill": 10,
     "strength": 0,
@@ -1259,7 +1229,7 @@
     "movement": 0
   },
   {
-    "id": 85,
+    "id": 83,
     "weaponSkill": 10,
     "ballisticSkill": 10,
     "strength": 0,
@@ -1274,7 +1244,7 @@
     "movement": 0
   },
   {
-    "id": 86,
+    "id": 84,
     "weaponSkill": 0,
     "ballisticSkill": 0,
     "strength": 10,
@@ -1289,7 +1259,7 @@
     "movement": 0
   },
   {
-    "id": 87,
+    "id": 85,
     "weaponSkill": 35,
     "ballisticSkill": 10,
     "strength": 20,
@@ -1304,7 +1274,7 @@
     "movement": 0
   },
   {
-    "id": 88,
+    "id": 86,
     "weaponSkill": 10,
     "ballisticSkill": 10,
     "strength": 5,
@@ -1319,7 +1289,7 @@
     "movement": 0
   },
   {
-    "id": 89,
+    "id": 87,
     "weaponSkill": 20,
     "ballisticSkill": 20,
     "strength": 10,
@@ -1334,7 +1304,7 @@
     "movement": 0
   },
   {
-    "id": 90,
+    "id": 88,
     "weaponSkill": 30,
     "ballisticSkill": 20,
     "strength": 20,
@@ -1349,7 +1319,7 @@
     "movement": 0
   },
   {
-    "id": 91,
+    "id": 89,
     "weaponSkill": 15,
     "ballisticSkill": 0,
     "strength": 20,
@@ -1364,7 +1334,7 @@
     "movement": 0
   },
   {
-    "id": 92,
+    "id": 90,
     "weaponSkill": 15,
     "ballisticSkill": 10,
     "strength": 10,
@@ -1379,7 +1349,7 @@
     "movement": 0
   },
   {
-    "id": 93,
+    "id": 91,
     "weaponSkill": 20,
     "ballisticSkill": 20,
     "strength": 10,
@@ -1394,7 +1364,7 @@
     "movement": 0
   },
   {
-    "id": 94,
+    "id": 92,
     "weaponSkill": 20,
     "ballisticSkill": 15,
     "strength": 15,
@@ -1409,7 +1379,7 @@
     "movement": 0
   },
   {
-    "id": 95,
+    "id": 93,
     "weaponSkill": 20,
     "ballisticSkill": 20,
     "strength": 10,
@@ -1424,7 +1394,7 @@
     "movement": 0
   },
   {
-    "id": 96,
+    "id": 94,
     "weaponSkill": 25,
     "ballisticSkill": 0,
     "strength": 15,
@@ -1439,7 +1409,7 @@
     "movement": 0
   },
   {
-    "id": 97,
+    "id": 95,
     "weaponSkill": 20,
     "ballisticSkill": 15,
     "strength": 10,
@@ -1454,7 +1424,7 @@
     "movement": 0
   },
   {
-    "id": 98,
+    "id": 96,
     "weaponSkill": 25,
     "ballisticSkill": 25,
     "strength": 10,
@@ -1469,7 +1439,7 @@
     "movement": 0
   },
   {
-    "id": 99,
+    "id": 97,
     "weaponSkill": 0,
     "ballisticSkill": 35,
     "strength": 10,
@@ -1484,7 +1454,7 @@
     "movement": 0
   },
   {
-    "id": 100,
+    "id": 98,
     "weaponSkill": 35,
     "ballisticSkill": 0,
     "strength": 15,
@@ -1499,7 +1469,7 @@
     "movement": 0
   },
   {
-    "id": 101,
+    "id": 99,
     "weaponSkill": 10,
     "ballisticSkill": 10,
     "strength": 5,
@@ -1514,7 +1484,7 @@
     "movement": 0
   },
   {
-    "id": 102,
+    "id": 100,
     "weaponSkill": 15,
     "ballisticSkill": 15,
     "strength": 5,
@@ -1529,7 +1499,7 @@
     "movement": 0
   },
   {
-    "id": 103,
+    "id": 101,
     "weaponSkill": 5,
     "ballisticSkill": 5,
     "strength": 5,
@@ -1544,7 +1514,7 @@
     "movement": 0
   },
   {
-    "id": 104,
+    "id": 102,
     "weaponSkill": 5,
     "ballisticSkill": 5,
     "strength": 5,
@@ -1559,7 +1529,7 @@
     "movement": 0
   },
   {
-    "id": 105,
+    "id": 103,
     "weaponSkill": 20,
     "ballisticSkill": 20,
     "strength": 10,
@@ -1574,7 +1544,7 @@
     "movement": 0
   },
   {
-    "id": 106,
+    "id": 104,
     "weaponSkill": 5,
     "ballisticSkill": 5,
     "strength": 0,
@@ -1589,7 +1559,7 @@
     "movement": 0
   },
   {
-    "id": 107,
+    "id": 105,
     "weaponSkill": 10,
     "ballisticSkill": 10,
     "strength": 5,
@@ -1604,7 +1574,7 @@
     "movement": 0
   },
   {
-    "id": 108,
+    "id": 106,
     "weaponSkill": 15,
     "ballisticSkill": 15,
     "strength": 10,
@@ -1619,7 +1589,7 @@
     "movement": 0
   },
   {
-    "id": 109,
+    "id": 107,
     "weaponSkill": 40,
     "ballisticSkill": 0,
     "strength": 30,
@@ -1634,7 +1604,7 @@
     "movement": 0
   },
   {
-    "id": 110,
+    "id": 108,
     "weaponSkill": 25,
     "ballisticSkill": 0,
     "strength": 15,
@@ -1649,7 +1619,7 @@
     "movement": 0
   },
   {
-    "id": 111,
+    "id": 109,
     "weaponSkill": 10,
     "ballisticSkill": 0,
     "strength": 5,
@@ -1664,7 +1634,7 @@
     "movement": 0
   },
   {
-    "id": 112,
+    "id": 110,
     "weaponSkill": 20,
     "ballisticSkill": 20,
     "strength": 10,
@@ -1679,7 +1649,7 @@
     "movement": 0
   },
   {
-    "id": 113,
+    "id": 111,
     "weaponSkill": 20,
     "ballisticSkill": 20,
     "strength": 10,

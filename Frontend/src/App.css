@@ -31,6 +31,10 @@ max-width: 70%!important;
   color:#FFD859!important;
 }
 
+.MuiAutocomplete-hasPopupIcon.Mui-disabled{
+  border-bottom: none!important;
+}
+
 .MuiTable-root{
   background-color: #292F2F;
 }
@@ -69,10 +73,15 @@ color: #FFD859!important;
   border-bottom:  #FFD859!important;
 }
 
+.MuiInput-underline:hover{
+  border-bottom:  #FFD859!important;
+}
+
 .MuiInputBase-root{
   color: #FFD859!important;
 
 }
+
 .MuiIconButton-colorSecondary{
   color: #FFD859!important;
 }
@@ -106,6 +115,11 @@ text-align: center!important;
 
 }
 
+
+.MuiInput-underline{
+  border-bottom: #FFD859!important;
+}
+
 .MuiTableRow-root{
 background-color: #292F2F;
 }
@@ -133,9 +147,15 @@ background-color: #292F2F;
   visibility: visible;
 }
 
+/* wybrane */
 .MuiAutocomplete-listbox{
-  background-color: #292F2F;
+  background-color: rgb(54, 63, 63);
   color:#FFD859!important; 
+}
+
+/* wszystko */
+.MuiAutocomplete-option{
+  background-color: #292F2F;
 }
 
 @keyframes App-logo-spin {

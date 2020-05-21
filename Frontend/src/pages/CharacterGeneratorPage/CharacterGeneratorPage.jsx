@@ -15,6 +15,7 @@ import ReactDOM from 'react-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faSyncAlt} from '@fortawesome/free-solid-svg-icons';
 const mygrid = {
+        all: 'none',
         width: '30px',
         height: "30px",
         border: 'solid 1px white',
@@ -23,6 +24,7 @@ const mygrid = {
         marginTop:'5%',
         textAlign: 'center',
 };
+
 
 const element = <FontAwesomeIcon icon={faSyncAlt} />
 
@@ -222,6 +224,7 @@ class CharacterGeneratorPage extends React.Component {
         return (
             <div className="pageWithContext">
                 <div className="pageName">Tworzenie postaci</div>
+                <div className = "block-element">{this.state.generated &&<div className = "positive-message">Aby zobaczyć wygenerowaną postać, kliknij <a href={this.state.href}>tutaj</a></div>}</div>
                 <div className="block-element">
                     <div className="flex-div">
                         <div className="white-caption">Statystyki:</div>
@@ -416,91 +419,108 @@ class CharacterGeneratorPage extends React.Component {
                                 <div className="grid-column">
                                     <div className="grid-name-element title-column">WW</div>
                                     <div className="grid-element"><TextField style={mygrid}
-                                                                             id="characterGeneratorBaseWeaponSkills"/>
+                                                                             id="characterGeneratorBaseWeaponSkills"
+                                                                             />
+                                                                             
                                     </div>
                                     <div className="grid-element"><TextField style={mygrid}
                                                                              id="characterGeneratorCareerWeaponSkills"
                                                                              disabled/></div>
                                     <div className="grid-element"><TextField style={mygrid}
-                                                                             id="characterGeneratorEndWeaponSkills"/>
+                                                                             id="characterGeneratorEndWeaponSkills"
+                                                                             />
                                     </div>
                                 </div>
                                 <div className="grid-column">
                                     <div className="grid-name-element title-column">US</div>
                                     <div className="grid-element"><TextField style={mygrid}
-                                                                             id="characterGeneratorBaseBallisticSkills"/>
+                                                                             id="characterGeneratorBaseBallisticSkills"
+                                                                             />
                                     </div>
                                     <div className="grid-element"><TextField style={mygrid}
                                                                              id="characterGeneratorCareerBallisticSkills"
                                                                              disabled/></div>
                                     <div className="grid-element"><TextField style={mygrid}
-                                                                             id="characterGeneratorEndBallisticSkills"/>
+                                                                             id="characterGeneratorEndBallisticSkills"
+                                                                             />
                                     </div>
                                 </div>
                                 <div className="grid-column">
                                     <div className="grid-name-element title-column">K</div>
                                     <div className="grid-element"><TextField style={mygrid}
-                                                                             id="characterGeneratorBaseStrength"/></div>
+                                                                             id="characterGeneratorBaseStrength"
+                                                                             /></div>
                                     <div className="grid-element"><TextField style={mygrid}
                                                                              id="characterGeneratorCareerStrength"
                                                                              disabled/></div>
                                     <div className="grid-element"><TextField style={mygrid}
-                                                                             id="characterGeneratorEndStrength"/></div>
+                                                                             id="characterGeneratorEndStrength"
+                                                                             /></div>
                                 </div>
                                 <div className="grid-column">
                                     <div className="grid-name-element title-column">ODP</div>
                                     <div className="grid-element"><TextField style={mygrid}
-                                                                             id="characterGeneratorBaseToughness"/>
+                                                                             id="characterGeneratorBaseToughness"
+                                                                             />
                                     </div>
                                     <div className="grid-element"><TextField style={mygrid}
                                                                              id="characterGeneratorCareerWeaponSkills"
                                                                              disabled/></div>
                                     <div className="grid-element"><TextField style={mygrid}
-                                                                             id="characterGeneratorEndToughness"/></div>
+                                                                             id="characterGeneratorEndToughness"
+                                                                             /></div>
                                 </div>
                                 <div className="grid-column">
                                     <div className="grid-name-element title-column">ZR</div>
                                     <div className="grid-element"><TextField style={mygrid}
-                                                                             id="characterGeneratorBaseAgility"/></div>
+                                                                             id="characterGeneratorBaseAgility"
+                                                                             /></div>
                                     <div className="grid-element"><TextField style={mygrid}
                                                                              id="characterGeneratorCareerAgility"
                                                                              disabled/></div>
                                     <div className="grid-element"><TextField style={mygrid}
-                                                                             id="characterGeneratorEndAgility"/></div>
+                                                                             id="characterGeneratorEndAgility"
+                                                                             /></div>
                                 </div>
                                 <div className="grid-column">
                                     <div className="grid-name-element title-column">INT</div>
                                     <div className="grid-element"><TextField style={mygrid}
-                                                                             id="characterGeneratorBaseIntelligence"/>
+                                                                             id="characterGeneratorBaseIntelligence"
+                                                                             />
                                     </div>
                                     <div className="grid-element"><TextField style={mygrid}
                                                                              id="characterGeneratorCareerIntelligence"
                                                                              disabled/></div>
                                     <div className="grid-element"><TextField style={mygrid}
-                                                                             id="characterGeneratorEndIntelligence"/>
+                                                                             id="characterGeneratorEndIntelligence"
+                                                                             />
                                     </div>
                                 </div>
                                 <div className="grid-column">
                                     <div className="grid-name-element title-column">SW</div>
                                     <div className="grid-element"><TextField style={mygrid}
-                                                                             id="characterGeneratorBaseWillPower"/>
+                                                                             id="characterGeneratorBaseWillPower"
+                                                                             />
                                     </div>
                                     <div className="grid-element"><TextField style={mygrid}
                                                                              id="characterGeneratorCareerWillPower"
                                                                              disabled/></div>
                                     <div className="grid-element"><TextField style={mygrid}
-                                                                             id="characterGeneratorEndWillPower"/></div>
+                                                                             id="characterGeneratorEndWillPower"
+                                                                             /></div>
                                 </div>
                                 <div className="grid-column">
                                     <div className="grid-name-element title-column">OGD</div>
                                     <div className="grid-element"><TextField style={mygrid}
-                                                                             id="characterGeneratorBaseFellowship"/>
+                                                                             id="characterGeneratorBaseFellowship"
+                                                                             />
                                     </div>
                                     <div className="grid-element"><TextField style={mygrid}
                                                                              id="characterGeneratorCareerFellowship"
                                                                              disabled/></div>
                                     <div className="grid-element"><TextField style={mygrid}
-                                                                             id="characterGeneratorEndFellowship"/>
+                                                                             id="characterGeneratorEndFellowship"
+                                                                             />
                                     </div>
                                 </div>
                             </div>
@@ -516,49 +536,57 @@ class CharacterGeneratorPage extends React.Component {
                                 <div className="grid-column">
                                     <div className="grid-name-element title-column">A</div>
                                     <div className="grid-element"><TextField style={mygrid}
-                                                                             id="characterGeneratorBaseAttacks"/></div>
+                                                                             id="characterGeneratorBaseAttacks"
+                                                                             /></div>
                                     <div className="grid-element"><TextField style={mygrid}
                                                                              id="characterGeneratorCareerAttacks"
                                                                              disabled/></div>
                                     <div className="grid-element"><TextField style={mygrid}
-                                                                             id="characterGeneratorEndAttacks"/></div>
+                                                                             id="characterGeneratorEndAttacks"
+                                                                             /></div>
                                 </div>
                                 <div className="grid-column">
                                     <div className="grid-name-element title-column">ŻYW</div>
                                     <div className="grid-element"><TextField style={mygrid}
-                                                                             id="characterGeneratorBaseWounds"/></div>
+                                                                             id="characterGeneratorBaseWounds"
+                                                                             /></div>
                                     <div className="grid-element"><TextField style={mygrid}
                                                                              id="characterGeneratorCareerWounds"
                                                                              disabled/></div>
                                     <div className="grid-element"><TextField style={mygrid}
-                                                                             id="characterGeneratorEndWounds"/></div>
+                                                                             id="characterGeneratorEndWounds"
+                                                                             /></div>
                                 </div>
                                 <div className="grid-column">
                                     <div className="grid-name-element title-column">SZ</div>
                                     <div className="grid-element"><TextField style={mygrid}
-                                                                             id="characterGeneratorBaseMovement"/></div>
+                                                                             id="characterGeneratorBaseMovement"
+                                                                             /></div>
                                     <div className="grid-element"><TextField style={mygrid}
                                                                              id="characterGeneratorCareerMovement"
                                                                              disabled/></div>
                                     <div className="grid-element"><TextField style={mygrid}
-                                                                             id="characterGeneratorEndMovement"/></div>
+                                                                             id="characterGeneratorEndMovement"
+                                                                             /></div>
                                 </div>
                                 <div className="grid-column">
                                     <div className="grid-name-element title-column">M</div>
                                     <div className="grid-element"><TextField style={mygrid}
-                                                                             id="characterGeneratorBaseMagic"/></div>
+                                                                             id="characterGeneratorBaseMagic"
+                                                                             /></div>
                                     <div className="grid-element"><TextField style={mygrid}
                                                                              id="characterGeneratorCareerMagic"
                                                                              disabled/></div>
                                     <div className="grid-element"><TextField style={mygrid}
-                                                                             id="characterGeneratorEndMagic"/></div>
+                                                                             id="characterGeneratorEndMagic"
+                                                                             /></div>
                                 </div>
                             </div>
                         </div>
-                        <div className="flex-div">
+                        <div className="flex-center-element">
                             <button className="green-button" onClick={this.save}>Zapisz</button>
-                            <button className="red-button">Anuluj</button>
-                            {this.state.generated &&<div>Aby zobaczyć wygenerowaną postać, kliknij <a href={this.state.href}>tutaj</a></div>}
+                            {/* <button className="red-button">Anuluj</button> */}
+
                         </div>
             </div>
             </div>

@@ -350,11 +350,11 @@ public class CharacterSaveService {
             return null;
         }
         List<String> stringList = Arrays.asList(inputSkills.split(","));
-        List<Skill> skillList = skillService.findByNameIn(stringList.stream().map(s -> s.split(" +")[0]).collect(Collectors.toList()));
+        List<Skill> skillList = skillService.findByNameIn(stringList.stream().map(s -> s.split(" \\+")[0]).collect(Collectors.toList()));
         List<Skill> characterSkills = new ArrayList<>();
         for(String skillString : stringList){
-            String name = skillString.split(" +")[0];
-            String level = skillString.split(" +")[1];
+            String name = skillString.split(" \\+")[0];
+            String level = skillString.split(" \\+")[1];
             Optional<Skill> maybeSkill = skillList.stream().filter(s -> s.getName().equals(name) && s.getLevel().toString().equals(level)).findFirst();
             maybeSkill.ifPresent(characterSkills::add);
         }
@@ -395,7 +395,7 @@ public class CharacterSaveService {
         Integer newWeaponSkill = null;
         if (WeaponSkill.matches("[0-9]+")) {
             newWeaponSkill = Integer.parseInt(WeaponSkill);
-            if (newWeaponSkill < 99) character.setEndWeaponSkills(newWeaponSkill);
+            if (newWeaponSkill < 100) character.setEndWeaponSkills(newWeaponSkill);
             else throw new IllegalArgumentException();
         } else throw new IllegalArgumentException();
 
@@ -407,7 +407,7 @@ public class CharacterSaveService {
         Integer newBallisticSkill = null;
         if (BallisticSkills.matches("[0-9]+")) {
             newBallisticSkill = Integer.parseInt(BallisticSkills);
-            if (newBallisticSkill < 99) character.setEndBallisticSkills(newBallisticSkill);
+            if (newBallisticSkill < 100) character.setEndBallisticSkills(newBallisticSkill);
             else throw new IllegalArgumentException();
         } else throw new IllegalArgumentException();
 
@@ -419,7 +419,7 @@ public class CharacterSaveService {
         Integer newEndStrength = null;
         if (endStrength.matches("[0-9]+")) {
             newEndStrength = Integer.parseInt(endStrength);
-            if (newEndStrength < 99) character.setEndStrength(newEndStrength);
+            if (newEndStrength < 100) character.setEndStrength(newEndStrength);
             else throw new IllegalArgumentException();
         } else throw new IllegalArgumentException();
 
@@ -431,7 +431,7 @@ public class CharacterSaveService {
         Integer newEndToughness = null;
         if (endToughness.matches("[0-9]+")) {
             newEndToughness = Integer.parseInt(endToughness);
-            if (newEndToughness < 99) character.setEndToughness(newEndToughness);
+            if (newEndToughness < 100) character.setEndToughness(newEndToughness);
             else throw new IllegalArgumentException();
         } else throw new IllegalArgumentException();
 
@@ -443,7 +443,7 @@ public class CharacterSaveService {
         Integer newEndAgility = null;
         if (endAgility.matches("[0-9]+")) {
             newEndAgility = Integer.parseInt(endAgility);
-            if (newEndAgility < 99) character.setEndAgility(newEndAgility);
+            if (newEndAgility < 100) character.setEndAgility(newEndAgility);
             else throw new IllegalArgumentException();
         } else throw new IllegalArgumentException();
 
@@ -455,7 +455,7 @@ public class CharacterSaveService {
         Integer newEndIntelligence = null;
         if (endIntelligence.matches("[0-9]+")) {
             newEndIntelligence = Integer.parseInt(endIntelligence);
-            if (newEndIntelligence < 99) character.setEndIntelligence(newEndIntelligence);
+            if (newEndIntelligence < 100) character.setEndIntelligence(newEndIntelligence);
             else throw new IllegalArgumentException();
         } else throw new IllegalArgumentException();
 
@@ -467,7 +467,7 @@ public class CharacterSaveService {
         Integer newEndWillPower = null;
         if (endWillPower.matches("[0-9]+")) {
             newEndWillPower = Integer.parseInt(endWillPower);
-            if (newEndWillPower < 99) character.setEndWillPower(newEndWillPower);
+            if (newEndWillPower < 100) character.setEndWillPower(newEndWillPower);
             else throw new IllegalArgumentException();
         } else throw new IllegalArgumentException();
 
@@ -479,7 +479,7 @@ public class CharacterSaveService {
         Integer newEndFellowship = null;
         if (endFellowship.matches("[0-9]+")) {
             newEndFellowship = Integer.parseInt(endFellowship);
-            if (newEndFellowship < 99) character.setEndFellowship(newEndFellowship);
+            if (newEndFellowship < 100) character.setEndFellowship(newEndFellowship);
             else throw new IllegalArgumentException();
         } else throw new IllegalArgumentException();
 
@@ -491,7 +491,7 @@ public class CharacterSaveService {
         Integer newEndAttack = null;
         if (endAttack.matches("[0-9]+")) {
             newEndAttack = Integer.parseInt(endAttack);
-            if (newEndAttack < 99) character.setEndAttacks(newEndAttack);
+            if (newEndAttack < 100) character.setEndAttacks(newEndAttack);
             else throw new IllegalArgumentException();
         } else throw new IllegalArgumentException();
 
@@ -503,7 +503,7 @@ public class CharacterSaveService {
         Integer newEndWound = null;
         if (endWound.matches("[0-9]+")) {
             newEndWound = Integer.parseInt(endWound);
-            if (newEndWound < 99) character.setEndWounds(newEndWound);
+            if (newEndWound < 100) character.setEndWounds(newEndWound);
             else throw new IllegalArgumentException();
         } else throw new IllegalArgumentException();
 
@@ -515,7 +515,7 @@ public class CharacterSaveService {
         Integer newEndMovement = null;
         if (endMovement.matches("[0-9]+")) {
             newEndMovement = Integer.parseInt(endMovement);
-            if (newEndMovement < 99) character.setEndMovement(newEndMovement);
+            if (newEndMovement < 100) character.setEndMovement(newEndMovement);
             else throw new IllegalArgumentException();
         } else throw new IllegalArgumentException();
 
@@ -527,7 +527,7 @@ public class CharacterSaveService {
         Integer newEndMagic = null;
         if (endMagic.matches("[0-9]+")) {
             newEndMagic = Integer.parseInt(endMagic);
-            if (newEndMagic < 99) character.setEndMagic(newEndMagic);
+            if (newEndMagic < 100) character.setEndMagic(newEndMagic);
             else throw new IllegalArgumentException();
         } else throw new IllegalArgumentException();
 
@@ -548,76 +548,76 @@ public class CharacterSaveService {
 
         if (characterInputDto.getBaseWeaponSkills().matches("[0-9]+")) {
             Integer baseWeaponSkills = Integer.parseInt(characterInputDto.getBaseWeaponSkills());
-            if (baseWeaponSkills < 99) newStatistics.setWeaponSkill(baseWeaponSkills);
+            if (baseWeaponSkills < 100) newStatistics.setWeaponSkill(baseWeaponSkills);
             else throw new IllegalArgumentException();
         } else throw new IllegalArgumentException();
 
 
         if (characterInputDto.getBaseBallisticSkills().matches("[0-9]+")) {
             Integer baseBallisticSkills = Integer.parseInt(characterInputDto.getBaseBallisticSkills());
-            if (baseBallisticSkills < 99) newStatistics.setBallisticSkill(baseBallisticSkills);
+            if (baseBallisticSkills < 100) newStatistics.setBallisticSkill(baseBallisticSkills);
             else throw new IllegalArgumentException();
         } else throw new IllegalArgumentException();
 
 
         if (characterInputDto.getBaseStrength().matches("[0-9]+")) {
             Integer baseStrength = Integer.parseInt(characterInputDto.getBaseStrength());
-            if (baseStrength < 99) newStatistics.setStrength(baseStrength);
+            if (baseStrength < 100) newStatistics.setStrength(baseStrength);
             else throw new IllegalArgumentException();
         } else throw new IllegalArgumentException();
 
 
         if (characterInputDto.getBaseToughness().matches("[0-9]+")) {
             Integer baseToughness = Integer.parseInt(characterInputDto.getBaseToughness());
-            if (baseToughness < 99) newStatistics.setToughness(baseToughness);
+            if (baseToughness < 100) newStatistics.setToughness(baseToughness);
             else throw new IllegalArgumentException();
         } else throw new IllegalArgumentException();
 
         if (characterInputDto.getBaseAgility().matches("[0-9]+")) {
             Integer baseAgility = Integer.parseInt(characterInputDto.getBaseAgility());
-            if (baseAgility < 99) newStatistics.setAgility(baseAgility);
+            if (baseAgility < 100) newStatistics.setAgility(baseAgility);
             else throw new IllegalArgumentException();
         } else throw new IllegalArgumentException();
 
         if (characterInputDto.getBaseIntelligence().matches("[0-9]+")) {
             Integer baseIntelligence = Integer.parseInt(characterInputDto.getBaseIntelligence());
-            if (baseIntelligence < 99) newStatistics.setIntelligence(baseIntelligence);
+            if (baseIntelligence < 100) newStatistics.setIntelligence(baseIntelligence);
             else throw new IllegalArgumentException();
         } else throw new IllegalArgumentException();
 
         if (characterInputDto.getBaseWillPower().matches("[0-9]+")) {
             Integer baseWillPower = Integer.parseInt(characterInputDto.getBaseWillPower());
-            if (baseWillPower < 99) newStatistics.setWillPower(baseWillPower);
+            if (baseWillPower < 100) newStatistics.setWillPower(baseWillPower);
             else throw new IllegalArgumentException();
         } else throw new IllegalArgumentException();
 
         if (characterInputDto.getBaseFellowship().matches("[0-9]+")) {
             Integer baseFellowship = Integer.parseInt(characterInputDto.getBaseFellowship());
-            if (baseFellowship < 99) newStatistics.setFellowship(baseFellowship);
+            if (baseFellowship < 100) newStatistics.setFellowship(baseFellowship);
             else throw new IllegalArgumentException();
         } else throw new IllegalArgumentException();
 
         if (characterInputDto.getBaseAttacks().matches("[0-9]+")) {
             Integer baseAttacks = Integer.parseInt(characterInputDto.getBaseAttacks());
-            if (baseAttacks < 99) newStatistics.setAttacks(baseAttacks);
+            if (baseAttacks < 100) newStatistics.setAttacks(baseAttacks);
             else throw new IllegalArgumentException();
         } else throw new IllegalArgumentException();
 
         if (characterInputDto.getBaseWounds().matches("[0-9]+")) {
             Integer baseWounds = Integer.parseInt(characterInputDto.getBaseWounds());
-            if (baseWounds < 99) newStatistics.setWounds(baseWounds);
+            if (baseWounds < 100) newStatistics.setWounds(baseWounds);
             else throw new IllegalArgumentException();
         } else throw new IllegalArgumentException();
 
         if (characterInputDto.getBaseMovement().matches("[0-9]+")) {
             Integer baseMovement = Integer.parseInt(characterInputDto.getBaseMovement());
-            if (baseMovement < 99) newStatistics.setMovement(baseMovement);
+            if (baseMovement < 100) newStatistics.setMovement(baseMovement);
             else throw new IllegalArgumentException();
         } else throw new IllegalArgumentException();
 
         if (characterInputDto.getBaseMagic().matches("[0-9]+")) {
             Integer baseMagic = Integer.parseInt(characterInputDto.getBaseMagic());
-            if (baseMagic < 99) newStatistics.setMagic(baseMagic);
+            if (baseMagic < 100) newStatistics.setMagic(baseMagic);
             else throw new IllegalArgumentException();
         } else throw new IllegalArgumentException();
 

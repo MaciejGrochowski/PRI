@@ -36,6 +36,12 @@ class DefaultPopup extends React.Component {
 
     render() {
         const {isOpen, title, expandFilterList, columnsConfig, onRequestClose} = this.props;
+        let columnsConfigReal = [];
+        for(let i in columnsConfig){
+            if(columnsConfig[i].title !== "Detale") columnsConfigReal.push(columnsConfig[i])
+        }
+
+
         return (
             <div className = "dostosuj-button">
                 <button className="button" onClick={expandFilterList}>Dostosuj</button>
@@ -48,7 +54,7 @@ class DefaultPopup extends React.Component {
                 >
                     <form id="visibilityCharactersColumns">
                         <div className = "popup-body">
-                        {columnsConfig && columnsConfig.map((item, i) => (
+                        {columnsConfigReal && columnsConfigReal.map((item, i) => (
                             <label className="container"><div className = "label">{item.title}</div>
                                 <input type="checkbox" defaultChecked={!item.hidden} id={item.field + "VisibilityCheckbox"}/>
                                 <span className="checkmark"/>

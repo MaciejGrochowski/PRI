@@ -177,17 +177,19 @@ class CharactersListPage extends React.Component{
     mapArrayToString = array => {
         let output = "";
         for (const i in array){
-            output = output + array[i];
+            output = output + array[i] + ", ";
         }
-        return output;
+        return output.substring(0, output.length-2);
     }
 
     mapSkillsToString = skills => {
         let output = ""
+        skills = skills.map(s => s.name)
+        skills = [...new Set(skills)]
         for (const i in skills){
-            output = output + skills[i].name;
+            output = output + skills[i] +", ";
         }
-        return output;
+        return output.substring(0, output.length-2);
     }
 
     getCharactersSuccessHandler = response => {

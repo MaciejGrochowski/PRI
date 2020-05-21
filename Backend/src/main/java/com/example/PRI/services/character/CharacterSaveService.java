@@ -297,13 +297,13 @@ public class CharacterSaveService {
             String startMonth = starSign.getStartDate().split(" ")[1];
             String endMonth = starSign.getEndDate().split(" ")[1];
             if(startMonth.equals(endMonth)){
-                if(day > startDay && day < endDay){
+                if(day >= startDay && day < endDay){
                     characterStarSign = starSign;
                     break;
                 }
             }
             else{
-                if((startMonth.equals(month) && day > startDay) || (endMonth.equals(month) && day < endDay) ){
+                if((startMonth.equals(month) && day >= startDay) || (endMonth.equals(month) && day < endDay) ){
                     characterStarSign = starSign;
                     break;
                 }

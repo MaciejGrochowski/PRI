@@ -26,7 +26,7 @@ public enum StarSign {
     GLUPIEC_MUMMIT("Głupiec Mummit", "Mammios", "Znak Instynktu", "16 Sommerzeit", "1 Vorgeheim"),
     DWA_BYKI("Dwa byki", "Hashoor", "Znak Płodności i Rzemiosła", "2 Vorgeheim","21 Vorgeheim"),
     TANCERKA("Tancerka","Adamnos","Znak Miłości i Pożądania","22 Vorgeheim","7 Nachgeheim");
-
+    //kom
 
     private String name;
     private String shortName;

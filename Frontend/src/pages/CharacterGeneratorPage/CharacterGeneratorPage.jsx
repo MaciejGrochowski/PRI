@@ -202,7 +202,6 @@ class CharacterGeneratorPage extends React.Component {
         if (baseMagic && baseMagic.value !== "") output = {...output, baseMagic: baseMagic.value}
         const endMagic = document.getElementById("characterGeneratorEndMagic");
         if (endMagic && endMagic.value !== "") output = {...output, endMagic: endMagic.value}
-        console.warn(output);
         return output;
 
     }
@@ -216,7 +215,8 @@ class CharacterGeneratorPage extends React.Component {
     }
 
     saveErrorHandler = error => {
-        this.setState({isError: true, errorText: "Błont zachardkotowany"})
+        console.log(error.response.data.message);
+        this.setState({isError: true, errorText: error.response.data.message})
     }
 
     saveSuccessHandler = response => {

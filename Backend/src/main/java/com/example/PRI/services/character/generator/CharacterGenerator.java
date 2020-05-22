@@ -116,6 +116,7 @@ public class CharacterGenerator extends GeneralService {
     @Transactional
     public long save(CharacterInputDto characterInputDto) {
         Character character = new Character();
+        character.setName(characterSaveService.nameConvert(characterInputDto.getName(),character));
         characterSaveService.nameConvert(characterInputDto.getName(),character);
         characterSaveService.surnameConvert(characterInputDto.getSurname(),character);
         characterSaveService.predictionConvert(characterInputDto.getPrediction(),character);

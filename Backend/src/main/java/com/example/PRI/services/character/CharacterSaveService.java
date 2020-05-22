@@ -6,6 +6,7 @@ import com.example.PRI.entities.Place;
 import com.example.PRI.entities.character.*;
 import com.example.PRI.entities.character.Character;
 import com.example.PRI.enums.*;
+import com.example.PRI.exceptions.CharacterSaveException;
 import com.example.PRI.services.ImperialDateService;
 import com.example.PRI.services.PlaceService;
 import com.example.PRI.services.character.generator.CharacterBirthPlaceGenerator;
@@ -91,7 +92,7 @@ public class CharacterSaveService {
     }
 
     public Optional<Name> nameConvert(String inputName, Character character) {
-        if (inputName == null) throw new IllegalArgumentException();
+        if (inputName == null) throw new CharacterSaveException("Błont", new IllegalArgumentException());
         Optional<Name> nameOptional = nameService.findByName(inputName);
         nameOptional.ifPresent(character::setName);
         if (!nameOptional.isPresent() && inputName != null) {
@@ -118,7 +119,7 @@ public class CharacterSaveService {
     public Career currentCareerConvert(String inputCurrentCareer, Character character) {
         List<String> stringList = new ArrayList<>();
         stringList.add(inputCurrentCareer);
-        List<Career> careerList = careerService.findByNameIn(stringList);
+        List<Career> careerList = careerService.findByNameIn(stringList); //ToDo po prostu zaimplementuj findByName(String careerName)
         if (careerList != null) {
             character.setCurrentCareer(careerList.get(0));
             return careerList.get(0);
@@ -149,7 +150,7 @@ public class CharacterSaveService {
             character.setHairColor(hairColorNew);
             //return hairColor;
         }
-        if (hairColor.get() == null) {
+        if (!hairColor.isPresent()) { //ToDo co tu się stało? HairColor jest z autocomplete, user nie może wprowadzić swojego
             throw new IllegalArgumentException();
         }
         return hairColor;
@@ -163,7 +164,7 @@ public class CharacterSaveService {
             eyeColorNew.setColor(inputeyeColor);
             character.setEyeColor(eyeColorNew);
         }
-        if (eyeColor.get() == null) {
+        if (eyeColor.get() == null) { //ToDo co tu się stało? EyeColor jest z autocomplete, user nie może wprowadzić swojego
             throw new IllegalArgumentException();
         }
         return eyeColor;
@@ -172,14 +173,15 @@ public class CharacterSaveService {
     public Optional<Place> bornPlaceConverter(String bornPlaceInput, Character character) {
         Optional<Place> bornPlace = placeService.findByName(bornPlaceInput);
         bornPlace.ifPresent(character::setBirthPlace);
-        if (!bornPlace.isPresent() && bornPlaceInput != null) {
-            Place bornPlaceNew = new Place();
-            bornPlaceNew.setName(bornPlaceInput);
-            character.setBirthPlace(bornPlaceNew);
-        }
-        if (bornPlace.get() == null) {
-            throw new IllegalArgumentException();
-        }
+        if(bornPlace.isPresent()) throw new IllegalArgumentException();
+//        if (!bornPlace.isPresent() && bornPlaceInput != null) {
+//            Place bornPlaceNew = new Place();
+//            bornPlaceNew.setName(bornPlaceInput);
+//            character.setBirthPlace(bornPlaceNew);
+//        } //ToDo co tu się stało? To jest z autocomplete, user nie może wprowadzić swojego
+//        if (bornPlace.get() == null) {
+//            throw new IllegalArgumentException();
+//        }
         return bornPlace;
     }
 
@@ -204,7 +206,7 @@ public class CharacterSaveService {
         }
         Sex newSex = null;
         if (sexInput.equals("Kobieta")) newSex = Sex.FEMALE;
-        else if (sexInput.equals("Mężczyzna")) newSex = Sex.MALE;
+        if (sexInput.equals("Mężczyzna")) newSex = Sex.MALE;
         if (newSex == null) throw new IllegalArgumentException();
         character.setSex(newSex);
         return newSex;

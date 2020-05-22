@@ -383,7 +383,7 @@ public class CharacterService extends GeneralService {
             c.setPersonality(Collections.singletonList(personalities.get(rand.nextInt(personalities.size()))));
             c.setPrediction(predictions.get(rand.nextInt(predictions.size())));
             c.setSurname(surnames.get(rand.nextInt(surnames.size())));
-            c.setStarSign(StarSign.DRAGOMAS_THE_DRAKE);
+            c.setStarSign(StarSign.SMOK_DRAGOMAS);
             this.save(c);
         }
     }

@@ -86,7 +86,15 @@ public class CharacterSaveService {
             return new Surname();
         }
         if (surname.isPresent()) return surname.get();
-        if (surNew.matches(".*\\d.*")) throw new CharacterGenerationException("W imieniu znajduje się liczba", new IllegalArgumentException());
+        if (surNew.matches(".*\\d.*")) throw new CharacterGenerationException("W nazwisku znajduje się liczba", new IllegalArgumentException());
+        if (surNew.matches("[a-z].*")){
+            String firstLetter = surNew.substring(0, 1).toUpperCase();
+            String newSurnameWithBigFirstLetter = firstLetter + surNew.substring(1);
+            Surname nextSurname = new Surname();
+            nextSurname.setSurname(newSurnameWithBigFirstLetter);
+            surnameService.save(nextSurname);
+            return nextSurname;
+        }
         else {
             Surname surnameNew = new Surname();
             surnameNew.setSurname(surNew);
@@ -98,28 +106,44 @@ public class CharacterSaveService {
 
 
     public Name nameConvert(String inputName) {
-        if (inputName == null) throw new IllegalArgumentException();
+        if (inputName == null)
+            throw new CharacterGenerationException("Podaj imię postaci", new IllegalArgumentException());
         Optional<Name> nameOptional = nameService.findByName(inputName);
-        if(nameOptional.isPresent()) return nameOptional.get();
-        if (inputName.matches("[A-Z][a-z]*")) {
+        if (nameOptional.isPresent()) return nameOptional.get();
+        if (inputName.matches(".*\\d.*"))
+            throw new CharacterGenerationException("W imieniu znajduje się liczba", new IllegalArgumentException());
+        if (inputName.matches("[a-z].*")) {
+            String firstLetter = inputName.substring(0, 1).toUpperCase();
+            String newNameWithBigFirstLetter = firstLetter + inputName.substring(1);
+            Name nextName = new Name();
+            nextName.setName(newNameWithBigFirstLetter);
+            nameService.save(nextName);
+            return nextName;
+        } else {
             Name nameNew = new Name();
             nameNew.setName(inputName);
             nameService.save(nameNew);
-            return  nameNew;
+            return nameNew;
         }
-        else throw new IllegalArgumentException();
     }
 
-    public Optional<Prediction> predictionConvert(String inputPrediction, Character character) {
+    public Prediction predictionConvert(String inputPrediction) {
         Optional<Prediction> prediction = predictionService.findByText(inputPrediction);
-        prediction.ifPresent(character::setPrediction);
-        if (!prediction.isPresent() && inputPrediction != null) {
-            Prediction predictionNew = new Prediction();
-            predictionNew.setText(inputPrediction);
-            predictionService.save(predictionNew);
-            character.setPrediction(predictionNew);
+        if (prediction.isPresent()) return prediction.get();
+        if (inputPrediction.matches("[a-z].*")) {
+            String firstLetter = inputPrediction.substring(0, 1).toUpperCase();
+            String newPredictionWithBigFirstLetter = firstLetter + inputPrediction.substring(1);
+            Prediction nextPrediction = new Prediction();
+            nextPrediction.setText(newPredictionWithBigFirstLetter);
+            predictionService.save(nextPrediction);
+            return nextPrediction;
         }
-        return prediction;
+        else{
+            Prediction nextPrediction = new Prediction();
+            nextPrediction.setText(inputPrediction);
+            predictionService.save(nextPrediction);
+            return nextPrediction;
+        }
     }
 
     public Career currentCareerConvert(String inputCurrentCareer, Character character) {

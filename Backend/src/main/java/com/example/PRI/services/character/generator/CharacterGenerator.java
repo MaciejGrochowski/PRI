@@ -118,8 +118,8 @@ public class CharacterGenerator extends GeneralService {
         Character character = new Character();
         character.setName(characterSaveService.nameConvert(characterInputDto.getName()));
         character.setSurname(characterSaveService.surnameConvert(characterInputDto.getSurname()));
-        characterSaveService.predictionConvert(characterInputDto.getPrediction(),character);
-        characterSaveService.currentCareerConvert(characterInputDto.getCurrentCareer(),character);
+        character.setPrediction(characterSaveService.predictionConvert(characterInputDto.getPrediction()));
+        /*characterSaveService.currentCareerConvert(characterInputDto.getCurrentCareer(),character);
         characterSaveService.previousCareersConvert(characterInputDto.getPreviousCareers(),character);
         characterSaveService.hairColorConverter(characterInputDto.getHairColor(),character);
         characterSaveService.eyeColorConverter(characterInputDto.getEyeColor(),character);
@@ -152,7 +152,7 @@ public class CharacterGenerator extends GeneralService {
         characterSaveService.endWoundsConvert(characterInputDto.getEndWounds(),character);
         characterSaveService.endMovementConvert(characterInputDto.getEndMovement(),character);
         characterSaveService.endMagicConvert(characterInputDto.getEndMagic(),character);
-        characterSaveService.baseStatisticsConvert(characterInputDto,character);
+        characterSaveService.baseStatisticsConvert(characterInputDto,character);*/
         characterService.save(character);
 
         return character.getId();

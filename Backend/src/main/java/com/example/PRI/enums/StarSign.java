@@ -28,11 +28,11 @@ public enum StarSign {
     TANCERKA("Tancerka","Adamnos","Znak Miłości i Pożądania","22 Vorgeheim","7 Nachgeheim");
     //kom
 
-    private String name;
-    private String shortName;
-    private String description;
-    private String startDate;
-    private String endDate;
+    private final String name;
+    private final String shortName;
+    private final String description;
+    private final String startDate;
+    private final String endDate;
 
     public String getName() {
         return name;

@@ -14,7 +14,6 @@ import com.example.PRI.services.character.generator.EyeColorGenerator;
 import com.example.PRI.services.character.generator.SurnameGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.example.PRI.exceptions.CharacterGenerationException;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -86,7 +85,7 @@ public class CharacterSaveService {
             return new Surname();
         }
         if (surname.isPresent()) return surname.get();
-        if (surNew.matches(".*\\d.*")) throw new CharacterGenerationException("W nazwisku znajduje się liczba.", new IllegalArgumentException());
+        if (surNew.matches(".*\\d.*")) throw new CharacterSaveException("W nazwisku znajduje się liczba.", new IllegalArgumentException());
         if (surNew.matches("[a-z].*")){
             String firstLetter = surNew.substring(0, 1).toUpperCase();
             String newSurnameWithBigFirstLetter = firstLetter + surNew.substring(1);
@@ -107,10 +106,10 @@ public class CharacterSaveService {
 
     public Name nameConvert(String inputName) {
         if (inputName == null)
-            throw new CharacterGenerationException("Podaj imię postaci swojej postaci.", new IllegalArgumentException());
+            throw new CharacterSaveException("Podaj imię postaci swojej postaci.", new IllegalArgumentException());
         Optional<Name> nameOptional = nameService.findByName(inputName);
         if (nameOptional.isPresent()) return nameOptional.get();
-        if (inputName.matches(".*\\d.*")) throw new CharacterGenerationException("W imieniu znajduje się liczba.", new IllegalArgumentException());
+        if (inputName.matches(".*\\d.*")) throw new CharacterSaveException("W imieniu znajduje się liczba.", new IllegalArgumentException());
         if (inputName.matches("[a-z].*")) {
             String firstLetter = inputName.substring(0, 1).toUpperCase();
             String newNameWithBigFirstLetter = firstLetter + inputName.substring(1);
@@ -148,7 +147,7 @@ public class CharacterSaveService {
     public Career currentCareerConvert(String inputCurrentCareer) {
         Career currentCareer = careerService.findByName(inputCurrentCareer);
         if (currentCareer != null) return currentCareer;
-        else throw new CharacterGenerationException("Wybierz profesje swojej postaci.", new IllegalArgumentException());
+        else throw new CharacterSaveException("Wybierz profesje swojej postaci.", new IllegalArgumentException());
     }
 
     public List<Career> previousCareersConvert(String inputPreviousCareers, String inputCurrentCareer) {
@@ -156,38 +155,36 @@ public class CharacterSaveService {
         List<String> stringList = Arrays.asList(inputPreviousCareers.split(","));
         List<Career> careerList = careerService.findByNameIn(stringList);
         Career currentCareer = careerService.findByName(inputCurrentCareer);
-        if (careerList.contains(currentCareer)) throw new CharacterGenerationException("Obecna i poprzednia profejsa są takie same.", new IllegalArgumentException());
+        if (careerList.contains(currentCareer)) throw new CharacterSaveException("Obecna i poprzednia profejsa są takie same.", new IllegalArgumentException());
         else return careerList;
     }
 
     public HairColor hairColorConverter(String inputHairColor) {
         Optional<HairColor> hairColor = hairColorService.findByName(inputHairColor);
         if (hairColor.isPresent()) return hairColor.get();
-        else throw new CharacterGenerationException("Wybierz kolor włosów swojej postaci.", new IllegalArgumentException());
+        else throw new CharacterSaveException("Wybierz kolor włosów swojej postaci.", new IllegalArgumentException());
     }
 
     public EyeColor eyeColorConverter(String inputEyeColor) {
         Optional<EyeColor> eyeColor = eyeColorService.findByName(inputEyeColor);
         if (eyeColor.isPresent()) return eyeColor.get();
-        else throw new CharacterGenerationException("Wybierz kolor oczu swojej postaci.", new IllegalArgumentException());
+        else throw new CharacterSaveException("Wybierz kolor oczu swojej postaci.", new IllegalArgumentException());
     }
 
     public Place bornPlaceConverter(String bornPlaceInput) {
         Optional<Place> bornPlace = placeService.findByName(bornPlaceInput);
         if (bornPlace.isPresent()) return bornPlace.get();
-            else throw new CharacterGenerationException("Wybierz miejsce urodzenia swojej postaci.", new IllegalArgumentException());
+            else throw new CharacterSaveException("Wybierz miejsce urodzenia swojej postaci.", new IllegalArgumentException());
     }
 
     public Place livePlaceConverter(String livePlaceInput) {
         Optional<Place> livePlace = placeService.findByName(livePlaceInput);
         if (livePlace.isPresent()) return livePlace.get();
-        else throw new CharacterGenerationException("Wybierz miejsce pobytu swojej postaci.", new IllegalArgumentException());
+        else throw new CharacterSaveException("Wybierz miejsce pobytu swojej postaci.", new IllegalArgumentException());
     }
 
     public Sex sexConverter(String sexInput) {
-        if (sexInput == null) {
-            throw new CharacterGenerationException("Wybierz płeć swojej postaci.", new IllegalArgumentException());
-        }
+        if (sexInput == null)  throw new CharacterSaveException("Wybierz płeć swojej postaci.", new IllegalArgumentException());
         Sex newSex = null;
         if (sexInput.equals("Kobieta")) newSex = Sex.FEMALE;
         if (sexInput.equals("Mężczyzna")) newSex = Sex.MALE;
@@ -195,77 +192,51 @@ public class CharacterSaveService {
         return newSex;
     }
 
-    public Race raceConverter(String raceInput, Character character) {
-        if (raceInput == null) {
-            throw new IllegalArgumentException();
-        }
+    public Race raceConverter(String raceInput) {
+        if (raceInput == null) throw new CharacterSaveException("Wybierz rase swojej postaci.", new IllegalArgumentException());
         Race newRace = null;
-        if (raceInput.equals("Elf")) {
-            newRace = Race.ELF;
-        } else if (raceInput.equals("Krasnolud")) {
-            newRace = Race.DWARF;
-        } else if (raceInput.equals("Niziołek")) {
-            newRace = Race.HALFLING;
-        } else if (raceInput.equals("Człowiek")) {
-            newRace = Race.HUMAN;
-        }
-        if (newRace == null) throw new IllegalArgumentException();
-        character.setRace(newRace);
+        if (raceInput.equals("Elf")) newRace = Race.ELF;
+        else if (raceInput.equals("Krasnolud")) newRace = Race.DWARF;
+        else if (raceInput.equals("Niziołek")) newRace = Race.HALFLING;
+        else if (raceInput.equals("Człowiek")) newRace = Race.HUMAN;
+        if (newRace == null) throw new CharacterSaveException("Nieprawidłowa rasa.", new IllegalArgumentException());
         return newRace;
     }
 
-    public Religion religionConverter(String religionInput, Character character) {
+    public Religion religionConverter(String religionInput) {
         Religion newReligion = Religion.findByGodName(religionInput);
-        if (newReligion == null) throw new IllegalArgumentException();
-        character.setReligion(newReligion);
+        if (newReligion == null) throw new CharacterSaveException("Wybierz religie swojej postaci.", new IllegalArgumentException());
         return newReligion;
     }
 
     public int birthDayConverter(String dayInput) {
-        if (dayInput == null) {
-            throw new IllegalArgumentException();
-        }
+        if (dayInput == null) throw new CharacterSaveException("Podaj dzień urodzin twojej postaci.", new IllegalArgumentException());
         int day = 0;
         if (dayInput.matches("[0-9]+")) {
             day = Integer.parseInt(dayInput);
-            if (day < 1 || day > 34) {
-                throw new IllegalArgumentException();
-            }
-        } else {
-            throw new IllegalArgumentException();
-        }
+            if (day < 1 || day > 34) throw new CharacterSaveException("Niepoprawny dzień urodzenia", new IllegalArgumentException());
+        } else throw new CharacterSaveException("Niepoprawny format dnia.", new IllegalArgumentException());
         return day;
     }
 
     public int birthYearConverter(String yearInput) {
-        if (yearInput == null) {
-            throw new IllegalArgumentException();
-        }
+        if (yearInput == null) throw new CharacterSaveException("Podaj rok urodzin twojej postaci.", new IllegalArgumentException());
         int year = 0;
         if (yearInput.matches("[0-9]*")) {
             year = Short.parseShort(yearInput);
-            if (year < 0 || year > 3000) {
-                throw new IllegalArgumentException();
-            }
-        } else {
-            throw new IllegalArgumentException();
-        }
+            if (year < 0 || year > 3000) throw new CharacterSaveException("Niepoprawny rok urodzenia", new IllegalArgumentException());
+        } else throw new CharacterSaveException("Niepoprawny format roku.", new IllegalArgumentException());
         return year;
     }
 
     public Month birthMonthConverter(String birthMonthInput) {
-        if (birthMonthInput == null) {
-            throw new IllegalArgumentException();
-        }
-        Month newMonth = Month.findByMonthName(birthMonthInput);
-        return newMonth;
+        if (birthMonthInput == null) throw new CharacterSaveException("Podaj miesiąc urodzin twojej postaci.", new IllegalArgumentException());
+        return Month.findByMonthName(birthMonthInput);
     }
 
-    public ImperialDate imperialDateConverter(int day, Month month, int year, Character character) {
-        ImperialDate newDate = new ImperialDate(day, month, year);
-        ImperialDate x = imperialDateService.save(newDate);
-        character.setBirthDate(x);
-        saveStarSign(character, x);
+    public ImperialDate imperialDateConverter(String day, String month, String year) {
+        ImperialDate newDate = new ImperialDate(birthDayConverter(day), birthMonthConverter(month), birthYearConverter(year));
+        imperialDateService.save(newDate);
         return newDate;
     }
 
@@ -298,69 +269,48 @@ public class CharacterSaveService {
         return characterStarSign;
     }
 
-    public Integer heightConverter(String height, Character character) {
-        if (height == null) throw new IllegalArgumentException();
+    public Integer heightConverter(String height) {
+        if (height == null) throw new CharacterSaveException("Podaj wzrost twojej postaci.", new IllegalArgumentException());
         Integer newHeight = null;
         if (height.matches("[0-9]*")) {
             newHeight = Integer.parseInt(height);
-            if (newHeight < 50 || newHeight > 300) {
-                throw new IllegalArgumentException();
-            } else {
-                character.setHeight(newHeight);
-            }
-        } else {
-            throw new IllegalArgumentException();
-        }
+            if (newHeight < 50 || newHeight > 300) throw new CharacterSaveException("Podaj poprawny wzrost twojej postaci.", new IllegalArgumentException());
+        } else throw new CharacterSaveException("Niepoprawny format wzrostu.", new IllegalArgumentException());
         return newHeight;
     }
 
-    public Integer weightConverter(String weight, Character character) {
-        if (weight == null) throw new IllegalArgumentException();
+    public Integer weightConverter(String weight) {
+        if (weight == null) throw new CharacterSaveException("Podaj wagę twojej postaci.", new IllegalArgumentException());
         Integer newWeight = null;
         if (weight.matches("[0-9]*")) {
             newWeight = Integer.parseInt(weight);
-            if (newWeight < 10 || newWeight > 800) {
-                throw new IllegalArgumentException();
-            } else {
-                character.setWeight(newWeight);
-            }
-        } else {
-            throw new IllegalArgumentException();
-        }
+            if (newWeight < 10 || newWeight > 800) throw new CharacterSaveException("Podaj poprawną wagę twojej postaci.", new IllegalArgumentException());
+        } else throw new CharacterSaveException("Niepoprawny format wagi.", new IllegalArgumentException());
         return newWeight;
     }
 
-    public List<Personality> personalityListConvert(String inputPersonality, Character character) {
-        if (inputPersonality == null) {
-            character.setPersonality(null);
-            return null;
-        }
+    public List<Personality> personalityListConvert(String inputPersonality) {
+        if (inputPersonality == null) return null;
         List<String> stringList = Arrays.asList(inputPersonality.split(","));
         List<Personality> personalityList = personalityService.findByNameIn(stringList);
-        if (personalityList != null) {
-            character.setPersonality(personalityList);
-        }
-        return personalityList;
+        if (personalityList.size() > 5) throw new CharacterSaveException("Zbyt dużo cech charakteru.\nMaksymalna liczba cech: 5", new IllegalArgumentException());
+        List<String> personalityCheck = personalityList.stream().map(Personality::getType).collect(Collectors.toList());
+        if(personalityCheck.stream().distinct().count() <personalityCheck.size()) throw new CharacterSaveException("Cechy charakteru twojej postaci się wykluczają.", new IllegalArgumentException());
+        return  personalityList;
     }
 
-    public List<Apperance> apperanceConvert(String inputApperance, Character character) {
-        if (inputApperance == null) {
-            character.setApperance(null);
-            return null;
-        }
+    public List<Apperance> apperanceConvert(String inputApperance) {
+        if (inputApperance == null) return null;
         List<String> stringList = Arrays.asList(inputApperance.split(","));
         List<Apperance> apperanceList = apperanceService.findByNameIn(stringList);
-        if (apperanceList != null) {
-            character.setApperance(apperanceList);
-        }
+        if (apperanceList.size() > 5) throw new CharacterSaveException("Zbyt dużo cech wyglądu.\nMaksymalna liczba cech: 5", new IllegalArgumentException());
+        List<String> apperanceCheck = apperanceList.stream().map(Apperance::getType).collect(Collectors.toList());
+        if(apperanceCheck.stream().distinct().count() <apperanceCheck.size()) throw new CharacterSaveException("Cechy wyglądu twojej postaci się wykluczają.", new IllegalArgumentException());
         return apperanceList;
     }
 
-    public List<Skill> skillsConvert(String inputSkills, Character character) {
-        if (inputSkills == null) {
-            character.setSkills(null);
-            return null;
-        }
+    public List<Skill> skillsConvert(String inputSkills) {
+        if (inputSkills == null) return null;
         List<String> stringList = Arrays.asList(inputSkills.split(","));
         List<Skill> skillList = skillService.findByNameIn(stringList.stream().map(s -> s.split(" \\+")[0]).collect(Collectors.toList()));
         List<Skill> characterSkills = new ArrayList<>();
@@ -370,35 +320,25 @@ public class CharacterSaveService {
             Optional<Skill> maybeSkill = skillList.stream().filter(s -> s.getName().equals(name) && s.getLevel().toString().equals(level)).findFirst();
             maybeSkill.ifPresent(characterSkills::add);
         }
-        if (characterSkills.size() > 0) {
-            character.setSkills(characterSkills);
-        }
-        return skillList;
+        if (characterSkills.size() > 0)  return skillList;
+        else throw new CharacterSaveException("Podaj poprawne umiejętności.", new IllegalArgumentException());
     }
 
-    public List<Talent> talentsConvert(String inputTalents, Character character) {
-        if (inputTalents == null) {
-            character.setTalents(null);
-            return null;
-        }
+    public List<Talent> talentsConvert(String inputTalents) {
+        if (inputTalents == null) return null;
         List<String> stringList = Arrays.asList(inputTalents.split(","));
         List<Talent> talentList = talentService.findByNameIn(stringList);
-        if (talentList != null) {
-            character.setTalents(talentList);
-        }
-        return talentList;
+        if (talentList != null) return talentList;
+        else throw new CharacterSaveException("Podaj poprawne zdolności.", new IllegalArgumentException());
     }
 
-    public List<Emotion> dominantingEmotionConvert(String inputEmotion, Character character) {
-        if (inputEmotion == null) {
-            character.setDominatingEmotions(null);
-            return null;
-        }
+    public List<Emotion> dominantingEmotionConvert(String inputEmotion) {
+        if (inputEmotion == null) return null;
         List<String> stringList = Arrays.asList(inputEmotion.split(","));
         List<Emotion> emotionList = emotionService.findByNameIn(stringList);
-        if (emotionList != null) {
-            character.setDominatingEmotions(emotionList);
-        }
+        if (emotionList.size() > 4) throw new CharacterSaveException("Zbyt dużo emocji.\nMaksymalna liczba emocji: 4", new IllegalArgumentException());
+        List<String> emotionCheck = emotionList.stream().map(Emotion::getType).collect(Collectors.toList());
+        if(emotionCheck.stream().distinct().count() <emotionCheck.size()) throw new CharacterSaveException("Emocje twojej postaci się wykluczają.", new IllegalArgumentException());
         return emotionList;
     }
 

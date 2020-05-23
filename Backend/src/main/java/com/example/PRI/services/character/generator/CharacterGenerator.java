@@ -126,21 +126,17 @@ public class CharacterGenerator extends GeneralService {
         character.setBirthPlace(characterSaveService.bornPlaceConverter(characterInputDto.getBirthPlace()));
         character.setLivePlace(characterSaveService.livePlaceConverter(characterInputDto.getLivePlace()));
         character.setSex(characterSaveService.sexConverter(characterInputDto.getSex()));
-        /*characterSaveService.raceConverter(characterInputDto.getRace(),character);
-        characterSaveService.religionConverter(characterInputDto.getReligion(),character);
-        characterSaveService.imperialDateConverter
-                (characterSaveService.birthDayConverter(characterInputDto.getDayOfBirth()),
-                 characterSaveService.birthMonthConverter(characterInputDto.getMonthOfBirth()),
-                 characterSaveService.birthYearConverter(characterInputDto.getYearOfBirth()),
-                 character);
-        characterSaveService.heightConverter(characterInputDto.getHeight(),character);
-        characterSaveService.weightConverter(characterInputDto.getWeight(),character);
-        characterSaveService.personalityListConvert(characterInputDto.getPersonality(),character);
-        characterSaveService.apperanceConvert(characterInputDto.getApperance(),character);
-        characterSaveService.skillsConvert(characterInputDto.getSkills(),character);
-        characterSaveService.talentsConvert(characterInputDto.getTalents(),character);
-        characterSaveService.dominantingEmotionConvert(characterInputDto.getDominatingEmotions(),character);
-        characterSaveService.endWeaponSkillConvert(characterInputDto.getEndWeaponSkills(),character);
+        character.setRace(characterSaveService.raceConverter(characterInputDto.getRace()));
+        character.setReligion(characterSaveService.religionConverter(characterInputDto.getReligion()));
+        character.setBirthDate(characterSaveService.imperialDateConverter(characterInputDto.getDayOfBirth(), characterInputDto.getMonthOfBirth(),characterInputDto.getYearOfBirth()));
+        character.setHeight(characterSaveService.heightConverter(characterInputDto.getHeight()));
+        character.setWeight(characterSaveService.weightConverter(characterInputDto.getWeight()));
+        character.setPersonality(characterSaveService.personalityListConvert(characterInputDto.getPersonality()));
+        character.setApperance(characterSaveService.apperanceConvert(characterInputDto.getApperance()));
+        character.setSkills(characterSaveService.skillsConvert(characterInputDto.getSkills()));
+        character.setTalents(characterSaveService.talentsConvert(characterInputDto.getTalents()));
+        character.setDominatingEmotions(characterSaveService.dominantingEmotionConvert(characterInputDto.getDominatingEmotions()));
+        /*characterSaveService.endWeaponSkillConvert(characterInputDto.getEndWeaponSkills(),character);
         characterSaveService.endBallisticSkillsConvert(characterInputDto.getEndBallisticSkills(),character);
         characterSaveService.endStrengthConvert(characterInputDto.getEndStrength(),character);
         characterSaveService.endToughnessConvert(characterInputDto.getEndToughness(),character);

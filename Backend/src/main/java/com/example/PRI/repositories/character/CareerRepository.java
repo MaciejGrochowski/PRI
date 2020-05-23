@@ -14,4 +14,5 @@ public interface CareerRepository extends CrudRepository<Career, Long> {
     List<Career> findByNameIn(List<String> currentCareersListString);
 
     Career findByName(String name);
+
 }

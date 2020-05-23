@@ -86,7 +86,7 @@ public class CharacterSaveService {
             return new Surname();
         }
         if (surname.isPresent()) return surname.get();
-        if (surNew.matches(".*\\d.*")) throw new CharacterGenerationException("W nazwisku znajduje się liczba", new IllegalArgumentException());
+        if (surNew.matches(".*\\d.*")) throw new CharacterGenerationException("W nazwisku znajduje się liczba.", new IllegalArgumentException());
         if (surNew.matches("[a-z].*")){
             String firstLetter = surNew.substring(0, 1).toUpperCase();
             String newSurnameWithBigFirstLetter = firstLetter + surNew.substring(1);
@@ -107,11 +107,10 @@ public class CharacterSaveService {
 
     public Name nameConvert(String inputName) {
         if (inputName == null)
-            throw new CharacterGenerationException("Podaj imię postaci", new IllegalArgumentException());
+            throw new CharacterGenerationException("Podaj imię postaci.", new IllegalArgumentException());
         Optional<Name> nameOptional = nameService.findByName(inputName);
         if (nameOptional.isPresent()) return nameOptional.get();
-        if (inputName.matches(".*\\d.*"))
-            throw new CharacterGenerationException("W imieniu znajduje się liczba", new IllegalArgumentException());
+        if (inputName.matches(".*\\d.*")) throw new CharacterGenerationException("W imieniu znajduje się liczba.", new IllegalArgumentException());
         if (inputName.matches("[a-z].*")) {
             String firstLetter = inputName.substring(0, 1).toUpperCase();
             String newNameWithBigFirstLetter = firstLetter + inputName.substring(1);
@@ -146,44 +145,25 @@ public class CharacterSaveService {
         }
     }
 
-    public Career currentCareerConvert(String inputCurrentCareer, Character character) {
-        List<String> stringList = new ArrayList<>();
-        stringList.add(inputCurrentCareer);
-        List<Career> careerList = careerService.findByNameIn(stringList); //ToDo po prostu zaimplementuj findByName(String careerName)
-        if (careerList != null) {
-            character.setCurrentCareer(careerList.get(0));
-            return careerList.get(0);
-        } else {
-            throw new IllegalArgumentException();
-        }
+    public Career currentCareerConvert(String inputCurrentCareer) {
+        Career currentCareer = careerService.findByName(inputCurrentCareer);
+        if (currentCareer != null) return currentCareer;
+        else throw new CharacterGenerationException("Wybierz profesje.", new IllegalArgumentException());
     }
 
-    public List<Career> previousCareersConvert(String inputPreviousCareers, Character character) {
-        if (inputPreviousCareers == null) {
-            character.setPreviousCareers(null);
-            return null;
-        }
+    public List<Career> previousCareersConvert(String inputPreviousCareers, String inputCurrentCareer) {
+        if (inputPreviousCareers == null) return null;
         List<String> stringList = Arrays.asList(inputPreviousCareers.split(","));
         List<Career> careerList = careerService.findByNameIn(stringList);
-        if (careerList != null) {
-            character.setPreviousCareers(careerList);
-        }
-        return careerList;
+        Career currentCareer = careerService.findByName(inputCurrentCareer);
+        if (careerList.contains(currentCareer)) throw new CharacterGenerationException("Obecna i poprzednia profejsa są takie same.", new IllegalArgumentException());
+        else return careerList;
     }
 
-    public Optional<HairColor> hairColorConverter(String inputHairColor, Character character) {
+    public HairColor hairColorConverter(String inputHairColor) {
         Optional<HairColor> hairColor = hairColorService.findByName(inputHairColor);
-        hairColor.ifPresent(character::setHairColor);
-        if (!hairColor.isPresent() && inputHairColor != null) {
-            HairColor hairColorNew = new HairColor();
-            hairColorNew.setColor(inputHairColor);
-            character.setHairColor(hairColorNew);
-            //return hairColor;
-        }
-        if (!hairColor.isPresent()) { //ToDo co tu się stało? HairColor jest z autocomplete, user nie może wprowadzić swojego
-            throw new IllegalArgumentException();
-        }
-        return hairColor;
+        if (hairColor.isPresent()) return hairColor.get();
+        else throw new CharacterGenerationException("Wybierz kolor włosów.", new IllegalArgumentException());
     }
 
     public Optional<EyeColor> eyeColorConverter(String inputeyeColor, Character character) {

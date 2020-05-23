@@ -30,4 +30,8 @@ public class CareerService extends GeneralService {
     public List<Career> findByNameIn(List<String> currentCareersListString) {
         return careerRepository.findByNameIn(currentCareersListString);
     }
+
+    public Career findByName(String name) {
+        return careerRepository.findByName(name);
+    }
 }

@@ -63,7 +63,7 @@ public class DeserializationController {
     @Autowired
     StatisticsService statisticsService;
 
-    final String kasia = "Backend/";
+    final String kasia = "";
 
     @RequestMapping("/json/name")
     public void nameDeserializationAndDatabaseUpdate() throws IOException {

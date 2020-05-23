@@ -107,7 +107,7 @@ public class CharacterSaveService {
 
     public Name nameConvert(String inputName) {
         if (inputName == null)
-            throw new CharacterGenerationException("Podaj imię postaci.", new IllegalArgumentException());
+            throw new CharacterGenerationException("Podaj imię postaci swojej postaci.", new IllegalArgumentException());
         Optional<Name> nameOptional = nameService.findByName(inputName);
         if (nameOptional.isPresent()) return nameOptional.get();
         if (inputName.matches(".*\\d.*")) throw new CharacterGenerationException("W imieniu znajduje się liczba.", new IllegalArgumentException());
@@ -148,7 +148,7 @@ public class CharacterSaveService {
     public Career currentCareerConvert(String inputCurrentCareer) {
         Career currentCareer = careerService.findByName(inputCurrentCareer);
         if (currentCareer != null) return currentCareer;
-        else throw new CharacterGenerationException("Wybierz profesje.", new IllegalArgumentException());
+        else throw new CharacterGenerationException("Wybierz profesje swojej postaci.", new IllegalArgumentException());
     }
 
     public List<Career> previousCareersConvert(String inputPreviousCareers, String inputCurrentCareer) {
@@ -163,62 +163,35 @@ public class CharacterSaveService {
     public HairColor hairColorConverter(String inputHairColor) {
         Optional<HairColor> hairColor = hairColorService.findByName(inputHairColor);
         if (hairColor.isPresent()) return hairColor.get();
-        else throw new CharacterGenerationException("Wybierz kolor włosów.", new IllegalArgumentException());
+        else throw new CharacterGenerationException("Wybierz kolor włosów swojej postaci.", new IllegalArgumentException());
     }
 
-    public Optional<EyeColor> eyeColorConverter(String inputeyeColor, Character character) {
-        Optional<EyeColor> eyeColor = eyeColorService.findByName(inputeyeColor);
-        eyeColor.ifPresent(character::setEyeColor);
-        if (!eyeColor.isPresent() && inputeyeColor != null) {
-            EyeColor eyeColorNew = new EyeColor();
-            eyeColorNew.setColor(inputeyeColor);
-            character.setEyeColor(eyeColorNew);
-        }
-        if (eyeColor.get() == null) { //ToDo co tu się stało? EyeColor jest z autocomplete, user nie może wprowadzić swojego
-            throw new IllegalArgumentException();
-        }
-        return eyeColor;
+    public EyeColor eyeColorConverter(String inputEyeColor) {
+        Optional<EyeColor> eyeColor = eyeColorService.findByName(inputEyeColor);
+        if (eyeColor.isPresent()) return eyeColor.get();
+        else throw new CharacterGenerationException("Wybierz kolor oczu swojej postaci.", new IllegalArgumentException());
     }
 
-    public Optional<Place> bornPlaceConverter(String bornPlaceInput, Character character) {
+    public Place bornPlaceConverter(String bornPlaceInput) {
         Optional<Place> bornPlace = placeService.findByName(bornPlaceInput);
-        bornPlace.ifPresent(character::setBirthPlace);
-        if(bornPlace.isPresent()) throw new IllegalArgumentException();
-//        if (!bornPlace.isPresent() && bornPlaceInput != null) {
-//            Place bornPlaceNew = new Place();
-//            bornPlaceNew.setName(bornPlaceInput);
-//            character.setBirthPlace(bornPlaceNew);
-//        } //ToDo co tu się stało? To jest z autocomplete, user nie może wprowadzić swojego
-//        if (bornPlace.get() == null) {
-//            throw new IllegalArgumentException();
-//        }
-        return bornPlace;
+        if (bornPlace.isPresent()) return bornPlace.get();
+            else throw new CharacterGenerationException("Wybierz miejsce urodzenia swojej postaci.", new IllegalArgumentException());
     }
 
-    public Optional<Place> livePlaceConverter(String livePlaceInput, Character character) {
+    public Place livePlaceConverter(String livePlaceInput) {
         Optional<Place> livePlace = placeService.findByName(livePlaceInput);
-        livePlace.ifPresent(character::setLivePlace);
-        if (!livePlace.isPresent() && livePlaceInput != null) {
-            Place bornPlaceNew = new Place();
-            bornPlaceNew.setName(livePlaceInput);
-            character.setLivePlace(bornPlaceNew);
-        }
-        if (livePlace.get() == null) {
-            throw new IllegalArgumentException();
-        }
-        return livePlace;
+        if (livePlace.isPresent()) return livePlace.get();
+        else throw new CharacterGenerationException("Wybierz miejsce pobytu swojej postaci.", new IllegalArgumentException());
     }
 
-
-    public Sex sexConverter(String sexInput, Character character) {
+    public Sex sexConverter(String sexInput) {
         if (sexInput == null) {
-            throw new IllegalArgumentException();
+            throw new CharacterGenerationException("Wybierz płeć swojej postaci.", new IllegalArgumentException());
         }
         Sex newSex = null;
         if (sexInput.equals("Kobieta")) newSex = Sex.FEMALE;
         if (sexInput.equals("Mężczyzna")) newSex = Sex.MALE;
         if (newSex == null) throw new IllegalArgumentException();
-        character.setSex(newSex);
         return newSex;
     }
 

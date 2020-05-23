@@ -122,11 +122,11 @@ public class CharacterGenerator extends GeneralService {
         character.setCurrentCareer(characterSaveService.currentCareerConvert(characterInputDto.getCurrentCareer()));
         character.setPreviousCareers(characterSaveService.previousCareersConvert(characterInputDto.getPreviousCareers(),characterInputDto.getCurrentCareer()));
         character.setHairColor(characterSaveService.hairColorConverter(characterInputDto.getHairColor()));
-        /*characterSaveService.eyeColorConverter(characterInputDto.getEyeColor(),character);
-        characterSaveService.bornPlaceConverter(characterInputDto.getBirthPlace(),character);
-        characterSaveService.livePlaceConverter(characterInputDto.getLivePlace(),character);
-        characterSaveService.sexConverter(characterInputDto.getSex(),character);
-        characterSaveService.raceConverter(characterInputDto.getRace(),character);
+        character.setEyeColor(characterSaveService.eyeColorConverter(characterInputDto.getEyeColor()));
+        character.setBirthPlace(characterSaveService.bornPlaceConverter(characterInputDto.getBirthPlace()));
+        character.setLivePlace(characterSaveService.livePlaceConverter(characterInputDto.getLivePlace()));
+        character.setSex(characterSaveService.sexConverter(characterInputDto.getSex()));
+        /*characterSaveService.raceConverter(characterInputDto.getRace(),character);
         characterSaveService.religionConverter(characterInputDto.getReligion(),character);
         characterSaveService.imperialDateConverter
                 (characterSaveService.birthDayConverter(characterInputDto.getDayOfBirth()),

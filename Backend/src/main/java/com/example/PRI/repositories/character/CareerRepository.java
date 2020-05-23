@@ -15,4 +15,5 @@ public interface CareerRepository extends CrudRepository<Career, Long> {
 
     Career findByName(String name);
 
+    List<Career> findByIsBaseProfession(boolean b);
 }

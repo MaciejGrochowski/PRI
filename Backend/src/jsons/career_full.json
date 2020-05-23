@@ -19,7 +19,7 @@
     "dominatingStat": "WW+10,US+10,ZR+10",
     "properties": ""},
   {"id": 3,
-    "name": "Berserk z Norski",
+    "name": "Berserker z Norski",
     "baseProfession": true,
     "exitChance": 0.4,
     "statistics": {"id": 3},

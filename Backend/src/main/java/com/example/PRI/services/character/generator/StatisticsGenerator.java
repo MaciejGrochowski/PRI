@@ -37,7 +37,7 @@ public class StatisticsGenerator {
 
         character.setBaseStats(generated);
 
-    return null;
+    return output;
     }
     
     private List<String> getStatsNamesByValue(Statistics stats, int minimum) {

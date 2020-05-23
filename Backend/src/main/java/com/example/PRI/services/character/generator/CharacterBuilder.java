@@ -63,7 +63,8 @@ public class CharacterBuilder {
     }
 
     public CharacterBuilder buildBaseStats(StatisticsGenerator service) {
-        service.generateBaseStats(character, properties);
+        Map<String, String> newProps = service.generateBaseStats(character, properties);
+        putAllProperties(newProps);
         return this;
     }
 
@@ -103,6 +104,14 @@ public class CharacterBuilder {
         return this;
     }
 
+
+    public CharacterBuilder buildCareers(CareerGenerator service) {
+        Map<String, String> newProps = FirstCareerPropertiesMapper.map(character, properties);
+        putAllProperties(newProps);
+        newProps = service.buildFirstCareer(character, properties);
+
+        return this;
+    }
 
     private void putAllProperties(Map<String, String> newProps){
         for(String key: newProps.keySet()){

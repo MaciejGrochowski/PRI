@@ -52,37 +52,7 @@ public class CharacterGenerator extends GeneralService {
     private CharacterService characterService;
 
     @Autowired
-    private SurnameService surnameService;
-
-    @Autowired
-    private PredictionService predictionService;
-
-    @Autowired
-    private HairColorService hairColorService;
-
-    @Autowired
-    private EyeColorService eyeColorService;
-
-    @Autowired
-    private PlaceService placeService;
-
-    @Autowired
-    private ImperialDateService imperialDateService;
-
-    @Autowired
-    private PersonalityService personalityService;
-
-    @Autowired
-    private ApperanceService apperanceService;
-
-    @Autowired
-    private SkillService skillService;
-
-    @Autowired
-    private TalentService talentService;
-
-    @Autowired
-    private EmotionService emotionService;
+    private CareerGenerator careerGenerator;
 
     @Autowired
     private CharacterSaveService characterSaveService;
@@ -103,6 +73,7 @@ public class CharacterGenerator extends GeneralService {
                 .buildEyeColor(eyeColorGenerator)
                 .buildHairColor(hairColorGenerator)
                 .buildEmotions(emotionGenerator)
+                .buildCareers(careerGenerator)
         ;
 
         Character generated = characterBuilder.getCharacter();

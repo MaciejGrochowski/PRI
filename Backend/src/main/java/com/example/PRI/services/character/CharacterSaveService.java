@@ -343,16 +343,14 @@ public class CharacterSaveService {
         return emotionList;
     }
 
-    public Integer endWeaponSkillConvert(String WeaponSkill, Character character) {
-        if (WeaponSkill == null) throw new IllegalArgumentException();
+    public Integer endWeaponSkillConvert(String WeaponSkill) {
+        if (WeaponSkill == null) throw new CharacterSaveException("Podaj statystyke dla walki wręcz.", new IllegalArgumentException());
         Integer newWeaponSkill = null;
         if (WeaponSkill.matches("[0-9]+")) {
             newWeaponSkill = Integer.parseInt(WeaponSkill);
-            if (newWeaponSkill < 100) character.setEndWeaponSkills(newWeaponSkill);
-            else throw new IllegalArgumentException();
-        } else throw new IllegalArgumentException();
-
-        return newWeaponSkill;
+            if (newWeaponSkill < 100) return newWeaponSkill;
+            else throw new CharacterSaveException("Za duża liczba dla walki wręcz.\nMaksymalna liczba: 99", new IllegalArgumentException());
+        } else throw new CharacterSaveException("Nie poprawny format statystyki dla walki wręcz.", new IllegalArgumentException());
     }
 
     public Integer endBallisticSkillsConvert(String BallisticSkills, Character character) {
@@ -487,7 +485,7 @@ public class CharacterSaveService {
         return newEndMagic;
     }
 
-    public Statistics baseStatisticsConvert(CharacterInputDto characterInputDto, Character character) {
+    public Statistics baseStatisticsConvert(CharacterInputDto characterInputDto) {
         if (characterInputDto.getBaseWeaponSkills() == null || characterInputDto.getBaseBallisticSkills() == null ||
                 characterInputDto.getBaseStrength() == null || characterInputDto.getBaseToughness() == null ||
                 characterInputDto.getBaseAgility() == null || characterInputDto.getBaseIntelligence() == null ||
@@ -574,7 +572,6 @@ public class CharacterSaveService {
             else throw new IllegalArgumentException();
         } else throw new IllegalArgumentException();
 
-        character.setBaseStats(newStatistics);
         statisticsService.save(newStatistics);
         return newStatistics;
     }

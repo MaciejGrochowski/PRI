@@ -136,8 +136,8 @@ public class CharacterGenerator extends GeneralService {
         character.setSkills(characterSaveService.skillsConvert(characterInputDto.getSkills()));
         character.setTalents(characterSaveService.talentsConvert(characterInputDto.getTalents()));
         character.setDominatingEmotions(characterSaveService.dominantingEmotionConvert(characterInputDto.getDominatingEmotions()));
-        /*characterSaveService.endWeaponSkillConvert(characterInputDto.getEndWeaponSkills(),character);
-        characterSaveService.endBallisticSkillsConvert(characterInputDto.getEndBallisticSkills(),character);
+        character.setEndWeaponSkills(characterSaveService.endWeaponSkillConvert(characterInputDto.getEndWeaponSkills()));
+        /*characterSaveService.endBallisticSkillsConvert(characterInputDto.getEndBallisticSkills(),character);
         characterSaveService.endStrengthConvert(characterInputDto.getEndStrength(),character);
         characterSaveService.endToughnessConvert(characterInputDto.getEndToughness(),character);
         characterSaveService.endAgilityConvert(characterInputDto.getEndAgility(),character);

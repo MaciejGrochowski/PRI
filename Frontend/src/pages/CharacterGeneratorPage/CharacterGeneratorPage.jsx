@@ -14,6 +14,7 @@ import generatorService from "../../services/generatorService";
 import ReactDOM from 'react-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faSyncAlt} from '@fortawesome/free-solid-svg-icons';
+import ErrorGenerator from "../../components/ErrorLayout/ErrorGenerator";
 const mygrid = {
         all: 'none',
         width: '30px',
@@ -201,7 +202,6 @@ class CharacterGeneratorPage extends React.Component {
         if (baseMagic && baseMagic.value !== "") output = {...output, baseMagic: baseMagic.value}
         const endMagic = document.getElementById("characterGeneratorEndMagic");
         if (endMagic && endMagic.value !== "") output = {...output, endMagic: endMagic.value}
-        console.warn(output);
         return output;
 
     }
@@ -211,6 +211,12 @@ class CharacterGeneratorPage extends React.Component {
         let characterInput = this.getDataFromForm();
         generatorService.save(characterInput)
             .then(r => this.saveSuccessHandler(r))
+            .catch(e => this.saveErrorHandler(e))
+    }
+
+    saveErrorHandler = error => {
+        console.log(error.response.data.message);
+        this.setState({isError: true, errorText: error.response.data.message})
     }
 
     saveSuccessHandler = response => {
@@ -589,6 +595,7 @@ class CharacterGeneratorPage extends React.Component {
 
                         </div>
             </div>
+                    {this.state.isError && <ErrorGenerator errorText={this.state.errorText}/>}
             </div>
             </div>
         )

@@ -14,10 +14,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.text.DecimalFormat;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 import java.util.stream.Collectors;
 
 
@@ -63,12 +60,13 @@ public class DeserializationController {
     @Autowired
     StatisticsService statisticsService;
 
-    final String kasia = "";
+
+    final String path = "";
 
     @RequestMapping("/json/name")
     public void nameDeserializationAndDatabaseUpdate() throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
-        String path = kasia + "src/jsons/name.json";
+        String path = this.path + "src/jsons/name.json";
         String contents = Files.readString(Paths.get(path));
         List<Name> listName = objectMapper.readValue(contents, new TypeReference<List<Name>>() {
         });
@@ -165,7 +163,7 @@ public class DeserializationController {
     public void surnameDeserializationAndDatabaseUpdate() throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
 
-        String path = kasia +"src/jsons/surname.json";
+        String path = this.path +"src/jsons/surname.json";
         String contents = Files.readString(Paths.get(path));
         List<Surname> listSurname = objectMapper.readValue(contents, new TypeReference<List<Surname>>() {
         });
@@ -178,7 +176,7 @@ public class DeserializationController {
     public void talentDeserializationAndDatabaseUpdate() throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
 
-        String path = kasia + "src/jsons/talent.json";
+        String path = this.path + "src/jsons/talent.json";
         String contents = Files.readString(Paths.get(path));
         List<Talent> listTalent = objectMapper.readValue(contents, new TypeReference<List<Talent>>() {
         });
@@ -191,7 +189,7 @@ public class DeserializationController {
     public void skillDeserializationAndDatabaseUpdate() throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
 
-        String path = kasia + "src/jsons/skill.json";
+        String path = this.path + "src/jsons/skill.json";
         String contents = Files.readString(Paths.get(path));
         List<Skill> listSkill = objectMapper.readValue(contents, new TypeReference<List<Skill>>() {
         });
@@ -204,7 +202,7 @@ public class DeserializationController {
     public void predictionDeserializationAndDatabaseUpdate() throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
 
-        String path = kasia + "src/jsons/prediction.json";
+        String path = this.path + "src/jsons/prediction.json";
         String contents = Files.readString(Paths.get(path));
         List<Prediction> listPrediction = objectMapper.readValue(contents, new TypeReference<List<Prediction>>() {
         });
@@ -217,7 +215,7 @@ public class DeserializationController {
     public void hairColorDeserializationAndDatabaseUpdate() throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
 
-        String path = kasia + "src/jsons/hairColor.json";
+        String path = this.path + "src/jsons/hairColor.json";
         String contents = Files.readString(Paths.get(path));
         List<HairColor> listHairColor = objectMapper.readValue(contents, new TypeReference<List<HairColor>>() {
         });
@@ -230,7 +228,7 @@ public class DeserializationController {
     public void eyeColorDeserializationAndDatabaseUpdate() throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
 
-        String path = kasia + "src/jsons/eyeColor.json";
+        String path = this.path + "src/jsons/eyeColor.json";
         String contents = Files.readString(Paths.get(path));
         List<EyeColor> listEyeColor = objectMapper.readValue(contents, new TypeReference<List<EyeColor>>() {
         });
@@ -243,7 +241,7 @@ public class DeserializationController {
     public void appearanceDeserializationAndDatabaseUpdate() throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
 
-        String path = kasia + "src/jsons/appearance.json";
+        String path = this.path + "src/jsons/appearance.json";
         String contents = Files.readString(Paths.get(path));
         List<Apperance> listAperance = objectMapper.readValue(contents, new TypeReference<List<Apperance>>() {
         });
@@ -255,7 +253,7 @@ public class DeserializationController {
     public void personalityDeserializationAndDatabaseUpdate() throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
 
-        String path = kasia + "src/jsons/personality.json";
+        String path = this.path + "src/jsons/personality.json";
         String contents = Files.readString(Paths.get(path));
         List<Personality> listPersonality = objectMapper.readValue(contents, new TypeReference<List<Personality>>() {
         });
@@ -268,7 +266,7 @@ public class DeserializationController {
     public void placeDeserializationAndDatabaseUpdate() throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
 
-        String path = kasia + "src/jsons/place.json";
+        String path = this.path + "src/jsons/place.json";
         String contents = Files.readString(Paths.get(path));
         List<Place> listPlace = objectMapper.readValue(contents, new TypeReference<List<Place>>() {
         });
@@ -281,7 +279,7 @@ public class DeserializationController {
     public void emotionDeserializationAndDatabaseUpdate() throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
 
-        String path = kasia + "src/jsons/emotion.json";
+        String path = this.path + "src/jsons/emotion.json";
         String contents = Files.readString(Paths.get(path));
         List<Emotion> listEmotion = objectMapper.readValue(contents, new TypeReference<List<Emotion>>() {
         });
@@ -293,7 +291,7 @@ public class DeserializationController {
     @RequestMapping("/json/statistics")
     public void statisticsDeserializationAndDatabaseUpdate() throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
-        String path = kasia + "src/jsons/statistics.json";
+        String path = this.path + "src/jsons/statistics.json";
         String contents = Files.readString(Paths.get(path));
         List<Statistics> listStatistics = objectMapper.readValue(contents, new TypeReference<List<Statistics>>() {
         });
@@ -305,14 +303,14 @@ public class DeserializationController {
     @RequestMapping("/json/career")
     public void carrierDeserializationAndDatabaseUpdate() throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
-        String path = kasia + "src/jsons/career_base.json";
+        String path = this.path + "src/jsons/career_base.json";
         String contents = Files.readString(Paths.get(path));
         List<Career> listCareer = objectMapper.readValue(contents, new TypeReference<List<Career>>() {
         });
         for (Career career : listCareer) {
             careerService.save(career);
         }
-        String path2 = kasia + "src/jsons/career_full.json";
+        String path2 = this.path + "src/jsons/career_full.json";
         String contents2 = Files.readString(Paths.get(path2));
         List<Career> listCareer2 = objectMapper.readValue(contents2, new TypeReference<List<Career>>() {
         });

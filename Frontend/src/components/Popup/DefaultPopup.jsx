@@ -28,6 +28,7 @@ class DefaultPopup extends React.Component {
 
         for (let i=0; i<columnsConfig.length ; i++){
             const fieldName = columnsConfig[i].field;
+            if(form.getElementsByTagName("input")[i] === undefined) continue;
             const checked = form.getElementsByTagName("input")[i].checked;
             object[fieldName] = checked;
         }

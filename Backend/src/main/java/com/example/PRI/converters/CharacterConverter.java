@@ -49,7 +49,7 @@ public class CharacterConverter {
         output.setPrediction(character.getPrediction() == null ? "" : character.getPrediction().getText());
         output.setReligion(character.getReligion()==null ? "" : character.getReligion().getGodName());
         output.setSkills(character.getSkills().stream().map(CharacterConverter::convert).collect(Collectors.toList()));
-        output.setStarSign(character.getStarSign()==null ? "" : character.getStarSign().getShortName());
+        output.setStarSign(character.getStarSign()==null ? "" : character.getStarSign().getName());
         output.setTalents(character.getTalents().stream().map(Talent::getName).collect(Collectors.toList()));
         output.setWeight(character.getWeight());
         return output;
@@ -98,7 +98,7 @@ public class CharacterConverter {
             output.setMonthOfBirth(String.valueOf(character.getBirthDate().getMonth().getMonthName()));
             output.setYearOfBird(String.valueOf(character.getBirthDate().getYear()));
         }
-        output.setStarSign(character.getStarSign() == null ? "" : character.getStarSign().getShortName());
+        output.setStarSign(character.getStarSign() == null ? "" : character.getStarSign().getName());
         output.setDominatingEmotions(getStringFromArrayProperties(character.getDominatingEmotions().stream().map(Emotion::getName).collect(Collectors.toList())));
         output.setSex(character.getSex().getName());
         output.setReligion(character.getReligion().getGodName());

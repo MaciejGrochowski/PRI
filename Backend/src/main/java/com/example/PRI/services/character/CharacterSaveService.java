@@ -128,6 +128,7 @@ public class CharacterSaveService {
     public Prediction predictionConvert(String inputPrediction) {
         Optional<Prediction> prediction = predictionService.findByText(inputPrediction);
         if (prediction.isPresent()) return prediction.get();
+        if (inputPrediction == null) return null;
         if (inputPrediction.matches("[a-z].*")) {
             String firstLetter = inputPrediction.substring(0, 1).toUpperCase();
             String newPredictionWithBigFirstLetter = firstLetter + inputPrediction.substring(1);

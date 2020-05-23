@@ -60,6 +60,7 @@ public class DeserializationController {
     @Autowired
     StatisticsService statisticsService;
 
+
     final String path = "";
 
     @RequestMapping("/json/name")

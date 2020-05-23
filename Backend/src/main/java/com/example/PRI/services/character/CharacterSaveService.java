@@ -14,6 +14,7 @@ import com.example.PRI.services.character.generator.EyeColorGenerator;
 import com.example.PRI.services.character.generator.SurnameGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import com.example.PRI.exceptions.CharacterGenerationException;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -79,29 +80,34 @@ public class CharacterSaveService {
     private StatisticsService statisticsService;
 
 
-    public Optional<Surname> surnameConvert(String surNew, Character character) {
+    public Surname surnameConvert(String surNew) {
         Optional<Surname> surname = surnameService.findBySurname(surNew);
-        surname.ifPresent(character::setSurname);
-        if (!surname.isPresent() && surNew != null) {
+        if (surNew == null) {
+            return new Surname();
+        }
+        if (surname.isPresent()) return surname.get();
+        if (surNew.matches(".*\\d.*")) throw new CharacterGenerationException("W imieniu znajduje się liczba", new IllegalArgumentException());
+        else {
             Surname surnameNew = new Surname();
             surnameNew.setSurname(surNew);
             surnameService.save(surnameNew);
-            character.setSurname(surnameNew);
+            return  surnameNew;
         }
-        return surname;
+
     }
 
-    public Optional<Name> nameConvert(String inputName, Character character) {
-        if (inputName == null) throw new CharacterSaveException("Błont", new IllegalArgumentException());
+
+    public Name nameConvert(String inputName) {
+        if (inputName == null) throw new IllegalArgumentException();
         Optional<Name> nameOptional = nameService.findByName(inputName);
-        nameOptional.ifPresent(character::setName);
-        if (!nameOptional.isPresent() && inputName != null) {
+        if(nameOptional.isPresent()) return nameOptional.get();
+        if (inputName.matches("[A-Z][a-z]*")) {
             Name nameNew = new Name();
             nameNew.setName(inputName);
             nameService.save(nameNew);
-            character.setName(nameNew);
+            return  nameNew;
         }
-        return nameOptional;
+        else throw new IllegalArgumentException();
     }
 
     public Optional<Prediction> predictionConvert(String inputPrediction, Character character) {

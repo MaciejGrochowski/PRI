@@ -120,7 +120,7 @@ public class CharacterGenerator extends GeneralService {
         character.setEndMovement(characterSaveService.endMovementConvert(characterInputDto.getEndMovement()));
         character.setEndMagic(characterSaveService.endMagicConvert(characterInputDto.getEndMagic()));
         character.setStarSign(characterSaveService.saveStarSign(character,character.getBirthDate()));
-        /*characterSaveService.baseStatisticsConvert(characterInputDto,character);*/
+        character.setBaseStats(characterSaveService.baseStatisticsConvert(characterInputDto));
         characterService.save(character);
 
         return character.getId();

@@ -126,9 +126,9 @@ public class CharacterSaveService {
     }
 
     public Prediction predictionConvert(String inputPrediction) {
+        if (inputPrediction == null) return new Prediction();
         Optional<Prediction> prediction = predictionService.findByText(inputPrediction);
         if (prediction.isPresent()) return prediction.get();
-        if (inputPrediction == null) return null;
         if (inputPrediction.matches("[a-z].*")) {
             String firstLetter = inputPrediction.substring(0, 1).toUpperCase();
             String newPredictionWithBigFirstLetter = firstLetter + inputPrediction.substring(1);
@@ -241,7 +241,7 @@ public class CharacterSaveService {
         return newDate;
     }
 
-    private StarSign saveStarSign(Character character, ImperialDate date) {
+    public StarSign saveStarSign(Character character, ImperialDate date) {
         Integer day = date.getDay();
         StarSign characterStarSign = null;
         String month = date.getMonth().getMonthName();
@@ -350,139 +350,117 @@ public class CharacterSaveService {
             newWeaponSkill = Integer.parseInt(WeaponSkill);
             if (newWeaponSkill < 100) return newWeaponSkill;
             else throw new CharacterSaveException("Za duża liczba dla walki wręcz.\nMaksymalna liczba: 99", new IllegalArgumentException());
-        } else throw new CharacterSaveException("Nie poprawny format statystyki dla walki wręcz.", new IllegalArgumentException());
+        } else throw new CharacterSaveException("Nie poprawny format dla walki wręcz.", new IllegalArgumentException());
     }
 
-    public Integer endBallisticSkillsConvert(String BallisticSkills, Character character) {
-        if (BallisticSkills == null) throw new IllegalArgumentException();
+    public Integer endBallisticSkillsConvert(String BallisticSkills) {
+        if (BallisticSkills == null) throw new CharacterSaveException("Podaj statystyke dla umiejętności strzeleckich.", new IllegalArgumentException());
         Integer newBallisticSkill = null;
         if (BallisticSkills.matches("[0-9]+")) {
             newBallisticSkill = Integer.parseInt(BallisticSkills);
-            if (newBallisticSkill < 100) character.setEndBallisticSkills(newBallisticSkill);
-            else throw new IllegalArgumentException();
-        } else throw new IllegalArgumentException();
-
-        return newBallisticSkill;
+            if (newBallisticSkill < 100) return newBallisticSkill;
+            else throw new CharacterSaveException("Za duża liczba dla umiejętności strzeleckich.\nMaksymalna liczba: 99", new IllegalArgumentException());
+        } else throw new CharacterSaveException("Nie poprawny format dla umiejętności strzeleckich.", new IllegalArgumentException());
     }
 
-    public Integer endStrengthConvert(String endStrength, Character character) {
-        if (endStrength == null) throw new IllegalArgumentException();
+    public Integer endStrengthConvert(String endStrength) {
+        if (endStrength == null) throw new CharacterSaveException("Podaj statystyke dla krzepy.", new IllegalArgumentException());
         Integer newEndStrength = null;
         if (endStrength.matches("[0-9]+")) {
             newEndStrength = Integer.parseInt(endStrength);
-            if (newEndStrength < 100) character.setEndStrength(newEndStrength);
-            else throw new IllegalArgumentException();
-        } else throw new IllegalArgumentException();
-
-        return newEndStrength;
+            if (newEndStrength < 100) return newEndStrength;
+            else throw new CharacterSaveException("Za duża liczba dla krzepy.\nMaksymalna liczba: 99", new IllegalArgumentException());
+        } else throw new CharacterSaveException("Nie poprawny format dla krzepy.", new IllegalArgumentException());
     }
 
-    public Integer endToughnessConvert(String endToughness, Character character) {
-        if (endToughness == null) throw new IllegalArgumentException();
+    public Integer endToughnessConvert(String endToughness) {
+        if (endToughness == null) throw new CharacterSaveException("Podaj statystyke dla odporności.", new IllegalArgumentException());
         Integer newEndToughness = null;
         if (endToughness.matches("[0-9]+")) {
             newEndToughness = Integer.parseInt(endToughness);
-            if (newEndToughness < 100) character.setEndToughness(newEndToughness);
-            else throw new IllegalArgumentException();
-        } else throw new IllegalArgumentException();
-
-        return newEndToughness;
+            if (newEndToughness < 100) return newEndToughness;
+            else throw new CharacterSaveException("Za duża liczba dla odporności.\nMaksymalna liczba: 99", new IllegalArgumentException());
+        } else throw new CharacterSaveException("Nie poprawny format dla odporności.", new IllegalArgumentException());
     }
 
-    public Integer endAgilityConvert(String endAgility, Character character) {
-        if (endAgility == null) throw new IllegalArgumentException();
+    public Integer endAgilityConvert(String endAgility) {
+        if (endAgility == null) throw new CharacterSaveException("Podaj statystyke dla zręczności.", new IllegalArgumentException());
         Integer newEndAgility = null;
         if (endAgility.matches("[0-9]+")) {
             newEndAgility = Integer.parseInt(endAgility);
-            if (newEndAgility < 100) character.setEndAgility(newEndAgility);
-            else throw new IllegalArgumentException();
-        } else throw new IllegalArgumentException();
-
-        return newEndAgility;
+            if (newEndAgility < 100) return newEndAgility;
+            else throw new CharacterSaveException("Za duża liczba dla zręczności.\nMaksymalna liczba: 99", new IllegalArgumentException());
+        } else throw new CharacterSaveException("Nie poprawny format dla zręczności.", new IllegalArgumentException());
     }
 
-    public Integer endIntelligenceConvert(String endIntelligence, Character character) {
-        if (endIntelligence == null) throw new IllegalArgumentException();
+    public Integer endIntelligenceConvert(String endIntelligence) {
+        if (endIntelligence == null) throw new CharacterSaveException("Podaj statystyke dla inteligencji.", new IllegalArgumentException());
         Integer newEndIntelligence = null;
         if (endIntelligence.matches("[0-9]+")) {
             newEndIntelligence = Integer.parseInt(endIntelligence);
-            if (newEndIntelligence < 100) character.setEndIntelligence(newEndIntelligence);
-            else throw new IllegalArgumentException();
-        } else throw new IllegalArgumentException();
-
-        return newEndIntelligence;
+            if (newEndIntelligence < 100) return newEndIntelligence;
+            else throw new CharacterSaveException("Za duża liczba dla inteligencji.\nMaksymalna liczba: 99", new IllegalArgumentException());
+        } else throw new CharacterSaveException("Nie poprawny format dla inteligencji.", new IllegalArgumentException());
     }
 
-    public Integer endWillPowerConvert(String endWillPower, Character character) {
-        if (endWillPower == null) throw new IllegalArgumentException();
+    public Integer endWillPowerConvert(String endWillPower) {
+        if (endWillPower == null) throw new CharacterSaveException("Podaj statystyke dla siły woli.", new IllegalArgumentException());
         Integer newEndWillPower = null;
         if (endWillPower.matches("[0-9]+")) {
             newEndWillPower = Integer.parseInt(endWillPower);
-            if (newEndWillPower < 100) character.setEndWillPower(newEndWillPower);
-            else throw new IllegalArgumentException();
-        } else throw new IllegalArgumentException();
-
-        return newEndWillPower;
+            if (newEndWillPower < 100) return newEndWillPower;
+            else throw new CharacterSaveException("Za duża liczba dla siły woli.\nMaksymalna liczba: 99", new IllegalArgumentException());
+        } else throw new CharacterSaveException("Nie poprawny format dla siły woli.", new IllegalArgumentException());
     }
 
-    public Integer endFellowshipConvert(String endFellowship, Character character) {
-        if (endFellowship == null) throw new IllegalArgumentException();
+    public Integer endFellowshipConvert(String endFellowship) {
+        if (endFellowship == null) throw new CharacterSaveException("Podaj statystyke dla ogłady.", new IllegalArgumentException());
         Integer newEndFellowship = null;
         if (endFellowship.matches("[0-9]+")) {
             newEndFellowship = Integer.parseInt(endFellowship);
-            if (newEndFellowship < 100) character.setEndFellowship(newEndFellowship);
-            else throw new IllegalArgumentException();
-        } else throw new IllegalArgumentException();
-
-        return newEndFellowship;
+            if (newEndFellowship < 100) return newEndFellowship;
+            else throw new CharacterSaveException("Za duża liczba dla ogłady.\nMaksymalna liczba: 99", new IllegalArgumentException());
+        } else throw new CharacterSaveException("Nie poprawny format dla ogłady.", new IllegalArgumentException());
     }
 
-    public Integer endAttacksConvert(String endAttack, Character character) {
-        if (endAttack == null) throw new IllegalArgumentException();
+    public Integer endAttacksConvert(String endAttack) {
+        if (endAttack == null) throw new CharacterSaveException("Podaj statystyke dla ataku.", new IllegalArgumentException());
         Integer newEndAttack = null;
         if (endAttack.matches("[0-9]+")) {
             newEndAttack = Integer.parseInt(endAttack);
-            if (newEndAttack < 100) character.setEndAttacks(newEndAttack);
-            else throw new IllegalArgumentException();
-        } else throw new IllegalArgumentException();
-
-        return newEndAttack;
+            if (newEndAttack < 100) return newEndAttack;
+            else throw new CharacterSaveException("Za duża liczba dla ataku.\nMaksymalna liczba: 99", new IllegalArgumentException());
+        } else throw new CharacterSaveException("Nie poprawny format dla ataku.", new IllegalArgumentException());
     }
 
-    public Integer endWoundsConvert(String endWound, Character character) {
-        if (endWound == null) throw new IllegalArgumentException();
+    public Integer endWoundsConvert(String endWound) {
+        if (endWound == null) throw new CharacterSaveException("Podaj statystyke dla żywotności.", new IllegalArgumentException());
         Integer newEndWound = null;
         if (endWound.matches("[0-9]+")) {
             newEndWound = Integer.parseInt(endWound);
-            if (newEndWound < 100) character.setEndWounds(newEndWound);
-            else throw new IllegalArgumentException();
-        } else throw new IllegalArgumentException();
-
-        return newEndWound;
+            if (newEndWound < 100) return newEndWound;
+            else throw new CharacterSaveException("Za duża liczba dla żywotności.\nMaksymalna liczba: 99", new IllegalArgumentException());
+        } else throw new CharacterSaveException("Nie poprawny format dla żywotności.", new IllegalArgumentException());
     }
 
-    public Integer endMovementConvert(String endMovement, Character character) {
-        if (endMovement == null) throw new IllegalArgumentException();
+    public Integer endMovementConvert(String endMovement) {
+        if (endMovement == null) throw new CharacterSaveException("Podaj statystyke dla szybkości.", new IllegalArgumentException());
         Integer newEndMovement = null;
         if (endMovement.matches("[0-9]+")) {
             newEndMovement = Integer.parseInt(endMovement);
-            if (newEndMovement < 100) character.setEndMovement(newEndMovement);
-            else throw new IllegalArgumentException();
-        } else throw new IllegalArgumentException();
-
-        return newEndMovement;
+            if (newEndMovement < 100) return newEndMovement;
+            else throw new CharacterSaveException("Za duża liczba dla szybkości.\nMaksymalna liczba: 99", new IllegalArgumentException());
+        } else throw new CharacterSaveException("Nie poprawny format dla szybkości.", new IllegalArgumentException());
     }
 
-    public Integer endMagicConvert(String endMagic, Character character) {
-        if (endMagic == null) throw new IllegalArgumentException();
+    public Integer endMagicConvert(String endMagic) {
+        if (endMagic == null) throw new CharacterSaveException("Podaj statystyke dla magii.", new IllegalArgumentException());
         Integer newEndMagic = null;
         if (endMagic.matches("[0-9]+")) {
             newEndMagic = Integer.parseInt(endMagic);
-            if (newEndMagic < 100) character.setEndMagic(newEndMagic);
-            else throw new IllegalArgumentException();
-        } else throw new IllegalArgumentException();
-
-        return newEndMagic;
+            if (newEndMagic < 100) return newEndMagic;
+            else throw new CharacterSaveException("Za duża liczba dla walki magii.\nMaksymalna liczba: 99", new IllegalArgumentException());
+        } else throw new CharacterSaveException("Nie poprawny format dla walki magii.", new IllegalArgumentException());
     }
 
     public Statistics baseStatisticsConvert(CharacterInputDto characterInputDto) {

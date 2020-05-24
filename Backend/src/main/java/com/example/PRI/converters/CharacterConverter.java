@@ -106,7 +106,7 @@ public class CharacterConverter {
         output.setHeight(character.getHeight());
         output.setSurname(character.getSurname() != null ? character.getSurname().getSurname() : "");
         output.setName(character.getName().getName());
-        output.setPrediction(character.getPrediction().getText());
+        output.setPrediction(character.getPrediction() != null ? character.getPrediction().getText() : "");
         output.setCurrentCareer(character.getCurrentCareer().getName());
         output.setPreviousCareers(getStringFromArrayProperties(character.getPreviousCareers().stream().map(Career::getName).collect(Collectors.toList())));
         output.setSkills(character.getSkills());

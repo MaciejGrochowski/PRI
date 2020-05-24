@@ -63,7 +63,7 @@ public class Character extends GeneralEntity {
     @JoinColumn(name="name", referencedColumnName="name")
     Name name;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="prediction", referencedColumnName="text")
     Prediction prediction;
 

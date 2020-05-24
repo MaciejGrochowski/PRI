@@ -108,18 +108,19 @@ public class CharacterGenerator extends GeneralService {
         character.setTalents(characterSaveService.talentsConvert(characterInputDto.getTalents()));
         character.setDominatingEmotions(characterSaveService.dominantingEmotionConvert(characterInputDto.getDominatingEmotions()));
         character.setEndWeaponSkills(characterSaveService.endWeaponSkillConvert(characterInputDto.getEndWeaponSkills()));
-        /*characterSaveService.endBallisticSkillsConvert(characterInputDto.getEndBallisticSkills(),character);
-        characterSaveService.endStrengthConvert(characterInputDto.getEndStrength(),character);
-        characterSaveService.endToughnessConvert(characterInputDto.getEndToughness(),character);
-        characterSaveService.endAgilityConvert(characterInputDto.getEndAgility(),character);
-        characterSaveService.endIntelligenceConvert(characterInputDto.getEndIntelligence(),character);
-        characterSaveService.endWillPowerConvert(characterInputDto.getEndWillPower(),character);
-        characterSaveService.endFellowshipConvert(characterInputDto.getEndFellowship(),character);
-        characterSaveService.endAttacksConvert(characterInputDto.getEndAttacks(),character);
-        characterSaveService.endWoundsConvert(characterInputDto.getEndWounds(),character);
-        characterSaveService.endMovementConvert(characterInputDto.getEndMovement(),character);
-        characterSaveService.endMagicConvert(characterInputDto.getEndMagic(),character);
-        characterSaveService.baseStatisticsConvert(characterInputDto,character);*/
+        character.setEndBallisticSkills(characterSaveService.endBallisticSkillsConvert(characterInputDto.getEndBallisticSkills()));
+        character.setEndStrength(characterSaveService.endStrengthConvert(characterInputDto.getEndStrength()));
+        character.setEndToughness(characterSaveService.endToughnessConvert(characterInputDto.getEndToughness()));
+        character.setEndAgility(characterSaveService.endAgilityConvert(characterInputDto.getEndAgility()));
+        character.setEndIntelligence(characterSaveService.endIntelligenceConvert(characterInputDto.getEndIntelligence()));
+        character.setEndWillPower(characterSaveService.endWillPowerConvert(characterInputDto.getEndWillPower()));
+        character.setEndFellowship(characterSaveService.endFellowshipConvert(characterInputDto.getEndFellowship()));
+        character.setEndAttacks(characterSaveService.endAttacksConvert(characterInputDto.getEndAttacks()));
+        character.setEndWounds(characterSaveService.endWoundsConvert(characterInputDto.getEndWounds()));
+        character.setEndMovement(characterSaveService.endMovementConvert(characterInputDto.getEndMovement()));
+        character.setEndMagic(characterSaveService.endMagicConvert(characterInputDto.getEndMagic()));
+        character.setStarSign(characterSaveService.saveStarSign(character,character.getBirthDate()));
+        /*characterSaveService.baseStatisticsConvert(characterInputDto,character);*/
         characterService.save(character);
 
         return character.getId();

@@ -319,171 +319,51 @@
         "properties": ""
     },
     {"id": 81,
-        "name": "Broń specjalna (arkan)",
-        "properties": ""
-    },
-    {"id": 82,
-        "name": "Broń specjalna (bicz)",
-        "properties": ""
-    },
-    {"id": 83,
-        "name": "Broń specjalna (bolas)",
-        "properties": ""
-    },
-    {"id": 84,
         "name": "Broń specjalna (dwuręczna)",
         "properties": ""
     },
-    {"id": 85,
+    {"id": 82,
         "name": "Broń specjalna (improwizowana)",
         "properties": ""
     },
-    {"id": 86,
-        "name": "Broń specjalna (jednoręczna)",
-        "properties": ""
-    },
-    {"id": 87,
+    {"id": 83,
         "name": "Broń specjalna (długi łuk)",
         "properties": ""
     },
-    {"id": 88,
-        "name": "Broń specjalna (elfi łuk)",
-        "properties": ""
-    },
-    {"id": 89,
-        "name": "Broń specjalna (garłacz)",
-        "properties": ""
-    },
-    {"id": 90,
-        "name": "Broń specjalna (Halabarda)",
-        "properties": ""
-    },
-    {"id": 91,
-        "name": "Broń specjalna (kij)",
-        "properties": ""
-    },
-    {"id": 92,
-        "name": "Broń specjalna (kopia)",
-        "properties": ""
-    },
-    {"id": 93,
-        "name": "Broń specjalna (korbacz lub morgenstern)",
-        "properties": ""
-    },
-    {"id": 94,
-        "name": "Broń specjalna (krótki łuk)",
-        "properties": ""
-    },
-    {"id": 95,
-        "name": "Broń specjalna (kule do broni palnej)",
-        "properties": ""
-    },
-    {"id": 96,
-        "name": "Broń specjalna (kusza)",
-        "properties": ""
-    },
-    {"id": 97,
-        "name": "Broń specjalna (kusza pistoletowa)",
-        "properties": ""
-    },
-    {"id": 98,
-        "name": "Broń specjalna (kusza samopowtarzalna)",
-        "properties": ""
-    },
-    {"id": 99,
-        "name": "Broń specjalna (lanca)",
-        "properties": ""
-    },
-    {"id": 100,
-        "name": "Broń specjalna (lewak)",
-        "properties": ""
-    },
-    {"id": 101,
-        "name": "Broń specjalna (łamacz mieczy)",
-        "properties": ""
-    },
-    {"id": 102,
-        "name": "Broń specjalna (łuk)",
-        "properties": ""
-    },
-    {"id": 103,
-        "name": "Broń specjalna (muszkiet hochlandzki)",
-        "properties": ""
-    },
-    {"id": 104,
-        "name": "Broń specjalna (nóż lub gwiazdka do rzucania)",
-        "properties": ""
-    },
-    {"id": 105,
-        "name": "Broń specjalna (oszczep)",
-        "properties": ""
-    },
-    {"id": 106,
-        "name": "Broń specjalna (pistolet)",
-        "properties": ""
-    },
-    {"id": 107,
+    {"id": 84,
         "name": "Broń specjalna (proca)",
         "properties": ""
     },
-    {"id": 108,
-        "name": "Broń specjalna (proca drzewcowa)",
+    {"id": 85,
+        "name": "Broń specjalna (rzucana)",
         "properties": ""
     },
-    {"id": 109,
-        "name": "Broń specjalna (proch)",
+    {"id": 86,
+        "name": "Broń specjalna (korbacze)",
         "properties": ""
     },
-    {"id": 110,
-        "name": "Broń specjalna (puklerz)",
+    {"id": 87,
+        "name": "Broń specjalna (kawaleryjska)",
         "properties": ""
     },
-    {"id": 111,
-        "name": "Broń specjalna (rapier)",
+    {"id": 88,
+        "name": "Broń specjalna (parująca)",
         "properties": ""
     },
-    {"id": 112,
-        "name": "Broń specjalna (rękawice lub kastety)",
+    {"id": 89,
+        "name": "Broń specjalna (szermiercza)",
         "properties": ""
     },
-    {"id": 113,
-        "name": "Broń specjalna (rusznica)",
+    {"id": 90,
+        "name": "Broń specjalna (unieruchamiająca)",
         "properties": ""
     },
-    {"id": 114,
-        "name": "Broń specjalna (rusznica lub pistolet wielostrzałowy)",
+    {"id": 91,
+        "name": "Broń specjalna (palna)",
         "properties": ""
     },
-    {"id": 115,
-        "name": "Broń specjalna (sieć)",
-        "properties": ""
-    },
-    {"id": 116,
-        "name": "Broń specjalna (strzała lub bełt)",
-        "properties": ""
-    },
-    {"id": 117,
-        "name": "Broń specjalna (szpada)",
-        "properties": ""
-    },
-    {"id": 118,
-        "name": "Broń specjalna (sztylet)",
-        "properties": ""
-    },
-    {"id": 119,
-        "name": "Broń specjalna (tarcza)",
-        "properties": ""
-    },
-    {"id": 120,
-        "name": "Broń specjalna (topór lub młot do rzucania)",
-        "properties": ""
-    },
-    {"id": 121,
-        "name": "Broń specjalna (walka bez broni)",
-        "properties": ""
-    },
-    {"id": 122,
-        "name": "Broń specjalna (włócznia)",
+    {"id": 92,
+        "name": "Broń specjalna (mechaniczna)",
         "properties": ""
     }
 ]

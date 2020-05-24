@@ -36,4 +36,5 @@ public class Career extends GeneralEntity {
     //Profesja wpływa na cechy wyglądu, np. blizny są częstsze u wojowników.
     //Profesja wpływa na cechy charakteru, np. kapłan będzie częściej religijny, złodziej częściej chciwy
     String properties;
+    String bestNextCareer;
 }

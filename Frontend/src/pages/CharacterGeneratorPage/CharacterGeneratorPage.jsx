@@ -12,22 +12,25 @@ import generatorService from "../../services/generatorService";
 
 
 import ReactDOM from 'react-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faSyncAlt} from '@fortawesome/free-solid-svg-icons';
 import ErrorGenerator from "../../components/ErrorLayout/ErrorGenerator";
+import {careerContext} from "./context";
+import GeneratorTextField from "../../components/Generator/GeneratorTextField";
+
 const mygrid = {
-        all: 'none',
-        width: '30px',
-        height: "30px",
-        border: 'solid 1px white',
-        borderRadius: '25%',
-        marginBotton: '5%',
-        marginTop:'5%',
-        textAlign: 'center',
+    all: 'none',
+    width: '30px',
+    height: "30px",
+    border: 'solid 1px white',
+    borderRadius: '25%',
+    marginBotton: '5%',
+    marginTop: '5%',
+    textAlign: 'center',
 };
 
 
-const element = <FontAwesomeIcon icon={faSyncAlt} />
+const element = <FontAwesomeIcon icon={faSyncAlt}/>
 
 class CharacterGeneratorPage extends React.Component {
 
@@ -44,7 +47,8 @@ class CharacterGeneratorPage extends React.Component {
                 emotionNames: [],
                 talentNames: [],
                 skillNames: []
-            }
+            },
+            fullGenerated: {}
         }
     }
 
@@ -68,140 +72,83 @@ class CharacterGeneratorPage extends React.Component {
     }
 
     getDataFromForm = () => {
-        let output = {};
-        const name = document.getElementById('characterGeneratorName');
-        if (name && name.value !== "") output = {...output, name: name.value}
-
-        const surname = document.getElementById('characterGeneratorSurname');
-        if (surname && surname.value !== "") output = {...output, surname: surname.value}
-
-        const sex = document.getElementById('characterGeneratorSex');
-        if (sex && sex.value !== "") output = {...output, sex: sex.value}
-
-        const race = document.getElementById('characterGeneratorRace');
-        if (race && race.value !== "") output = {...output, race: race.value}
-
-        const currentCareer = document.getElementById("characterGeneratorCurrentCareer");
-        if (currentCareer && currentCareer.value !== "") output = {...output, currentCareer: currentCareer.value}
-
-        const previousCareers = Array.from(document.getElementsByClassName("characterGeneratorPreviousCareers")).map(c => c.textContent);
-        if (previousCareers.length > 0) output = {
-            ...output,
-            previousCareers: this.mapFilterArrayToString(previousCareers, this.state.autocompleteData.careerNames)
-        }
-
-        const dayOfBirth = document.getElementById('characterGeneratorDayOfBirth');
-        if (dayOfBirth && dayOfBirth.value !== "") output = {...output, dayOfBirth: dayOfBirth.value}
-
-        const monthOfBirth = document.getElementById('characterGeneratorMonthOfBirth');
-        if (monthOfBirth && monthOfBirth.value !== "") output = {...output, monthOfBirth: monthOfBirth.value}
-
-        const eyeColor = document.getElementById('characterGeneratorEyeColor');
-        if (eyeColor && eyeColor.value !== "") output = {...output, eyeColor: eyeColor.value}
-
-        const hairColor = document.getElementById('characterGeneratorHairColor');
-        if (hairColor && hairColor.value !== "") output = {...output, hairColor: hairColor.value}
-
-        const yearOfBirth = document.getElementById('characterGeneratorYearOfBirth');
-        if (yearOfBirth && yearOfBirth.value !== "") output = {...output, yearOfBirth: yearOfBirth.value}
-
-        const height = document.getElementById('characterGeneratorHeight');
-        if (height && height.value !== "") output = {...output, height: height.value}
-        const weight = document.getElementById('characterGeneratorWeight');
-        if (weight && weight.value !== "") output = {...output, weight: weight.value}
-
-
-        const prediction = document.getElementById('characterGeneratorPrediction');
-        if (prediction && prediction.value !== "") output = {...output, prediction: prediction.value};
-
-
-        const livePlace = document.getElementById("characterGeneratorLivePlace");
-        if (livePlace && livePlace.value !== "") output = {...output, livePlace: livePlace.value}
-
-        const birthPlace = document.getElementById("characterGeneratorBirthPlace");
-        if (birthPlace && birthPlace.value !== "") output = {...output, birthPlace: birthPlace.value}
-
-        const emotions = Array.from(document.getElementsByClassName("characterGeneratorEmotions")).map(c => c.textContent)
-        if (emotions.length > 0) output = {
-            ...output,
-            dominatingEmotions: this.mapFilterArrayToString(emotions, this.state.autocompleteData.emotionNames)
-        }
-
-        const religion = document.getElementById("characterGeneratorReligion");
-        if (religion && religion.value !== "") output = {...output, religion: religion.value}
-
-        const skills = Array.from(document.getElementsByClassName("characterGeneratorSkills")).map(c => c.textContent)
-        if (skills.length > 0) output = {
-            ...output,
-            skills: this.mapFilterArrayToString(skills, this.state.autocompleteData.skillNames)
-        }
-
-        const talents = Array.from(document.getElementsByClassName("characterGeneratorTalents")).map(c => c.textContent)
-        if (talents.length > 0) output = {
-            ...output,
-            talents: this.mapFilterArrayToString(talents, this.state.autocompleteData.talentNames)
-        }
-
-        const personalities = Array.from(document.getElementsByClassName("characterGeneratorPersonality")).map(c => c.textContent)
-        if (personalities.length > 0) output = {
-            ...output,
-            personality: this.mapFilterArrayToString(personalities, this.state.autocompleteData.personalityNames)
-        }
-
-        const apperances = Array.from(document.getElementsByClassName("characterGeneratorApperances")).map(c => c.textContent)
-        if (apperances.length > 0) output = {
-            ...output,
-            apperance: this.mapFilterArrayToString(apperances, this.state.apperanceNames)
-        }
-        const baseWeaponSkills = document.getElementById("characterGeneratorBaseWeaponSkills");
-        if (baseWeaponSkills && baseWeaponSkills.value !== "") output = {...output, baseWeaponSkills: baseWeaponSkills.value}
-        const endWeaponSkills = document.getElementById("characterGeneratorEndWeaponSkills");
-        if (endWeaponSkills && endWeaponSkills.value !== "") output = {...output, endWeaponSkills: endWeaponSkills.value}
-
-        const baseBallisticSkills = document.getElementById("characterGeneratorBaseBallisticSkills");
-        if (baseBallisticSkills && baseBallisticSkills.value !== "") output = {...output, baseBallisticSkills: baseBallisticSkills.value}
-        const endBallisticSkills = document.getElementById("characterGeneratorEndBallisticSkills");
-        if (endBallisticSkills && endBallisticSkills.value !== "") output = {...output, endBallisticSkills: endBallisticSkills.value}
-        const baseStrength = document.getElementById("characterGeneratorBaseStrength");
-        if (baseStrength && baseStrength.value !== "") output = {...output, baseStrength: baseStrength.value}
-        const endStrength = document.getElementById("characterGeneratorEndStrength");
-        if (endStrength && endStrength.value !== "") output = {...output, endStrength: endStrength.value}
-        const baseToughness = document.getElementById("characterGeneratorBaseToughness");
-        if (baseToughness && baseToughness.value !== "") output = {...output, baseToughness: baseToughness.value}
-        const endToughness = document.getElementById("characterGeneratorEndToughness");
-        if (endToughness && endToughness.value !== "") output = {...output, endToughness: endToughness.value}
-        const baseAgility = document.getElementById("characterGeneratorBaseAgility");
-        if (baseAgility && baseAgility.value !== "") output = {...output, baseAgility: baseAgility.value}
-        const endAgility = document.getElementById("characterGeneratorEndAgility");
-        if (endAgility && endAgility.value !== "") output = {...output, endAgility: endAgility.value}
-        const baseIntelligence = document.getElementById("characterGeneratorBaseIntelligence");
-        if (baseIntelligence && baseIntelligence.value !== "") output = {...output, baseIntelligence: baseIntelligence.value}
-        const endIntelligence = document.getElementById("characterGeneratorEndIntelligence");
-        if (endIntelligence && endIntelligence.value !== "") output = {...output, endIntelligence: endIntelligence.value}
-        const baseWillPower = document.getElementById("characterGeneratorBaseWillPower");
-        if (baseWillPower && baseWillPower.value !== "") output = {...output, baseWillPower: baseWillPower.value}
-        const endWillPower = document.getElementById("characterGeneratorEndWillPower");
-        if (endWillPower && endWillPower.value !== "") output = {...output, endWillPower: endWillPower.value}
-        const baseFellowship = document.getElementById("characterGeneratorBaseFellowship");
-        if (baseFellowship && baseFellowship.value !== "") output = {...output, baseFellowship: baseFellowship.value}
-        const endFellowship = document.getElementById("characterGeneratorEndFellowship");
-        if (endFellowship && endFellowship.value !== "") output = {...output, endFellowship: endFellowship.value}
-        const baseAttacks = document.getElementById("characterGeneratorBaseAttacks");
-        if (baseAttacks && baseAttacks.value !== "") output = {...output, baseAttacks: baseAttacks.value}
-        const endAttacks = document.getElementById("characterGeneratorEndAttacks");
-        if (endAttacks && endAttacks.value !== "") output = {...output, endAttacks: endAttacks.value}
-        const baseWounds = document.getElementById("characterGeneratorBaseWounds");
-        if (baseWounds && baseWounds.value !== "") output = {...output, baseWounds: baseWounds.value}
-        const endWounds = document.getElementById("characterGeneratorEndWounds");
-        if (endWounds && endWounds.value !== "") output = {...output, endWounds: endWounds.value}
-        const baseMovement = document.getElementById("characterGeneratorBaseMovement");
-        if (baseMovement && baseMovement.value !== "") output = {...output, baseMovement: baseMovement.value}
-        const endMovement = document.getElementById("characterGeneratorEndMovement");
-        if (endMovement && endMovement.value !== "") output = {...output, endMovement: endMovement.value}
-        const baseMagic = document.getElementById("characterGeneratorBaseMagic");
-        if (baseMagic && baseMagic.value !== "") output = {...output, baseMagic: baseMagic.value}
-        const endMagic = document.getElementById("characterGeneratorEndMagic");
-        if (endMagic && endMagic.value !== "") output = {...output, endMagic: endMagic.value}
+        let output = {
+            currentCareer: this.state.currentCareer,
+            sex: this.state.sex,
+            race: this.state.race,
+            previousCareers: this.mapFilterArrayToString(this.state.previousCareers),
+            monthOfBirth: this.state.monthOfBirth,
+            eyeColor: this.state.eyeColor,
+            hairColor: this.state.hairColor,
+            livePlace: this.state.livePlace,
+            birthPlace: this.state.birthPlace,
+            emotions: this.mapFilterArrayToString(this.state.dominatingEmotions),
+            religion: this.state.religion,
+            skills: this.mapFilterArrayToString(this.state.skills),
+            talents: this.mapFilterArrayToString(this.state.talents),
+            apperances: this.mapFilterArrayToString(this.state.apperances),
+            personalities: this.mapFilterArrayToString(this.state.personalities),
+            name: this.state.name, surname: this.state.surname, dayOfBirth: this.state.dayOfBirth,
+            yearOfBirth: this.state.yearOfBirth, height: this.state.height, weight: this.state.weight,
+            prediction: this.state.prediction,
+            baseWeaponSkills: this.state.baseWeaponSkills, endWeaponSkills: this.state.endWeaponSkills,
+            baseBallisticSkills: this.state.baseBallisticSkills, endBallisticSkills: this.state.endBallisticSkills,
+            baseStrength: this.state.baseStrength, endStrength: this.state.endStrength,
+            baseToughness: this.state.baseToughness, endToughness: this.state.endToughness,
+            baseAgility: this.state.baseAgility, endAgility: this.state.endAgility,
+            baseIntelligence: this.state.baseIntelligence, endIntelligence: this.state.endIntelligence,
+            baseWillPower: this.state.baseWillPower, endWillPower: this.state.endWillPower,
+            baseFellowship: this.state.baseFellowship, endFellowship: this.state.endFellowship,
+            baseAttacks: this.state.baseAttacks, endAttacks: this.state.endAttacks,
+            baseWounds: this.state.baseWounds, endWounds: this.state.endWounds,
+            baseMovement: this.state.baseMovement, endMovement: this.state.endMovement,
+            baseMagic: this.state.baseMagic, endMagic: this.state.endMagic
+        };
+        //
+        // const baseWeaponSkills = document.getElementById("characterGeneratorBaseWeaponSkills");
+        // if (baseWeaponSkills && baseWeaponSkills.value !== "") output = {
+        //     ...output,
+        //     baseWeaponSkills: baseWeaponSkills.value
+        // }
+        // const endWeaponSkills = document.getElementById("characterGeneratorEndWeaponSkills");
+        // if (endWeaponSkills && endWeaponSkills.value !== "") output = {
+        //     ...output,
+        //     endWeaponSkills: endWeaponSkills.value
+        // }
+        // const baseIntelligence = document.getElementById("characterGeneratorBaseIntelligence");
+        // if (baseIntelligence && baseIntelligence.value !== "") output = {
+        //     ...output,
+        //     baseIntelligence: baseIntelligence.value
+        // }
+        // const endIntelligence = document.getElementById("characterGeneratorEndIntelligence");
+        // if (endIntelligence && endIntelligence.value !== "") output = {
+        //     ...output,
+        //     endIntelligence: endIntelligence.value
+        // }
+        // const baseWillPower = document.getElementById("characterGeneratorBaseWillPower");
+        // if (baseWillPower && baseWillPower.value !== "") output = {...output, baseWillPower: baseWillPower.value}
+        // const endWillPower = document.getElementById("characterGeneratorEndWillPower");
+        // if (endWillPower && endWillPower.value !== "") output = {...output, endWillPower: endWillPower.value}
+        // const baseFellowship = document.getElementById("characterGeneratorBaseFellowship");
+        // if (baseFellowship && baseFellowship.value !== "") output = {...output, baseFellowship: baseFellowship.value}
+        // const endFellowship = document.getElementById("characterGeneratorEndFellowship");
+        // if (endFellowship && endFellowship.value !== "") output = {...output, endFellowship: endFellowship.value}
+        // const baseAttacks = document.getElementById("characterGeneratorBaseAttacks");
+        // if (baseAttacks && baseAttacks.value !== "") output = {...output, baseAttacks: baseAttacks.value}
+        // const endAttacks = document.getElementById("characterGeneratorEndAttacks");
+        // if (endAttacks && endAttacks.value !== "") output = {...output, endAttacks: endAttacks.value}
+        // const baseWounds = document.getElementById("characterGeneratorBaseWounds");
+        // if (baseWounds && baseWounds.value !== "") output = {...output, baseWounds: baseWounds.value}
+        // const endWounds = document.getElementById("characterGeneratorEndWounds");
+        // if (endWounds && endWounds.value !== "") output = {...output, endWounds: endWounds.value}
+        // const baseMovement = document.getElementById("characterGeneratorBaseMovement");
+        // if (baseMovement && baseMovement.value !== "") output = {...output, baseMovement: baseMovement.value}
+        // const endMovement = document.getElementById("characterGeneratorEndMovement");
+        // if (endMovement && endMovement.value !== "") output = {...output, endMovement: endMovement.value}
+        // const baseMagic = document.getElementById("characterGeneratorBaseMagic");
+        // if (baseMagic && baseMagic.value !== "") output = {...output, baseMagic: baseMagic.value}
+        // const endMagic = document.getElementById("characterGeneratorEndMagic");
+        // if (endMagic && endMagic.value !== "") output = {...output, endMagic: endMagic.value}
         return output;
 
     }
@@ -215,387 +162,698 @@ class CharacterGeneratorPage extends React.Component {
     }
 
     saveErrorHandler = error => {
-        console.log(error.response.data.message);
         this.setState({isError: true, errorText: error.response.data.message})
     }
 
     saveSuccessHandler = response => {
         this.setState({generated: true, href: "/characterDetails/" + response.data})
-        console.log(response.data);
         window.open("/characterDetails/" + response.data);
     }
 
+    fullRandomGenerate = () => {
+        this.setState({fullGenerated: {name: "Jan"}, name: "Jan"}) //ToDo Trzeba tak wszystkie cechy.
+    }
 
     render() {
         return (
             <div className="pageWithContext">
                 <div className="pageName">Tworzenie postaci</div>
-                <div className = "block-element">{this.state.generated &&<div className = "positive-message">Aby zobaczyć wygenerowaną postać, kliknij <a href={this.state.href}>tutaj</a></div>}</div>
+                <div className="block-element">{this.state.generated &&
+                <div className="positive-message">Aby zobaczyć wygenerowaną postać, kliknij <a
+                    href={this.state.href}>tutaj</a></div>}</div>
                 <div className="block-element">
                     <div className="flex-div">
                         <div className="white-caption">Statystyki:</div>
-                        <button className="detaleButton">Generuj losowe</button>
+                        <button className="detaleButton" onClick={() => this.fullRandomGenerate()}>Generuj losowe
+                        </button>
                     </div>
                 </div>
                 <div className="flex-div">
                     <div className="block-element">
                         <div className="flex-div">
-                            <div className="generator-element"><TextField label="Imię" id="characterGeneratorName"/>
-                            </div>
-                            <button className="detaleButton"><span>{element}</span></button>
-                            <div className="generator-element"><TextField label="Nazwisko"
-                                                                          id="characterGeneratorSurname"/></div>
-                        <button className="detaleButton"><span>{element}</span></button>   
-                        </div>
-                        <div className="generator-element"><DefaultMultipleAutocomplete
-                            labelName="Profesja"
-                            options={this.state.autocompleteData.careerNames || []}
-                            id="characterGeneratorCurrentCareer"
-                        />
-                        <button className="detaleButton"><span>{element}</span></button></div>
-                        <div className="generator-element"><DefaultMultipleAutocomplete
-                            labelName="Miejsce pobytu"
-                            options={this.state.autocompleteData.placeNames || []}
-                            id="characterGeneratorLivePlace"
-                        />
-                        <button className="detaleButton"><span>{element}</span></button>
-                        </div>
-                        <div className="generator-element"><DefaultMultipleAutocomplete
-                            labelName="Miejsce urodzenia"
-                            options={this.state.autocompleteData.placeNames || []}
-                            id="characterGeneratorBirthPlace"
-                        />
-                        <button className="detaleButton"><span>{element}</span></button>
-                        </div>
-
-                        <div className="generator-element"><DefaultMultipleAutocomplete
-                            labelName="Rasa"
-                            options={["Człowiek", "Elf", "Krasnolud", "Niziołek"]}
-                            id="characterGeneratorRace"
-                            width={135}
-                        />
-                        <button className="detaleButton"><span>{element}</span></button>
-                        </div>
-
-                        <div className="generator-element"><DefaultMultipleAutocomplete
-                            labelName="Płeć"
-                            options={["Mężczyzna", "Kobieta"]}
-                            id="characterGeneratorSex"
-                            width={138}
-                        />
-                        <button className="detaleButton"><span>{element}</span></button>
-                        </div>
-
-                        <div className="flex-div">
-                            <div className="generator-element"><TextField label="Dzień urodzenia"
-                                                                          id="characterGeneratorDayOfBirth"/>
-                            <button className="detaleButton"><span>{element}</span></button>
-                        </div>
+                            <careerContext.Provider value={{
+                                update: (val) => {
+                                    this.setState({
+                                        name: val
+                                    })
+                                },
+                            }}>
+                                <GeneratorTextField label="Imię" generated={this.state.fullGenerated.name} canBeGenerated/>
+                            </careerContext.Provider>
 
 
-                            <div className="generator-element"><DefaultMultipleAutocomplete
-                                labelName="Miesiąc"
-                                options={months}
-                                id="characterGeneratorMonthOfBirth"
-                                width={150}
+                            <careerContext.Provider value={{
+                                update: (val) => {
+                                    this.setState({
+                                        surname: val
+                                    })
+                                },
+                            }}>
+                                <GeneratorTextField label="Nazwisko" canBeGenerated/>
+                            </careerContext.Provider>
+
+                        </div>
+                        <div className="generator-element">
+                            <careerContext.Provider value={{
+                                update: (val) => {
+                                    this.setState({
+                                        currentCareer: val
+                                    })
+                                },
+                            }}>
+                                <DefaultMultipleAutocomplete
+                                    labelName="Profesja"
+                                    options={this.state.autocompleteData.careerNames || []}
+                                    id="characterGeneratorCurrentCareer"
+                                    canBeGenerated
+                                />
+                            </careerContext.Provider>
+                        </div>
+                        <div className="generator-element">
+                            <careerContext.Provider value={{
+                                update: (val) => {
+                                    this.setState({
+                                        livePlace: val
+                                    })
+                                },
+                            }}><DefaultMultipleAutocomplete
+                                labelName="Miejsce pobytu"
+                                options={this.state.autocompleteData.placeNames || []}
+                                id="characterGeneratorLivePlace"
+                                canBeGenerated
                             />
-                            <button className="detaleButton"><span>{element}</span></button>
+                            </careerContext.Provider>
+                        </div>
+                        <div className="generator-element">
+                            <careerContext.Provider value={{
+                                update: (val) => {
+                                    this.setState({
+                                        birthPlace: val
+                                    })
+                                },
+                            }}><DefaultMultipleAutocomplete
+                                labelName="Miejsce urodzenia"
+                                options={this.state.autocompleteData.placeNames || []}
+                                id="characterGeneratorBirthPlace"
+                                canBeGenerated
+                            />
+                            </careerContext.Provider>
+                        </div>
+
+                        <div className="generator-element">
+                            <careerContext.Provider value={{
+                                update: (val) => {
+                                    this.setState({
+                                        race: val
+                                    })
+                                },
+                            }}><DefaultMultipleAutocomplete
+                                labelName="Rasa"
+                                options={["Człowiek", "Elf", "Krasnolud", "Niziołek"]}
+                                id="characterGeneratorRace"
+                                width={135}
+                                canBeGenerated
+                            />
+                            </careerContext.Provider>
+                        </div>
+
+                        <div className="generator-element">
+                            <careerContext.Provider value={{
+                                update: (val) => {
+                                    this.setState({
+                                        sex: val
+                                    })
+                                },
+                            }}><DefaultMultipleAutocomplete
+                                labelName="Płeć"
+                                options={["Mężczyzna", "Kobieta"]}
+                                id="characterGeneratorSex"
+                                width={138}
+                                canBeGenerated
+                            /></careerContext.Provider>
+                        </div>
+
+                        <div className="flex-div">
+                            <div className="generator-element">
+                                <careerContext.Provider value={{
+                                    update: (val) => {
+                                        this.setState({
+                                            dayOfBirth: val
+                                        })
+                                    },
+                                }}>
+                                    <GeneratorTextField label="Dzień urodzenia" canBeGenerated/>
+                                </careerContext.Provider>
+
                             </div>
-                            <div className="generator-element"><TextField label="Rok urodzenia"
-                                                                          id="characterGeneratorYearOfBirth"/>
-                            <button className="detaleButton"><span>{element}</span></button>
+
+
+                            <div className="generator-element">
+                                <careerContext.Provider value={{
+                                    update: (val) => {
+                                        this.setState({
+                                            monthOfBirth: val
+                                        })
+                                    },
+                                }}><DefaultMultipleAutocomplete
+                                    labelName="Miesiąc"
+                                    options={months}
+                                    id="characterGeneratorMonthOfBirth"
+                                    width={150}
+                                />
+                                </careerContext.Provider>
+                            </div>
+                            <div className="generator-element">
+                                <careerContext.Provider value={{
+                                    update: (val) => {
+                                        this.setState({
+                                            yearOfBirth: val
+                                        })
+                                    },
+                                }}>
+                                    <GeneratorTextField label="Rok urodzenia" canBeGenerated/>
+                                </careerContext.Provider>
+
                             </div>
 
                         </div>
                         <div className="flex-div">
-                            <div className="generator-element"><TextField label="Wzrost" id="characterGeneratorHeight"/>
-                            <button className="detaleButton"><span>{element}</span></button>
+                            <div className="generator-element">
+                                <careerContext.Provider value={{
+                                    update: (val) => {
+                                        this.setState({
+                                            height: val
+                                        })
+                                    },
+                                }}>
+                                    <GeneratorTextField label="Wzrost" canBeGenerated/>
+                                </careerContext.Provider>
+
                             </div>
-                            <div className="generator-element"><TextField label="Waga" id="characterGeneratorWeight"/>
-                            <button className="detaleButton"><span>{element}</span></button>
+                            <div className="generator-element">
+                                <careerContext.Provider value={{
+                                    update: (val) => {
+                                        this.setState({
+                                            weight: val
+                                        })
+                                    },
+                                }}>
+                                    <GeneratorTextField label="Waga" canBeGenerated/>
+                                </careerContext.Provider>
                             </div>
                         </div>
 
-                        <div className="generator-element"><DefaultMultipleAutocomplete
-                            labelName="Kolor oczu"
-                            options={this.state.autocompleteData.eyeColors || []}
-                            id="characterGeneratorEyeColor"
-                        />
-                        <button className="detaleButton"><span>{element}</span></button>
+                        <div className="generator-element">
+                            <careerContext.Provider value={{
+                                update: (val) => {
+                                    this.setState({
+                                        eyeColor: val
+                                    })
+                                },
+                            }}><DefaultMultipleAutocomplete
+                                labelName="Kolor oczu"
+                                options={this.state.autocompleteData.eyeColors || []}
+                                id="characterGeneratorEyeColor"
+                                canBeGenerated
+                            /></careerContext.Provider>
                         </div>
 
-                        <div className="generator-element"><DefaultMultipleAutocomplete
-                            labelName="Kolor włosów"
-                            options={this.state.autocompleteData.hairColors || []}
-                            id="characterGeneratorHairColor"
-                        />
-                        <button className="detaleButton"><span>{element}</span></button>
+                        <div className="generator-element">
+                            <careerContext.Provider value={{
+                                update: (val) => {
+                                    this.setState({
+                                        hairColor: val
+                                    })
+                                },
+                            }}><DefaultMultipleAutocomplete
+                                labelName="Kolor włosów"
+                                options={this.state.autocompleteData.hairColors || []}
+                                id="characterGeneratorHairColor"
+                                canBeGenerated
+                            /></careerContext.Provider>
                         </div>
 
-                        <div className="generator-element"><DefaultMultipleAutocomplete
-                            labelName="Cechy charakteru"
-                            options={this.state.autocompleteData.personalityNames || []}
-                            id="characterGeneratorPersonality"
-                            multiple
-                        />
-                        <button className="detaleButton"><span>{element}</span></button>
+                        <div className="generator-element">
+                            <careerContext.Provider value={{
+                                update: (val) => {
+                                    this.setState({
+                                        personalities: val
+                                    })
+                                },
+                            }}><DefaultMultipleAutocomplete
+                                labelName="Cechy charakteru"
+                                options={this.state.autocompleteData.personalityNames || []}
+                                id="characterGeneratorPersonality"
+                                multiple
+                                canBeGenerated
+                            />
+                            </careerContext.Provider>
                         </div>
 
-                        <div className="generator-element"><DefaultMultipleAutocomplete
-                            labelName="Cechy wyglądu"
-                            options={this.state.autocompleteData.apperanceNames || []}
-                            id="characterGeneratorApperances"
-                            multiple
-                        />
-                        <button className="detaleButton"><span>{element}</span></button>
+                        <div className="generator-element">
+                            <careerContext.Provider value={{
+                                update: (val) => {
+                                    this.setState({
+                                        apperances: val
+                                    })
+                                },
+                            }}><DefaultMultipleAutocomplete
+                                labelName="Cechy wyglądu"
+                                options={this.state.autocompleteData.apperanceNames || []}
+                                id="characterGeneratorApperances"
+                                multiple
+                                canBeGenerated
+                            />
+                            </careerContext.Provider>
                         </div>
 
-                        <div className="generator-element"><DefaultMultipleAutocomplete
-                            labelName="Poprzednie profesje"
-                            options={this.state.autocompleteData.careerNames || []}
-                            id="characterGeneratorPreviousCareers"
-                            multiple
-                        />
-                        <button className="detaleButton"><span>{element}</span></button>
+                        <div className="generator-element">
+                            <careerContext.Provider value={{
+                                update: (val) => {
+                                    this.setState({
+                                        previousCareers: val
+                                    })
+                                },
+                            }}><DefaultMultipleAutocomplete
+                                labelName="Poprzednie profesje"
+                                options={this.state.autocompleteData.careerNames || []}
+                                id="characterGeneratorPreviousCareers"
+                                multiple
+                                canBeGenerated
+                            />
+                            </careerContext.Provider>
                         </div>
 
-                        <div className="generator-element"><DefaultMultipleAutocomplete
-                            labelName="Dominujące emocje"
-                            options={this.state.autocompleteData.emotionNames || []}
-                            id="characterGeneratorEmotions"
-                            multiple
-                        />
-                        <button className="detaleButton"><span>{element}</span></button>
+                        <div className="generator-element">
+                            <careerContext.Provider value={{
+                                update: (val) => {
+                                    this.setState({
+                                        dominatingEmotions: val
+                                    })
+                                },
+                            }}><DefaultMultipleAutocomplete
+                                labelName="Dominujące emocje"
+                                options={this.state.autocompleteData.emotionNames || []}
+                                id="characterGeneratorEmotions"
+                                multiple
+                                canBeGenerated
+                            />
+                            </careerContext.Provider>
                         </div>
 
-                        <div className="generator-element"><DefaultMultipleAutocomplete
-                            labelName="Religia"
-                            options={religions || []}
-                            id="characterGeneratorReligion"
-                        />
-                        <button className="detaleButton"><span>{element}</span></button>
-                        </div>
-                        {/*<div className = "generator-element"><div className="ziemniak">*/}
-                        {/*    <TextField id="characterGeneratorReligion" defaultValue="0" label="Religia" select>*/}
-                        {/*        {religions && religions.map((item, i) => (*/}
-                        {/*                <MenuItem value={i}>{item}</MenuItem>*/}
-                        {/*            )*/}
-                        {/*        )}*/}
-                        {/*    </TextField>*/}
-                        {/*</div></div>*/}
-
-                        <div className="generator-element"><DefaultMultipleAutocomplete
-                            labelName="Umiejętności"
-                            options={this.state.autocompleteData.skillNames || []}
-                            id="characterGeneratorSkills"
-                            multiple
-                        />
-                        <button className="detaleButton"><span>{element}</span></button>
+                        <div className="generator-element">
+                            <careerContext.Provider value={{
+                                update: (val) => {
+                                    this.setState({
+                                        religion: val
+                                    })
+                                },
+                            }}><DefaultMultipleAutocomplete
+                                labelName="Religia"
+                                options={religions || []}
+                                id="characterGeneratorReligion"
+                                canBeGenerated
+                            />
+                            </careerContext.Provider>
                         </div>
 
-                        <               div className="generator-element"><DefaultMultipleAutocomplete
-                            labelName="Zdolności"
-                            options={this.state.autocompleteData.talentNames || []}
-                            id="characterGeneratorTalents"
-                            multiple
-                        />
-                        <button className="detaleButton"><span>{element}</span></button>
+                        <div className="generator-element">
+                            <careerContext.Provider value={{
+                                update: (val) => {
+                                    this.setState({
+                                        skills: val
+                                    })
+                                },
+                            }}><DefaultMultipleAutocomplete
+                                labelName="Umiejętności"
+                                options={this.state.autocompleteData.skillNames || []}
+                                id="characterGeneratorSkills"
+                                multiple
+                                canBeGenerated
+                            /></careerContext.Provider>
                         </div>
 
-                        <div className="generator-element"><TextField label="Przepowiednia"
-                                                                      id="characterGeneratorPrediction"/>
-                        <button className="detaleButton"><span>{element}</span></button>
+                        <               div className="generator-element">
+                            <careerContext.Provider value={{
+                                update: (val) => {
+                                    this.setState({
+                                        talents: val
+                                    })
+                                },
+                            }}><DefaultMultipleAutocomplete
+                                labelName="Zdolności"
+                                options={this.state.autocompleteData.talentNames || []}
+                                id="characterGeneratorTalents"
+                                multiple
+                                canBeGenerated
+                            /></careerContext.Provider>
+                        </div>
+
+                        <div className="generator-element">
+
+                            <careerContext.Provider value={{
+                                update: (val) => {
+                                    this.setState({
+                                        prediction: val
+                                    })
+                                },
+                            }}>
+                                <GeneratorTextField label="Przepowiednia" canBeGenerated/>
+                            </careerContext.Provider>
                         </div>
                     </div>
                     <div className="block-element">
 
                         <div className="white-caption">Umiejętności bojowe</div>
-                        <div className = "block-component">
-                        <button className="detaleButton" disabled>Wylosuj statystyki Bazowe <span>{element}</span></button>
-                        <button className="detaleButton">Wylosuj statystyki Obecnie <span>{element}</span></button>
+                        <div className="block-component">
+                            <button className="detaleButton" disabled>Wylosuj statystyki Bazowe <span>{element}</span>
+                            </button>
+                            <button className="detaleButton">Wylosuj statystyki Obecnie <span>{element}</span></button>
                         </div>
                         <div className="block-grid">
                             <div className="grid">
                                 <div className="grid-column">
                                     <div className="title-column"> ***</div>
                                     <div className="grid-name-element">Baza</div>
-                                    <div className="grid-name-element">Rozwój</div>
                                     <div className="grid-name-element">Obecnie</div>
                                 </div>
                                 <div className="grid-column">
                                     <div className="grid-name-element title-column">WW</div>
-                                    <div className="grid-element"><TextField style={mygrid}
-                                                                             id="characterGeneratorBaseWeaponSkills"
-                                                                             />
-                                                                             
+                                    <div className="grid-element">
+                                        <careerContext.Provider value={{
+                                            update: (val) => {
+                                                this.setState({
+                                                    baseWeaponSkills: val
+                                                })
+                                            },
+                                        }}>
+                                            <GeneratorTextField style={mygrid}/>
+                                        </careerContext.Provider>
                                     </div>
-                                    <div className="grid-element"><TextField style={mygrid}
-                                                                             id="characterGeneratorCareerWeaponSkills"
-                                                                             disabled/></div>
-                                    <div className="grid-element"><TextField style={mygrid}
-                                                                             id="characterGeneratorEndWeaponSkills"
-                                                                             />
+                                    <div className="grid-element">
+                                        <careerContext.Provider value={{
+                                            update: (val) => {
+                                                this.setState({
+                                                    endWeaponSkills: val
+                                                })
+                                            },
+                                        }}>
+                                            <GeneratorTextField style={mygrid}/>
+                                        </careerContext.Provider>
                                     </div>
                                 </div>
                                 <div className="grid-column">
                                     <div className="grid-name-element title-column">US</div>
-                                    <div className="grid-element"><TextField style={mygrid}
-                                                                             id="characterGeneratorBaseBallisticSkills"
-                                                                             />
+                                    <div className="grid-element">
+                                        <careerContext.Provider value={{
+                                            update: (val) => {
+                                                this.setState({
+                                                    baseBallisticSkills: val
+                                                })
+                                            },
+                                        }}>
+                                            <GeneratorTextField style={mygrid}/>
+                                        </careerContext.Provider>
                                     </div>
-                                    <div className="grid-element"><TextField style={mygrid}
-                                                                             id="characterGeneratorCareerBallisticSkills"
-                                                                             disabled/></div>
-                                    <div className="grid-element"><TextField style={mygrid}
-                                                                             id="characterGeneratorEndBallisticSkills"
-                                                                             />
+                                    <div className="grid-element">
+                                        <careerContext.Provider value={{
+                                            update: (val) => {
+                                                this.setState({
+                                                    endBallisticSkills: val
+                                                })
+                                            },
+                                        }}>
+                                            <GeneratorTextField style={mygrid}/>
+                                        </careerContext.Provider>
                                     </div>
                                 </div>
                                 <div className="grid-column">
                                     <div className="grid-name-element title-column">K</div>
-                                    <div className="grid-element"><TextField style={mygrid}
-                                                                             id="characterGeneratorBaseStrength"
-                                                                             /></div>
-                                    <div className="grid-element"><TextField style={mygrid}
-                                                                             id="characterGeneratorCareerStrength"
-                                                                             disabled/></div>
-                                    <div className="grid-element"><TextField style={mygrid}
-                                                                             id="characterGeneratorEndStrength"
-                                                                             /></div>
+                                    <div className="grid-element">
+                                        <careerContext.Provider value={{
+                                            update: (val) => {
+                                                this.setState({
+                                                    baseStrength: val
+                                                })
+                                            },
+                                        }}>
+                                            <GeneratorTextField style={mygrid}/>
+                                        </careerContext.Provider>
+                                    </div>
+                                    <div className="grid-element">
+                                        <careerContext.Provider value={{
+                                            update: (val) => {
+                                                this.setState({
+                                                    endStrength: val
+                                                })
+                                            },
+                                        }}>
+                                            <GeneratorTextField style={mygrid}/>
+                                        </careerContext.Provider>
+                                    </div>
                                 </div>
                                 <div className="grid-column">
                                     <div className="grid-name-element title-column">ODP</div>
-                                    <div className="grid-element"><TextField style={mygrid}
-                                                                             id="characterGeneratorBaseToughness"
-                                                                             />
+                                    <div className="grid-element">
+                                        <careerContext.Provider value={{
+                                            update: (val) => {
+                                                this.setState({
+                                                    baseToughness: val
+                                                })
+                                            },
+                                        }}>
+                                            <GeneratorTextField style={mygrid}/>
+                                        </careerContext.Provider>
                                     </div>
-                                    <div className="grid-element"><TextField style={mygrid}
-                                                                             id="characterGeneratorCareerWeaponSkills"
-                                                                             disabled/></div>
-                                    <div className="grid-element"><TextField style={mygrid}
-                                                                             id="characterGeneratorEndToughness"
-                                                                             /></div>
+                                    <div className="grid-element">
+                                        <careerContext.Provider value={{
+                                            update: (val) => {
+                                                this.setState({
+                                                    endToughness: val
+                                                })
+                                            },
+                                        }}>
+                                            <GeneratorTextField style={mygrid}/>
+                                        </careerContext.Provider>
+                                    </div>
                                 </div>
                                 <div className="grid-column">
                                     <div className="grid-name-element title-column">ZR</div>
-                                    <div className="grid-element"><TextField style={mygrid}
-                                                                             id="characterGeneratorBaseAgility"
-                                                                             /></div>
-                                    <div className="grid-element"><TextField style={mygrid}
-                                                                             id="characterGeneratorCareerAgility"
-                                                                             disabled/></div>
-                                    <div className="grid-element"><TextField style={mygrid}
-                                                                             id="characterGeneratorEndAgility"
-                                                                             /></div>
+                                    <div className="grid-element">
+                                        <careerContext.Provider value={{
+                                            update: (val) => {
+                                                this.setState({
+                                                    baseAgility: val
+                                                })
+                                            },
+                                        }}>
+                                            <GeneratorTextField style={mygrid}/>
+                                        </careerContext.Provider>
+                                    </div>
+                                    <div className="grid-element">
+                                        <careerContext.Provider value={{
+                                            update: (val) => {
+                                                this.setState({
+                                                    endAgility: val
+                                                })
+                                            },
+                                        }}>
+                                            <GeneratorTextField style={mygrid}/>
+                                        </careerContext.Provider>
+                                    </div>
                                 </div>
                                 <div className="grid-column">
                                     <div className="grid-name-element title-column">INT</div>
-                                    <div className="grid-element"><TextField style={mygrid}
-                                                                             id="characterGeneratorBaseIntelligence"
-                                                                             />
+                                    <div className="grid-element">
+                                        <careerContext.Provider value={{
+                                            update: (val) => {
+                                                this.setState({
+                                                    baseIntelligence: val
+                                                })
+                                            },
+                                        }}>
+                                            <GeneratorTextField style={mygrid}/>
+                                        </careerContext.Provider>
                                     </div>
-                                    <div className="grid-element"><TextField style={mygrid}
-                                                                             id="characterGeneratorCareerIntelligence"
-                                                                             disabled/></div>
-                                    <div className="grid-element"><TextField style={mygrid}
-                                                                             id="characterGeneratorEndIntelligence"
-                                                                             />
+                                    <div className="grid-element">
+                                        <careerContext.Provider value={{
+                                            update: (val) => {
+                                                this.setState({
+                                                    endIntelligence: val
+                                                })
+                                            },
+                                        }}>
+                                            <GeneratorTextField style={mygrid}/>
+                                        </careerContext.Provider>
                                     </div>
                                 </div>
                                 <div className="grid-column">
                                     <div className="grid-name-element title-column">SW</div>
-                                    <div className="grid-element"><TextField style={mygrid}
-                                                                             id="characterGeneratorBaseWillPower"
-                                                                             />
+                                    <div className="grid-element">
+                                        <careerContext.Provider value={{
+                                            update: (val) => {
+                                                this.setState({
+                                                    baseWillPower: val
+                                                })
+                                            },
+                                        }}>
+                                            <GeneratorTextField style={mygrid}/>
+                                        </careerContext.Provider>
                                     </div>
-                                    <div className="grid-element"><TextField style={mygrid}
-                                                                             id="characterGeneratorCareerWillPower"
-                                                                             disabled/></div>
-                                    <div className="grid-element"><TextField style={mygrid}
-                                                                             id="characterGeneratorEndWillPower"
-                                                                             /></div>
+                                    <div className="grid-element">
+                                        <careerContext.Provider value={{
+                                            update: (val) => {
+                                                this.setState({
+                                                    endWillPower: val
+                                                })
+                                            },
+                                        }}>
+                                            <GeneratorTextField style={mygrid}/>
+                                        </careerContext.Provider>
+                                    </div>
                                 </div>
                                 <div className="grid-column">
                                     <div className="grid-name-element title-column">OGD</div>
-                                    <div className="grid-element"><TextField style={mygrid}
-                                                                             id="characterGeneratorBaseFellowship"
-                                                                             />
-                                    </div>
-                                    <div className="grid-element"><TextField style={mygrid}
-                                                                             id="characterGeneratorCareerFellowship"
-                                                                             disabled/></div>
-                                    <div className="grid-element"><TextField style={mygrid}
-                                                                             id="characterGeneratorEndFellowship"
-                                                                             />
-                                    </div>
+                                    <div className="grid-element">
+                                    <careerContext.Provider value={{
+                                        update: (val) => {
+                                            this.setState({
+                                                baseFellowship: val
+                                            })
+                                        },
+                                    }}>
+                                        <GeneratorTextField style={mygrid}/>
+                                    </careerContext.Provider>
+                                </div>
+                                <div className="grid-element">
+                                    <careerContext.Provider value={{
+                                        update: (val) => {
+                                            this.setState({
+                                                endFellowship: val
+                                            })
+                                        },
+                                    }}>
+                                        <GeneratorTextField style={mygrid}/>
+                                    </careerContext.Provider>
                                 </div>
                             </div>
                         </div>
-                        <div className="block-grid">
-                            <div className="grid">
-                                <div className="grid-column">
-                                    <div className="title-column"> ***</div>
-                                    <div className="grid-name-element">Baza</div>
-                                    <div className="grid-name-element">Rozwój</div>
-                                    <div className="grid-name-element">Obecnie</div>
+                    </div>
+                    <div className="block-grid">
+                        <div className="grid">
+                            <div className="grid-column">
+                                <div className="title-column"> ***</div>
+                                <div className="grid-name-element">Baza</div>
+                                <div className="grid-name-element">Obecnie</div>
+                            </div>
+                            <div className="grid-column">
+                                <div className="grid-name-element title-column">A</div>
+                                <div className="grid-element">
+                                    <careerContext.Provider value={{
+                                        update: (val) => {
+                                            this.setState({
+                                                baseAttacks: val
+                                            })
+                                        },
+                                    }}>
+                                        <GeneratorTextField style={mygrid}/>
+                                    </careerContext.Provider>
                                 </div>
-                                <div className="grid-column">
-                                    <div className="grid-name-element title-column">A</div>
-                                    <div className="grid-element"><TextField style={mygrid}
-                                                                             id="characterGeneratorBaseAttacks"
-                                                                             /></div>
-                                    <div className="grid-element"><TextField style={mygrid}
-                                                                             id="characterGeneratorCareerAttacks"
-                                                                             disabled/></div>
-                                    <div className="grid-element"><TextField style={mygrid}
-                                                                             id="characterGeneratorEndAttacks"
-                                                                             /></div>
+                                <div className="grid-element">
+                                    <careerContext.Provider value={{
+                                        update: (val) => {
+                                            this.setState({
+                                                endAttacks: val
+                                            })
+                                        },
+                                    }}>
+                                        <GeneratorTextField style={mygrid}/>
+                                    </careerContext.Provider>
                                 </div>
-                                <div className="grid-column">
-                                    <div className="grid-name-element title-column">ŻYW</div>
-                                    <div className="grid-element"><TextField style={mygrid}
-                                                                             id="characterGeneratorBaseWounds"
-                                                                             /></div>
-                                    <div className="grid-element"><TextField style={mygrid}
-                                                                             id="characterGeneratorCareerWounds"
-                                                                             disabled/></div>
-                                    <div className="grid-element"><TextField style={mygrid}
-                                                                             id="characterGeneratorEndWounds"
-                                                                             /></div>
+                            </div>
+                            <div className="grid-column">
+                                <div className="grid-name-element title-column">ŻYW</div>
+                                <div className="grid-element">
+                                    <careerContext.Provider value={{
+                                        update: (val) => {
+                                            this.setState({
+                                                baseWounds: val
+                                            })
+                                        },
+                                    }}>
+                                        <GeneratorTextField style={mygrid}/>
+                                    </careerContext.Provider>
                                 </div>
-                                <div className="grid-column">
-                                    <div className="grid-name-element title-column">SZ</div>
-                                    <div className="grid-element"><TextField style={mygrid}
-                                                                             id="characterGeneratorBaseMovement"
-                                                                             /></div>
-                                    <div className="grid-element"><TextField style={mygrid}
-                                                                             id="characterGeneratorCareerMovement"
-                                                                             disabled/></div>
-                                    <div className="grid-element"><TextField style={mygrid}
-                                                                             id="characterGeneratorEndMovement"
-                                                                             /></div>
+                                <div className="grid-element">
+                                    <careerContext.Provider value={{
+                                        update: (val) => {
+                                            this.setState({
+                                                endWounds: val
+                                            })
+                                        },
+                                    }}>
+                                        <GeneratorTextField style={mygrid}/>
+                                    </careerContext.Provider>
                                 </div>
-                                <div className="grid-column">
-                                    <div className="grid-name-element title-column">M</div>
-                                    <div className="grid-element"><TextField style={mygrid}
-                                                                             id="characterGeneratorBaseMagic"
-                                                                             /></div>
-                                    <div className="grid-element"><TextField style={mygrid}
-                                                                             id="characterGeneratorCareerMagic"
-                                                                             disabled/></div>
-                                    <div className="grid-element"><TextField style={mygrid}
-                                                                             id="characterGeneratorEndMagic"
-                                                                             /></div>
+                            </div>
+                            <div className="grid-column">
+                                <div className="grid-name-element title-column">SZ</div>
+                                <div className="grid-element">
+                                    <careerContext.Provider value={{
+                                        update: (val) => {
+                                            this.setState({
+                                                baseMovement: val
+                                            })
+                                        },
+                                    }}>
+                                        <GeneratorTextField style={mygrid}/>
+                                    </careerContext.Provider>
+                                </div>
+                                <div className="grid-element">
+                                    <careerContext.Provider value={{
+                                        update: (val) => {
+                                            this.setState({
+                                                endMovement: val
+                                            })
+                                        },
+                                    }}>
+                                        <GeneratorTextField style={mygrid}/>
+                                    </careerContext.Provider>
+                                </div>
+                            </div>
+                            <div className="grid-column">
+                                <div className="grid-name-element title-column">M</div>
+                                <div className="grid-element">
+                                    <careerContext.Provider value={{
+                                        update: (val) => {
+                                            this.setState({
+                                                baseMagic: val
+                                            })
+                                        },
+                                    }}>
+                                        <GeneratorTextField style={mygrid}/>
+                                    </careerContext.Provider>
+                                </div>
+                                <div className="grid-element">
+                                    <careerContext.Provider value={{
+                                        update: (val) => {
+                                            this.setState({
+                                                endMagic: val
+                                            })
+                                        },
+                                    }}>
+                                        <GeneratorTextField style={mygrid}/>
+                                    </careerContext.Provider>
                                 </div>
                             </div>
                         </div>
-                        <div className="flex-center-element">
-                            <button className="green-button" onClick={this.save}>Zapisz</button>
-                            {/* <button className="red-button">Anuluj</button> */}
-
-                        </div>
-            </div>
-                    {this.state.isError && <ErrorGenerator errorText={this.state.errorText}/>}
+                    </div>
+                    <div className="flex-center-element">
+                        <button className="green-button" onClick={this.save}>Zapisz</button>
+                        {/* <button className="red-button">Anuluj</button> */}
+                    </div>
+                </div>
+                {this.state.isError && <ErrorGenerator errorText={this.state.errorText}/>}
             </div>
             </div>
         )

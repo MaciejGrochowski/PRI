@@ -139,6 +139,20 @@
 
 }
 
+
+.error-message{
+    padding: 2%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    /* border: solid 1px white; */
+    background-color: tomato;
+    opacity: 0.9;
+    color: white;
+    text-align: center;
+    font-size: large;
+
+}
+
 a{
 color: #FFD859!important;
 

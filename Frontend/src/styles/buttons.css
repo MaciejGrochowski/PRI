@@ -52,6 +52,48 @@
     color: #292F2F;
   }
 
+  .stats-button-element{
+    width: 40%; 
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .detailsTypeButton{
+    display: block;
+    color: white;
+    background-color: rgb(77, 87, 87);
+    border: none;
+    border-radius: 15%;
+    padding-right: 5%;
+    padding-left: 5%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    margin-right: 20px; 
+    margin-top: 1px;
+    margin-bottom: 1px;
+  }
+
+
+  .detailsTypeButton:hover{
+    color: #FFD859;
+    background-color: rgb(77, 87, 87);
+    border: 1px solid #FFD859;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-right: 19px; 
+
+  }
+  .detailsTypeButton:focus{
+    color: #FFD859;
+    background-color: rgb(77, 87, 87);
+    border: 1px solid #FFD859;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-right: 19px; 
+  }
+
+
+
   .menubutton{
     background-color: #FFD859;
     color: #292F2F;

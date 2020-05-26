@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
-@Entity(name ="career_skill")
+@Entity(name ="career_talent")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

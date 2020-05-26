@@ -60,6 +60,12 @@ public class DeserializationController {
     @Autowired
     StatisticsService statisticsService;
 
+    @Autowired
+    CareerSkillService careerSkillService;
+
+    @Autowired
+    CareerTalentService careerTalentService;
+
 
     final String path = "";
 
@@ -318,6 +324,31 @@ public class DeserializationController {
             careerService.save(career);
         }
     }
+
+    @RequestMapping("/json/career_skill")
+    public void carrierSkillDeserializationAndDatabaseUpdate() throws IOException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        String path = this.path + "src/jsons/career_skill.json";
+        String contents = Files.readString(Paths.get(path));
+        List<CareerSkill> listCareerSkill = objectMapper.readValue(contents, new TypeReference<List<CareerSkill>>() {
+        });
+        for (CareerSkill careerSkill : listCareerSkill) {
+            careerSkillService.save(careerSkill);
+        }
+    }
+
+    @RequestMapping("/json/career_talent")
+    public void carrierTalentDeserializationAndDatabaseUpdate() throws IOException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        String path = this.path + "src/jsons/career_talent.json";
+        String contents = Files.readString(Paths.get(path));
+        List<CareerTalent> listCareerTalent = objectMapper.readValue(contents, new TypeReference<List<CareerTalent>>() {
+        });
+        for (CareerTalent careerTalent : listCareerTalent) {
+            careerTalentService.save(careerTalent);
+        }
+    }
+
     @RequestMapping("/json/all")
     public void UpdateAll() throws IOException {
         nameDeserializationAndDatabaseUpdate();
@@ -333,6 +364,8 @@ public class DeserializationController {
         emotionDeserializationAndDatabaseUpdate();
         statisticsDeserializationAndDatabaseUpdate();
         carrierDeserializationAndDatabaseUpdate();
+        carrierSkillDeserializationAndDatabaseUpdate();
+        carrierTalentDeserializationAndDatabaseUpdate();
     }
 }
 

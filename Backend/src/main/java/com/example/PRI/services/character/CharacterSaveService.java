@@ -321,7 +321,7 @@ public class CharacterSaveService {
             Optional<Skill> maybeSkill = skillList.stream().filter(s -> s.getName().equals(name) && s.getLevel().toString().equals(level)).findFirst();
             maybeSkill.ifPresent(characterSkills::add);
         }
-        if (characterSkills.size() > 0)  return skillList;
+        if (characterSkills.size() > 0)  return characterSkills;
         else throw new CharacterSaveException("Podaj poprawne umiejętności.", new IllegalArgumentException());
     }
 

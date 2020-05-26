@@ -18,6 +18,37 @@ public class CareerGenerator extends GeneralService {
 
     @Autowired
     CareerService careerService;
+    //ToDo Strongly test after get data jsons
+
+
+    private Career getFirstCareer(Map<String, String> properties){
+        List<Career> careerList = careerService.findAllBaseCareers();
+        List<String> careerNames = careerList.stream().map(Career::getName).collect(Collectors.toList());
+        double probability = 0;
+//        System.err.println(character.getRace().getName());
+//        System.err.println(character.getBirthPlace().getProperties());
+//        System.err.println(character.getBirthPlace().getPlaceType());
+        for(String careerName : careerNames){
+            if(properties.containsKey(careerName)){
+                probability += Double.parseDouble(properties.get(careerName));
+//                System.out.println(careerName + ": " + properties.get(careerName));
+            }
+        }
+//        System.err.println(probability);
+        double randomRoll = new Random().nextDouble() * probability;
+        Career randomCareer = null;
+
+        for(Career career: careerList){
+            randomRoll -= Double.parseDouble(properties.get(career.getName()));
+            if(randomRoll <= 0){
+                randomCareer = career;
+                break;
+            }
+        }
+        if(randomCareer==null) throw new CharacterGenerationException("Pierwsza profesja się nie wygenerowała", new IllegalStateException());
+        return randomCareer;
+
+    }
 
     public Map<String, String> buildFirstCareer(Character character, HashMap<String, String> properties) {
         List<Career> careerList = careerService.findAllBaseCareers();
@@ -42,36 +73,71 @@ public class CareerGenerator extends GeneralService {
             properties.put(career.getName(), String.valueOf(chance));
         }
 
-        List<String> careerNames = careerList.stream().map(Career::getName).collect(Collectors.toList());
-
-        double probability = 0;
-//        System.err.println(character.getRace().getName());
-//        System.err.println(character.getBirthPlace().getProperties());
-//        System.err.println(character.getBirthPlace().getPlaceType());
-        for(String careerName : careerNames){
-            if(properties.containsKey(careerName)){
-                probability += Double.parseDouble(properties.get(careerName));
-//                System.out.println(careerName + ": " + properties.get(careerName));
-            }
-        }
-//        System.err.println(probability);
-        double randomRoll = new Random().nextDouble() * probability;
-        Career randomCareer = null;
-
-        for(Career career: careerList){
-            randomRoll -= Double.parseDouble(properties.get(career.getName()));
-            if(randomRoll <= 0){
-                randomCareer = career;
-                break;
-            }
-        }
-        if(randomCareer==null) throw new CharacterGenerationException("Pierwsza profesja się nie wygenerowała", new IllegalStateException());
+        Career randomCareer = this.getFirstCareer(properties);
         character.setCurrentCareer(randomCareer);
-
         return mapJsonStringToMap(randomCareer.getProperties());
     }
 
     private int getDominatingStatsCount(String dominatingStat) {
         return (int) dominatingStat.chars().filter(c -> c == '+').count();
     }
+
+    public List<Map<String, String>> buildNextCareers(Character character, HashMap<String, String> properties) {
+        Career firstCareer = character.getCurrentCareer();
+        Career currentCareer = character.getCurrentCareer();
+        List<Career> allCareers = new ArrayList<>();
+        allCareers.add(firstCareer);
+        Random rand = new Random();
+        List<Map<String, String>> newProps = new ArrayList<>();
+
+        while(true){
+            if(rand.nextDouble() > currentCareer.getExitChance()) break;
+            Career nextCareer = this.buildNextCareer(currentCareer, properties);
+            allCareers.add(nextCareer);
+        }
+
+        for(Career career: allCareers){
+            newProps.add(mapJsonStringToMap(career.getProperties()));
+        }
+
+        character.setCurrentCareer(allCareers.get(allCareers.size()-1));
+        character.setPreviousCareers(allCareers.subList(1, allCareers.size()));
+
+        return newProps;
+    }
+
+    private Career buildNextCareer(Career currentCareer, HashMap<String, String> properties) {
+        Career output = null;
+        double randomRoll = new Random().nextDouble();
+        if(randomRoll < 0.45) output = getNextBestCareer(currentCareer);
+        else if(randomRoll < 0.75) output = getNextNotBaseCareer(currentCareer);
+        else if(randomRoll < 0.95) output = getNextBaseCareer(currentCareer, properties);
+        else output = getFirstCareer(properties);
+
+        return output;
+    } //45 . 30 . 20 . 5 też może być
+
+    private Career getNextBaseCareer(Career currentCareer, HashMap<String, String> properties) {
+        List<Career> careers = currentCareer.getCareerExits().stream().filter(Career::isBaseProfession).collect(Collectors.toList());
+        Collections.shuffle(careers);
+        for(Career career : careers){
+            if(properties.containsKey(career.getName())){
+                if(new Random().nextDouble() < Double.parseDouble(properties.get(career.getName()))) return career;
+            }
+        }
+        return careers.get(new Random().nextInt(careers.size()));
+    }
+
+    private Career getNextNotBaseCareer(Career currentCareer) {
+        List<Career> careers = currentCareer.getCareerExits().stream().filter(c -> !c.isBaseProfession()).collect(Collectors.toList());;
+        return careers.get(new Random().nextInt(careers.size()));
+    }
+
+    private Career getNextBestCareer(Career currentCareer) {
+        List<String> careersBest = Arrays.asList(currentCareer.getBestNextCareer().split(","));
+        List<Career> careers = currentCareer.getCareerExits().stream().filter(c -> careersBest.contains(c.getName())).collect(Collectors.toList());;
+        return careers.get(new Random().nextInt(careers.size()));
+    }
+
+
 }

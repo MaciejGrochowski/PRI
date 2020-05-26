@@ -7,6 +7,7 @@ import com.example.PRI.entities.character.Character;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.List;
 
 import static com.example.PRI.services.character.generator.MapperJsonStringToMap.mapJsonStringToMap;
 
@@ -109,6 +110,11 @@ public class CharacterBuilder {
         Map<String, String> newProps = FirstCareerPropertiesMapper.map(character, properties);
         putAllProperties(newProps);
         newProps = service.buildFirstCareer(character, properties);
+        putAllProperties(newProps);
+        List<Map<String, String>> newPropsList = service.buildNextCareers(character, properties);
+        for(Map<String, String> props : newPropsList){
+            this.putAllProperties(props);
+        }
 
         return this;
     }

@@ -1,0 +1,61 @@
+.container-stats{
+    display: flex;
+    flex-wrap: wrap;
+    width: auto;
+}
+.fake-element{
+    width: 100px;
+    display: block;
+}
+.column{
+    display: block;
+    width: 50%;
+    min-width: min-content;
+}
+
+.column-1{
+    display: block;
+    width: 30%;
+    margin-left: 10%;
+    margin-right: 10%;
+    min-width: max-content;
+}
+
+.column-s{
+    display: flex;
+    width: 50%;
+    min-width: min-content;
+}
+
+.block-stats-element{
+    display: block;
+    max-width: 100%;
+    min-width: fit-content;
+    margin-right: auto;
+    padding-right: 200px;
+    max-height: 50%;
+}
+
+
+.list-decoration{
+    display: block;
+    min-width: max-content;
+}
+
+.skill{
+    border-left: solid 2px #FFD859!important;
+    /* width: 50%; */
+    display: flex;
+    padding-left: 5%;
+    min-width: max-content;
+}
+
+.skill-name{
+    display: block;
+    width: 0%;
+
+}
+
+.skill-lvl{
+    display: block;
+}

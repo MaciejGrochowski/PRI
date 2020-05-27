@@ -5,6 +5,7 @@ import CharacterDetailsStatsView from "./CharacterDetailsStatsView";
 import CharacterDetailsSkillsView from "./CharacterDetailsSkillsView";
 import CharacterDetailsCombatStatsView from "./CharacterDetailsCombatStatsView";
 import pageName from "../../styles/page.css";
+import "../../styles/CharacterCombatStatsStyle.css";
 
 class CharacterCombatStats extends React.Component{
 
@@ -13,27 +14,29 @@ class CharacterCombatStats extends React.Component{
         const {characterData} = this.props
         console.log("bekon")
         return (
-            
-        <div>
-            <div className = "flex-element">
-                <div className = "block-element">
+            <div className = "container-stats">
+                <div className = "column">
             <CharacterDetailsCombatStatsView
                 title="Umiejętności bojowe"
                 data={characterData}
                 />
                 </div>
-            <div className = "block-element">
+            <div className = "column-s">
+            <div className = "column">
                 <CharacterDetailsSkillsView
                 title="Umiejętności"
                 data={characterData.skills}
                 />
+                </div>
+                <div className = "column">
                 <CharacterDetailsSkillsView
                     title="Zdolności"
                     data={characterData.talents}
                 />
                 </div>
+                </div>
             </div>
-        </div>)
+            )
     }
 }
 export default CharacterCombatStats;

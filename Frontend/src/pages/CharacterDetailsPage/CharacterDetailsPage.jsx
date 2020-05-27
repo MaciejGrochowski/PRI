@@ -58,24 +58,24 @@ class CharacterDetailsPage extends React.Component {
             <div className="stats-button-element">
                 <button className = "detailsTypeButton" onClick = {() => this.changeVisibleState(true, false, false)}>Statystyki Ogólne</button>
                 <button className = "detailsTypeButton" onClick = {() => this.changeVisibleState(false, true, false)}>Statystyki Bojowe</button>
-                <button className = "detailsTypeButton" onClick = {() => this.changeVisibleState(false, false, true)}>Historie</button>
+                <button className = "detailsTypeButton" onClick = {() => this.changeVisibleState(false, false, true)} disabled>Historie</button>
                 </div>
             <div className = "block-element">
-{this.state.isVisibleGlobalStats &&
+            {this.state.isVisibleGlobalStats &&
                 <CharacterDetailsStatsView
                 title="Statystyki"
                 data={this.state.characterData}
                 />
             }
-{this.state.isVisibleCombatStats &&
+            {this.state.isVisibleCombatStats &&
                 <div>
-<CharacterCombatStats characterData = {this.state.characterData}></CharacterCombatStats>
-                            </div>
-}
-{this.state.isVisibleHistory &&
-                <div className = "historie">History Maker!</div>
-}
+                <CharacterCombatStats characterData = {this.state.characterData}></CharacterCombatStats>
                 </div>
+            }
+            {this.state.isVisibleHistory &&
+                <div className = "historie">History Maker!</div>
+            }
+            </div>
             </div>
             </div>
         )

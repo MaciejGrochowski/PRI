@@ -1,8 +1,8 @@
-
 import React from "react";
 import {Link} from "react-router-dom";
 import characterService from "../../services/characterService";
 import list from "../../styles/globalStyles.css";
+import "../../styles/CharacterCombatStatsStyle.css";
 
 class CharacterDetailsSkillsView extends React.Component {
 
@@ -11,11 +11,11 @@ class CharacterDetailsSkillsView extends React.Component {
         return (
             <div className = "standard-component">
                 <div className="sub-title">{title}</div>
-                <div className="list-decoration">
+                <div className="list-decoration"> 
                 {data !== undefined && data.map((item, i) => (
                     <div className = "skill">
                         <div className = "skill-name">{item.name}</div>
-                        {item.level ? <div className = "skill-lvl"> &nbsp;&nbsp;+{item.level}</div> : ""}
+                        {item.level >=0 ? <div className = "skill-lvl"> &nbsp;+&nbsp;{item.level}</div> : ""}
                     </div>
 
                 ))

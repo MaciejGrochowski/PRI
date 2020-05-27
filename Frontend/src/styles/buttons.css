@@ -73,6 +73,20 @@
     margin-bottom: 1px;
   }
 
+  .detailsTypeButton:disabled{
+    display: block;
+    color: grey;
+    background-color: rgb(77, 87, 87);
+    border: none!important;
+    border-radius: 15%;
+    padding-right: 5%;
+    padding-left: 5%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    margin-right: 20px!important; 
+    margin-top: 1px!important;
+    margin-bottom: 1px!important;
+  }
 
   .detailsTypeButton:hover{
     color: #FFD859;

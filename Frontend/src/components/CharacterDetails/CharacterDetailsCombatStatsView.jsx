@@ -3,8 +3,8 @@ import grid from "../../styles/grid.css";
 import "../../styles/CharacterCombatStatsStyle.css";
 
 const mygrid = {
-        width: '40px',
-        height: "40px",
+        width: '30px',
+        height: "30px",
         border: 'solid 1px white',
         borderRadius: '25%',
         marginBotton: '5%',
@@ -15,8 +15,8 @@ const mygrid = {
 const test = {
     textAlign: 'center',
     display: 'inline-block',
-    paddingTop: '20%',
-    fontSize: 'large',
+    paddingTop: '10%',
+    fontSize: 'medium',
     verticalAlign: 'middle',
 };
 

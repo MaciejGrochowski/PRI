@@ -10,7 +10,7 @@
 }
 .column{
     display: block;
-    width: 50%;
+    width: 49%;
     min-width: min-content;
 }
 

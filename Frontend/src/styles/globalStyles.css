@@ -82,8 +82,7 @@ body{
 
 .yellow-color{
     display: block;
-    padding: auto;
-    margin: auto;
+    padding-left: auto;
     color: #FFD859;
 }
 

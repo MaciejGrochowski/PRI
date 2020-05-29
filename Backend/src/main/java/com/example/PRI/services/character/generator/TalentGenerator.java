@@ -25,14 +25,15 @@ public class TalentGenerator extends GeneralService {
 
     public Map<String, String> generateTalents(Character character, HashMap<String, String> properties) {
         List<Talent> talents = talentService.findAll();
-        List<Talent> characterTalents = talents.stream().filter(t -> this.generateRaceTalents(character.getRace()).contains(t)).collect(Collectors.toList());
+        List<String> raceTalents = this.generateRaceTalents(character.getRace());
+        List<Talent> characterTalents = talents.stream().filter(t -> raceTalents.contains(t.getName())).collect(Collectors.toList());
         Random rand = new Random();
 
         for(Talent talent: talents){
             if(properties.containsKey(talent.getName())){
                 double chance = rand.nextDouble();
                 if(chance < Double.parseDouble(properties.get(talent.getName()))){
-                    talents.add(talent);
+                    characterTalents.add(talent);
                 }
             }
         }

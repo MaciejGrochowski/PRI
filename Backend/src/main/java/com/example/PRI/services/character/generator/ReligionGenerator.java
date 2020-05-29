@@ -24,11 +24,7 @@ public class ReligionGenerator {
             maxRandomRoll += Double.parseDouble(properties.get(religionKey));
             religionProperties.put(religionKey, properties.get(religionKey));
         }
-
-
-        System.err.println(maxRandomRoll);
         double randomRoll = new Random().nextDouble() * maxRandomRoll;
-
         for(String religionKey : religionProperties.keySet()){
             randomRoll -= Double.parseDouble(religionProperties.get(religionKey));
             if(randomRoll <= 0) {

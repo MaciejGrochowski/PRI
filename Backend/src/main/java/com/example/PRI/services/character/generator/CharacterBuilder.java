@@ -142,6 +142,17 @@ public class CharacterBuilder {
         return this;
     }
 
+    public CharacterBuilder buildApperances(ApperanceGenerator service) {
+        Map<String, String> newProps = service.generateApperances(character, properties);
+        putAllProperties(newProps);
+        return this;
+    }
+
+    public CharacterBuilder buildPersonalities(PersonalityGenerator service) {
+        Map<String, String> newProps = service.generatePersonalities(character, properties);
+        putAllProperties(newProps);
+        return this;
+    }
 
     private void putAllProperties(Map<String, String> newProps){
         for(String key: newProps.keySet()){

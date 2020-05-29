@@ -31,11 +31,9 @@ public class LivePlaceGenerator extends GeneralService {
         }
 
         if(new Random().nextDouble() < nationJourneyChance){
-            System.err.println("JOURNEY");
             character.setLivePlace(this.generateLiveNationPlace(character, properties));
         }
         else if(new Random().nextDouble() < landJourneyChance){
-            System.err.println("JOURNEY");
             character.setLivePlace(this.generateLiveLandPlace(character, properties));
         }
         if(character.getLivePlace()==null) character.setLivePlace(character.getBirthPlace());

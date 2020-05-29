@@ -1,24 +1,13 @@
 package com.example.PRI.services.character.generator;
 
-import com.example.PRI.converters.CharacterGeneratorConverter;
 import com.example.PRI.dtos.characters.CharacterInputDto;
-import com.example.PRI.entities.ImperialDate;
-import com.example.PRI.entities.Place;
-import com.example.PRI.entities.character.*;
 import com.example.PRI.entities.character.Character;
-import com.example.PRI.enums.Month;
-import com.example.PRI.enums.Race;
-import com.example.PRI.enums.Religion;
-import com.example.PRI.enums.Sex;
 import com.example.PRI.services.GeneralService;
-import com.example.PRI.services.ImperialDateService;
-import com.example.PRI.services.PlaceService;
 import com.example.PRI.services.character.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.nio.channels.AcceptPendingException;
 import java.util.*;
 
 @Service
@@ -57,6 +46,12 @@ public class CharacterGenerator extends GeneralService {
     @Autowired
     private LivePlaceGenerator livePlaceGenerator;
 
+    @Autowired
+    private ApperanceGenerator apperanceGenerator;
+
+    @Autowired
+    private PersonalityGenerator personalityGenerator;
+
 
     public Character generateFullCharacter(){
 
@@ -79,6 +74,8 @@ public class CharacterGenerator extends GeneralService {
                 .buildPrediction(predictionGenerator)
                 .buildReligion(new ReligionGenerator())
                 .buildLivePlace(livePlaceGenerator)
+                .buildApperances(apperanceGenerator)
+                .buildPersonalities(personalityGenerator)
         ;
 
         Character generated = characterBuilder.getCharacter();

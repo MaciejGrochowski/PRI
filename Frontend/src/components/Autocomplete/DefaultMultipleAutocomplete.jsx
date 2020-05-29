@@ -29,12 +29,26 @@ class DefaultMultipleAutocomplete extends React.Component {
         this.setState({values: values})
     }
 
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if(prevProps.generated !== this.props.generated){
+            this.setGenerated()
+
+        }
+    }
+
     randomClick = () => {
         //ToDo here should be random value from backend, not hardcoded "Banita"
-        console.log(this.state.values);
-        console.log("Ustawiam banitę");
         if(!this.props.multiple) this.setState({values: "Los"});
         else this.setState({values: ["Los"]})
+    }
+
+    setGenerated = () => {
+        if(this.props.generated===""){
+            this.setState({values: []})
+            return
+        }
+        if(!this.props.multiple) this.setState({values: this.props.generated})
+        else this.setState({values: this.props.generated.split(",")})
     }
 
     render() {

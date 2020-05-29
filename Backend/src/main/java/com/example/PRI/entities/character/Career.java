@@ -1,6 +1,7 @@
 package com.example.PRI.entities.character;
 
 import com.example.PRI.entities.GeneralEntity;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -27,7 +28,8 @@ public class Career extends GeneralEntity {
     @ManyToMany
     List<Talent> talents;
 
-    @ManyToMany
+    @JsonIgnore
+    @ManyToMany(fetch = FetchType.LAZY)
     List<Career> careerExits; //Gdzie można dalej pójść
 
     String dominatingStat;

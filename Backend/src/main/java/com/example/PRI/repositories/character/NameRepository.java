@@ -12,4 +12,6 @@ public interface NameRepository extends CrudRepository<Name, Long> {
     Name findByName(String name);
 
     List<Name> findByIsDwarf(Boolean isTrue);
+
+    List<Name> findAll();
 }

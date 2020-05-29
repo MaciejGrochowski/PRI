@@ -69,6 +69,12 @@ public class CharacterBuilder {
         return this;
     }
 
+    public CharacterBuilder buildName(NameGenerator service) {
+        Map<String, String> newProps = service.generateName(character, properties);
+        putAllProperties(newProps);
+        return this;
+    }
+
     public CharacterBuilder buildWeight(WeightGenerator service) {
         Map<String, String> newProps = service.generateWeight(character, properties);
         putAllProperties(newProps);
@@ -106,6 +112,13 @@ public class CharacterBuilder {
     }
 
 
+    public CharacterBuilder buildPrediction(PredictionGenerator predictionGenerator) {
+        Map<String, String> newProps = predictionGenerator.generatePrediction(character);
+        putAllProperties(newProps);
+        return this;
+    }
+
+
     public CharacterBuilder buildCareers(CareerGenerator service) {
         Map<String, String> newProps = FirstCareerPropertiesMapper.map(character, properties);
         putAllProperties(newProps);
@@ -115,7 +128,12 @@ public class CharacterBuilder {
         for(Map<String, String> props : newPropsList){
             this.putAllProperties(props);
         }
+        return this;
+    }
 
+    public CharacterBuilder buildCareerStatistics(CareerStatisticsGenerator service) {
+        Map<String, String> newProps = service.generateCareerStatisticsGenerator(character, properties);
+        putAllProperties(newProps);
         return this;
     }
 
@@ -145,4 +163,13 @@ public class CharacterBuilder {
 
 
     }
+
+    public CharacterBuilder buildReligion(ReligionGenerator service) {
+        Map<String, String> newProps = service.prepareProps(character, properties);
+        putAllProperties(newProps);
+        newProps = service.generateReligion(character, properties);
+        putAllProperties(newProps);
+        return this;
+    }
+
 }

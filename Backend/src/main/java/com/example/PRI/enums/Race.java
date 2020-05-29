@@ -7,6 +7,7 @@ public enum Race {
     HUMAN("Człowiek",
             "Skills:{}," +
                     "Talents:{}," +
+                    "Movement:0," +
                     "averageWeight:60," +
                     "averageHeight:165," +
                     "adultAge:16," +
@@ -27,6 +28,7 @@ public enum Race {
             "Agility:10," +
                     "BallisticSkill:10," +
                     "Wounds:-1," +
+                    "Movement:1," +
                     "Skills:{}," +
                     "Talents:{}," +
                     "averageWeight:60," +
@@ -63,10 +65,11 @@ public enum Race {
     DWARF("Krasnolud",
             "Mężczyzna:0.8," +
                     "Agility:-10," +
-                    "Strength:10," +
+                    "Toughness:10," +
                     "WeaponSkill:10," +
                     "Fellowship:-10," +
                     "Wounds:1," +
+                    "Movement:-1," +
                     "Skills:{}," +
                     "Talents:{}," +
                     "averageWeight:65," +
@@ -106,6 +109,7 @@ public enum Race {
                     "Strength:-10," +
                     "Toughness:-10," +
                     "Fellowship:10," +
+                    "Movement:0," +
                     "Wounds:-2," +
                     "Skills:{}," +
                     "Talents:{}," +

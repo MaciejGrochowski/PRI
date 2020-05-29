@@ -3,18 +3,53 @@ package com.example.PRI.services.character.generator;
 import com.example.PRI.entities.ImperialDate;
 import com.example.PRI.entities.character.Character;
 import com.example.PRI.enums.Month;
+import com.example.PRI.enums.StarSign;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class BirthDateGenerator {
 
-    private static final int defaultGameYear = 2522;
+    private static final int defaultGameYear = 2522; //ToDo to do propertiesów aplikacji
 
     public Map<String, String> generateBirthDate(Character character, HashMap<String, String> properties) {
         double randomRoll = new Random().nextDouble();
-        if (randomRoll < 0.7) return this.generateAdultCharacter(character, properties);
-        else if(randomRoll < 0.9) return this.generateElderCharacter(character, properties);
-        else return this.generateOldCharacter(character, properties);
+        Map<String, String> output = null;
+        if (randomRoll < 0.7) output = this.generateAdultCharacter(character, properties);
+        else if(randomRoll < 0.9) output = this.generateElderCharacter(character, properties);
+        else output = this.generateOldCharacter(character, properties);
+
+        this.generateStarSign(character);
+
+        return output;
+    }
+
+    private void generateStarSign(Character character) {
+        ImperialDate date = character.getBirthDate();
+        Integer day = date.getDay();
+        StarSign characterStarSign = null;
+        String month = date.getMonth().getMonthName();
+        List<StarSign> starSigns = Arrays.asList(StarSign.values());
+        starSigns = starSigns.stream().filter(s -> s.getStartDate().split(" ")[1].equals(month) || s.getEndDate().split(" ")[1].equals(month)).collect(Collectors.toList());
+        for(StarSign starSign : starSigns){
+            Integer startDay = Integer.valueOf(starSign.getStartDate().split(" ")[0]);
+            Integer endDay = Integer.valueOf(starSign.getEndDate().split(" ")[0]);
+            String startMonth = starSign.getStartDate().split(" ")[1];
+            String endMonth = starSign.getEndDate().split(" ")[1];
+            if(startMonth.equals(endMonth)){
+                if(day >= startDay && day < endDay){
+                    characterStarSign = starSign;
+                    break;
+                }
+            }
+            else{
+                if((startMonth.equals(month) && day >= startDay) || (endMonth.equals(month) && day < endDay) ){
+                    characterStarSign = starSign;
+                    break;
+                }
+            }
+        }
+        character.setStarSign(characterStarSign);
     }
 
     private Map<String, String> generateOldCharacter(Character character, HashMap<String, String> properties) {

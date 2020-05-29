@@ -19,8 +19,8 @@ public class LivePlaceGenerator extends GeneralService {
     PlaceService placeService;
 
     public Map<String, String> generateLivePlace(Character character, HashMap<String, String> properties) {
-        double landJourneyChance = 0.1 + 0.05 * character.getPreviousCareers().size();
-        double nationJourneyChance = 0.05 + 0.02 * character.getPreviousCareers().size();
+        double landJourneyChance = 0.1 + 0.03 * character.getPreviousCareers().size();
+        double nationJourneyChance = 0.05 + 0.01 * character.getPreviousCareers().size();
         //ToDo przypadki specjalne dla Miejsc Elfów i Miejsc Krasnoludów, które nie mają parentów Landów!!
 
         if(properties.containsKey("landJourney")){
@@ -72,6 +72,8 @@ public class LivePlaceGenerator extends GeneralService {
             placeToRandom.addAll(probablyPlaces.stream().filter(p -> p.getProperties().contains("isCapitol")).collect(Collectors.toList()));
         if (career.getProperties().contains("isSwamp"))
             placeToRandom.addAll(probablyPlaces.stream().filter(p -> p.getProperties().contains("isSwamp")).collect(Collectors.toList()));
+        if (career.getProperties().contains("isSea"))
+            placeToRandom.addAll(probablyPlaces.stream().filter(p -> p.getProperties().contains("isSea")).collect(Collectors.toList()));
         if (career.getProperties().contains("isHill"))
             placeToRandom.addAll(probablyPlaces.stream().filter(p -> p.getProperties().contains("isHill")).collect(Collectors.toList()));
         if (career.getProperties().contains("isRoad"))

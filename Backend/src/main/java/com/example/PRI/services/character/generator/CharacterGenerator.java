@@ -64,6 +64,17 @@ public class CharacterGenerator extends GeneralService {
         return CharacterConverter.convertDetails((generateFullCharacter()));
     }
 
+    public Character generateOneAttribute(String attribute, Character character){
+        CharacterBuilder characterBuilder = new CharacterBuilder();
+        characterBuilder.initialize();
+
+        if(attribute.equals("Miejsce urodzenia")) characterBuilder.buildBirthPlace(characterBirthPlaceGenerator);
+        else if(character.getBirthPlace() != null) characterBuilder.buildBirthPlace(characterBirthPlaceGenerator, character.getBirthPlace());
+        //ToDo Kasia inne atrybuty w ifach.
+
+        return characterBuilder.getCharacter();
+    }
+
 
     public Character generateFullCharacter(){
 

@@ -2,6 +2,7 @@ package com.example.PRI.services.character.generator;
 
 import com.example.PRI.entities.character.Apperance;
 import com.example.PRI.entities.character.Character;
+import com.example.PRI.enums.Religion;
 import com.example.PRI.exceptions.CharacterGenerationException;
 import com.example.PRI.services.GeneralService;
 import com.example.PRI.services.character.ApperanceService;
@@ -24,6 +25,10 @@ public class ApperanceGenerator extends GeneralService {
         apperances = apperances.stream().filter(a -> !properties.containsKey(a.getName()) || (properties.containsKey(a.getName()) && !properties.get(a.getName()).equals("0"))).collect(Collectors.toList());
         Random rand = new Random();
         List<Apperance> characterApperances = new ArrayList<>();
+
+        if(character.getCurrentCareer().getName().equals("Kapłan") || character.getCurrentCareer().getName().equals("Wybraniec boży") || character.getCurrentCareer().getName().equals("Arcykapłan")
+        && character.getReligion().equals(Religion.SIGMAR))
+            apperances.stream().filter(a -> a.getName().equals("Łysy")).findFirst().ifPresent(characterApperances::add);
 
         for (Apperance apperance : apperances) {
             if (properties.containsKey(apperance.getName())) {

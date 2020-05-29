@@ -79,7 +79,7 @@ public enum Race {
                     "Zwykłe wąsy:0,"+
                     "Sumiaste wąsiska:0,"+
                     "Wąsy zaplecione w warkocze:0,"+
-                    "Delikatne dłonie:0.04,"+
+                    "Delikatne dłonie:0.02,"+
                     "Flegmatyczna mowa:0.04,"+
                     "Melodyjny głos:0.02,"+
                     "Skośne oczy:0.005,"+
@@ -246,7 +246,8 @@ public enum Race {
                     "Śmieszny:0.02,"+
                     "Wścibski:0.01,"+
                     "Zabawny:0.02,"+
-                    "Zuchwały:0.01"
+                    "Zuchwały:0.01,"+
+                    "Łakomy:0.02"
 
 
     );

@@ -43,6 +43,13 @@ public class CharacterBuilder {
         }
         return this;
     }
+    //ToDo Kasia
+    public CharacterBuilder buildBirthPlace(CharacterBirthPlaceGenerator service, Place place){
+        Map<String,String> newProps = service.getProperties(place);
+        character.setBirthPlace(place);
+        putAllProperties(newProps);
+        return this;
+    }
 
     public CharacterBuilder buildRace(RaceGenerator service){
         Map<String, String> newProps = service.generateRace(character, properties);

@@ -67,4 +67,9 @@ public class CharacterBirthPlaceGenerator extends GeneralService {
         }
         return null;
     }
+
+    //ToDo Kasia
+    public Map<String, String> getProperties(Place place) {
+        return mapJsonStringToMap(place.getProperties());
+    }
 }

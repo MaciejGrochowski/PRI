@@ -48,4 +48,8 @@ public class PlaceService extends GeneralService {
     public List<Place> getByType(PlaceType type) {
         return placeRepository.findByPlaceType(type);
     }
+
+    public List<Place> findAll() {
+        return placeRepository.findAll();
+    }
 }

@@ -41,7 +41,6 @@ public class CharacterBuilder {
             this.putAllProperties(mapJsonStringToMap(parent.getProperties()));
             parent = parent.getParent();
         }
-
         return this;
     }
 
@@ -137,6 +136,13 @@ public class CharacterBuilder {
         return this;
     }
 
+    public CharacterBuilder buildLivePlace(LivePlaceGenerator service) {
+        Map<String, String> newProps = service.generateLivePlace(character, properties);
+        putAllProperties(newProps);
+        return this;
+    }
+
+
     private void putAllProperties(Map<String, String> newProps){
         for(String key: newProps.keySet()){
             if(!this.properties.containsKey(key)){
@@ -150,6 +156,8 @@ public class CharacterBuilder {
                 try{
                     Double oldPropValue = Double.parseDouble(properties.get(key));
                     Double newPropValue = Double.parseDouble(newProps.get(key));
+                    Double sum = oldPropValue+newPropValue;
+                    if(sum==0) sum=0.000001;
                     this.properties.put(key, String.valueOf(oldPropValue+newPropValue));
                 }
                 catch(NumberFormatException e){
@@ -169,5 +177,4 @@ public class CharacterBuilder {
         putAllProperties(newProps);
         return this;
     }
-
 }

@@ -54,6 +54,9 @@ public class CharacterGenerator extends GeneralService {
     @Autowired
     private NameGenerator nameGenerator;
 
+    @Autowired
+    private LivePlaceGenerator livePlaceGenerator;
+
 
     public Character generateFullCharacter(){
 
@@ -75,6 +78,7 @@ public class CharacterGenerator extends GeneralService {
                 .buildCareerStatistics(new CareerStatisticsGenerator())
                 .buildPrediction(predictionGenerator)
                 .buildReligion(new ReligionGenerator())
+                .buildLivePlace(livePlaceGenerator)
         ;
 
         Character generated = characterBuilder.getCharacter();

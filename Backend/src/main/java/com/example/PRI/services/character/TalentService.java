@@ -33,4 +33,7 @@ public class TalentService extends GeneralService {
         return talentRepository.findAll().stream().map(Talent::getName).distinct().collect(Collectors.toList());
     }
 
+    public List<Talent> findAll() {
+        return  talentRepository.findAll();
+    }
 }

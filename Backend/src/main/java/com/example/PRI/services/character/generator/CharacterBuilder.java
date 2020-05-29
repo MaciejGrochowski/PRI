@@ -154,6 +154,12 @@ public class CharacterBuilder {
         return this;
     }
 
+    public CharacterBuilder buildTalents(TalentGenerator service) {
+        Map<String, String> newProps = service.generateTalents(character, properties);
+        putAllProperties(newProps);
+        return this;
+    }
+
     private void putAllProperties(Map<String, String> newProps){
         for(String key: newProps.keySet()){
             if(!this.properties.containsKey(key)){

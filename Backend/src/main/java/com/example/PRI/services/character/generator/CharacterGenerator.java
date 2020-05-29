@@ -52,6 +52,9 @@ public class CharacterGenerator extends GeneralService {
     @Autowired
     private PersonalityGenerator personalityGenerator;
 
+    @Autowired
+    private TalentGenerator talentGenerator;
+
 
     public Character generateFullCharacter(){
 
@@ -70,12 +73,13 @@ public class CharacterGenerator extends GeneralService {
                 .buildHairColor(hairColorGenerator)
                 .buildEmotions(emotionGenerator)
                 .buildCareers(careerGenerator)
-                .buildCareerStatistics(new CareerStatisticsGenerator())
                 .buildPrediction(predictionGenerator)
                 .buildReligion(new ReligionGenerator())
                 .buildLivePlace(livePlaceGenerator)
                 .buildApperances(apperanceGenerator)
                 .buildPersonalities(personalityGenerator)
+                .buildTalents(talentGenerator)
+                .buildCareerStatistics(new CareerStatisticsGenerator())
         ;
 
         Character generated = characterBuilder.getCharacter();

@@ -3,8 +3,10 @@ package com.example.PRI.services.character.generator;
 import com.example.PRI.entities.character.Career;
 import com.example.PRI.entities.character.Character;
 import com.example.PRI.entities.character.Statistics;
+import com.example.PRI.entities.character.Talent;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class CareerStatisticsGenerator {
     public Map<String, String> generateCareerStatisticsGenerator(Character character, HashMap<String, String> properties) {
@@ -65,6 +67,18 @@ public class CareerStatisticsGenerator {
         woundsSkillMaxFromCareers.stream().mapToInt(v -> v).max().ifPresentOrElse(s -> character.setEndWounds(character.getBaseStats().getWounds() + s), () -> character.setEndWounds(character.getBaseStats().getWounds()));
         movementSkillMaxFromCareers.stream().mapToInt(v -> v).max().ifPresentOrElse(s -> character.setEndMovement(character.getBaseStats().getMovement() + s), () -> character.setEndMovement(character.getBaseStats().getMovement()));
         magicSkillMaxFromCareers.stream().mapToInt(v -> v).max().ifPresentOrElse(s -> character.setEndMagic(character.getBaseStats().getMagic() + s), () -> character.setEndMagic(character.getBaseStats().getMagic()));
+
+        List<String> talentNames = character.getTalents().stream().map(Talent::getName).collect(Collectors.toList());
+        if(talentNames.contains("Bardzo silny")) character.setEndStrength(character.getEndStrength()+5);
+        if(talentNames.contains("Bardzo szybki")) character.setEndMovement(character.getEndMovement()+1);
+        if(talentNames.contains("Błyskotliwość")) character.setEndIntelligence(character.getEndIntelligence()+5);
+        if(talentNames.contains("Charyzmatyczny")) character.setEndFellowship(character.getEndFellowship()+5);
+        if(talentNames.contains("Niezwykle odporny")) character.setEndToughness(character.getEndToughness()+5);
+        if(talentNames.contains("Opanowanie")) character.setEndWillPower(character.getEndWillPower()+5);
+        if(talentNames.contains("Strzelec wyborowy")) character.setEndBallisticSkills(character.getEndBallisticSkills()+5);
+        if(talentNames.contains("Szybki refleks")) character.setEndAgility(character.getEndAgility()+5);
+        if(talentNames.contains("Twardziel")) character.setEndWounds(character.getEndWounds()+1);
+        if(talentNames.contains("Urodzony wojownik")) character.setEndWeaponSkills(character.getEndWeaponSkills()+5);
         return new HashMap<>();
     }
 }

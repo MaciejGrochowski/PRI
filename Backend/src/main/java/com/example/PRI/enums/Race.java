@@ -155,7 +155,7 @@ public enum Race {
                     "Kwadratowa szczęka:0.01,"+
                     "Kwadratowa twarz:0.01,"+
                     "Dziewiczy wąs:0,"+
-                    "Zwykłe wąsy:0.2" +
+                    "Zwykłe wąsy:0.2," +
                     "Wąsy zaplecionw w warkocze:0.2,"+
                     "Sumiaste wąsiska:0.05,"+
                     "Częste bekanie:0.04,"+

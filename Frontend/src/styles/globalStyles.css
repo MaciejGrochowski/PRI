@@ -7,6 +7,10 @@
     
 }
 
+body{
+    background-color: #292F2F;
+}
+
 .pageWithContext{
     background-color: #292F2F!important;
     color: white;
@@ -69,12 +73,12 @@
 
 .flex-component{
     display: flex;
-    justify-content: space-evenly;
-    padding: 1%;
     margin-bottom: 2%;
-    width: max-content;
+    width: 90%;
+    padding-bottom: 1%;
     border-bottom: solid 1px white;
 }
+
 
 .yellow-color{
     display: block;
@@ -97,34 +101,16 @@
 
 .stats-name{
     display: block;
-    width: auto;
+    width: max-content;
+    min-width: 160px;
     margin-right: 10px;
 }
 
-.list-decoration{
-    display: flex;
-    flex-direction: column;
-    border-left: solid 2px #FFD859!important;
-}
-
-.skill{
-    display: flex;
-    padding-left: 5%;
-}
-
-.skill-name{
-    display: block;
-
-}
-
-.skill-lvl{
-    display: block;
-}
 
 .standard-component{
     display: block;
-    padding-bottom: 20%;
-    margin-bottom: 20%;
+    max-height: 100%;
+    max-width: 100%;
 }
 
 .positive-message{
@@ -136,6 +122,20 @@
     color: white;
     text-align: center;
     font-size: medium;
+
+}
+
+
+.error-message{
+    padding: 2%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    /* border: solid 1px white; */
+    background-color: tomato;
+    opacity: 0.9;
+    color: white;
+    text-align: center;
+    font-size: large;
 
 }
 

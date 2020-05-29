@@ -1,5 +1,6 @@
 import React from "react";
 import grid from "../../styles/grid.css";
+import "../../styles/CharacterCombatStatsStyle.css";
 
 const mygrid = {
         width: '30px',
@@ -14,7 +15,8 @@ const mygrid = {
 const test = {
     textAlign: 'center',
     display: 'inline-block',
-    paddingTop: '5%',
+    paddingTop: '10%',
+    fontSize: 'medium',
     verticalAlign: 'middle',
 };
 
@@ -23,10 +25,9 @@ class CharacterDetailsCombatStatsView extends React.Component {
     render(){
         const {data, title} = this.props;
         return (
-            <div>
+            <div className = "block-stats-element">
                 <div className = "sub-title">{title}</div>
-
-                <div className = "block-grid">
+                <div className="block-grid">
                     <div className = "grid">
                         <div className="grid-column">
                             <div className="title-column"> ***</div>
@@ -82,9 +83,7 @@ class CharacterDetailsCombatStatsView extends React.Component {
                             <div className = "grid-element" style= {mygrid}><div style ={test}>{data.carrerFellowship}</div></div>
                             <div className = "grid-element" style= {mygrid}><div style ={test}>{data.endFellowship}</div></div>
                         </div>
-                        </div>
                     </div>
-                    <div className="block-grid">
                     <div className = "grid">
                     <div className="grid-column">
                             <div className="title-column"> ***</div>
@@ -129,10 +128,11 @@ class CharacterDetailsCombatStatsView extends React.Component {
                             <div className = "grid-element" style= {mygrid}><div style ={test}>{data.endMagic}</div>
                         </div>
                         </div>
+                        <div className = "fake-element"></div>
+                        </div>
                         </div>
                 </div>
-        
-        </div>
+
         )
     }
 

@@ -1308,15 +1308,15 @@
     "level": 20
   },
   {"id": 328,
-    "name": "Znajomość języka (elfi)",
+    "name": "Znajomość języka (Eltharin)",
     "level": 0
   },
   {"id": 329,
-    "name": "Znajomość języka (elfi)",
+    "name": "Znajomość języka (Eltharin)",
     "level": 10
   },
   {"id": 330,
-    "name": "Znajomość języka (elfi)",
+    "name": "Znajomość języka (Eltharin)",
     "level": 20
   },
   {"id": 331,
@@ -1332,11 +1332,11 @@
     "level": 20
   },
   {"id": 334,
-    "name": "Znajomość języka (krasnoludzki)",
+    "name": "Znajomość języka (Khazalid)",
     "level": 0
   },
   {"id": 335,
-    "name": "Znajomość języka (krasnoludzki)",
+    "name": "Znajomość języka (Khazalid)",
     "level": 10
   },
   {"id": 336,
@@ -1380,15 +1380,15 @@
     "level": 20
   },
   {"id": 346,
-    "name": "Znajomość języka (Imperium)",
+    "name": "Znajomość języka (Staroświatowy)",
     "level": 0
   },
   {"id": 347,
-    "name": "Znajomość języka (Imperium)",
+    "name": "Znajomość języka (Staroświatowy)",
     "level": 10
   },
   {"id": 348,
-    "name": "Znajomość języka (Imperium)",
+    "name": "Znajomość języka (Staroświatowy)",
     "level": 20
   },
   {"id": 349,
@@ -1509,6 +1509,18 @@
   },
   {"id": 378,
     "name": "Sekretny język (gildii)",
+    "level": 20
+  },
+  {"id": 379,
+    "name": "Znajomość języka (niziołków)",
+    "level": 0
+  },
+  {"id": 380,
+    "name": "Znajomość języka (niziołków)",
+    "level": 10
+  },
+  {"id": 381,
+    "name": "Znajomość języka (niziołków)",
     "level": 20
   }
 ]

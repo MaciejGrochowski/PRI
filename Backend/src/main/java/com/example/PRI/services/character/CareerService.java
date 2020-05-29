@@ -39,4 +39,8 @@ public class CareerService extends GeneralService {
         return careerRepository.findByIsBaseProfession(true);
 
     }
+
+    public List<Career> findAll() {
+        return careerRepository.findAll();
+    }
 }

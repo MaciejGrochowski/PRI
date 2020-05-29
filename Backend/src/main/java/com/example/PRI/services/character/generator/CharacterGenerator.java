@@ -1,24 +1,15 @@
 package com.example.PRI.services.character.generator;
 
-import com.example.PRI.converters.CharacterGeneratorConverter;
+import com.example.PRI.converters.CharacterConverter;
+import com.example.PRI.dtos.characters.CharacterDetailsOutputDto;
 import com.example.PRI.dtos.characters.CharacterInputDto;
-import com.example.PRI.entities.ImperialDate;
-import com.example.PRI.entities.Place;
-import com.example.PRI.entities.character.*;
 import com.example.PRI.entities.character.Character;
-import com.example.PRI.enums.Month;
-import com.example.PRI.enums.Race;
-import com.example.PRI.enums.Religion;
-import com.example.PRI.enums.Sex;
 import com.example.PRI.services.GeneralService;
-import com.example.PRI.services.ImperialDateService;
-import com.example.PRI.services.PlaceService;
 import com.example.PRI.services.character.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.nio.channels.AcceptPendingException;
 import java.util.*;
 
 @Service
@@ -36,17 +27,8 @@ public class CharacterGenerator extends GeneralService {
     @Autowired
     private EmotionGenerator emotionGenerator;
 
-//    @Autowired
-//    private BirthDateGenerator birthDateGenerator;
-
     @Autowired
     private HairColorGenerator hairColorGenerator;
-
-    @Autowired
-    private CareerService careerService;
-
-    @Autowired
-    private NameService nameService;
 
     @Autowired
     private CharacterService characterService;
@@ -57,6 +39,31 @@ public class CharacterGenerator extends GeneralService {
     @Autowired
     private CharacterSaveService characterSaveService;
 
+    @Autowired
+    private PredictionGenerator predictionGenerator;
+
+    @Autowired
+    private NameGenerator nameGenerator;
+
+    @Autowired
+    private LivePlaceGenerator livePlaceGenerator;
+
+    @Autowired
+    private ApperanceGenerator apperanceGenerator;
+
+    @Autowired
+    private PersonalityGenerator personalityGenerator;
+
+    @Autowired
+    private TalentGenerator talentGenerator;
+
+    @Autowired
+    private SkillGenerator skillGenerator;
+
+    public CharacterDetailsOutputDto generateCharacterDetails(){
+        return CharacterConverter.convertDetails((generateFullCharacter()));
+    }
+
 
     public Character generateFullCharacter(){
 
@@ -66,6 +73,7 @@ public class CharacterGenerator extends GeneralService {
                 .buildRace(new RaceGenerator())
                 .buildSex(new SexGenerator())
                 .buildSurname(surnameGenerator)
+                .buildName(nameGenerator)
                 .buildBaseStats(new StatisticsGenerator())
                 .buildBirthDate(new BirthDateGenerator())
                 .buildHeight(new HeightGenerator())
@@ -74,6 +82,14 @@ public class CharacterGenerator extends GeneralService {
                 .buildHairColor(hairColorGenerator)
                 .buildEmotions(emotionGenerator)
                 .buildCareers(careerGenerator)
+                .buildPrediction(predictionGenerator)
+                .buildReligion(new ReligionGenerator())
+                .buildLivePlace(livePlaceGenerator)
+                .buildApperances(apperanceGenerator)
+                .buildPersonalities(personalityGenerator)
+                .buildTalents(talentGenerator)
+                .buildCareerStatistics(new CareerStatisticsGenerator())
+                .buildSkills(skillGenerator)
         ;
 
         Character generated = characterBuilder.getCharacter();

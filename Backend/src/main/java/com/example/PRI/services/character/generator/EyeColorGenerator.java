@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class EyeColorGenerator extends GeneralService {
@@ -38,8 +39,9 @@ public class EyeColorGenerator extends GeneralService {
             }
         }
         else{
-            generated = eyeColors.get(0);
-            System.err.println("Wygenerowano ultra rzadki kolor - nie jest to zaimplementowane..."); //ToDo implement strange colors
+            List<EyeColor> notNormalColors = eyeColors.stream().filter(e -> e.getChanceIfHuman() == 0 && e.getChanceIfDwarf() == 0 && e.getChanceIfElf() == 0 && e.getChangeIfHalfling() == 0).collect(Collectors.toList());
+            generated = notNormalColors.get(new Random().nextInt(notNormalColors.size()));
+            //ToDo dopisać do JSON ultra-rzadkie kolory
             newProps.put("eyeColor", generated.getColor());
         }
         character.setEyeColor(generated);

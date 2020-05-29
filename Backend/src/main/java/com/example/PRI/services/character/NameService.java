@@ -34,4 +34,8 @@ public class NameService extends GeneralService {
     public List<Name> findByIsDwarf() {
         return nameRepository.findByIsDwarf(true);
     }
+
+    public List<Name> findAll() {
+        return nameRepository.findAll();
+    }
 }

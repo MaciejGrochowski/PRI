@@ -82,12 +82,12 @@ class CharacterGeneratorPage extends React.Component {
             hairColor: this.state.hairColor,
             livePlace: this.state.livePlace,
             birthPlace: this.state.birthPlace,
-            emotions: this.mapFilterArrayToString(this.state.dominatingEmotions),
+            dominatingEmotions: this.mapFilterArrayToString(this.state.dominatingEmotions),
             religion: this.state.religion,
             skills: this.mapFilterArrayToString(this.state.skills),
             talents: this.mapFilterArrayToString(this.state.talents),
-            apperances: this.mapFilterArrayToString(this.state.apperances),
-            personalities: this.mapFilterArrayToString(this.state.personalities),
+            apperance: this.mapFilterArrayToString(this.state.apperances),
+            personality: this.mapFilterArrayToString(this.state.personalities),
             name: this.state.name, surname: this.state.surname, dayOfBirth: this.state.dayOfBirth,
             yearOfBirth: this.state.yearOfBirth, height: this.state.height, weight: this.state.weight,
             prediction: this.state.prediction,
@@ -166,7 +166,7 @@ class CharacterGeneratorPage extends React.Component {
     }
 
     saveSuccessHandler = response => {
-        this.setState({generated: true, href: "/characterDetails/" + response.data})
+        this.setState({generated: true, href: "/characterDetails/" + response.data, isError: false})
         window.open("/characterDetails/" + response.data);
     }
 
@@ -181,6 +181,7 @@ class CharacterGeneratorPage extends React.Component {
                 <div className="block-element">{this.state.generated &&
                 <div className="positive-message">Aby zobaczyć wygenerowaną postać, kliknij <a
                     href={this.state.href}>tutaj</a></div>}</div>
+                <div className ="block-element">{this.state.isError && <ErrorGenerator errorText={this.state.errorText}/>}</div>
                 <div className="block-element">
                     <div className="flex-div">
                         <div className="white-caption">Statystyki:</div>
@@ -853,7 +854,6 @@ class CharacterGeneratorPage extends React.Component {
                         {/* <button className="red-button">Anuluj</button> */}
                     </div>
                 </div>
-                {this.state.isError && <ErrorGenerator errorText={this.state.errorText}/>}
             </div>
             </div>
         )

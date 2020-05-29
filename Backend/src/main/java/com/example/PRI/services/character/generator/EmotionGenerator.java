@@ -1,7 +1,9 @@
 package com.example.PRI.services.character.generator;
 
+import com.example.PRI.entities.character.Apperance;
 import com.example.PRI.entities.character.Character;
 import com.example.PRI.entities.character.Emotion;
+import com.example.PRI.exceptions.CharacterGenerationException;
 import com.example.PRI.services.GeneralService;
 import com.example.PRI.services.character.EmotionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,12 +34,27 @@ public class EmotionGenerator extends GeneralService {
         }
         int emotionCount = randomEmotionCount(rand.nextDouble());
         while (characterEmotions.size() < emotionCount) {
-            Emotion newEmotion = emotions.get(rand.nextInt(emotions.size()));
+            Emotion newEmotion = getRandomEmotion(emotions);
             boolean noMatch = characterEmotions.stream().map(Emotion::getType).noneMatch(e -> e.equals(newEmotion.getType()));
             if (noMatch) characterEmotions.add(newEmotion);
         }
+        if(characterEmotions.size() > emotionCount){
+            Collections.shuffle(characterEmotions);
+            characterEmotions = characterEmotions.subList(0, emotionCount);
+        }
         character.setDominatingEmotions(characterEmotions);
         return output;
+    }
+
+    private Emotion getRandomEmotion(List<Emotion> emotions) {
+        double sum = emotions.stream().mapToDouble(Emotion::getProbability).sum();
+        double randomRoll = new Random().nextDouble() * sum;
+
+        for(Emotion emotion: emotions){
+            randomRoll -= emotion.getProbability();
+            if(randomRoll<=0) return emotion;
+        }
+        throw new CharacterGenerationException("Stworzono null emocję!", new NullPointerException());
     }
 
     private int randomEmotionCount(double randomRoll) {

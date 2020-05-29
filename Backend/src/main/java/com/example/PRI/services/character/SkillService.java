@@ -26,4 +26,7 @@ public class SkillService extends GeneralService {
         return skillRepository.findAll().stream().map(s -> s.getName() + " +" + s.getLevel().toString()).distinct().collect(Collectors.toList());
     }
 
+    public List<Skill> findAll() {
+        return skillRepository.findAll();
+    }
 }

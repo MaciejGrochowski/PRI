@@ -36,7 +36,6 @@ public class CharacterBirthPlaceGenerator extends GeneralService {
 //        else if (placeTypeRand < 0.91) generatedPlace = generateBirthPlace(PlaceType.DWARFPLACES); ToDo DwarfPlaces
         else generatedPlace = generateBirthPlaceCapitol();
         if(generatedPlace == null){
-            System.err.println(placeTypeRand);
             throw new CharacterGenerationException("BirthPlaceGenerator generated null", new NullPointerException());
         }
 

@@ -10,7 +10,7 @@
     "name": "Imperium",
     "placeType": "COUNTRY",
     "parent": {"id": 1},
-    "properties": "Berserker z Norski:0,Kozak kislevski:0,Szermierz estalijski:0"
+    "properties": "Berserker z Norski:0,Kozak kislevski:0,Szermierz estalijski:0,Sigmar:0.3"
   },
   {
     "id": 3,
@@ -444,14 +444,14 @@
     "name": "Middenland",
     "placeType": "LAND",
     "parent": {"id": 2},
-    "properties": ""
+    "properties": "Ulryk:0.4"
   },
   {
     "id": 65,
     "name": "Middenheim",
     "placeType": "CITY",
     "parent": {"id": 64},
-    "properties": "isForest: true,isCapital: true,isHill: true,isRoad: true,isPopularRoad: true"
+    "properties": "isForest: true,isCapital: true,isHill: true,isRoad: true,isPopularRoad: true,Ulryk:0.4"
   },
   {
     "id": 66,
@@ -2117,7 +2117,7 @@
     "name": "Talabecland",
     "placeType": "LAND",
     "parent": {"id": 2},
-    "properties": ""
+    "properties": "Taal&Rhya:0.2"
   },
   {
     "id": 304,
@@ -2397,7 +2397,7 @@
     "name": "Talabheim",
     "placeType": "CITYSTATE",
     "parent": {"id": 303},
-    "properties": "isForest: true,isRiver: true,isSwamp: true,isHill: true,isRoad: true"
+    "properties": "isForest: true,isRiver: true,isSwamp: true,isHill: true,isRoad: true,Taal&Rhya:0.1"
   },
   {
     "id": 344,

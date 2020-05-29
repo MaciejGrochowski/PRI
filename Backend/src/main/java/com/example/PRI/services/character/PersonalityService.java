@@ -32,4 +32,7 @@ public class PersonalityService extends GeneralService {
         return personalityRepository.findAll().stream().map(Personality::getName).distinct().collect(Collectors.toList());
     }
 
+    public List<Personality> findAll() {
+        return personalityRepository.findAll();
+    }
 }

@@ -1,6 +1,7 @@
 package com.example.PRI.services.character.generator;
 
 import com.example.PRI.entities.character.Character;
+import com.example.PRI.entities.character.EyeColor;
 import com.example.PRI.entities.character.HairColor;
 import com.example.PRI.enums.Race;
 import com.example.PRI.services.GeneralService;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class HairColorGenerator extends GeneralService {
@@ -48,8 +50,9 @@ public class HairColorGenerator extends GeneralService {
                 }
             }
         } else {
-            generated = hairColors.get(0);
-            System.err.println("Wygenerowano ultra rzadki kolor - nie jest to zaimplementowane..."); //ToDo implement strange colors
+            List<HairColor> notNormalColors = hairColors.stream().filter(e -> e.getChanceIfHuman() == 0 && e.getChanceIfDwarf() == 0 && e.getChanceIfElf() == 0 && e.getChangeIfHalfling() == 0).collect(Collectors.toList());
+            generated = notNormalColors.get(new Random().nextInt(notNormalColors.size()));
+            //ToDo dopisać do JSON ultra-rzadkie kolory
             newProps.put("hairColor", generated.getColor());
         }
         character.setHairColor(generated);

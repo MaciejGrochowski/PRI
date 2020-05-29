@@ -91,8 +91,8 @@ public class CareerGenerator extends GeneralService {
         List<Map<String, String>> newProps = new ArrayList<>();
 
         while(true){
-            if(rand.nextDouble() > currentCareer.getExitChance()) break;
-            Career nextCareer = this.buildNextCareer(currentCareer, properties);
+            if(rand.nextDouble() > allCareers.get(allCareers.size()-1).getExitChance()) break;
+            Career nextCareer = this.buildNextCareer(allCareers, currentCareer, properties);
             allCareers.add(nextCareer);
         }
 
@@ -101,21 +101,25 @@ public class CareerGenerator extends GeneralService {
         }
 
         character.setCurrentCareer(allCareers.get(allCareers.size()-1));
-        character.setPreviousCareers(allCareers.subList(1, allCareers.size()));
+        allCareers = allCareers.subList(0, allCareers.size()-1);
+        character.setPreviousCareers(allCareers.subList(0, allCareers.size()));
 
         return newProps;
     }
 
-    private Career buildNextCareer(Career currentCareer, HashMap<String, String> properties) {
+    private Career buildNextCareer(List<Career> allCareers, Career currentCareer, HashMap<String, String> properties) {
         Career output = null;
-        double randomRoll = new Random().nextDouble();
-        if(randomRoll < 0.45) output = getNextBestCareer(currentCareer);
-        else if(randomRoll < 0.75) output = getNextNotBaseCareer(currentCareer);
-        else if(randomRoll < 0.95) output = getNextBaseCareer(currentCareer, properties);
-        else output = getFirstCareer(properties);
 
+        while (output == null) { //ToDo mikrooptymalizacja[jeśli np. prof nie ma nextBestCareer, to w 45% przypadków pętla będzie się powtarzać
+            double randomRoll = new Random().nextDouble();
+            if (randomRoll < 0.45) output = getNextBestCareer(currentCareer);
+            else if (randomRoll < 0.75) output = getNextNotBaseCareer(currentCareer);
+            else if (randomRoll < 0.95) output = getNextBaseCareer(currentCareer, properties);
+            else output = getFirstCareer(properties);
+            if(allCareers.contains(output)) output=null; //Jeśli profesja już wystąpiła, spróbuj jeszcze raz
+    }
         return output;
-    } //45 . 30 . 20 . 5 też może być
+    }
 
     private Career getNextBaseCareer(Career currentCareer, HashMap<String, String> properties) {
         List<Career> careers = currentCareer.getCareerExits().stream().filter(Career::isBaseProfession).collect(Collectors.toList());
@@ -125,18 +129,21 @@ public class CareerGenerator extends GeneralService {
                 if(new Random().nextDouble() < Double.parseDouble(properties.get(career.getName()))) return career;
             }
         }
-        return careers.get(new Random().nextInt(careers.size()));
+        if(careers.size() > 0) return careers.get(new Random().nextInt(careers.size()));
+        return null;
     }
 
     private Career getNextNotBaseCareer(Career currentCareer) {
         List<Career> careers = currentCareer.getCareerExits().stream().filter(c -> !c.isBaseProfession()).collect(Collectors.toList());;
-        return careers.get(new Random().nextInt(careers.size()));
+        if(careers.size()>0) return careers.get(new Random().nextInt(careers.size()));
+        return null;
     }
 
-    private Career getNextBestCareer(Career currentCareer) {
+    private Career getNextBestCareer(Career currentCareer) { //ToDo otestować po wprowadzeniu danych do JSONa
         List<String> careersBest = Arrays.asList(currentCareer.getBestNextCareer().split(","));
         List<Career> careers = currentCareer.getCareerExits().stream().filter(c -> careersBest.contains(c.getName())).collect(Collectors.toList());;
-        return careers.get(new Random().nextInt(careers.size()));
+        if(careers.size() > 0) return careers.get(new Random().nextInt(careers.size()));
+        return null;
     }
 
 

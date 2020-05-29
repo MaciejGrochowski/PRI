@@ -34,4 +34,8 @@ public class ApperanceService extends GeneralService {
     public List<Apperance> findByNameIn(List<String> apperanceListString) {
         return apperanceRepository.findByNameIn(apperanceListString);
     }
+
+    public List<Apperance> findAll() {
+        return apperanceRepository.findAll();
+    }
 }

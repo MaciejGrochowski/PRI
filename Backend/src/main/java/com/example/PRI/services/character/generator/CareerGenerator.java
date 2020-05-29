@@ -119,7 +119,7 @@ public class CareerGenerator extends GeneralService {
             if(allCareers.contains(output)) output=null; //Jeśli profesja już wystąpiła, spróbuj jeszcze raz
     }
         return output;
-    } //45 . 30 . 20 . 5 też może być
+    }
 
     private Career getNextBaseCareer(Career currentCareer, HashMap<String, String> properties) {
         List<Career> careers = currentCareer.getCareerExits().stream().filter(Career::isBaseProfession).collect(Collectors.toList());

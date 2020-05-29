@@ -44,24 +44,24 @@ public class StatisticsGenerator {
         List<String> output = new ArrayList<>();
         List<Integer> secondaryMaximum = new ArrayList<>();
 
-        if(stats.getWeaponSkill() == minimum) output.add("WeaponSkill"); else secondaryMaximum.add(stats.getWeaponSkill());
-        if(stats.getBallisticSkill() == minimum) output.add("BallisticSkill");  else secondaryMaximum.add(stats.getBallisticSkill());
-        if(stats.getStrength() == minimum) output.add("Strength"); else secondaryMaximum.add(stats.getStrength());
-        if(stats.getToughness() == minimum) output.add("Toughness"); else secondaryMaximum.add(stats.getToughness());
-        if(stats.getIntelligence() == minimum) output.add("Intelligence"); else secondaryMaximum.add(stats.getIntelligence());
-        if(stats.getAgility() == minimum) output.add("Agility"); else secondaryMaximum.add(stats.getAgility());
-        if(stats.getWillPower() == minimum) output.add("WillPower"); else secondaryMaximum.add(stats.getWillPower());
-        if(stats.getFellowship() == minimum) output.add("Fellowship");  else secondaryMaximum.add(stats.getFellowship());
+        if(stats.getWeaponSkill() == minimum) output.add("WW"); else secondaryMaximum.add(stats.getWeaponSkill());
+        if(stats.getBallisticSkill() == minimum) output.add("US");  else secondaryMaximum.add(stats.getBallisticSkill());
+        if(stats.getStrength() == minimum) output.add("K"); else secondaryMaximum.add(stats.getStrength());
+        if(stats.getToughness() == minimum) output.add("ODP"); else secondaryMaximum.add(stats.getToughness());
+        if(stats.getIntelligence() == minimum) output.add("INT"); else secondaryMaximum.add(stats.getIntelligence());
+        if(stats.getAgility() == minimum) output.add("ZR"); else secondaryMaximum.add(stats.getAgility());
+        if(stats.getWillPower() == minimum) output.add("SW"); else secondaryMaximum.add(stats.getWillPower());
+        if(stats.getFellowship() == minimum) output.add("OGD");  else secondaryMaximum.add(stats.getFellowship());
         if(output.size() < 2){
             minimum = Collections.max(secondaryMaximum);
-            if(stats.getWeaponSkill() == minimum) output.add("WeaponSkill");
-            if(stats.getBallisticSkill() == minimum) output.add("BallisticSkill");
-            if(stats.getStrength() == minimum) output.add("Strength");
-            if(stats.getToughness() == minimum) output.add("Toughness");
-            if(stats.getIntelligence() == minimum) output.add("Intelligence");
-            if(stats.getAgility() == minimum) output.add("Agility");
-            if(stats.getWillPower() == minimum) output.add("WillPower");
-            if(stats.getFellowship() == minimum) output.add("Fellowship");
+            if(stats.getWeaponSkill() == minimum) output.add("WW");
+            if(stats.getBallisticSkill() == minimum) output.add("US");
+            if(stats.getStrength() == minimum) output.add("K");
+            if(stats.getToughness() == minimum) output.add("ODP");
+            if(stats.getIntelligence() == minimum) output.add("INT");
+            if(stats.getAgility() == minimum) output.add("ZR");
+            if(stats.getWillPower() == minimum) output.add("SW");
+            if(stats.getFellowship() == minimum) output.add("OGD");
 
         }
         return output;

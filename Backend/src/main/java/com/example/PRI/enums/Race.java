@@ -21,8 +21,11 @@ public enum Race {
                     "Rzecznik rodu:0," +
                     "Strażnik pól:0," +
                     "Tarczownik:0," +
-                    "Uczeń czarodzieja: 0.003,"+
-                    "Zabójca trolli:0"
+                    "Uczeń czarodzieja: 0.003," +
+                    "Zabójca trolli:0," +
+                    "Leśny duch:0,"+
+                    "Spracowane dłonie:0.005,"+
+                    "Fanatyk:0.01"
     ),
     ELF("Elf",
             "Agility:10," +
@@ -57,10 +60,47 @@ public enum Race {
                     "Sługa:0," +
                     "Strażnik pól:0," +
                     "Szlachcic:0.005," +
-                    "Strażnik więzienny:0,"+
-                    "Tarczownik:0,"+
-                    "Zabójca trolli:0,"+
-                    "Żołnierz:0"
+                    "Strażnik więzienny:0," +
+                    "Tarczownik:0," +
+                    "Zabójca trolli:0," +
+                    "Żołnierz:0," +
+                    "Leśny duch:0.05,"+
+                    "Zabójca olbrzymów:0,"+
+                    "Zabójca demonów:0,"+
+                    "Bokobrody:0," +
+                    "Broda:0," +
+                    "Broda po pas:0," +
+                    "Kilkudniowy zarost:0," +
+                    "Krótka broda:0," +
+                    "Obfite bokobrody:0," +
+                    "Pejsy:0,"+
+                    "Skołtuniona broda:0,"+
+                    "Dziewiczy wąs:0,"+
+                    "Zwykłe wąsy:0,"+
+                    "Sumiaste wąsiska:0,"+
+                    "Wąsy zaplecione w warkocze:0,"+
+                    "Delikatne dłonie:0.04,"+
+                    "Flegmatyczna mowa:0.04,"+
+                    "Melodyjny głos:0.02,"+
+                    "Skośne oczy:0.005,"+
+                    "Atrakcyjna twarz:0.02,"+
+                    "Garbus:0,"+
+                    "Smukły:0.08,"+
+                    "Włochate ręce:0,"+
+                    "Elegancki ubiór:0.04,"+
+                    "Urodziwy:0.02,"+
+                    "Arogancki:0.02,"+
+                    "Cierpliwy:0.02,"+
+                    "Czarujący:0.02,"+
+                    "Dobrze wychowany:0.01,"+
+                    "Dumny:0.01,"+
+                    "Niewrażliwy:0.02,"+
+                    "Niewzruszony:0.02,"+
+                    "Obojętny:0.02,"+
+                    "Opanowany:0.02,"+
+                    "Tajemniczy:0.02,"+
+                    "Władczy:0.01,"+
+                    "Zarozumiały:0.02"
     ),
     DWARF("Krasnolud",
             "Mężczyzna:0.8," +
@@ -96,11 +136,45 @@ public enum Race {
                     "Paź:0," +
                     "Rzecznik rodu:0," +
                     "Sługa:0," +
-                    "Strażnik pól:0,"+
-                    "Szlachcic:0.005,"+
-                    "Tarczownik:0.03,"+
-                    "Uczeń czarodzieja:0,"+
-                    "Zabójca trolli:0.05"
+                    "Strażnik pól:0," +
+                    "Szlachcic:0.005," +
+                    "Tarczownik:0.03," +
+                    "Uczeń czarodzieja:0," +
+                    "Zabójca trolli:0.05," +
+                    "Leśny duch:0," +
+                    "Zabójca olbrzymów:0.05," +
+                    "Zabójca demonów:0.05," +
+                    "Broda:0.9," +
+                    "Broda po pas:0.5,"+
+                    "Skołtuniona broda:0.3,"+
+                    "Spleciona broda:0.4,"+
+                    "Dłonie jak bochny chleba:0.03,"+
+                    "Charczący głos:0.02,"+
+                    "Mrukliwy głos:0.02,"+
+                    "Łysy:0.02,"+
+                    "Kwadratowa szczęka:0.01,"+
+                    "Kwadratowa twarz:0.01,"+
+                    "Dziewiczy wąs:0,"+
+                    "Zwykłe wąsy:0.2" +
+                    "Wąsy zaplecionw w warkocze:0.2,"+
+                    "Sumiaste wąsiska:0.05,"+
+                    "Częste bekanie:0.04,"+
+                    "Piwny brzuch:0.1,"+
+                    "Chamski:0.05,"+
+                    "Chciwy:0.05,"+
+                    "Drażliwy:0.02,"+
+                    "Dumny:0.02,"+
+                    "Honorowy:0.02,"+
+                    "Małomówny:0.02,"+
+                    "Marudny:0.01,"+
+                    "Mściwy:0.02,"+
+                    "Samotnik:0.02,"+
+                    "Sknera:0.02,"+
+                    "Uparty:0.02,"+
+                    "Wulgarny:0.01,"+
+                    "Zawistny:0.01,"+
+                    "Wojowniczy:0.01"
+
     ),
     HALFLING("Niziołek",
             "Agility:10," +
@@ -127,10 +201,54 @@ public enum Race {
                     "Goniec:0," +
                     "Guślarz:0," +
                     "Rzecznik rodu:0," +
-                    "Strażnik pól:0.07,"+
-                    "Tarczownik:0,"+
-                    "Uczeń czarodzieja:0,"+
-                    "Zabójca trolli:0"
+                    "Strażnik pól:0.07," +
+                    "Tarczownik:0," +
+                    "Uczeń czarodzieja:0," +
+                    "Zabójca trolli:0," +
+                    "Leśny duch:0," +
+                    "Zabójca olbrzymów:0," +
+                    "Zabójca demonów:0,"+
+                    "Bokobrody:0," +
+                    "Broda:0," +
+                    "Broda po pas:0," +
+                    "Kilkudniowy zarost:0," +
+                    "Krótka broda:0," +
+                    "Obfite bokobrody:0," +
+                    "Pejsy:0,"+
+                    "Skołtuniona broda:0,"+
+                    "Dziewiczy wąs:0,"+
+                    "Zwykłe wąsy:0,"+
+                    "Sumiaste wąsiska:0,"+
+                    "Wąsy zaplecione w warkocze:0,"+
+                    "Dziwny chichot:0.02,"+
+                    "Jąkała:0.01,"+
+                    "Mówi bardzo szybko:0.02,"+
+                    "Wesołe oczy:0.05,"+
+                    "Włosy w nieładzie:0.02,"+
+                    "Włochate ręce:0,"+
+                    "Cuchnące stopy:0.02,"+
+                    "Ciągle wiercenie się:0.02,"+
+                    "Dziecinny wygląd:0.15,"+
+                    "Nieustanne dłubanie w nosie:0.04,"+
+                    "Bezczelny:0.02,"+
+                    "Bezinteresowny:0.02,"+
+                    "Beztroski:0.02,"+
+                    "Bohaterski:0.01,"+
+                    "Brawurowy:0.01,"+
+                    "Ciekawski:0.02,"+
+                    "Dowcipny:0.01,"+
+                    "Irytujący:0.02,"+
+                    "Lekkoduch:0.02,"+
+                    "Niecierpliwy:0.01,"+
+                    "Pomysłowy:0.01,"+
+                    "Przyjacielski:0.01,"+
+                    "Szczęściarz:0.01,"+
+                    "Śmieszny:0.02,"+
+                    "Wścibski:0.01,"+
+                    "Zabawny:0.02,"+
+                    "Zuchwały:0.01"
+
+
     );
 
     String name;

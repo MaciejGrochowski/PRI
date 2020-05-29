@@ -160,8 +160,6 @@ public class CharacterBuilder {
                 }
             }
         }
-
-
     }
 
     public CharacterBuilder buildReligion(ReligionGenerator service) {

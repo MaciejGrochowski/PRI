@@ -95,5 +95,13 @@
     "chanceIfDwarf": 0.01,
     "chanceIfHuman": 0.01,
     "changeIfHalfling": 0.01
+  },
+  {"id": 15,
+    "color": "Złote",
+    "chanceIfElf": 0,
+    "chanceIfDwarf": 0,
+    "chanceIfHuman": 0,
+    "changeIfHalfling": 0
   }
+
 ]

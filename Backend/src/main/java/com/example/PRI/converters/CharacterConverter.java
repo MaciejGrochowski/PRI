@@ -17,12 +17,12 @@ import java.util.stream.Collectors;
 
 public class CharacterConverter {
 
-    public static CharacterDefaultAttributesOutputDto convert(Character character){
+    public static CharacterDefaultAttributesOutputDto convert(Character character) {
         CharacterDefaultAttributesOutputDto output = new CharacterDefaultAttributesOutputDto();
         output.setId(character.getId());
         output.setName(character.getName().getName());
-        output.setSurname(character.getSurname()!=null ? character.getSurname().getSurname() : "");
-        output.setRace(character.getRace()==null ? "" : character.getRace().name());
+        output.setSurname(character.getSurname() != null ? character.getSurname().getSurname() : "");
+        output.setRace(character.getRace() == null ? "" : character.getRace().name());
         output.setSex(character.getSex().name()); //ToDo używać getName i wprowadzić poprawkę na frontendzie
         output.setCurrentCareer(character.getCurrentCareer().getName());
 //        output.setCareers(character.getCareers().stream().map(Career::getName).collect(Collectors.toList()));
@@ -30,9 +30,10 @@ public class CharacterConverter {
         output.setApperance(character.getApperance().stream().map(Apperance::getName).collect(Collectors.toList()));
 //        output.setBaseStats(convert(character.getEndStats())); ToDo BaseStats jako odrębne pola w klasie!!
         output.setDayOfBirth(character.getBirthDate().getDay().toString());
-        if (character.getBirthDate() != null){
+        if (character.getBirthDate() != null) {
             output.setDayOfBirth(String.valueOf(character.getBirthDate().getDay()));
-            if(character.getBirthDate().getMonth() != null) output.setMonthOfBirth(String.valueOf(character.getBirthDate().getMonth().getMonthName()));
+            if (character.getBirthDate().getMonth() != null)
+                output.setMonthOfBirth(String.valueOf(character.getBirthDate().getMonth().getMonthName()));
             output.setYearOfBirth(String.valueOf(character.getBirthDate().getYear()));
         }
 
@@ -40,24 +41,24 @@ public class CharacterConverter {
 //        output.setMonthOfBirth(character.getBirthDate().getMonth().getMonthName());
 //        output.setYearOfBirth(character.getBirthDate().getYear().toString());
 //        output.setBirthPlace(character.getBirthPlace()==null ? "" : character.getBirthPlace().getName());
-        output.setCreatedBy(character.getCreatedBy()==null ? "" : character.getCreatedBy().getUsername());
+        output.setCreatedBy(character.getCreatedBy() == null ? "" : character.getCreatedBy().getUsername());
         output.setDominatingEmotions(character.getDominatingEmotions().stream().map(Emotion::getName).collect(Collectors.toList()));
-        output.setEyeColor(character.getEyeColor()==null ? "" : character.getEyeColor().getColor());
-        output.setHairColor(character.getHairColor()==null? "" : character.getHairColor().getColor());
+        output.setEyeColor(character.getEyeColor() == null ? "" : character.getEyeColor().getColor());
+        output.setHairColor(character.getHairColor() == null ? "" : character.getHairColor().getColor());
         output.setHeight(character.getHeight());
         output.setPersonality(character.getPersonality().stream().map(Personality::getName).collect(Collectors.toList()));
         output.setPrediction(character.getPrediction() == null ? "" : character.getPrediction().getText());
-        output.setReligion(character.getReligion()==null ? "" : character.getReligion().getGodName());
+        output.setReligion(character.getReligion() == null ? "" : character.getReligion().getGodName());
         output.setSkills(character.getSkills().stream().map(CharacterConverter::convert).collect(Collectors.toList()));
-        output.setStarSign(character.getStarSign()==null ? "" : character.getStarSign().getName());
+        output.setStarSign(character.getStarSign() == null ? "" : character.getStarSign().getName());
         output.setTalents(character.getTalents().stream().map(Talent::getName).collect(Collectors.toList()));
         output.setWeight(character.getWeight());
         return output;
     }
 
-    private static StatisticsOutputDto convert(Statistics statistics){
+    private static StatisticsOutputDto convert(Statistics statistics) {
         StatisticsOutputDto output = new StatisticsOutputDto();
-        if(statistics==null) return output;
+        if (statistics == null) return output;
         output.setWeaponSkill(statistics.getWeaponSkill());
         output.setBallisticSkill(statistics.getBallisticSkill());
         output.setStrength(statistics.getStrength());
@@ -73,27 +74,28 @@ public class CharacterConverter {
         return output;
     }
 
-    private static SkillOutputDto convert(Skill skill){
-        return skill==null ? new SkillOutputDto() : new SkillOutputDto(skill.getName(), skill.getLevel());
+    private static SkillOutputDto convert(Skill skill) {
+        return skill == null ? new SkillOutputDto() : new SkillOutputDto(skill.getName(), skill.getLevel());
     }
 
     private static String getStringFromArrayProperties(List<String> properties) {
-        if(properties.size() < 1) return "";
+        if (properties.size() < 1) return "";
         String output = "";
-        for (String property: properties){
-            output+= property + ", ";
+        for (String property : properties) {
+            output += property + ", ";
         }
-        return output.substring(0, output.length()-2);
+        return output.substring(0, output.length() - 2);
     }
 
-    public static CharacterDetailsOutputDto convertDetails(Character character){
+    public static CharacterDetailsOutputDto convertDetails(Character character) {
         CharacterDetailsOutputDto output = new CharacterDetailsOutputDto();
+
 
         output.setBirthPlace(character.getBirthPlace().getName());
         output.setRace(character.getRace().getName());
         output.setEyeColor(character.getEyeColor().getColor());
         output.setHairColor(character.getHairColor().getColor());
-        if (character.getBirthDate() != null){
+        if (character.getBirthDate() != null) {
             output.setDayOfBirth(String.valueOf(character.getBirthDate().getDay()));
             output.setMonthOfBirth(String.valueOf(character.getBirthDate().getMonth().getMonthName()));
             output.setYearOfBird(String.valueOf(character.getBirthDate().getYear()));
@@ -124,7 +126,7 @@ public class CharacterConverter {
         output.setEndMagic(character.getEndMagic());
         output.setEndMovement(character.getEndMovement());
 
-        if(character.getBaseStats() != null){
+        if (character.getBaseStats() != null) {
             output.setBaseWeaponSkills(character.getBaseStats().getWeaponSkill());
             output.setBaseBallisticSkills(character.getBaseStats().getBallisticSkill());
             output.setBaseStrength(character.getBaseStats().getStrength());

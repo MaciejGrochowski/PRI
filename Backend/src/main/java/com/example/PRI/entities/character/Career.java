@@ -23,10 +23,10 @@ public class Career extends GeneralEntity {
     Statistics statistics;
 
     @ManyToMany
-    List<Skill> skills;
+    List<Skill> skills; //ToDo z uwagi na CareerSkill to jest do usunięcia
 
     @ManyToMany
-    List<Talent> talents;
+    List<Talent> talents; //ToDo z uwagi na CareerTalent to jest do usunięcia
 
     @JsonIgnore
     @ManyToMany(fetch = FetchType.LAZY)

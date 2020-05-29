@@ -1,5 +1,7 @@
 package com.example.PRI.services.character.generator;
 
+import com.example.PRI.converters.CharacterConverter;
+import com.example.PRI.dtos.characters.CharacterDetailsOutputDto;
 import com.example.PRI.dtos.characters.CharacterInputDto;
 import com.example.PRI.entities.character.Character;
 import com.example.PRI.services.GeneralService;
@@ -55,6 +57,13 @@ public class CharacterGenerator extends GeneralService {
     @Autowired
     private TalentGenerator talentGenerator;
 
+    @Autowired
+    private SkillGenerator skillGenerator;
+
+    public CharacterDetailsOutputDto generateCharacterDetails(){
+        return CharacterConverter.convertDetails((generateFullCharacter()));
+    }
+
 
     public Character generateFullCharacter(){
 
@@ -80,6 +89,7 @@ public class CharacterGenerator extends GeneralService {
                 .buildPersonalities(personalityGenerator)
                 .buildTalents(talentGenerator)
                 .buildCareerStatistics(new CareerStatisticsGenerator())
+                .buildSkills(skillGenerator)
         ;
 
         Character generated = characterBuilder.getCharacter();

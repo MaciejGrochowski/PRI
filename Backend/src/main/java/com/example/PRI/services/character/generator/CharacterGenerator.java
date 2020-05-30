@@ -4,6 +4,10 @@ import com.example.PRI.converters.CharacterConverter;
 import com.example.PRI.dtos.characters.CharacterDetailsOutputDto;
 import com.example.PRI.dtos.characters.CharacterInputDto;
 import com.example.PRI.entities.character.Character;
+import com.example.PRI.entities.character.Surname;
+import com.example.PRI.enums.Race;
+import com.example.PRI.enums.Sex;
+import com.example.PRI.repositories.character.CharacterRepository;
 import com.example.PRI.services.GeneralService;
 import com.example.PRI.services.character.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -151,5 +155,39 @@ public class CharacterGenerator extends GeneralService {
         characterService.save(character);
 
         return character.getId();
+    }
+
+
+    @Transactional
+    public Character saveGenerate(CharacterInputDto characterInputDto){
+        Character character = new Character();
+        if(characterInputDto.getName() == null) character.setName(null);
+        else character.setName(characterSaveService.nameConvert(characterInputDto.getName()));
+        character.setSex(characterSaveService.sexConverter(characterInputDto.getSex()));
+        character.setRace(characterSaveService.raceConverter(characterInputDto.getRace()));
+        Surname surname = characterSaveService.surnameConvert(characterInputDto.getSurname());
+        character.setSurname(prepareSurnameProperties(character.getRace(),surname,character.getSex()));
+        character.setPrediction(characterSaveService.predictionConvert(characterInputDto.getPrediction()));
+        if(characterInputDto.getCurrentCareer() == null) character.setCurrentCareer(null);
+        else character.setCurrentCareer(characterSaveService.currentCareerConvert(characterInputDto.getCurrentCareer()));
+        character.setPreviousCareers(characterSaveService.previousCareersConvert(characterInputDto.getPreviousCareers(),characterInputDto.getCurrentCareer()));
+        character.setHairColor(characterSaveService.hairColorConverter(characterInputDto.getHairColor()));
+        character.setEyeColor(characterSaveService.eyeColorConverter(characterInputDto.getEyeColor()));
+
+        return character;
+    }
+
+
+    private Surname prepareSurnameProperties(Race race, Surname surname, Sex sex){
+        if (race.equals(Race.HUMAN)) surname.setHuman(true);
+        if (race.equals(Race.ELF)) surname.setElf(true);
+        if (race.equals(Race.DWARF)) surname.setDwarf(true);
+        if (race.equals(Race.HALFLING)) surname.setHalfling(true);
+
+        if (sex.equals(Sex.MALE)) surname.setMale(true);
+        if (sex.equals(Sex.FEMALE)) surname.setFemale(true);
+
+        if (surname.getSurname().startsWith("von ")) surname.setGentry(true);
+        return surname;
     }
 }

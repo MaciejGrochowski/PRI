@@ -107,15 +107,15 @@
     "level": 20
   },
   {"id": 28,
-    "name": "Język tajemny",
+    "name": "Język tajemny (magiczny)",
     "level": 0
   },
   {"id": 29,
-    "name": "Język tajemny",
+    "name": "Język tajemny (magiczny)",
     "level": 10
   },
   {"id": 30,
-    "name": "Język tajemny",
+    "name": "Język tajemny (magiczny)",
     "level": 20
   },
   {"id": 31,
@@ -1340,7 +1340,7 @@
     "level": 10
   },
   {"id": 336,
-    "name": "Znajomość języka (krasnoludzki)",
+    "name": "Znajomość języka (Khazalid)",
     "level": 20
   },
   {"id": 337,
@@ -1521,6 +1521,18 @@
   },
   {"id": 381,
     "name": "Znajomość języka (niziołków)",
+    "level": 20
+  },
+  {"id": 382,
+    "name": "Nauka (anatomia)",
+    "level": 0
+  },
+  {"id": 383,
+    "name": "Nauka (anatomia)",
+    "level": 10
+  },
+  {"id": 384,
+    "name": "Nauka (anatomia)",
     "level": 20
   }
 ]

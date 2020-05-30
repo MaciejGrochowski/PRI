@@ -80,17 +80,22 @@ public class CharacterSaveService {
 
 
     public Surname surnameConvert(String surNew) {
+        String prefix = "";
         Optional<Surname> surname = surnameService.findBySurname(surNew);
         if (surNew == null) {
             return new Surname();
         }
         if (surname.isPresent()) return surname.get();
         if (surNew.matches(".*\\d.*")) throw new CharacterSaveException("W nazwisku znajduje się liczba.", new IllegalArgumentException());
+        if (surNew.startsWith("von ") || surNew.startsWith("Von ")){
+            prefix = "von ";
+            surNew = surNew.substring(5);
+        }
         if (surNew.matches("[a-z].*")){
             String firstLetter = surNew.substring(0, 1).toUpperCase();
             String newSurnameWithBigFirstLetter = firstLetter + surNew.substring(1);
             Surname nextSurname = new Surname();
-            nextSurname.setSurname(newSurnameWithBigFirstLetter);
+            nextSurname.setSurname(prefix + newSurnameWithBigFirstLetter);
             surnameService.save(nextSurname);
             return nextSurname;
         }

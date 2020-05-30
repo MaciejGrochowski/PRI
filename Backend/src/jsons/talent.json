@@ -367,7 +367,11 @@
         "properties": ""
     },
     {"id": 93,
-        "name": "Bardzo wytrzymały",
+        "name": "Magia prosta (tajemna)",
+        "properties": ""
+    },
+    {"id": 94,
+        "name": "Zmysł magii",
         "properties": ""
     }
 ]

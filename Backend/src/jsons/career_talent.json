@@ -1497,6 +1497,143 @@
     "career": {"id": 56},
     "talent": {"id": 29},
     "type": 2,
+    "probability": 1},
+
+
+
+
+  {
+    "career": {"id": 57},
+    "talent": {"id": 7},
+    "type": 1,
+    "probability": 1},
+  {
+    "career": {"id": 57},
+    "talent": {"id": 11},
+    "type": 1,
+    "probability": 1},
+  {
+    "career": {"id": 57},
+    "talent": {"id": 18},
+    "type": 2,
+    "probability": 1},
+  {
+    "career": {"id": 57},
+    "talent": {"id": 54},
+    "type": 2,
+    "probability": 1},
+  {
+    "career": {"id": 57},
+    "talent": {"id": 42},
+    "type": 3,
+    "probability": 1},
+  {
+    "career": {"id": 57},
+    "talent": {"id": 19},
+    "type": 3,
+    "probability": 1},
+
+
+
+  {
+    "career": {"id": 58},
+    "talent": {"id": 42},
+    "type": 1,
+    "probability": 1},
+  {
+    "career": {"id": 58},
+    "talent": {"id": 58},
+    "type": 2,
+    "probability": 1},
+  {
+    "career": {"id": 58},
+    "talent": {"id": 8},
+    "type": 2,
+    "probability": 1},
+  {
+    "career": {"id": 58},
+    "talent": {"id": 69},
+    "type": 3,
+    "probability": 1},
+  {
+    "career": {"id": 58},
+    "talent": {"id": 4},
+    "type": 3,
+    "probability": 1},
+
+
+
+  {
+    "career": {"id": 59},
+    "talent": {"id": 91},
+    "type": 1,
+    "probability": 1},
+  {
+    "career": {"id": 59},
+    "talent": {"id": 81},
+    "type": 1,
+    "probability": 1},
+  {
+    "career": {"id": 59},
+    "talent": {"id": 36},
+    "type": 2,
+    "probability": 1},
+  {
+    "career": {"id": 59},
+    "talent": {"id": 5},
+    "type": 2,
+    "probability": 1},
+  {
+    "career": {"id": 59},
+    "talent": {"id": 50},
+    "type": 3,
+    "probability": 1},
+  {
+    "career": {"id": 59},
+    "talent": {"id": 61},
+    "type": 3,
+    "probability": 1},
+  {
+    "career": {"id": 59},
+    "talent": {"id": 57},
+    "type": 4,
+    "probability": 1},
+  {
+    "career": {"id": 59},
+    "talent": {"id": 67},
+    "type": 4,
+    "probability": 1},
+  {
+    "career": {"id": 59},
+    "talent": {"id": 60},
+    "type": 5,
+    "probability": 1},
+  {
+    "career": {"id": 59},
+    "talent": {"id": 58},
+    "type": 5,
+    "probability": 1},
+
+
+  {
+    "career": {"id": 60},
+    "talent": {"id": 50},
+    "type": 1,
+    "probability": 1},
+  {
+    "career": {"id": 60},
+    "talent": {"id": 57},
+    "type": 2,
+    "probability": 1},
+  {
+    "career": {"id": 60},
+    "talent": {"id": 67},
+    "type": 2,
+    "probability": 1},
+  {
+    "career": {"id": 60},
+    "talent": {"id": 58},
+    "type": 3,
     "probability": 1}
 
 ]

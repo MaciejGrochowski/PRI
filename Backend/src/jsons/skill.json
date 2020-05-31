@@ -755,15 +755,15 @@
     "level": 20
   },
   {"id": 190,
-    "name": "Rzemiosło (sztuknictwo)",
+    "name": "Rzemiosło (szkutnictwo)",
     "level": 0
   },
   {"id": 191,
-    "name": "Rzemiosło (sztuknictwo)",
+    "name": "Rzemiosło (szkutnictwo)",
     "level": 10
   },
   {"id": 192,
-    "name": "Rzemiosło (sztuknictwo)",
+    "name": "Rzemiosło (szkutnictwo)",
     "level": 20
   },
   {"id": 193,
@@ -1533,6 +1533,30 @@
   },
   {"id": 384,
     "name": "Nauka (anatomia)",
+    "level": 20
+  },
+  {"id": 385,
+    "name": "Nauka (inżynieria)",
+    "level": 0
+  },
+  {"id": 386,
+    "name": "Nauka (inżynieria)",
+    "level": 10
+  },
+  {"id": 387,
+    "name": "Nauka (inżynieria)",
+    "level": 20
+  },
+  {"id": 388,
+    "name": "Nauka (mechanika)",
+    "level": 0
+  },
+  {"id": 389,
+    "name": "Nauka (mechanika)",
+    "level": 10
+  },
+  {"id": 390,
+    "name": "Nauka (mechanika)",
     "level": 20
   }
 ]

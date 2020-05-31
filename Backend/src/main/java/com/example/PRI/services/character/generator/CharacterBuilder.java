@@ -112,6 +112,13 @@ public class CharacterBuilder {
         return this;
     }
 
+//    public CharacterBuilder buildWeight(WeightGenerator service, Integer weight) {
+//        Map<String,String> newProps = service.getProperties(weight, character.getRace());
+//        character.setWeight(weight);
+//        putAllProperties(newProps);
+//        return this;
+//    }
+
     public CharacterBuilder buildHeight(HeightGenerator service) {
         Map<String, String> newProps = service.generateHeight(character, properties);
         putAllProperties(newProps);

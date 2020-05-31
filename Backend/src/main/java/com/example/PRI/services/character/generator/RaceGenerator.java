@@ -44,4 +44,8 @@ public class RaceGenerator {
 
 
     }
+
+    public Map<String, String> getProperties(Race race) {
+        return mapJsonStringToMap(race.getProperties());
+    }
 }

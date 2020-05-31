@@ -32,4 +32,8 @@ public class SexGenerator {
 
 
     }
+
+    public Map<String, String> getProperties(Sex sex) {
+        return mapJsonStringToMap(sex.getProperties());
+    }
 }

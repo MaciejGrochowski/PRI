@@ -1,6 +1,9 @@
 package com.example.PRI.services.character.generator;
 
 import com.example.PRI.entities.Place;
+import com.example.PRI.entities.character.Surname;
+import com.example.PRI.enums.Race;
+import com.example.PRI.enums.Sex;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import com.example.PRI.entities.character.Character;
@@ -57,9 +60,24 @@ public class CharacterBuilder {
         return this;
     }
 
+
+    public CharacterBuilder buildRace(RaceGenerator service, Race race){
+        Map<String, String> newProp = service.getProperties(race);
+        character.setRace(race);
+        putAllProperties(newProp);
+        return this;
+    }
+
     public CharacterBuilder buildSex(SexGenerator service) {
         Map<String, String> newProps = service.generateSex(character, properties);
         this.putAllProperties(newProps);
+        return this;
+    }
+
+    public CharacterBuilder buildSex(SexGenerator service, Sex sex){
+        Map<String, String> newProp = service.getProperties(sex);
+        character.setSex(sex);
+        putAllProperties(newProp);
         return this;
     }
 
@@ -67,6 +85,13 @@ public class CharacterBuilder {
         Map<String, String> newProps = service.generateSurname(character, properties);
         this.putAllProperties(newProps);
         return this;
+    }
+//todo ???
+    public CharacterBuilder buildSurname(SurnameGenerator service, Race race, Sex sex, Surname surname) {
+        Map<String, String> newProp = service.getProperties(race, sex, surname);
+        character.setSurname(surname);
+        putAllProperties(newProp);
+    return this;
     }
 
     public CharacterBuilder buildBaseStats(StatisticsGenerator service) {

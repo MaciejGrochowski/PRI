@@ -64,6 +64,12 @@ public class CharacterGenerator extends GeneralService {
     @Autowired
     private SkillGenerator skillGenerator;
 
+    @Autowired
+    private RaceGenerator characterRaceGenerator;
+
+    @Autowired
+    private SexGenerator characterSexGenerator;
+
     public CharacterDetailsOutputDto generateCharacterDetails(){
         return CharacterConverter.convertDetails((generateFullCharacter()));
     }
@@ -74,8 +80,17 @@ public class CharacterGenerator extends GeneralService {
 
         if(attribute.equals("Miejsce urodzenia")) characterBuilder.buildBirthPlace(characterBirthPlaceGenerator);
         else if(character.getBirthPlace() != null) characterBuilder.buildBirthPlace(characterBirthPlaceGenerator, character.getBirthPlace());
-        //ToDo Kasia inne atrybuty w ifach.
 
+        if(attribute.equals("Rasa")) characterBuilder.buildRace(characterRaceGenerator);
+        else if(character.getRace() != null) characterBuilder.buildRace(characterRaceGenerator, character.getRace());
+
+        if(attribute.equals("Płeć")) characterBuilder.buildSex(characterSexGenerator);
+        else if(character.getSex() != null) characterBuilder.buildSex(characterSexGenerator, character.getSex());
+
+        if(attribute.equals("Nazwisko")) characterBuilder.buildSurname(surnameGenerator);
+        else if(character.getSurname() != null) characterBuilder.buildSurname(surnameGenerator, character.getRace(), character.getSex(), character.getSurname());
+
+        //ToDo Kasia inne atrybuty w ifach.
         return characterBuilder.getCharacter();
     }
 

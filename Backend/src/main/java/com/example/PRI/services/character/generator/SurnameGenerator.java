@@ -15,6 +15,8 @@ import org.springframework.stereotype.Service;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import static com.example.PRI.services.character.generator.MapperJsonStringToMap.mapJsonStringToMap;
+
 @Service
 public class SurnameGenerator extends GeneralService {
 
@@ -80,4 +82,35 @@ public class SurnameGenerator extends GeneralService {
         surnameService.save(surname);
         return surname;
     }
-}
+
+    //todo ???
+    public Map<String, String> getProperties(Race race, Sex sex, Surname surname) {
+        List<Surname> surnames = null;
+        Map<String, String> newProps = new HashMap<>();
+        Boolean gender;
+        if(sex.equals(Sex.FEMALE)){gender = true;}
+        else{gender= false;}
+
+            if(race.equals(Race.HALFLING)){
+                surnames = surnameService.findHalflingFemaleSurnames(true, gender);
+            }
+            else if(race.equals(Race.ELF)){
+                surnames = surnameService.findElfFemaleSurnames(true, gender);
+            }
+            else if(race.equals(Race.DWARF)) {
+                surnames = surnameService.findDwarfFemaleSurnames(true, gender);
+            }
+            else if (race.equals(Race.HUMAN)){
+                surnames = surnameService.findHumanFemaleSurnames(true, gender);
+            }
+
+            try{
+                newProps =mapJsonStringToMap(surnames.toString());
+            }
+            catch (NullPointerException ex){
+                System.err.println("Error in SurrnameGenerator" + ex);
+            }
+            return newProps;
+        }
+
+    }

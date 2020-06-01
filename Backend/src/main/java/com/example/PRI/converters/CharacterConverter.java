@@ -11,6 +11,7 @@ import com.example.PRI.enums.Religion;
 import com.example.PRI.enums.Sex;
 
 import javax.persistence.ManyToMany;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -79,6 +80,7 @@ public class CharacterConverter {
     }
 
     private static String getStringFromArrayProperties(List<String> properties) {
+        if(properties==null) return "";
         if (properties.size() < 1) return "";
         String output = "";
         for (String property : properties) {
@@ -91,26 +93,26 @@ public class CharacterConverter {
         CharacterDetailsOutputDto output = new CharacterDetailsOutputDto();
 
 
-        output.setBirthPlace(character.getBirthPlace().getName());
-        output.setRace(character.getRace().getName());
-        output.setEyeColor(character.getEyeColor().getColor());
-        output.setHairColor(character.getHairColor().getColor());
+        output.setBirthPlace(character.getBirthPlace()==null ? "" : character.getBirthPlace().getName());
+        output.setRace(character.getRace()==null? "" : character.getRace().getName());
+        output.setEyeColor(character.getEyeColor()==null? "" : character.getEyeColor().getColor());
+        output.setHairColor(character.getHairColor()==null? "" : character.getHairColor().getColor());
         if (character.getBirthDate() != null) {
             output.setDayOfBirth(String.valueOf(character.getBirthDate().getDay()));
             output.setMonthOfBirth(String.valueOf(character.getBirthDate().getMonth().getMonthName()));
             output.setYearOfBird(String.valueOf(character.getBirthDate().getYear()));
         }
         output.setStarSign(character.getStarSign() == null ? "" : character.getStarSign().getName());
-        output.setDominatingEmotions(getStringFromArrayProperties(character.getDominatingEmotions().stream().map(Emotion::getName).collect(Collectors.toList())));
-        output.setSex(character.getSex().getName());
-        output.setReligion(character.getReligion().getGodName());
+        output.setDominatingEmotions(character.getDominatingEmotions()==null? "" :getStringFromArrayProperties(character.getDominatingEmotions().stream().map(Emotion::getName).collect(Collectors.toList())));
+        output.setSex(character.getSex()==null? "" : character.getSex().getName());
+        output.setReligion(character.getReligion()==null? "" : character.getReligion().getGodName());
         output.setWeight(character.getWeight());
         output.setHeight(character.getHeight());
         output.setSurname(character.getSurname() != null ? character.getSurname().getSurname() : "");
-        output.setName(character.getName().getName());
+        output.setName(character.getName()==null? "" :character.getName().getName());
         output.setPrediction(character.getPrediction() != null ? character.getPrediction().getText() : "");
-        output.setCurrentCareer(character.getCurrentCareer().getName());
-        output.setPreviousCareers(getStringFromArrayProperties(character.getPreviousCareers().stream().map(Career::getName).collect(Collectors.toList())));
+        output.setCurrentCareer(character.getCurrentCareer()==null? "" : character.getCurrentCareer().getName());
+        output.setPreviousCareers(character.getPreviousCareers()==null? "" :getStringFromArrayProperties(character.getPreviousCareers().stream().map(Career::getName).collect(Collectors.toList())));
         output.setSkills(character.getSkills());
         output.setTalents(character.getTalents());
         output.setEndWeaponSkills(character.getEndWeaponSkills());
@@ -140,9 +142,9 @@ public class CharacterConverter {
             output.setBaseMagic(character.getBaseStats().getMagic());
             output.setBaseMovement(character.getBaseStats().getMovement());
         }
-        output.setPersonality(getStringFromArrayProperties(character.getPersonality().stream().map(Personality::getName).collect(Collectors.toList())));
-        output.setApperance(getStringFromArrayProperties(character.getApperance().stream().map(Apperance::getName).collect(Collectors.toList())));
-        output.setLivePlace(character.getLivePlace().getName());
+        output.setPersonality(character.getPersonality()==null? "" : getStringFromArrayProperties(character.getPersonality().stream().map(Personality::getName).collect(Collectors.toList())));
+        output.setApperance(character.getApperance()==null? "" : getStringFromArrayProperties(character.getApperance().stream().map(Apperance::getName).collect(Collectors.toList())));
+        output.setLivePlace(character.getLivePlace()==null? "" : character.getLivePlace().getName());
 
         StatisticsOutputDto careerStats = convertCareersStats(character);
         output.setCareerWeaponSkills(careerStats.getWeaponSkill());
@@ -163,8 +165,12 @@ public class CharacterConverter {
     private static StatisticsOutputDto convertCareersStats(Character character) {
         StatisticsOutputDto output = new StatisticsOutputDto();
         List<Career> careers = character.getPreviousCareers();
-        careers.add(character.getCurrentCareer());
-        List<Statistics> stats = careers.stream().map(Career::getStatistics).collect(Collectors.toList());
+        List<Statistics> stats = new ArrayList<>();
+        if(careers!=null){
+            careers.add(character.getCurrentCareer());
+            stats = careers.stream().map(Career::getStatistics).collect(Collectors.toList());
+
+        }
 
 
         output.setWeaponSkill(stats.stream().map(Statistics::getWeaponSkill).max(Integer::compareTo).orElse(0));

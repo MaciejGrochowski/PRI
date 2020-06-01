@@ -32,8 +32,8 @@ public class CharacterController {
         characterService.saveExampleCharacters();
     }
 
-    @Post("/paged") //ToDo to powinno być getem, ale jeśli będzie getem to nie może mieć RequestBody :/
-    public CharacterListOutputDto getSomeCharactersPaged(@RequestBody CharacterListFilterInputDto characterListInput) {
+    @Get("/paged")
+    public CharacterListOutputDto getSomeCharactersPaged(CharacterListFilterInputDto characterListInput) {
         return characterService.getSomeCharactersPaged(characterListInput);
     }
 

@@ -6,43 +6,42 @@ import java.util.Arrays;
 import java.util.Optional;
 
 @AllArgsConstructor
-public enum Religion { //ToDo to musi być alfabetycznie
-    SIGMAR("Sigmar", ""),
-    ULRIC("Ulryk", ""),
-    TAALRHYA("Taal&Rhya", ""),
-    MYRMYDIA("Myrmydia", ""),
-    SHALLYA("Shallya", ""),
-    MORR("Morr", ""),
-    RANALD("Ranald", ""),
-    MANANN("Manann", ""),
-    VERENA("Verena", ""),
-
+public enum Religion {
     ASURYAN("Asuryan", ""),
-    SARRIEL("Sarriel", ""),
-    KHAINE("Khaine", ""),
-    ISHA("Isha", ""),
-    KURNOUS("Kurnous", ""),
-    HOETH("Hoeth", ""),
-    VAUL("Vaul", ""),
-    LILEATH("Lileath", ""),
-    MORAIHEG("Moraiheg", ""),
-    MATHLANN("Mathlann", ""),
-
-    GRUNGNI("Grungni", ""),
+    ESMERALDA("Esmeralda", ""),
     GAZUL("Gazul", ""),
     GRIMNIR("Grimnir", ""),
-    VALAYA("Valaya", ""),
-
-    ESMERALDA("Esmeralda", ""),
-
+    GRUNGNI("Grungni", ""),
+    HOETH("Hoeth", ""),
+    ISHA("Isha", ""),
+    KHAINE("Khaine", ""),
     KHORNE("Khorne", ""),
-    NURGLE("Nurgle", ""),
-    SLAANESH("Slaanesh", ""),
-    TZEENTCH("Tzeentch", ""),
-
-    OLD_GODS("Stara Wiara", ""),
+    KURNOUS("Kurnous", ""),
+    LILEATH("Lileath", ""),
+    MANANN("Manann", ""),
+    MATHLANN("Mathlann", ""),
+    MORAIHEG("Moraiheg", ""),
+    MORR("Morr", ""),
+    MYRMYDIA("Myrmydia", ""),
     NOONE("Brak bóstwa opiekuńczego", ""),
+    NURGLE("Nurgle", ""),
+    OLD_GODS("Stara Wiara", ""),
+    RANALD("Ranald", ""),
+    SARRIEL("Sarriel", ""),
+    SHALLYA("Shallya", ""),
+    SIGMAR("Sigmar", ""),
+    SLAANESH("Slaanesh", ""),
+    TAALRHYA("Taal&Rhya", ""),
+    TZEENTCH("Tzeentch", ""),
+    ULRIC("Ulryk", ""),
+    VALAYA("Valaya", ""),
+    VAUL("Vaul", ""),
+    VERENA("Verena", ""),
     OTHER("Inne", "");
+
+
+
+
 
     //ToDo frontend i backend muszą mieć tych samych bogów!
 

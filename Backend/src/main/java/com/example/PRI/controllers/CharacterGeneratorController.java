@@ -7,9 +7,7 @@ import com.example.PRI.dtos.characters.CharacterDetailsOutputDto;
 import com.example.PRI.dtos.characters.CharacterInputDto;
 import com.example.PRI.services.character.generator.CharacterGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import com.example.PRI.entities.character.Character;
 
 import java.util.Date;
@@ -46,6 +44,11 @@ public class CharacterGeneratorController {
 //        System.err.println(end.getTime() - start.getTime());
 
         return characterGenerator.generateCharacterDetails();
+    }
+
+    @Get("/attribute/{attrName}")
+    public CharacterDetailsOutputDto getAttribute(@PathVariable String attrName, CharacterInputDto character){
+        return characterGenerator.generateAttribute(attrName, character);
     }
 
     @Post("/save")

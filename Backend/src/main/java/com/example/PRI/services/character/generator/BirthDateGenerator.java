@@ -153,7 +153,7 @@ public class BirthDateGenerator {
     private Map<String, String> generateBirthDayMonthYear(Character character, Integer yearOfBirth, Map<String, String> output) {
         List<Month> months = Arrays.asList(Month.values());
         Month monthOfBirth = months.get(new Random().nextInt(months.size()));
-        Integer dayOfBirth = new Random().nextInt(this.getDaysOfMonth(monthOfBirth));
+        Integer dayOfBirth = new Random().nextInt(this.getDaysOfMonth(monthOfBirth))+1;
         character.setBirthDate(new ImperialDate(dayOfBirth, monthOfBirth, yearOfBirth));
         return output;
     }

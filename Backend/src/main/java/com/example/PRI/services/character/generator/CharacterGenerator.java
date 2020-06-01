@@ -68,14 +68,29 @@ public class CharacterGenerator extends GeneralService {
         return CharacterConverter.convertDetails((generateFullCharacter()));
     }
 
+    public CharacterDetailsOutputDto generateAttribute(String attribute, CharacterInputDto character){
+        Character c = this.saveGenerate(character);
+        return CharacterConverter.convertDetails(generateOneAttribute(attribute, c));
+    }
+
     public Character generateOneAttribute(String attribute, Character character){
         CharacterBuilder characterBuilder = new CharacterBuilder();
         characterBuilder.initialize();
 
-        if(attribute.equals("Miejsce urodzenia")) characterBuilder.buildBirthPlace(characterBirthPlaceGenerator);
+        if(attribute.equals("miejsce-urodzenia")) characterBuilder.buildBirthPlace(characterBirthPlaceGenerator);
         else if(character.getBirthPlace() != null) characterBuilder.buildBirthPlace(characterBirthPlaceGenerator, character.getBirthPlace());
-        //ToDo Kasia inne atrybuty w ifach.
 
+        if(attribute.equals("rasa")) characterBuilder.buildRace(new RaceGenerator());
+        else if(character.getRace() != null) characterBuilder.buildRace(new RaceGenerator(), character.getRace());
+
+        if(attribute.equals("płeć")) characterBuilder.buildSex(new SexGenerator());
+        else if(character.getSex() != null) characterBuilder.buildSex(new SexGenerator(), character.getSex());
+
+        if(attribute.equals("nazwisko")) characterBuilder.buildSurname(surnameGenerator);
+        else if(character.getSurname() != null) characterBuilder.buildSurname(surnameGenerator, character.getSurname());
+
+        //ToDo Kasia inne atrybuty w ifach.
+        //ToDo spacje zastępuj myślnikami, attribute z frontendu idą małymi literami
         return characterBuilder.getCharacter();
     }
 

@@ -35,7 +35,13 @@ public class SurnameService extends GeneralService {
         return surnameRepository.findByIsElf(true);
     }
 
-    public List<Surname> findHumanSurnames() {
-        return surnameRepository.findByIsHuman(true);
-    }
+    public List<Surname> findHumanSurnames() {return surnameRepository.findByIsHuman(true); }
+
+    public List<Surname> findDwarfSurnames(){return surnameRepository.findByIsDwarf(true);}
+
+    public List<Surname> findHalflingFemaleSurnames(Boolean isHalfling, Boolean isFemale) { return surnameRepository.findByIsHalflingAndIsFemale(isHalfling, isFemale);}
+
+    public List<Surname> findElfFemaleSurnames(Boolean isElf, Boolean isFemale) { return surnameRepository.findByIsElfAndIsFemale(isElf, isFemale);}
+    public List<Surname> findHumanFemaleSurnames(Boolean isHuman, Boolean isFemale) { return surnameRepository.findByIsHumanAndIsFemale(isHuman, isFemale);}
+    public List<Surname> findDwarfFemaleSurnames(Boolean isDwarf, Boolean isFemale) { return surnameRepository.findByIsDwarfAndIsFemale(isDwarf, isFemale);}
 }

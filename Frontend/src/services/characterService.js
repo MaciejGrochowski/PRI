@@ -8,7 +8,7 @@ const characterService = {
     getCountOfCharacters: () => getCountOfCharacters(),
     getCharacters: (requestBody) => getCharacters(requestBody),
     getAutocompleteFilters: () => getAutocompleteFilters(),
-    getCharacterById: id => getCharacterById(id)
+    getCharacterById: id => getCharacterById(id),
 }
 
 const getCharacterById = id => {
@@ -24,7 +24,7 @@ const getAutocompleteFilters = () => {
 
 const getCharacters = requestBody => {
     const url = characterUrl + "/paged";
-    return request.post(url, requestBody )
+    return request.get(url, {params: requestBody} )
 }
 
 const getCountOfCharacters = () => {

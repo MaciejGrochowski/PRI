@@ -189,6 +189,19 @@ class CharacterGeneratorPage extends React.Component {
         return output.substring(0, output.length - 1);
     }
 
+    generateOneAttribute = attrName => {
+        const characterInput = this.getDataFromForm();
+        generatorService.generateOneAttribute(attrName, characterInput)
+            .then(response => this.generateOneAttributeSuccessHandler(attrName, response))
+    }
+
+    generateOneAttributeSuccessHandler = (attrName, response) => {
+        if(attrName==="Miejsce urodzenia") this.setState({birthPlace: response.data.birthPlace})
+        if(attrName==="Rasa") this.setState({race: response.data.race})
+        if(attrName==="Płeć") this.setState({sex: response.data.sex})
+    }
+
+
     render() {
         return (
             <div className="pageWithContext">
@@ -276,6 +289,7 @@ class CharacterGeneratorPage extends React.Component {
                                 id="characterGeneratorBirthPlace"
                                 generated={this.state.birthPlace}
                                 canBeGenerated
+                                onRandomClick={() => this.generateOneAttribute("Miejsce urodzenia")}
                             />
                             </careerContext.Provider>
                         </div>
@@ -294,6 +308,7 @@ class CharacterGeneratorPage extends React.Component {
                                 width={135}
                                 canBeGenerated
                                 generated={this.state.race}
+                                onRandomClick={() => this.generateOneAttribute("Rasa")}
                             />
                             </careerContext.Provider>
                         </div>
@@ -312,6 +327,7 @@ class CharacterGeneratorPage extends React.Component {
                                 width={138}
                                 canBeGenerated
                                 generated={this.state.sex}
+                                onRandomClick={() => this.generateOneAttribute("Płeć")}
                             /></careerContext.Provider>
                         </div>
 

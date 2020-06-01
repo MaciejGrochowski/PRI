@@ -8,7 +8,7 @@ import {faSyncAlt} from "@fortawesome/free-solid-svg-icons";
 
 const element = <FontAwesomeIcon icon={faSyncAlt}/>
 
-
+//ToDo Opakować defaultMultipleAutocomplete w defaultGeneratorAutocomplete i pozbyć się stąd logiki generatora...
 class DefaultMultipleAutocomplete extends React.Component {
 
     constructor() {
@@ -37,14 +37,20 @@ class DefaultMultipleAutocomplete extends React.Component {
     }
 
     randomClick = () => {
+        if(this.props.onRandomClick) this.props.onRandomClick();
+        else(console.err("Brak funkcji"))
         //ToDo here should be random value from backend, not hardcoded "Banita"
-        if(!this.props.multiple) this.setState({values: "Los"});
-        else this.setState({values: ["Los"]})
+        // if(!this.props.multiple) this.setState({values: "Los"});
+        // else this.setState({values: ["Los"]})
     }
 
     setGenerated = () => {
-        if(this.props.generated===""){
-            this.setState({values: []})
+        if(Array.isArray(this.props.generated)){
+            this.setState({values: this.props.generated})
+            return
+        }
+        if(this.props.generated==="" ) {
+            this.setState({values: []});
             return
         }
         if(!this.props.multiple) this.setState({values: this.props.generated})

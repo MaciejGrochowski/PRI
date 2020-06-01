@@ -123,7 +123,7 @@
         "properties": ""
     },
     {"id": 32,
-        "name": "Magia powszechna",
+        "name": "Magia powszechna (Rozproszenie magii)",
         "properties": ""
     },
     {"id": 33,
@@ -131,7 +131,7 @@
         "properties": ""
     },
     {"id": 34,
-        "name": "Magia tajemna",
+        "name": "Magia tajemna (Życia)",
         "properties": ""
     },
     {"id": 35,
@@ -377,5 +377,106 @@
     {"id": 95,
         "name": "Strzał przebijający",
         "properties": ""
+    },
+    {"id": 96,
+        "name": "Magia Powszechna (Dotyk na odległość)",
+        "properties": ""
+    },
+    {"id": 97,
+        "name": "Magia Powszechna (Pancerz Eteru)",
+        "properties": ""
+    },
+    {"id": 98,
+        "name": "Magia Powszechna (Magiczna Broń)",
+        "properties": ""
+    },
+    {"id": 99,
+        "name": "Magia Powszechna (Magiczne zamknięcie)",
+        "properties": ""
+    },
+    {"id": 100,
+        "name": "Magia Powszechna (Magiczny Alarm)",
+        "properties": ""
+    },
+    {"id": 101,
+        "name": "Magia Powszechna (Uciszenie)",
+        "properties": ""
+    },
+    {"id": 102,
+        "name": "Magia Powszechna (Podniebny Chód)",
+        "properties": ""
+    },
+    {"id": 103,
+        "name": "Magia Tajemna (Cienia)",
+        "properties": ""
+    },
+    {"id": 104,
+        "name": "Magia Tajemna (Metalu)",
+        "properties": ""
+    },
+    {"id": 105,
+        "name": "Magia Tajemna (Niebios)",
+        "properties": ""
+    },
+    {"id": 106,
+        "name": "Magia Tajemna (Ognia)",
+        "properties": ""
+    },
+    {"id": 107,
+        "name": "Magia Tajemna (Śmierci)",
+        "properties": ""
+    },
+    {"id": 108,
+        "name": "Magia Tajemna (Światła)",
+        "properties": ""
+    },
+    {"id": 109,
+        "name": "Magia Tajemna (Zwierząt)",
+        "properties": ""
+    },
+    {"id": 110,
+        "name": "Magia Czarnoksięska (Chaos)",
+        "properties": ""
+    },
+    {"id": 111,
+        "name": "Magia Czarnoksięska (Nekromancji)",
+        "properties": ""
+    },
+    {"id": 112,
+        "name": "Magia kapłańska (Dziedzina Mananna)",
+        "properties": ""
+    },
+    {"id": 113,
+        "name": "Magia kapłańska (Dziedzina Morra)",
+        "properties": ""
+    },
+    {"id": 114,
+        "name": "Magia kapłańska (Dziedzina Myrmidii)",
+        "properties": ""
+    },
+    {"id": 115,
+        "name": "Magia kapłańska (Dziedzina Ranalda)",
+        "properties": ""
+    },
+    {"id": 116,
+        "name": "Magia kapłańska (Dziedzina Shallyi)",
+        "properties": ""
+    },
+    {"id": 117,
+        "name": "Magia kapłańska (Dziedzina Sigmara)",
+        "properties": ""
+    },
+    {"id": 118,
+        "name": "Magia kapłańska (Dziedzina Taala i Rhyi)",
+        "properties": ""
+    },
+    {"id": 119,
+        "name": "Magia kapłańska (Dziedzina Ulryka)",
+        "properties": ""
+    },
+    {"id": 120,
+        "name": "Magia kapłańska (Dziedzina Vereny)",
+        "properties": ""
     }
+
 ]

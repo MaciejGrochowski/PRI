@@ -1639,14 +1639,235 @@
 
 
 
+  {
+    "career": {"id": 61},
+    "talent": {"id": 17},
+    "type": 1,
+    "probability": 1},
+  {
+    "career": {"id": 61},
+    "talent": {"id": 48},
+    "type": 1,
+    "probability": 1},
+  {
+    "career": {"id": 61},
+    "talent": {"id": 18},
+    "type": 2,
+    "probability": 1},
+  {
+    "career": {"id": 61},
+    "talent": {"id": 32},
+    "type": 3,
+    "probability": 1},
+  {
+    "career": {"id": 61},
+    "talent": {"id": 96},
+    "type": 3,
+    "probability": 1},
+  {
+    "career": {"id": 61},
+    "talent": {"id": 97},
+    "type": 3,
+    "probability": 1},
+  {
+    "career": {"id": 61},
+    "talent": {"id": 98},
+    "type": 3,
+    "probability": 1},
+  {
+    "career": {"id": 61},
+    "talent": {"id": 99},
+    "type": 3,
+    "probability": 1},
+  {
+    "career": {"id": 61},
+    "talent": {"id": 100},
+    "type": 3,
+    "probability": 1},
+  {
+    "career": {"id": 61},
+    "talent": {"id": 101},
+    "type": 3,
+    "probability": 1},
+  {
+    "career": {"id": 61},
+    "talent": {"id": 102},
+    "type": 3,
+    "probability": 1},
+  {
+    "career": {"id": 61},
+    "talent": {"id": 32},
+    "type": 4,
+    "probability": 1},
+  {
+    "career": {"id": 61},
+    "talent": {"id": 96},
+    "type": 4,
+    "probability": 1},
+  {
+    "career": {"id": 61},
+    "talent": {"id": 97},
+    "type": 4,
+    "probability": 1},
+  {
+    "career": {"id": 61},
+    "talent": {"id": 98},
+    "type": 4,
+    "probability": 1},
+  {
+    "career": {"id": 61},
+    "talent": {"id": 99},
+    "type": 4,
+    "probability": 1},
+  {
+    "career": {"id": 61},
+    "talent": {"id": 100},
+    "type": 4,
+    "probability": 1},
+  {
+    "career": {"id": 61},
+    "talent": {"id": 101},
+    "type": 4,
+    "probability": 1},
+  {
+    "career": {"id": 61},
+    "talent": {"id": 102},
+    "type": 4,
+    "probability": 1},
+  {
+    "career": {"id": 61},
+    "talent": {"id": 53},
+    "type": 5,
+    "probability": 1},
+  {
+    "career": {"id": 61},
+    "talent": {"id": 37},
+    "type": 5,
+    "probability": 1},
+  {
+    "career": {"id": 61},
+    "talent": {"id": 94},
+    "type": 6,
+    "probability": 1},
+  {
+    "career": {"id": 61},
+    "talent": {"id": 35},
+    "type": 6,
+    "probability": 1},
 
 
 
 
-
-
-
-
+  {
+    "career": {"id": 62},
+    "talent": {"id": 14},
+    "type": 1,
+    "probability": 1},
+  {
+    "career": {"id": 62},
+    "talent": {"id": 35},
+    "type": 1,
+    "probability": 1},
+  {
+    "career": {"id": 62},
+    "talent": {"id": 17},
+    "type": 2,
+    "probability": 1},
+  {
+    "career": {"id": 62},
+    "talent": {"id": 69},
+    "type": 2,
+    "probability": 1},
+  {
+    "career": {"id": 62},
+    "talent": {"id": 32},
+    "type": 3,
+    "probability": 1},
+  {
+    "career": {"id": 62},
+    "talent": {"id": 96},
+    "type": 3,
+    "probability": 1},
+  {
+    "career": {"id": 62},
+    "talent": {"id": 97},
+    "type": 3,
+    "probability": 1},
+  {
+    "career": {"id": 62},
+    "talent": {"id": 98},
+    "type": 3,
+    "probability": 1},
+  {
+    "career": {"id": 62},
+    "talent": {"id": 99},
+    "type": 3,
+    "probability": 1},
+  {
+    "career": {"id": 62},
+    "talent": {"id": 100},
+    "type": 3,
+    "probability": 1},
+  {
+    "career": {"id": 62},
+    "talent": {"id": 101},
+    "type": 3,
+    "probability": 1},
+  {
+    "career": {"id": 62},
+    "talent": {"id": 102},
+    "type": 3,
+    "probability": 1},
+  {
+    "career": {"id": 62},
+    "talent": {"id": 32},
+    "type": 4,
+    "probability": 1},
+  {
+    "career": {"id": 62},
+    "talent": {"id": 96},
+    "type": 4,
+    "probability": 1},
+  {
+    "career": {"id": 62},
+    "talent": {"id": 97},
+    "type": 4,
+    "probability": 1},
+  {
+    "career": {"id": 62},
+    "talent": {"id": 98},
+    "type": 4,
+    "probability": 1},
+  {
+    "career": {"id": 62},
+    "talent": {"id": 99},
+    "type": 4,
+    "probability": 1},
+  {
+    "career": {"id": 62},
+    "talent": {"id": 100},
+    "type": 4,
+    "probability": 1},
+  {
+    "career": {"id": 62},
+    "talent": {"id": 101},
+    "type": 4,
+    "probability": 1},
+  {
+    "career": {"id": 62},
+    "talent": {"id": 102},
+    "type": 4,
+    "probability": 1},
+  {
+    "career": {"id": 62},
+    "talent": {"id": 94},
+    "type": 5,
+    "probability": 1},
+  {
+    "career": {"id": 62},
+    "talent": {"id": 37},
+    "type": 5,
+    "probability": 1},
 
 
 
@@ -2410,6 +2631,627 @@
     "career": {"id": 82},
     "talent": {"id": 50},
     "type": 3,
-    "probability": 1}
+    "probability": 1},
 
+
+
+  {
+    "career": {"id": 83},
+    "talent": {"id": 4},
+    "type": 1,
+    "probability": 1},
+  {
+    "career": {"id": 83},
+    "talent": {"id": 8},
+    "type": 1,
+    "probability": 1},
+  {
+    "career": {"id": 83},
+    "talent": {"id": 30},
+    "type": 2,
+    "probability": 1},
+  {
+    "career": {"id": 83},
+    "talent": {"id": 85},
+    "type": 3,
+    "probability": 1},
+  {
+    "career": {"id": 83},
+    "talent": {"id": 29},
+    "type": 4,
+    "probability": 1},
+  {
+    "career": {"id": 83},
+    "talent": {"id": 76},
+    "type": 5,
+    "probability": 1},
+
+
+
+
+  {
+    "career": {"id": 84},
+    "talent": {"id": 18},
+    "type": 1,
+    "probability": 1},
+  {
+    "career": {"id": 84},
+    "talent": {"id": 54},
+    "type": 2,
+    "probability": 1},
+  {
+    "career": {"id": 84},
+    "talent": {"id": 80},
+    "type": 3,
+    "probability": 1},
+
+
+
+  {
+    "career": {"id": 85},
+    "talent": {"id": 14},
+    "type": 1,
+    "probability": 1},
+  {
+    "career": {"id": 85},
+    "talent": {"id": 48},
+    "type": 1,
+    "probability": 1},
+  {
+    "career": {"id": 85},
+    "talent": {"id": 17},
+    "type": 2,
+    "probability": 1},
+  {
+    "career": {"id": 85},
+    "talent": {"id": 37},
+    "type": 2,
+    "probability": 1},
+  {
+    "career": {"id": 85},
+    "talent": {"id": 32},
+    "type": 3,
+    "probability": 1},
+  {
+    "career": {"id": 85},
+    "talent": {"id": 96},
+    "type": 3,
+    "probability": 1},
+  {
+    "career": {"id": 85},
+    "talent": {"id": 97},
+    "type": 3,
+    "probability": 1},
+  {
+    "career": {"id": 85},
+    "talent": {"id": 98},
+    "type": 3,
+    "probability": 1},
+  {
+    "career": {"id": 85},
+    "talent": {"id": 99},
+    "type": 3,
+    "probability": 1},
+  {
+    "career": {"id": 85},
+    "talent": {"id": 100},
+    "type": 3,
+    "probability": 1},
+  {
+    "career": {"id": 85},
+    "talent": {"id": 101},
+    "type": 3,
+    "probability": 1},
+  {
+    "career": {"id": 85},
+    "talent": {"id": 102},
+    "type": 3,
+    "probability": 1},
+  {
+    "career": {"id": 85},
+    "talent": {"id": 32},
+    "type": 4,
+    "probability": 1},
+  {
+    "career": {"id": 85},
+    "talent": {"id": 96},
+    "type": 4,
+    "probability": 1},
+  {
+    "career": {"id": 85},
+    "talent": {"id": 97},
+    "type": 4,
+    "probability": 1},
+  {
+    "career": {"id": 85},
+    "talent": {"id": 98},
+    "type": 4,
+    "probability": 1},
+  {
+    "career": {"id": 85},
+    "talent": {"id": 99},
+    "type": 4,
+    "probability": 1},
+  {
+    "career": {"id": 85},
+    "talent": {"id": 100},
+    "type": 4,
+    "probability": 1},
+  {
+    "career": {"id": 85},
+    "talent": {"id": 101},
+    "type": 4,
+    "probability": 1},
+  {
+    "career": {"id": 85},
+    "talent": {"id": 102},
+    "type": 4,
+    "probability": 1},
+  {
+    "career": {"id": 85},
+    "talent": {"id": 94},
+    "type": 5,
+    "probability": 1},
+  {
+    "career": {"id": 85},
+    "talent": {"id": 35},
+    "type": 5,
+    "probability": 1},
+
+
+
+
+  {
+    "career": {"id": 86},
+    "talent": {"id": 68},
+    "type": 1,
+    "probability": 1},
+  {
+    "career": {"id": 86},
+    "talent": {"id": 18},
+    "type": 1,
+    "probability": 1},
+
+
+
+  {
+    "career": {"id": 87},
+    "talent": {"id": 6},
+    "type": 1,
+    "probability": 1},
+  {
+    "career": {"id": 87},
+    "talent": {"id": 88},
+    "type": 2,
+    "probability": 1},
+  {
+    "career": {"id": 87},
+    "talent": {"id": 89},
+    "type": 3,
+    "probability": 1},
+  {
+    "career": {"id": 87},
+    "talent": {"id": 18},
+    "type": 4,
+    "probability": 1},
+  {
+    "career": {"id": 87},
+    "talent": {"id": 36},
+    "type": 5,
+    "probability": 1},
+  {
+    "career": {"id": 87},
+    "talent": {"id": 42},
+    "type": 6,
+    "probability": 1},
+  {
+    "career": {"id": 87},
+    "talent": {"id": 49},
+    "type": 7,
+    "probability": 1},
+  {
+    "career": {"id": 87},
+    "talent": {"id": 50},
+    "type": 8,
+    "probability": 1},
+
+
+
+
+  {
+    "career": {"id": 88},
+    "talent": {"id": 75},
+    "type": 1,
+    "probability": 1},
+
+
+
+
+  {
+    "career": {"id": 89},
+    "talent": {"id": 42},
+    "type": 1,
+    "probability": 1},
+  {
+    "career": {"id": 89},
+    "talent": {"id": 75},
+    "type": 2,
+    "probability": 1},
+  {
+    "career": {"id": 89},
+    "talent": {"id": 54},
+    "type": 2,
+    "probability": 1},
+
+
+
+
+  {
+    "career": {"id": 90},
+    "talent": {"id": 6},
+    "type": 1,
+    "probability": 1},
+  {
+    "career": {"id": 90},
+    "talent": {"id": 87},
+    "type": 2,
+    "probability": 1},
+  {
+    "career": {"id": 90},
+    "talent": {"id": 81},
+    "type": 2,
+    "probability": 1},
+  {
+    "career": {"id": 90},
+    "talent": {"id": 86},
+    "type": 3,
+    "probability": 1},
+  {
+    "career": {"id": 90},
+    "talent": {"id": 88},
+    "type": 3,
+    "probability": 1},
+  {
+    "career": {"id": 90},
+    "talent": {"id": 57},
+    "type": 4,
+    "probability": 1},
+  {
+    "career": {"id": 90},
+    "talent": {"id": 67},
+    "type": 4,
+    "probability": 1},
+
+
+
+
+  {
+    "career": {"id": 91},
+    "talent": {"id": 86},
+    "type": 1,
+    "probability": 1},
+  {
+    "career": {"id": 91},
+    "talent": {"id": 21},
+    "type": 2,
+    "probability": 1},
+  {
+    "career": {"id": 91},
+    "talent": {"id": 78},
+    "type": 3,
+    "probability": 1},
+
+
+
+
+  {
+    "career": {"id": 92},
+    "talent": {"id": 19},
+    "type": 1,
+    "probability": 1},
+  {
+    "career": {"id": 92},
+    "talent": {"id": 50},
+    "type": 2,
+    "probability": 1},
+  {
+    "career": {"id": 92},
+    "talent": {"id": 80},
+    "type": 3,
+    "probability": 1},
+  {
+    "career": {"id": 92},
+    "talent": {"id": 29},
+    "type": 3,
+    "probability": 1},
+
+
+
+
+  {
+    "career": {"id": 93},
+    "talent": {"id": 1},
+    "type": 1,
+    "probability": 1},
+  {
+    "career": {"id": 93},
+    "talent": {"id": 5},
+    "type": 2,
+    "probability": 1},
+  {
+    "career": {"id": 93},
+    "talent": {"id": 91},
+    "type": 3,
+    "probability": 1},
+  {
+    "career": {"id": 93},
+    "talent": {"id": 58},
+    "type": 4,
+    "probability": 1},
+  {
+    "career": {"id": 93},
+    "talent": {"id": 60},
+    "type": 5,
+    "probability": 1},
+  {
+    "career": {"id": 93},
+    "talent": {"id": 95},
+    "type": 6,
+    "probability": 1},
+  {
+    "career": {"id": 93},
+    "talent": {"id": 67},
+    "type": 7,
+    "probability": 1},
+
+
+
+
+  {
+    "career": {"id": 94},
+    "talent": {"id": 4},
+    "type": 1,
+    "probability": 1},
+  {
+    "career": {"id": 94},
+    "talent": {"id": 21},
+    "type": 2,
+    "probability": 1},
+  {
+    "career": {"id": 94},
+    "talent": {"id": 29},
+    "type": 3,
+    "probability": 1},
+  {
+    "career": {"id": 94},
+    "talent": {"id": 50},
+    "type": 4,
+    "probability": 1},
+  {
+    "career": {"id": 94},
+    "talent": {"id": 58},
+    "type": 5,
+    "probability": 1},
+
+
+
+  {
+    "career": {"id": 95},
+    "talent": {"id": 1},
+    "type": 1,
+    "probability": 1},
+  {
+    "career": {"id": 95},
+    "talent": {"id": 8},
+    "type": 2,
+    "probability": 1},
+  {
+    "career": {"id": 95},
+    "talent": {"id": 91},
+    "type": 3,
+    "probability": 1},
+  {
+    "career": {"id": 95},
+    "talent": {"id": 89},
+    "type": 4,
+    "probability": 1},
+  {
+    "career": {"id": 95},
+    "talent": {"id": 18},
+    "type": 5,
+    "probability": 1},
+  {
+    "career": {"id": 95},
+    "talent": {"id": 43},
+    "type": 6,
+    "probability": 1},
+  {
+    "career": {"id": 95},
+    "talent": {"id": 60},
+    "type": 7,
+    "probability": 1},
+  {
+    "career": {"id": 95},
+    "talent": {"id": 61},
+    "type": 8,
+    "probability": 1},
+  {
+    "career": {"id": 95},
+    "talent": {"id": 74},
+    "type": 9,
+    "probability": 1},
+
+
+
+  {
+    "career": {"id": 96},
+    "talent": {"id": 81},
+    "type": 1,
+    "probability": 1},
+  {
+    "career": {"id": 96},
+    "talent": {"id": 87},
+    "type": 2,
+    "probability": 1},
+  {
+    "career": {"id": 96},
+    "talent": {"id": 86},
+    "type": 3,
+    "probability": 1},
+  {
+    "career": {"id": 96},
+    "talent": {"id": 58},
+    "type": 4,
+    "probability": 1},
+
+
+
+  {
+    "career": {"id": 97},
+    "talent": {"id": 4},
+    "type": 1,
+    "probability": 1},
+  {
+    "career": {"id": 97},
+    "talent": {"id": 78},
+    "type": 1,
+    "probability": 1},
+  {
+    "career": {"id": 97},
+    "talent": {"id": 21},
+    "type": 2,
+    "probability": 1},
+  {
+    "career": {"id": 97},
+    "talent": {"id": 42},
+    "type": 2,
+    "probability": 1},
+  {
+    "career": {"id": 97},
+    "talent": {"id": 50},
+    "type": 3,
+    "probability": 1},
+  {
+    "career": {"id": 97},
+    "talent": {"id": 58},
+    "type": 4,
+    "probability": 1},
+
+
+
+
+  {
+    "career": {"id": 98},
+    "talent": {"id": 4},
+    "type": 1,
+    "probability": 1},
+  {
+    "career": {"id": 98},
+    "talent": {"id": 6},
+    "type": 2,
+    "probability": 1},
+  {
+    "career": {"id": 98},
+    "talent": {"id": 8},
+    "type": 3,
+    "probability": 1},
+  {
+    "career": {"id": 98},
+    "talent": {"id": 88},
+    "type": 4,
+    "probability": 1},
+  {
+    "career": {"id": 98},
+    "talent": {"id": 85},
+    "type": 5,
+    "probability": 1},
+  {
+    "career": {"id": 98},
+    "talent": {"id": 90},
+    "type": 6,
+    "probability": 1},
+  {
+    "career": {"id": 98},
+    "talent": {"id": 29},
+    "type": 7,
+    "probability": 1},
+  {
+    "career": {"id": 98},
+    "talent": {"id": 60},
+    "type": 8,
+    "probability": 1},
+  {
+    "career": {"id": 98},
+    "talent": {"id": 67},
+    "type": 9,
+    "probability": 1},
+
+
+
+
+  {
+    "career": {"id": 99},
+    "talent": {"id": 5},
+    "type": 1,
+    "probability": 1},
+  {
+    "career": {"id": 99},
+    "talent": {"id": 83},
+    "type": 2,
+    "probability": 1},
+  {
+    "career": {"id": 99},
+    "talent": {"id": 30},
+    "type": 3,
+    "probability": 1},
+  {
+    "career": {"id": 99},
+    "talent": {"id": 85},
+    "type": 3,
+    "probability": 1},
+  {
+    "career": {"id": 99},
+    "talent": {"id": 60},
+    "type": 4,
+    "probability": 1},
+  {
+    "career": {"id": 99},
+    "talent": {"id": 61},
+    "type": 5,
+    "probability": 1},
+  {
+    "career": {"id": 99},
+    "talent": {"id": 95},
+    "type": 6,
+    "probability": 1},
+
+
+
+
+
+  {
+    "career": {"id": 100},
+    "talent": {"id": 6},
+    "type": 1,
+    "probability": 1},
+  {
+    "career": {"id": 100},
+    "talent": {"id": 81},
+    "type": 2,
+    "probability": 1},
+  {
+    "career": {"id": 100},
+    "talent": {"id": 86},
+    "type": 3,
+    "probability": 1},
+  {
+    "career": {"id": 100},
+    "talent": {"id": 88},
+    "type": 4,
+    "probability": 1},
+  {
+    "career": {"id": 100},
+    "talent": {"id": 89},
+    "type": 5,
+    "probability": 1}
 ]

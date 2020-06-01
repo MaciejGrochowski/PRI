@@ -64,33 +64,33 @@ public class CharacterGenerator extends GeneralService {
     @Autowired
     private SkillGenerator skillGenerator;
 
-    @Autowired
-    private RaceGenerator characterRaceGenerator;
-
-    @Autowired
-    private SexGenerator characterSexGenerator;
-
     public CharacterDetailsOutputDto generateCharacterDetails(){
         return CharacterConverter.convertDetails((generateFullCharacter()));
+    }
+
+    public CharacterDetailsOutputDto generateAttribute(String attribute, CharacterInputDto character){
+        Character c = this.saveGenerate(character);
+        return CharacterConverter.convertDetails(generateOneAttribute(attribute, c));
     }
 
     public Character generateOneAttribute(String attribute, Character character){
         CharacterBuilder characterBuilder = new CharacterBuilder();
         characterBuilder.initialize();
 
-        if(attribute.equals("Miejsce urodzenia")) characterBuilder.buildBirthPlace(characterBirthPlaceGenerator);
+        if(attribute.equals("miejsce-urodzenia")) characterBuilder.buildBirthPlace(characterBirthPlaceGenerator);
         else if(character.getBirthPlace() != null) characterBuilder.buildBirthPlace(characterBirthPlaceGenerator, character.getBirthPlace());
 
-        if(attribute.equals("Rasa")) characterBuilder.buildRace(characterRaceGenerator);
-        else if(character.getRace() != null) characterBuilder.buildRace(characterRaceGenerator, character.getRace());
+        if(attribute.equals("rasa")) characterBuilder.buildRace(new RaceGenerator());
+        else if(character.getRace() != null) characterBuilder.buildRace(new RaceGenerator(), character.getRace());
 
-        if(attribute.equals("Płeć")) characterBuilder.buildSex(characterSexGenerator);
-        else if(character.getSex() != null) characterBuilder.buildSex(characterSexGenerator, character.getSex());
+        if(attribute.equals("płeć")) characterBuilder.buildSex(new SexGenerator());
+        else if(character.getSex() != null) characterBuilder.buildSex(new SexGenerator(), character.getSex());
 
-        if(attribute.equals("Nazwisko")) characterBuilder.buildSurname(surnameGenerator);
-        else if(character.getSurname() != null) characterBuilder.buildSurname(surnameGenerator, character.getRace(), character.getSex(), character.getSurname());
+        if(attribute.equals("nazwisko")) characterBuilder.buildSurname(surnameGenerator);
+        else if(character.getSurname() != null) characterBuilder.buildSurname(surnameGenerator, character.getSurname());
 
         //ToDo Kasia inne atrybuty w ifach.
+        //ToDo spacje zastępuj myślnikami, attribute z frontendu idą małymi literami
         return characterBuilder.getCharacter();
     }
 

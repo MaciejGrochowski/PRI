@@ -87,8 +87,8 @@ public class CharacterBuilder {
         return this;
     }
 //todo ???
-    public CharacterBuilder buildSurname(SurnameGenerator service, Race race, Sex sex, Surname surname) {
-        Map<String, String> newProp = service.getProperties(race, sex, surname);
+    public CharacterBuilder buildSurname(SurnameGenerator service, Surname surname) {
+        Map<String, String> newProp = service.getProperties(surname);
         character.setSurname(surname);
         putAllProperties(newProp);
     return this;

@@ -41,8 +41,8 @@ public class CharacterDetailsOutputDto {
 
     String religion;
 
-    int weight;
-    int height;
+    Integer weight;
+    Integer height;
 
     String surname;
 

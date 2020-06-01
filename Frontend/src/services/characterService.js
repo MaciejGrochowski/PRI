@@ -24,7 +24,7 @@ const getAutocompleteFilters = () => {
 
 const getCharacters = requestBody => {
     const url = characterUrl + "/paged";
-    return request.post(url, requestBody )
+    return request.get(url, {params: requestBody} )
 }
 
 const getCountOfCharacters = () => {

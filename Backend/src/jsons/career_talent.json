@@ -3253,5 +3253,40 @@
     "career": {"id": 100},
     "talent": {"id": 89},
     "type": 5,
+    "probability": 1},
+
+
+
+
+
+  {
+    "career": {"id": 101},
+    "talent": {"id": 13},
+    "type": 1,
+    "probability": 1},
+  {
+    "career": {"id": 101},
+    "talent": {"id": 23},
+    "type": 2,
+    "probability": 1},
+  {
+    "career": {"id": 101},
+    "talent": {"id": 29},
+    "type": 2,
+    "probability": 1},
+  {
+    "career": {"id": 101},
+    "talent": {"id": 38},
+    "type": 3,
+    "probability": 1},
+  {
+    "career": {"id": 101},
+    "talent": {"id": 42},
+    "type": 4,
+    "probability": 1},
+  {
+    "career": {"id": 101},
+    "talent": {"id": 55},
+    "type": 5,
     "probability": 1}
 ]

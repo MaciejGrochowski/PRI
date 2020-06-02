@@ -24,7 +24,7 @@
     "name": "Averheim",
     "placeType": "TOWN",
     "parent": {"id": 3},
-    "properties": "isRiver: true,isCapital: true,isRoad: true,isPopularRoad: true"
+    "properties": "isRiver: 1,isCapital: 1,isRoad: 1,isPopularRoad: 1"
   },
   {
     "id": 5,
@@ -59,35 +59,35 @@
     "name": "Tannfeld",
     "placeType": "VILLIAGE",
     "parent": {"id": 3},
-    "properties": "isRoad: true"
+    "properties": "isRoad: 1"
   },
   {
     "id": 10,
     "name": "Agbeiten",
     "placeType": "SMALLTOWN",
     "parent": {"id": 3},
-    "properties": "isRiver: true,isRoad: true"
+    "properties": "isRiver: 1,isRoad: 1"
   },
   {
     "id": 11,
     "name": "Ensdorf",
     "placeType": "VILLIAGE",
     "parent": {"id": 3},
-    "properties": "isRiver: true,isRoad: true"
+    "properties": "isRiver: 1,isRoad: 1"
   },
   {
     "id": 12,
     "name": "Naabeck",
     "placeType": "VILLIAGE",
     "parent": {"id": 3},
-    "properties": "isRoad: true"
+    "properties": "isRoad: 1"
   },
   {
     "id": 13,
     "name": "Bernloch",
     "placeType": "SMALLTOWN",
     "parent": {"id": 3},
-    "properties": "isRoad: true"
+    "properties": "isRoad: 1"
   },
   {
     "id": 14,
@@ -101,7 +101,7 @@
     "name": "Bieswang",
     "placeType": "SMALLTOWN",
     "parent": {"id": 3},
-    "properties": "isRoad: true"
+    "properties": "isRoad: 1"
   },
   {
     "id": 16,
@@ -115,7 +115,7 @@
     "name": "Colmfähre",
     "placeType": "SMALLTOWN",
     "parent": {"id": 3},
-    "properties": "isRiver: true,isRoad: true"
+    "properties": "isRiver: 1,isRoad: 1"
   },
   {
     "id": 18,
@@ -129,28 +129,28 @@
     "name": "Grenzstadt",
     "placeType": "TOWN",
     "parent": {"id": 3},
-    "properties": "isRiver: true,isRoad: true,isPopularRoad: true"
+    "properties": "isRiver: 1,isRoad: 1,isPopularRoad: 1"
   },
   {
     "id": 20,
     "name": "Buch",
     "placeType": "VILLIAGE",
     "parent": {"id": 3},
-    "properties": "isRoad: true,isPopularRoad: true"
+    "properties": "isRoad: 1,isPopularRoad: 1"
   },
   {
     "id": 21,
     "name": "Dorfbach",
     "placeType": "VILLIAGE",
     "parent": {"id": 3},
-    "properties": "isHill: true,isRoad: true,isPopularRoad: true"
+    "properties": "isHill: 1,isRoad: 1,isPopularRoad: 1"
   },
   {
     "id": 22,
     "name": "Heideck",
     "placeType": "SMALLTOWN",
     "parent": {"id": 3},
-    "properties": "isRoad: true,isPopularRoad: true"
+    "properties": "isRoad: 1,isPopularRoad: 1"
   },
   {
     "id": 23,
@@ -164,28 +164,28 @@
     "name": "Hocheleben",
     "placeType": "SMALLTOWN",
     "parent": {"id": 3},
-    "properties": "isRiver: true,isRoad: true"
+    "properties": "isRiver: 1,isRoad: 1"
   },
   {
     "id": 25,
     "name": "Kulz",
     "placeType": "VILLIAGE",
     "parent": {"id": 3},
-    "properties": "isRoad: true,isPopularRoad: true"
+    "properties": "isRoad: 1,isPopularRoad: 1"
   },
   {
     "id": 26,
     "name": "Spalt",
     "placeType": "VILLIAGE",
     "parent": {"id": 3},
-    "properties": "isRiver: true,isRoad: true,isPopularRoad: true"
+    "properties": "isRiver: 1,isRoad: 1,isPopularRoad: 1"
   },
   {
     "id": 27,
     "name": "Lengenfeld",
     "placeType": "SMALLTOWN",
     "parent": {"id": 3},
-    "properties": "isRiver: true,isRoad: true"
+    "properties": "isRiver: 1,isRoad: 1"
   },
   {
     "id": 28,
@@ -199,21 +199,21 @@
     "name": "Mantel",
     "placeType": "VILLIAGE",
     "parent": {"id": 3},
-    "properties": "isRoad: true"
+    "properties": "isRoad: 1"
   },
   {
     "id": 30,
     "name": "Longingbruck",
     "placeType": "SMALLTOWN",
     "parent": {"id": 3},
-    "properties": "isRiver: true,isRoad: true"
+    "properties": "isRiver: 1,isRoad: 1"
   },
   {
     "id": 31,
     "name": "Tandern",
     "placeType": "VILLIAGE",
     "parent": {"id": 3},
-    "properties": "isForest: true"
+    "properties": "isForest: 1"
   },
   {
     "id": 32,
@@ -227,14 +227,14 @@
     "name": "Pfungzig",
     "placeType": "TOWN",
     "parent": {"id": 3},
-    "properties": "isRiver: true,isRoad: true"
+    "properties": "isRiver: 1,isRoad: 1"
   },
   {
     "id": 34,
     "name": "Dietfurt",
     "placeType": "VILLIAGE",
     "parent": {"id": 3},
-    "properties": "isHill: true,isRoad: true"
+    "properties": "isHill: 1,isRoad: 1"
   },
   {
     "id": 35,
@@ -248,14 +248,14 @@
     "name": "Zell",
     "placeType": "VILLIAGE",
     "parent": {"id": 3},
-    "properties": "isRoad: true"
+    "properties": "isRoad: 1"
   },
   {
     "id": 37,
     "name": "Streissen",
     "placeType": "TOWN",
     "parent": {"id": 3},
-    "properties": "isForest: true,isRiver:true, isRoad: true"
+    "properties": "isForest: 1,isRiver:1, isRoad: 1"
   },
   {
     "id": 38,
@@ -269,7 +269,7 @@
     "name": "Eining",
     "placeType": "VILLIAGE",
     "parent": {"id": 3},
-    "properties": "isRoad: true"
+    "properties": "isRoad: 1"
   },
   {
     "id": 40,
@@ -283,21 +283,21 @@
     "name": "Siegenhausen",
     "placeType": "VILLIAGE",
     "parent": {"id": 3},
-    "properties": "isForest: true,isRoad: true"
+    "properties": "isForest: 1,isRoad: 1"
   },
   {
     "id": 42,
     "name": "Wuppertal",
     "placeType": "TOWN",
     "parent": {"id": 3},
-    "properties": "isForest: true,isRiver: true,isRoad: true"
+    "properties": "isForest: 1,isRiver: 1,isRoad: 1"
   },
   {
     "id": 43,
     "name": "Gerzen",
     "placeType": "VILLIAGE",
     "parent": {"id": 3},
-    "properties": "isHill: true"
+    "properties": "isHill: 1"
   },
   {
     "id": 44,
@@ -311,7 +311,7 @@
     "name": "Thann",
     "placeType": "VILLIAGE",
     "parent": {"id": 3},
-    "properties": "isForest: true,isRoad: true"
+    "properties": "isForest: 1,isRoad: 1"
   },
   {
     "id": 46,
@@ -325,119 +325,119 @@
     "name": "Hergig",
     "placeType": "TOWN",
     "parent": {"id": 46},
-    "properties": "isForest: true,isRiver: true,isCapital: true,isRoad: true"
+    "properties": "isForest: 1,isRiver: 1,isCapital: 1,isRoad: 1"
   },
   {
     "id": 48,
     "name": "Dunstigfurt",
     "placeType": "VILLIAGE",
     "parent": {"id": 46},
-    "properties": "isForest: true,isRiver: true"
+    "properties": "isForest: 1,isRiver: 1"
   },
   {
     "id": 49,
     "name": "Müden",
     "placeType": "VILLIAGE",
     "parent": {"id": 46},
-    "properties": "isForest: true,isRiver: true,isHill: true,isRoad: true"
+    "properties": "isForest: 1,isRiver: 1,isHill: 1,isRoad: 1"
   },
   {
     "id": 50,
     "name": "Stöckse",
     "placeType": "VILLIAGE",
     "parent": {"id": 46},
-    "properties": "isForest: true,isRiver: true,isHill: true,isRoad: true"
+    "properties": "isForest: 1,isRiver: 1,isHill: 1,isRoad: 1"
   },
   {
     "id": 51,
     "name": "Vodf",
     "placeType": "VILLIAGE",
     "parent": {"id": 46},
-    "properties": "isRiver: true,isHill: true,isRoad: true"
+    "properties": "isRiver: 1,isHill: 1,isRoad: 1"
   },
   {
     "id": 52,
     "name": "Bergendorf",
     "placeType": "VILLIAGE",
     "parent": {"id": 46},
-    "properties": "isForest: true,isRiver: true,"
+    "properties": "isForest: 1,isRiver: 1,"
   },
   {
     "id": 53,
     "name": "Ahresdorf",
     "placeType": "VILLIAGE",
     "parent": {"id": 46},
-    "properties": "isForest: true,isRiver: true,"
+    "properties": "isForest: 1,isRiver: 1,"
   },
   {
     "id": 54,
     "name": "Wannsingen",
     "placeType": "VILLIAGE",
     "parent": {"id": 46},
-    "properties": "isForest: true,isRiver: true,isRoad: true"
+    "properties": "isForest: 1,isRiver: 1,isRoad: 1"
   },
   {
     "id": 55,
     "name": "Breder",
     "placeType": "SMALLTOWN",
     "parent": {"id": 46},
-    "properties": "isForest: true,isMountains: true,isRiver: true,isRoad: true"
+    "properties": "isForest: 1,isMountains: 1,isRiver: 1,isRoad: 1"
   },
   {
     "id": 56,
     "name": "Esk",
     "placeType": "VILLIAGE",
     "parent": {"id": 46},
-    "properties": "isMountains: true,isRoad: true"
+    "properties": "isMountains: 1,isRoad: 1"
   },
   {
     "id": 57,
     "name": "Gruyden",
     "placeType": "VILLIAGE",
     "parent": {"id": 46},
-    "properties": "isForest: true,isRoad: true"
+    "properties": "isForest: 1,isRoad: 1"
   },
   {
     "id": 58,
     "name": "Barwedel",
     "placeType": "VILLIAGE",
     "parent": {"id": 46},
-    "properties": "isForest: true,isRoad: true"
+    "properties": "isForest: 1,isRoad: 1"
   },
   {
     "id": 59,
     "name": "Koerin",
     "placeType": "VILLIAGE",
     "parent": {"id": 46},
-    "properties": "isForest: true,isHill: true,isRoad: true"
+    "properties": "isForest: 1,isHill: 1,isRoad: 1"
   },
   {
     "id": 60,
     "name": "Krudenwald",
     "placeType": "TOWN",
     "parent": {"id": 46},
-    "properties": "isForest: true,isRoad: true"
+    "properties": "isForest: 1,isRoad: 1"
   },
   {
     "id": 61,
     "name": "Garssen",
     "placeType": "VILLIAGE",
     "parent": {"id": 46},
-    "properties": "isRiver: true,isRoad: true"
+    "properties": "isRiver: 1,isRoad: 1"
   },
   {
     "id": 62,
     "name": "Hovelhof",
     "placeType": "VILLIAGE",
     "parent": {"id": 46},
-    "properties": "isMountains: true,isRoad: true"
+    "properties": "isMountains: 1,isRoad: 1"
   },
   {
     "id": 63,
     "name": "Selmigerholz",
     "placeType": "VILLIAGE",
     "parent": {"id": 46},
-    "properties": "isForest: true,isRoad: true"
+    "properties": "isForest: 1,isRoad: 1"
   },
   {
     "id": 64,
@@ -451,280 +451,280 @@
     "name": "Middenheim",
     "placeType": "CITY",
     "parent": {"id": 64},
-    "properties": "isForest: true,isCapital: true,isHill: true,isRoad: true,isPopularRoad: true,Ulryk:0.4"
+    "properties": "isForest: 1,isCapital: 1,isHill: 1,isRoad: 1,isPopularRoad: 1,Ulryk:0.4"
   },
   {
     "id": 66,
     "name": "Arenberg",
     "placeType": "VILLIAGE",
     "parent": {"id": 64},
-    "properties": "isForest: true,isHill: true"
+    "properties": "isForest: 1,isHill: 1"
   },
   {
     "id": 67,
     "name": "Elsterweld",
     "placeType": "SMALLTOWN",
     "parent": {"id": 64},
-    "properties": "isForest: true,isHill: true"
+    "properties": "isForest: 1,isHill: 1"
   },
   {
     "id": 68,
     "name": "Grevenfeld",
     "placeType": "VILLIAGE",
     "parent": {"id": 64},
-    "properties": "isForest: true,isHill: true,isRoad: true,isPopularRoad: true"
+    "properties": "isForest: 1,isHill: 1,isRoad: 1,isPopularRoad: 1"
   },
   {
     "id": 69,
     "name": "Holzbeck",
     "placeType": "VILLIAGE",
     "parent": {"id": 64},
-    "properties": "isForest: true,isRoad: true"
+    "properties": "isForest: 1,isRoad: 1"
   },
   {
     "id": 70,
     "name": "Hunxe",
     "placeType": "VILLIAGE",
     "parent": {"id": 64},
-    "properties": "isForest: true,isRoad: true,isPopularRoad: true"
+    "properties": "isForest: 1,isRoad: 1,isPopularRoad: 1"
   },
   {
     "id": 71,
     "name": "Immelscheld",
     "placeType": "VILLIAGE",
     "parent": {"id": 64},
-    "properties": "isForest: true,isRoad: true"
+    "properties": "isForest: 1,isRoad: 1"
   },
   {
     "id": 72,
     "name": "Jagerhausen",
     "placeType": "VILLIAGE",
     "parent": {"id": 64},
-    "properties": "isForest: true,isHill: true"
+    "properties": "isForest: 1,isHill: 1"
   },
   {
     "id": 73,
     "name": "Lindenheim",
     "placeType": "VILLIAGE",
     "parent": {"id": 64},
-    "properties": "isForest: true,isHill: true"
+    "properties": "isForest: 1,isHill: 1"
   },
   {
     "id": 74,
     "name": "Norderingen",
     "placeType": "SMALLTOWN",
     "parent": {"id": 64},
-    "properties": "isForest: true"
+    "properties": "isForest: 1"
   },
   {
     "id": 75,
     "name": "Schoninghagen",
     "placeType": "SMALLTOWN",
     "parent": {"id": 64},
-    "properties": "isForest: true,isRoad: true,isPopularRoad: true"
+    "properties": "isForest: 1,isRoad: 1,isPopularRoad: 1"
   },
   {
     "id": 76,
     "name": "Ahlenhof",
     "placeType": "TOWN",
     "parent": {"id": 64},
-    "properties": "isRiver: true,isHill: true"
+    "properties": "isRiver: 1,isHill: 1"
   },
   {
     "id": 77,
     "name": "Bad Hohne",
     "placeType": "VILLIAGE",
     "parent": {"id": 64},
-    "properties": "isForest: true,isRiver: true"
+    "properties": "isForest: 1,isRiver: 1"
   },
   {
     "id": 78,
     "name": "Leer",
     "placeType": "VILLIAGE",
     "parent": {"id": 64},
-    "properties": "isForest: true,isRiver: true, isHill: true,"
+    "properties": "isForest: 1,isRiver: 1, isHill: 1,"
   },
   {
     "id": 79,
     "name": "Suderberg",
     "placeType": "VILLIAGE",
     "parent": {"id": 64},
-    "properties": "isForest: true"
+    "properties": "isForest: 1"
   },
   {
     "id": 80,
     "name": "Carroburg",
     "placeType": "TOWN",
     "parent": {"id": 64},
-    "properties": "isForest: true,isRiver: true,isRoad: true"
+    "properties": "isForest: 1,isRiver: 1,isRoad: 1"
   },
   {
     "id": 81,
     "name": "Barenfähre",
     "placeType": "VILLIAGE",
     "parent": {"id": 64},
-    "properties": "isForest: true,isRiver: true"
+    "properties": "isForest: 1,isRiver: 1"
   },
   {
     "id": 82,
     "name": "Dunkelbild",
     "placeType": "VILLIAGE",
     "parent": {"id": 64},
-    "properties": "isForest: true,isRiver: true,isRoad: true"
+    "properties": "isForest: 1,isRiver: 1,isRoad: 1"
   },
   {
     "id": 83,
     "name": "Schattenlas",
     "placeType": "VILLIAGE",
     "parent": {"id": 64},
-    "properties": "isForest: true,isRiver: true"
+    "properties": "isForest: 1,isRiver: 1"
   },
   {
     "id": 84,
     "name": "Senden",
     "placeType": "VILLIAGE",
     "parent": {"id": 64},
-    "properties": "isForest: true,isRoad: true"
+    "properties": "isForest: 1,isRoad: 1"
   },
   {
     "id": 85,
     "name": "Weidemarkt",
     "placeType": "VILLIAGE",
     "parent": {"id": 64},
-    "properties": "isForest: true,isRiver: true"
+    "properties": "isForest: 1,isRiver: 1"
   },
   {
     "id": 86,
     "name": "Delberz",
     "placeType": "TOWN",
     "parent": {"id": 64},
-    "properties": "isRiver: true,isHill: true,isRoad: true,isPopularRoad: true"
+    "properties": "isRiver: 1,isHill: 1,isRoad: 1,isPopularRoad: 1"
   },
   {
     "id": 87,
     "name": "Mittelmund",
     "placeType": "VILLIAGE",
     "parent": {"id": 64},
-    "properties": "isForest: true,isRoad: true,isPopularRoad: true"
+    "properties": "isForest: 1,isRoad: 1,isPopularRoad: 1"
   },
   {
     "id": 88,
     "name": "Schwarzmarkt",
     "placeType": "VILLIAGE",
     "parent": {"id": 64},
-    "properties": "isHill: true,isRoad: true,isPopularRoad: true"
+    "properties": "isHill: 1,isRoad: 1,isPopularRoad: 1"
   },
   {
     "id": 89,
     "name": "Turmgever",
     "placeType": "VILLIAGE",
     "parent": {"id": 64},
-    "properties": "isHill: true,isRoad: true"
+    "properties": "isHill: 1,isRoad: 1"
   },
   {
     "id": 90,
     "name": "Grimminhagen",
     "placeType": "TOWN",
     "parent": {"id": 64},
-    "properties": "isHill: true,isRoad: true"
+    "properties": "isHill: 1,isRoad: 1"
   },
   {
     "id": 91,
     "name": "Fintel",
     "placeType": "VILLIAGE",
     "parent": {"id": 64},
-    "properties": "isRiver: true,isRoad: true"
+    "properties": "isRiver: 1,isRoad: 1"
   },
   {
     "id": 92,
     "name": "Harsum",
     "placeType": "VILLIAGE",
     "parent": {"id": 64},
-    "properties": "isForest: true,isRoad: true"
+    "properties": "isForest: 1,isRoad: 1"
   },
   {
     "id": 93,
     "name": "Rosche",
     "placeType": "VILLIAGE",
     "parent": {"id": 64},
-    "properties": "isForest: true,isRiver: true"
+    "properties": "isForest: 1,isRiver: 1"
   },
   {
     "id": 94,
     "name": "Winsen",
     "placeType": "VILLIAGE",
     "parent": {"id": 64},
-    "properties": "isForest: true,isRoad: true"
+    "properties": "isForest: 1,isRoad: 1"
   },
   {
     "id": 95,
     "name": "Grubentreich",
     "placeType": "VILLIAGE",
     "parent": {"id": 64},
-    "properties": "isHill: true"
+    "properties": "isHill: 1"
   },
   {
     "id": 96,
     "name": "Kammendun",
     "placeType": "VILLIAGE",
     "parent": {"id": 64},
-    "properties": "isRiver: true,isSwamp: true,isRoad: true,isPopularRoad: true"
+    "properties": "isRiver: 1,isSwamp: 1,isRoad: 1,isPopularRoad: 1"
   },
   {
     "id": 97,
     "name": "Leichlinberg",
     "placeType": "VILLIAGE",
     "parent": {"id": 64},
-    "properties": "isHill: true"
+    "properties": "isHill: 1"
   },
   {
     "id": 98,
     "name": "Pritzstock",
     "placeType": "VILLIAGE",
     "parent": {"id": 64},
-    "properties": "isHill: true"
+    "properties": "isHill: 1"
   },
   {
     "id": 99,
     "name": "Scheinfeld",
     "placeType": "SMALLTOWN",
     "parent": {"id": 64},
-    "properties": "isForest: true,isRiver: true,isRoad: true"
+    "properties": "isForest: 1,isRiver: 1,isRoad: 1"
   },
   {
     "id": 100,
     "name": "Hupstedt",
     "placeType": "VILLIAGE",
     "parent": {"id": 64},
-    "properties": "isForest: true,isRoad: true"
+    "properties": "isForest: 1,isRoad: 1"
   },
   {
     "id": 101,
     "name": "Uder",
     "placeType": "VILLIAGE",
     "parent": {"id": 64},
-    "properties": "isForest: true"
+    "properties": "isForest: 1"
   },
   {
     "id": 102,
     "name": "Schoppendorf",
     "placeType": "VILLIAGE",
     "parent": {"id": 64},
-    "properties": "isRiver: true,isHill: true"
+    "properties": "isRiver: 1,isHill: 1"
   },
   {
     "id": 103,
     "name": "Langwiese",
     "placeType": "VILLIAGE",
     "parent": {"id": 64},
-    "properties": "isForest: true"
+    "properties": "isForest: 1"
   },
   {
     "id": 104,
     "name": "Untergard",
     "placeType": "VILLIAGE",
     "parent": {"id": 64},
-    "properties": "isForest: true,isRiver: true,isHill: true,isRoad: true"
+    "properties": "isForest: 1,isRiver: 1,isHill: 1,isRoad: 1"
   },
   {
     "id": 105,
@@ -738,56 +738,56 @@
     "name": "Eicheschatten",
     "placeType": "TOWN",
     "parent": {"id": 105},
-    "properties": "isRiver: true,isHill: true,isRoad: true"
+    "properties": "isRiver: 1,isHill: 1,isRoad: 1"
   },
   {
     "id": 107,
     "name": "Birnbaum",
     "placeType": "VILLIAGE",
     "parent": {"id": 105},
-    "properties": "isRiver: true,isRoad: true"
+    "properties": "isRiver: 1,isRoad: 1"
   },
   {
     "id": 108,
     "name": "Dreiflussen",
     "placeType": "SMALLTOWN",
     "parent": {"id": 105},
-    "properties": "isRiver: true,isRoad: true"
+    "properties": "isRiver: 1,isRoad: 1"
   },
   {
     "id": 109,
     "name": "Einsamholz",
     "placeType": "SMALLTOWN",
     "parent": {"id": 105},
-    "properties": "isRiver: true"
+    "properties": "isRiver: 1"
   },
   {
     "id": 110,
     "name": "Gipfel",
     "placeType": "VILLIAGE",
     "parent": {"id": 105},
-    "properties": "isRiver: true,isRoad: true"
+    "properties": "isRiver: 1,isRoad: 1"
   },
   {
     "id": 111,
     "name": "Grünhügel",
     "placeType": "VILLIAGE",
     "parent": {"id": 105},
-    "properties": "isRiver: true,isRoad: true"
+    "properties": "isRiver: 1,isRoad: 1"
   },
   {
     "id": 112,
     "name": "Heukern",
     "placeType": "VILLIAGE",
     "parent": {"id": 105},
-    "properties": "isForest: true,isRiver: true,isRoad: true"
+    "properties": "isForest: 1,isRiver: 1,isRoad: 1"
   },
   {
     "id": 113,
     "name": "Sauerapfel",
     "placeType": "SMALLTOWN",
     "parent": {"id": 105},
-    "properties": "isForest: true,isRiver: true"
+    "properties": "isForest: 1,isRiver: 1"
   },
   {
     "id": 114,
@@ -801,147 +801,147 @@
     "name": "Salzenmund",
     "placeType": "TOWN",
     "parent": {"id": 114},
-    "properties": "isForest: true,isRiver: true,isRoad: true"
+    "properties": "isForest: 1,isRiver: 1,isRoad: 1"
   },
   {
     "id": 116,
     "name": "Beeckerhoven",
     "placeType": "SMALLTOWN",
     "parent": {"id": 114},
-    "properties": "isForest: true,isRoad: true,isPopularRoad: true"
+    "properties": "isForest: 1,isRoad: 1,isPopularRoad: 1"
   },
   {
     "id": 117,
     "name": "Grafenrich",
     "placeType": "SMALLTOWN",
     "parent": {"id": 114},
-    "properties": "isForest: true,isRiver: true,isHill: true"
+    "properties": "isForest: 1,isRiver: 1,isHill: 1"
   },
   {
     "id": 118,
     "name": "Kurtwallen",
     "placeType": "VILLIAGE",
     "parent": {"id": 114},
-    "properties": "isForest: true,isRiver: true"
+    "properties": "isForest: 1,isRiver: 1"
   },
   {
     "id": 119,
     "name": "Dietershafe",
     "placeType": "TOWN",
     "parent": {"id": 114},
-    "properties": "isForest: true,isSea: true,isRoad: true"
+    "properties": "isForest: 1,isSea: 1,isRoad: 1"
   },
   {
     "id": 120,
     "name": "Frote",
     "placeType": "SMALLTOWN",
     "parent": {"id": 114},
-    "properties": "isForest: true,isRoad: true"
+    "properties": "isForest: 1,isRoad: 1"
   },
   {
     "id": 121,
     "name": "Hargendorf",
     "placeType": "SMALLTOWN",
     "parent": {"id": 114},
-    "properties": "isForest: true,isSea: true,isRoad: true"
+    "properties": "isForest: 1,isSea: 1,isRoad: 1"
   },
   {
     "id": 122,
     "name": "Beilen",
     "placeType": "VILLIAGE",
     "parent": {"id": 114},
-    "properties": "isForest: true,isHill: true,isRoad: true"
+    "properties": "isForest: 1,isHill: 1,isRoad: 1"
   },
   {
     "id": 123,
     "name": "Schlaghügel",
     "placeType": "VILLIAGE",
     "parent": {"id": 114},
-    "properties": "isHill: true"
+    "properties": "isHill: 1"
   },
   {
     "id": 124,
     "name": "Ueblingen",
     "placeType": "VILLIAGE",
     "parent": {"id": 114},
-    "properties": "isForest: true,isRoad: true"
+    "properties": "isForest: 1,isRoad: 1"
   },
   {
     "id": 125,
     "name": "Luftberg",
     "placeType": "VILLIAGE",
     "parent": {"id": 114},
-    "properties": "isForest: true,isRoad: true"
+    "properties": "isForest: 1,isRoad: 1"
   },
   {
     "id": 126,
     "name": "Neue Emskrank",
     "placeType": "SMALLTOWN",
     "parent": {"id": 114},
-    "properties": "isRiver: true,isSea: true,isRoad: true"
+    "properties": "isRiver: 1,isSea: 1,isRoad: 1"
   },
   {
     "id": 127,
     "name": "Heiligdorf",
     "placeType": "VILLIAGE",
     "parent": {"id": 114},
-    "properties": "isSea: true,isRoad: true"
+    "properties": "isSea: 1,isRoad: 1"
   },
   {
     "id": 128,
     "name": "Norden",
     "placeType": "TOWN",
     "parent": {"id": 114},
-    "properties": "isSea: true,isRoad: true,isPopularRoad: true"
+    "properties": "isSea: 1,isRoad: 1,isPopularRoad: 1"
   },
   {
     "id": 129,
     "name": "Beelen",
     "placeType": "VILLIAGE",
     "parent": {"id": 114},
-    "properties": "isForest: true"
+    "properties": "isForest: 1"
   },
   {
     "id": 130,
     "name": "Gelting",
     "placeType": "VILLIAGE",
     "parent": {"id": 114},
-    "properties": "isRoad: true"
+    "properties": "isRoad: 1"
   },
   {
     "id": 131,
     "name": "Kreideklippe",
     "placeType": "VILLIAGE",
     "parent": {"id": 114},
-    "properties": "isSea: true,isRoad: true"
+    "properties": "isSea: 1,isRoad: 1"
   },
   {
     "id": 132,
     "name": "Salzmorast",
     "placeType": "VILLIAGE",
     "parent": {"id": 114},
-    "properties": "isHill: true,isRoad: true"
+    "properties": "isHill: 1,isRoad: 1"
   },
   {
     "id": 133,
     "name": "Schoten",
     "placeType": "VILLIAGE",
     "parent": {"id": 114},
-    "properties": "isForest: true,isRoad: true,isPopularRoad: true"
+    "properties": "isForest: 1,isRoad: 1,isPopularRoad: 1"
   },
   {
     "id": 134,
     "name": "Wilhelmskoog",
     "placeType": "VILLIAGE",
     "parent": {"id": 114},
-    "properties": "isRiver: true,isSea: true,isRoad: true"
+    "properties": "isRiver: 1,isSea: 1,isRoad: 1"
   },
   {
     "id": 135,
     "name": "Ockholm",
     "placeType": "VILLIAGE",
     "parent": {"id": 114},
-    "properties": "isRiver: true,isRoad: true"
+    "properties": "isRiver: 1,isRoad: 1"
   },
   {
     "id": 136,
@@ -955,133 +955,133 @@
     "name": "Bechafen",
     "placeType": "TOWN",
     "parent": {"id": 136},
-    "properties": "isForest: true, isRiver: true,isCapital: true,isRoad: true"
+    "properties": "isForest: 1, isRiver: 1,isCapital: 1,isRoad: 1"
   },
   {
     "id": 138,
     "name": "Dorna",
     "placeType": "VILLIAGE",
     "parent": {"id": 136},
-    "properties": "isForest: true"
+    "properties": "isForest: 1"
   },
   {
     "id": 139,
     "name": "Münkenhof",
     "placeType": "VILLIAGE",
     "parent": {"id": 136},
-    "properties": "isForest: true: isRiver"
+    "properties": "isForest: 1: isRiver"
   },
   {
     "id": 140,
     "name": "Reitwein",
     "placeType": "VILLIAGE",
     "parent": {"id": 136},
-    "properties": "isRoad: true"
+    "properties": "isRoad: 1"
   },
   {
     "id": 141,
     "name": "Rugenbuttle",
     "placeType": "VILLIAGE",
     "parent": {"id": 136},
-    "properties": "isForest: true,isRoad: true"
+    "properties": "isForest: 1,isRoad: 1"
   },
   {
     "id": 142,
     "name": "Bissendorf",
     "placeType": "VILLIAGE",
     "parent": {"id": 136},
-    "properties": "isForest: true,isRiver: true,isRoad: true"
+    "properties": "isForest: 1,isRiver: 1,isRoad: 1"
   },
   {
     "id": 143,
     "name": "Tauer",
     "placeType": "VILLIAGE",
     "parent": {"id": 136},
-    "properties": "isForest: true,isRoad: true"
+    "properties": "isForest: 1,isRoad: 1"
   },
   {
     "id": 144,
     "name": "Eisental",
     "placeType": "SMALLTOWN",
     "parent": {"id": 136},
-    "properties": "isForest: true,isRiver: true,isRoad: true"
+    "properties": "isForest: 1,isRiver: 1,isRoad: 1"
   },
   {
     "id": 145,
     "name": "Mielau",
     "placeType": "VILLIAGE",
     "parent": {"id": 136},
-    "properties": "isRiver: true"
+    "properties": "isRiver: 1"
   },
   {
     "id": 146,
     "name": "Essen",
     "placeType": "VILLIAGE",
     "parent": {"id": 136},
-    "properties": "isRiver: true"
+    "properties": "isRiver: 1"
   },
   {
     "id": 147,
     "name": "Fortenhaf",
     "placeType": "VILLIAGE",
     "parent": {"id": 136},
-    "properties": "isRiver: true,isHill: true"
+    "properties": "isRiver: 1,isHill: 1"
   },
   {
     "id": 148,
     "name": "Gerdouen",
     "placeType": "VILLIAGE",
     "parent": {"id": 136},
-    "properties": "isForest: true,isRiver: true"
+    "properties": "isForest: 1,isRiver: 1"
   },
   {
     "id": 149,
     "name": "Rheden",
     "placeType": "VILLIAGE",
     "parent": {"id": 136},
-    "properties": "isRiver: true"
+    "properties": "isRiver: 1"
   },
   {
     "id": 150,
     "name": "Heffengen",
     "placeType": "VILLIAGE",
     "parent": {"id": 136},
-    "properties": "isRiver: true,isRoad: true"
+    "properties": "isRiver: 1,isRoad: 1"
   },
   {
     "id": 151,
     "name": "Elbing",
     "placeType": "VILLIAGE",
     "parent": {"id": 136},
-    "properties": "isRoad: true"
+    "properties": "isRoad: 1"
   },
   {
     "id": 152,
     "name": "Nagenhof",
     "placeType": "SMALLTOWN",
     "parent": {"id": 136},
-    "properties": "isRoad: true"
+    "properties": "isRoad: 1"
   },
   {
     "id": 153,
     "name": "Buckow",
     "placeType": "VILLIAGE",
     "parent": {"id": 136},
-    "properties": "isRiver: true"
+    "properties": "isRiver: 1"
   },
   {
     "id": 154,
     "name": "Weiler",
     "placeType": "VILLIAGE",
     "parent": {"id": 136},
-    "properties": "isRiver: true,isRoad: true"
+    "properties": "isRiver: 1,isRoad: 1"
   },
   {
     "id": 155,
     "name": "Remer",
     "placeType": "SMALLTOWN",
     "parent": {"id": 136},
-    "properties": "isRiver: true,isRoad: true"
+    "properties": "isRiver: 1,isRoad: 1"
   },
   {
     "id": 156,
@@ -1095,21 +1095,21 @@
     "name": "Sokh",
     "placeType": "VILLIAGE",
     "parent": {"id": 64},
-    "properties": "isMountains: true,isRoad: true"
+    "properties": "isMountains: 1,isRoad: 1"
   },
   {
     "id": 158,
     "name": "Fällenblatt",
     "placeType": "VILLIAGE",
     "parent": {"id": 105},
-    "properties": "isRiver: true,isRoad: true"
+    "properties": "isRiver: 1,isRoad: 1"
   },
   {
     "id": 159,
     "name": "Oldenlitz",
     "placeType": "SMALLTOWN",
     "parent": {"id": 114},
-    "properties": "isForest: true,isRiver: true,isHill: true,isRoad: true"
+    "properties": "isForest: 1,isRiver: 1,isHill: 1,isRoad: 1"
   },
   {
     "id": 160,
@@ -1123,182 +1123,182 @@
     "name": "Wolfenburg",
     "placeType": "TOWN",
     "parent": {"id": 160},
-    "properties": "isRiver: true,isCapital: true,isHill: true,isRoad: true"
+    "properties": "isRiver: 1,isCapital: 1,isHill: 1,isRoad: 1"
   },
   {
     "id": 162,
     "name": "Dassel",
     "placeType": "VILLIAGE",
     "parent": {"id": 160},
-    "properties": "isForest: true,isRoad: true"
+    "properties": "isForest: 1,isRoad: 1"
   },
   {
     "id": 163,
     "name": "Felde",
     "placeType": "VILLIAGE",
     "parent": {"id": 160},
-    "properties": "isForest: true,isRoad: true"
+    "properties": "isForest: 1,isRoad: 1"
   },
   {
     "id": 164,
     "name": "Grünackeren",
     "placeType": "SMALLTOWN",
     "parent": {"id": 160},
-    "properties": "isForest: true,isRoad: true"
+    "properties": "isForest: 1,isRoad: 1"
   },
   {
     "id": 165,
     "name": "Melbeck",
     "placeType": "VILLIAGE",
     "parent": {"id": 160},
-    "properties": "isMountains: true,isRoad: true"
+    "properties": "isMountains: 1,isRoad: 1"
   },
   {
     "id": 166,
     "name": "Ristedt",
     "placeType": "VILLIAGE",
     "parent": {"id": 160},
-    "properties": "isForest: true,isRiver: true,isRoad: true"
+    "properties": "isForest: 1,isRiver: 1,isRoad: 1"
   },
   {
     "id": 167,
     "name": "Wendorf",
     "placeType": "SMALLTOWN",
     "parent": {"id": 160},
-    "properties": "isForest: true,isRoad: true"
+    "properties": "isForest: 1,isRoad: 1"
   },
   {
     "id": 168,
     "name": "Boven",
     "placeType": "VILLIAGE",
     "parent": {"id": 160},
-    "properties": "isForest: true,isRoad: true"
+    "properties": "isForest: 1,isRoad: 1"
   },
   {
     "id": 169,
     "name": "Birkewiese",
     "placeType": "VILLIAGE",
     "parent": {"id": 160},
-    "properties": "isRoad: true"
+    "properties": "isRoad: 1"
   },
   {
     "id": 170,
     "name": "Ferlangen",
     "placeType": "TOWN",
     "parent": {"id": 160},
-    "properties": "isForest: true,isHill: true,isRoad: true"
+    "properties": "isForest: 1,isHill: 1,isRoad: 1"
   },
   {
     "id": 171,
     "name": "Aukrug",
     "placeType": "VILLIAGE",
     "parent": {"id": 160},
-    "properties": "isForest: true,isHill: true,isRoad: true"
+    "properties": "isForest: 1,isHill: 1,isRoad: 1"
   },
   {
     "id": 172,
     "name": "Dunkelpfad",
     "placeType": "VILLIAGE",
     "parent": {"id": 160},
-    "properties": "isHill: true,isRoad: true"
+    "properties": "isHill: 1,isRoad: 1"
   },
   {
     "id": 173,
     "name": "Fleckeby",
     "placeType": "VILLIAGE",
     "parent": {"id": 160},
-    "properties": "isForest: true,isRoad: true"
+    "properties": "isForest: 1,isRoad: 1"
   },
   {
     "id": 174,
     "name": "Hasselhund",
     "placeType": "VILLIAGE",
     "parent": {"id": 160},
-    "properties": "isForest: true,isHill: true,isRoad: true"
+    "properties": "isForest: 1,isHill: 1,isRoad: 1"
   },
   {
     "id": 175,
     "name": "Kurst",
     "placeType": "VILLIAGE",
     "parent": {"id": 160},
-    "properties": "isForest: true,isRoad: true"
+    "properties": "isForest: 1,isRoad: 1"
   },
   {
     "id": 176,
     "name": "Levudaldorf",
     "placeType": "VILLIAGE",
     "parent": {"id": 160},
-    "properties": "isForest: true,isRoad: true"
+    "properties": "isForest: 1,isRoad: 1"
   },
   {
     "id": 177,
     "name": "Lubrecht",
     "placeType": "SMALLTOWN",
     "parent": {"id": 160},
-    "properties": "isForest: true,isRoad: true"
+    "properties": "isForest: 1,isRoad: 1"
   },
   {
     "id": 178,
     "name": "Öbelstein",
     "placeType": "VILLIAGE",
     "parent": {"id": 160},
-    "properties": "isForest: true,isHill: true,isRoad: true"
+    "properties": "isForest: 1,isHill: 1,isRoad: 1"
   },
   {
     "id": 179,
     "name": "Salkalten",
     "placeType": "VILLIAGE",
     "parent": {"id": 160},
-    "properties": "isSea: true,isRoad: true"
+    "properties": "isSea: 1,isRoad: 1"
   },
   {
     "id": 180,
     "name": "Verborgenbucht",
     "placeType": "VILLIAGE",
     "parent": {"id": 160},
-    "properties": "isSea: true,isRoad: true"
+    "properties": "isSea: 1,isRoad: 1"
   },
   {
     "id": 181,
     "name": "Smallhof",
     "placeType": "VILLIAGE",
     "parent": {"id": 160},
-    "properties": "isForest: true,isRoad: true"
+    "properties": "isForest: 1,isRoad: 1"
   },
   {
     "id": 182,
     "name": "Vandengart",
     "placeType": "SMALLTOWN",
     "parent": {"id": 160},
-    "properties": "isForest: true,isRoad: true"
+    "properties": "isForest: 1,isRoad: 1"
   },
   {
     "id": 183,
     "name": "Wurzen",
     "placeType": "SMALLTOWN",
     "parent": {"id": 160},
-    "properties": "isForest: true,isRiver: true,isRoad: true"
+    "properties": "isForest: 1,isRiver: 1,isRoad: 1"
   },
   {
     "id": 184,
     "name": "Csenger",
     "placeType": "VILLIAGE",
     "parent": {"id": 160},
-    "properties": "isForest: true"
+    "properties": "isForest: 1"
   },
   {
     "id": 185,
     "name": "Dorog",
     "placeType": "VILLIAGE",
     "parent": {"id": 160},
-    "properties": "isForest: true,isRoad: true"
+    "properties": "isForest: 1,isRoad: 1"
   },
   {
     "id": 186,
     "name": "Zundap",
     "placeType": "VILLIAGE",
     "parent": {"id": 160},
-    "properties": "isForest: true,isRoad: true"
+    "properties": "isForest: 1,isRoad: 1"
   },
   {
     "id": 187,
@@ -1312,252 +1312,252 @@
     "name": "Altdorf",
     "placeType": "CITYSTATE",
     "parent": {"id": 187},
-    "properties": "isForest: true,isRiver: true,isCapital: true,isRoad: true,isPopularRoad: true"
+    "properties": "isForest: 1,isRiver: 1,isCapital: 1,isRoad: 1,isPopularRoad: 1"
   },
   {
     "id": 189,
     "name": "Autler",
     "placeType": "VILLIAGE",
     "parent": {"id": 187},
-    "properties": "isForest: true,isRiver: true"
+    "properties": "isForest: 1,isRiver: 1"
   },
   {
     "id": 190,
     "name": "Braunwurt",
     "placeType": "VILLIAGE",
     "parent": {"id": 187},
-    "properties": "isForest: true"
+    "properties": "isForest: 1"
   },
   {
     "id": 191,
     "name": "Bundesmarkt",
     "placeType": "VILLIAGE",
     "parent": {"id": 187},
-    "properties": "isHill: true,isRoad: true,isPopularRoad: true"
+    "properties": "isHill: 1,isRoad: 1,isPopularRoad: 1"
   },
   {
     "id": 192,
     "name": "Dorchen",
     "placeType": "VILLIAGE",
     "parent": {"id": 187},
-    "properties": "isForest: true,isRoad: true,isPopularRoad: true"
+    "properties": "isForest: 1,isRoad: 1,isPopularRoad: 1"
   },
   {
     "id": 193,
     "name": "Frederheim",
     "placeType": "VILLIAGE",
     "parent": {"id": 187},
-    "properties": "isForest: true,isRoad: true,isPopularRoad: true"
+    "properties": "isForest: 1,isRoad: 1,isPopularRoad: 1"
   },
   {
     "id": 194,
     "name": "Furtild",
     "placeType": "VILLIAGE",
     "parent": {"id": 187},
-    "properties": "isForest: true,isRoad: true,isPopularRoad: true"
+    "properties": "isForest: 1,isRoad: 1,isPopularRoad: 1"
   },
   {
     "id": 195,
     "name": "Geldrecht",
     "placeType": "VILLIAGE",
     "parent": {"id": 187},
-    "properties": "isForest: true,isRiver: true"
+    "properties": "isForest: 1,isRiver: 1"
   },
   {
     "id": 196,
     "name": "Gluckshalt",
     "placeType": "VILLIAGE",
     "parent": {"id": 187},
-    "properties": "isForest: true,isRiver: true"
+    "properties": "isForest: 1,isRiver: 1"
   },
   {
     "id": 197,
     "name": "Grossbad",
     "placeType": "VILLIAGE",
     "parent": {"id": 187},
-    "properties": "isForest: true"
+    "properties": "isForest: 1"
   },
   {
     "id": 198,
     "name": "Hartsklein",
     "placeType": "VILLIAGE",
     "parent": {"id": 187},
-    "properties": "isForest: true,isRoad: true,isPopularRoad: true"
+    "properties": "isForest: 1,isRoad: 1,isPopularRoad: 1"
   },
   {
     "id": 199,
     "name": "Heiligen",
     "placeType": "VILLIAGE",
     "parent": {"id": 187},
-    "properties": "isForest: true,isRiver: true"
+    "properties": "isForest: 1,isRiver: 1"
   },
   {
     "id": 200,
     "name": "Hochloff",
     "placeType": "VILLIAGE",
     "parent": {"id": 187},
-    "properties": "isHill: true,isRoad: true,isPopularRoad: true"
+    "properties": "isHill: 1,isRoad: 1,isPopularRoad: 1"
   },
   {
     "id": 201,
     "name": "Kaldach",
     "placeType": "VILLIAGE",
     "parent": {"id": 187},
-    "properties": "isForest: true,isRiver: true"
+    "properties": "isForest: 1,isRiver: 1"
   },
   {
     "id": 202,
     "name": "Rechtlich",
     "placeType": "VILLIAGE",
     "parent": {"id": 187},
-    "properties": "isForest: true,isHill: true,isRoad: true"
+    "properties": "isForest: 1,isHill: 1,isRoad: 1"
   },
   {
     "id": 203,
     "name": "Blutroch",
     "placeType": "SMALLTOWN",
     "parent": {"id": 187},
-    "properties": "isForest: true,isHill: true,isRoad: true,isPopularRoad: true"
+    "properties": "isForest: 1,isHill: 1,isRoad: 1,isPopularRoad: 1"
   },
   {
     "id": 204,
     "name": "Rottefach",
     "placeType": "VILLIAGE",
     "parent": {"id": 187},
-    "properties": "isForest: true,isRiver: true"
+    "properties": "isForest: 1,isRiver: 1"
   },
   {
     "id": 205,
     "name": "Schlafebild",
     "placeType": "VILLIAGE",
     "parent": {"id": 187},
-    "properties": "isHill: true,isRoad: true"
+    "properties": "isHill: 1,isRoad: 1"
   },
   {
     "id": 206,
     "name": "Teufelfeuer",
     "placeType": "VILLIAGE",
     "parent": {"id": 187},
-    "properties": "isForest: true,isRoad: true,isPopularRoad: true"
+    "properties": "isForest: 1,isRoad: 1,isPopularRoad: 1"
   },
   {
     "id": 207,
     "name": "Walfen",
     "placeType": "SMALLTOWN",
     "parent": {"id": 187},
-    "properties": "isForest: true,isRiver: true"
+    "properties": "isForest: 1,isRiver: 1"
   },
   {
     "id": 208,
     "name": "Auerswald",
     "placeType": "TOWN",
     "parent": {"id": 187},
-    "properties": "isForest: true,isRiver: true,isRoad: true"
+    "properties": "isForest: 1,isRiver: 1,isRoad: 1"
   },
   {
     "id": 209,
     "name": "Dresschler",
     "placeType": "VILLIAGE",
     "parent": {"id": 187},
-    "properties": "isForest: true,isRiver: true"
+    "properties": "isForest: 1,isRiver: 1"
   },
   {
     "id": 210,
     "name": "Gladisch",
     "placeType": "VILLIAGE",
     "parent": {"id": 187},
-    "properties": "isRiver: true,isHill: true,isRoad: true"
+    "properties": "isRiver: 1,isHill: 1,isRoad: 1"
   },
   {
     "id": 211,
     "name": "Koch",
     "placeType": "VILLIAGE",
     "parent": {"id": 187},
-    "properties": "isForest: true,isHill: true,isRoad: true"
+    "properties": "isForest: 1,isHill: 1,isRoad: 1"
   },
   {
     "id": 212,
     "name": "Sprinthof",
     "placeType": "VILLIAGE",
     "parent": {"id": 187},
-    "properties": "isForest: true,isRoad: true"
+    "properties": "isForest: 1,isRoad: 1"
   },
   {
     "id": 213,
     "name": "Steche",
     "placeType": "VILLIAGE",
     "parent": {"id": 187},
-    "properties": "isForest: true,isRiver: true,isRoad: true"
+    "properties": "isForest: 1,isRiver: 1,isRoad: 1"
   },
   {
     "id": 214,
     "name": "Bogenhafen",
     "placeType": "TOWN",
     "parent": {"id": 187},
-    "properties": "isForest: true,isRiver: true,isRoad: true,isPopularRoad: true"
+    "properties": "isForest: 1,isRiver: 1,isRoad: 1,isPopularRoad: 1"
   },
   {
     "id": 215,
     "name": "Ardlich",
     "placeType": "VILLIAGE",
     "parent": {"id": 187},
-    "properties": "isMountains: true,isRoad: true,isPopularRoad: true"
+    "properties": "isMountains: 1,isRoad: 1,isPopularRoad: 1"
   },
   {
     "id": 216,
     "name": "Finsterbad",
     "placeType": "VILLIAGE",
     "parent": {"id": 187},
-    "properties": "isMountains: true,isRiver: true"
+    "properties": "isMountains: 1,isRiver: 1"
   },
   {
     "id": 217,
     "name": "Grubevon",
     "placeType": "VILLIAGE",
     "parent": {"id": 187},
-    "properties": "isMountains: true,isRiver: true"
+    "properties": "isMountains: 1,isRiver: 1"
   },
   {
     "id": 218,
     "name": "Herzhald",
     "placeType": "VILLIAGE",
     "parent": {"id": 187},
-    "properties": "isForest: true"
+    "properties": "isForest: 1"
   },
   {
     "id": 219,
     "name": "Dunkelberg",
     "placeType": "TOWN",
     "parent": {"id": 187},
-    "properties": "isRoad: true"
+    "properties": "isRoad: 1"
   },
   {
     "id": 220,
     "name": "Barfsheim",
     "placeType": "VILLIAGE",
     "parent": {"id": 187},
-    "properties": "isRiver: true"
+    "properties": "isRiver: 1"
   },
   {
     "id": 221,
     "name": "Gemusenbad",
     "placeType": "VILLIAGE",
     "parent": {"id": 187},
-    "properties": "isMountains: true,isRiver: true"
+    "properties": "isMountains: 1,isRiver: 1"
   },
   {
     "id": 222,
     "name": "Harke",
     "placeType": "VILLIAGE",
     "parent": {"id": 187},
-    "properties": "isRiver: true,isRoad: true"
+    "properties": "isRiver: 1,isRoad: 1"
   },
   {
     "id": 223,
     "name": "Ruhfurt",
     "placeType": "VILLIAGE",
     "parent": {"id": 187},
-    "properties": "isRoad: true"
+    "properties": "isRoad: 1"
   },
   {
     "id": 224,
@@ -1571,231 +1571,231 @@
     "name": "Steindorf",
     "placeType": "VILLIAGE",
     "parent": {"id": 187},
-    "properties": "isRiver: true"
+    "properties": "isRiver: 1"
   },
   {
     "id": 226,
     "name": "Diesdorf",
     "placeType": "SMALLTOWN",
     "parent": {"id": 187},
-    "properties": "isForest: true,isRiver: true,isHill: true,isRoad: true,isPopularRoad: true"
+    "properties": "isForest: 1,isRiver: 1,isHill: 1,isRoad: 1,isPopularRoad: 1"
   },
   {
     "id": 227,
     "name": "Eilhart",
     "placeType": "TOWN",
     "parent": {"id": 187},
-    "properties": "isMountains: true,isRiver: true"
+    "properties": "isMountains: 1,isRiver: 1"
   },
   {
     "id": 228,
     "name": "Grunburg",
     "placeType": "TOWN",
     "parent": {"id": 187},
-    "properties": "isForest: true,isRiver: true,isRoad: true,isPopularRoad: true"
+    "properties": "isForest: 1,isRiver: 1,isRoad: 1,isPopularRoad: 1"
   },
   {
     "id": 229,
     "name": "Aussen",
     "placeType": "VILLIAGE",
     "parent": {"id": 187},
-    "properties": "isForest: true,isRiver: true"
+    "properties": "isForest: 1,isRiver: 1"
   },
   {
     "id": 230,
     "name": "Hornlach",
     "placeType": "VILLIAGE",
     "parent": {"id": 187},
-    "properties": "isForest: true,isRiver: true"
+    "properties": "isForest: 1,isRiver: 1"
   },
   {
     "id": 231,
     "name": "Kleindorf",
     "placeType": "VILLIAGE",
     "parent": {"id": 187},
-    "properties": "isForest: true,isRiver: true"
+    "properties": "isForest: 1,isRiver: 1"
   },
   {
     "id": 232,
     "name": "Silberwurt",
     "placeType": "VILLIAGE",
     "parent": {"id": 187},
-    "properties": "isHill: true,isRoad: true,isPopularRoad: true"
+    "properties": "isHill: 1,isRoad: 1,isPopularRoad: 1"
   },
   {
     "id": 233,
     "name": "Wörlitz",
     "placeType": "VILLIAGE",
     "parent": {"id": 187},
-    "properties": "isForest: true"
+    "properties": "isForest: 1"
   },
   {
     "id": 234,
     "name": "Helmgart",
     "placeType": "TOWN",
     "parent": {"id": 187},
-    "properties": "isMountains: true,isRoad: true,isPopularRoad: true"
+    "properties": "isMountains: 1,isRoad: 1,isPopularRoad: 1"
   },
   {
     "id": 235,
     "name": "Holthusen",
     "placeType": "TOWN",
     "parent": {"id": 187},
-    "properties": "isForest: true,isRiver: true"
+    "properties": "isForest: 1,isRiver: 1"
   },
   {
     "id": 236,
     "name": "Rottfurt",
     "placeType": "VILLIAGE",
     "parent": {"id": 187},
-    "properties": "isForest: true,isRiver: true"
+    "properties": "isForest: 1,isRiver: 1"
   },
   {
     "id": 237,
     "name": "Schilderheim",
     "placeType": "TOWN",
     "parent": {"id": 187},
-    "properties": "isForest: true,isRiver: true"
+    "properties": "isForest: 1,isRiver: 1"
   },
   {
     "id": 238,
     "name": "Stimmigen",
     "placeType": "TOWN",
     "parent": {"id": 187},
-    "properties": "isRiver: true,isSwamp: true,isRoad: true"
+    "properties": "isRiver: 1,isSwamp: 1,isRoad: 1"
   },
   {
     "id": 239,
     "name": "Lachenbad",
     "placeType": "VILLIAGE",
     "parent": {"id": 187},
-    "properties": "isRiver: true,isSwamp: true"
+    "properties": "isRiver: 1,isSwamp: 1"
   },
   {
     "id": 240,
     "name": "Merretheim",
     "placeType": "VILLIAGE",
     "parent": {"id": 187},
-    "properties": "isForest: true,isRiver: true,isSwamp: true"
+    "properties": "isForest: 1,isRiver: 1,isSwamp: 1"
   },
   {
     "id": 241,
     "name": "Misthausen",
     "placeType": "VILLIAGE",
     "parent": {"id": 187},
-    "properties": "isRiver: true,isSwamp: true"
+    "properties": "isRiver: 1,isSwamp: 1"
   },
   {
     "id": 242,
     "name": "Naffdorf",
     "placeType": "VILLIAGE",
     "parent": {"id": 187},
-    "properties": "isRiver: true,isSwamp: true"
+    "properties": "isRiver: 1,isSwamp: 1"
   },
   {
     "id": 243,
     "name": "Pfeiffer",
     "placeType": "VILLIAGE",
     "parent": {"id": 187},
-    "properties": "isRiver: true,isSwamp: true"
+    "properties": "isRiver: 1,isSwamp: 1"
   },
   {
     "id": 244,
     "name": "Ubersreik",
     "placeType": "TOWN",
     "parent": {"id": 187},
-    "properties": "isMountains: true,isRiver: true,isRoad: true"
+    "properties": "isMountains: 1,isRiver: 1,isRoad: 1"
   },
   {
     "id": 245,
     "name": "Buchedorf",
     "placeType": "VILLIAGE",
     "parent": {"id": 187},
-    "properties": "isMountains: true,isRiver: true,isRoad: true"
+    "properties": "isMountains: 1,isRiver: 1,isRoad: 1"
   },
   {
     "id": 246,
     "name": "Geissbach",
     "placeType": "VILLIAGE",
     "parent": {"id": 187},
-    "properties": "isMountains: true,isRoad: true"
+    "properties": "isMountains: 1,isRoad: 1"
   },
   {
     "id": 247,
     "name": "Halheim",
     "placeType": "VILLIAGE",
     "parent": {"id": 187},
-    "properties": "isMountains: true,isRoad: true"
+    "properties": "isMountains: 1,isRoad: 1"
   },
   {
     "id": 248,
     "name": "Messingen",
     "placeType": "VILLIAGE",
     "parent": {"id": 187},
-    "properties": "isMountains: true,isRiver: true,isRoad: true"
+    "properties": "isMountains: 1,isRiver: 1,isRoad: 1"
   },
   {
     "id": 249,
     "name": "Wurfel",
     "placeType": "VILLIAGE",
     "parent": {"id": 187},
-    "properties": "isMountains: true"
+    "properties": "isMountains: 1"
   },
   {
     "id": 250,
     "name": "Weissbruck",
     "placeType": "SMALLTOWN",
     "parent": {"id": 187},
-    "properties": "isForest: true,isRiver: true"
+    "properties": "isForest: 1,isRiver: 1"
   },
   {
     "id": 251,
     "name": "Wittgendorf",
     "placeType": "SMALLTOWN",
     "parent": {"id": 187},
-    "properties": "isForest: true,isRiver: true"
+    "properties": "isForest: 1,isRiver: 1"
   },
   {
     "id": 252,
     "name": "Kemperbad",
     "placeType": "TOWN",
     "parent": {"id": 187},
-    "properties": "isForest: true,isRiver: true"
+    "properties": "isForest: 1,isRiver: 1"
   },
   {
     "id": 253,
     "name": "Berghof",
     "placeType": "VILLIAGE",
     "parent": {"id": 187},
-    "properties": "isForest: true,isRiver: true"
+    "properties": "isForest: 1,isRiver: 1"
   },
   {
     "id": 254,
     "name": "Brandenburg",
     "placeType": "VILLIAGE",
     "parent": {"id": 187},
-    "properties": "isForest: true,isRiver: true"
+    "properties": "isForest: 1,isRiver: 1"
   },
   {
     "id": 255,
     "name": "Jungbach",
     "placeType": "VILLIAGE",
     "parent": {"id": 187},
-    "properties": "isForest: true,isRiver: true"
+    "properties": "isForest: 1,isRiver: 1"
   },
   {
     "id": 256,
     "name": "Ostwald",
     "placeType": "VILLIAGE",
     "parent": {"id": 187},
-    "properties": "isForest: true"
+    "properties": "isForest: 1"
   },
   {
     "id": 257,
     "name": "Stockhausen",
     "placeType": "VILLIAGE",
     "parent": {"id": 187},
-    "properties": "isForest: true,isRiver: true"
+    "properties": "isForest: 1,isRiver: 1"
   },
   {
     "id": 258,
@@ -1809,84 +1809,84 @@
     "name": "Wurtbad",
     "placeType": "TOWN",
     "parent": {"id": 258},
-    "properties": "isForest: true,isRiver: true,isCapital: true,isRoad: true,isPopularRoad: true"
+    "properties": "isForest: 1,isRiver: 1,isCapital: 1,isRoad: 1,isPopularRoad: 1"
   },
   {
     "id": 260,
     "name": "Biberhof",
     "placeType": "VILLIAGE",
     "parent": {"id": 258},
-    "properties": "isForest: true"
+    "properties": "isForest: 1"
   },
   {
     "id": 261,
     "name": "Julbach",
     "placeType": "VILLIAGE",
     "parent": {"id": 258},
-    "properties": "isForest: true"
+    "properties": "isForest: 1"
   },
   {
     "id": 262,
     "name": "Oberwil",
     "placeType": "VILLIAGE",
     "parent": {"id": 258},
-    "properties": "isForest: true,isRiver: true"
+    "properties": "isForest: 1,isRiver: 1"
   },
   {
     "id": 263,
     "name": "Tarshof",
     "placeType": "VILLIAGE",
     "parent": {"id": 258},
-    "properties": "isRoad: true,isPopularRoad: true"
+    "properties": "isRoad: 1,isPopularRoad: 1"
   },
   {
     "id": 264,
     "name": "Blutdorf",
     "placeType": "VILLIAGE",
     "parent": {"id": 258},
-    "properties": "isForest: true,isRoad: true"
+    "properties": "isForest: 1,isRoad: 1"
   },
   {
     "id": 265,
     "name": "Kirchham",
     "placeType": "VILLIAGE",
     "parent": {"id": 258},
-    "properties": "isForest: true,isRoad: true"
+    "properties": "isForest: 1,isRoad: 1"
   },
   {
     "id": 266,
     "name": "Drakenhof",
     "placeType": "SMALLTOWN",
     "parent": {"id": 258},
-    "properties": "isRiver: true,isRoad: true"
+    "properties": "isRiver: 1,isRoad: 1"
   },
   {
     "id": 267,
     "name": "Flensburg",
     "placeType": "SMALLTOWN",
     "parent": {"id": 258},
-    "properties": "isHill: true,isRoad: true"
+    "properties": "isHill: 1,isRoad: 1"
   },
   {
     "id": 268,
     "name": "Lochen",
     "placeType": "VILLIAGE",
     "parent": {"id": 258},
-    "properties": "isHill: true,isRoad: true"
+    "properties": "isHill: 1,isRoad: 1"
   },
   {
     "id": 269,
     "name": "Ramsau",
     "placeType": "VILLIAGE",
     "parent": {"id": 258},
-    "properties": "isHill: true,isRoad: true"
+    "properties": "isHill: 1,isRoad: 1"
   },
   {
     "id": 270,
     "name": "Franzen",
     "placeType": "SMALLTOWN",
     "parent": {"id": 258},
-    "properties": "isRiver: true"
+    "properties": "isRiver: 1"
   },
   {
     "id": 271,
@@ -1907,196 +1907,196 @@
     "name": "Halstedt",
     "placeType": "SMALLTOWN",
     "parent": {"id": 258},
-    "properties": "isHill: true,isRoad: true"
+    "properties": "isHill: 1,isRoad: 1"
   },
   {
     "id": 274,
     "name": "Raab",
     "placeType": "VILLIAGE",
     "parent": {"id": 258},
-    "properties": "isHill: true,isRoad: true"
+    "properties": "isHill: 1,isRoad: 1"
   },
   {
     "id": 275,
     "name": "Tenneck",
     "placeType": "VILLIAGE",
     "parent": {"id": 258},
-    "properties": "isHill: true,isRoad: true"
+    "properties": "isHill: 1,isRoad: 1"
   },
   {
     "id": 276,
     "name": "Leicheburg",
     "placeType": "SMALLTOWN",
     "parent": {"id": 258},
-    "properties": "isRiver: true,isHill: true,isRoad: true"
+    "properties": "isRiver: 1,isHill: 1,isRoad: 1"
   },
   {
     "id": 277,
     "name": "Naubonum",
     "placeType": "VILLIAGE",
     "parent": {"id": 258},
-    "properties": "isHill: true,isRoad: true"
+    "properties": "isHill: 1,isRoad: 1"
   },
   {
     "id": 278,
     "name": "Swartzhafen",
     "placeType": "VILLIAGE",
     "parent": {"id": 258},
-    "properties": "isHill: true,isRoad: true"
+    "properties": "isHill: 1,isRoad: 1"
   },
   {
     "id": 2798,
     "name": "Marburg",
     "placeType": "VILLIAGE",
     "parent": {"id": 258},
-    "properties": "isForest: true,isRiver: true"
+    "properties": "isForest: 1,isRiver: 1"
   },
   {
     "id": 280,
     "name": "Oehling",
     "placeType": "VILLIAGE",
     "parent": {"id": 258},
-    "properties": "isForest: true,isRiver: true"
+    "properties": "isForest: 1,isRiver: 1"
   },
   {
     "id": 281,
     "name": "Nachthaften",
     "placeType": "SMALLTOWN",
     "parent": {"id": 258},
-    "properties": "isRiver: true,isHill: true,isRoad: true"
+    "properties": "isRiver: 1,isHill: 1,isRoad: 1"
   },
   {
     "id": 282,
     "name": "Pfaffbach",
     "placeType": "VILLIAGE",
     "parent": {"id": 258},
-    "properties": "isRiver: true"
+    "properties": "isRiver: 1"
   },
   {
     "id": 283,
     "name": "Schramleben",
     "placeType": "SMALLTOWN",
     "parent": {"id": 258},
-    "properties": "isRiver: true,isRoad: true"
+    "properties": "isRiver: 1,isRoad: 1"
   },
   {
     "id": 284,
     "name": "Falkenhausen",
     "placeType": "VILLIAGE",
     "parent": {"id": 258},
-    "properties": "isRoad: true"
+    "properties": "isRoad: 1"
   },
   {
     "id": 285,
     "name": "Hutten",
     "placeType": "VILLIAGE",
     "parent": {"id": 258},
-    "properties": "isRiver: true,isRoad: true"
+    "properties": "isRiver: 1,isRoad: 1"
   },
   {
     "id": 286,
     "name": "Pappenheim",
     "placeType": "VILLIAGE",
     "parent": {"id": 258},
-    "properties": "isRoad: true"
+    "properties": "isRoad: 1"
   },
   {
     "id": 287,
     "name": "Siegfriedhof",
     "placeType": "SMALLTOWN",
     "parent": {"id": 258},
-    "properties": "isForest: true,isRiver: true"
+    "properties": "isForest: 1,isRiver: 1"
   },
   {
     "id": 288,
     "name": "Sigmaringen",
     "placeType": "SMALLTOWN",
     "parent": {"id": 258},
-    "properties": "isRiver: true,isRoad: true"
+    "properties": "isRiver: 1,isRoad: 1"
   },
   {
     "id": 289,
     "name": "Hardenburg",
     "placeType": "VILLIAGE",
     "parent": {"id": 258},
-    "properties": "isRoad: true"
+    "properties": "isRoad: 1"
   },
   {
     "id": 290,
     "name": "Kaunitz",
     "placeType": "VILLIAGE",
     "parent": {"id": 258},
-    "properties": "isRiver: true"
+    "properties": "isRiver: 1"
   },
   {
     "id": 291,
     "name": "Steuben",
     "placeType": "VILLIAGE",
     "parent": {"id": 258},
-    "properties": "isRoad: true"
+    "properties": "isRoad: 1"
   },
   {
     "id": 292,
     "name": "Tempelhof",
     "placeType": "VILLIAGE",
     "parent": {"id": 258},
-    "properties": "isRiver: true,isSwamp: true"
+    "properties": "isRiver: 1,isSwamp: 1"
   },
   {
     "id": 293,
     "name": "Vanhaldenhof",
     "placeType": "VILLIAGE",
     "parent": {"id": 258},
-    "properties": "isForest: true,isRiver: true,isSwamp: true"
+    "properties": "isForest: 1,isRiver: 1,isSwamp: 1"
   },
   {
     "id": 294,
     "name": "Waldenhof",
     "placeType": "TOWN",
     "parent": {"id": 258},
-    "properties": "isRiver: true,isRoad: true"
+    "properties": "isRiver: 1,isRoad: 1"
   },
   {
     "id": 295,
     "name": "Egling",
     "placeType": "VILLIAGE",
     "parent": {"id": 258},
-    "properties": "isRiver: true,isSwamp: true,isRoad: true"
+    "properties": "isRiver: 1,isSwamp: 1,isRoad: 1"
   },
   {
     "id": 296,
     "name": "Hundham",
     "placeType": "VILLIAGE",
     "parent": {"id": 258},
-    "properties": "isRiver: true,isRoad: true"
+    "properties": "isRiver: 1,isRoad: 1"
   },
   {
     "id": 297,
     "name": "Mikalsdorf",
     "placeType": "VILLIAGE",
     "parent": {"id": 258},
-    "properties": "isSwamp: true,isRoad: true"
+    "properties": "isSwamp: 1,isRoad: 1"
   },
   {
     "id": 298,
     "name": "Regakhof",
     "placeType": "VILLIAGE",
     "parent": {"id": 258},
-    "properties": "isRiver: true,isRoad: true"
+    "properties": "isRiver: 1,isRoad: 1"
   },
   {
     "id": 299,
     "name": "Thyrnau",
     "placeType": "VILLIAGE",
     "parent": {"id": 258},
-    "properties": "isRiver: true,isRoad: true"
+    "properties": "isRiver: 1,isRoad: 1"
   },
   {
     "id": 300,
     "name": "Wördern",
     "placeType": "SMALLTOWN",
     "parent": {"id": 258},
-    "properties": "isHill: true,isRoad: true,isPopularRoad: true"
+    "properties": "isHill: 1,isRoad: 1,isPopularRoad: 1"
   },
   {
     "id": 301,
@@ -2110,7 +2110,7 @@
     "name": "Nussbach",
     "placeType": "VILLIAGE",
     "parent": {"id": 258},
-    "properties": "isRiver: true"
+    "properties": "isRiver: 1"
   },
   {
     "id": 303,
@@ -2124,406 +2124,406 @@
     "name": "Küsel",
     "placeType": "TOWN",
     "parent": {"id": 303},
-    "properties": "isForest: true,isRiver: true,isCapital: true,isRoad: true"
+    "properties": "isForest: 1,isRiver: 1,isCapital: 1,isRoad: 1"
   },
   {
     "id": 305,
     "name": "Dreetz",
     "placeType": "VILLIAGE",
     "parent": {"id": 303},
-    "properties": "isForest: true,isHill: true"
+    "properties": "isForest: 1,isHill: 1"
   },
   {
     "id": 306,
     "name": "Lohrafurt",
     "placeType": "VILLIAGE",
     "parent": {"id": 303},
-    "properties": "isForest: true,isRiver: true"
+    "properties": "isForest: 1,isRiver: 1"
   },
   {
     "id": 307,
     "name": "Uckrofurt",
     "placeType": "VILLIAGE",
     "parent": {"id": 303},
-    "properties": "isForest: true"
+    "properties": "isForest: 1"
   },
   {
     "id": 308,
     "name": "Bek",
     "placeType": "SMALLTOWN",
     "parent": {"id": 303},
-    "properties": "isRiver: true,isHill: true"
+    "properties": "isRiver: 1,isHill: 1"
   },
   {
     "id": 309,
     "name": "Freital",
     "placeType": "VILLIAGE",
     "parent": {"id": 303},
-    "properties": "isForest: true,isRoad: true"
+    "properties": "isForest: 1,isRoad: 1"
   },
   {
     "id": 310,
     "name": "Viernau",
     "placeType": "VILLIAGE",
     "parent": {"id": 303},
-    "properties": "isRiver: true,isRoad: true"
+    "properties": "isRiver: 1,isRoad: 1"
   },
   {
     "id": 311,
     "name": "Garndorf",
     "placeType": "VILLIAGE",
     "parent": {"id": 303},
-    "properties": "isForest: true,isRiver: true"
+    "properties": "isForest: 1,isRiver: 1"
   },
   {
     "id": 312,
     "name": "Torpin",
     "placeType": "VILLIAGE",
     "parent": {"id": 303},
-    "properties": "isForest: true,isRiver: true"
+    "properties": "isForest: 1,isRiver: 1"
   },
   {
     "id": 313,
     "name": "Werder",
     "placeType": "VILLIAGE",
     "parent": {"id": 303},
-    "properties": "isForest: true,isRiver: true"
+    "properties": "isForest: 1,isRiver: 1"
   },
   {
     "id": 314,
     "name": "Gersedorf",
     "placeType": "SMALLTOWN",
     "parent": {"id": 303},
-    "properties": "isForest: true,isRiver: true,isRoad: true"
+    "properties": "isForest: 1,isRiver: 1,isRoad: 1"
   },
   {
     "id": 315,
     "name": "Dohna",
     "placeType": "VILLIAGE",
     "parent": {"id": 303},
-    "properties": "isForest: true"
+    "properties": "isForest: 1"
   },
   {
     "id": 316,
     "name": "Sabritz",
     "placeType": "VILLIAGE",
     "parent": {"id": 303},
-    "properties": "isForest: true,isHill: true"
+    "properties": "isForest: 1,isHill: 1"
   },
   {
     "id": 317,
     "name": "Hermsdorf",
     "placeType": "SMALLTOWN",
     "parent": {"id": 303},
-    "properties": "isForest: true,isRiver: true,isRoad: true"
+    "properties": "isForest: 1,isRiver: 1,isRoad: 1"
   },
   {
     "id": 318,
     "name": "Radische",
     "placeType": "VILLIAGE",
     "parent": {"id": 303},
-    "properties": "isForest: true,isRoad: true"
+    "properties": "isForest: 1,isRoad: 1"
   },
   {
     "id": 319,
     "name": "Krugenheim",
     "placeType": "TOWN",
     "parent": {"id": 303},
-    "properties": "isForest: true,isRiver: true,isRoad: true"
+    "properties": "isForest: 1,isRiver: 1,isRoad: 1"
   },
   {
     "id": 320,
     "name": "Hazelhof",
     "placeType": "VILLIAGE",
     "parent": {"id": 303},
-    "properties": "isForest: true,isRoad: true"
+    "properties": "isForest: 1,isRoad: 1"
   },
   {
     "id": 321,
     "name": "Kiel",
     "placeType": "VILLIAGE",
     "parent": {"id": 303},
-    "properties": "isHill: true,isRoad: true"
+    "properties": "isHill: 1,isRoad: 1"
   },
   {
     "id": 322,
     "name": "Trautenau",
     "placeType": "VILLIAGE",
     "parent": {"id": 303},
-    "properties": "isForest: true,isRoad: true"
+    "properties": "isForest: 1,isRoad: 1"
   },
   {
     "id": 323,
     "name": "Lieske",
     "placeType": "VILLIAGE",
     "parent": {"id": 303},
-    "properties": "isForest: true,isRoad: true"
+    "properties": "isForest: 1,isRoad: 1"
   },
   {
     "id": 324,
     "name": "Ossino",
     "placeType": "VILLIAGE",
     "parent": {"id": 303},
-    "properties": "isForest: true,isRoad: true"
+    "properties": "isForest: 1,isRoad: 1"
   },
   {
     "id": 325,
     "name": "Rangenhof",
     "placeType": "VILLIAGE",
     "parent": {"id": 303},
-    "properties": "isForest: true,isRiver: true,isRoad: true"
+    "properties": "isForest: 1,isRiver: 1,isRoad: 1"
   },
   {
     "id": 326,
     "name": "Gostahof",
     "placeType": "VILLIAGE",
     "parent": {"id": 303},
-    "properties": "isForest: true,isRoad: true"
+    "properties": "isForest: 1,isRoad: 1"
   },
   {
     "id": 327,
     "name": "Zützen",
     "placeType": "VILLIAGE",
     "parent": {"id": 303},
-    "properties": "isForest: true"
+    "properties": "isForest: 1"
   },
   {
     "id": 328,
     "name": "Ravenstein",
     "placeType": "SMALLTOWN",
     "parent": {"id": 303},
-    "properties": "isForest: true,isRiver: true,isRoad: true"
+    "properties": "isForest: 1,isRiver: 1,isRoad: 1"
   },
   {
     "id": 329,
     "name": "Klepzig",
     "placeType": "VILLIAGE",
     "parent": {"id": 303},
-    "properties": "isForest: true,isRiver: true"
+    "properties": "isForest: 1,isRiver: 1"
   },
   {
     "id": 330,
     "name": "Unterbaum",
     "placeType": "VILLIAGE",
     "parent": {"id": 303},
-    "properties": "isRiver: true"
+    "properties": "isRiver: 1"
   },
   {
     "id": 331,
     "name": "Volgen",
     "placeType": "TOWN",
     "parent": {"id": 303},
-    "properties": "isForest: true,isRiver: true,isRoad: true"
+    "properties": "isForest: 1,isRiver: 1,isRoad: 1"
   },
   {
     "id": 332,
     "name": "Brasthof",
     "placeType": "VILLIAGE",
     "parent": {"id": 303},
-    "properties": "isForest: true,isRiver: true"
+    "properties": "isForest: 1,isRiver: 1"
   },
   {
     "id": 333,
     "name": "Esselfurt",
     "placeType": "VILLIAGE",
     "parent": {"id": 303},
-    "properties": "isForest: true,isRiver: true"
+    "properties": "isForest: 1,isRiver: 1"
   },
   {
     "id": 334,
     "name": "Priestlicheim",
     "placeType": "VILLIAGE",
     "parent": {"id": 303},
-    "properties": "isForest: true"
+    "properties": "isForest: 1"
   },
   {
     "id": 335,
     "name": "Ripdorf",
     "placeType": "VILLIAGE",
     "parent": {"id": 303},
-    "properties": "isHill: true"
+    "properties": "isHill: 1"
   },
   {
     "id": 336,
     "name": "Sudenheim",
     "placeType": "VILLIAGE",
     "parent": {"id": 303},
-    "properties": "isForest: true,isRoad: true"
+    "properties": "isForest: 1,isRoad: 1"
   },
   {
     "id": 337,
     "name": "Zeder",
     "placeType": "VILLIAGE",
     "parent": {"id": 303},
-    "properties": "isForest: true,isRiver: true"
+    "properties": "isForest: 1,isRiver: 1"
   },
   {
     "id": 338,
     "name": "Welleborn",
     "placeType": "VILLIAGE",
     "parent": {"id": 303},
-    "properties": "isForest: true,isRiver: true"
+    "properties": "isForest: 1,isRiver: 1"
   },
   {
     "id": 339,
     "name": "Missen",
     "placeType": "VILLIAGE",
     "parent": {"id": 303},
-    "properties": "isForest: true,isRoad: true"
+    "properties": "isForest: 1,isRoad: 1"
   },
   {
     "id": 340,
     "name": "Sydow",
     "placeType": "VILLIAGE",
     "parent": {"id": 303},
-    "properties": "isForest: true,isRoad: true"
+    "properties": "isForest: 1,isRoad: 1"
   },
   {
     "id": 341,
     "name": "Zurin",
     "placeType": "VILLIAGE",
     "parent": {"id": 303},
-    "properties": "isForest: true,isRiver: true,isRoad: true"
+    "properties": "isForest: 1,isRiver: 1,isRoad: 1"
   },
   {
     "id": 342,
     "name": "Sarno",
     "placeType": "VILLIAGE",
     "parent": {"id": 303},
-    "properties": "isForest: true,isRoad: true"
+    "properties": "isForest: 1,isRoad: 1"
   },
   {
     "id": 343,
     "name": "Talabheim",
     "placeType": "CITYSTATE",
     "parent": {"id": 303},
-    "properties": "isForest: true,isRiver: true,isSwamp: true,isHill: true,isRoad: true,Taal&Rhya:0.1"
+    "properties": "isForest: 1,isRiver: 1,isSwamp: 1,isHill: 1,isRoad: 1,Taal&Rhya:0.1"
   },
   {
     "id": 344,
     "name": "Bachra",
     "placeType": "VILLIAGE",
     "parent": {"id": 303},
-    "properties": "isForest: true"
+    "properties": "isForest: 1"
   },
   {
     "id": 345,
     "name": "Bad Dankerode",
     "placeType": "VILLIAGE",
     "parent": {"id": 303},
-    "properties": "isForest: true,isRiver: true,isHill: true,isRoad: true"
+    "properties": "isForest: 1,isRiver: 1,isHill: 1,isRoad: 1"
   },
   {
     "id": 346,
     "name": "Bad Tennsalza",
     "placeType": "VILLIAGE",
     "parent": {"id": 303},
-    "properties": "isForest: true,isRiver: true,isRoad: true"
+    "properties": "isForest: 1,isRiver: 1,isRoad: 1"
   },
   {
     "id": 347,
     "name": "Breitblatt",
     "placeType": "VILLIAGE",
     "parent": {"id": 303},
-    "properties": "isRiver: true,isHill: true,isRoad: true"
+    "properties": "isRiver: 1,isHill: 1,isRoad: 1"
   },
   {
     "id": 348,
     "name": "Grossreiche",
     "placeType": "VILLIAGE",
     "parent": {"id": 303},
-    "properties": "isForest: true,isRiver: true"
+    "properties": "isForest: 1,isRiver: 1"
   },
   {
     "id": 349,
     "name": "Gründach",
     "placeType": "VILLIAGE",
     "parent": {"id": 303},
-    "properties": "isRiver: true,isRoad: true"
+    "properties": "isRiver: 1,isRoad: 1"
   },
   {
     "id": 350,
     "name": "Harferfähre",
     "placeType": "VILLIAGE",
     "parent": {"id": 303},
-    "properties": "isForest: true,isRiver: true,isRoad: true"
+    "properties": "isForest: 1,isRiver: 1,isRoad: 1"
   },
   {
     "id": 351,
     "name": "Hernhausen",
     "placeType": "VILLIAGE",
     "parent": {"id": 303},
-    "properties": "isForest: true,isRiver: true,isRoad: true"
+    "properties": "isForest: 1,isRiver: 1,isRoad: 1"
   },
   {
     "id": 352,
     "name": "Klarfeld",
     "placeType": "VILLIAGE",
     "parent": {"id": 303},
-    "properties": "isHill: true"
+    "properties": "isHill: 1"
   },
   {
     "id": 353,
     "name": "Kutzleben",
     "placeType": "VILLIAGE",
     "parent": {"id": 303},
-    "properties": "isForest: true,isRiver: true"
+    "properties": "isForest: 1,isRiver: 1"
   },
   {
     "id": 354,
     "name": "Liebstedt",
     "placeType": "VILLIAGE",
     "parent": {"id": 303},
-    "properties": "isForest: true,isRiver: true,isRoad: true"
+    "properties": "isForest: 1,isRiver: 1,isRoad: 1"
   },
   {
     "id": 355,
     "name": "Rotha",
     "placeType": "VILLIAGE",
     "parent": {"id": 303},
-    "properties": "isForest: true,isRiver: true,isRoad: true"
+    "properties": "isForest: 1,isRiver: 1,isRoad: 1"
   },
   {
     "id": 356,
     "name": "Sprötau",
     "placeType": "VILLIAGE",
     "parent": {"id": 303},
-    "properties": "isForest: true,isRiver: true,isRoad: true"
+    "properties": "isForest: 1,isRiver: 1,isRoad: 1"
   },
   {
     "id": 357,
     "name": "Sumpfrand",
     "placeType": "VILLIAGE",
     "parent": {"id": 303},
-    "properties": "isSwamp: true,isHill: true,isRoad: true"
+    "properties": "isSwamp: 1,isHill: 1,isRoad: 1"
   },
   {
     "id": 358,
     "name": "Talagaad",
     "placeType": "SMALLTOWN",
     "parent": {"id": 303},
-    "properties": "isForest: true,isRiver: true,isRoad: true"
+    "properties": "isForest: 1,isRiver: 1,isRoad: 1"
   },
   {
     "id": 359,
     "name": "Urhausen",
     "placeType": "VILLIAGE",
     "parent": {"id": 303},
-    "properties": "isForest: true,isRiver: true,isRoad: true"
+    "properties": "isForest: 1,isRiver: 1,isRoad: 1"
   },
   {
     "id": 360,
     "name": "Vateresche",
     "placeType": "VILLIAGE",
     "parent": {"id": 303},
-    "properties": "isForest: true,isHill: true"
+    "properties": "isForest: 1,isHill: 1"
   },
   {
     "id": 361,
     "name": "Waldfährte",
     "placeType": "VILLIAGE",
     "parent": {"id": 303},
-    "properties": "isForest: true,isRiver: true,isRoad: true"
+    "properties": "isForest: 1,isRiver: 1,isRoad: 1"
   },
   {
     "id": 362,
@@ -2537,28 +2537,28 @@
     "name": "Wissenburg",
     "placeType": "TOWN",
     "parent": {"id": 362},
-    "properties": "isRiver: true,isCapital: true,isRoad: true"
+    "properties": "isRiver: 1,isCapital: 1,isRoad: 1"
   },
   {
     "id": 364,
     "name": "Dotternbach",
     "placeType": "VILLIAGE",
     "parent": {"id": 362},
-    "properties": "isMountains: true,isRiver: true"
+    "properties": "isMountains: 1,isRiver: 1"
   },
   {
     "id": 365,
     "name": "Haigerbach",
     "placeType": "VILLIAGE",
     "parent": {"id": 362},
-    "properties": "isRiver: true"
+    "properties": "isRiver: 1"
   },
   {
     "id": 366,
     "name": "Maselhof",
     "placeType": "VILLIAGE",
     "parent": {"id": 362},
-    "properties": "isRiver: true"
+    "properties": "isRiver: 1"
   },
   {
     "id": 367,
@@ -2572,14 +2572,14 @@
     "name": "Weningen",
     "placeType": "VILLIAGE",
     "parent": {"id": 362},
-    "properties": "isRoad: true"
+    "properties": "isRoad: 1"
   },
   {
     "id": 369,
     "name": "Geschburg",
     "placeType": "SMALLTOWN",
     "parent": {"id": 362},
-    "properties": "isRiver: true,isRoad: true"
+    "properties": "isRiver: 1,isRoad: 1"
   },
   {
     "id": 370,
@@ -2600,35 +2600,35 @@
     "name": "Grissenwald",
     "placeType": "TOWN",
     "parent": {"id": 362},
-    "properties": "isRiver: true"
+    "properties": "isRiver: 1"
   },
   {
     "id": 373,
     "name": "Kreutzhofen",
     "placeType": "SMALLTOWN",
     "parent": {"id": 362},
-    "properties": "isMountains: true,isRiver: true,isRoad: true"
+    "properties": "isMountains: 1,isRiver: 1,isRoad: 1"
   },
   {
     "id": 374,
     "name": "Weilerberg",
     "placeType": "VILLIAGE",
     "parent": {"id": 362},
-    "properties": "isRiver: true"
+    "properties": "isRiver: 1"
   },
   {
     "id": 375,
     "name": "Kroppenleben",
     "placeType": "VILLIAGE",
     "parent": {"id": 362},
-    "properties": "isRiver: true,isRoad: true"
+    "properties": "isRiver: 1,isRoad: 1"
   },
   {
     "id": 376,
     "name": "Meissen",
     "placeType": "SMALLTOWN",
     "parent": {"id": 362},
-    "properties": "isRiver: true,isRoad: true"
+    "properties": "isRiver: 1,isRoad: 1"
   },
   {
     "id": 377,
@@ -2642,63 +2642,63 @@
     "name": "Heisenberg",
     "placeType": "VILLIAGE",
     "parent": {"id": 362},
-    "properties": "isRiver: true,isRoad: true"
+    "properties": "isRiver: 1,isRoad: 1"
   },
   {
     "id": 379,
     "name": "Owingen",
     "placeType": "VILLIAGE",
     "parent": {"id": 362},
-    "properties": "isForest: true,isRiver: true,isRoad: true"
+    "properties": "isForest: 1,isRiver: 1,isRoad: 1"
   },
   {
     "id": 380,
     "name": "Pfeildorf",
     "placeType": "TOWN",
     "parent": {"id": 362},
-    "properties": "isRiver: true,isRoad: true"
+    "properties": "isRiver: 1,isRoad: 1"
   },
   {
     "id": 381,
     "name": "Bernau",
     "placeType": "VILLIAGE",
     "parent": {"id": 362},
-    "properties": "isRoad: true"
+    "properties": "isRoad: 1"
   },
   {
     "id": 382,
     "name": "Durbheim",
     "placeType": "VILLIAGE",
     "parent": {"id": 362},
-    "properties": "isRiver: true,isRoad: true"
+    "properties": "isRiver: 1,isRoad: 1"
   },
   {
     "id": 383,
     "name": "Elzach",
     "placeType": "VILLIAGE",
     "parent": {"id": 362},
-    "properties": "isRiver: true"
+    "properties": "isRiver: 1"
   },
   {
     "id": 384,
     "name": "Hausern",
     "placeType": "VILLIAGE",
     "parent": {"id": 362},
-    "properties": "isRoad: true"
+    "properties": "isRoad: 1"
   },
   {
     "id": 385,
     "name": "Scharmbeck",
     "placeType": "VILLIAGE",
     "parent": {"id": 362},
-    "properties": "isForest: true,isRiver: true,isRoad: true"
+    "properties": "isForest: 1,isRiver: 1,isRoad: 1"
   },
   {
     "id": 386,
     "name": "Sonnefurt",
     "placeType": "VILLIAGE",
     "parent": {"id": 362},
-    "properties": "isRiver: true,isRoad: true"
+    "properties": "isRiver: 1,isRoad: 1"
   },
   {
     "id": 387,
@@ -2712,56 +2712,56 @@
     "name": "Wusterburg",
     "placeType": "SMALLTOWN",
     "parent": {"id": 362},
-    "properties": "isRiver: true,isRoad: true"
+    "properties": "isRiver: 1,isRoad: 1"
   },
   {
     "id": 389,
     "name": "Eigenhof",
     "placeType": "VILLIAGE",
     "parent": {"id": 362},
-    "properties": "isRiver: true,isRoad: true"
+    "properties": "isRiver: 1,isRoad: 1"
   },
   {
     "id": 390,
     "name": "Rötenbach",
     "placeType": "VILLIAGE",
     "parent": {"id": 362},
-    "properties": "isHill: true,isRoad: true"
+    "properties": "isHill: 1,isRoad: 1"
   },
   {
     "id": 391,
     "name": "Nuln",
     "placeType": "CITYSTATE",
     "parent": {"id": 362},
-    "properties": "isRiver: true,isRoad: true,isPopularRoad: true"
+    "properties": "isRiver: 1,isRoad: 1,isPopularRoad: 1"
   },
   {
     "id": 392,
     "name": "Ambosstein",
     "placeType": "VILLIAGE",
     "parent": {"id": 362},
-    "properties": "isForest: true,isRoad: true"
+    "properties": "isForest: 1,isRoad: 1"
   },
   {
     "id": 393,
     "name": "Armedorf",
     "placeType": "VILLIAGE",
     "parent": {"id": 362},
-    "properties": "isMountains: true,isRiver: true,isRoad: true"
+    "properties": "isMountains: 1,isRiver: 1,isRoad: 1"
   },
   {
     "id": 394,
     "name": "Arschel",
     "placeType": "VILLIAGE",
     "parent": {"id": 362},
-    "properties": "isForest: true,isRoad: true"
+    "properties": "isForest: 1,isRoad: 1"
   },
   {
     "id": 395,
     "name": "Biberdorf",
     "placeType": "VILLIAGE",
     "parent": {"id": 362},
-    "properties": "isRiver: true"
+    "properties": "isRiver: 1"
   },
   {
     "id": 396,
@@ -2775,83 +2775,83 @@
     "name": "Brandtstadt",
     "placeType": "VILLIAGE",
     "parent": {"id": 362},
-    "properties": "isRoad: true"
+    "properties": "isRoad: 1"
   },
   {
     "id": 398,
     "name": "Braundorf",
     "placeType": "VILLIAGE",
     "parent": {"id": 362},
-    "properties": "isRiver: true,isRoad: true"
+    "properties": "isRiver: 1,isRoad: 1"
   },
   {
     "id": 399,
     "name": "Eschedorf",
     "placeType": "VILLIAGE",
     "parent": {"id": 362},
-    "properties": "isRiver: true"
+    "properties": "isRiver: 1"
   },
   {
     "id": 400,
     "name": "Furtzhausen",
     "placeType": "VILLIAGE",
     "parent": {"id": 362},
-    "properties": "isRoad: true"
+    "properties": "isRoad: 1"
   },
   {
     "id": 401,
     "name": "Königsdorf",
     "placeType": "VILLIAGE",
     "parent": {"id": 362},
-    "properties": "isRoad: true"
+    "properties": "isRoad: 1"
   },
   {
     "id": 402,
     "name": "Krauthof",
     "placeType": "VILLIAGE",
     "parent": {"id": 362},
-    "properties": "isMountains: true,isRiver: true,isRoad: true"
+    "properties": "isMountains: 1,isRiver: 1,isRoad: 1"
   },
   {
     "id": 403,
     "name": "Mattersheim",
     "placeType": "VILLIAGE",
     "parent": {"id": 362},
-    "properties": "isRiver: true"
+    "properties": "isRiver: 1"
   },
   {
     "id": 404,
     "name": "Segeldorf",
     "placeType": "VILLIAGE",
     "parent": {"id": 362},
-    "properties": "isRoad: true"
+    "properties": "isRoad: 1"
   },
   {
     "id": 405,
     "name": "Wahnfurt",
     "placeType": "VILLIAGE",
     "parent": {"id": 362},
-    "properties": "isForest: true"
+    "properties": "isForest: 1"
   },
   {
     "id": 406,
     "name": "Winkelhausen",
     "placeType": "VILLIAGE",
     "parent": {"id": 362},
-    "properties": "isRoad: true"
+    "properties": "isRoad: 1"
   },
   {
     "id": 407,
     "name": "Wurstheim",
     "placeType": "VILLIAGE",
     "parent": {"id": 362},
-    "properties": "isMountains: true,isRoad: true"
+    "properties": "isMountains: 1,isRoad: 1"
   },
   {
     "id": 408,
     "name": "Zecher",
     "placeType": "VILLIAGE",
     "parent": {"id": 362},
-    "properties": "isRoad: true"
+    "properties": "isRoad: 1"
   }
 ]

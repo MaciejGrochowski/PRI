@@ -10865,7 +10865,86 @@
   "career": {"id": 100},
   "skill": {"id": 265},
   "type": 2,
+  "probability": 1},
+
+
+
+ {
+  "career": {"id": 101},
+  "skill": {"id": 4},
+  "type": 1,
+  "probability": 1},
+ {
+  "career": {"id": 101},
+  "skill": {"id": 16},
+  "type": 2,
+  "probability": 1},
+ {
+  "career": {"id": 101},
+  "skill": {"id": 19},
+  "type": 3,
+  "probability": 1},
+ {
+  "career": {"id": 101},
+  "skill": {"id": 124},
+  "type": 4,
+  "probability": 1},
+ {
+  "career": {"id": 101},
+  "skill": {"id": 130},
+  "type": 5,
+  "probability": 1},
+ {
+  "career": {"id": 101},
+  "skill": {"id": 232},
+  "type": 6,
+  "probability": 1},
+ {
+  "career": {"id": 101},
+  "skill": {"id": 241},
+  "type": 7,
+  "probability": 1},
+ {
+  "career": {"id": 101},
+  "skill": {"id": 250},
+  "type": 8,
+  "probability": 1},
+ {
+  "career": {"id": 101},
+  "skill": {"id": 271},
+  "type": 9,
+  "probability": 1},
+ {
+  "career": {"id": 101},
+  "skill": {"id": 292},
+  "type": 9,
+  "probability": 1},
+ {
+ "career": {"id": 101},
+ "skill": {"id": 313},
+ "type": 10,
+ "probability": 1},
+ {
+  "career": {"id": 101},
+  "skill": {"id": 325},
+  "type": 11,
+  "probability": 1},
+ {
+  "career": {"id": 101},
+  "skill": {"id": 343},
+  "type": 11,
+  "probability": 1},
+ {
+  "career": {"id": 101},
+  "skill": {"id": 346},
+  "type": 12,
+  "probability": 1},
+ {
+  "career": {"id": 101},
+  "skill": {"id": 358},
+  "type": 13,
   "probability": 1}
+
 ]
 
 

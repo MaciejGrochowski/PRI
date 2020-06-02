@@ -28,7 +28,7 @@ public class Career extends GeneralEntity {
     @ManyToMany
     List<Talent> talents; //ToDo z uwagi na CareerTalent to jest do usunięcia
 
-    @JsonIgnore
+
     @ManyToMany(fetch = FetchType.LAZY)
     List<Career> careerExits; //Gdzie można dalej pójść
 

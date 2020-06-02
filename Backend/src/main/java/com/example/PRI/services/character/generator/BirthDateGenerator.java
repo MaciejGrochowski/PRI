@@ -181,4 +181,19 @@ public class BirthDateGenerator {
         }
         return days;
     }
+
+    public Map<String, String> getProperties(ImperialDate imperialDate, HashMap<String, String> properties) {
+        Character character = new Character();
+        Map <String, String> newProps;
+        if((defaultGameYear - imperialDate.getYear()) > Integer.parseInt(properties.get("elderAge"))){
+            newProps = generateElderCharacter(character, properties);
+        }
+        else if ((defaultGameYear - imperialDate.getYear()) > Integer.parseInt(properties.get("oldAge"))){
+            newProps = generateOldCharacter(character, properties);
+        }
+        else{
+            newProps = generateAdultCharacter(character, properties);
+        }
+        return newProps;
+    }
 }

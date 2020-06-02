@@ -68,4 +68,7 @@ public class PersonalityGenerator extends GeneralService {
         return 4;
     }
 
+    public Map<String, String> getProperties(Character character, List<Personality> personalities) {
+        return new HashMap<>();
+    }
 }

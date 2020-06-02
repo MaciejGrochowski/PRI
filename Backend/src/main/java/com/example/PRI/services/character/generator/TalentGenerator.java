@@ -133,4 +133,7 @@ public class TalentGenerator extends GeneralService {
         return humanTalentNames.get(new Random().nextInt(humanTalentNames.size()));
     }
 
+    public Map<String, String> getProperties(Character character, List<Talent> talents) {
+        return new HashMap<>();
+    }
 }

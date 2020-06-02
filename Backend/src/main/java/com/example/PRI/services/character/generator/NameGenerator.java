@@ -57,4 +57,8 @@ public class NameGenerator extends GeneralService {
         }
         return null;
     }
+
+    public Map<String, String> getProperties(Name name) {
+        return new HashMap<String, String>();
+    }
 }

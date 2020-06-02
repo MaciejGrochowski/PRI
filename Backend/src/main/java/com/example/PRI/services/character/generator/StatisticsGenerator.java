@@ -116,4 +116,8 @@ public class StatisticsGenerator {
         if (randomRoll <= 9) return 12;
         return 13;
     }
+
+    public Map<String, String> getProperties(Statistics stats) {
+        return new HashMap<String, String>();
+    }
 }

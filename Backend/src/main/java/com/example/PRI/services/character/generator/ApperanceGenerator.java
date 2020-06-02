@@ -75,4 +75,8 @@ public class ApperanceGenerator extends GeneralService {
         return 5;
 
     }
+
+    public Map<String, String> getProperties(ApperanceGenerator service, List<Apperance> apperance) {
+        return new HashMap<>();
+    }
 }

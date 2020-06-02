@@ -149,4 +149,8 @@ public class SkillGenerator extends GeneralService {
         if(randomRoll < 0.99) return 2;
         return 3;
     }
+
+    public Map<String, String> getProperties(Character character, List<Skill> skills) {
+        return new HashMap<>();
+    }
 }

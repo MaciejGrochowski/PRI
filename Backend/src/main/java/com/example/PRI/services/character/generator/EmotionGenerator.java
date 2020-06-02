@@ -18,7 +18,6 @@ public class EmotionGenerator extends GeneralService {
     EmotionService emotionService;
 
     public Map<String, String> generateEmotions(Character character, HashMap<String, String> properties) {
-        Map<String, String> output = new HashMap<>();
         List<Emotion> emotions = emotionService.findAll();
         Random rand = new Random();
         List<Emotion> characterEmotions = new ArrayList<>();
@@ -43,7 +42,7 @@ public class EmotionGenerator extends GeneralService {
             characterEmotions = characterEmotions.subList(0, emotionCount);
         }
         character.setDominatingEmotions(characterEmotions);
-        return output;
+        return new HashMap<>();
     }
 
     private Emotion getRandomEmotion(List<Emotion> emotions) {
@@ -55,7 +54,7 @@ public class EmotionGenerator extends GeneralService {
             if(randomRoll<=0) return emotion;
         }
         throw new CharacterGenerationException("Stworzono null emocję!", new NullPointerException());
-    }
+}
 
     private int randomEmotionCount(double randomRoll) {
         if (randomRoll < 0.01) return 0;
@@ -65,5 +64,9 @@ public class EmotionGenerator extends GeneralService {
         return 4;
 
 
+    }
+
+    public Map<String, String> getProperties(List<Emotion> emotion) {
+        return new HashMap<>();
     }
 }

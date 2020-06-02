@@ -147,4 +147,16 @@ public class CareerGenerator extends GeneralService {
     }
 
 
+    public Map<String, String> getProperties(List<Career> careers) {
+        HashMap <String, String> output = new HashMap<>();
+        for(Career caeer : careers){
+            output.putAll(mapJsonStringToMap(caeer.getProperties()));
+        }
+        return output;
+    }
+
+    public Map<String, String> buildCurrentCareer(List<Career> previousCareers, HashMap<String, String> properties, Character character) {
+      character.setCurrentCareer(this.buildNextCareer(previousCareers, previousCareers.get(previousCareers.size()- 1), properties));
+      return mapJsonStringToMap(character.getCurrentCareer().getProperties());
+    }
 }

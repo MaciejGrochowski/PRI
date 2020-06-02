@@ -28,4 +28,8 @@ public class PredictionGenerator extends GeneralService {
         }
         return new HashMap<>();
     }
+
+    public Map<String, String> getProperties(Prediction prediction) {
+        return new HashMap<>();
+    }
 }

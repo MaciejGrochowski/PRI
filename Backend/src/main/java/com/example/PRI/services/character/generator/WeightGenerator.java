@@ -45,4 +45,9 @@ public class WeightGenerator {
         if(weight < 0.7) output.put("Piwny brzuch", "0");
         return output;
     }
+
+    public Map<String, String> getProperties(Integer weight, HashMap<String, String> properties) {
+        Map newProps = generateProperties(Double.valueOf(weight), Double.parseDouble(properties.get("averageHeight")));
+        return newProps;
+    }
 }

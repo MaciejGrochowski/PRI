@@ -102,4 +102,8 @@ public class LivePlaceGenerator extends GeneralService {
         if(place != null) return place;
         else return this.randomPlace(probablyPlaces);
     }
+
+    public Map<String, String> getProperties(LivePlaceGenerator service, Place place) {
+        return new HashMap<>();
+    }
 }

@@ -1,6 +1,7 @@
 package com.example.PRI.services.character.generator;
 
 import com.example.PRI.entities.character.Character;
+import com.example.PRI.enums.Race;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -31,5 +32,10 @@ public class HeightGenerator {
         }
 
         return output;
+    }
+
+    public Map<String, String> getProperties(Integer height, HashMap<String, String> properties) {
+        Map newProps = generateProperties(Double.valueOf(height), Double.parseDouble(properties.get("averageHeight")));
+        return newProps;
     }
 }

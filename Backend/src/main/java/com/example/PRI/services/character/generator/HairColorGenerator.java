@@ -58,4 +58,11 @@ public class HairColorGenerator extends GeneralService {
         character.setHairColor(generated);
         return newProps;
     }
+
+    public Map<String, String> getProperties(HairColor hairColor) {
+        Map<String, String> newProps = new HashMap<>();
+        newProps.put("hairColor",hairColor.getColor());
+        return newProps;
+
+    }
 }

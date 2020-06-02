@@ -47,4 +47,10 @@ public class EyeColorGenerator extends GeneralService {
         character.setEyeColor(generated);
         return newProps;
     }
+
+    public Map<String, String> getProperties(EyeColor eyeColor) {
+        Map<String, String> newProps = new HashMap<>();
+        newProps.put("eyeColor", eyeColor.getColor());
+        return newProps;
+    }
 }

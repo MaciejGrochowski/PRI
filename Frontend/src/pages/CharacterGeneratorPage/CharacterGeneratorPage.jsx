@@ -121,7 +121,6 @@ class CharacterGeneratorPage extends React.Component {
 
     saveSuccessHandler = response => {
         this.setState({generated: true, href: "/characterDetails/" + response.data, isError: false})
-        window.open("/characterDetails/" + response.data);
     }
 
     fullRandomGenerate = () => {
@@ -132,7 +131,6 @@ class CharacterGeneratorPage extends React.Component {
 
     fullRandomGenerateSuccessHandler = response => {
         this.setState({
-            // fullGenerated: {name: response.data.name},
             name: response.data.name,
             surname: response.data.surname,
             weight: response.data.weight,

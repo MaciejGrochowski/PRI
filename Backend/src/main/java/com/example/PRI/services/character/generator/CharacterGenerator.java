@@ -238,19 +238,59 @@ public class CharacterGenerator extends GeneralService {
     @Transactional
     public Character saveGenerate(CharacterInputDto characterInputDto){
         Character character = new Character();
-        if(characterInputDto.getName() == null) character.setName(null);
-        else character.setName(characterSaveService.nameConvert(characterInputDto.getName()));
-        character.setSex(characterSaveService.sexConverter(characterInputDto.getSex()));
-        character.setRace(characterSaveService.raceConverter(characterInputDto.getRace()));
+        if(characterInputDto.getName() != null) character.setName(characterSaveService.nameConvert(characterInputDto.getName()));
+        if(characterInputDto.getSex() != null) character.setSex(characterSaveService.sexConverter(characterInputDto.getSex()));
+        if(characterInputDto.getRace() != null) character.setRace(characterSaveService.raceConverter(characterInputDto.getRace()));
+
         Surname surname = characterSaveService.surnameConvert(characterInputDto.getSurname());
         character.setSurname(prepareSurnameProperties(character.getRace(),surname,character.getSex()));
         character.setPrediction(characterSaveService.predictionConvert(characterInputDto.getPrediction()));
-        if(characterInputDto.getCurrentCareer() == null) character.setCurrentCareer(null);
-        else character.setCurrentCareer(characterSaveService.currentCareerConvert(characterInputDto.getCurrentCareer()));
-        character.setPreviousCareers(characterSaveService.previousCareersConvert(characterInputDto.getPreviousCareers(),characterInputDto.getCurrentCareer()));
-        character.setHairColor(characterSaveService.hairColorConverter(characterInputDto.getHairColor()));
-        character.setEyeColor(characterSaveService.eyeColorConverter(characterInputDto.getEyeColor()));
+        if(characterInputDto.getCurrentCareer() != null) character.setCurrentCareer(characterSaveService.currentCareerConvert(characterInputDto.getCurrentCareer()));
+        if(characterInputDto.getPreviousCareers() != null) character.setPreviousCareers(characterSaveService.previousCareersConvert(characterInputDto.getPreviousCareers(),characterInputDto.getCurrentCareer()));
+        if(characterInputDto.getHairColor() != null) character.setHairColor(characterSaveService.hairColorConverter(characterInputDto.getHairColor()));
+        if(characterInputDto.getEyeColor() != null) character.setEyeColor(characterSaveService.eyeColorConverter(characterInputDto.getEyeColor()));
+        if(characterInputDto.getApperance() != null) character.setApperance(characterSaveService.apperanceConvert(characterInputDto.getApperance()));
+        if(characterInputDto.getDominatingEmotions() != null) character.setDominatingEmotions(characterSaveService.dominantingEmotionConvert(characterInputDto.getDominatingEmotions()));
+        if(characterInputDto.getLivePlace() != null) character.setLivePlace(characterSaveService.livePlaceConverter(characterInputDto.getLivePlace()));
+        if(characterInputDto.getBirthPlace() != null) character.setBirthPlace(characterSaveService.bornPlaceConverter(characterInputDto.getBirthPlace()));
+        if(characterInputDto.getHeight() != null) character.setHeight(characterSaveService.heightConverter(characterInputDto.getHeight()));
+        if(characterInputDto.getWeight() != null) character.setWeight(characterSaveService.weightConverter(characterInputDto.getWeight()));
+        character.setPersonality(characterSaveService.personalityListConvert(characterInputDto.getPersonality()));
+        character.setApperance(characterSaveService.apperanceConvert(characterInputDto.getApperance()));
+        character.setSkills(characterSaveService.skillsConvert(characterInputDto.getSkills()));
+        character.setTalents(characterSaveService.talentsConvert(characterInputDto.getTalents()));
+        if(characterInputDto.getReligion() != null) character.setReligion(characterSaveService.religionConverter(characterInputDto.getReligion()));
+        if(characterInputDto.getDayOfBirth() != null && characterInputDto.getMonthOfBirth() != null && characterInputDto.getYearOfBirth() != null) character.setBirthDate(characterSaveService.imperialDateConverter(characterInputDto.getDayOfBirth(), characterInputDto.getMonthOfBirth(),characterInputDto.getYearOfBirth()));
+        if (characterInputDto.getDayOfBirth() != null && characterInputDto.getMonthOfBirth() != null && characterInputDto.getYearOfBirth() != null) character.setStarSign(characterSaveService.saveStarSign(character,character.getBirthDate()));
 
+        if (characterInputDto.getBaseWeaponSkills() != null && characterInputDto.getBaseBallisticSkills() != null &&
+                characterInputDto.getBaseStrength() != null && characterInputDto.getBaseToughness() != null &&
+                characterInputDto.getBaseAgility() != null && characterInputDto.getBaseIntelligence() != null &&
+                characterInputDto.getBaseWillPower() != null && characterInputDto.getBaseFellowship() != null &&
+                characterInputDto.getBaseAttacks() != null && characterInputDto.getBaseWounds() != null &&
+                characterInputDto.getBaseMagic() != null && characterInputDto.getBaseMovement() != null
+        )        character.setBaseStats(characterSaveService.baseStatisticsConvert(characterInputDto));
+
+        if (characterInputDto.getEndWeaponSkills() != null && characterInputDto.getEndBallisticSkills() != null &&
+                characterInputDto.getEndStrength() != null && characterInputDto.getEndToughness() != null &&
+                characterInputDto.getEndAgility() != null && characterInputDto.getEndIntelligence() != null &&
+                characterInputDto.getEndWillPower() != null && characterInputDto.getEndFellowship() != null &&
+                characterInputDto.getEndAttacks() != null && characterInputDto.getEndWounds() != null &&
+                characterInputDto.getEndMagic() != null && characterInputDto.getEndMovement() != null
+        ) {
+            character.setEndWeaponSkills(characterSaveService.endWeaponSkillConvert(characterInputDto.getEndWeaponSkills()));
+            character.setEndBallisticSkills(characterSaveService.endBallisticSkillsConvert(characterInputDto.getEndBallisticSkills()));
+            character.setEndStrength(characterSaveService.endStrengthConvert(characterInputDto.getEndStrength()));
+            character.setEndToughness(characterSaveService.endToughnessConvert(characterInputDto.getEndToughness()));
+            character.setEndAgility(characterSaveService.endAgilityConvert(characterInputDto.getEndAgility()));
+            character.setEndIntelligence(characterSaveService.endIntelligenceConvert(characterInputDto.getEndIntelligence()));
+            character.setEndWillPower(characterSaveService.endWillPowerConvert(characterInputDto.getEndWillPower()));
+            character.setEndFellowship(characterSaveService.endFellowshipConvert(characterInputDto.getEndFellowship()));
+            character.setEndAttacks(characterSaveService.endAttacksConvert(characterInputDto.getEndAttacks()));
+            character.setEndWounds(characterSaveService.endWoundsConvert(characterInputDto.getEndWounds()));
+            character.setEndMovement(characterSaveService.endMovementConvert(characterInputDto.getEndMovement()));
+            character.setEndMagic(characterSaveService.endMagicConvert(characterInputDto.getEndMagic()));
+        }
         return character;
     }
 

@@ -12,7 +12,7 @@ public class WeightGenerator {
         double averageWeight = Double.parseDouble(properties.get("averageWeight"));
         Random rand = new Random();
         double weight = averageWeight + rand.nextGaussian()*15;
-        while(weight < 0.3*averageWeight || weight < 16 || weight > averageWeight*5) weight = averageWeight + rand.nextGaussian()*15;
+        while(weight < 0.3*averageWeight || weight < 16 || weight > averageWeight*5) weight = averageWeight + rand.nextGaussian()*10;
         character.setWeight((int) Math.round(weight));
         Map<String, String> newProps = this.generateProperties(averageWeight, weight);
         return newProps;

@@ -8,7 +8,7 @@ public enum Race {
             "Skills:{}," +
                     "Talents:{}," +
                     "Movement:0," +
-                    "averageWeight:60," +
+                    "averageWeight:65," +
                     "averageHeight:165," +
                     "adultAge:16," +
                     "elderAge:40," +
@@ -34,7 +34,7 @@ public enum Race {
                     "Movement:1," +
                     "Skills:{}," +
                     "Talents:{}," +
-                    "averageWeight:60," +
+                    "averageWeight:65," +
                     "averageHeight:175," +
                     "adultAge:25," +
                     "elderAge:140," +
@@ -112,7 +112,7 @@ public enum Race {
                     "Movement:-1," +
                     "Skills:{}," +
                     "Talents:{}," +
-                    "averageWeight:65," +
+                    "averageWeight:70," +
                     "averageHeight:145," +
                     "adultAge:20," +
                     "elderAge:120," +

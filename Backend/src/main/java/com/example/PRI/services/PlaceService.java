@@ -38,11 +38,7 @@ public class PlaceService extends GeneralService {
     }
 
     public List<Place> getCapitols() {
-        return placeRepository.findByPropertiesLike("%isCapital: true%");
-    }
-
-    public List<Place> getCities() {
-        return placeRepository.findByPlaceType(PlaceType.CITY);
+        return placeRepository.findByPropertiesLike("%isCapital: 1%");
     }
 
     public List<Place> getByType(PlaceType type) {

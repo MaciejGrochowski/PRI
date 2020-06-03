@@ -95,7 +95,7 @@ public class StatisticsGenerator {
         return getStatsNamesByValue(stats, maximum);
     }
 
-    private Statistics aplicateProperties(Statistics generated, HashMap<String, String> properties) {
+    private Statistics aplicateProperties(Statistics generated, Map<String, String> properties) {
         if(properties.containsKey("WeaponSkill")) generated.setWeaponSkill(generated.getWeaponSkill() + Integer.parseInt(properties.get("WeaponSkill")));
         if(properties.containsKey("BallisticSkill")) generated.setBallisticSkill(generated.getBallisticSkill() + Integer.parseInt(properties.get("BallisticSkill")));
         if(properties.containsKey("Strength")) generated.setStrength(generated.getStrength() + Integer.parseInt(properties.get("Strength")));
@@ -117,7 +117,18 @@ public class StatisticsGenerator {
         return 13;
     }
 
-    public Map<String, String> getProperties(Statistics stats) {
-        return new HashMap<String, String>();
+    public Map<String, String> getProperties(Statistics generated, Map<String, String> properties) {
+        Map<String, String> output = new HashMap<>();
+        List<String> dominatingStats = setDominatingStats(generated);
+        List<String> antiDominatingStats = setAntiDominatingStats(generated);
+        aplicateProperties(generated, properties);
+        dominatingStats.addAll(setDominatingStats(generated));
+        antiDominatingStats.addAll(setAntiDominatingStats(generated));
+        String dominating = dominatingStats.stream().distinct().collect(Collectors.joining(","));
+        String antiDominating = antiDominatingStats.stream().distinct().collect(Collectors.joining(","));
+        output.put("dominatingStats", dominating);
+        output.put("antiDominatingStats", antiDominating);
+
+        return output;
     }
 }

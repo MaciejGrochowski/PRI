@@ -84,7 +84,7 @@
     "talents": null,
     "careerExits": [{"id": 1},{"id": 2},{"id": 65},{"id": 28},{"id": 111}],
     "dominatingStat": "WW+10,ODP+10,SW+10",
-    "properties": "landJourney:0.02,nationJourney:0.02,Agresywny:0.1,Brawurowy:0.1,Drażliwy:0.1,Fanatyk:0.8,Impulsywny:0.1,Paranoik:0.2,Łysy:0.05,Tatuaż na twarzy:0.1,Rytualne Blizny Na Twarzy:0.1",
+    "properties": "landJourney:0.02,nationJourney:0.02,Agresywny:0.1,Brawurowy:0.1,Drażliwy:0.1,Fanatyk:0.8,Impulsywny:0.1,Paranoik:0.2,Łysy:0.05,Tatuaż na twarzy:0.1,Rytualne Blizny Na Twarzy:0.1,Brak bóstwa opiekuńczego:0",
     "bestNextCareer": "Biczownik"},
   {"id": 9,
     "name": "Flisak",

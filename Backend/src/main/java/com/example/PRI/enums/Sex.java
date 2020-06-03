@@ -17,6 +17,7 @@ public enum Sex {
             "Obfite bokobrody:0," +
             "Pejsy:0,"+
             "Skołtuniona broda:0,"+
+            "Krótka bródka:0," +
             "Długie paznokcie:0.02,"+
             "Mówi bardzo szybko:0.01,"+
             "Piskliwy głos:0.01,"+

@@ -157,7 +157,7 @@ public class ReligionGenerator {
         return output;
     }
 
-    public Map<String, String> getProperties(Character character, Religion religion) {
-        return  MapperJsonStringToMap.mapJsonStringToMap(character.getReligion().getProperties());
+    public Map<String, String> getProperties(Religion religion) {
+        return  MapperJsonStringToMap.mapJsonStringToMap(religion.getProperties());
     }
 }

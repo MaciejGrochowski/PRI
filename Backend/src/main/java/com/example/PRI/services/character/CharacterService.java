@@ -70,10 +70,6 @@ public class CharacterService extends GeneralService {
     @Autowired
     ApperanceService apperanceService;
 
-//    public Character generate(){
-//        new CharacterBirthPlaceService().generateBirthPlace(new Character(), placeService);
-//    }
-
     public List<CharacterDefaultAttributesOutputDto> getAllCharacters() {
         Iterable<Character> characters = characterRepository.findAll();
         List<CharacterDefaultAttributesOutputDto> output = new ArrayList<>();
@@ -83,13 +79,24 @@ public class CharacterService extends GeneralService {
         }
         return output;
     }
+
     @Transactional
     public void save(Character character) {
-//        nameService.save(character.getName());
-
-//        careerService.save(character.getCurrentCareer());
-//        placeService.save(character.getLivePlace());
-//        if (character.getSurname() != null) surnameService.save(character.getSurname());
+        List<Skill> skills = character.getSkills();
+        skills.sort(new Comparator<Skill>() {
+            @Override
+            public int compare(Skill skill, Skill t1) {
+                return skill.getName().compareTo(t1.getName());
+            }
+        });
+        character.setSkills(skills);
+        List<Talent> talents = character.getTalents();
+        talents.sort(new Comparator<Talent>() {
+            @Override
+            public int compare(Talent talent, Talent t1) {
+                return talent.getName().compareTo(t1.getName());
+            }
+        });
         characterRepository.save(character);
     }
 
@@ -104,7 +111,7 @@ public class CharacterService extends GeneralService {
         names.add(new Name("Felix", true, false, false, true, false, false, false, 0.1, 0.2));
         names.add(new Name("Magnus", true, false, false, true, false, false, false, 0.1, 0.2));
 
-        Statistics stats = new Statistics(0,0,0,0,0,0,0,0,0,0,0,0);
+        Statistics stats = new Statistics(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 
         statisticsService.save(stats);
 
@@ -292,9 +299,9 @@ public class CharacterService extends GeneralService {
         List<Apperance> apperances = new ArrayList<>();
         Apperance ap1 = new Apperance("blizna pod okiem", "test", 0.1);
         apperanceService.save(ap1);
-        Apperance ap2 = new Apperance("brak ręki","test", 0.3);
+        Apperance ap2 = new Apperance("brak ręki", "test", 0.3);
         apperanceService.save(ap2);
-        Apperance ap3 = new Apperance("znamię na nodze","test", 0.2);
+        Apperance ap3 = new Apperance("znamię na nodze", "test", 0.2);
         apperanceService.save(ap3);
         Apperance ap4 = new Apperance("blizna na plecach", "test", 0.5);
         apperanceService.save(ap4);
@@ -312,11 +319,11 @@ public class CharacterService extends GeneralService {
         personalityService.save(per1);
         Personality per2 = new Personality("wesoły", "test", 0.2);
         personalityService.save(per2);
-        Personality per3 = new Personality("optymista", "test",0.5);
+        Personality per3 = new Personality("optymista", "test", 0.5);
         personalityService.save(per3);
-        Personality per4 = new Personality("pesymista","test", 0.6);
+        Personality per4 = new Personality("pesymista", "test", 0.6);
         personalityService.save(per4);
-        Personality per5 = new Personality("lekkoduch", "test",0.8);
+        Personality per5 = new Personality("lekkoduch", "test", 0.8);
         personalityService.save(per5);
 
         personalities.add(per1);
@@ -486,7 +493,7 @@ public class CharacterService extends GeneralService {
             String starSign = requestInfo.getFilters().get("starSign");
             List<String> starSignListString = new ArrayList(Arrays.asList(starSign.split(",")));
             List<StarSign> starSigns = starSignListString.stream().map(StarSign::findByName).collect(Collectors.toList());
-            if(starSigns.size() > 0) specifications.and(CharacterSpecifications.getByStarSigns(starSign));
+            if (starSigns.size() > 0) specifications.and(CharacterSpecifications.getByStarSigns(starSign));
             else return specifications.and(CharacterSpecifications.GetNoone());
         }
 
@@ -508,9 +515,10 @@ public class CharacterService extends GeneralService {
             String religionsData = requestInfo.getFilters().get("religion");
             List<String> religionsListString = new ArrayList<>(Arrays.asList(religionsData.split(",")));
             List<Religion> religions = religionsListString.stream().map(Religion::findByGodName).collect(Collectors.toList());
-            if (religions.size() > 0) specifications = specifications.and(CharacterSpecifications.getByReligions(religions));
+            if (religions.size() > 0)
+                specifications = specifications.and(CharacterSpecifications.getByReligions(religions));
             else return specifications.and(CharacterSpecifications.GetNoone());
-}
+        }
 
         if (requestInfo.getFilters().containsKey("prediction")) {
             Optional<Prediction> prediction = predictionService.findByText(requestInfo.getFilters().get("prediction"));
@@ -558,10 +566,9 @@ public class CharacterService extends GeneralService {
             String livePlacesData = requestInfo.getFilters().get("livePlace");
             List<String> livePlacesListString = new ArrayList<>(Arrays.asList(livePlacesData.split(",")));
             List<Place> places = placeService.findByNameIn(livePlacesListString);
-            if(places.size() > 0){
+            if (places.size() > 0) {
                 specifications = specifications.and(CharacterSpecifications.getByLivePlaces(places));
-            }
-            else return specifications.and(CharacterSpecifications.GetNoone());
+            } else return specifications.and(CharacterSpecifications.GetNoone());
         }
 
 

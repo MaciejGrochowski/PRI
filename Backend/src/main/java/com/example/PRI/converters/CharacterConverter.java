@@ -133,7 +133,7 @@ public class CharacterConverter {
             output.setBaseBallisticSkills(character.getBaseStats().getBallisticSkill());
             output.setBaseStrength(character.getBaseStats().getStrength());
             output.setBaseToughness(character.getBaseStats().getToughness());
-            output.setBaseAgility(character.getBaseStats().getToughness());
+            output.setBaseAgility(character.getBaseStats().getAgility());
             output.setBaseIntelligence(character.getBaseStats().getIntelligence());
             output.setBaseWillPower(character.getBaseStats().getWillPower());
             output.setBaseFellowship(character.getBaseStats().getFellowship());

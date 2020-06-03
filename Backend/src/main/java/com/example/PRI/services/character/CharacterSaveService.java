@@ -554,7 +554,6 @@ public class CharacterSaveService {
             else throw new CharacterSaveException("Za duża liczba dla bazowej magii.", new IllegalArgumentException());
         } else throw new CharacterSaveException("Niepoprawny format dla bazowej magii.", new IllegalArgumentException());
 
-        statisticsService.save(newStatistics);
         return newStatistics;
     }
 }

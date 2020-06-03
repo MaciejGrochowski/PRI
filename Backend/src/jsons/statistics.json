@@ -276,7 +276,7 @@
     "toughness": 5,
     "agility": 10,
     "intelligence": 5,
-    "willPower": 10,
+    "willPower": 0,
     "fellowship": 0,
     "attacks": 0,
     "wounds": 3,

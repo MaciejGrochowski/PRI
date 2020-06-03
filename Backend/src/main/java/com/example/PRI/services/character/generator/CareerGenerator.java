@@ -116,6 +116,7 @@ public class CareerGenerator extends GeneralService {
             else if (randomRoll < 0.75) output = getNextNotBaseCareer(currentCareer);
             else if (randomRoll < 0.95) output = getNextBaseCareer(currentCareer, properties);
             else output = getFirstCareer(properties);
+            if(output!=null && properties.getOrDefault(output.getName(),"").equals("0")) output=null; //Jeśli profesja zakazana, spróbuj jeszcze raz
             if(allCareers.contains(output)) output=null; //Jeśli profesja już wystąpiła, spróbuj jeszcze raz
     }
         return output;

@@ -102,7 +102,7 @@ public class CharacterBuilder {
     }
 
     public CharacterBuilder buildBaseStats(StatisticsGenerator service, Statistics stats) {
-        Map<String, String> newProps = service.getProperties(stats);
+        Map<String, String> newProps = service.getProperties(stats, properties);
         character.setBaseStats(stats);
         putAllProperties(newProps);
         return this;
@@ -343,7 +343,7 @@ public class CharacterBuilder {
     public CharacterBuilder buildReligion(ReligionGenerator service, Religion religion) {
         Map<String, String> newProps = service.prepareProps(character, properties);
         putAllProperties(newProps);
-        newProps = service.getProperties(character, religion);
+        newProps = service.getProperties(religion);
         character.setReligion(religion);
         putAllProperties(newProps);
         return this;

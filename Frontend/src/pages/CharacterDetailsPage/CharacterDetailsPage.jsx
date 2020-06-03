@@ -69,7 +69,7 @@ class CharacterDetailsPage extends React.Component {
             }
             {this.state.isVisibleCombatStats &&
                 <div>
-                <CharacterCombatStats characterData = {this.state.characterData}></CharacterCombatStats>
+                <CharacterCombatStats characterData = {this.state.characterData}/>
                 </div>
             }
             {this.state.isVisibleHistory &&

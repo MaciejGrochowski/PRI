@@ -196,9 +196,44 @@ class CharacterGeneratorPage extends React.Component {
     }
 
     generateOneAttributeSuccessHandler = (attrName, response) => {
-        if(attrName==="Miejsce urodzenia") this.setState({birthPlace: response.data.birthPlace})
-        if(attrName==="Rasa") this.setState({race: response.data.race})
-        if(attrName==="Płeć") this.setState({sex: response.data.sex})
+        if (attrName === "Miejsce urodzenia") this.setState({birthPlace: response.data.birthPlace})
+        if (attrName === "Rasa") this.setState({race: response.data.race})
+        if (attrName === "Płeć") this.setState({sex: response.data.sex})
+        if (attrName === "Nazwisko") this.setState({surname: response.data.surname})
+        if (attrName === "Imię") this.setState({name: response.data.name})
+        if (attrName === "Bazowe statystyki") this.setState({
+            baseWeaponSkills: response.data.baseWeaponSkills, baseBallisticSkills: response.data.baseBallisticSkills,
+            baseStrength: response.data.baseStrength, baseToughness: response.data.baseToughness,
+            baseAgility: response.data.baseAgility, baseIntelligence: response.data.baseIntelligence,
+            baseWillPower: response.data.baseWillPower, baseFellowship: response.data.baseFellowship,
+            baseAttacks: response.data.baseAttacks, baseWounds: response.data.baseWounds,
+            baseMovement: response.data.baseMovement, baseMagic: response.data.baseMagic
+        })
+        if (attrName === "Wzrost") this.setState({height: response.data.height})
+        if (attrName === "Waga") this.setState({weight: response.data.weight})
+        if (attrName === "Kolor oczu") this.setState({eyeColor: response.data.eyeColor})
+        if (attrName === "Kolor włosów") this.setState({hairColor: response.data.hairColor})
+        if (attrName === "Data urodzenia") this.setState({
+            dayOfBirth: response.data.dayOfBirth,
+            yearOfBirth: response.data.yearOfBird,
+            monthOfBirth: response.data.monthOfBirth
+        })
+        if (attrName === "Dominujące emocje") this.setState({dominatingEmotions: response.data.dominatingEmotions})
+        if (attrName === "Przepowiednia") this.setState({prediction: response.data.prediction})
+        if (attrName === "Profesja") this.setState({previousCareers: response.data.previousCareers, currentCareer: response.data.currentCareer})
+        if (attrName === "Statystyki końcowe") this.setState({endWeaponSkills: response.data.endWeaponSkills, endBallisticSkills: response.data.endBallisticSkills,
+            endStrength: response.data.endStrength, endToughness: response.data.endToughness,
+            endAgility: response.data.endAgility, endIntelligence: response.data.endIntelligence,
+            endWillPower: response.data.endWillPower, endFellowship: response.data.endFellowship,
+            endAttacks: response.data.endAttacks, endWounds: response.data.endWounds,
+            endMovement: response.data.endMovement, endMagic: response.data.endMagic,
+        })
+        if (attrName === "Miejsce pobytu") this.setState({livePlace: response.data.livePlace})
+        if (attrName === "Cechy wyglądu") this.setState({apperances: response.data.apperance})
+        if (attrName === "Cechy charakteru") this.setState({personalities: response.data.personality})
+        if (attrName === "Zdolności") this.setState({talents: this.mapTalentsArrayToString(response.data.talents)})
+        if (attrName === "Umiejętności") this.setState({skills: this.mapSkillsArrayToString(response.data.skills)})
+        if (attrName === "Religia") this.setState({religion: response.data.religion})
     }
 
 
@@ -228,7 +263,7 @@ class CharacterGeneratorPage extends React.Component {
                                     })
                                 },
                             }}>
-                                <GeneratorTextField label="Imię" generated={this.state.name} canBeGenerated/>
+                                <GeneratorTextField label="Imię" generated={this.state.name} canBeGenerated onRandomClick={() => this.generateOneAttribute("Imię")}/>
                             </careerContext.Provider>
 
 
@@ -239,7 +274,7 @@ class CharacterGeneratorPage extends React.Component {
                                     })
                                 },
                             }}>
-                                <GeneratorTextField label="Nazwisko" generated={this.state.surname} canBeGenerated/>
+                                <GeneratorTextField label="Nazwisko" generated={this.state.surname} canBeGenerated onRandomClick={() => this.generateOneAttribute("Nazwisko")}/>
                             </careerContext.Provider>
 
                         </div>
@@ -257,6 +292,7 @@ class CharacterGeneratorPage extends React.Component {
                                     id="characterGeneratorCurrentCareer"
                                     canBeGenerated
                                     generated={this.state.currentCareer}
+                                    onRandomClick={() => this.generateOneAttribute("Profesja")}
                                 />
                             </careerContext.Provider>
                         </div>
@@ -273,6 +309,7 @@ class CharacterGeneratorPage extends React.Component {
                                 id="characterGeneratorLivePlace"
                                 canBeGenerated
                                 generated={this.state.livePlace}
+                                onRandomClick={() => this.generateOneAttribute("Miejsce pobytu")}
                             />
                             </careerContext.Provider>
                         </div>
@@ -340,8 +377,7 @@ class CharacterGeneratorPage extends React.Component {
                                         })
                                     },
                                 }}>
-                                    <GeneratorTextField label="Dzień urodzenia" generated={this.state.dayOfBirth}
-                                                        canBeGenerated/>
+                                    <GeneratorTextField label="Dzień urodzenia" generated={this.state.dayOfBirth}/>
                                 </careerContext.Provider>
 
                             </div>
@@ -372,7 +408,8 @@ class CharacterGeneratorPage extends React.Component {
                                     },
                                 }}>
                                     <GeneratorTextField label="Rok urodzenia" generated={this.state.yearOfBirth}
-                                                        canBeGenerated/>
+                                                        canBeGenerated
+                                                        onRandomClick={() => this.generateOneAttribute("Data urodzenia")}/>
                                 </careerContext.Provider>
 
                             </div>
@@ -387,7 +424,7 @@ class CharacterGeneratorPage extends React.Component {
                                         })
                                     },
                                 }}>
-                                    <GeneratorTextField label="Wzrost" generated={this.state.height} canBeGenerated/>
+                                    <GeneratorTextField label="Wzrost" generated={this.state.height} canBeGenerated onRandomClick={() => this.generateOneAttribute("Wzrost")}/>
                                 </careerContext.Provider>
 
                             </div>
@@ -399,7 +436,7 @@ class CharacterGeneratorPage extends React.Component {
                                         })
                                     },
                                 }}>
-                                    <GeneratorTextField label="Waga" generated={this.state.weight} canBeGenerated/>
+                                    <GeneratorTextField label="Waga" generated={this.state.weight} canBeGenerated onRandomClick={() => this.generateOneAttribute("Waga")}/>
                                 </careerContext.Provider>
                             </div>
                         </div>
@@ -417,6 +454,7 @@ class CharacterGeneratorPage extends React.Component {
                                 id="characterGeneratorEyeColor"
                                 canBeGenerated
                                 generated={this.state.eyeColor}
+                                onRandomClick={() => this.generateOneAttribute("Kolor oczu")}
                             /></careerContext.Provider>
                         </div>
 
@@ -433,6 +471,7 @@ class CharacterGeneratorPage extends React.Component {
                                 id="characterGeneratorHairColor"
                                 canBeGenerated
                                 generated={this.state.hairColor}
+                                onRandomClick={() => this.generateOneAttribute("Kolor włosów")}
                             /></careerContext.Provider>
                         </div>
 
@@ -450,6 +489,7 @@ class CharacterGeneratorPage extends React.Component {
                                 multiple
                                 canBeGenerated
                                 generated={this.state.personalities}
+                                onRandomClick={() => this.generateOneAttribute("Cechy charakteru")}
                             />
                             </careerContext.Provider>
                         </div>
@@ -468,6 +508,7 @@ class CharacterGeneratorPage extends React.Component {
                                 multiple
                                 canBeGenerated
                                 generated={this.state.apperances}
+                                onRandomClick={() => this.generateOneAttribute("Cechy wyglądu")}
                             />
                             </careerContext.Provider>
                         </div>
@@ -484,7 +525,6 @@ class CharacterGeneratorPage extends React.Component {
                                 options={this.state.autocompleteData.careerNames || []}
                                 id="characterGeneratorPreviousCareers"
                                 multiple
-                                canBeGenerated
                                 generated={this.state.previousCareers}
                             />
                             </careerContext.Provider>
@@ -504,6 +544,7 @@ class CharacterGeneratorPage extends React.Component {
                                 multiple
                                 canBeGenerated
                                 generated={this.state.dominatingEmotions}
+                                onRandomClick={() => this.generateOneAttribute("Dominujące emocje")}
                             />
                             </careerContext.Provider>
                         </div>
@@ -521,6 +562,7 @@ class CharacterGeneratorPage extends React.Component {
                                 id="characterGeneratorReligion"
                                 canBeGenerated
                                 generated={this.state.religion}
+                                onRandomClick={() => this.generateOneAttribute("Religia")}
                             />
                             </careerContext.Provider>
                         </div>
@@ -539,6 +581,7 @@ class CharacterGeneratorPage extends React.Component {
                                 multiple
                                 canBeGenerated
                                 generated={this.state.skills}
+                                onRandomClick={() => this.generateOneAttribute("Umiejętności")}
                             /></careerContext.Provider>
                         </div>
 
@@ -556,6 +599,7 @@ class CharacterGeneratorPage extends React.Component {
                                 multiple
                                 canBeGenerated
                                 generated={this.state.talents}
+                                onRandomClick={() => this.generateOneAttribute("Zdolności")}
                             /></careerContext.Provider>
                         </div>
 
@@ -569,7 +613,8 @@ class CharacterGeneratorPage extends React.Component {
                                 },
                             }}>
                                 <GeneratorTextField label="Przepowiednia" canBeGenerated
-                                                    generated={this.state.prediction}/>
+                                                    generated={this.state.prediction}
+                                                    onRandomClick={() => this.generateOneAttribute("Przepowiednia")}/>
                             </careerContext.Provider>
                         </div>
                     </div>
@@ -577,9 +622,9 @@ class CharacterGeneratorPage extends React.Component {
 
                         <div className="white-caption">Umiejętności bojowe</div>
                         <div className="block-component">
-                            <button className="detaleButton" disabled>Wylosuj statystyki Bazowe <span>{element}</span>
+                            <button className="detaleButton" onClick={() => this.generateOneAttribute("Bazowe statystyki")}>Wylosuj statystyki Bazowe <span>{element}</span>
                             </button>
-                            <button className="detaleButton">Wylosuj statystyki Obecnie <span>{element}</span></button>
+                            <button className="detaleButton" onClick={() => this.generateOneAttribute("Statystyki końcowe")}>Wylosuj statystyki Obecnie <span>{element}</span></button>
                         </div>
                         <div className="block-grid">
                             <div className="grid">

@@ -38,49 +38,49 @@ class CharacterDetailsCombatStatsView extends React.Component {
                         <div className="grid-column">
                             <div className = "grid-name-element title-column">WW</div>
                             <div className = "grid-element" style= {mygrid}><div style ={test}>{data.baseWeaponSkills}</div></div>
-                            <div className = "grid-element" style= {mygrid}><div style ={test}>{data.carrerWeaponSkills}</div></div>
+                            <div className = "grid-element" style= {mygrid}><div style ={test}>{data.careerWeaponSkills}</div></div>
                             <div className = "grid-element" style= {mygrid}><div style ={test}>{data.endWeaponSkills}</div></div>
                         </div>
                         <div className="grid-column">
                             <div className = "grid-name-element title-column">US</div>
                             <div className = "grid-element" style= {mygrid}><div style ={test}>{data.baseBallisticSkills}</div></div>
-                            <div className = "grid-element" style= {mygrid}><div style ={test}>{data.carrerBallisticSkills}</div></div>
+                            <div className = "grid-element" style= {mygrid}><div style ={test}>{data.careerBallisticSkills}</div></div>
                             <div className = "grid-element" style= {mygrid}><div style ={test}>{data.endBallisticSkills}</div></div>
                         </div>
                         <div className="grid-column">
                             <div className = "grid-name-element title-column">K</div>
                             <div className = "grid-element" style= {mygrid}><div style ={test}>{data.baseStrength}</div></div>
-                            <div className = "grid-element" style= {mygrid}><div style ={test}>{data.carrerStrength}</div></div>
+                            <div className = "grid-element" style= {mygrid}><div style ={test}>{data.careerStrength}</div></div>
                             <div className = "grid-element" style= {mygrid}><div style ={test}>{data.endStrength}</div></div>
                         </div>
                         <div className="grid-column">
                             <div className = "grid-name-element title-column">ODP</div>
                             <div className = "grid-element"style= {mygrid}><div style ={test}>{data.baseToughness}</div></div>
-                            <div className = "grid-element" style= {mygrid}><div style ={test}>{data.carrerToughness}</div></div>
+                            <div className = "grid-element" style= {mygrid}><div style ={test}>{data.careerToughness}</div></div>
                             <div className = "grid-element" style= {mygrid}><div style ={test}>{data.endToughness}</div></div>
                         </div>
                         <div className="grid-column">
                             <div className = "grid-name-element title-column">ZR</div>
                             <div className = "grid-element"style= {mygrid}><div style ={test}>{data.baseAgility}</div></div>
-                            <div className = "grid-element" style= {mygrid}><div style ={test}>{data.carrerAgility}</div></div>
+                            <div className = "grid-element" style= {mygrid}><div style ={test}>{data.careerAgility}</div></div>
                             <div className = "grid-element" style= {mygrid}><div style ={test}>{data.endAgility}</div></div>
                         </div>
                         <div className="grid-column">
                             <div className = "grid-name-element title-column">INT</div>
                             <div className = "grid-element"style= {mygrid}><div style ={test}>{data.baseIntelligence}</div></div>
-                            <div className = "grid-element" style= {mygrid}><div style ={test}>{data.carrerIntelligence}</div></div>
+                            <div className = "grid-element" style= {mygrid}><div style ={test}>{data.careerIntelligence}</div></div>
                             <div className = "grid-element" style= {mygrid}><div style ={test}>{data.endIntelligence}</div></div>
                         </div>
                         <div className="grid-column">
                             <div className = "grid-name-element title-column">SW</div>
                             <div className = "grid-element"style= {mygrid}><div style ={test}>{data.baseWillPower}</div></div>
-                            <div className = "grid-element" style= {mygrid}><div style ={test}>{data.carrerWillPower}</div></div>
+                            <div className = "grid-element" style= {mygrid}><div style ={test}>{data.careerWillPower}</div></div>
                             <div className = "grid-element" style= {mygrid}><div style ={test}>{data.endWillPower}</div></div>
                         </div>
                         <div className="grid-column">
                             <div className = "grid-name-element title-column">ODG</div>
                             <div className = "grid-element"style= {mygrid}><div style ={test}>{data.baseFellowship}</div></div>
-                            <div className = "grid-element" style= {mygrid}><div style ={test}>{data.carrerFellowship}</div></div>
+                            <div className = "grid-element" style= {mygrid}><div style ={test}>{data.careerFellowship}</div></div>
                             <div className = "grid-element" style= {mygrid}><div style ={test}>{data.endFellowship}</div></div>
                         </div>
                     </div>
@@ -94,13 +94,13 @@ class CharacterDetailsCombatStatsView extends React.Component {
                         <div className="grid-column">
                             <div className = "grid-name-element title-column">A</div>
                             <div className = "grid-element"style= {mygrid}><div style ={test}>{data.baseAttacks}</div></div>
-                            <div className = "grid-element" style= {mygrid}><div style ={test}>{data.carrerAttacks}</div></div>
+                            <div className = "grid-element" style= {mygrid}><div style ={test}>{data.careerAttacks}</div></div>
                             <div className = "grid-element" style= {mygrid}><div style ={test}>{data.endAttacks}</div></div>
                         </div>
                         <div className="grid-column">
                             <div className = "grid-name-element title-column">ŻYW</div>
                             <div className = "grid-element"style= {mygrid}><div style ={test}>{data.baseWounds}</div></div>
-                            <div className = "grid-element" style= {mygrid}><div style ={test}>{data.carrerWounds}</div></div>
+                            <div className = "grid-element" style= {mygrid}><div style ={test}>{data.careerWounds}</div></div>
                             <div className = "grid-element" style= {mygrid}><div style ={test}>{data.endWounds}</div></div>
                         </div>
                         <div className="grid-column">
@@ -118,17 +118,17 @@ class CharacterDetailsCombatStatsView extends React.Component {
                         <div className="grid-column">
                             <div className = "grid-name-element title-column">SZ</div>
                             <div className = "grid-element"style= {mygrid}><div style ={test}>{data.baseMovement}</div></div>
-                            <div className = "grid-element" style= {mygrid}><div style ={test}>{data.carrerMovement}</div></div>
+                            <div className = "grid-element" style= {mygrid}><div style ={test}>{data.careerMovement}</div></div>
                             <div className = "grid-element" style= {mygrid}><div style ={test}>{data.endMovement}</div></div>
                         </div>
                         <div className="grid-column">
                             <div className = "grid-name-element title-column">M</div>
                             <div className = "grid-element"style= {mygrid}><div style ={test}>{data.baseMagic}</div></div>
-                            <div className = "grid-element" style= {mygrid}><div style ={test}>{data.carrerMagic}</div></div>
+                            <div className = "grid-element" style= {mygrid}><div style ={test}>{data.careerMagic}</div></div>
                             <div className = "grid-element" style= {mygrid}><div style ={test}>{data.endMagic}</div>
                         </div>
                         </div>
-                        <div className = "fake-element"></div>
+                        <div className = "fake-element"/>
                         </div>
                         </div>
                 </div>

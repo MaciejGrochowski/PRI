@@ -12,7 +12,6 @@ class CharacterCombatStats extends React.Component{
     render()
     {
         const {characterData} = this.props
-        console.log("bekon")
         return (
             <div className = "container-stats">
                 <div className = "column">

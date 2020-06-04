@@ -6,20 +6,26 @@
 
 .grid{
     display: flex;
-    align-items: stretch;
+    /* align-items: stretch;
     flex-basis: 100%;
-    min-width: fit-content;
+    min-width: fit-content; */
 }
 .grid-column{
     text-align: center!important;
     min-width: fit-content;
     display: grid;
-    margin: 2%;
+    margin: 0 0.5% 0 1%;
+}
+
+.center{
+    margin: auto;
+    width: 50%;
 }
 
 .grid-element{
     display: block;
     min-width: fit-content;
+    padding-bottom: 15%;
 }
 .grid-name-element{
     display: block;

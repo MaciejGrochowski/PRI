@@ -16,6 +16,7 @@
 .container-stats .MuiAutocomplete-root{
   width:  -webkit-fill-available!important;
   width: -moz-available!important;
+  max-width: 100%;
 
 }
 

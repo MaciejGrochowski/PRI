@@ -6,9 +6,9 @@
 
 .grid{
     display: flex;
-    /* align-items: stretch;
+    align-items: stretch;
     flex-basis: 100%;
-    min-width: fit-content; */
+    min-width: fit-content;
 }
 .grid-column{
     text-align: center!important;
@@ -19,7 +19,8 @@
 
 .center{
     margin: auto;
-    width: 50%;
+    width: 40%;
+
 }
 
 .grid-element{

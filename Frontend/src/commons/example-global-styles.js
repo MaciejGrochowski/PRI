@@ -29,8 +29,7 @@ export const Cat = styled.div`
 `;
 
 export const Dog = styled.button`
-    width: 300px;
-    color: red;
+
 `
 
 

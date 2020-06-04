@@ -15,10 +15,13 @@
 
 .container-stats .MuiAutocomplete-root{
   width:  -webkit-fill-available!important;
+  width: -moz-available!important;
+
 }
 
 .container-stats .column-1 .MuiTextField-root{
   width:  -webkit-fill-available!important;
+  width: -moz-available!important;
 }
 
 .MuiFormControl-root{

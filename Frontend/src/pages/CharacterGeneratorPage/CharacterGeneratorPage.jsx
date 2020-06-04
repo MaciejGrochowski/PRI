@@ -10,7 +10,6 @@ import characterService from "../../services/characterService";
 import {months} from "../../enums/Months";
 import generatorService from "../../services/generatorService";
 
-
 import ReactDOM from 'react-dom';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faSyncAlt} from '@fortawesome/free-solid-svg-icons';
@@ -239,21 +238,16 @@ class CharacterGeneratorPage extends React.Component {
         return (
             <div className="pageWithContext">
                 <div className="pageName">Tworzenie postaci</div>
-                <div className="block-element">{this.state.generated &&
-                <div className="positive-message">Aby zobaczyć wygenerowaną postać, kliknij <a
-                    href={this.state.href}>tutaj</a></div>}</div>
-                <div className="block-element">{this.state.isError &&
-                <ErrorGenerator errorText={this.state.errorText}/>}</div>
                 <div className="block-element">
-                    <div className="flex-div">
+                    <div className="flex-component">
                         <div className="white-caption">Statystyki:</div>
-                        <button className="detaleButton" onClick={() => this.fullRandomGenerate()}>Generuj losowe
+                        <button className="detaleButton" onClick={() => this.fullRandomGenerate()}>Generuj losowe statystyki 
+                        <span>{element}</span>
                         </button>
                     </div>
                 </div>
-                <div className="flex-div">
-                    <div className="block-element">
-                        <div className="flex-div">
+                <div className = "container-stats">
+                        <div className = "column-1">
                             <careerContext.Provider value={{
                                 update: (val) => {
                                     this.setState({
@@ -275,61 +269,6 @@ class CharacterGeneratorPage extends React.Component {
                                 <GeneratorTextField label="Nazwisko" generated={this.state.surname} canBeGenerated onRandomClick={() => this.generateOneAttribute("Nazwisko")}/>
                             </careerContext.Provider>
 
-                        </div>
-                        <div className="generator-element">
-                            <careerContext.Provider value={{
-                                update: (val) => {
-                                    this.setState({
-                                        currentCareer: val
-                                    })
-                                },
-                            }}>
-                                <DefaultMultipleAutocomplete
-                                    labelName="Profesja"
-                                    options={this.state.autocompleteData.careerNames || []}
-                                    id="characterGeneratorCurrentCareer"
-                                    canBeGenerated
-                                    generated={this.state.currentCareer}
-                                    onRandomClick={() => this.generateOneAttribute("Profesja")}
-                                />
-                            </careerContext.Provider>
-                        </div>
-                        <div className="generator-element">
-                            <careerContext.Provider value={{
-                                update: (val) => {
-                                    this.setState({
-                                        livePlace: val
-                                    })
-                                },
-                            }}><DefaultMultipleAutocomplete
-                                labelName="Miejsce pobytu"
-                                options={this.state.autocompleteData.placeNames || []}
-                                id="characterGeneratorLivePlace"
-                                canBeGenerated
-                                generated={this.state.livePlace}
-                                onRandomClick={() => this.generateOneAttribute("Miejsce pobytu")}
-                            />
-                            </careerContext.Provider>
-                        </div>
-                        <div className="generator-element">
-                            <careerContext.Provider value={{
-                                update: (val) => {
-                                    this.setState({
-                                        birthPlace: val
-                                    })
-                                },
-                            }}><DefaultMultipleAutocomplete
-                                labelName="Miejsce urodzenia"
-                                options={this.state.autocompleteData.placeNames || []}
-                                id="characterGeneratorBirthPlace"
-                                generated={this.state.birthPlace}
-                                canBeGenerated
-                                onRandomClick={() => this.generateOneAttribute("Miejsce urodzenia")}
-                            />
-                            </careerContext.Provider>
-                        </div>
-
-                        <div className="generator-element">
                             <careerContext.Provider value={{
                                 update: (val) => {
                                     this.setState({
@@ -346,9 +285,7 @@ class CharacterGeneratorPage extends React.Component {
                                 onRandomClick={() => this.generateOneAttribute("Rasa")}
                             />
                             </careerContext.Provider>
-                        </div>
 
-                        <div className="generator-element">
                             <careerContext.Provider value={{
                                 update: (val) => {
                                     this.setState({
@@ -364,10 +301,57 @@ class CharacterGeneratorPage extends React.Component {
                                 generated={this.state.sex}
                                 onRandomClick={() => this.generateOneAttribute("Płeć")}
                             /></careerContext.Provider>
-                        </div>
 
-                        <div className="flex-div">
-                            <div className="generator-element">
+
+
+                            <careerContext.Provider value={{
+                                update: (val) => {
+                                    this.setState({
+                                        currentCareer: val
+                                    })
+                                },
+                            }}>
+                                <DefaultMultipleAutocomplete
+                                    labelName="Profesja"
+                                    options={this.state.autocompleteData.careerNames || []}
+                                    id="characterGeneratorCurrentCareer"
+                                    canBeGenerated
+                                    generated={this.state.currentCareer}
+                                    onRandomClick={() => this.generateOneAttribute("Profesja")}
+                                />
+                            </careerContext.Provider>
+
+                            <careerContext.Provider value={{
+                                update: (val) => {
+                                    this.setState({
+                                        livePlace: val
+                                    })
+                                },
+                            }}><DefaultMultipleAutocomplete
+                                labelName="Miejsce pobytu"
+                                options={this.state.autocompleteData.placeNames || []}
+                                id="characterGeneratorLivePlace"
+                                canBeGenerated
+                                generated={this.state.livePlace}
+                                onRandomClick={() => this.generateOneAttribute("Miejsce pobytu")}
+                            />
+                            </careerContext.Provider>
+                            <careerContext.Provider value={{
+                                update: (val) => {
+                                    this.setState({
+                                        birthPlace: val
+                                    })
+                                },
+                            }}><DefaultMultipleAutocomplete
+                                labelName="Miejsce urodzenia"
+                                options={this.state.autocompleteData.placeNames || []}
+                                id="characterGeneratorBirthPlace"
+                                generated={this.state.birthPlace}
+                                canBeGenerated
+                                onRandomClick={() => this.generateOneAttribute("Miejsce urodzenia")}
+                            />
+                            </careerContext.Provider>
+
                                 <careerContext.Provider value={{
                                     update: (val) => {
                                         this.setState({
@@ -378,10 +362,7 @@ class CharacterGeneratorPage extends React.Component {
                                     <GeneratorTextField label="Dzień urodzenia" generated={this.state.dayOfBirth}/>
                                 </careerContext.Provider>
 
-                            </div>
 
-
-                            <div className="generator-element">
                                 <careerContext.Provider value={{
                                     update: (val) => {
                                         this.setState({
@@ -389,15 +370,14 @@ class CharacterGeneratorPage extends React.Component {
                                         })
                                     },
                                 }}><DefaultMultipleAutocomplete
-                                    labelName="Miesiąc"
+                                    labelName="Miesiąc urodzenia"
                                     options={months}
                                     id="characterGeneratorMonthOfBirth"
                                     width={150}
                                     generated={this.state.monthOfBirth}
                                 />
                                 </careerContext.Provider>
-                            </div>
-                            <div className="generator-element">
+
                                 <careerContext.Provider value={{
                                     update: (val) => {
                                         this.setState({
@@ -410,11 +390,27 @@ class CharacterGeneratorPage extends React.Component {
                                                         onRandomClick={() => this.generateOneAttribute("Data urodzenia")}/>
                                 </careerContext.Provider>
 
-                            </div>
+                            <careerContext.Provider value={{
+                                update: (val) => {
+                                    this.setState({
+                                        religion: val
+                                    })
+                                },
+                            }}><DefaultMultipleAutocomplete
+                                labelName="Religia"
+                                options={religions || []}
+                                id="characterGeneratorReligion"
+                                canBeGenerated
+                                generated={this.state.religion}
+                                onRandomClick={() => this.generateOneAttribute("Religia")}
+                            />
+                            </careerContext.Provider>
 
-                        </div>
-                        <div className="flex-div">
-                            <div className="generator-element">
+                </div>
+
+
+                <div className = "column-1">
+
                                 <careerContext.Provider value={{
                                     update: (val) => {
                                         this.setState({
@@ -425,8 +421,6 @@ class CharacterGeneratorPage extends React.Component {
                                     <GeneratorTextField label="Wzrost" generated={this.state.height} canBeGenerated onRandomClick={() => this.generateOneAttribute("Wzrost")}/>
                                 </careerContext.Provider>
 
-                            </div>
-                            <div className="generator-element">
                                 <careerContext.Provider value={{
                                     update: (val) => {
                                         this.setState({
@@ -436,11 +430,7 @@ class CharacterGeneratorPage extends React.Component {
                                 }}>
                                     <GeneratorTextField label="Waga" generated={this.state.weight} canBeGenerated onRandomClick={() => this.generateOneAttribute("Waga")}/>
                                 </careerContext.Provider>
-                            </div>
-                        </div>
-
-                        <div className="generator-element">
-                            <careerContext.Provider value={{
+                                <careerContext.Provider value={{
                                 update: (val) => {
                                     this.setState({
                                         eyeColor: val
@@ -454,9 +444,7 @@ class CharacterGeneratorPage extends React.Component {
                                 generated={this.state.eyeColor}
                                 onRandomClick={() => this.generateOneAttribute("Kolor oczu")}
                             /></careerContext.Provider>
-                        </div>
 
-                        <div className="generator-element">
                             <careerContext.Provider value={{
                                 update: (val) => {
                                     this.setState({
@@ -471,9 +459,10 @@ class CharacterGeneratorPage extends React.Component {
                                 generated={this.state.hairColor}
                                 onRandomClick={() => this.generateOneAttribute("Kolor włosów")}
                             /></careerContext.Provider>
-                        </div>
 
-                        <div className="generator-element">
+
+
+
                             <careerContext.Provider value={{
                                 update: (val) => {
                                     this.setState({
@@ -490,9 +479,7 @@ class CharacterGeneratorPage extends React.Component {
                                 onRandomClick={() => this.generateOneAttribute("Cechy charakteru")}
                             />
                             </careerContext.Provider>
-                        </div>
 
-                        <div className="generator-element">
                             <careerContext.Provider value={{
                                 update: (val) => {
                                     this.setState({
@@ -509,9 +496,7 @@ class CharacterGeneratorPage extends React.Component {
                                 onRandomClick={() => this.generateOneAttribute("Cechy wyglądu")}
                             />
                             </careerContext.Provider>
-                        </div>
 
-                        <div className="generator-element">
                             <careerContext.Provider value={{
                                 update: (val) => {
                                     this.setState({
@@ -526,9 +511,8 @@ class CharacterGeneratorPage extends React.Component {
                                 generated={this.state.previousCareers}
                             />
                             </careerContext.Provider>
-                        </div>
 
-                        <div className="generator-element">
+
                             <careerContext.Provider value={{
                                 update: (val) => {
                                     this.setState({
@@ -545,27 +529,12 @@ class CharacterGeneratorPage extends React.Component {
                                 onRandomClick={() => this.generateOneAttribute("Dominujące emocje")}
                             />
                             </careerContext.Provider>
-                        </div>
 
-                        <div className="generator-element">
-                            <careerContext.Provider value={{
-                                update: (val) => {
-                                    this.setState({
-                                        religion: val
-                                    })
-                                },
-                            }}><DefaultMultipleAutocomplete
-                                labelName="Religia"
-                                options={religions || []}
-                                id="characterGeneratorReligion"
-                                canBeGenerated
-                                generated={this.state.religion}
-                                onRandomClick={() => this.generateOneAttribute("Religia")}
-                            />
-                            </careerContext.Provider>
-                        </div>
 
-                        <div className="generator-element">
+
+
+
+
                             <careerContext.Provider value={{
                                 update: (val) => {
                                     this.setState({
@@ -581,9 +550,7 @@ class CharacterGeneratorPage extends React.Component {
                                 generated={this.state.skills}
                                 onRandomClick={() => this.generateOneAttribute("Umiejętności")}
                             /></careerContext.Provider>
-                        </div>
 
-                        <               div className="generator-element">
                             <careerContext.Provider value={{
                                 update: (val) => {
                                     this.setState({
@@ -599,9 +566,7 @@ class CharacterGeneratorPage extends React.Component {
                                 generated={this.state.talents}
                                 onRandomClick={() => this.generateOneAttribute("Zdolności")}
                             /></careerContext.Provider>
-                        </div>
 
-                        <div className="generator-element">
 
                             <careerContext.Provider value={{
                                 update: (val) => {
@@ -614,16 +579,19 @@ class CharacterGeneratorPage extends React.Component {
                                                     generated={this.state.prediction}
                                                     onRandomClick={() => this.generateOneAttribute("Przepowiednia")}/>
                             </careerContext.Provider>
-                        </div>
-                    </div>
-                    <div className="block-element">
 
-                        <div className="white-caption">Umiejętności bojowe</div>
+                    </div>
+                    
+                    <div className="block-element">
+                        <dlv className = "flex-component">
+                        <div className="white-caption">Umiejętności bojowe:</div>
                         <div className="block-component">
                             <button className="detaleButton" onClick={() => this.generateOneAttribute("Bazowe statystyki")}>Wylosuj statystyki Bazowe <span>{element}</span>
                             </button>
                             <button className="detaleButton" onClick={() => this.generateOneAttribute("Statystyki końcowe")}>Wylosuj statystyki Obecnie <span>{element}</span></button>
                         </div>
+                        </dlv>
+                        <div className= "center">
                         <div className="block-grid">
                             <div className="grid">
                                 <div className="grid-column">
@@ -942,13 +910,18 @@ class CharacterGeneratorPage extends React.Component {
                                 </div>
                             </div>
                         </div>
-                        <div className="flex-center-element">
+                        </div>
+                        <div className="block-element">{this.state.generated &&
+                        <div className="positive-message">Aby zobaczyć wygenerowaną postać, kliknij <a
+                            href={this.state.href}>tutaj</a></div>}</div>
+                        <div className="block-element">{this.state.isError &&
+                        <ErrorGenerator errorText={this.state.errorText}/>}</div>
                             <button className="green-button" onClick={this.save}>Zapisz</button>
                             {/* <button className="red-button">Anuluj</button> */}
                         </div>
                     </div>
                 </div>
-            </div>
+
         )
     }
 

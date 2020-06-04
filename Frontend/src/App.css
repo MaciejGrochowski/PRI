@@ -13,6 +13,14 @@
   }
 }
 
+.container-stats .MuiAutocomplete-root{
+  width:  -webkit-fill-available!important;
+}
+
+.container-stats .column-1 .MuiTextField-root{
+  width:  -webkit-fill-available!important;
+}
+
 .MuiFormControl-root{
   margin-top: 2%!important;
 }

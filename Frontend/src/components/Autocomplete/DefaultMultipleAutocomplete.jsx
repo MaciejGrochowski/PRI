@@ -64,7 +64,7 @@ class DefaultMultipleAutocomplete extends React.Component {
         return(
             <careerContext.Consumer>
                 {v =>
-                    <>
+                    <div className = "flex-div">
                     <Autocomplete
                         multiple={this.props.multiple}
                         options={options}
@@ -82,7 +82,7 @@ class DefaultMultipleAutocomplete extends React.Component {
                         onChange={(event, value, reason) => this.onInputChange(event, value, v)}
                     />
                     {this.props.canBeGenerated && <button className="detaleButton" onClick={() => this.randomClick()}><span>{element}</span></button>}
-                    </>
+                    </div>
                 }</careerContext.Consumer>
         )
     }

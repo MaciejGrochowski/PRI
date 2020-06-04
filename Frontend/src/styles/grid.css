@@ -2,6 +2,7 @@
     display: block;
     margin-top: 2%;
     min-width: fit-content;
+    max-width: 100%;
 }
 
 .grid{

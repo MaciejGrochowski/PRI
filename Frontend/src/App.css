@@ -24,6 +24,10 @@
   width: -moz-available!important;
 }
 
+.MuiInputBase-input{
+overflow-wrap: break-word!important;
+}
+
 .MuiFormControl-root{
   margin-top: 2%!important;
 }

@@ -58,6 +58,8 @@ body{
 }
 
 .flex-div{
+/* TODO kasia - maksymalna szerokość nie w px */
+    max-width: 450px;
     display: flex;
 }
 

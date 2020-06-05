@@ -86,7 +86,7 @@ public class CharacterSaveService {
             return new Surname();
         }
         if (surname.isPresent()) return surname.get();
-        if (surNew.matches(".*\\d.*") || surNew.matches("")) throw new CharacterSaveException("W nazwisku znajduje się liczba.", new IllegalArgumentException());
+        if (surNew.matches(".*\\d.*")) throw new CharacterSaveException("W nazwisku znajduje się liczba.", new IllegalArgumentException());
         if (surNew.startsWith("von ") || surNew.startsWith("Von ")){
             prefix = "von ";
             surNew = surNew.substring(5);
@@ -114,7 +114,7 @@ public class CharacterSaveService {
             throw new CharacterSaveException("Podaj imię postaci swojej postaci.", new IllegalArgumentException());
         Optional<Name> nameOptional = nameService.findByName(inputName);
         if (nameOptional.isPresent()) return nameOptional.get();
-        if (inputName.matches(".*\\d.*")) throw new CharacterSaveException("W imieniu znajduje się liczba.", new IllegalArgumentException());
+        if (checkSpecialCharacter(inputName) || inputName.matches(".*\\d.*")) throw new CharacterSaveException("Imię może zawierać tylko litery.", new IllegalArgumentException());
         if (inputName.matches("[a-z].*")) {
             String firstLetter = inputName.substring(0, 1).toUpperCase();
             String newNameWithBigFirstLetter = firstLetter + inputName.substring(1);
@@ -466,6 +466,20 @@ public class CharacterSaveService {
             if (newEndMagic < 100) return newEndMagic;
             else throw new CharacterSaveException("Za duża liczba dla obecnej magii.\nMaksymalna liczba: 99", new IllegalArgumentException());
         } else throw new CharacterSaveException("Niepoprawny format dla obecnej magii.", new IllegalArgumentException());
+    }
+
+
+    public boolean checkSpecialCharacter (String inputName){
+        return inputName.contains("!") || inputName.contains("@") || inputName.contains("#") || inputName.contains("$") ||
+                inputName.contains("%") || inputName.contains("^") || inputName.contains("&") || inputName.contains("*") ||
+                inputName.contains("(") || inputName.contains(")") || inputName.contains("_") || inputName.contains("-") ||
+                inputName.contains("{") || inputName.contains("}") || inputName.contains("[") || inputName.contains("]") ||
+                inputName.contains(",") || inputName.contains(".") || inputName.contains("/") || inputName.contains("<") ||
+                inputName.contains(">") || inputName.contains("?") || inputName.contains("|") || inputName.contains("\\") ||
+                inputName.contains("~") || inputName.contains("`") || inputName.contains("+") || inputName.contains("=") ||
+                inputName.contains("0") || inputName.contains("1") || inputName.contains("2") || inputName.contains("3") ||
+                inputName.contains("4") || inputName.contains("5") || inputName.contains("6") || inputName.contains("7") ||
+                inputName.contains("8") || inputName.contains("9");
     }
 
     public Statistics baseStatisticsConvert(CharacterInputDto characterInputDto) {

@@ -246,7 +246,7 @@ public class CharacterGenerator extends GeneralService {
     @Transactional
     public Character saveGenerate(CharacterInputDto characterInputDto){
         Character character = new Character();
-        if(characterInputDto.getName() != null && !characterInputDto.getName().equals("")) character.setName(characterSaveService.nameConvert(characterInputDto.getName()));
+        if(characterInputDto.getName() != null && !characterInputDto.getName().equals("") && !characterSaveService.checkSpecialCharacter(characterInputDto.getName())) character.setName(characterSaveService.nameConvert(characterInputDto.getName()));
         if(characterInputDto.getSex() != null) character.setSex(characterSaveService.sexConverter(characterInputDto.getSex()));
         if(characterInputDto.getRace() != null) character.setRace(characterSaveService.raceConverter(characterInputDto.getRace()));
 

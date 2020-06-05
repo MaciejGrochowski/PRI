@@ -192,12 +192,7 @@ public class CharacterGenerator extends GeneralService {
                 .buildPersonalities(personalityGenerator)
                 .buildTalents(talentGenerator)
                 .buildCareerStatistics(new CareerStatisticsGenerator())
-                .buildSkills(skillGenerator)
-        ;
-
-        Character generated = characterBuilder.getCharacter();
-
-        HashMap<String, String> tmp = characterBuilder.getProperties();
+                .buildSkills(skillGenerator);
 
         return characterBuilder.getCharacter();
     }

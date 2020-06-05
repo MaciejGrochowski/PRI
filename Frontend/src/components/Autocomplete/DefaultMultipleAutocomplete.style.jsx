@@ -6,7 +6,7 @@ export const Tag = styled(({ label, onDelete, id, ...props }) => (
     <>
         {label && label.map((item, i) => (
             <div {...props}>
-                <span className={id}>{item}</span>
+                <div className={id}>{item}</div>
                 <CloseIcon onClick={() => onDelete(item)}/>
             </div>
         ))}

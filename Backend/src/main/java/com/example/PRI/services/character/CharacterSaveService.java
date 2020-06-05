@@ -86,7 +86,7 @@ public class CharacterSaveService {
             return new Surname();
         }
         if (surname.isPresent()) return surname.get();
-        if (surNew.matches(".*\\d.*")) throw new CharacterSaveException("W nazwisku znajduje się liczba.", new IllegalArgumentException());
+        if (surNew.matches(".*\\d.*") || surNew.matches("")) throw new CharacterSaveException("W nazwisku znajduje się liczba.", new IllegalArgumentException());
         if (surNew.startsWith("von ") || surNew.startsWith("Von ")){
             prefix = "von ";
             surNew = surNew.substring(5);
@@ -110,7 +110,7 @@ public class CharacterSaveService {
 
 
     public Name nameConvert(String inputName) {
-        if (inputName == null)
+        if (inputName == null || inputName.equals(""))
             throw new CharacterSaveException("Podaj imię postaci swojej postaci.", new IllegalArgumentException());
         Optional<Name> nameOptional = nameService.findByName(inputName);
         if (nameOptional.isPresent()) return nameOptional.get();
@@ -153,7 +153,7 @@ public class CharacterSaveService {
     public Career currentCareerConvert(String inputCurrentCareer) {
         Career currentCareer = careerService.findByName(inputCurrentCareer);
         if (currentCareer != null) return currentCareer;
-        else throw new CharacterSaveException("Wybierz profesje swojej postaci.", new IllegalArgumentException());
+        else throw new CharacterSaveException("Wybierz obecną profesje swojej postaci.", new IllegalArgumentException());
     }
 
     public List<Career> previousCareersConvert(String inputPreviousCareers, String inputCurrentCareer) {
@@ -216,7 +216,7 @@ public class CharacterSaveService {
     }
 
     public int birthDayConverter(String dayInput) {
-        if (dayInput == null) throw new CharacterSaveException("Podaj dzień urodzin twojej postaci.", new IllegalArgumentException());
+        if (dayInput == null || dayInput.equals("")) throw new CharacterSaveException("Podaj dzień urodzenia twojej postaci.", new IllegalArgumentException());
         int day = 0;
         if (dayInput.matches("[0-9]+")) {
             day = Integer.parseInt(dayInput);
@@ -226,7 +226,7 @@ public class CharacterSaveService {
     }
 
     public int birthYearConverter(String yearInput) {
-        if (yearInput == null) throw new CharacterSaveException("Podaj rok urodzin twojej postaci.", new IllegalArgumentException());
+        if (yearInput == null || yearInput.equals("")) throw new CharacterSaveException("Podaj rok urodzenia twojej postaci.", new IllegalArgumentException());
         int year = 0;
         if (yearInput.matches("[0-9]*")) {
             year = Short.parseShort(yearInput);
@@ -236,7 +236,7 @@ public class CharacterSaveService {
     }
 
     public Month birthMonthConverter(String birthMonthInput) {
-        if (birthMonthInput == null) throw new CharacterSaveException("Podaj miesiąc urodzin twojej postaci.", new IllegalArgumentException());
+        if (birthMonthInput == null) throw new CharacterSaveException("Podaj miesiąc urodzenia twojej postaci.", new IllegalArgumentException());
         return Month.findByMonthName(birthMonthInput);
     }
 
@@ -276,7 +276,7 @@ public class CharacterSaveService {
     }
 
     public Integer heightConverter(String height) {
-        if (height == null) throw new CharacterSaveException("Podaj wzrost twojej postaci.", new IllegalArgumentException());
+        if (height == null || height.equals("")) throw new CharacterSaveException("Podaj wzrost twojej postaci.", new IllegalArgumentException());
         Integer newHeight = null;
         if (height.matches("[0-9]*")) {
             newHeight = Integer.parseInt(height);
@@ -286,7 +286,7 @@ public class CharacterSaveService {
     }
 
     public Integer weightConverter(String weight) {
-        if (weight == null) throw new CharacterSaveException("Podaj wagę twojej postaci.", new IllegalArgumentException());
+        if (weight == null || weight.equals("")) throw new CharacterSaveException("Podaj wagę twojej postaci.", new IllegalArgumentException());
         Integer newWeight = null;
         if (weight.matches("[0-9]*")) {
             newWeight = Integer.parseInt(weight);

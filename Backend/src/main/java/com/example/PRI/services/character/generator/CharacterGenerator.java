@@ -246,7 +246,7 @@ public class CharacterGenerator extends GeneralService {
     @Transactional
     public Character saveGenerate(CharacterInputDto characterInputDto){
         Character character = new Character();
-        if(characterInputDto.getName() != null) character.setName(characterSaveService.nameConvert(characterInputDto.getName()));
+        if(characterInputDto.getName() != null && !characterInputDto.getName().equals("")) character.setName(characterSaveService.nameConvert(characterInputDto.getName()));
         if(characterInputDto.getSex() != null) character.setSex(characterSaveService.sexConverter(characterInputDto.getSex()));
         if(characterInputDto.getRace() != null) character.setRace(characterSaveService.raceConverter(characterInputDto.getRace()));
 
@@ -267,7 +267,7 @@ public class CharacterGenerator extends GeneralService {
         character.setApperance(characterSaveService.apperanceConvert(characterInputDto.getApperance()));
         character.setSkills(characterSaveService.skillsConvert(characterInputDto.getSkills()));
         character.setTalents(characterSaveService.talentsConvert(characterInputDto.getTalents()));
-        if(characterInputDto.getReligion() != null) character.setReligion(characterSaveService.religionConverter(characterInputDto.getReligion()));
+        if(characterInputDto.getReligion() != null && !characterInputDto.getReligion().equals("")) character.setReligion(characterSaveService.religionConverter(characterInputDto.getReligion()));
         if(characterInputDto.getDayOfBirth() != null && characterInputDto.getMonthOfBirth() != null && characterInputDto.getYearOfBirth() != null) character.setBirthDate(characterSaveService.imperialDateConverter(characterInputDto.getDayOfBirth(), characterInputDto.getMonthOfBirth(),characterInputDto.getYearOfBirth()));
         if (characterInputDto.getDayOfBirth() != null && characterInputDto.getMonthOfBirth() != null && characterInputDto.getYearOfBirth() != null) character.setStarSign(characterSaveService.saveStarSign(character,character.getBirthDate()));
 

@@ -19,6 +19,9 @@ class DefaultMultipleAutocomplete extends React.Component {
         }
     }
 
+    componentDidMount() {
+        this.setState({options: []})
+    }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
         if (prevProps.generated !== this.props.generated) {
@@ -41,6 +44,7 @@ class DefaultMultipleAutocomplete extends React.Component {
             let valueName = value.split(" ")[0]
             allOptions = allOptions.filter(c => !(c === value) && !c.startsWith(valueName))
         }
+        allOptions = [...new Set(allOptions)]
         this.setState({options: allOptions});
     }
 

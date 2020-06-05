@@ -87,7 +87,11 @@ public class CharacterGenerator extends GeneralService {
         if(attribute.equals("płeć")) characterBuilder.buildSex(new SexGenerator());
         else if(character.getSex() != null) characterBuilder.buildSex(new SexGenerator(), character.getSex());
 
-        if(attribute.equals("nazwisko")) characterBuilder.buildSurname(surnameGenerator);
+        if(attribute.equals("nazwisko")) {
+            while(characterBuilder.getCharacter().getSurname()==null) {
+                characterBuilder.buildSurname(surnameGenerator);
+            }
+        }
         else if(character.getSurname() != null) characterBuilder.buildSurname(surnameGenerator, character.getSurname());
 
         if(attribute.equals("imię")) characterBuilder.buildName(nameGenerator);
@@ -129,7 +133,10 @@ public class CharacterGenerator extends GeneralService {
         }
 
 
-        if(attribute.equals("przepowiednia")) characterBuilder.buildPrediction(predictionGenerator);
+        if(attribute.equals("przepowiednia")) {
+            while(characterBuilder.getCharacter().getPrediction()==null)
+            characterBuilder.buildPrediction(predictionGenerator);
+        }
         else if (character.getPrediction()!=null) characterBuilder.buildPrediction(predictionGenerator, character.getPrediction());
 
         if(attribute.equals("religia")) characterBuilder.buildReligion(new ReligionGenerator());
@@ -185,12 +192,7 @@ public class CharacterGenerator extends GeneralService {
                 .buildPersonalities(personalityGenerator)
                 .buildTalents(talentGenerator)
                 .buildCareerStatistics(new CareerStatisticsGenerator())
-                .buildSkills(skillGenerator)
-        ;
-
-        Character generated = characterBuilder.getCharacter();
-
-        HashMap<String, String> tmp = characterBuilder.getProperties();
+                .buildSkills(skillGenerator);
 
         return characterBuilder.getCharacter();
     }

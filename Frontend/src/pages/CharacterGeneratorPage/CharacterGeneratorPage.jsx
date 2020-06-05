@@ -65,9 +65,25 @@ class CharacterGeneratorPage extends React.Component {
         for (const element in array) {
             let name;
             name = array[element]; //ToDo prawdopodobnie jest lepsza metoda, ale wymaga analizy
-            string = string + name + ","
+            string = string + name + ", "
         }
-        return string.substring(0, string.length - 1);
+        return string.substring(0, string.length - 2);
+    }
+
+    mapSkillArrayToString = array => { //ToDo funkcje mapujące są używane w wielu miejscach - zdefiniować je wspólnie w jakichś utilsach
+        let str = ""
+        for(let s of array){
+            str += s + ", "
+        }
+        return str.substring(0, str.length-2);
+    }
+
+    mapArrayToStringWithoutSpaces = array => {
+        let str = ""
+        for(let s of array){
+            str += s + ","
+        }
+        return str.substring(0, str.length-1);
     }
 
     getDataFromForm = () => {
@@ -75,18 +91,18 @@ class CharacterGeneratorPage extends React.Component {
             currentCareer: this.state.currentCareer,
             sex: this.state.sex,
             race: this.state.race,
-            previousCareers: this.state.previousCareers,
+            previousCareers: Array.isArray(this.state.previousCareers) ? this.mapFilterArrayToString(this.state.previousCareers) : this.state.previousCareers,
             monthOfBirth: this.state.monthOfBirth,
             eyeColor: this.state.eyeColor,
             hairColor: this.state.hairColor,
             livePlace: this.state.livePlace,
             birthPlace: this.state.birthPlace,
-            dominatingEmotions: this.state.dominatingEmotions,
+            dominatingEmotions: Array.isArray(this.state.dominatingEmotions) ? this.mapFilterArrayToString(this.state.dominatingEmotions) : this.state.dominatingEmotions,
             religion: this.state.religion,
-            skills: this.state.skills,
-            talents: this.state.talents,
-            apperance: this.state.apperances,
-            personality: this.state.personalities,
+            skills: Array.isArray(this.state.skills) ? this.mapArrayToStringWithoutSpaces(this.state.skills) : this.state.skills,
+            talents: Array.isArray(this.state.talents) ? this.mapArrayToStringWithoutSpaces(this.state.talents) : this.state.talents,
+            apperance: Array.isArray(this.state.apperances) ? this.mapFilterArrayToString(this.state.apperances) : this.state.apperances,
+            personality: Array.isArray(this.state.personalities) ? this.mapFilterArrayToString(this.state.personalities) : this.state.personalities,
             name: this.state.name, surname: this.state.surname, dayOfBirth: this.state.dayOfBirth,
             yearOfBirth: this.state.yearOfBirth, height: this.state.height, weight: this.state.weight,
             prediction: this.state.prediction,

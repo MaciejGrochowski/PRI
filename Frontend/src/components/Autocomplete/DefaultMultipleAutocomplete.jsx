@@ -19,7 +19,6 @@ class DefaultMultipleAutocomplete extends React.Component {
         }
     }
 
-
     componentDidUpdate(prevProps, prevState, snapshot) {
         if (prevProps.generated !== this.props.generated) {
             this.setGenerated()
@@ -41,6 +40,7 @@ class DefaultMultipleAutocomplete extends React.Component {
             let valueName = value.split(" ")[0]
             allOptions = allOptions.filter(c => !(c === value) && !c.startsWith(valueName))
         }
+        allOptions = [...new Set(allOptions)]
         this.setState({options: allOptions});
     }
 
@@ -91,7 +91,7 @@ render()
                 <div className="flex-div">
                     <Autocomplete
                         multiple={this.props.multiple}
-                        options={this.state.options}
+                        options={this.props.multiple ? this.state.options : this.props.options}
                         id={this.props.multiple ? "ToDo here should be randomId" : id}
                         noOptionsText={"Brak opcji"}
                         style={{width: width}}

@@ -15,10 +15,7 @@ import com.example.PRI.services.character.generator.SurnameGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -86,7 +83,7 @@ public class CharacterSaveService {
             return new Surname();
         }
         if (surname.isPresent()) return surname.get();
-        if (surNew.matches(".*\\d.*")) throw new CharacterSaveException("W nazwisku znajduje się liczba.", new IllegalArgumentException());
+        if (surNew.matches(".*\\d.*")  || checkSpecialCharacter(surNew)) throw new CharacterSaveException("Nazwisko może zawierać tylko litery.", new IllegalArgumentException());
         if (surNew.startsWith("von ") || surNew.startsWith("Von ")){
             prefix = "von ";
             surNew = surNew.substring(5);
@@ -301,7 +298,18 @@ public class CharacterSaveService {
         List<Personality> personalityList = personalityService.findByNameIn(stringList);
         if (personalityList.size() > 5) throw new CharacterSaveException("Zbyt dużo cech charakteru.\nMaksymalna liczba cech: 5", new IllegalArgumentException());
         List<String> personalityCheck = personalityList.stream().map(Personality::getType).collect(Collectors.toList());
-        if(personalityCheck.stream().distinct().count() <personalityCheck.size()) throw new CharacterSaveException("Cechy charakteru twojej postaci się wykluczają.", new IllegalArgumentException());
+        if(personalityCheck.stream().distinct().count() <personalityCheck.size()){
+            String repeatElement = "";
+            List<String> repeatElementList = new ArrayList<>();
+            List<String> wrongPersonality = new ArrayList<>();
+            for (String stringSearch: personalityCheck){
+                if (repeatElementList.contains(stringSearch)) {repeatElement = stringSearch; break;}
+                else {repeatElementList.add(stringSearch); }
+                }
+            for (Personality personalitySearch: personalityList) {
+                if (personalitySearch.getType().equals(repeatElement)) wrongPersonality.add(personalitySearch.getName());
+            }
+            throw new CharacterSaveException("Cechy charakteru \"" + wrongPersonality.get(0) + "\" oraz \"" + wrongPersonality.get(1) +"\" się wykluczają.", new IllegalArgumentException());}
         return  personalityList;
     }
 
@@ -311,7 +319,18 @@ public class CharacterSaveService {
         List<Apperance> apperanceList = apperanceService.findByNameIn(stringList);
         if (apperanceList.size() > 5) throw new CharacterSaveException("Zbyt dużo cech wyglądu.\nMaksymalna liczba cech: 5", new IllegalArgumentException());
         List<String> apperanceCheck = apperanceList.stream().map(Apperance::getType).collect(Collectors.toList());
-        if(apperanceCheck.stream().distinct().count() <apperanceCheck.size()) throw new CharacterSaveException("Cechy wyglądu twojej postaci się wykluczają.", new IllegalArgumentException());
+        if(apperanceCheck.stream().distinct().count() <apperanceCheck.size()){
+            String repeatElement = "";
+            List<String> repeatElementList = new ArrayList<>();
+            List<String> wrongApperance = new ArrayList<>();
+            for (String stringSearch: apperanceCheck){
+                if (repeatElementList.contains(stringSearch)) {repeatElement = stringSearch; break;}
+                else {repeatElementList.add(stringSearch); }
+            }
+            for (Apperance apperanceSearch: apperanceList) {
+                if (apperanceSearch.getType().equals(repeatElement)) wrongApperance.add(apperanceSearch.getName());
+            }
+            throw new CharacterSaveException("Cechy wyglądu \"" + wrongApperance.get(0) + "\" oraz \"" + wrongApperance.get(1) +"\" się wykluczają.", new IllegalArgumentException());}
         return apperanceList;
     }
 

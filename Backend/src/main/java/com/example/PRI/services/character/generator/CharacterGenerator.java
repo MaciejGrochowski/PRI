@@ -123,7 +123,6 @@ public class CharacterGenerator extends GeneralService {
             if (character.getCurrentCareer() != null && character.getPreviousCareers() == null) characterBuilder.buildCareers(careerGenerator);
             if (character.getCurrentCareer() != null && character.getPreviousCareers() != null) characterBuilder.buildCareers(careerGenerator);
             if (character.getCurrentCareer() == null && character.getPreviousCareers() != null) characterBuilder.buildCurrentCareer(careerGenerator, character.getPreviousCareers());
-
         }
         else if (character.getCurrentCareer() != null) {
             List <Career> careers = new ArrayList();
@@ -131,7 +130,6 @@ public class CharacterGenerator extends GeneralService {
             careers.add(character.getCurrentCareer());
             characterBuilder.buildCareers(careerGenerator, careers);
         }
-
 
         if(attribute.equals("przepowiednia")) {
             while(characterBuilder.getCharacter().getPrediction()==null)
@@ -142,14 +140,11 @@ public class CharacterGenerator extends GeneralService {
         if(attribute.equals("religia")) characterBuilder.buildReligion(new ReligionGenerator());
         else if(character.getReligion() != null) characterBuilder.buildReligion(new ReligionGenerator(), character.getReligion());
 
-
         if(attribute.equals("miejsce-pobytu")) characterBuilder.buildLivePlace(livePlaceGenerator);
         else if(character.getLivePlace() != null) characterBuilder.buildLivePlace(livePlaceGenerator, character.getLivePlace());
 
-
         if(attribute.equals("cechy-wyglądu")) characterBuilder.buildApperances(apperanceGenerator);
         else if(character.getApperance()!= null) characterBuilder.buildApperances(apperanceGenerator, character.getApperance());
-
 
         if(attribute.equals("cechy-charakteru")) characterBuilder.buildPersonalities(personalityGenerator);
         else if(character.getPersonality() != null) characterBuilder.buildPersonalities(personalityGenerator, character.getPersonality());
@@ -159,7 +154,6 @@ public class CharacterGenerator extends GeneralService {
 
         if(attribute.equals("statystyki-końcowe")) characterBuilder.buildCareerStatistics(new CareerStatisticsGenerator());
         else characterBuilder.buildCareerStatistics(new CareerStatisticsGenerator(), character);
-
 
         if(attribute.equals("umiejętności")) characterBuilder.buildSkills(skillGenerator);
         else if(character.getSkills() != null) characterBuilder.buildSkills(skillGenerator, character.getSkills());

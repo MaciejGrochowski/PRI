@@ -251,9 +251,11 @@ public class CharacterGenerator extends GeneralService {
         if(characterInputDto.getName() != null && !characterInputDto.getName().equals("") && !characterSaveService.checkSpecialCharacter(characterInputDto.getName())) character.setName(characterSaveService.nameConvert(characterInputDto.getName()));
         if(characterInputDto.getSex() != null) character.setSex(characterSaveService.sexConverter(characterInputDto.getSex()));
         if(characterInputDto.getRace() != null) character.setRace(characterSaveService.raceConverter(characterInputDto.getRace()));
-
-        Surname surname = characterSaveService.surnameConvert(characterInputDto.getSurname());
-        character.setSurname(prepareSurnameProperties(character.getRace(),surname,character.getSex()));
+        if (!characterSaveService.checkSpecialCharacter(characterInputDto.getSurname()))
+        {
+            Surname surname = characterSaveService.surnameConvert(characterInputDto.getSurname());
+            character.setSurname(prepareSurnameProperties(character.getRace(), surname, character.getSex()));
+        }
         character.setPrediction(characterSaveService.predictionConvert(characterInputDto.getPrediction()));
         if(characterInputDto.getCurrentCareer() != null) character.setCurrentCareer(characterSaveService.currentCareerConvert(characterInputDto.getCurrentCareer()));
         if(characterInputDto.getPreviousCareers() != null) character.setPreviousCareers(characterSaveService.previousCareersConvert(characterInputDto.getPreviousCareers(),characterInputDto.getCurrentCareer()));

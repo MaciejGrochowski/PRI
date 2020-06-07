@@ -306,9 +306,7 @@ public class CharacterSaveService {
                 if (repeatElementList.contains(stringSearch)) {repeatElement = stringSearch; break;}
                 else {repeatElementList.add(stringSearch); }
                 }
-            for (Personality personalitySearch: personalityList) {
-                if (personalitySearch.getType().equals(repeatElement)) wrongPersonality.add(personalitySearch.getName());
-            }
+            for (Personality personalitySearch: personalityList) { if (personalitySearch.getType().equals(repeatElement)) wrongPersonality.add(personalitySearch.getName()); }
             throw new CharacterSaveException("Cechy charakteru \"" + wrongPersonality.get(0) + "\" oraz \"" + wrongPersonality.get(1) +"\" się wykluczają.", new IllegalArgumentException());}
         return  personalityList;
     }
@@ -327,9 +325,7 @@ public class CharacterSaveService {
                 if (repeatElementList.contains(stringSearch)) {repeatElement = stringSearch; break;}
                 else {repeatElementList.add(stringSearch); }
             }
-            for (Apperance apperanceSearch: apperanceList) {
-                if (apperanceSearch.getType().equals(repeatElement)) wrongApperance.add(apperanceSearch.getName());
-            }
+            for (Apperance apperanceSearch: apperanceList) { if (apperanceSearch.getType().equals(repeatElement)) wrongApperance.add(apperanceSearch.getName()); }
             throw new CharacterSaveException("Cechy wyglądu \"" + wrongApperance.get(0) + "\" oraz \"" + wrongApperance.get(1) +"\" się wykluczają.", new IllegalArgumentException());}
         return apperanceList;
     }
@@ -363,7 +359,16 @@ public class CharacterSaveService {
         List<Emotion> emotionList = emotionService.findByNameIn(stringList);
         if (emotionList.size() > 4) throw new CharacterSaveException("Zbyt dużo emocji.\nMaksymalna liczba emocji: 4", new IllegalArgumentException());
         List<String> emotionCheck = emotionList.stream().map(Emotion::getType).collect(Collectors.toList());
-        if(emotionCheck.stream().distinct().count() <emotionCheck.size()) throw new CharacterSaveException("Emocje twojej postaci się wykluczają.", new IllegalArgumentException());
+        if(emotionCheck.stream().distinct().count() <emotionCheck.size()) {
+            String repeatElement = "";
+            List<String> repeatElementList = new ArrayList<>();
+            List<String> wrongEmotion = new ArrayList<>();
+            for (String stringSearch: emotionCheck){
+                if (repeatElementList.contains(stringSearch)) {repeatElement = stringSearch; break;}
+                else {repeatElementList.add(stringSearch); }
+            }
+            for (Emotion emotionSearch: emotionList) { if (emotionSearch.getType().equals(repeatElement)) wrongEmotion.add(emotionSearch.getName()); }
+            throw new CharacterSaveException("Emocje \"" + wrongEmotion.get(0) + "\" oraz \"" + wrongEmotion.get(1) +"\" się wykluczają.", new IllegalArgumentException());}
         return emotionList;
     }
 

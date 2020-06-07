@@ -61,12 +61,12 @@ public class CharacterGeneratorController {
     private CharacterInputDto trimCharacter(CharacterInputDto character) {
         //Niekiedy dane przychodzą z dwiema spacjami, więc je trimujemy na wszelki wypadek... ToDo ogarnąć to na froncie...
         //ToDo to na pewno nie powinno tutaj być...
-        character.setPreviousCareers(character.getPreviousCareers().replaceAll(",\\s+",","));
-        character.setApperance(character.getApperance().replaceAll(",\\s+",","));
-        character.setPersonality(character.getPersonality().replaceAll(",\\s+",","));
-        character.setTalents(character.getTalents().replaceAll(",\\s+",","));
-        character.setSkills(character.getSkills().replaceAll(",\\s+",","));
-        character.setDominatingEmotions(character.getDominatingEmotions().replaceAll(",\\s+",","));
+        if (character.getPreviousCareers() != null)character.setPreviousCareers(character.getPreviousCareers().replaceAll(",\\s+",","));
+        if (character.getApperance() != null)character.setApperance(character.getApperance().replaceAll(",\\s+",","));
+        if (character.getPersonality() != null) character.setPersonality(character.getPersonality().replaceAll(",\\s+",","));
+        if (character.getTalents() != null)character.setTalents(character.getTalents().replaceAll(",\\s+",","));
+        if (character.getSkills() != null)character.setSkills(character.getSkills().replaceAll(",\\s+",","));
+        if (character.getDominatingEmotions() != null)character.setDominatingEmotions(character.getDominatingEmotions().replaceAll(",\\s+",","));
         return character;
     }
 

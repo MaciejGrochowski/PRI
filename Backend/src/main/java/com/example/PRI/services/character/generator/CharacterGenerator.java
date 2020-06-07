@@ -245,7 +245,7 @@ public class CharacterGenerator extends GeneralService {
         if(characterInputDto.getName() != null && !characterInputDto.getName().equals("") && !characterSaveService.checkSpecialCharacter(characterInputDto.getName())) character.setName(characterSaveService.nameConvert(characterInputDto.getName()));
         if(characterInputDto.getSex() != null) character.setSex(characterSaveService.sexConverter(characterInputDto.getSex()));
         if(characterInputDto.getRace() != null) character.setRace(characterSaveService.raceConverter(characterInputDto.getRace()));
-        if (!characterSaveService.checkSpecialCharacter(characterInputDto.getSurname()))
+        if (characterInputDto.getSurname() != null && !characterSaveService.checkSpecialCharacter(characterInputDto.getSurname()))
         {
             Surname surname = characterSaveService.surnameConvert(characterInputDto.getSurname());
             character.setSurname(prepareSurnameProperties(character.getRace(), surname, character.getSex()));

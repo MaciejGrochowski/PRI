@@ -158,7 +158,7 @@ public class CharacterSaveService {
 
     public List<Career> previousCareersConvert(String inputPreviousCareers, String inputCurrentCareer) {
         if (inputPreviousCareers == null) return null;
-        List<String> stringList = Arrays.asList(inputPreviousCareers.split(", "));
+        List<String> stringList = Arrays.asList(inputPreviousCareers.split(","));
         List<Career> careerList = careerService.findByNameIn(stringList);
         Career currentCareer = careerService.findByName(inputCurrentCareer);
         if (careerList.contains(currentCareer)) throw new CharacterSaveException("Obecna i poprzednia profejsa są takie same.", new IllegalArgumentException());
@@ -297,7 +297,7 @@ public class CharacterSaveService {
 
     public List<Personality> personalityListConvert(String inputPersonality) {
         if (inputPersonality == null) return null;
-        List<String> stringList = Arrays.asList(inputPersonality.split(", "));
+        List<String> stringList = Arrays.asList(inputPersonality.split(","));
         List<Personality> personalityList = personalityService.findByNameIn(stringList);
         if (personalityList.size() > 5) throw new CharacterSaveException("Zbyt dużo cech charakteru.\nMaksymalna liczba cech: 5", new IllegalArgumentException());
         List<String> personalityCheck = personalityList.stream().map(Personality::getType).collect(Collectors.toList());
@@ -307,7 +307,7 @@ public class CharacterSaveService {
 
     public List<Apperance> apperanceConvert(String inputApperance) {
         if (inputApperance == null) return null;
-        List<String> stringList = Arrays.asList(inputApperance.split(", "));
+        List<String> stringList = Arrays.asList(inputApperance.split(","));
         List<Apperance> apperanceList = apperanceService.findByNameIn(stringList);
         if (apperanceList.size() > 5) throw new CharacterSaveException("Zbyt dużo cech wyglądu.\nMaksymalna liczba cech: 5", new IllegalArgumentException());
         List<String> apperanceCheck = apperanceList.stream().map(Apperance::getType).collect(Collectors.toList());
@@ -340,7 +340,7 @@ public class CharacterSaveService {
 
     public List<Emotion> dominantingEmotionConvert(String inputEmotion) {
         if (inputEmotion == null) return null;
-        List<String> stringList = Arrays.asList(inputEmotion.split(", "));
+        List<String> stringList = Arrays.asList(inputEmotion.split(","));
         List<Emotion> emotionList = emotionService.findByNameIn(stringList);
         if (emotionList.size() > 4) throw new CharacterSaveException("Zbyt dużo emocji.\nMaksymalna liczba emocji: 4", new IllegalArgumentException());
         List<String> emotionCheck = emotionList.stream().map(Emotion::getType).collect(Collectors.toList());

@@ -48,15 +48,27 @@ public class CharacterGeneratorController {
 
     @Get("/attribute/{attrName}")
     public CharacterDetailsOutputDto getAttribute(@PathVariable String attrName, CharacterInputDto character){
+        character = this.trimCharacter(character);
         return characterGenerator.generateAttribute(attrName, character);
     }
 
     @Post("/save")
     public long save(@RequestBody CharacterInputDto character){
-
+        character = this.trimCharacter(character);
         return characterGenerator.save(character);
     }
 
+    private CharacterInputDto trimCharacter(CharacterInputDto character) {
+        //Niekiedy dane przychodzą z dwiema spacjami, więc je trimujemy na wszelki wypadek... ToDo ogarnąć to na froncie...
+        //ToDo to na pewno nie powinno tutaj być...
+        character.setPreviousCareers(character.getPreviousCareers().replaceAll(",\\s+",","));
+        character.setApperance(character.getApperance().replaceAll(",\\s+",","));
+        character.setPersonality(character.getPersonality().replaceAll(",\\s+",","));
+        character.setTalents(character.getTalents().replaceAll(",\\s+",","));
+        character.setSkills(character.getSkills().replaceAll(",\\s+",","));
+        character.setDominatingEmotions(character.getDominatingEmotions().replaceAll(",\\s+",","));
+        return character;
+    }
 
 
 }

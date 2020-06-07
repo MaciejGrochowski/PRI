@@ -44,10 +44,11 @@ class DefaultMultipleAutocomplete extends React.Component {
         this.setState({options: allOptions});
     }
 
-    onDelete = item => {
+    onDelete = (item, v) => {
         let values = this.state.values;
         values = values.filter(v => v !== item)
         this.setState({values: values})
+        if (v !== undefined) v.update(values);
         if(this.props.multiple) this.onDeleteChangeOptions(item)
     }
 
@@ -100,7 +101,7 @@ render()
                             <TextField {...params} label={labelName}/>
                         )}
                         renderTags={(value, getTagProps, index) => (
-                            <Tag label={this.state.values} onDelete={this.onDelete} id={id}/>
+                            <Tag label={this.state.values} onDelete={element => this.onDelete(element, v)} id={id}/>
                         )}
                         value={this.state.values}
                         onChange={(event, value, reason) => this.onInputChange(event, value, v)}

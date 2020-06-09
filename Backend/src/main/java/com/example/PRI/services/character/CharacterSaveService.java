@@ -499,11 +499,29 @@ public class CharacterSaveService {
                 inputName.contains("(") || inputName.contains(")") || inputName.contains("_") || inputName.contains("-") ||
                 inputName.contains("{") || inputName.contains("}") || inputName.contains("[") || inputName.contains("]") ||
                 inputName.contains(",") || inputName.contains(".") || inputName.contains("/") || inputName.contains("<") ||
-                inputName.contains(">") || inputName.contains("?") || inputName.contains("|") || inputName.contains("\\") ||
+                inputName.contains(">") || inputName.contains("?") || inputName.contains("|") || inputName.contains("\\")||
                 inputName.contains("~") || inputName.contains("`") || inputName.contains("+") || inputName.contains("=") ||
+                inputName.contains(":") || inputName.contains(";") || inputName.contains("\"") || inputName.contains("'")||
                 inputName.contains("0") || inputName.contains("1") || inputName.contains("2") || inputName.contains("3") ||
                 inputName.contains("4") || inputName.contains("5") || inputName.contains("6") || inputName.contains("7") ||
                 inputName.contains("8") || inputName.contains("9");
+    }
+
+    public boolean checkNumber (String dayOrYear, String type){
+        if (dayOrYear.equals("")|| dayOrYear.contains("!") || dayOrYear.contains("@") || dayOrYear.contains("#") || dayOrYear.contains("$") ||
+                dayOrYear.contains("%") || dayOrYear.contains("^") || dayOrYear.contains("&") || dayOrYear.contains("*") ||
+                dayOrYear.contains("(") || dayOrYear.contains(")") || dayOrYear.contains("_") || dayOrYear.contains("-") ||
+                dayOrYear.contains("{") || dayOrYear.contains("}") || dayOrYear.contains("[") || dayOrYear.contains("]") ||
+                dayOrYear.contains(",") || dayOrYear.contains(".") || dayOrYear.contains("/") || dayOrYear.contains("<") ||
+                dayOrYear.contains(">") || dayOrYear.contains("?") || dayOrYear.contains("|") || dayOrYear.contains("\\")||
+                dayOrYear.contains(":") || dayOrYear.contains(";") || dayOrYear.contains("\"")|| dayOrYear.contains("'") ||
+                dayOrYear.contains("~") || dayOrYear.contains("`") || dayOrYear.contains("+") || dayOrYear.contains("=") ||
+                dayOrYear.contains(" ") || dayOrYear.matches("\\w*([a-z,A-Z])\\w*")) return false;
+        int convertCheck = Integer.parseInt(dayOrYear);
+        if (type.equals("height") && convertCheck < 50 || convertCheck > 300) return false;
+        else if (type.equals("weight") && convertCheck < 10) return false;
+        else if (type.equals("day") && convertCheck < 1 || convertCheck > 34 ) return false;
+        else return !type.equals("year") || convertCheck >= 0;
     }
 
     public Statistics baseStatisticsConvert(CharacterInputDto characterInputDto) {

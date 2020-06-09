@@ -259,15 +259,17 @@ public class CharacterGenerator extends GeneralService {
         if(characterInputDto.getDominatingEmotions() != null) character.setDominatingEmotions(characterSaveService.dominantingEmotionConvert(characterInputDto.getDominatingEmotions()));
         if(characterInputDto.getLivePlace() != null) character.setLivePlace(characterSaveService.livePlaceConverter(characterInputDto.getLivePlace()));
         if(characterInputDto.getBirthPlace() != null) character.setBirthPlace(characterSaveService.bornPlaceConverter(characterInputDto.getBirthPlace()));
-        if(characterInputDto.getHeight() != null) character.setHeight(characterSaveService.heightConverter(characterInputDto.getHeight()));
-        if(characterInputDto.getWeight() != null) character.setWeight(characterSaveService.weightConverter(characterInputDto.getWeight()));
+        if(characterInputDto.getHeight() != null && characterSaveService.checkNumber(characterInputDto.getHeight(), "height")) character.setHeight(characterSaveService.heightConverter(characterInputDto.getHeight()));
+        if(characterInputDto.getWeight() != null && characterSaveService.checkNumber(characterInputDto.getWeight(), "weight")) character.setWeight(characterSaveService.weightConverter(characterInputDto.getWeight()));
         character.setPersonality(characterSaveService.personalityListConvert(characterInputDto.getPersonality()));
         character.setApperance(characterSaveService.apperanceConvert(characterInputDto.getApperance()));
         character.setSkills(characterSaveService.skillsConvert(characterInputDto.getSkills()));
         character.setTalents(characterSaveService.talentsConvert(characterInputDto.getTalents()));
         if(characterInputDto.getReligion() != null && !characterInputDto.getReligion().equals("")) character.setReligion(characterSaveService.religionConverter(characterInputDto.getReligion()));
-        if(characterInputDto.getDayOfBirth() != null && characterInputDto.getMonthOfBirth() != null && characterInputDto.getYearOfBirth() != null) character.setBirthDate(characterSaveService.imperialDateConverter(characterInputDto.getDayOfBirth(), characterInputDto.getMonthOfBirth(),characterInputDto.getYearOfBirth()));
-        if (characterInputDto.getDayOfBirth() != null && characterInputDto.getMonthOfBirth() != null && characterInputDto.getYearOfBirth() != null) character.setStarSign(characterSaveService.saveStarSign(character,character.getBirthDate()));
+        if (characterInputDto.getDayOfBirth() != null  && characterSaveService.checkNumber(characterInputDto.getDayOfBirth(), "day") && characterInputDto.getMonthOfBirth() != null
+            && characterInputDto.getYearOfBirth() != null && characterSaveService.checkNumber(characterInputDto.getYearOfBirth(), "year")) character.setBirthDate(characterSaveService.imperialDateConverter(characterInputDto.getDayOfBirth(), characterInputDto.getMonthOfBirth(),characterInputDto.getYearOfBirth()));
+        if (characterInputDto.getDayOfBirth() != null && characterSaveService.checkNumber(characterInputDto.getDayOfBirth(), "day") && characterInputDto.getMonthOfBirth() != null
+            && characterInputDto.getYearOfBirth() != null && characterSaveService.checkNumber(characterInputDto.getYearOfBirth(), "year")) character.setStarSign(characterSaveService.saveStarSign(character,character.getBirthDate()));
 
         if (characterInputDto.getBaseWeaponSkills() != null && characterInputDto.getBaseBallisticSkills() != null &&
                 characterInputDto.getBaseStrength() != null && characterInputDto.getBaseToughness() != null &&

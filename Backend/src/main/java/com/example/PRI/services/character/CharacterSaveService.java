@@ -520,8 +520,27 @@ public class CharacterSaveService {
         int convertCheck = Integer.parseInt(dayOrYear);
         if (type.equals("height") && convertCheck < 50 || convertCheck > 300) return false;
         else if (type.equals("weight") && convertCheck < 10) return false;
+        else if (type.equals("statistics") && convertCheck < 100 ) return true;
         else if (type.equals("day") && convertCheck < 1 || convertCheck > 34 ) return false;
         else return !type.equals("year") || convertCheck >= 0;
+    }
+
+    public boolean baseStatisticCheck(CharacterInputDto characterInputDto){
+        return  checkNumber(characterInputDto.getBaseWeaponSkills(), "statistics") && checkNumber(characterInputDto.getBaseBallisticSkills(), "statistics") &&
+                checkNumber(characterInputDto.getBaseStrength(), "statistics") && checkNumber(characterInputDto.getBaseToughness(), "statistics") &&
+                checkNumber(characterInputDto.getBaseAgility(), "statistics") && checkNumber(characterInputDto.getBaseIntelligence(), "statistics") &&
+                checkNumber(characterInputDto.getBaseWillPower(), "statistics") && checkNumber(characterInputDto.getBaseFellowship(), "statistics") &&
+                checkNumber(characterInputDto.getBaseAttacks(), "statistics") && checkNumber(characterInputDto.getBaseWounds(), "statistics") &&
+                checkNumber(characterInputDto.getBaseMagic(), "statistics") && checkNumber(characterInputDto.getBaseMovement(), "statistics");
+    }
+
+    public boolean endStatisticCheck(CharacterInputDto characterInputDto){
+        return  checkNumber(characterInputDto.getEndWeaponSkills(), "statistics") && checkNumber(characterInputDto.getEndBallisticSkills(), "statistics") &&
+                checkNumber(characterInputDto.getEndStrength(), "statistics") && checkNumber(characterInputDto.getEndToughness(), "statistics") &&
+                checkNumber(characterInputDto.getEndAgility(), "statistics") && checkNumber(characterInputDto.getEndIntelligence(), "statistics") &&
+                checkNumber(characterInputDto.getEndWillPower(), "statistics") && checkNumber(characterInputDto.getEndFellowship(), "statistics") &&
+                checkNumber(characterInputDto.getEndAttacks(), "statistics") && checkNumber(characterInputDto.getEndWounds(), "statistics") &&
+                checkNumber(characterInputDto.getEndMagic(), "statistics") && checkNumber(characterInputDto.getEndMovement(), "statistics");
     }
 
     public Statistics baseStatisticsConvert(CharacterInputDto characterInputDto) {

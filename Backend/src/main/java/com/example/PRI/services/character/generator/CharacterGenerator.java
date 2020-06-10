@@ -277,6 +277,7 @@ public class CharacterGenerator extends GeneralService {
                 characterInputDto.getBaseWillPower() != null && characterInputDto.getBaseFellowship() != null &&
                 characterInputDto.getBaseAttacks() != null && characterInputDto.getBaseWounds() != null &&
                 characterInputDto.getBaseMagic() != null && characterInputDto.getBaseMovement() != null
+                && characterSaveService.baseStatisticCheck(characterInputDto)
         )        character.setBaseStats(characterSaveService.baseStatisticsConvert(characterInputDto));
 
         if (characterInputDto.getEndWeaponSkills() != null && characterInputDto.getEndBallisticSkills() != null &&
@@ -285,6 +286,7 @@ public class CharacterGenerator extends GeneralService {
                 characterInputDto.getEndWillPower() != null && characterInputDto.getEndFellowship() != null &&
                 characterInputDto.getEndAttacks() != null && characterInputDto.getEndWounds() != null &&
                 characterInputDto.getEndMagic() != null && characterInputDto.getEndMovement() != null
+                && characterSaveService.endStatisticCheck(characterInputDto)
         ) {
             character.setEndWeaponSkills(characterSaveService.endWeaponSkillConvert(characterInputDto.getEndWeaponSkills()));
             character.setEndBallisticSkills(characterSaveService.endBallisticSkillsConvert(characterInputDto.getEndBallisticSkills()));

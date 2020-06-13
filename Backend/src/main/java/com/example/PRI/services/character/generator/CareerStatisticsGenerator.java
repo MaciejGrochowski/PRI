@@ -4,6 +4,7 @@ import com.example.PRI.entities.character.Career;
 import com.example.PRI.entities.character.Character;
 import com.example.PRI.entities.character.Statistics;
 import com.example.PRI.entities.character.Talent;
+import com.example.PRI.exceptions.CharacterGenerationException;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -55,6 +56,7 @@ public class CareerStatisticsGenerator {
             if(stats.getMovement() > 0) movementSkillMaxFromCareers.add(random.nextInt(stats.getMovement() +1));
             if(stats.getMagic() > 0) magicSkillMaxFromCareers.add(random.nextInt(stats.getMagic()));
         }
+        if (character.getBaseStats() == null) throw new CharacterGenerationException("By wylosować obecne umiejętności bojowe, wprowadź poprawne bazowe umiejętności bojowe.", new IllegalArgumentException());
         weaponSkillMaxFromCareers.stream().mapToInt(v -> v).max().ifPresentOrElse(s -> character.setEndWeaponSkills(character.getBaseStats().getWeaponSkill() + s), () -> character.setEndWeaponSkills(character.getBaseStats().getWeaponSkill()));
         ballisticSkillMaxFromCareers.stream().mapToInt(v -> v).max().ifPresentOrElse(s -> character.setEndBallisticSkills(character.getBaseStats().getBallisticSkill() + s), () -> character.setEndBallisticSkills(character.getBaseStats().getBallisticSkill()));
         strengthMaxFromCareers.stream().mapToInt(v -> v).max().ifPresentOrElse(s -> character.setEndStrength(character.getBaseStats().getStrength() + s), () -> character.setEndStrength(character.getBaseStats().getStrength()));

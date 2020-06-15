@@ -161,9 +161,9 @@ public class CharacterSpecifications {
         };
     }
 
-    public static Specification<Character> getByStarSigns(String starSign) {
+    public static Specification<Character> getByStarSigns(List<StarSign> starSigns) {
         return (root, query, cb) -> {
-            return root.get("starSign").in(starSign);
+            return root.get("starSign").in(starSigns);
         };
     }
 }

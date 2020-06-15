@@ -3,49 +3,48 @@ import MenuItem from "@material-ui/core/MenuItem";
 import ziemniak from "../../styles/filters.css";
 import DefaultMultipleAutocomplete from "../../components/Autocomplete/DefaultMultipleAutocomplete";
 import React from "react";
-import {religions} from "../../enums/Religions";
-import {starSigns} from "../../enums/StarSigns";
 //ToDo Więcej autocompletów...
-export const columnConfig = (autocompleteData={}, visibilityProperties={}) => (
-    [
+
+export const columnConfig = (autocompleteData={}, visibilityProperties={}) => {
+    return [
         {
             title: 'Imię', field: 'name',
             removable: true,
             hidden: !visibilityProperties.name,
-            filter: <div class = "ziemniak"><TextField label="Imię" id="characterFilterName"/></div>
+            filter: <div class="ziemniak"><TextField label="Imię" id="characterFilterName"/></div>
         },
         {
             title: 'Nazwisko',
             field: 'surname',
             hidden: !visibilityProperties.surname,
-            filter: <div class = "ziemniak"><TextField label="Nazwisko" id="characterFilterSurname"/></div>
+            filter: <div class="ziemniak"><TextField label="Nazwisko" id="characterFilterSurname"/></div>
         },
         {
             title: 'Płeć',
             field: 'sex',
             hidden: !visibilityProperties.sex,
             lookup: {"MALE": "M", "FEMALE": "K"},
-            filter: <div class = "ziemniak">
+            filter: <div class="ziemniak">
                 <TextField defaultValue="fill" id="characterFilterSex" label="Płeć" select>
-                        <MenuItem value={'fill'}>Dowolna</MenuItem>
-                        <MenuItem value={'MALE'}>Mężczyzna</MenuItem>
-                        <MenuItem value={'FEMALE'}>Kobieta</MenuItem>
+                    <MenuItem value={'fill'}>Dowolna</MenuItem>
+                    <MenuItem value={'MALE'}>Mężczyzna</MenuItem>
+                    <MenuItem value={'FEMALE'}>Kobieta</MenuItem>
                 </TextField>
-                </div>
+            </div>
         },
         {
             title: 'Rasa',
             field: 'race',
             hidden: !visibilityProperties.race,
             lookup: {"HUMAN": "Człowiek", "DWARF": "Krasnolud", "ELF": "Elf", "HALFLING": "Niziołek"},
-            filter: <div class = "ziemniak">
+            filter: <div class="ziemniak">
                 <TextField id="characterFilterRace" defaultValue="fill" label="Rasa" select>
                     <MenuItem value={'fill'}>Dowolna</MenuItem>
                     <MenuItem value={'HUMAN'}>Człowiek</MenuItem>
                     <MenuItem value={'ELF'}>Elf</MenuItem>
                     <MenuItem value={'DWARF'}>Krasnolud</MenuItem>
                     <MenuItem value={'HALFLING'}>Niziołek</MenuItem>
-                    </TextField>
+                </TextField>
             </div>
         },
         {
@@ -54,17 +53,17 @@ export const columnConfig = (autocompleteData={}, visibilityProperties={}) => (
             hidden: !visibilityProperties.livePlace,
             field: 'livePlace',
             filter: <div className="ziemniak"><DefaultMultipleAutocomplete
-            labelName="Miejsce pobytu"
-            options={autocompleteData.placeNames || []}
-            id="characterFilterLivePlaces"
-            multiple
+                labelName="Miejsce pobytu"
+                options={autocompleteData.placeNames || []}
+                id="characterFilterLivePlaces"
+                multiple
             /></div>
         },
         {
             title: 'Profesja',
             field: 'currentCareer',
             hidden: !visibilityProperties.currentCareer,
-            filter: <div class = "ziemniak"> <DefaultMultipleAutocomplete
+            filter: <div class="ziemniak"><DefaultMultipleAutocomplete
                 labelName="Profesje"
                 options={autocompleteData.careerNames || []}
                 id="characterFilterCareers"
@@ -104,7 +103,7 @@ export const columnConfig = (autocompleteData={}, visibilityProperties={}) => (
             hidden: !visibilityProperties.starSign,
             filter: <div className="ziemniak"><DefaultMultipleAutocomplete
                 labelName="Znak gwiezdny"
-                options={starSigns}
+                options={autocompleteData.starSignNames || []}
                 id="characterFilterStarSigns"
                 multiple
             /></div>
@@ -129,7 +128,7 @@ export const columnConfig = (autocompleteData={}, visibilityProperties={}) => (
             hidden: !visibilityProperties.religion,
             filter: <div className="ziemniak"><DefaultMultipleAutocomplete
                 labelName="Religia"
-                options={religions}
+                options={autocompleteData.religionNames || []}
                 id="characterFilterReligions"
                 multiple
             /></div>
@@ -195,8 +194,5 @@ export const columnConfig = (autocompleteData={}, visibilityProperties={}) => (
         },
 
 
-
-
-
     ]
-)
+}

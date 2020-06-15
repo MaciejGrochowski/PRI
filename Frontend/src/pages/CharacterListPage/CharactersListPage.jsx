@@ -231,11 +231,6 @@ class CharactersListPage extends React.Component{
     }
 
     render(){
-        const test = {
-            //backgroundColor: 'red',
-            backgroundColor: '#292F2F',
-            // position: 'relative',
-        };
         return (
             <div className="globalStyles">
                 <header className="App-header">

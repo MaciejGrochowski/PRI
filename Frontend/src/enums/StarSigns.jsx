@@ -1,8 +1,23 @@
 export const starSigns = [
-    "Drakonos",
     "Bębniarz",
     "Dudy",
-    "Dwa byki"
+    "Dwa byki",
+    "Vobist Ulotny",
+    "Rozbity Wóz",
+    "Tłusty Kozioł",
+    "Kocioł Rhyi",
+    "Złoty Kogut",
+    "Lancet",
+    "Gwiazda Uroku",
+    "Wymund Pustelnik",
+    "Wielki Krzyż",
+    "Sznur Limnera",
+    "Wół Gnuthus",
+    "Smok Dragomas",
+    "Gwiazda Wieczorna",
+    "Pas Grungniego",
+    "Mędrzec Marmit",
+    "Głupiec Mummit",
+    "Dwa Byki",
+    "Tancerka"
 ]
-
-//ToDo reszta znaków

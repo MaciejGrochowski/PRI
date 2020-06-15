@@ -19,6 +19,12 @@ class DefaultMultipleAutocomplete extends React.Component {
         }
     }
 
+    componentDidMount() {
+        this.setState({
+            options: this.props.options
+        })
+    }
+
     componentDidUpdate(prevProps, prevState, snapshot) {
         if (prevProps.generated !== this.props.generated) {
             this.setGenerated()

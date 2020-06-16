@@ -144,8 +144,10 @@ public class CharacterService extends GeneralService {
         }
 
         if (requestInfo.getFilters().containsKey("race")) {
-            Race race = Race.valueOf(requestInfo.getFilters().get("race"));
-            specifications = specifications.and(CharacterSpecifications.getByRace(race));
+            List<String> racesList = Arrays.asList(requestInfo.getFilters().get("race").split(","));
+            List<Race> races = racesList.stream().map(Race::valueOf).collect(Collectors.toList());
+            if(races.size() > 0) specifications = specifications.and(CharacterSpecifications.getByRaces(races));
+            else return specifications.and(CharacterSpecifications.GetNoone());
         }
 
         if (requestInfo.getFilters().containsKey("eyeColor")) {

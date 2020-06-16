@@ -239,6 +239,7 @@ public class CharacterBuilder {
         Map<String, String> newProps = FirstCareerPropertiesMapper.map(character, properties);
         putAllProperties(newProps);
         Map<String, String> newPropsList = service.getProperties(career);
+        putAllProperties(newPropsList);
         character.setPreviousCareers(career.subList(0, career.size()-1));
         character.setCurrentCareer(career.get(career.size()-1));
         return this;

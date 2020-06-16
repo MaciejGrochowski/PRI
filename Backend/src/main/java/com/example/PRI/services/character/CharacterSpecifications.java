@@ -166,4 +166,10 @@ public class CharacterSpecifications {
             return root.get("starSign").in(starSigns);
         };
     }
+
+    public static Specification<Character> getByRaces(List<Race> races) {
+        return (root, query, cb) -> {
+            return root.get("race").in(races);
+        };
+    }
 }

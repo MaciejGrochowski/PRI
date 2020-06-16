@@ -19,33 +19,41 @@ export const columnConfig = (autocompleteData={}, visibilityProperties={}) => {
             hidden: !visibilityProperties.surname,
             filter: <div class="ziemniak"><TextField label="Nazwisko" id="characterFilterSurname"/></div>
         },
-        {
+        { //ToDo Kasia Ostylować to, aby rasa i płeć były krótsze jako autocomplety
             title: 'Płeć',
             field: 'sex',
             hidden: !visibilityProperties.sex,
             lookup: {"MALE": "M", "FEMALE": "K"},
-            filter: <div class="ziemniak">
-                <TextField defaultValue="fill" id="characterFilterSex" label="Płeć" select>
-                    <MenuItem value={'fill'}>Dowolna</MenuItem>
-                    <MenuItem value={'MALE'}>Mężczyzna</MenuItem>
-                    <MenuItem value={'FEMALE'}>Kobieta</MenuItem>
-                </TextField>
-            </div>
+            filter: <div className="ziemniak"><DefaultMultipleAutocomplete
+                    labelName="Płeć"
+                    options={["Mężczyzna", "Kobieta"]}
+                    id="characterFilterSex"
+                /></div>
         },
         {
             title: 'Rasa',
             field: 'race',
             hidden: !visibilityProperties.race,
             lookup: {"HUMAN": "Człowiek", "DWARF": "Krasnolud", "ELF": "Elf", "HALFLING": "Niziołek"},
-            filter: <div class="ziemniak">
-                <TextField id="characterFilterRace" defaultValue="fill" label="Rasa" select>
-                    <MenuItem value={'fill'}>Dowolna</MenuItem>
-                    <MenuItem value={'HUMAN'}>Człowiek</MenuItem>
-                    <MenuItem value={'ELF'}>Elf</MenuItem>
-                    <MenuItem value={'DWARF'}>Krasnolud</MenuItem>
-                    <MenuItem value={'HALFLING'}>Niziołek</MenuItem>
-                </TextField>
-            </div>
+            filter: <div className="ziemniak"><DefaultMultipleAutocomplete
+                labelName="Rasa"
+                options={["Człowiek", "Elf", "Krasnolud", "Niziołek"]}
+                id="characterFilterRace"
+                multiple
+            /></div>
+
+
+
+
+            //     <div class="ziemniak">
+            //     <TextField id="characterFilterRace" defaultValue="fill" label="Rasa" select>
+            //         <MenuItem value={'fill'}>Dowolna</MenuItem>
+            //         <MenuItem value={'HUMAN'}>Człowiek</MenuItem>
+            //         <MenuItem value={'ELF'}>Elf</MenuItem>
+            //         <MenuItem value={'DWARF'}>Krasnolud</MenuItem>
+            //         <MenuItem value={'HALFLING'}>Niziołek</MenuItem>
+            //     </TextField>
+            // </div>
         },
         {
             title: 'Miejsce pobytu',

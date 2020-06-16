@@ -17,10 +17,22 @@ const fullRandomGenerate = () => {
     return request.get(url);
 }
 
+const validInputAttributes = character => {
+    for (var key in character) {
+        if (character.hasOwnProperty(key)) {
+            if(typeof character[key] === 'string' || character[key] instanceof String){
+                character[key] = character[key].replaceAll("[", "")
+                character[key] = character[key].replaceAll("]", "")
+            }
+        }
+    }
+    return character
+}
+
 const generateOneAttribute = (name, character) => {
     name = name.replace(/\s+/g, '-').toLowerCase();
     // character = encodeURI(JSON.stringify(character));
-    console.log(character);
+    character = validInputAttributes(character)
     const url = generatorUrl + "/attribute/" + name;
     return request.get(url, {params: character});
 }

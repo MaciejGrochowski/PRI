@@ -11,7 +11,7 @@ class Filter extends React.Component {
     render(){
 
 
-        const {columnsConfig, onFilter} = this.props;
+        const {columnsConfig, onFilter, expandFilterList} = this.props;
         return (
             <div className = "filter-menu">
                 <div className = "filter">
@@ -23,6 +23,7 @@ class Filter extends React.Component {
                 </div>
                 <div className = "filter-button">
                     <button className = "button" onClick={onFilter}>Filtruj</button>
+                    <button className="button" onClick={expandFilterList}>Dostosuj</button>
                 </div>
                 
             </div>

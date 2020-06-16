@@ -11,6 +11,8 @@ import DefaultPopup from "../../components/Popup/DefaultPopup";
 import {starSigns} from "../../enums/StarSigns";
 import {religions} from "../../enums/Religions";
 import {table} from "../../styles/tables.css"
+import button from "../../styles/buttons.css";
+import Modal from "react-modal";
 
 class CharactersListPage extends React.Component{
 
@@ -92,10 +94,21 @@ class CharactersListPage extends React.Component{
         if(surname && surname.value!=="") filterObject = {...filterObject, surname: surname.value}
 
         const sex = document.getElementById('characterFilterSex');
-        if(sex && sex.nextSibling && sex.nextSibling.value!=='fill') filterObject = {...filterObject, sex: sex.nextSibling.value}
+        if(sex){
+            if(sex.value==="Mężczyzna") filterObject = {...filterObject, sex: "MALE"}
+            if(sex.value==="Kobieta") filterObject = {...filterObject, sex: "FEMALE"}
+        }
 
-        const race = document.getElementById('characterFilterRace');
-        if(race && race.nextSibling && race.nextSibling.value!=='fill') filterObject = {...filterObject, race: race.nextSibling.value}
+        const races = Array.from(document.getElementsByClassName("characterFilterRace")).map(c => c.textContent);
+        let raceStr = "";
+        console.log(races);
+        if(races.includes("Człowiek")) raceStr += "HUMAN,";
+        if(races.includes("Elf")) raceStr += "ELF,";
+        if(races.includes("Krasnolud")) raceStr += "DWARF,"
+        if(races.includes("Niziołek")) raceStr+= "HALFLING,"
+        if(raceStr.length > 0){
+          filterObject = {...filterObject, race: raceStr.substring(0, raceStr.length-1)}
+        }
 
         const careers = Array.from(document.getElementsByClassName("characterFilterCareers")).map(c => c.textContent);
         if(careers.length > 0) filterObject = {...filterObject, careers: this.mapFilterArrayToString(careers, this.state.autocompleteData.careerNames)}
@@ -238,9 +251,9 @@ class CharactersListPage extends React.Component{
                     <Filter
                         columnsConfig={this.state.columnsConfig}
                         onFilter={this.onFilter}
+                        expandFilterList={this.expandFilterList}
                     />
                     <DefaultPopup
-                        expandFilterList={this.expandFilterList}
                     isOpen={this.state.showModal}
                     onRequestClose={this.onClosePopup}
                     className="Modal"

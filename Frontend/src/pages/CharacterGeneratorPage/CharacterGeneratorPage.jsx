@@ -391,6 +391,7 @@ class CharacterGeneratorPage extends React.Component {
                                     id="characterGeneratorMonthOfBirth"
                                     width={150}
                                     generated={this.state.monthOfBirth}
+                                    notSortOptions
                                 />
                                 </careerContext.Provider>
 
@@ -419,6 +420,7 @@ class CharacterGeneratorPage extends React.Component {
                                 canBeGenerated
                                 generated={this.state.religion}
                                 onRandomClick={() => this.generateOneAttribute("Religia")}
+                                notSortOptions
                             />
                             </careerContext.Provider>
 

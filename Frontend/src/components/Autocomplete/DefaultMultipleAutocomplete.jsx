@@ -50,20 +50,35 @@ class DefaultMultipleAutocomplete extends React.Component {
         this.setState({options: allOptions});
     }
 
-    onDelete = (item, v) => {
+    onDelete = async (item, v) => {
         let values = this.state.values;
         values = values.filter(v => v !== item)
-        this.setState({values: values})
+        await this.setState({values: values})
         if (v !== undefined) v.update(values);
         if(this.props.multiple) this.onDeleteChangeOptions(item)
     }
 
     onDeleteChangeOptions = value => {
+        console.log(this.state.values)
+
         let allOptions = this.props.options;
-        let valueName = value.split(" ")[0]
-        let newOptions = allOptions.filter(c => c === value || c.startsWith(valueName))
-        allOptions.push.apply(allOptions, newOptions);
+        const values = this.state.values;
+        for (let value of values) {
+            let valueName = value.split(" ")[0]
+            allOptions = allOptions.filter(c => !(c === value) && !c.startsWith(valueName))
+        }
         this.setState({options: allOptions})
+
+
+        // allOptions = allOptions.filter()
+        //
+        // let oldOptions = this.state.options;
+        // let valueName = value.split(" ")[0]
+        // let newOptions = this.props.options.filter(c => c === value || c.startsWith(valueName))
+        // console.log(newOptions);
+        // oldOptions.push.apply(oldOptions, newOptions);
+        // console.log(oldOptions);
+        // this.setState({options: oldOptions})
     }
 
 randomClick = () => {
@@ -87,11 +102,33 @@ setGenerated = () => {
     else this.setState({values: this.props.generated.split(",")})
 }
 
+filterOptions = (input, state) => {
+        if(this.props.notSortOptions && state.inputValue==="") return input;
+        let optionsContains = []
+        let optionsStartWith = []
+        let allOptions = []
+        let inputValue = state.inputValue.toLowerCase()
+
+        for(let option of input){
+            let optionLowerCase = option.toLowerCase()
+            if(optionLowerCase.startsWith(inputValue))
+                optionsStartWith.push(option)
+            else{
+                if(optionLowerCase.includes(inputValue))
+                    optionsContains.push(option)
+            }
+        }
+        optionsContains.sort()
+        optionsStartWith.sort()
+        allOptions = optionsStartWith.concat(optionsContains)
+        console.log(allOptions);
+        return allOptions;
+}
+
 render()
 {
     const {labelName, id} = this.props;
     const width = this.props.width ? this.props.width : 300;
-
     return (
         <careerContext.Consumer>
             {v =>
@@ -111,6 +148,7 @@ render()
                         )}
                         value={this.state.values}
                         onChange={(event, value, reason) => this.onInputChange(event, value, v)}
+                        filterOptions={(input, state) => this.filterOptions(input, state)}
                     />
                     {this.props.canBeGenerated &&
                     <button className="detaleButton" onClick={() => this.randomClick()}><span>{element}</span></button>}

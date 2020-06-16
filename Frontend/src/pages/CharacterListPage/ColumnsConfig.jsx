@@ -139,6 +139,7 @@ export const columnConfig = (autocompleteData={}, visibilityProperties={}) => {
                 options={autocompleteData.religionNames || []}
                 id="characterFilterReligions"
                 multiple
+                notSortOptions
             /></div>
         },
 

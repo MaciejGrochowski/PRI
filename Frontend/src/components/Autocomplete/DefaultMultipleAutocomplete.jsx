@@ -43,6 +43,7 @@ class DefaultMultipleAutocomplete extends React.Component {
     setOptionsWithoutChoosenValues = values => {
         let allOptions = this.props.options;
         for (let value of values) {
+            value = value.trim()
             let valueName = value.split(" ")[0]
             allOptions = allOptions.filter(c => !(c === value) && !c.startsWith(valueName))
         }
@@ -59,8 +60,6 @@ class DefaultMultipleAutocomplete extends React.Component {
     }
 
     onDeleteChangeOptions = value => {
-        console.log(this.state.values)
-
         let allOptions = this.props.options;
         const values = this.state.values;
         for (let value of values) {
@@ -92,14 +91,21 @@ randomClick = () => {
 setGenerated = () => {
     if (Array.isArray(this.props.generated)) {
         this.setState({values: this.props.generated})
+        this.setOptionsWithoutChoosenValues(this.props.generated)
         return
     }
     if (this.props.generated === "") {
         this.setState({values: []});
         return
     }
-    if (!this.props.multiple) this.setState({values: this.props.generated})
-    else this.setState({values: this.props.generated.split(",")})
+    if (!this.props.multiple) {
+        this.setOptionsWithoutChoosenValues(this.props.generated)
+        this.setState({values: this.props.generated})
+    }
+    else {
+        this.setOptionsWithoutChoosenValues(this.props.generated.split(","))
+        this.setState({values: this.props.generated.split(",")})
+    }
 }
 
 filterOptions = (input, state) => {
@@ -121,7 +127,6 @@ filterOptions = (input, state) => {
         optionsContains.sort()
         optionsStartWith.sort()
         allOptions = optionsStartWith.concat(optionsContains)
-        console.log(allOptions);
         return allOptions;
 }
 

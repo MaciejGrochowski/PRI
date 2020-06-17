@@ -25,7 +25,7 @@
   .detaleButton{
     background-color: #292F2F;
     color: #FFD859;
-    border-radius: 20%;
+    border-radius: 20px;
     border: 2px solid #FFD859;
     text-decoration: none;
     transition-duration: 0.4s;

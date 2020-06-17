@@ -255,7 +255,7 @@ class CharacterGeneratorPage extends React.Component {
             <div className="pageWithContext">
                 <div className="pageName">Tworzenie postaci</div>
                 <div className="block-element">
-                    <div className="flex-component">
+                    <div className="flex-component space-between-component">
                         <div className="white-caption">Statystyki:</div>
                         <button className="detaleButton" onClick={() => this.fullRandomGenerate()}>Generuj losowe statystyki 
                         <span>{element}</span>
@@ -663,7 +663,7 @@ class CharacterGeneratorPage extends React.Component {
                     </div>
                     
                     <div className="block-element">
-                        <dlv className = "flex-component">
+                        <dlv className = "flex-component space-between-component">
                         <div className="white-caption">Umiejętności bojowe:</div>
                         <div className="block-component">
                             <button className="detaleButton" onClick={() => this.generateOneAttribute("Bazowe statystyki")} disabled={this.state.race===undefined || this.state.race==="" || this.state.race === null}>Wylosuj statystyki Bazowe <span>{element}</span>

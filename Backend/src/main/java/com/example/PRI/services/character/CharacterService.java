@@ -291,13 +291,18 @@ public class CharacterService extends GeneralService {
     }
 
     public AutocompleteFilterCharactersOutputDto getAutoCompletes() {
-        return new AutocompleteFilterCharactersOutputDto(placeService.getAllNames(),
-                careerService.getAllNames(), apperanceService.getAllNames(),
-                personalityService.getAllNames(), talentService.getAllNames(),
-                skillService.getAllNames(), emotionService.getAllNames(),
-                eyeColorService.getAllColors(), hairColorService.getAllColors(),
+        return new AutocompleteFilterCharactersOutputDto(
+                placeService.getAllNames().stream().sorted().collect(Collectors.toList()),
+                careerService.getAllNames().stream().sorted().collect(Collectors.toList()),
+                apperanceService.getAllNames().stream().sorted().collect(Collectors.toList()),
+                personalityService.getAllNames().stream().sorted().collect(Collectors.toList()),
+                talentService.getAllNames().stream().sorted().collect(Collectors.toList()),
+                skillService.getAllNames().stream().sorted().collect(Collectors.toList()),
+                emotionService.getAllNames().stream().sorted().collect(Collectors.toList()),
+                eyeColorService.getAllColors().stream().sorted().collect(Collectors.toList()),
+                hairColorService.getAllColors().stream().sorted().collect(Collectors.toList()),
                 Arrays.stream(Religion.values()).map(Religion::getGodName).collect(Collectors.toList()),
-                Arrays.stream(StarSign.values()).map(StarSign::getName).collect(Collectors.toList())
+                Arrays.stream(StarSign.values()).map(StarSign::getName).sorted().collect(Collectors.toList())
         );
     }
 

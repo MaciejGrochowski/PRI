@@ -47,7 +47,7 @@ public class WeightGenerator {
     }
 
     public Map<String, String> getProperties(Integer weight, HashMap<String, String> properties) {
-        Map newProps = generateProperties(Double.valueOf(weight), Double.parseDouble(properties.get("averageHeight")));
+        Map newProps = generateProperties(Double.parseDouble(properties.get("averageHeight")), Double.valueOf(weight));
         return newProps;
     }
 }

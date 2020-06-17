@@ -12,19 +12,22 @@ export const Tag = styled(({ label, onDelete, id, ...props }) => (
         ))}
     </>
 ))`
+overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap;
   display: flex;
   align-items: center;
-  height: 24px;
+  // height: 24px;
   color: #FFD859;
-  line-height: 22px;
-  background-color: #292F2F;
+  // line-height: 22px;
+  background-color: #242a2a;
   border: 1px solid #FFD859;
-  border-radius: 2px;
+  border-radius: 20px;
   box-sizing: content-box;
-  padding: 0 4px 0 10px;
-  margin-left: 5px;
+  // padding: 0 4px 0 10px;
+  margin: 3px;
+  padding-left: 5px;
   outline: 0;
-  overflow: hidden;
 
   &:focus {
     background-color: #292F2F;
@@ -42,5 +45,6 @@ export const Tag = styled(({ label, onDelete, id, ...props }) => (
     font-size: 12px;
     cursor: pointer;
     padding: 4px;
+    margin: 4px;
   }
 `;

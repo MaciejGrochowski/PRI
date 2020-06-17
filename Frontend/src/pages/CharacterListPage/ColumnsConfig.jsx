@@ -57,7 +57,6 @@ export const columnConfig = (autocompleteData={}, visibilityProperties={}) => {
         },
         {
             title: 'Miejsce pobytu',
-            cellStyle: {width: '700px'},
             hidden: !visibilityProperties.livePlace,
             field: 'livePlace',
             filter: <div className="ziemniak"><DefaultMultipleAutocomplete

@@ -3,8 +3,13 @@ import filter from "../../styles/filters.css";
 import button from "../../styles/buttons.css";
 import {Link} from "react-router-dom";
 import {fronendUrls} from "../../commons/urls";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faSearch, faTasks} from "@fortawesome/free-solid-svg-icons";
 
 
+const element = <FontAwesomeIcon icon={faSearch}/>
+
+const element2 = <FontAwesomeIcon icon={faTasks}/>
 
 class Filter extends React.Component {
 
@@ -22,8 +27,8 @@ class Filter extends React.Component {
                     }
                 </div>
                 <div className = "filter-button">
-                    <button className = "button" onClick={onFilter}>Filtruj</button>
-                    <button className="button" onClick={expandFilterList}>Dostosuj</button>
+                    <button className = "button" onClick={onFilter}>Wyszukaj <span>{element}</span></button>
+                    <button className="button" onClick={expandFilterList}>Dostosuj filtry<span>{element2}</span> </button>
                 </div>
                 
             </div>

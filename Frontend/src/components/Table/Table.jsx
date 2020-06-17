@@ -34,11 +34,15 @@ class Table extends React.Component {
     render(){
         const {data=[], noRecordsMessage="Brak danych", onChangeCountPerPage, ownOnChangePage, count, page, onOrderChange} = this.props;
         let columnsConfig = this.state.columnsConfig;
+        console.log(columnsConfig);
 
         const divStyle = {
             textDecoration: "none",
             backgroundColor: '#292F2F',
             color: '#FFD859',
+            overflow: 'hidden',
+            textOverflow: 'ellipsis',
+            whiteSpace: 'nowrap',
         };
 
         const rowStyle = {

@@ -1,7 +1,6 @@
 package com.example.PRI.controllers;
 
 import com.example.PRI.controllers.annotations.Get;
-import com.example.PRI.controllers.annotations.Post;
 import com.example.PRI.dtos.characters.*;
 import com.example.PRI.services.character.CharacterService;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -49,10 +48,12 @@ public class CharacterController {
 
             return map;
 
-        } catch (Exception e) {
-            System.err.println(e);
+        } catch (NullPointerException e) {
             return new HashMap<>();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+        return new HashMap<>();
     }
 
     @Get("/example")

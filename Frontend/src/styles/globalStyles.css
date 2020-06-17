@@ -75,9 +75,12 @@ body{
     width: -moz-available;
 }
 
+.space-between-component{
+    justify-content: space-between;
+}
+
 .flex-component{
     display: flex;
-    justify-content: space-between;
     margin-bottom: 2%;
     width: 90%;
     padding-bottom: 1%;

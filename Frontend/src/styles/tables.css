@@ -2,7 +2,7 @@
     background-color: '#292F2F';
     margin-left: 5%;
     margin-right: 5%;
-    width: -moz-available;
+    /* width: -moz-available; */
     max-width: -webkit-fill-available;
     border: none!important;
     z-index: 0;

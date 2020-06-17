@@ -20,6 +20,11 @@
 
 }
 
+.MuiAutocomplete-root{
+  color: white!important;
+}
+
+
 .container-stats .column-1 .MuiTextField-root{
   width:  -webkit-fill-available!important;
   width: -moz-available!important;
@@ -31,6 +36,12 @@ overflow-wrap: break-word!important;
 
 .MuiFormControl-root{
   margin-top: 2%!important;
+  border-bottom: solid 1px white!important;
+  color: white!important;
+}
+
+.MuiFormControl-root:focus{
+border: none!important;
 }
 
 .MuiTableCell-body{
@@ -66,9 +77,6 @@ color: #FFD859!important;
 color: #FFD859!important;
 }
 
-.MuiFormControl-root{
-  border-bottom: solid 1px #FFD859!important;
-}
 .App-header {
   background-color:#292F2F;
   min-height: 100vh;
@@ -122,7 +130,7 @@ color: #FFD859!important;
 
 .MuiTableCell-root{
 background-color: #292F2F;
-width: min-content!important;
+/* width: min-content!important; */
 text-align: center!important;
 } 
 
@@ -156,6 +164,7 @@ background-color: #292F2F;
 .MuiAutocomplete-noOptions{
   background-color: #292F2F;
   color:#FFD859!important; 
+
 }
 
 .MuiTableSortLabel-iconDirectionAsc{

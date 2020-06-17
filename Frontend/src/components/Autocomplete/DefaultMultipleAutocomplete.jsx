@@ -139,7 +139,7 @@ render()
                         id={this.props.multiple ? "ToDo here should be randomId" : id}
                         noOptionsText={"Brak opcji"}
                         style={{width: width}}
-                        disabled={this.props.disabled}
+                        // popupIcon={<div style={{}}>ZIemniak</div>} ToDo Kasia spróbuj pokonać ziemniaka
                         renderInput={(params) => (
                             <TextField {...params} label={labelName}/>
                         )}
@@ -151,7 +151,7 @@ render()
                         filterOptions={(input, state) => this.filterOptions(input, state)}
                     />
                     {this.props.canBeGenerated &&
-                    <button className="detaleButton" onClick={() => this.randomClick()}><span>{element}</span></button>}
+                    <button className="detaleButton" onClick={() => this.randomClick()} disabled={this.props.disabled}><span>{element}</span></button>}
                 </div>
             }</careerContext.Consumer>
     )

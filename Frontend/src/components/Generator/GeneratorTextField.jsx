@@ -54,7 +54,7 @@ class GeneratorTextField extends React.Component {
                                onChange={event => this.onChangeFunction(event, v)}
                                onBlur={(event) => this.onBlur(event, v)}
                     />
-                    {this.props.canBeGenerated && <button className="detaleButton" onClick={() => this.props.onRandomClick()}><span>{element}</span></button>}
+                    {this.props.canBeGenerated && <button className="detaleButton" onClick={() => this.props.onRandomClick()} disabled={this.props.disabled}><span>{element}</span></button>}
                     </div>
                 }
             </careerContext.Consumer>

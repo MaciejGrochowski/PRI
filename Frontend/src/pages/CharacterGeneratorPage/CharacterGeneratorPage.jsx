@@ -271,7 +271,10 @@ class CharacterGeneratorPage extends React.Component {
                                     })
                                 },
                             }}>
-                                <GeneratorTextField label="Imię" generated={this.state.name} canBeGenerated onRandomClick={() => this.generateOneAttribute("Imię")}/>
+                                <GeneratorTextField label="Imię" generated={this.state.name} canBeGenerated onRandomClick={() => this.generateOneAttribute("Imię")}
+                                                    disabled={this.state.race===undefined || this.state.race==="" || this.state.race === null ||
+                                                    this.state.sex===undefined || this.state.sex==="" || this.state.sex === null }
+                                                    />
                             </careerContext.Provider>
 
 
@@ -282,7 +285,11 @@ class CharacterGeneratorPage extends React.Component {
                                     })
                                 },
                             }}>
-                                <GeneratorTextField label="Nazwisko" generated={this.state.surname} canBeGenerated onRandomClick={() => this.generateOneAttribute("Nazwisko")}/>
+                                <GeneratorTextField label="Nazwisko" generated={this.state.surname} canBeGenerated onRandomClick={() => this.generateOneAttribute("Nazwisko")}
+                                                    disabled={this.state.race===undefined || this.state.race==="" || this.state.race === null ||
+                                                    this.state.sex===undefined || this.state.sex==="" || this.state.sex === null
+                                                    }
+                                />
                             </careerContext.Provider>
 
                             <careerContext.Provider value={{
@@ -299,6 +306,7 @@ class CharacterGeneratorPage extends React.Component {
                                 canBeGenerated
                                 generated={this.state.race}
                                 onRandomClick={() => this.generateOneAttribute("Rasa")}
+                                disabled={this.state.birthPlace===undefined || this.state.birthPlace==="" || this.state.birthPlace === null}
                             />
                             </careerContext.Provider>
 
@@ -316,6 +324,7 @@ class CharacterGeneratorPage extends React.Component {
                                 canBeGenerated
                                 generated={this.state.sex}
                                 onRandomClick={() => this.generateOneAttribute("Płeć")}
+                                disabled={this.state.race === undefined || this.state.race === "" || this.state.race === null}
                             /></careerContext.Provider>
 
 
@@ -334,6 +343,23 @@ class CharacterGeneratorPage extends React.Component {
                                     canBeGenerated
                                     generated={this.state.currentCareer}
                                     onRandomClick={() => this.generateOneAttribute("Profesja")}
+                                    disabled={this.state.race === undefined || this.state.race === "" || this.state.race === null
+                                    || this.state.sex === undefined || this.state.sex === "" || this.state.sex === null ||
+                                    this.state.birthPlace === undefined || this.state.birthPlace === "" || this.state.birthPlace === null ||
+                                    this.state.baseWeaponSkills === undefined || this.state.baseWeaponSkills === "" || this.state.baseWeaponSkills === null ||
+                                    this.state.baseBallisticSkills === undefined || this.state.baseBallisticSkills === "" || this.state.baseBallisticSkills === null ||
+                                    this.state.baseStrength === undefined || this.state.baseStrength === "" || this.state.baseStrength === null ||
+                                    this.state.baseToughness === undefined || this.state.baseToughness === "" || this.state.baseToughness === null ||
+                                    this.state.baseAgility === undefined || this.state.baseAgility === "" || this.state.baseAgility === null ||
+                                    this.state.baseIntelligence === undefined || this.state.baseIntelligence === "" || this.state.baseIntelligence === null ||
+                                    this.state.baseWillPower === undefined || this.state.baseWillPower === "" || this.state.baseWillPower === null ||
+                                    this.state.baseFellowship === undefined || this.state.baseFellowship === "" || this.state.baseFellowship === null ||
+                                    this.state.baseAttacks === undefined || this.state.baseAttacks === "" || this.state.baseAttacks === null ||
+                                    this.state.baseWounds === undefined || this.state.baseWounds === "" || this.state.baseWounds === null ||
+                                    this.state.baseMovement === undefined || this.state.baseMovement === "" || this.state.baseMovement === null ||
+                                    this.state.baseMagic === undefined || this.state.baseMagic === "" || this.state.baseMagic === null
+                                        //ToDo warunki disabled powinny być najlepiej wyrzucone do osobnego pliku
+                                    }
                                 />
                             </careerContext.Provider>
 
@@ -350,6 +376,9 @@ class CharacterGeneratorPage extends React.Component {
                                 canBeGenerated
                                 generated={this.state.livePlace}
                                 onRandomClick={() => this.generateOneAttribute("Miejsce pobytu")}
+                                disabled={this.state.birthPlace === undefined || this.state.birthPlace === "" || this.state.birthPlace === null ||
+                                this.state.currentCareer === undefined || this.state.currentCareer === "" || this.state.currentCareer === null ||
+                                this.state.religion === undefined || this.state.religion === "" || this.state.religion === null}
                             />
                             </careerContext.Provider>
                             <careerContext.Provider value={{
@@ -404,7 +433,9 @@ class CharacterGeneratorPage extends React.Component {
                                 }}>
                                     <GeneratorTextField label="Rok urodzenia" generated={this.state.yearOfBirth}
                                                         canBeGenerated
-                                                        onRandomClick={() => this.generateOneAttribute("Data urodzenia")}/>
+                                                        onRandomClick={() => this.generateOneAttribute("Data urodzenia")}
+                                                        disabled={this.state.race===undefined || this.state.race==="" || this.state.race === null}
+                                    />
                                 </careerContext.Provider>
 
                             <careerContext.Provider value={{
@@ -421,6 +452,9 @@ class CharacterGeneratorPage extends React.Component {
                                 generated={this.state.religion}
                                 onRandomClick={() => this.generateOneAttribute("Religia")}
                                 notSortOptions
+                                disabled={this.state.race === undefined || this.state.race === "" || this.state.race === null ||
+                                this.state.sex === undefined || this.state.sex === "" || this.state.sex === null ||
+                                this.state.currentCareer === undefined || this.state.currentCareer === "" || this.state.currentCareer === null}
                             />
                             </careerContext.Provider>
 
@@ -436,7 +470,7 @@ class CharacterGeneratorPage extends React.Component {
                                         })
                                     },
                                 }}>
-                                    <GeneratorTextField label="Wzrost" generated={this.state.height} canBeGenerated onRandomClick={() => this.generateOneAttribute("Wzrost")}/>
+                                    <GeneratorTextField label="Wzrost" generated={this.state.height} canBeGenerated onRandomClick={() => this.generateOneAttribute("Wzrost")} disabled={this.state.race===undefined || this.state.race==="" || this.state.race === null || this.state.sex===undefined || this.state.sex==="" || this.state.sex === null}/>
                                 </careerContext.Provider>
 
                                 <careerContext.Provider value={{
@@ -446,7 +480,7 @@ class CharacterGeneratorPage extends React.Component {
                                         })
                                     },
                                 }}>
-                                    <GeneratorTextField label="Waga" generated={this.state.weight} canBeGenerated onRandomClick={() => this.generateOneAttribute("Waga")}/>
+                                    <GeneratorTextField label="Waga" generated={this.state.weight} canBeGenerated onRandomClick={() => this.generateOneAttribute("Waga")} disabled={this.state.race===undefined || this.state.race==="" || this.state.race === null || this.state.sex===undefined || this.state.sex==="" || this.state.sex === null}/>
                                 </careerContext.Provider>
                                 <careerContext.Provider value={{
                                 update: (val) => {
@@ -461,6 +495,7 @@ class CharacterGeneratorPage extends React.Component {
                                 canBeGenerated
                                 generated={this.state.eyeColor}
                                 onRandomClick={() => this.generateOneAttribute("Kolor oczu")}
+                                disabled={this.state.race===undefined || this.state.race==="" || this.state.race === null}
                             /></careerContext.Provider>
 
                             <careerContext.Provider value={{
@@ -476,6 +511,7 @@ class CharacterGeneratorPage extends React.Component {
                                 canBeGenerated
                                 generated={this.state.hairColor}
                                 onRandomClick={() => this.generateOneAttribute("Kolor włosów")}
+                                disabled={this.state.race===undefined || this.state.race==="" || this.state.race === null}
                             /></careerContext.Provider>
 
 
@@ -495,6 +531,11 @@ class CharacterGeneratorPage extends React.Component {
                                 canBeGenerated
                                 generated={this.state.personalities}
                                 onRandomClick={() => this.generateOneAttribute("Cechy charakteru")}
+                                disabled={this.state.religion === undefined || this.state.religion === "" || this.state.religion === null ||
+                                this.state.race === undefined || this.state.race === "" || this.state.race === null ||
+                                this.state.yearOfBirth === undefined || this.state.yearOfBirth === "" || this.state.yearOfBirth === null ||
+                                this.state.currentCareer === undefined || this.state.currentCareer === "" || this.state.currentCareer === null
+                                }
                             />
                             </careerContext.Provider>
 
@@ -512,6 +553,14 @@ class CharacterGeneratorPage extends React.Component {
                                 canBeGenerated
                                 generated={this.state.apperances}
                                 onRandomClick={() => this.generateOneAttribute("Cechy wyglądu")}
+                                disabled={this.state.religion === undefined || this.state.religion === "" || this.state.religion === null ||
+                                this.state.race === undefined || this.state.race === "" || this.state.race === null ||
+                                this.state.yearOfBirth === undefined || this.state.yearOfBirth === "" || this.state.yearOfBirth === null ||
+                                this.state.currentCareer === undefined || this.state.currentCareer === "" || this.state.currentCareer === null ||
+                                this.state.sex === undefined || this.state.sex === "" || this.state.sex === null ||
+                                this.state.yearOfBirth === undefined || this.state.yearOfBirth === "" || this.state.yearOfBirth === null ||
+                                this.state.weight === undefined || this.state.weight === "" || this.state.weight === null ||
+                                this.state.height === undefined || this.state.height === "" || this.state.height === null}
                             />
                             </careerContext.Provider>
 
@@ -545,6 +594,11 @@ class CharacterGeneratorPage extends React.Component {
                                 canBeGenerated
                                 generated={this.state.dominatingEmotions}
                                 onRandomClick={() => this.generateOneAttribute("Dominujące emocje")}
+                                disabled={this.state.race===undefined || this.state.race==="" || this.state.race === null ||
+                                    this.state.yearOfBirth===undefined || this.state.yearOfBirth==="" || this.state.yearOfBirth === null
+
+                                }
+
                             />
                             </careerContext.Provider>
 
@@ -567,6 +621,9 @@ class CharacterGeneratorPage extends React.Component {
                                 canBeGenerated
                                 generated={this.state.skills}
                                 onRandomClick={() => this.generateOneAttribute("Umiejętności")}
+                                disabled={this.state.currentCareer === undefined || this.state.currentCareer === "" || this.state.currentCareer === null ||
+                                this.state.race === undefined || this.state.race === "" || this.state.race === null
+                                }
                             /></careerContext.Provider>
 
                             <careerContext.Provider value={{
@@ -583,6 +640,9 @@ class CharacterGeneratorPage extends React.Component {
                                 canBeGenerated
                                 generated={this.state.talents}
                                 onRandomClick={() => this.generateOneAttribute("Zdolności")}
+                                disabled={this.state.currentCareer === undefined || this.state.currentCareer === "" || this.state.currentCareer === null ||
+                                this.state.race === undefined || this.state.race === "" || this.state.race === null
+                                }
                             /></careerContext.Provider>
 
 
@@ -595,7 +655,9 @@ class CharacterGeneratorPage extends React.Component {
                             }}>
                                 <GeneratorTextField label="Przepowiednia" canBeGenerated
                                                     generated={this.state.prediction}
-                                                    onRandomClick={() => this.generateOneAttribute("Przepowiednia")}/>
+                                                    onRandomClick={() => this.generateOneAttribute("Przepowiednia")}
+                                                    disabled={false}
+                                />
                             </careerContext.Provider>
 
                     </div>
@@ -604,9 +666,24 @@ class CharacterGeneratorPage extends React.Component {
                         <dlv className = "flex-component">
                         <div className="white-caption">Umiejętności bojowe:</div>
                         <div className="block-component">
-                            <button className="detaleButton" onClick={() => this.generateOneAttribute("Bazowe statystyki")}>Wylosuj statystyki Bazowe <span>{element}</span>
+                            <button className="detaleButton" onClick={() => this.generateOneAttribute("Bazowe statystyki")} disabled={this.state.race===undefined || this.state.race==="" || this.state.race === null}>Wylosuj statystyki Bazowe <span>{element}</span>
                             </button>
-                            <button className="detaleButton" onClick={() => this.generateOneAttribute("Statystyki końcowe")}>Wylosuj statystyki Obecnie <span>{element}</span></button>
+                            <button className="detaleButton" onClick={() => this.generateOneAttribute("Statystyki końcowe")} disabled={this.state.baseWeaponSkills === undefined || this.state.baseWeaponSkills === "" || this.state.baseWeaponSkills === null ||
+                                this.state.baseBallisticSkills === undefined || this.state.baseBallisticSkills === "" || this.state.baseBallisticSkills === null ||
+                                this.state.baseStrength === undefined || this.state.baseStrength === "" || this.state.baseStrength === null ||
+                                this.state.baseToughness === undefined || this.state.baseToughness === "" || this.state.baseToughness === null ||
+                                this.state.baseAgility === undefined || this.state.baseAgility === "" || this.state.baseAgility === null ||
+                                this.state.baseIntelligence === undefined || this.state.baseIntelligence === "" || this.state.baseIntelligence === null ||
+                                this.state.baseWillPower === undefined || this.state.baseWillPower === "" || this.state.baseWillPower === null ||
+                                this.state.baseFellowship === undefined || this.state.baseFellowship === "" || this.state.baseFellowship === null ||
+                                this.state.baseAttacks === undefined || this.state.baseAttacks === "" || this.state.baseAttacks === null ||
+                                this.state.baseWounds === undefined || this.state.baseWounds === "" || this.state.baseWounds === null ||
+                                this.state.baseMovement === undefined || this.state.baseMovement === "" || this.state.baseMovement === null ||
+                                this.state.baseMagic === undefined || this.state.baseMagic === "" || this.state.baseMagic === null ||
+                                this.state.currentCareer === undefined || this.state.currentCareer === "" || this.state.currentCareer === null ||
+                                this.state.talents === undefined || this.state.talents === "" || this.state.talents === null
+
+                            }>Wylosuj statystyki Obecne <span>{element}</span></button>
                         </div>
                         </dlv>
                         <div className= "center">

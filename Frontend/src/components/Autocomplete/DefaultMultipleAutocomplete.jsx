@@ -160,6 +160,7 @@ render()
                         // multiline
                         options={this.props.multiple ? this.state.options : this.props.options}
                         id={this.props.multiple ? this.props.labelName : id}
+                        disablePortal={true}
                         noOptionsText={"Brak opcji"}
                         style={{width: width}}
                         // popupIcon={<div style={{}}>ZIemniak</div>} ToDo Kasia spróbuj pokonać ziemniaka
@@ -172,7 +173,8 @@ render()
                         //     (this.state.valueChars > 20 && this.state.values.length === 3) ||
                         //     this.state.values.length > 3
                         //     ? "filter" : "block-element"}>
-                               <div className = "filter"><Tag label={this.state.values} onDelete={element => this.onDelete(element, v)} id={id}/>
+                               <div className = "filter">
+                                   <Tag label={this.state.values} onDelete={element => this.onDelete(element, v)} id={id}/>
                             <br/></div>)}
                         value={this.state.values}
                         onChange={(event, value, reason) => this.onInputChange(event, value, v)}

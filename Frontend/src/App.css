@@ -124,6 +124,15 @@ color: #FFD859!important;
   color: #FFD859!important;
 }
 
+.MuiAutocomplete-popperDisablePortal{
+  display: inline-block;
+  align-self: flex-end;
+  /*bottom: 0;*/
+  /*HERE ZOSIA*/
+  /*color: red!important;*/
+  /*border-left: solid 3px red;*/
+}
+
 .material-icons{
   color:  #FFD859!important;
 }

@@ -30,9 +30,9 @@
   width: -moz-available!important;
 }
 
-.MuiInputBase-input{
+/* .MuiInputBase-input{
 overflow-wrap: break-word!important;
-}
+} */
 
 .MuiFormControl-root{
   margin-top: 2%!important;
@@ -88,6 +88,10 @@ color: #FFD859!important;
   color: white;
 }
 
+.MuiInput-inputMultiline{
+  height: auto!important;
+}
+
 .MuiFormLabel-root{
 
   color: #FFD859!important;
@@ -136,6 +140,7 @@ color: #FFD859!important;
   word-break: break-all;
   -ms-line-break: strict;
   line-break: normal;
+  margin: auto;
 }
 .MuiTableCell-root{
 background-color: #292F2F;

@@ -663,7 +663,7 @@ class CharacterGeneratorPage extends React.Component {
                     </div>
                     
                     <div className="block-element">
-                        <dlv className = "flex-component space-between-component">
+                        <div className = "flex-component space-between-component">
                         <div className="white-caption">Umiejętności bojowe:</div>
                         <div className="block-component">
                             <button className="detaleButton reverse" onClick={() => this.generateOneAttribute("Bazowe statystyki")} disabled={this.state.race===undefined || this.state.race==="" || this.state.race === null}><div className = "text-with-fafa">Wylosuj statystyki Bazowe </div><span>{element}</span>
@@ -685,7 +685,7 @@ class CharacterGeneratorPage extends React.Component {
 
                             }><div className = "text-with-fafa">Wylosuj statystyki Obecne </div><span>{element}</span></button>
                         </div>
-                        </dlv>
+                        </div>
                         <div className= "center">
                         <div className="block-grid">
                             <div className="grid">

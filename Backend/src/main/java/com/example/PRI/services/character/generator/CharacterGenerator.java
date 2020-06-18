@@ -250,12 +250,12 @@ public class CharacterGenerator extends GeneralService {
             Surname surname = characterSaveService.surnameConvert(characterInputDto.getSurname());
             character.setSurname(prepareSurnameProperties(character.getRace(), surname, character.getSex()));
         }
-        character.setPrediction(characterSaveService.predictionConvert(characterInputDto.getPrediction()));
+        if(characterInputDto.getPrediction() != null)character.setPrediction(characterSaveService.predictionConvert(characterInputDto.getPrediction()));
         if(characterInputDto.getCurrentCareer() != null) character.setCurrentCareer(characterSaveService.currentCareerConvert(characterInputDto.getCurrentCareer()));
         if(characterInputDto.getPreviousCareers() != null) character.setPreviousCareers(characterSaveService.previousCareersConvert(characterInputDto.getPreviousCareers(),characterInputDto.getCurrentCareer()));
         if(characterInputDto.getHairColor() != null && !characterInputDto.getHairColor().equals("")) character.setHairColor(characterSaveService.hairColorConverter(characterInputDto.getHairColor()));
         if(characterInputDto.getEyeColor() != null) character.setEyeColor(characterSaveService.eyeColorConverter(characterInputDto.getEyeColor()));
-        if(characterInputDto.getDominatingEmotions() != null && characterSaveService.personalityOrAppearanceOrEmotionNumber(characterInputDto.getDominatingEmotions(), "emotion")) character.setDominatingEmotions(characterSaveService.dominantingEmotionConvert(characterInputDto.getDominatingEmotions()));
+        if(characterSaveService.personalityOrAppearanceOrEmotionNumber(characterInputDto.getDominatingEmotions(), "emotion")) character.setDominatingEmotions(characterSaveService.dominantingEmotionConvert(characterInputDto.getDominatingEmotions()));
         if(characterInputDto.getLivePlace() != null) character.setLivePlace(characterSaveService.livePlaceConverter(characterInputDto.getLivePlace()));
         if(characterInputDto.getBirthPlace() != null) character.setBirthPlace(characterSaveService.bornPlaceConverter(characterInputDto.getBirthPlace()));
         if(characterInputDto.getHeight() != null && characterSaveService.checkNumber(characterInputDto.getHeight(), "height")) character.setHeight(characterSaveService.heightConverter(characterInputDto.getHeight()));

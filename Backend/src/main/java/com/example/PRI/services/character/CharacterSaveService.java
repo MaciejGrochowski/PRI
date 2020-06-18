@@ -373,6 +373,7 @@ public class CharacterSaveService {
     }
 
     public boolean personalityOrAppearanceOrEmotionNumber(String checkString, String type){
+        if (checkString == null) return false;
         List<String> stringList = Arrays.asList(checkString.split(","));
         switch (type) {
             case "emotion":

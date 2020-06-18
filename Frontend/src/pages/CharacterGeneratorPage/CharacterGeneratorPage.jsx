@@ -206,6 +206,11 @@ class CharacterGeneratorPage extends React.Component {
         const characterInput = this.getDataFromForm();
         generatorService.generateOneAttribute(attrName, characterInput)
             .then(response => this.generateOneAttributeSuccessHandler(attrName, response))
+            .catch(error => this.generateOneAttributeErrorHandler(error))
+    }
+
+    generateOneAttributeErrorHandler = error => {
+        this.setState({isError: true, errorText: error.response.data.message})
     }
 
     generateOneAttributeSuccessHandler = (attrName, response) => {
@@ -467,7 +472,9 @@ class CharacterGeneratorPage extends React.Component {
                                 notSortOptions
                                 disabled={this.state.race === undefined || this.state.race === "" || this.state.race === null ||
                                 this.state.sex === undefined || this.state.sex === "" || this.state.sex === null ||
-                                this.state.currentCareer === undefined || this.state.currentCareer === "" || this.state.currentCareer === null}
+                                this.state.currentCareer === undefined || this.state.currentCareer === "" || this.state.currentCareer === null ||
+                                this.state.birthPlace === undefined || this.state.birthPlace === "" || this.state.birthPlace === null
+                                }
                             />
                             </careerContext.Provider>
 

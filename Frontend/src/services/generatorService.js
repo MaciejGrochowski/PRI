@@ -21,8 +21,10 @@ const validInputAttributes = character => {
     for (var key in character) {
         if (character.hasOwnProperty(key)) {
             if(typeof character[key] === 'string' || character[key] instanceof String){
-                character[key] = character[key].replaceAll("[", "")
-                character[key] = character[key].replaceAll("]", "")
+                character[key] = character[key].split("[").join("")
+                character[key] = character[key].split("]").join("")
+                // character[key] = character[key].toString().replaceAll("[", "")
+                // character[key] = character[key].toString().replaceAll("]", "")
             }
         }
     }

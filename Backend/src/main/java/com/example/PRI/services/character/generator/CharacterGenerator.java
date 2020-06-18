@@ -250,19 +250,18 @@ public class CharacterGenerator extends GeneralService {
             Surname surname = characterSaveService.surnameConvert(characterInputDto.getSurname());
             character.setSurname(prepareSurnameProperties(character.getRace(), surname, character.getSex()));
         }
-        character.setPrediction(characterSaveService.predictionConvert(characterInputDto.getPrediction()));
+        if(characterInputDto.getPrediction() != null)character.setPrediction(characterSaveService.predictionConvert(characterInputDto.getPrediction()));
         if(characterInputDto.getCurrentCareer() != null) character.setCurrentCareer(characterSaveService.currentCareerConvert(characterInputDto.getCurrentCareer()));
         if(characterInputDto.getPreviousCareers() != null) character.setPreviousCareers(characterSaveService.previousCareersConvert(characterInputDto.getPreviousCareers(),characterInputDto.getCurrentCareer()));
         if(characterInputDto.getHairColor() != null && !characterInputDto.getHairColor().equals("")) character.setHairColor(characterSaveService.hairColorConverter(characterInputDto.getHairColor()));
         if(characterInputDto.getEyeColor() != null) character.setEyeColor(characterSaveService.eyeColorConverter(characterInputDto.getEyeColor()));
-        if(characterInputDto.getApperance() != null) character.setApperance(characterSaveService.apperanceConvert(characterInputDto.getApperance()));
-        if(characterInputDto.getDominatingEmotions() != null) character.setDominatingEmotions(characterSaveService.dominantingEmotionConvert(characterInputDto.getDominatingEmotions()));
+        if(characterSaveService.personalityOrAppearanceOrEmotionNumber(characterInputDto.getDominatingEmotions(), "emotion")) character.setDominatingEmotions(characterSaveService.dominantingEmotionConvert(characterInputDto.getDominatingEmotions()));
         if(characterInputDto.getLivePlace() != null) character.setLivePlace(characterSaveService.livePlaceConverter(characterInputDto.getLivePlace()));
         if(characterInputDto.getBirthPlace() != null) character.setBirthPlace(characterSaveService.bornPlaceConverter(characterInputDto.getBirthPlace()));
         if(characterInputDto.getHeight() != null && characterSaveService.checkNumber(characterInputDto.getHeight(), "height")) character.setHeight(characterSaveService.heightConverter(characterInputDto.getHeight()));
         if(characterInputDto.getWeight() != null && characterSaveService.checkNumber(characterInputDto.getWeight(), "weight")) character.setWeight(characterSaveService.weightConverter(characterInputDto.getWeight()));
-        character.setPersonality(characterSaveService.personalityListConvert(characterInputDto.getPersonality()));
-        character.setApperance(characterSaveService.apperanceConvert(characterInputDto.getApperance()));
+        if(characterSaveService.personalityOrAppearanceOrEmotionNumber(characterInputDto.getPersonality(), "personality"))character.setPersonality(characterSaveService.personalityListConvert(characterInputDto.getPersonality()));
+        if(characterSaveService.personalityOrAppearanceOrEmotionNumber(characterInputDto.getApperance(), "apperance"))character.setApperance(characterSaveService.apperanceConvert(characterInputDto.getApperance()));
         character.setSkills(characterSaveService.skillsConvert(characterInputDto.getSkills()));
         character.setTalents(characterSaveService.talentsConvert(characterInputDto.getTalents()));
         if(characterInputDto.getReligion() != null && !characterInputDto.getReligion().equals("")) character.setReligion(characterSaveService.religionConverter(characterInputDto.getReligion()));

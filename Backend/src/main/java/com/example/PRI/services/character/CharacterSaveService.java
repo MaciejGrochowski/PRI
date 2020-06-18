@@ -372,6 +372,24 @@ public class CharacterSaveService {
         return emotionList;
     }
 
+    public boolean personalityOrAppearanceOrEmotionNumber(String checkString, String type){
+        if (checkString == null) return false;
+        List<String> stringList = Arrays.asList(checkString.split(","));
+        switch (type) {
+            case "emotion":
+                List<Emotion> emotionList = emotionService.findByNameIn(stringList);
+                return emotionList.size() < 5;
+            case "personality":
+                List<Personality> personalityList = personalityService.findByNameIn(stringList);
+                return personalityList.size() < 6;
+            case "apperance":
+                List<Apperance> apperanceList = apperanceService.findByNameIn(stringList);
+                return apperanceList.size() < 6;
+            default:
+                return false;
+        }
+    }
+
     public Integer endWeaponSkillConvert(String WeaponSkill) {
         if (WeaponSkill == null) throw new CharacterSaveException("Podaj statystyke dla obecnej walki wręcz.", new IllegalArgumentException());
         Integer newWeaponSkill = null;

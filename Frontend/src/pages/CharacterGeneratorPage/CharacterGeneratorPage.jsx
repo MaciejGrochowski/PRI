@@ -383,7 +383,10 @@ class CharacterGeneratorPage extends React.Component {
                                 disabled={this.state.birthPlace === undefined || this.state.birthPlace === "" || this.state.birthPlace === null ||
                                 this.state.currentCareer === undefined || this.state.currentCareer === "" || this.state.currentCareer === null ||
                                 this.state.religion === undefined || this.state.religion === "" || this.state.religion === null ||
-                                this.state.race === undefined || this.state.race === "" || this.state.race === null}
+                                this.state.race === undefined || this.state.race === "" || this.state.race === null ||
+                                    this.state.sex=== undefined || this.state.sex === "" || this.state.sex === null
+
+                                }
                             />
                                 {/*ToDo Rasa nie powinna być wymagana do miejsca pobytu - błąd na backendzie*/}
 

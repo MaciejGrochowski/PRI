@@ -87,6 +87,7 @@ public class ReligionGenerator {
 
     public Map<String, String> prepareProps(Character character, HashMap<String, String> properties) {
         Map<String, String> output = new HashMap<>();
+        if(character.getRace()==null || character.getBirthPlace()==null || character.getSex()==null) return new HashMap<>();
 
         if(character.getRace().equals(Race.HUMAN)){
             if(character.getBirthPlace().getPlaceType().equals(PlaceType.VILLIAGE)) output.put("Stara Wiara", "0.002");

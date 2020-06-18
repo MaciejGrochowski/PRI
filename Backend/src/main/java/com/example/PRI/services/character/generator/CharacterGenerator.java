@@ -139,17 +139,8 @@ public class CharacterGenerator extends GeneralService {
         }
         else if (character.getPrediction()!=null) characterBuilder.buildPrediction(predictionGenerator, character.getPrediction());
 
-        if(attribute.equals("religia")) return characterBuilder.buildReligion(new ReligionGenerator()).getCharacter();
-        else if(character.getReligion() != null) characterBuilder.buildReligion(new ReligionGenerator(), character.getReligion());
-
         if(attribute.equals("miejsce-pobytu")) return characterBuilder.buildLivePlace(livePlaceGenerator).getCharacter();
         else if(character.getLivePlace() != null) characterBuilder.buildLivePlace(livePlaceGenerator, character.getLivePlace());
-
-        if(attribute.equals("cechy-wyglądu")) return characterBuilder.buildApperances(apperanceGenerator).getCharacter();
-        else if(character.getApperance()!= null) characterBuilder.buildApperances(apperanceGenerator, character.getApperance());
-
-        if(attribute.equals("cechy-charakteru")) return characterBuilder.buildPersonalities(personalityGenerator).getCharacter();
-        else if(character.getPersonality() != null) characterBuilder.buildPersonalities(personalityGenerator, character.getPersonality());
 
         if(attribute.equals("zdolności")) return characterBuilder.buildTalents(talentGenerator).getCharacter();
         else if(character.getTalents() != null) characterBuilder.buildTalents(talentGenerator, character.getTalents());
@@ -159,6 +150,15 @@ public class CharacterGenerator extends GeneralService {
 
         if(attribute.equals("umiejętności")) return characterBuilder.buildSkills(skillGenerator).getCharacter();
         else if(character.getSkills() != null) characterBuilder.buildSkills(skillGenerator, character.getSkills());
+
+        if(attribute.equals("religia")) return characterBuilder.buildReligion(new ReligionGenerator()).getCharacter();
+        else if(character.getReligion() != null) characterBuilder.buildReligion(new ReligionGenerator(), character.getReligion());
+
+        if(attribute.equals("cechy-wyglądu")) return characterBuilder.buildApperances(apperanceGenerator).getCharacter();
+        else if(character.getApperance()!= null) characterBuilder.buildApperances(apperanceGenerator, character.getApperance());
+
+        if(attribute.equals("cechy-charakteru")) return characterBuilder.buildPersonalities(personalityGenerator).getCharacter();
+        else if(character.getPersonality() != null) characterBuilder.buildPersonalities(personalityGenerator, character.getPersonality());
 
         return characterBuilder.getCharacter();
     }

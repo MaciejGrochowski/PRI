@@ -81,10 +81,21 @@ public class CharacterGenerator extends GeneralService {
         if(attribute.equals("miejsce-urodzenia")) return characterBuilder.buildBirthPlace(characterBirthPlaceGenerator).getCharacter();
         else if(character.getBirthPlace() != null) characterBuilder.buildBirthPlace(characterBirthPlaceGenerator, character.getBirthPlace());
 
-        if(attribute.equals("rasa")) return characterBuilder.buildRace(new RaceGenerator()).getCharacter();
+        if(attribute.equals("rasa")) {
+            do {
+                characterBuilder.buildRace(new RaceGenerator());
+            }
+            while(characterBuilder.getCharacter().getRace().equals(character.getRace()));
+            return characterBuilder.getCharacter();
+        }
         else if(character.getRace() != null) characterBuilder.buildRace(new RaceGenerator(), character.getRace());
 
-        if(attribute.equals("płeć")) return characterBuilder.buildSex(new SexGenerator()).getCharacter();
+        if(attribute.equals("płeć")) {
+            do{
+                characterBuilder.buildSex(new SexGenerator());
+            }while(characterBuilder.getCharacter().getSex().equals(character.getSex()));
+            return characterBuilder.buildSex(new SexGenerator()).getCharacter();
+        }
         else if(character.getSex() != null) characterBuilder.buildSex(new SexGenerator(), character.getSex());
 
         if(attribute.equals("nazwisko")) {

@@ -45,7 +45,12 @@ class DefaultMultipleAutocomplete extends React.Component {
 
     setOptionsWithoutChoosenValues = values => {
         let allOptions = this.props.options;
+        if(!values){
+            this.setState({options: allOptions})
+            return;
+        }
         for (let value of values) {
+            if(value===null) continue;
             value = value.trim()
             let valueName = value.split(" ")[0]
             allOptions = allOptions.filter(c => !(c === value) && !c.startsWith(valueName))
@@ -154,7 +159,7 @@ render()
                         multiple={this.props.multiple}
                         // multiline
                         options={this.props.multiple ? this.state.options : this.props.options}
-                        id={this.props.multiple ? "ToDo here should be randomId" : id}
+                        id={this.props.multiple ? this.props.labelName : id}
                         noOptionsText={"Brak opcji"}
                         style={{width: width}}
                         // popupIcon={<div style={{}}>ZIemniak</div>} ToDo Kasia spróbuj pokonać ziemniaka
@@ -162,14 +167,13 @@ render()
                             <TextField {...params} multiline label={labelName}/>
                         )}
                          renderTags={(value, getTagProps, index) => (
-                        //     <div className = {this.props.multiple && 
+                        //     <div className = {this.props.multiple &&
                         //     (this.state.valueChars < 25 && this.state.values.length === 2) ||
                         //     (this.state.valueChars > 20 && this.state.values.length === 3) ||
-                        //     this.state.values.length > 3                            
+                        //     this.state.values.length > 3
                         //     ? "filter" : "block-element"}>
                                <div className = "filter"><Tag label={this.state.values} onDelete={element => this.onDelete(element, v)} id={id}/>
-                            <br/></div>
-                        )}
+                            <br/></div>)}
                         value={this.state.values}
                         onChange={(event, value, reason) => this.onInputChange(event, value, v)}
                         filterOptions={(input, state) => this.filterOptions(input, state)}

@@ -78,12 +78,13 @@ public class CharacterSaveService {
 
     public Surname surnameConvert(String surNew) {
         String prefix = "";
-        Optional<Surname> surname = surnameService.findBySurname(surNew);
         if (surNew == null) {
             return new Surname();
         }
+        surNew = surNew.trim();
+        Optional<Surname> surname = surnameService.findBySurname(surNew);
         if (surname.isPresent()) return surname.get();
-        if (surNew.matches(".*\\d.*")  || checkSpecialCharacter(surNew)) throw new CharacterSaveException("Nazwisko może zawierać tylko litery.", new IllegalArgumentException());
+        if (surNew.matches(".*\\d.*")  || checkSpecialCharacter(surNew) || surNew.matches("\\s*")) throw new CharacterSaveException("Nazwisko może zawierać tylko litery.", new IllegalArgumentException());
         if (surNew.startsWith("von ") || surNew.startsWith("Von ")){
             prefix = "von ";
             surNew = surNew.substring(5);
@@ -109,6 +110,7 @@ public class CharacterSaveService {
     public Name nameConvert(String inputName) {
         if (inputName == null || inputName.equals(""))
             throw new CharacterSaveException("Podaj imię postaci swojej postaci.", new IllegalArgumentException());
+        inputName = inputName.trim();
         Optional<Name> nameOptional = nameService.findByName(inputName);
         if (nameOptional.isPresent()) return nameOptional.get();
         if (checkSpecialCharacter(inputName) || inputName.matches(".*\\d.*")) throw new CharacterSaveException("Imię może zawierać tylko litery.", new IllegalArgumentException());

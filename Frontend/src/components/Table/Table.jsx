@@ -72,7 +72,7 @@ class Table extends React.Component {
                     Pagination: props => (
                         <TablePagination
                             {...props}
-                            labelRowsPerPage={<div styleNName="table">{props.labelRowsPerPage}</div>}
+                            labelRowsPerPage={<div styleName="table">{props.labelRowsPerPage}</div>}
                             count={count}
                             onChangeRowsPerPage={event => {
                                 props.onChangeRowsPerPage(event);

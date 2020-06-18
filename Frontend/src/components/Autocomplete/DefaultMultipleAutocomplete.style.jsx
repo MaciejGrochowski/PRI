@@ -28,6 +28,7 @@ white-space: nowrap;
   margin: 3px;
   padding-left: 5px;
   outline: 0;
+  width: fit-content;
 
   &:focus {
     background-color: #292F2F;

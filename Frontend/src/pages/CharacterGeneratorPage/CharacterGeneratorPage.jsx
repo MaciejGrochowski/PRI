@@ -257,8 +257,8 @@ class CharacterGeneratorPage extends React.Component {
                 <div className="block-element">
                     <div className="flex-component space-between-component">
                         <div className="white-caption">Statystyki:</div>
-                        <button className="detaleButton" onClick={() => this.fullRandomGenerate()}>Generuj losowe statystyki 
-                        <span>{element}</span>
+                        <button className="detaleButton" onClick={() => this.fullRandomGenerate()}><div className = "text-with-fafa">Generuj losowe statystyki 
+                        </div><span>{element}</span>
                         </button>
                     </div>
                 </div>
@@ -666,9 +666,9 @@ class CharacterGeneratorPage extends React.Component {
                         <dlv className = "flex-component space-between-component">
                         <div className="white-caption">Umiejętności bojowe:</div>
                         <div className="block-component">
-                            <button className="detaleButton" onClick={() => this.generateOneAttribute("Bazowe statystyki")} disabled={this.state.race===undefined || this.state.race==="" || this.state.race === null}>Wylosuj statystyki Bazowe <span>{element}</span>
+                            <button className="detaleButton reverse" onClick={() => this.generateOneAttribute("Bazowe statystyki")} disabled={this.state.race===undefined || this.state.race==="" || this.state.race === null}><div className = "text-with-fafa">Wylosuj statystyki Bazowe </div><span>{element}</span>
                             </button>
-                            <button className="detaleButton" onClick={() => this.generateOneAttribute("Statystyki końcowe")} disabled={this.state.baseWeaponSkills === undefined || this.state.baseWeaponSkills === "" || this.state.baseWeaponSkills === null ||
+                            <button className="detaleButton reverse" onClick={() => this.generateOneAttribute("Statystyki końcowe")} disabled={this.state.baseWeaponSkills === undefined || this.state.baseWeaponSkills === "" || this.state.baseWeaponSkills === null ||
                                 this.state.baseBallisticSkills === undefined || this.state.baseBallisticSkills === "" || this.state.baseBallisticSkills === null ||
                                 this.state.baseStrength === undefined || this.state.baseStrength === "" || this.state.baseStrength === null ||
                                 this.state.baseToughness === undefined || this.state.baseToughness === "" || this.state.baseToughness === null ||
@@ -683,7 +683,7 @@ class CharacterGeneratorPage extends React.Component {
                                 this.state.currentCareer === undefined || this.state.currentCareer === "" || this.state.currentCareer === null ||
                                 this.state.talents === undefined || this.state.talents === "" || this.state.talents === null
 
-                            }>Wylosuj statystyki Obecne <span>{element}</span></button>
+                            }><div className = "text-with-fafa">Wylosuj statystyki Obecne </div><span>{element}</span></button>
                         </div>
                         </dlv>
                         <div className= "center">

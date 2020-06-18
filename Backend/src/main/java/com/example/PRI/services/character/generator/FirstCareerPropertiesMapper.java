@@ -17,7 +17,7 @@ public class FirstCareerPropertiesMapper {
 
         if(!birthPlace.getPlaceType().equals(PlaceType.VILLIAGE))
             output.put("Akolita", "0.005");
-        if(!birthPlace.getPlaceType().equals(PlaceType.VILLIAGE) && character.getSex().equals(Sex.MALE) && character.getRace().equals(Race.HUMAN))
+        if(!birthPlace.getPlaceType().equals(PlaceType.VILLIAGE) && character.getSex()!=null && character.getSex().equals(Sex.MALE) && character.getRace()!=null && character.getRace().equals(Race.HUMAN))
             output.put("Akolita", "0.008");
 
         output.put("Banita", getOutlawChance(birthPlace, properties));
@@ -29,7 +29,7 @@ public class FirstCareerPropertiesMapper {
         output.put("Cyrulik", "0.015");
         output.put("Fanatyk", "0.005");
         if(properties.containsKey("isRiver")) output.put("Flisak", "0.08");
-        if(character.getSurname() != null && character.getRace().equals(Race.HUMAN)){
+        if(character.getSurname() != null && character.getRace()!=null && character.getRace().equals(Race.HUMAN)){
             if(character.getSurname().isGentry()) output.put("Giermek", "0.1");
             else output.put("Giermek", "0.01");
         }
@@ -79,7 +79,7 @@ public class FirstCareerPropertiesMapper {
         output.put("Strażnik więzienny", getStraznikWieziennyChance(birthPlace, properties));
         if(character.getBirthPlace().getPlaceType().equals(PlaceType.VILLIAGE)) output.put("Szczurołap", "0.01");
         output.put("Szczurołap", "0.02");
-        if(character.getRace().equals(Race.HUMAN) && character.getSurname() != null){
+        if(character.getRace()!=null && character.getRace().equals(Race.HUMAN) && character.getSurname() != null){
             if(character.getSurname().isGentry()) output.put("Szlachcic", "0.12");
             else output.put("Szlachcic", "0.01");
         }

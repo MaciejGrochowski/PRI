@@ -87,7 +87,9 @@ color: #FFD859!important;
   font-size: calc(10px + 2vmin);
   color: white;
 }
-
+.filter .MuiInput-root{
+  padding-top: 9px;
+}
 .MuiInput-inputMultiline{
   height: auto!important;
 }

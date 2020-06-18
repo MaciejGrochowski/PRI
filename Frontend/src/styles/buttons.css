@@ -21,15 +21,24 @@
   button:disabled{
     color: grey!important;
   }
+.reverse{
+  color: #292F2F;
+  background-color: #FFD859;
+}
 
+.small{
+  font-size: small!important;
+}
   .detaleButton{
     background-color: #292F2F;
     color: #FFD859;
     border-radius: 20px;
     border: 2px solid #FFD859;
+    font-size: large;
     text-decoration: none;
     transition-duration: 0.4s;
     cursor: pointer;
+    padding: 4px 5px 2px 5px;
     height: fit-content;
     margin-top: auto;
   }
@@ -59,6 +68,11 @@
   }
 
   .detailsTypeButton{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    width: 200px;
     display: block;
     color: white;
     background-color: rgb(77, 87, 87);

@@ -3,7 +3,7 @@ import grid from "../../styles/grid.css";
 import "../../styles/CharacterCombatStatsStyle.css";
 
 const mygrid = {
-        width: '30px',
+        width: '35px',
         height: "30px",
         border: 'solid 1px white',
         borderRadius: '25%',

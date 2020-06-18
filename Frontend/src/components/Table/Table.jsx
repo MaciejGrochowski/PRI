@@ -24,7 +24,7 @@ class Table extends React.Component {
                 {
                     title: 'Detale',
                     field: '',
-                    render: rowData => <button className = "detaleButton" onClick={() => this.props.onDetailsClick(rowData)}>Detale</button>,
+                    render: rowData => <button className = "detaleButton small" onClick={() => this.props.onDetailsClick(rowData)}>Detale</button>,
                     sorting: false
                 })
             this.setState({columnsConfig: columnsConfig})

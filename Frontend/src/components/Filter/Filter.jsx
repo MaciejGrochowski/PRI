@@ -27,8 +27,8 @@ class Filter extends React.Component {
                     }
                 </div>
                 <div className = "filter-button">
-                    <button className = "button" onClick={onFilter}>Wyszukaj <span>{element}</span></button>
-                    <button className="button" onClick={expandFilterList}>Dostosuj filtry<span>{element2}</span> </button>
+                    <button className = "button reverse" onClick={onFilter}>Wyszukaj <span>{element}</span></button>
+                    <button className="button" onClick={expandFilterList}>Dostosuj filtry <span>{element2}</span> </button>
                 </div>
                 
             </div>

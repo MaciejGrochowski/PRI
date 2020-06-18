@@ -10,6 +10,7 @@
     align-items: stretch;
     flex-basis: 100%;
     min-width: fit-content;
+    margin-bottom: 10%;
 }
 .grid-column{
     text-align: center!important;
@@ -27,7 +28,8 @@
 .grid-element{
     display: block;
     min-width: fit-content;
-    padding-bottom: 15%;
+    padding-bottom: 10%;
+    margin: 4px;
 }
 .grid-name-element{
     display: block;

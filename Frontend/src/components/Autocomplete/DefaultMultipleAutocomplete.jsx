@@ -151,7 +151,7 @@ render()
                         filterOptions={(input, state) => this.filterOptions(input, state)}
                     />
                     {this.props.canBeGenerated &&
-                    <button className="detaleButton" onClick={() => this.randomClick()} disabled={this.props.disabled}><span>{element}</span></button>}
+                    <button className="detaleButton small" onClick={() => this.randomClick()} disabled={this.props.disabled}><span>{element}</span></button>}
                 </div>
             }</careerContext.Consumer>
     )

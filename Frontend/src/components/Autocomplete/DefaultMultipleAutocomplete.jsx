@@ -160,7 +160,7 @@ render()
                         // multiline
                         options={this.props.multiple ? this.state.options : this.props.options}
                         id={this.props.multiple ? this.props.labelName : id}
-                        disablePortal={true}
+                        disablePortal={this.props.disablePortal || false}
                         noOptionsText={"Brak opcji"}
                         style={{width: width}}
                         // popupIcon={<div style={{}}>ZIemniak</div>} ToDo Kasia spróbuj pokonać ziemniaka

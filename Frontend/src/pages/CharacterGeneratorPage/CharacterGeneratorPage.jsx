@@ -304,6 +304,7 @@ class CharacterGeneratorPage extends React.Component {
                                 id="characterGeneratorRace"
                                 width={135}
                                 canBeGenerated
+                                disablePortal={true}
                                 generated={this.state.race}
                                 onRandomClick={() => this.generateOneAttribute("Rasa")}
                                 disabled={this.state.birthPlace===undefined || this.state.birthPlace==="" || this.state.birthPlace === null}
@@ -322,6 +323,7 @@ class CharacterGeneratorPage extends React.Component {
                                 id="characterGeneratorSex"
                                 width={138}
                                 canBeGenerated
+                                disablePortal
                                 generated={this.state.sex}
                                 onRandomClick={() => this.generateOneAttribute("Płeć")}
                                 disabled={this.state.race === undefined || this.state.race === "" || this.state.race === null}
@@ -341,6 +343,7 @@ class CharacterGeneratorPage extends React.Component {
                                     options={this.state.autocompleteData.careerNames || []}
                                     id="characterGeneratorCurrentCareer"
                                     canBeGenerated
+                                    disablePortal
                                     generated={this.state.currentCareer}
                                     onRandomClick={() => this.generateOneAttribute("Profesja")}
                                     disabled={this.state.race === undefined || this.state.race === "" || this.state.race === null
@@ -374,14 +377,16 @@ class CharacterGeneratorPage extends React.Component {
                                 options={this.state.autocompleteData.placeNames || []}
                                 id="characterGeneratorLivePlace"
                                 canBeGenerated
+                                disablePortal
                                 generated={this.state.livePlace}
                                 onRandomClick={() => this.generateOneAttribute("Miejsce pobytu")}
                                 disabled={this.state.birthPlace === undefined || this.state.birthPlace === "" || this.state.birthPlace === null ||
                                 this.state.currentCareer === undefined || this.state.currentCareer === "" || this.state.currentCareer === null ||
                                 this.state.religion === undefined || this.state.religion === "" || this.state.religion === null ||
                                 this.state.race === undefined || this.state.race === "" || this.state.race === null}
-                            {/*ToDo Rasa nie powinna być wymagana do miejsca pobytu - błąd na backendzie*/}
                             />
+                                {/*ToDo Rasa nie powinna być wymagana do miejsca pobytu - błąd na backendzie*/}
+
                             </careerContext.Provider>
                             <careerContext.Provider value={{
                                 update: (val) => {
@@ -395,6 +400,7 @@ class CharacterGeneratorPage extends React.Component {
                                 id="characterGeneratorBirthPlace"
                                 generated={this.state.birthPlace}
                                 canBeGenerated
+                                disablePortal
                                 onRandomClick={() => this.generateOneAttribute("Miejsce urodzenia")}
                             />
                             </careerContext.Provider>
@@ -421,6 +427,7 @@ class CharacterGeneratorPage extends React.Component {
                                     options={months}
                                     id="characterGeneratorMonthOfBirth"
                                     width={150}
+                                    disablePortal
                                     generated={this.state.monthOfBirth}
                                     notSortOptions
                                 />
@@ -451,6 +458,7 @@ class CharacterGeneratorPage extends React.Component {
                                 options={religions || []}
                                 id="characterGeneratorReligion"
                                 canBeGenerated
+                                disablePortal
                                 generated={this.state.religion}
                                 onRandomClick={() => this.generateOneAttribute("Religia")}
                                 notSortOptions
@@ -495,6 +503,7 @@ class CharacterGeneratorPage extends React.Component {
                                 options={this.state.autocompleteData.eyeColors || []}
                                 id="characterGeneratorEyeColor"
                                 canBeGenerated
+                                disablePortal
                                 generated={this.state.eyeColor}
                                 onRandomClick={() => this.generateOneAttribute("Kolor oczu")}
                                 disabled={this.state.race===undefined || this.state.race==="" || this.state.race === null}
@@ -511,6 +520,7 @@ class CharacterGeneratorPage extends React.Component {
                                 options={this.state.autocompleteData.hairColors || []}
                                 id="characterGeneratorHairColor"
                                 canBeGenerated
+                                disablePortal
                                 generated={this.state.hairColor}
                                 onRandomClick={() => this.generateOneAttribute("Kolor włosów")}
                                 disabled={this.state.race===undefined || this.state.race==="" || this.state.race === null}
@@ -530,6 +540,7 @@ class CharacterGeneratorPage extends React.Component {
                                 options={this.state.autocompleteData.personalityNames || []}
                                 id="characterGeneratorPersonality"
                                 multiple
+                                disablePortal
                                 canBeGenerated
                                 generated={this.state.personalities}
                                 onRandomClick={() => this.generateOneAttribute("Cechy charakteru")}
@@ -553,6 +564,7 @@ class CharacterGeneratorPage extends React.Component {
                                 id="characterGeneratorApperances"
                                 multiple
                                 canBeGenerated
+                                disablePortal
                                 generated={this.state.apperances}
                                 onRandomClick={() => this.generateOneAttribute("Cechy wyglądu")}
                                 disabled={this.state.religion === undefined || this.state.religion === "" || this.state.religion === null ||
@@ -577,6 +589,7 @@ class CharacterGeneratorPage extends React.Component {
                                 options={this.state.autocompleteData.careerNames || []}
                                 id="characterGeneratorPreviousCareers"
                                 multiple
+                                disablePortal
                                 generated={this.state.previousCareers}
                             />
                             </careerContext.Provider>
@@ -593,6 +606,7 @@ class CharacterGeneratorPage extends React.Component {
                                 options={this.state.autocompleteData.emotionNames || []}
                                 id="characterGeneratorEmotions"
                                 multiple
+                                disablePortal
                                 canBeGenerated
                                 generated={this.state.dominatingEmotions}
                                 onRandomClick={() => this.generateOneAttribute("Dominujące emocje")}
@@ -620,6 +634,7 @@ class CharacterGeneratorPage extends React.Component {
                                 options={this.state.autocompleteData.skillNames || []}
                                 id="characterGeneratorSkills"
                                 multiple
+                                disablePortal
                                 canBeGenerated
                                 generated={this.state.skills}
                                 onRandomClick={() => this.generateOneAttribute("Umiejętności")}
@@ -639,6 +654,7 @@ class CharacterGeneratorPage extends React.Component {
                                 options={this.state.autocompleteData.talentNames || []}
                                 id="characterGeneratorTalents"
                                 multiple
+                                disablePortal
                                 canBeGenerated
                                 generated={this.state.talents}
                                 onRandomClick={() => this.generateOneAttribute("Zdolności")}

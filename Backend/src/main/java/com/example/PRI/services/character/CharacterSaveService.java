@@ -372,6 +372,15 @@ public class CharacterSaveService {
         return emotionList;
     }
 
+    public boolean personalityOrAppearanceOrEmotionNumber(String checkString, String type){
+        List<String> stringList = Arrays.asList(checkString.split(","));
+        if(type.equals("emotion")){
+            List<Emotion> emotionList = emotionService.findByNameIn(stringList);
+            return emotionList.size() < 5;
+        }
+        else return false;
+    }
+
     public Integer endWeaponSkillConvert(String WeaponSkill) {
         if (WeaponSkill == null) throw new CharacterSaveException("Podaj statystyke dla obecnej walki wręcz.", new IllegalArgumentException());
         Integer newWeaponSkill = null;

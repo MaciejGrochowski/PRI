@@ -256,7 +256,7 @@ public class CharacterGenerator extends GeneralService {
         if(characterInputDto.getHairColor() != null && !characterInputDto.getHairColor().equals("")) character.setHairColor(characterSaveService.hairColorConverter(characterInputDto.getHairColor()));
         if(characterInputDto.getEyeColor() != null) character.setEyeColor(characterSaveService.eyeColorConverter(characterInputDto.getEyeColor()));
         if(characterInputDto.getApperance() != null) character.setApperance(characterSaveService.apperanceConvert(characterInputDto.getApperance()));
-        if(characterInputDto.getDominatingEmotions() != null) character.setDominatingEmotions(characterSaveService.dominantingEmotionConvert(characterInputDto.getDominatingEmotions()));
+        if(characterInputDto.getDominatingEmotions() != null && characterSaveService.personalityOrAppearanceOrEmotionNumber(characterInputDto.getDominatingEmotions(), "emotion")) character.setDominatingEmotions(characterSaveService.dominantingEmotionConvert(characterInputDto.getDominatingEmotions()));
         if(characterInputDto.getLivePlace() != null) character.setLivePlace(characterSaveService.livePlaceConverter(characterInputDto.getLivePlace()));
         if(characterInputDto.getBirthPlace() != null) character.setBirthPlace(characterSaveService.bornPlaceConverter(characterInputDto.getBirthPlace()));
         if(characterInputDto.getHeight() != null && characterSaveService.checkNumber(characterInputDto.getHeight(), "height")) character.setHeight(characterSaveService.heightConverter(characterInputDto.getHeight()));

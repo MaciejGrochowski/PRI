@@ -4,7 +4,7 @@
     padding-left: 3%;
 }
 .menu-title{
-    font-size: large;
+    font-size: x-large;
     padding-bottom: 5%;
     text-align: left;
 }
@@ -15,6 +15,7 @@
     text-decoration: none;
     margin-left: 25%;
     padding: 1%;
+    font-size: large;
 }
 .menu-column{
     display: block;

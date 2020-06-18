@@ -11,8 +11,15 @@
     margin: 4px 2px;
     transition-duration: 0.4s;
     cursor: pointer;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  display: flex;
   }
-  
+.text-with-fafa{
+  padding-right: 10px;
+}
+
   .button:hover {
     background-color: #FFD859;
     color: #292F2F;
@@ -38,9 +45,14 @@
     text-decoration: none;
     transition-duration: 0.4s;
     cursor: pointer;
-    padding: 4px 5px 2px 5px;
+    padding: 6px 6px 5px 6px;
     height: fit-content;
     margin-top: auto;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: flex;
+    
   }
 
   .detaleButton:disabled {

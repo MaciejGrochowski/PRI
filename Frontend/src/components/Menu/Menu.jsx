@@ -45,12 +45,6 @@ class Menu extends React.Component {
             <div>
             <div className ="globalStyles">
                 {this.state.isExpanded && (<nav className="menuBody">
-                {/* <div className= "menu-column">
-                    <div className = "menu-title">Moje</div>
-                    <div className = "menuLink">Postaci</div>
-                    <div className = "menuLink">Sesje</div>
-                    <div className = "menuLink">Historie</div>
-                </div> */}
 
                 <div className= "menu-column">
                     <div className = "menu-title">Katalog</div>
@@ -68,20 +62,6 @@ class Menu extends React.Component {
                 )) : ""
                 }
                 
-{/* 
-
-                    <div className = "menuLink">Postaci</div>
-                    <div className = "menuLink">Historii</div>
-                </div>
-
-                <div className= "menu-column">
-                    <div className = "menu-title">Stwórz</div>
-                    <div className = "menuLink">Postać</div>
-                    <div className = "menuLink">Historię</div>
-                </div>
-
-                <div className= "menu-column"></div>
-                <div className = "menuLink">Postać</div> */}
                 </div>
 
 

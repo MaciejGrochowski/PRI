@@ -127,10 +127,19 @@ color: #FFD859!important;
 .App-link {
   color: #FFD859;
 }
+.MuiPaper-root{
+  background-color: transparent!important;
+}
 
+.MuiAutocomplete-inputRoot[class*="MuiInput-root"] .MuiAutocomplete-input
+{
+  word-break: break-all;
+  -ms-line-break: strict;
+  line-break: normal;
+}
 .MuiTableCell-root{
 background-color: #292F2F;
-/* width: min-content!important; */
+width: min-content!important;
 text-align: center!important;
 } 
 

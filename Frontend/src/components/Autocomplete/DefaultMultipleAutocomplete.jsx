@@ -32,6 +32,9 @@ class DefaultMultipleAutocomplete extends React.Component {
         if (this.props.options !== prevProps.options) {
             this.setState({options: this.props.options})
         }
+        // if (this.state.values !== prevState.values){
+        //     this.countCharsInValues()
+        // }
     }
 
     onInputChange = (event, value, v) => {
@@ -130,6 +133,15 @@ filterOptions = (input, state) => {
         return allOptions;
 }
 
+// countCharsInValues = () => {
+//     let count = 0
+//     for(let value of this.state.values){
+//         count += value.length
+//     }
+//     console.log(count)
+//     this.setState({valueChars: count})
+// }
+
 render()
 {
     const {labelName, id} = this.props;
@@ -140,16 +152,23 @@ render()
                 <div className="flex-div">
                     <Autocomplete
                         multiple={this.props.multiple}
+                        // multiline
                         options={this.props.multiple ? this.state.options : this.props.options}
                         id={this.props.multiple ? "ToDo here should be randomId" : id}
                         noOptionsText={"Brak opcji"}
                         style={{width: width}}
                         // popupIcon={<div style={{}}>ZIemniak</div>} ToDo Kasia spróbuj pokonać ziemniaka
                         renderInput={(params) => (
-                            <TextField {...params} label={labelName}/>
+                            <TextField {...params} multiline label={labelName}/>
                         )}
-                        renderTags={(value, getTagProps, index) => (
-                            <Tag label={this.state.values} onDelete={element => this.onDelete(element, v)} id={id}/>
+                         renderTags={(value, getTagProps, index) => (
+                        //     <div className = {this.props.multiple && 
+                        //     (this.state.valueChars < 25 && this.state.values.length === 2) ||
+                        //     (this.state.valueChars > 20 && this.state.values.length === 3) ||
+                        //     this.state.values.length > 3                            
+                        //     ? "filter" : "block-element"}>
+                               <div className = "filter"><Tag label={this.state.values} onDelete={element => this.onDelete(element, v)} id={id}/>
+                            <br/></div>
                         )}
                         value={this.state.values}
                         onChange={(event, value, reason) => this.onInputChange(event, value, v)}

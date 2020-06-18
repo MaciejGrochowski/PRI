@@ -11,10 +11,12 @@
   }
 
 .label{
-  display: block;
+  overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap;
   padding-left: 5%;
   padding-top: 1%;
-  margin-left: 10%;
+  margin-left: 8%; 
 }
   .container {
     display: block;

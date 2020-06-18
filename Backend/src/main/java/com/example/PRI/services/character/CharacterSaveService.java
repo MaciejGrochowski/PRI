@@ -331,7 +331,7 @@ public class CharacterSaveService {
     }
 
     public List<Skill> skillsConvert(String inputSkills) {
-        if (inputSkills == null) return null;
+        if (inputSkills == null || inputSkills.equals("")) return null;
         List<String> stringList = Arrays.asList(inputSkills.split(","));
         List<Skill> skillList = skillService.findByNameIn(stringList.stream().map(s -> s.split(" \\+")[0]).collect(Collectors.toList()));
         List<Skill> characterSkills = new ArrayList<>();
@@ -541,6 +541,22 @@ public class CharacterSaveService {
         else if (type.equals("statistics") && convertCheck < 100 ) return true;
         else if (type.equals("day") && convertCheck < 1 || convertCheck > 34 ) return false;
         else return !type.equals("year") || convertCheck >= 0;
+    }
+
+
+    public boolean checkIfTheSameCategory (String characterData, String type){
+        switch (type) {
+            case "apperance": {
+                List<String> apperanceCheck = apperanceService.findByNameIn(Arrays.asList(characterData.split(","))).stream().map(Apperance::getType).collect(Collectors.toList());
+                return apperanceCheck.stream().distinct().count() == apperanceCheck.size(); }
+            case "personality": {
+                List<String> personalityCheck = personalityService.findByNameIn(Arrays.asList(characterData.split(","))).stream().map(Personality::getType).collect(Collectors.toList());
+                return personalityCheck.stream().distinct().count() == personalityCheck.size();}
+            case "emotion": {
+                List<String> emotionCheck = emotionService.findByNameIn(Arrays.asList(characterData.split(","))).stream().map(Emotion::getType).collect(Collectors.toList());
+                return emotionCheck.stream().distinct().count() == emotionCheck.size();}
+        }
+        return true;
     }
 
     public boolean baseStatisticCheck(CharacterInputDto characterInputDto){

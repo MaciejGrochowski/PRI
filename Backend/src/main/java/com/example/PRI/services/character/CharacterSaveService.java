@@ -374,11 +374,19 @@ public class CharacterSaveService {
 
     public boolean personalityOrAppearanceOrEmotionNumber(String checkString, String type){
         List<String> stringList = Arrays.asList(checkString.split(","));
-        if(type.equals("emotion")){
-            List<Emotion> emotionList = emotionService.findByNameIn(stringList);
-            return emotionList.size() < 5;
+        switch (type) {
+            case "emotion":
+                List<Emotion> emotionList = emotionService.findByNameIn(stringList);
+                return emotionList.size() < 5;
+            case "personality":
+                List<Personality> personalityList = personalityService.findByNameIn(stringList);
+                return personalityList.size() < 6;
+            case "apperance":
+                List<Apperance> apperanceList = apperanceService.findByNameIn(stringList);
+                return apperanceList.size() < 6;
+            default:
+                return false;
         }
-        else return false;
     }
 
     public Integer endWeaponSkillConvert(String WeaponSkill) {

@@ -78,51 +78,52 @@ public class CharacterGenerator extends GeneralService {
         CharacterBuilder characterBuilder = new CharacterBuilder();
         characterBuilder.initialize();
 
-        if(attribute.equals("miejsce-urodzenia")) characterBuilder.buildBirthPlace(characterBirthPlaceGenerator);
+        if(attribute.equals("miejsce-urodzenia")) return characterBuilder.buildBirthPlace(characterBirthPlaceGenerator).getCharacter();
         else if(character.getBirthPlace() != null) characterBuilder.buildBirthPlace(characterBirthPlaceGenerator, character.getBirthPlace());
 
-        if(attribute.equals("rasa")) characterBuilder.buildRace(new RaceGenerator());
+        if(attribute.equals("rasa")) return characterBuilder.buildRace(new RaceGenerator()).getCharacter();
         else if(character.getRace() != null) characterBuilder.buildRace(new RaceGenerator(), character.getRace());
 
-        if(attribute.equals("płeć")) characterBuilder.buildSex(new SexGenerator());
+        if(attribute.equals("płeć")) return characterBuilder.buildSex(new SexGenerator()).getCharacter();
         else if(character.getSex() != null) characterBuilder.buildSex(new SexGenerator(), character.getSex());
 
         if(attribute.equals("nazwisko")) {
             while(characterBuilder.getCharacter().getSurname()==null) {
                 characterBuilder.buildSurname(surnameGenerator);
             }
+            return characterBuilder.getCharacter();
         }
         else if(character.getSurname() != null) characterBuilder.buildSurname(surnameGenerator, character.getSurname());
 
-        if(attribute.equals("imię")) characterBuilder.buildName(nameGenerator);
+        if(attribute.equals("imię")) return characterBuilder.buildName(nameGenerator).getCharacter();
         else if(character.getName() != null) characterBuilder.buildName(nameGenerator, character.getName());
 
-        if(attribute.equals("bazowe-statystyki")) characterBuilder.buildBaseStats(new StatisticsGenerator());
+        if(attribute.equals("bazowe-statystyki")) return characterBuilder.buildBaseStats(new StatisticsGenerator()).getCharacter();
         else if(character.getBaseStats()!= null) characterBuilder.buildBaseStats(new StatisticsGenerator(), character.getBaseStats());
 
-        if(attribute.equals("data-urodzenia")) characterBuilder.buildBirthDate(new BirthDateGenerator());
+        if(attribute.equals("data-urodzenia")) return characterBuilder.buildBirthDate(new BirthDateGenerator()).getCharacter();
         else if (character.getBirthDate()!=null) characterBuilder.buildBirthDate(new BirthDateGenerator(), character.getBirthDate());
 
         if(attribute.equals("wzrost")) characterBuilder.buildHeight(new HeightGenerator());
-        else if(character.getHeight()!=null) characterBuilder.buildHeight(new HeightGenerator(), character.getHeight());
+        else if(character.getHeight()!=null) return characterBuilder.buildHeight(new HeightGenerator(), character.getHeight()).getCharacter();
 
-        if(attribute.equals("waga")) characterBuilder.buildWeight(new WeightGenerator());
+        if(attribute.equals("waga")) return characterBuilder.buildWeight(new WeightGenerator()).getCharacter();
         else if(character.getWeight()!=null) characterBuilder.buildWeight(new WeightGenerator(), character.getWeight());
 
-        if(attribute.equals("kolor-oczu")) characterBuilder.buildEyeColor(eyeColorGenerator);
+        if(attribute.equals("kolor-oczu")) return characterBuilder.buildEyeColor(eyeColorGenerator).getCharacter();
         else if(character.getEyeColor()!=null) characterBuilder.buildEyeColor(eyeColorGenerator, character.getEyeColor());
 
-        if(attribute.equals("kolor-włosów")) characterBuilder.buildHairColor((hairColorGenerator));
+        if(attribute.equals("kolor-włosów")) return characterBuilder.buildHairColor((hairColorGenerator)).getCharacter();
         else if (character.getHairColor()!=null) characterBuilder.buildHairColor(hairColorGenerator, character.getHairColor());
 
-        if(attribute.equals("dominujące-emocje")) characterBuilder.buildEmotions(emotionGenerator);
+        if(attribute.equals("dominujące-emocje")) return characterBuilder.buildEmotions(emotionGenerator).getCharacter();
         else if (character.getDominatingEmotions()!=null) characterBuilder.buildEmotions(emotionGenerator, character.getDominatingEmotions());
 
         if(attribute.equals("profesja")){
-            if (character.getCurrentCareer() == null && character.getPreviousCareers() == null) characterBuilder.buildCareers(careerGenerator);
-            if (character.getCurrentCareer() != null && character.getPreviousCareers() == null) characterBuilder.buildCareers(careerGenerator);
-            if (character.getCurrentCareer() != null && character.getPreviousCareers() != null) characterBuilder.buildCareers(careerGenerator);
-            if (character.getCurrentCareer() == null && character.getPreviousCareers() != null) characterBuilder.buildCurrentCareer(careerGenerator, character.getPreviousCareers());
+            if (character.getCurrentCareer() == null && character.getPreviousCareers() == null) return characterBuilder.buildCareers(careerGenerator).getCharacter();
+            if (character.getCurrentCareer() != null && character.getPreviousCareers() == null) return characterBuilder.buildCareers(careerGenerator).getCharacter();
+            if (character.getCurrentCareer() != null && character.getPreviousCareers() != null) return characterBuilder.buildCareers(careerGenerator).getCharacter();
+            if (character.getCurrentCareer() == null && character.getPreviousCareers() != null) return characterBuilder.buildCurrentCareer(careerGenerator, character.getPreviousCareers()).getCharacter();
         }
         else if (character.getCurrentCareer() != null) {
             List <Career> careers = new ArrayList();
@@ -134,28 +135,29 @@ public class CharacterGenerator extends GeneralService {
         if(attribute.equals("przepowiednia")) {
             while(characterBuilder.getCharacter().getPrediction()==null)
             characterBuilder.buildPrediction(predictionGenerator);
+            return characterBuilder.getCharacter();
         }
         else if (character.getPrediction()!=null) characterBuilder.buildPrediction(predictionGenerator, character.getPrediction());
 
-        if(attribute.equals("religia")) characterBuilder.buildReligion(new ReligionGenerator());
+        if(attribute.equals("religia")) return characterBuilder.buildReligion(new ReligionGenerator()).getCharacter();
         else if(character.getReligion() != null) characterBuilder.buildReligion(new ReligionGenerator(), character.getReligion());
 
-        if(attribute.equals("miejsce-pobytu")) characterBuilder.buildLivePlace(livePlaceGenerator);
+        if(attribute.equals("miejsce-pobytu")) return characterBuilder.buildLivePlace(livePlaceGenerator).getCharacter();
         else if(character.getLivePlace() != null) characterBuilder.buildLivePlace(livePlaceGenerator, character.getLivePlace());
 
-        if(attribute.equals("cechy-wyglądu")) characterBuilder.buildApperances(apperanceGenerator);
+        if(attribute.equals("cechy-wyglądu")) return characterBuilder.buildApperances(apperanceGenerator).getCharacter();
         else if(character.getApperance()!= null) characterBuilder.buildApperances(apperanceGenerator, character.getApperance());
 
-        if(attribute.equals("cechy-charakteru")) characterBuilder.buildPersonalities(personalityGenerator);
+        if(attribute.equals("cechy-charakteru")) return characterBuilder.buildPersonalities(personalityGenerator).getCharacter();
         else if(character.getPersonality() != null) characterBuilder.buildPersonalities(personalityGenerator, character.getPersonality());
 
-        if(attribute.equals("zdolności")) characterBuilder.buildTalents(talentGenerator);
+        if(attribute.equals("zdolności")) return characterBuilder.buildTalents(talentGenerator).getCharacter();
         else if(character.getTalents() != null) characterBuilder.buildTalents(talentGenerator, character.getTalents());
 
-        if(attribute.equals("statystyki-końcowe")) characterBuilder.buildCareerStatistics(new CareerStatisticsGenerator());
+        if(attribute.equals("statystyki-końcowe")) return characterBuilder.buildCareerStatistics(new CareerStatisticsGenerator()).getCharacter();
         else characterBuilder.buildCareerStatistics(new CareerStatisticsGenerator(), character);
 
-        if(attribute.equals("umiejętności")) characterBuilder.buildSkills(skillGenerator);
+        if(attribute.equals("umiejętności")) return characterBuilder.buildSkills(skillGenerator).getCharacter();
         else if(character.getSkills() != null) characterBuilder.buildSkills(skillGenerator, character.getSkills());
 
         return characterBuilder.getCharacter();

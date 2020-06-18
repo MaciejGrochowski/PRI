@@ -14,6 +14,7 @@ public class FirstCareerPropertiesMapper {
     public static Map<String, String> map(Character character, Map<String, String> properties) {
         Map<String, String> output = new HashMap<>();
         Place birthPlace = character.getBirthPlace();
+        if (birthPlace == null || character.getSex() == null || character.getRace() == null) return output;
 
         if(!birthPlace.getPlaceType().equals(PlaceType.VILLIAGE))
             output.put("Akolita", "0.005");

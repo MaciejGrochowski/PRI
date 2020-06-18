@@ -25,8 +25,8 @@ public class RaceGenerator {
 
         if (r == null && properties.containsKey("isForest") && random.nextDouble() < 0.08) r = Race.ELF;
         if (r == null && properties.containsKey("isMountains") && random.nextDouble() < 0.1) r = Race.DWARF;
-        if (r == null && character.getBirthPlace().getPlaceType().equals(PlaceType.CITYSTATE) || properties.containsKey("isCapitol") && random.nextDouble() < 0.01) r = Race.HALFLING;
-        if (r == null && character.getBirthPlace().getPlaceType().equals(PlaceType.CITYSTATE) || properties.containsKey("isCapitol") && random.nextDouble() < 0.01) r = Race.DWARF;
+        if (r == null && (character.getBirthPlace().getPlaceType().equals(PlaceType.CITYSTATE) || properties.containsKey("isCapitol")) && random.nextDouble() < 0.01) r = Race.HALFLING;
+        if (r == null && (character.getBirthPlace().getPlaceType().equals(PlaceType.CITYSTATE) || properties.containsKey("isCapitol")) && random.nextDouble() < 0.01) r = Race.DWARF;
         if (r == null && properties.containsKey("isSea") && random.nextDouble() < 0.01) r = Race.ELF;
         if (r == null && properties.containsKey("isRiver") && random.nextDouble() < 0.005) r = Race.ELF;
         if (r == null && character.getBirthPlace().getPlaceType().equals(PlaceType.VILLIAGE) && random.nextDouble() < 0.04) r = Race.HALFLING;

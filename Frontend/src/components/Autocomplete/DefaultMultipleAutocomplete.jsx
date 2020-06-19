@@ -26,7 +26,9 @@ class DefaultMultipleAutocomplete extends React.Component {
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
+        // console.log("DefaultMultipleAutocomplete zauważył zmianę swojego stanu")
         if (prevProps.generated !== this.props.generated) {
+            // console.log("DefaultMultipleAutocomplete zauważył, że zmiana dotyczy wygenerowanych wartości")
             this.setGenerated()
         }
         if (this.props.options !== prevProps.options) {
@@ -44,6 +46,7 @@ class DefaultMultipleAutocomplete extends React.Component {
     }
 
     setOptionsWithoutChoosenValues = values => {
+        //console.log("Zmienia się liczba opcji dostępnych do wyboru")
         let allOptions = this.props.options;
         if(!values){
             this.setState({options: allOptions})
@@ -56,6 +59,8 @@ class DefaultMultipleAutocomplete extends React.Component {
             allOptions = allOptions.filter(c => !(c === value) && !c.startsWith(valueName))
         }
         allOptions = [...new Set(allOptions)]
+        // console.log("Opcje dostępne do wyboru po zdarzeniu to:")
+        // console.log(allOptions)
         this.setState({options: allOptions});
     }
 
@@ -97,12 +102,16 @@ randomClick = () => {
 }
 
 setGenerated = () => {
+        // console.log("Wartości znane autocompletowi")
+        // console.log(this.props.generated)
     if (Array.isArray(this.props.generated)) {
+        // console.log("Wartości wygenerowane zostały zinterpretowane jako tablica.")
         this.setState({values: this.props.generated})
         this.setOptionsWithoutChoosenValues(this.props.generated)
         return
     }
     if (this.props.generated === "") {
+        // console.log("Wartości wygenerowane zostały zinterpretowane jako pusty string.")
         this.setState({values: []});
         return
     }
@@ -111,6 +120,7 @@ setGenerated = () => {
         this.setState({values: this.props.generated})
     }
     else {
+        //console.log("Wartości wygenerowane zostały zinterpretowane jako coś innego.")
         this.setOptionsWithoutChoosenValues(this.props.generated.split(","))
         this.setState({values: this.props.generated.split(",")})
     }

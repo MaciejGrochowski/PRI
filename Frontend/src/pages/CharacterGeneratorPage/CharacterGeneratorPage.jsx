@@ -246,8 +246,13 @@ class CharacterGeneratorPage extends React.Component {
             endAttacks: response.data.endAttacks, endWounds: response.data.endWounds,
             endMovement: response.data.endMovement, endMagic: response.data.endMagic,
         })
-        if (attrName === "Miejsce pobytu") this.setState({livePlace: response.data.livePlace})
-        if (attrName === "Cechy wyglądu") this.setState({apperances: response.data.apperance})
+        if (attrName === "Miejsce pobytu"){
+            this.setState({livePlace: response.data.livePlace})
+        }
+        if (attrName === "Cechy wyglądu"){
+            // console.log("Otrzymano dane cech wyglądu")
+            this.setState({apperances: response.data.apperance})
+        }
         if (attrName === "Cechy charakteru") this.setState({personalities: response.data.personality})
         if (attrName === "Zdolności") this.setState({talents: this.mapTalentsArrayToString(response.data.talents)})
         if (attrName === "Umiejętności") this.setState({skills: this.mapSkillsArrayToString(response.data.skills)})

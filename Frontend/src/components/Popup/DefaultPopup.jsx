@@ -14,7 +14,7 @@ const customStyles = {
         transform: 'translate(-50%, -50%)',
         backgroundColor: '#292F2F',
         color: 'white',
-
+        zIndex: '100!important'
     }
 };
 
@@ -52,7 +52,7 @@ class DefaultPopup extends React.Component {
                     style={customStyles}
                     contentLabel={title}
                 >
-                    <form id="visibilityCharactersColumns">
+                    <form id="visibilityCharactersColumns" style={{zIndex: '100!important'}}>
                         <div className = "popup-body">
                         {columnsConfigReal && columnsConfigReal.map((item, i) => (
                             <label className="container"><div className = "label">{item.title}</div>

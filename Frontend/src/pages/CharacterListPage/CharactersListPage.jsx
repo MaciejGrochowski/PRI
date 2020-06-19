@@ -27,7 +27,7 @@ class CharactersListPage extends React.Component{
             sortBy: null,
             data: [],
             autocompleteData: {},
-            filterObject: null,
+            filterObject: {},
             visibilityProperties: {
                 name: true,
                 surname: true,

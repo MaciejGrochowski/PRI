@@ -4,6 +4,7 @@ import {fronendUrls} from "../../commons/urls";
 import {ItemMenu} from "./ExampleMenu.style";
 import "../../styles/menu.css";
 import "../../styles/globalStyles.css";
+import AppBar from "@material-ui/core/AppBar";
 
 const menuKatalogItems = [
     {
@@ -43,6 +44,7 @@ class Menu extends React.Component {
     render(){
         return (
             <div>
+            <AppBar position="fixed" color="transparent">
             <div className ="globalStyles">
                 {this.state.isExpanded && (<nav className="menuBody">
 
@@ -63,14 +65,36 @@ class Menu extends React.Component {
                 }
                 
                 </div>
-
-
-
             </nav>)}
                 <button className="menubutton" onClick={this.onExpanded}>Menu</button>
             </div>
-            </div>
-        )
+            </AppBar>
+            <div className ="globalStyles">
+            {this.state.isExpanded && (<nav className="menuBody">
+
+                    <div className= "menu-column">
+                        <div className = "menu-title">Katalog</div>
+                        {
+                            this.state.isExpanded ? menuKatalogItems && menuKatalogItems.map((item, i) => (
+                                <Link className="menuLink" to={item.link}><ItemMenu>{item.label}</ItemMenu></Link>
+                            )) : ""
+                        }
+                    </div>
+                    <div className= "menu-column">
+                        <div className = "menu-title">Stwórz</div>
+                        {
+                            this.state.isExpanded ? menuGeneratorItems && menuGeneratorItems.map((item, i) => (
+                                <Link className="menuLink" to={item.link}><ItemMenu>{item.label}</ItemMenu></Link>
+                            )) : ""
+                        }
+
+                    </div>
+                </nav>)}
+        <button className="menubutton" onClick={this.onExpanded}>Menu</button>
+        </div>
+
+        </div>
+    )
     }
 
 }

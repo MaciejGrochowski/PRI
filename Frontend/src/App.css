@@ -131,6 +131,20 @@ color: #FFD859!important;
   align-self: flex-end;
 }
 
+.MuiAppBar-root{
+  box-shadow: none!important;
+  background-color: rgba(256, 256, 256, 0)!important;
+  z-index: 0;
+}
+
+.ReactModal__Overlay--after-open{
+  z-index:5000;
+
+
+
+
+}
+
 .material-icons{
   color:  #FFD859!important;
 }

@@ -78,7 +78,7 @@ public class CharacterSaveService {
 
     public Surname surnameConvert(String surNew) {
         String prefix = "";
-        if (surNew == null) {
+        if (surNew == null || surNew.equals("")) {
             return new Surname();
         }
         surNew = surNew.trim();
@@ -524,7 +524,7 @@ public class CharacterSaveService {
                 inputName.contains(":") || inputName.contains(";") || inputName.contains("\"") || inputName.contains("'")||
                 inputName.contains("0") || inputName.contains("1") || inputName.contains("2") || inputName.contains("3") ||
                 inputName.contains("4") || inputName.contains("5") || inputName.contains("6") || inputName.contains("7") ||
-                inputName.contains("8") || inputName.contains("9");
+                inputName.contains("8") || inputName.contains("9") || inputName.contains("");
     }
 
     public boolean checkNumber (String dayOrYear, String type){

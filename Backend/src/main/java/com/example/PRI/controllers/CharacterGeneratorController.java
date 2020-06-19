@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import com.example.PRI.entities.character.Character;
 
+import javax.validation.Valid;
 import java.util.Date;
 
 
@@ -53,7 +54,7 @@ public class CharacterGeneratorController {
     }
 
     @Post("/save")
-    public long save(@RequestBody CharacterInputDto character){
+    public long save(@RequestBody @Valid CharacterInputDto character){
         character = this.trimCharacter(character);
         return characterGenerator.save(character);
     }

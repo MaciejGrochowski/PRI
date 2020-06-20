@@ -152,9 +152,7 @@ public class CharacterSaveService {
     }
 
     public Career currentCareerConvert(String inputCurrentCareer) {
-        Career currentCareer = careerService.findByName(inputCurrentCareer);
-        if (currentCareer != null) return currentCareer;
-        else throw new CharacterSaveException("Wybierz obecną profesje swojej postaci.", new IllegalArgumentException());
+        return careerService.findByName(inputCurrentCareer);
     }
 
     public List<Career> previousCareersConvert(String inputPreviousCareers, String inputCurrentCareer) {
@@ -169,13 +167,13 @@ public class CharacterSaveService {
     public HairColor hairColorConverter(String inputHairColor) {
         Optional<HairColor> hairColor = hairColorService.findByName(inputHairColor);
         if (hairColor.isPresent()) return hairColor.get();
-        else throw new CharacterSaveException("Wybierz kolor włosów swojej postaci.", new IllegalArgumentException());
+        else throw new CharacterSaveException("Podany kolor włosów nie istnieje.", new IllegalArgumentException());
     }
 
     public EyeColor eyeColorConverter(String inputEyeColor) {
         Optional<EyeColor> eyeColor = eyeColorService.findByName(inputEyeColor);
         if (eyeColor.isPresent()) return eyeColor.get();
-        else throw new CharacterSaveException("Wybierz kolor oczu swojej postaci.", new IllegalArgumentException());
+        else throw new CharacterSaveException("Podany kolor oczu nie istnieje.", new IllegalArgumentException());
     }
 
     public Place bornPlaceConverter(String bornPlaceInput) {
@@ -395,10 +393,12 @@ public class CharacterSaveService {
     }
 
     public Integer endWeaponSkillConvert(String WeaponSkill) {
+        if (WeaponSkill == null) throw new CharacterSaveException("Podaj statystyke dla obecnej walki wręcz.", new IllegalArgumentException());
+        Integer newWeaponSkill = null;
         if (WeaponSkill.matches("[0-9]+")) {
-            int newWeaponSkill = Integer.parseInt(WeaponSkill);
-            if (newWeaponSkill < 100 && newWeaponSkill >= 0) return newWeaponSkill;
-            else throw new CharacterSaveException("Wartość obecnej walki wręcz może wynosić od 0 do 99.", new IllegalArgumentException());
+            newWeaponSkill = Integer.parseInt(WeaponSkill);
+            if (newWeaponSkill < 100) return newWeaponSkill;
+            else throw new CharacterSaveException("Za duża liczba dla obecnej walki wręcz.\nMaksymalna liczba: 99", new IllegalArgumentException());
         } else throw new CharacterSaveException("Niepoprawny format dla obecnej walki wręcz.", new IllegalArgumentException());
     }
 

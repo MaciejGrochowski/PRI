@@ -14,7 +14,9 @@ import com.example.PRI.services.character.generator.EyeColorGenerator;
 import com.example.PRI.services.character.generator.SurnameGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.HttpClientErrorException;
 
+import javax.validation.constraints.Min;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -393,12 +395,10 @@ public class CharacterSaveService {
     }
 
     public Integer endWeaponSkillConvert(String WeaponSkill) {
-        if (WeaponSkill == null) throw new CharacterSaveException("Podaj statystyke dla obecnej walki wręcz.", new IllegalArgumentException());
-        Integer newWeaponSkill = null;
         if (WeaponSkill.matches("[0-9]+")) {
-            newWeaponSkill = Integer.parseInt(WeaponSkill);
-            if (newWeaponSkill < 100) return newWeaponSkill;
-            else throw new CharacterSaveException("Za duża liczba dla obecnej walki wręcz.\nMaksymalna liczba: 99", new IllegalArgumentException());
+            int newWeaponSkill = Integer.parseInt(WeaponSkill);
+            if (newWeaponSkill < 100 && newWeaponSkill >= 0) return newWeaponSkill;
+            else throw new CharacterSaveException("Wartość obecnej walki wręcz może wynosić od 0 do 99.", new IllegalArgumentException());
         } else throw new CharacterSaveException("Niepoprawny format dla obecnej walki wręcz.", new IllegalArgumentException());
     }
 

@@ -54,7 +54,7 @@ public class CharacterGeneratorController {
     }
 
     @Post("/save")
-    public long save(@RequestBody @Valid CharacterInputDto character){
+    public long save(@Valid @RequestBody CharacterInputDto character){
         character = this.trimCharacter(character);
         return characterGenerator.save(character);
     }

@@ -69,61 +69,75 @@ public class CharacterInputDto implements Serializable {
     @Pattern(regexp = "[1-9][0-9]?", message = "Wartość obecnej walki wręcz może wynosić od 1 do 99.")
     String endWeaponSkills;
 
-    @NotBlank(message = "Podaj wartość obecnych umiejętności strzeleckich.")
-    @Pattern(regexp = "[0-9]*", message = "Wartość obecnych umiejętności strzeleckich urodzenia może składać się tylko z liczb.")
+    @Pattern(regexp = "[1-9][0-9]?", message = "Wartość obecnych umiejętności strzeleckich może wynosić od 1 do 99.")
     String endBallisticSkills;
 
-    @NotBlank(message = "Podaj wartość obecnej krzepy.")
-    @Pattern(regexp = "[0-9]*", message = "Wartość obecnej krzepy może składać się tylko z liczb.")
+    @Pattern(regexp = "[1-9][0-9]?", message = "Wartość obecnej krzepy wręcz może wynosić od 1 do 99.")
     String endStrength;
 
-    @NotBlank(message = "Podaj wartość obecnej odporności.")
-    @Pattern(regexp = "[0-9]*", message = "Wartość obecnej odporności może składać się tylko z liczb.")
+    @Pattern(regexp = "[1-9][0-9]?", message = "Wartość obecnej odporności może wynosić od 1 do 99.")
     String endToughness;
 
-    @NotBlank(message = "Podaj wartość obecnej zręczności.")
-    @Pattern(regexp = "[0-9]*", message = "Wartość obecnej zręczności może składać się tylko z liczb.")
+    @Pattern(regexp = "[1-9][0-9]?", message = "Wartość obecnej zręczności może wynosić od 1 do 99.")
     String endAgility;
 
-    @NotBlank(message = "Podaj wartość obecnej inteligencji.")
-    @Pattern(regexp = "[0-9]*?", message = "Wartość obecnej inteligencji może składać się tylko z liczb.")
+    @Pattern(regexp = "[1-9][0-9]??", message = "Wartość obecnej inteligencji może wynosić od 1 do 99.")
     String endIntelligence;
 
-    @NotBlank(message = "Podaj wartość obecnej siły woli.")
-    @Pattern(regexp = "[0-9]*", message = "Wartość obecnej siły woli może składać się tylko z liczb.")
+    @Pattern(regexp = "[1-9][0-9]?", message = "Wartość obecnej siły woli może wynosić od 1 do 99.")
     String endWillPower;
 
-    @NotBlank(message = "Podaj wartość obecnej ogłady.")
-    @Pattern(regexp = "[0-9]*", message = "Wartość obecnej ogłady może składać się tylko z liczb.")
+    @Pattern(regexp = "[1-9][0-9]?", message = "Wartość obecnej ogłady może wynosić od 1 do 99.")
     String endFellowship;
 
-    @NotBlank(message = "Podaj wartość obecnego ataku.")
-    @Pattern(regexp = "[0-9]*", message = "Wartość obecnego ataku może składać się tylko z liczb.")
+    @Pattern(regexp = "[1-9][0-9]?", message = "Wartość obecnego ataku może wynosić od 1 do 99.")
     String endAttacks;
 
-    @NotBlank(message = "Podaj wartość obecnej żywotności.")
-    @Pattern(regexp = "[0-9]*", message = "Wartość obecnej żywotności może składać się tylko z liczb.")
+    @Pattern(regexp = "[1-9][0-9]?", message = "Wartość obecnej żywotności może wynosić od 1 do 99.")
     String endWounds; // żywotność
 
-    @NotBlank(message = "Podaj wartość obecnej magii.")
-    @Pattern(regexp = "[0-9]*", message = "Wartość obecnej magii może składać się tylko z liczb.")
+    @Pattern(regexp = "0|[1-9][0-9]?", message = "Wartość obecnej magii może wynosić od 0 do 99.")
     String endMagic; // magia
 
-    @NotBlank(message = "Podaj wartość obecnej szybkości.")
-    @Pattern(regexp = "[0-9]*", message = "Wartość obecnej szybkości może składać się tylko z liczb.")
+    @Pattern(regexp = "[1-9][0-9]?", message = "Wartość obecnej szybkości może wynosić od 1 do 99.")
     String endMovement; // szybkość
 
+
+
+    @Pattern(regexp = "[1-9][0-9]?", message = "Wartość bazowej walki wręcz może wynosić od 1 do 99.")
     String baseWeaponSkills;
+
+    @Pattern(regexp = "[1-9][0-9]?", message = "Wartość bazowych umiejętności strzeleckich może wynosić od 1 do 99.")
     String baseBallisticSkills;
+
+    @Pattern(regexp = "[1-9][0-9]?", message = "Wartość bazowej krzepy wręcz może wynosić od 1 do 99.")
     String baseStrength;
+
+    @Pattern(regexp = "[1-9][0-9]?", message = "Wartość bazowej odporności może wynosić od 1 do 99.")
     String baseToughness;
+
+    @Pattern(regexp = "[1-9][0-9]?", message = "Wartość bazowej zręczności może wynosić od 1 do 99.")
     String baseAgility;
+
+    @Pattern(regexp = "[1-9][0-9]??", message = "Wartość bazowej inteligencji może wynosić od 1 do 99.")
     String baseIntelligence;
+
+    @Pattern(regexp = "[1-9][0-9]?", message = "Wartość bazowej siły woli może wynosić od 1 do 99.")
     String baseWillPower;
+
+    @Pattern(regexp = "[1-9][0-9]?", message = "Wartość bazowej ogłady może wynosić od 1 do 99.")
     String baseFellowship;
+
+    @Pattern(regexp = "[1-9][0-9]?", message = "Wartość bazowego ataku może wynosić od 1 do 99.")
     String baseAttacks;
+
+    @Pattern(regexp = "[1-9][0-9]?", message = "Wartość bazowej żywotności może wynosić od 1 do 99.")
     String baseWounds; // żywotność
+
+    @Pattern(regexp = "0|[1-9][0-9]?", message = "Wartość bazowej magii może wynosić od 0 do 99.")
     String baseMagic; // magia
+
+    @Pattern(regexp = "[1-9][0-9]?", message = "Wartość bazowej szybkości może wynosić od 1 do 99.")
     String baseMovement; // szybkość
 
 

@@ -54,7 +54,7 @@ public class CharacterInputDto implements Serializable {
 
     String surname;
 
-    @Pattern(regexp = "[a-zA-z]*", message = "Podaj tylko jedno imię składające się tylko z liter.")
+    @Pattern(regexp = "[a-zA-Z]*", message = "Podaj poprawne imię.")
     String name;
 
     String prediction;

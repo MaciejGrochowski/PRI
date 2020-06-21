@@ -110,20 +110,21 @@ public class CharacterSaveService {
 
 
     public Name nameConvert(String inputName) {
-        if (inputName == null || inputName.equals(""))
-            throw new CharacterSaveException("Podaj imię postaci swojej postaci.", new IllegalArgumentException());
+//        if (inputName == null || inputName.equals(""))
+//            throw new CharacterSaveException("Podaj imię postaci swojej postaci.", new IllegalArgumentException());
         inputName = inputName.trim();
+        inputName = inputName.substring(0, 1).toUpperCase() + inputName.substring(1).toLowerCase();  //ta linijka zamiast ifa niżej
         Optional<Name> nameOptional = nameService.findByName(inputName);
         if (nameOptional.isPresent()) return nameOptional.get();
         if (checkSpecialCharacter(inputName) || inputName.matches(".*\\d.*")) throw new CharacterSaveException("Imię może zawierać tylko litery.", new IllegalArgumentException());
-        if (inputName.matches("[a-z].*")) {
-            String firstLetter = inputName.substring(0, 1).toUpperCase();
-            String newNameWithBigFirstLetter = firstLetter + inputName.substring(1);
-            Name nextName = new Name();
-            nextName.setName(newNameWithBigFirstLetter);
-            nameService.save(nextName);
-            return nextName;
-        } else {
+//        if (inputName.matches("[a-z].*")) {
+//           String firstLetter = inputName.substring(0, 1).toUpperCase();
+//            String newNameWithBigFirstLetter = firstLetter + inputName.substring(1);
+//            Name nextName = new Name();
+//            nextName.setName(newNameWithBigFirstLetter);
+//            nameService.save(nextName);
+//            return nextName;}
+            else {
             Name nameNew = new Name();
             nameNew.setName(inputName);
             nameService.save(nameNew);
@@ -524,7 +525,7 @@ public class CharacterSaveService {
                 inputName.contains(":") || inputName.contains(";") || inputName.contains("\"") || inputName.contains("'")||
                 inputName.contains("0") || inputName.contains("1") || inputName.contains("2") || inputName.contains("3") ||
                 inputName.contains("4") || inputName.contains("5") || inputName.contains("6") || inputName.contains("7") ||
-                inputName.contains("8") || inputName.contains("9") || inputName.contains("");
+                inputName.contains("8") || inputName.contains("9");
     }
 
     public boolean checkNumber (String dayOrYear, String type){

@@ -110,8 +110,8 @@ public class CharacterSaveService {
 
 
     public Name nameConvert(String inputName) {
-//        if (inputName == null || inputName.equals(""))
-//            throw new CharacterSaveException("Podaj imię postaci swojej postaci.", new IllegalArgumentException());
+        if (inputName == null || inputName.equals(""))
+            throw new CharacterSaveException("Podaj imię postaci swojej postaci.", new IllegalArgumentException());
         inputName = inputName.trim();
         inputName = inputName.substring(0, 1).toUpperCase() + inputName.substring(1).toLowerCase();  //ta linijka zamiast ifa niżej
         Optional<Name> nameOptional = nameService.findByName(inputName);

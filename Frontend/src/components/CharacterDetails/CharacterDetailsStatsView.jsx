@@ -27,7 +27,7 @@ class CharacterDetailsStatsView extends React.Component {
                 </div>
 <div className="column">
 
-<div className = "block-element"><div className="flex-component"><div className = "stats-name">Wzrost/Waga</div> <div className = "yellow-color">{data.height}cm / {data.weight} kg</div></div></div>
+<div className = "block-element"><div className="flex-component"><div className = "stats-name">Wzrost/Waga</div> <div className = "yellow-color">{data.height} cm / {data.weight} kg</div></div></div>
 
                 <div className="flex-component"><div className = "stats-name">Kolor oczu</div> <div className = "yellow-color">{data.eyeColor}</div></div>
                 <div className="flex-component"><div className = "stats-name">Kolor włosów</div> <div className = "yellow-color">{data.hairColor}</div></div>

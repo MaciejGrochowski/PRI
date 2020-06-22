@@ -113,7 +113,7 @@ class CharacterDetailsCombatStatsView extends React.Component {
                             <div className = "grid-name-element title-column">WT</div>
                             <div className = "grid-element"style= {mygrid}><div style ={test}>{Math.floor(data.baseToughness/10)}</div></div>
                             <div className = "grid-element" style= {mygrid}><div style ={test}>{"-"}</div></div>
-                            <div className = "grid-element" style= {mygrid}><div style ={test}>{Math.floor(data.baseToughness/10)}</div></div>
+                            <div className = "grid-element" style= {mygrid}><div style ={test}>{Math.floor(data.endToughness/10)}</div></div>
                         </div>
                         <div className="grid-column">
                             <div className = "grid-name-element title-column">SZ</div>

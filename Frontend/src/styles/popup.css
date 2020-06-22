@@ -8,6 +8,7 @@
   
 .dostosuj-button{
   display: block;
+  z-index: 100;
   }
 
 .label{

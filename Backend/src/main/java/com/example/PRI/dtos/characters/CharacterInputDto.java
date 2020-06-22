@@ -51,15 +51,16 @@ public class CharacterInputDto implements Serializable {
     @Pattern(regexp = "\\d\\d\\d?", message = "Podaj poprawny wzrost.")
     String height;
 
-
     String surname;
 
+    @NotBlank (message = "Podaj poprawne imię.")
     @Pattern(regexp = "[a-zA-Z]*", message = "Podaj poprawne imię.")
     String name;
 
     String prediction;
     String previousCareers;
 
+    //dodać notblank
     @NotBlank(message = "Podaj profesje swojej postaci.")
     String currentCareer;
 

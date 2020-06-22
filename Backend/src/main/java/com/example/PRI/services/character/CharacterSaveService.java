@@ -89,7 +89,8 @@ public class CharacterSaveService {
         if (surNew.matches(".*\\d.*")  || checkSpecialCharacter(surNew) || surNew.matches("\\s*")) throw new CharacterSaveException("Nazwisko może zawierać tylko litery.", new IllegalArgumentException());
         if (surNew.startsWith("von ") || surNew.startsWith("Von ")){
             prefix = "von ";
-            surNew = surNew.substring(5);
+            surNew = surNew.substring(4);
+            surNew = surNew.trim();
         }
         if (surNew.matches("[a-z].*")){
             String firstLetter = surNew.substring(0, 1).toUpperCase();
@@ -334,7 +335,7 @@ public class CharacterSaveService {
     }
 
     public List<Skill> skillsConvert(String inputSkills) {
-        if (inputSkills == null || inputSkills.equals("")) return null;
+        if (inputSkills == null || inputSkills.equals("")) throw new CharacterSaveException("Postać musi posiadać umiejętności.", new IllegalArgumentException());
         List<String> stringList = Arrays.asList(inputSkills.split(","));
         List<Skill> skillList = skillService.findByNameIn(stringList.stream().map(s -> s.split(" \\+")[0]).collect(Collectors.toList()));
         List<Skill> characterSkills = new ArrayList<>();
@@ -349,7 +350,7 @@ public class CharacterSaveService {
     }
 
     public List<Talent> talentsConvert(String inputTalents) {
-        if (inputTalents == null) return null;
+        if (inputTalents == null) throw new CharacterSaveException("Postać musi posiadać talenty.", new IllegalArgumentException());
         List<String> stringList = Arrays.asList(inputTalents.split(","));
         List<Talent> talentList = talentService.findByNameIn(stringList);
         if (talentList != null) return talentList;

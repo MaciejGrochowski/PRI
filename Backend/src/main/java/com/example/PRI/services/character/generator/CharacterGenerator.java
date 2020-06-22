@@ -280,8 +280,8 @@ public class CharacterGenerator extends GeneralService {
         if(characterSaveService.personalityOrAppearanceOrEmotionNumber(characterInputDto.getApperance(), "apperance") && characterSaveService.checkIfTheSameCategory(characterInputDto.getApperance(), "apperance")
 
         )character.setApperance(characterSaveService.apperanceConvert(characterInputDto.getApperance()));
-        character.setSkills(characterSaveService.skillsConvert(characterInputDto.getSkills()));
-        character.setTalents(characterSaveService.talentsConvert(characterInputDto.getTalents()));
+        if(characterInputDto.getSkills() != null && !characterInputDto.getSkills().equals(""))character.setSkills(characterSaveService.skillsConvert(characterInputDto.getSkills()));
+        if(characterInputDto.getTalents() != null && !characterInputDto.getTalents().equals(""))character.setTalents(characterSaveService.talentsConvert(characterInputDto.getTalents()));
         if(characterInputDto.getReligion() != null && !characterInputDto.getReligion().equals("")) character.setReligion(characterSaveService.religionConverter(characterInputDto.getReligion()));
         if (characterInputDto.getDayOfBirth() != null  && characterSaveService.checkNumber(characterInputDto.getDayOfBirth(), "day") && characterInputDto.getMonthOfBirth() != null
             && characterInputDto.getYearOfBirth() != null && characterSaveService.checkNumber(characterInputDto.getYearOfBirth(), "year")) character.setBirthDate(characterSaveService.imperialDateConverter(characterInputDto.getDayOfBirth(), characterInputDto.getMonthOfBirth(),characterInputDto.getYearOfBirth()));

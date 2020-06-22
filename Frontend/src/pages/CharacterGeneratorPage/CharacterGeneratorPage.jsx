@@ -131,7 +131,11 @@ class CharacterGeneratorPage extends React.Component {
     }
 
     saveErrorHandler = error => {
-        this.setState({isError: true, errorText: error.response.data.message, generated: false})
+        if(error.response.data.errors){
+            const errorMsg = error.response.data.errors.map(e => e.defaultMessage)[0]
+            this.setState({isError: true, errorText: errorMsg, generated: false})
+        }
+        else this.setState({isError: true, errorText: error.response.data.message, generated: false})
     }
 
     saveSuccessHandler = response => {

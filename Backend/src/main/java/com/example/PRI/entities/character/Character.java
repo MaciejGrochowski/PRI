@@ -55,7 +55,7 @@ public class Character extends GeneralEntity {
     Integer weight;
     Integer height;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="surname", referencedColumnName="surname")
     Surname surname;
 

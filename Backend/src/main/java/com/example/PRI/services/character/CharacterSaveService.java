@@ -92,7 +92,7 @@ public class CharacterSaveService {
             surNew = surNew.substring(4);
             surNew = surNew.trim();
         }
-        if (surNew.matches("[a-z].*")){
+        if (surNew.matches("[A-Za-z].*")){
             String firstLetter = surNew.substring(0, 1).toUpperCase();
             String newSurnameWithBigFirstLetter = firstLetter + surNew.substring(1);
             Surname nextSurname = new Surname();

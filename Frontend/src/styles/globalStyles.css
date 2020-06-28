@@ -63,6 +63,11 @@ body{
     display: flex;
 }
 
+.filter-menu .flex-div{
+    min-width: 300px!important;
+    width: min-content!important;
+}
+
 .flex-element{
     display: flex;
     justify-content: flex-end;

@@ -173,7 +173,7 @@ render()
                         disablePortal={this.props.disablePortal || false}
                         noOptionsText={"Brak opcji"}
                         style={{width: width}}
-                        // popupIcon={<div style={{}}>ZIemniak</div>} ToDo Kasia spróbuj pokonać ziemniaka
+                        popupIcon={<div/>}
                         renderInput={(params) => (
                             <TextField {...params} multiline label={labelName}/>
                         )}

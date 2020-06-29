@@ -121,7 +121,7 @@ public class StatisticsGenerator {
         Map<String, String> output = new HashMap<>();
         List<String> dominatingStats = setDominatingStats(generated);
         List<String> antiDominatingStats = setAntiDominatingStats(generated);
-        aplicateProperties(generated, properties);
+//        aplicateProperties(generated, properties);
         dominatingStats.addAll(setDominatingStats(generated));
         antiDominatingStats.addAll(setAntiDominatingStats(generated));
         String dominating = dominatingStats.stream().distinct().collect(Collectors.joining(","));

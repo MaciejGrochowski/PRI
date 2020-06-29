@@ -22,6 +22,7 @@ public class CharacterConverter {
         CharacterDefaultAttributesOutputDto output = new CharacterDefaultAttributesOutputDto();
         output.setId(character.getId());
         output.setName(character.getName().getName());
+        output.setBirthPlace(character.getBirthPlace() == null ? "" : character.getBirthPlace().getName());
         output.setSurname(character.getSurname() != null ? character.getSurname().getSurname() : "");
         output.setRace(character.getRace() == null ? "" : character.getRace().name());
         output.setSex(character.getSex().name()); //ToDo używać getName i wprowadzić poprawkę na frontendzie

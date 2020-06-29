@@ -11,10 +11,10 @@ const menuKatalogItems = [
         label: 'Postacie',
         link: fronendUrls.characterList
     },
-    {
-        label: 'Historie',
-        link: fronendUrls.historyList
-    },
+    // {
+    //     label: 'Historie',
+    //     link: fronendUrls.historyList
+    // },
 
 
 ]

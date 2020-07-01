@@ -1,14 +1,30 @@
-import styled from "styled-components";
+import styled, {css} from 'styled-components';
 import CloseIcon from "@material-ui/icons/Close";
 import React from "react";
+
+
+export const ColorTag = styled.div`
+  ${props => props.item.includes("+0") && css`
+  // background-color: #404040!important
+  `}
+  ${props => props.item.includes("+10") && css`
+  // background-color: #404040!important
+  `}
+  ${props => props.item.includes("+20") && css`
+  // background-color: #737373!important
+  `}
+  
+
+`
+
 
 export const Tag = styled(({ label, onDelete, id, ...props }) => (
     <>
         {label && label.map((item, i) => (
-            <div {...props}>
-                <div className={id}>{item}</div>
-                <CloseIcon onClick={() => onDelete(item)}/>
-            </div>
+            <ColorTag item={item} {...props}>
+            <div className={id}>{item}</div>
+            <CloseIcon onClick={() => onDelete(item)}/>
+            </ColorTag>
         ))}
     </>
 ))`

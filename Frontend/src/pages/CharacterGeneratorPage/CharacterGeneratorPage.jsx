@@ -1,21 +1,22 @@
 import React from "react";
-import {Link} from "react-router-dom";
-import {TextField} from "@material-ui/core";
 import DefaultMultipleAutocomplete from "../../components/Autocomplete/DefaultMultipleAutocomplete";
-import MenuItem from "@material-ui/core/MenuItem";
-import {starSigns} from "../../enums/StarSigns";
 import {religions} from "../../enums/Religions";
-import grid from "../../styles/grid.css";
 import characterService from "../../services/characterService";
 import {months} from "../../enums/Months";
 import generatorService from "../../services/generatorService";
-
-import ReactDOM from 'react-dom';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faSyncAlt} from '@fortawesome/free-solid-svg-icons';
 import ErrorGenerator from "../../components/ErrorLayout/ErrorGenerator";
 import {careerContext} from "./context";
 import GeneratorTextField from "../../components/Generator/GeneratorTextField";
+import {
+    fullRandomGenerateSuccessHandler,
+    generateOneAttributeSuccessHandler,
+    mapArrayToStringWithoutSpaces,
+    mapFilterArrayToString,
+    mapSkillsArrayToString,
+    mapTalentsArrayToString
+} from "./util";
 
 const mygrid = {
     all: 'none',
@@ -27,10 +28,7 @@ const mygrid = {
     marginTop: '5%',
     textAlign: 'center',
 };
-
-
 const element = <FontAwesomeIcon icon={faSyncAlt}/>
-
 class CharacterGeneratorPage extends React.Component {
 
     constructor() {
@@ -60,38 +58,12 @@ class CharacterGeneratorPage extends React.Component {
         this.setState({autocompleteData: response.data})
     }
 
-    mapFilterArrayToString = (array, options) => {
-        let string = ""
-        for (const element in array) {
-            let name;
-            name = array[element]; //ToDo prawdopodobnie jest lepsza metoda, ale wymaga analizy
-            string = string + name + ", "
-        }
-        return string.substring(0, string.length - 2);
-    }
-
-    mapSkillArrayToString = array => { //ToDo funkcje mapujące są używane w wielu miejscach - zdefiniować je wspólnie w jakichś utilsach
-        let str = ""
-        for(let s of array){
-            str += s + ", "
-        }
-        return str.substring(0, str.length-2);
-    }
-
-    mapArrayToStringWithoutSpaces = array => {
-        let str = ""
-        for(let s of array){
-            str += s + ","
-        }
-        return str.substring(0, str.length-1);
-    }
-
     getDataFromForm = () => {
         let output = {
             currentCareer: this.state.currentCareer,
             sex: this.state.sex,
             race: this.state.race,
-            previousCareers: Array.isArray(this.state.previousCareers) ? this.mapFilterArrayToString(this.state.previousCareers) : this.state.previousCareers,
+            previousCareers: Array.isArray(this.state.previousCareers) ? mapFilterArrayToString(this.state.previousCareers) : this.state.previousCareers,
             monthOfBirth: this.state.monthOfBirth,
             eyeColor: this.state.eyeColor,
             hairColor: this.state.hairColor,
@@ -99,10 +71,10 @@ class CharacterGeneratorPage extends React.Component {
             birthPlace: this.state.birthPlace,
             dominatingEmotions: Array.isArray(this.state.dominatingEmotions) ? this.mapFilterArrayToString(this.state.dominatingEmotions) : this.state.dominatingEmotions,
             religion: this.state.religion,
-            skills: Array.isArray(this.state.skills) ? this.mapArrayToStringWithoutSpaces(this.state.skills) : this.state.skills,
-            talents: Array.isArray(this.state.talents) ? this.mapArrayToStringWithoutSpaces(this.state.talents) : this.state.talents,
-            apperance: Array.isArray(this.state.apperances) ? this.mapFilterArrayToString(this.state.apperances) : this.state.apperances,
-            personality: Array.isArray(this.state.personalities) ? this.mapFilterArrayToString(this.state.personalities) : this.state.personalities,
+            skills: Array.isArray(this.state.skills) ? mapArrayToStringWithoutSpaces(this.state.skills) : this.state.skills,
+            talents: Array.isArray(this.state.talents) ? mapArrayToStringWithoutSpaces(this.state.talents) : this.state.talents,
+            apperance: Array.isArray(this.state.apperances) ? mapFilterArrayToString(this.state.apperances) : this.state.apperances,
+            personality: Array.isArray(this.state.personalities) ? mapFilterArrayToString(this.state.personalities) : this.state.personalities,
             name: this.state.name, surname: this.state.surname, dayOfBirth: this.state.dayOfBirth,
             yearOfBirth: this.state.yearOfBirth, height: this.state.height, weight: this.state.weight,
             prediction: this.state.prediction,
@@ -149,61 +121,7 @@ class CharacterGeneratorPage extends React.Component {
     }
 
     fullRandomGenerateSuccessHandler = response => {
-        this.setState({
-            name: response.data.name,
-            surname: response.data.surname,
-            weight: response.data.weight,
-            height: response.data.height,
-            dayOfBirth: response.data.dayOfBirth,
-            yearOfBirth: response.data.yearOfBird,
-            birthPlace: response.data.birthPlace,
-            livePlace: response.data.livePlace,
-            currentCareer: response.data.currentCareer,
-            race: response.data.race,
-            sex: response.data.sex,
-            monthOfBirth: response.data.monthOfBirth,
-            eyeColor: response.data.eyeColor,
-            hairColor: response.data.hairColor,
-            personalities: response.data.personality,
-            apperances: response.data.apperance,
-            dominatingEmotions: response.data.dominatingEmotions,
-            religion: response.data.religion,
-            prediction: response.data.prediction,
-            previousCareers: response.data.previousCareers,
-            skills: this.mapSkillsArrayToString(response.data.skills),
-            talents: this.mapTalentsArrayToString(response.data.talents),
-            endWeaponSkills: response.data.endWeaponSkills, endBallisticSkills: response.data.endBallisticSkills,
-            endStrength: response.data.endStrength, endToughness: response.data.endToughness,
-            endAgility: response.data.endAgility, endIntelligence: response.data.endIntelligence,
-            endWillPower: response.data.endWillPower, endFellowship: response.data.endFellowship,
-            endAttacks: response.data.endAttacks, endWounds: response.data.endWounds,
-            endMovement: response.data.endMovement, endMagic: response.data.endMagic,
-            baseWeaponSkills: response.data.baseWeaponSkills, baseBallisticSkills: response.data.baseBallisticSkills,
-            baseStrength: response.data.baseStrength, baseToughness: response.data.baseToughness,
-            baseAgility: response.data.baseAgility, baseIntelligence: response.data.baseIntelligence,
-            baseWillPower: response.data.baseWillPower, baseFellowship: response.data.baseFellowship,
-            baseAttacks: response.data.baseAttacks, baseWounds: response.data.baseWounds,
-            baseMovement: response.data.baseMovement, baseMagic: response.data.baseMagic
-        })
-        // if(response.data.previousCareers!=="") this.setState({previousCareers: response.data.previousCareers});
-    }
-
-    mapTalentsArrayToString = talents => {
-        let output = ""
-        talents = talents.map(s => s.name)
-        for (const i in talents) {
-            output = output + talents[i] + ",";
-        }
-        return output.substring(0, output.length - 1);
-    }
-
-    mapSkillsArrayToString = skills => {
-        let output = ""
-        skills = skills.map(s => s.name + " +" + s.level)
-        for (const i in skills) {
-            output = output + skills[i] + ",";
-        }
-        return output.substring(0, output.length - 1);
+        this.setState(fullRandomGenerateSuccessHandler(response))
     }
 
     generateOneAttribute = attrName => {
@@ -213,56 +131,9 @@ class CharacterGeneratorPage extends React.Component {
             .catch(error => this.generateOneAttributeErrorHandler(error))
     }
 
-    generateOneAttributeErrorHandler = error => {
-        this.setState({isError: true, errorText: error.response.data.message})
-    }
+    generateOneAttributeErrorHandler = error => {this.setState({isError: true, errorText: error.response.data.message})}
 
-    generateOneAttributeSuccessHandler = (attrName, response) => {
-        if (attrName === "Miejsce urodzenia") this.setState({birthPlace: response.data.birthPlace})
-        if (attrName === "Rasa") this.setState({race: response.data.race})
-        if (attrName === "Płeć") this.setState({sex: response.data.sex})
-        if (attrName === "Nazwisko") this.setState({surname: response.data.surname})
-        if (attrName === "Imię") this.setState({name: response.data.name})
-        if (attrName === "Bazowe statystyki") this.setState({
-            baseWeaponSkills: response.data.baseWeaponSkills, baseBallisticSkills: response.data.baseBallisticSkills,
-            baseStrength: response.data.baseStrength, baseToughness: response.data.baseToughness,
-            baseAgility: response.data.baseAgility, baseIntelligence: response.data.baseIntelligence,
-            baseWillPower: response.data.baseWillPower, baseFellowship: response.data.baseFellowship,
-            baseAttacks: response.data.baseAttacks, baseWounds: response.data.baseWounds,
-            baseMovement: response.data.baseMovement, baseMagic: response.data.baseMagic
-        })
-        if (attrName === "Wzrost") this.setState({height: response.data.height})
-        if (attrName === "Waga") this.setState({weight: response.data.weight})
-        if (attrName === "Kolor oczu") this.setState({eyeColor: response.data.eyeColor})
-        if (attrName === "Kolor włosów") this.setState({hairColor: response.data.hairColor})
-        if (attrName === "Data urodzenia") this.setState({
-            dayOfBirth: response.data.dayOfBirth,
-            yearOfBirth: response.data.yearOfBird,
-            monthOfBirth: response.data.monthOfBirth
-        })
-        if (attrName === "Dominujące emocje") this.setState({dominatingEmotions: response.data.dominatingEmotions})
-        if (attrName === "Przepowiednia") this.setState({prediction: response.data.prediction})
-        if (attrName === "Profesja") this.setState({previousCareers: response.data.previousCareers, currentCareer: response.data.currentCareer})
-        if (attrName === "Statystyki końcowe") this.setState({endWeaponSkills: response.data.endWeaponSkills, endBallisticSkills: response.data.endBallisticSkills,
-            endStrength: response.data.endStrength, endToughness: response.data.endToughness,
-            endAgility: response.data.endAgility, endIntelligence: response.data.endIntelligence,
-            endWillPower: response.data.endWillPower, endFellowship: response.data.endFellowship,
-            endAttacks: response.data.endAttacks, endWounds: response.data.endWounds,
-            endMovement: response.data.endMovement, endMagic: response.data.endMagic,
-        })
-        if (attrName === "Miejsce pobytu"){
-            this.setState({livePlace: response.data.livePlace})
-        }
-        if (attrName === "Cechy wyglądu"){
-            // console.log("Otrzymano dane cech wyglądu")
-            this.setState({apperances: response.data.apperance})
-        }
-        if (attrName === "Cechy charakteru") this.setState({personalities: response.data.personality})
-        if (attrName === "Zdolności") this.setState({talents: this.mapTalentsArrayToString(response.data.talents)})
-        if (attrName === "Umiejętności") this.setState({skills: this.mapSkillsArrayToString(response.data.skills)})
-        if (attrName === "Religia") this.setState({religion: response.data.religion})
-    }
-
+    generateOneAttributeSuccessHandler = (attrName, response) => {return generateOneAttributeSuccessHandler(attrName, response);}
 
     render() {
         return (
@@ -271,34 +142,22 @@ class CharacterGeneratorPage extends React.Component {
                 <div className="block-element">
                     <div className="flex-component space-between-component">
                         <div className="white-caption">Statystyki:</div>
-                        <button className="detaleButton" onClick={() => this.fullRandomGenerate()}><div className = "text-with-fafa">Generuj losowe statystyki 
+                        <button className="detaleButton" onClick={() => this.fullRandomGenerate()}><div className = "text-with-fafa">Generuj losowe statystyki
                         </div><span>{element}</span>
                         </button>
                     </div>
                 </div>
                 <div className = "container-stats">
                         <div className = "column-1">
-                            <careerContext.Provider value={{
-                                update: (val) => {
-                                    this.setState({
-                                        name: val
-                                    })
-                                },
-                            }}>
+                            <careerContext.Provider value={{update: (val) => {this.setState({name: val})},}}>
                                 <GeneratorTextField label="Imię" generated={this.state.name} canBeGenerated onRandomClick={() => this.generateOneAttribute("Imię")}
                                                     disabled={this.state.race===undefined || this.state.race==="" || this.state.race === null ||
                                                     this.state.sex===undefined || this.state.sex==="" || this.state.sex === null }
                                                     />
                             </careerContext.Provider>
 
-
                             <careerContext.Provider value={{
-                                update: (val) => {
-                                    this.setState({
-                                        surname: val
-                                    })
-                                },
-                            }}>
+                                update: (val) => {this.setState({surname: val})},}}>
                                 <GeneratorTextField label="Nazwisko" generated={this.state.surname} canBeGenerated onRandomClick={() => this.generateOneAttribute("Nazwisko")}
                                                     disabled={this.state.race===undefined || this.state.race==="" || this.state.race === null ||
                                                     this.state.sex===undefined || this.state.sex==="" || this.state.sex === null
@@ -307,12 +166,8 @@ class CharacterGeneratorPage extends React.Component {
                             </careerContext.Provider>
 
                             <careerContext.Provider value={{
-                                update: (val) => {
-                                    this.setState({
-                                        race: val
-                                    })
-                                },
-                            }}><DefaultMultipleAutocomplete
+                                update: (val) => {this.setState({race: val})},}}>
+                                <DefaultMultipleAutocomplete
                                 labelName="Rasa"
                                 options={["Człowiek", "Elf", "Krasnolud", "Niziołek"]}
                                 id="characterGeneratorRace"
@@ -326,12 +181,8 @@ class CharacterGeneratorPage extends React.Component {
                             </careerContext.Provider>
 
                             <careerContext.Provider value={{
-                                update: (val) => {
-                                    this.setState({
-                                        sex: val
-                                    })
-                                },
-                            }}><DefaultMultipleAutocomplete
+                                update: (val) => {this.setState({sex: val})},}}>
+                                <DefaultMultipleAutocomplete
                                 labelName="Płeć"
                                 options={["Mężczyzna", "Kobieta"]}
                                 id="characterGeneratorSex"
@@ -343,15 +194,8 @@ class CharacterGeneratorPage extends React.Component {
                                 disabled={this.state.race === undefined || this.state.race === "" || this.state.race === null}
                             /></careerContext.Provider>
 
-
-
                             <careerContext.Provider value={{
-                                update: (val) => {
-                                    this.setState({
-                                        currentCareer: val
-                                    })
-                                },
-                            }}>
+                                update: (val) => {this.setState({currentCareer: val})},}}>
                                 <DefaultMultipleAutocomplete
                                     labelName="Profesja"
                                     options={this.state.autocompleteData.careerNames || []}
@@ -381,12 +225,8 @@ class CharacterGeneratorPage extends React.Component {
                             </careerContext.Provider>
 
                             <careerContext.Provider value={{
-                                update: (val) => {
-                                    this.setState({
-                                        livePlace: val
-                                    })
-                                },
-                            }}><DefaultMultipleAutocomplete
+                                update: (val) => {this.setState({livePlace: val})},}}>
+                                <DefaultMultipleAutocomplete
                                 labelName="Miejsce pobytu"
                                 options={this.state.autocompleteData.placeNames || []}
                                 id="characterGeneratorLivePlace"
@@ -402,16 +242,10 @@ class CharacterGeneratorPage extends React.Component {
 
                                 }
                             />
-                                {/*ToDo Rasa nie powinna być wymagana do miejsca pobytu - błąd na backendzie*/}
-
                             </careerContext.Provider>
                             <careerContext.Provider value={{
-                                update: (val) => {
-                                    this.setState({
-                                        birthPlace: val
-                                    })
-                                },
-                            }}><DefaultMultipleAutocomplete
+                                update: (val) => {this.setState({birthPlace: val})},}}>
+                                <DefaultMultipleAutocomplete
                                 labelName="Miejsce urodzenia"
                                 options={this.state.autocompleteData.placeNames || []}
                                 id="characterGeneratorBirthPlace"
@@ -421,24 +255,13 @@ class CharacterGeneratorPage extends React.Component {
                                 onRandomClick={() => this.generateOneAttribute("Miejsce urodzenia")}
                             />
                             </careerContext.Provider>
-
                                 <careerContext.Provider value={{
-                                    update: (val) => {
-                                        this.setState({
-                                            dayOfBirth: val
-                                        })
-                                    },
-                                }}>
+                                    update: (val) => {this.setState({dayOfBirth: val})},}}>
                                     <GeneratorTextField label="Dzień urodzenia" generated={this.state.dayOfBirth}/>
                                 </careerContext.Provider>
 
-
                                 <careerContext.Provider value={{
-                                    update: (val) => {
-                                        this.setState({
-                                            monthOfBirth: val
-                                        })
-                                    },
+                                    update: (val) => {this.setState({monthOfBirth: val})},
                                 }}><DefaultMultipleAutocomplete
                                     labelName="Miesiąc urodzenia"
                                     options={months}
@@ -449,28 +272,17 @@ class CharacterGeneratorPage extends React.Component {
                                     notSortOptions
                                 />
                                 </careerContext.Provider>
-
                                 <careerContext.Provider value={{
-                                    update: (val) => {
-                                        this.setState({
-                                            yearOfBirth: val
-                                        })
-                                    },
-                                }}>
+                                    update: (val) => {this.setState({yearOfBirth: val})},}}>
                                     <GeneratorTextField label="Rok urodzenia" generated={this.state.yearOfBirth}
                                                         canBeGenerated
                                                         onRandomClick={() => this.generateOneAttribute("Data urodzenia")}
                                                         disabled={this.state.race===undefined || this.state.race==="" || this.state.race === null}
                                     />
                                 </careerContext.Provider>
-
                             <careerContext.Provider value={{
-                                update: (val) => {
-                                    this.setState({
-                                        religion: val
-                                    })
-                                },
-                            }}><DefaultMultipleAutocomplete
+                                update: (val) => {this.setState({religion: val})},}}>
+                                <DefaultMultipleAutocomplete
                                 labelName="Religia"
                                 options={religions || []}
                                 id="characterGeneratorReligion"
@@ -486,38 +298,19 @@ class CharacterGeneratorPage extends React.Component {
                                 }
                             />
                             </careerContext.Provider>
-
                 </div>
-
-
                 <div className = "column-1">
-
                                 <careerContext.Provider value={{
-                                    update: (val) => {
-                                        this.setState({
-                                            height: val
-                                        })
-                                    },
-                                }}>
+                                    update: (val) => {this.setState({height: val})},}}>
                                     <GeneratorTextField label="Wzrost" generated={this.state.height} canBeGenerated onRandomClick={() => this.generateOneAttribute("Wzrost")} disabled={this.state.race===undefined || this.state.race==="" || this.state.race === null || this.state.sex===undefined || this.state.sex==="" || this.state.sex === null}/>
                                 </careerContext.Provider>
-
                                 <careerContext.Provider value={{
-                                    update: (val) => {
-                                        this.setState({
-                                            weight: val
-                                        })
-                                    },
-                                }}>
-                                    <GeneratorTextField label="Waga" generated={this.state.weight} canBeGenerated onRandomClick={() => this.generateOneAttribute("Waga")} disabled={this.state.race===undefined || this.state.race==="" || this.state.race === null || this.state.sex===undefined || this.state.sex==="" || this.state.sex === null}/>
+                                    update: (val) => {this.setState({weight: val})},}}>
+                                <GeneratorTextField label="Waga" generated={this.state.weight} canBeGenerated onRandomClick={() => this.generateOneAttribute("Waga")} disabled={this.state.race===undefined || this.state.race==="" || this.state.race === null || this.state.sex===undefined || this.state.sex==="" || this.state.sex === null}/>
                                 </careerContext.Provider>
                                 <careerContext.Provider value={{
-                                update: (val) => {
-                                    this.setState({
-                                        eyeColor: val
-                                    })
-                                },
-                            }}><DefaultMultipleAutocomplete
+                                update: (val) => {this.setState({eyeColor: val})},}}>
+                                <DefaultMultipleAutocomplete
                                 labelName="Kolor oczu"
                                 options={this.state.autocompleteData.eyeColors || []}
                                 id="characterGeneratorEyeColor"
@@ -529,11 +322,7 @@ class CharacterGeneratorPage extends React.Component {
                             /></careerContext.Provider>
 
                             <careerContext.Provider value={{
-                                update: (val) => {
-                                    this.setState({
-                                        hairColor: val
-                                    })
-                                },
+                                update: (val) => {this.setState({hairColor: val})},
                             }}><DefaultMultipleAutocomplete
                                 labelName="Kolor włosów"
                                 options={this.state.autocompleteData.hairColors || []}
@@ -544,16 +333,8 @@ class CharacterGeneratorPage extends React.Component {
                                 onRandomClick={() => this.generateOneAttribute("Kolor włosów")}
                                 disabled={this.state.race===undefined || this.state.race==="" || this.state.race === null}
                             /></careerContext.Provider>
-
-
-
-
                             <careerContext.Provider value={{
-                                update: (val) => {
-                                    this.setState({
-                                        personalities: val
-                                    })
-                                },
+                                update: (val) => {this.setState({personalities: val})},
                             }}><DefaultMultipleAutocomplete
                                 labelName="Cechy charakteru"
                                 options={this.state.autocompleteData.personalityNames || []}
@@ -570,13 +351,8 @@ class CharacterGeneratorPage extends React.Component {
                                 }
                             />
                             </careerContext.Provider>
-
                             <careerContext.Provider value={{
-                                update: (val) => {
-                                    this.setState({
-                                        apperances: val
-                                    })
-                                },
+                                update: (val) => {this.setState({apperances: val})},
                             }}><DefaultMultipleAutocomplete
                                 labelName="Cechy wyglądu"
                                 options={this.state.autocompleteData.apperanceNames || []}
@@ -596,14 +372,9 @@ class CharacterGeneratorPage extends React.Component {
                                 this.state.height === undefined || this.state.height === "" || this.state.height === null}
                             />
                             </careerContext.Provider>
-
                             <careerContext.Provider value={{
-                                update: (val) => {
-                                    this.setState({
-                                        previousCareers: val
-                                    })
-                                },
-                            }}><DefaultMultipleAutocomplete
+                                update: (val) => {this.setState({previousCareers: val})},}}>
+                                <DefaultMultipleAutocomplete
                                 labelName="Poprzednie profesje"
                                 options={this.state.autocompleteData.careerNames || []}
                                 id="characterGeneratorPreviousCareers"
@@ -612,15 +383,9 @@ class CharacterGeneratorPage extends React.Component {
                                 generated={this.state.previousCareers}
                             />
                             </careerContext.Provider>
-
-
                             <careerContext.Provider value={{
-                                update: (val) => {
-                                    this.setState({
-                                        dominatingEmotions: val
-                                    })
-                                },
-                            }}><DefaultMultipleAutocomplete
+                                update: (val) => {this.setState({dominatingEmotions: val})},}}>
+                                <DefaultMultipleAutocomplete
                                 labelName="Dominujące emocje"
                                 options={this.state.autocompleteData.emotionNames || []}
                                 id="characterGeneratorEmotions"
@@ -631,23 +396,11 @@ class CharacterGeneratorPage extends React.Component {
                                 onRandomClick={() => this.generateOneAttribute("Dominujące emocje")}
                                 disabled={this.state.race===undefined || this.state.race==="" || this.state.race === null ||
                                     this.state.yearOfBirth===undefined || this.state.yearOfBirth==="" || this.state.yearOfBirth === null
-
                                 }
-
                             />
                             </careerContext.Provider>
-
-
-
-
-
-
                             <careerContext.Provider value={{
-                                update: (val) => {
-                                    this.setState({
-                                        skills: val
-                                    })
-                                },
+                                update: (val) => {this.setState({skills: val})},
                             }}><DefaultMultipleAutocomplete
                                 labelName="Umiejętności"
                                 options={this.state.autocompleteData.skillNames || []}
@@ -663,11 +416,7 @@ class CharacterGeneratorPage extends React.Component {
                             /></careerContext.Provider>
 
                             <careerContext.Provider value={{
-                                update: (val) => {
-                                    this.setState({
-                                        talents: val
-                                    })
-                                },
+                                update: (val) => {this.setState({talents: val})},
                             }}><DefaultMultipleAutocomplete
                                 labelName="Zdolności"
                                 options={this.state.autocompleteData.talentNames || []}
@@ -684,11 +433,7 @@ class CharacterGeneratorPage extends React.Component {
 
 
                             <careerContext.Provider value={{
-                                update: (val) => {
-                                    this.setState({
-                                        prediction: val
-                                    })
-                                },
+                                update: (val) => {this.setState({prediction: val})},
                             }}>
                                 <GeneratorTextField label="Przepowiednia" canBeGenerated
                                                     generated={this.state.prediction}
@@ -696,9 +441,7 @@ class CharacterGeneratorPage extends React.Component {
                                                     disabled={false}
                                 />
                             </careerContext.Provider>
-
                     </div>
-                    
                     <div className="block-element">
                         <div className = "flex-component space-between-component">
                         <div className="white-caption">Umiejętności bojowe:</div>
@@ -719,7 +462,6 @@ class CharacterGeneratorPage extends React.Component {
                                 this.state.baseMagic === undefined || this.state.baseMagic === "" || this.state.baseMagic === null ||
                                 this.state.currentCareer === undefined || this.state.currentCareer === "" || this.state.currentCareer === null ||
                                 this.state.talents === undefined || this.state.talents === "" || this.state.talents === null
-
                             }><div className = "text-with-fafa">Wylosuj statystyki Obecne </div><span>{element}</span></button>
                         </div>
                         </div>
@@ -735,23 +477,13 @@ class CharacterGeneratorPage extends React.Component {
                                     <div className="grid-name-element title-column">WW</div>
                                     <div className="grid-element">
                                         <careerContext.Provider value={{
-                                            update: (val) => {
-                                                this.setState({
-                                                    baseWeaponSkills: val
-                                                })
-                                            },
-                                        }}>
+                                            update: (val) => {this.setState({baseWeaponSkills: val})},}}>
                                             <GeneratorTextField style={mygrid} generated={this.state.baseWeaponSkills}/>
                                         </careerContext.Provider>
                                     </div>
                                     <div className="grid-element">
                                         <careerContext.Provider value={{
-                                            update: (val) => {
-                                                this.setState({
-                                                    endWeaponSkills: val
-                                                })
-                                            },
-                                        }}>
+                                            update: (val) => {this.setState({endWeaponSkills: val})},}}>
                                             <GeneratorTextField style={mygrid} generated={this.state.endWeaponSkills}/>
                                         </careerContext.Provider>
                                     </div>
@@ -759,24 +491,13 @@ class CharacterGeneratorPage extends React.Component {
                                 <div className="grid-column">
                                     <div className="grid-name-element title-column">US</div>
                                     <div className="grid-element">
-                                        <careerContext.Provider value={{
-                                            update: (val) => {
-                                                this.setState({
-                                                    baseBallisticSkills: val
-                                                })
-                                            },
-                                        }}>
+                                        <careerContext.Provider value={{update: (val) => {this.setState({baseBallisticSkills: val})},}}>
                                             <GeneratorTextField style={mygrid} generated={this.state.baseBallisticSkills}/>
                                         </careerContext.Provider>
                                     </div>
                                     <div className="grid-element">
                                         <careerContext.Provider value={{
-                                            update: (val) => {
-                                                this.setState({
-                                                    endBallisticSkills: val
-                                                })
-                                            },
-                                        }}>
+                                            update: (val) => {this.setState({endBallisticSkills: val})},}}>
                                             <GeneratorTextField style={mygrid} generated={this.state.endBallisticSkills}/>
                                         </careerContext.Provider>
                                     </div>
@@ -785,23 +506,12 @@ class CharacterGeneratorPage extends React.Component {
                                     <div className="grid-name-element title-column">K</div>
                                     <div className="grid-element">
                                         <careerContext.Provider value={{
-                                            update: (val) => {
-                                                this.setState({
-                                                    baseStrength: val
-                                                })
-                                            },
-                                        }}>
+                                            update: (val) => {this.setState({baseStrength: val})},}}>
                                             <GeneratorTextField style={mygrid} generated={this.state.baseStrength}/>
                                         </careerContext.Provider>
                                     </div>
                                     <div className="grid-element">
-                                        <careerContext.Provider value={{
-                                            update: (val) => {
-                                                this.setState({
-                                                    endStrength: val
-                                                })
-                                            },
-                                        }}>
+                                        <careerContext.Provider value={{update: (val) => {this.setState({endStrength: val})},}}>
                                             <GeneratorTextField style={mygrid} generated={this.state.endStrength}/>
                                         </careerContext.Provider>
                                     </div>
@@ -810,22 +520,14 @@ class CharacterGeneratorPage extends React.Component {
                                     <div className="grid-name-element title-column">ODP</div>
                                     <div className="grid-element">
                                         <careerContext.Provider value={{
-                                            update: (val) => {
-                                                this.setState({
-                                                    baseToughness: val
-                                                })
-                                            },
+                                            update: (val) => {this.setState({baseToughness: val})},
                                         }}>
                                             <GeneratorTextField style={mygrid} generated={this.state.baseToughness}/>
                                         </careerContext.Provider>
                                     </div>
                                     <div className="grid-element">
                                         <careerContext.Provider value={{
-                                            update: (val) => {
-                                                this.setState({
-                                                    endToughness: val
-                                                })
-                                            },
+                                            update: (val) => {this.setState({endToughness: val})},
                                         }}>
                                             <GeneratorTextField style={mygrid} generated={this.state.endToughness}/>
                                         </careerContext.Provider>
@@ -835,22 +537,14 @@ class CharacterGeneratorPage extends React.Component {
                                     <div className="grid-name-element title-column">ZR</div>
                                     <div className="grid-element">
                                         <careerContext.Provider value={{
-                                            update: (val) => {
-                                                this.setState({
-                                                    baseAgility: val
-                                                })
-                                            },
+                                            update: (val) => {this.setState({baseAgility: val})},
                                         }}>
                                             <GeneratorTextField style={mygrid} generated={this.state.baseAgility}/>
                                         </careerContext.Provider>
                                     </div>
                                     <div className="grid-element">
                                         <careerContext.Provider value={{
-                                            update: (val) => {
-                                                this.setState({
-                                                    endAgility: val
-                                                })
-                                            },
+                                            update: (val) => {this.setState({endAgility: val})},
                                         }}>
                                             <GeneratorTextField style={mygrid} generated={this.state.endAgility}/>
                                         </careerContext.Provider>
@@ -860,22 +554,14 @@ class CharacterGeneratorPage extends React.Component {
                                     <div className="grid-name-element title-column">INT</div>
                                     <div className="grid-element">
                                         <careerContext.Provider value={{
-                                            update: (val) => {
-                                                this.setState({
-                                                    baseIntelligence: val
-                                                })
-                                            },
+                                            update: (val) => {this.setState({baseIntelligence: val})},
                                         }}>
                                             <GeneratorTextField style={mygrid} generated={this.state.baseIntelligence}/>
                                         </careerContext.Provider>
                                     </div>
                                     <div className="grid-element">
                                         <careerContext.Provider value={{
-                                            update: (val) => {
-                                                this.setState({
-                                                    endIntelligence: val
-                                                })
-                                            },
+                                            update: (val) => {this.setState({endIntelligence: val})},
                                         }}>
                                             <GeneratorTextField style={mygrid} generated={this.state.endIntelligence}/>
                                         </careerContext.Provider>
@@ -885,10 +571,7 @@ class CharacterGeneratorPage extends React.Component {
                                     <div className="grid-name-element title-column">SW</div>
                                     <div className="grid-element">
                                         <careerContext.Provider value={{
-                                            update: (val) => {
-                                                this.setState({
-                                                    baseWillPower: val
-                                                })
+                                            update: (val) => {this.setState({baseWillPower: val})
                                             },
                                         }}>
                                             <GeneratorTextField style={mygrid} generated={this.state.baseWillPower}/>
@@ -897,10 +580,7 @@ class CharacterGeneratorPage extends React.Component {
                                     <div className="grid-element">
                                         <careerContext.Provider value={{
                                             update: (val) => {
-                                                this.setState({
-                                                    endWillPower: val
-                                                })
-                                            },
+                                                this.setState({endWillPower: val})},
                                         }}>
                                             <GeneratorTextField style={mygrid} generated={this.state.endWillPower}/>
                                         </careerContext.Provider>
@@ -910,22 +590,14 @@ class CharacterGeneratorPage extends React.Component {
                                     <div className="grid-name-element title-column">OGD</div>
                                     <div className="grid-element">
                                         <careerContext.Provider value={{
-                                            update: (val) => {
-                                                this.setState({
-                                                    baseFellowship: val
-                                                })
-                                            },
+                                            update: (val) => {this.setState({baseFellowship: val})},
                                         }}>
                                             <GeneratorTextField style={mygrid} generated={this.state.baseFellowship}/>
                                         </careerContext.Provider>
                                     </div>
                                     <div className="grid-element">
                                         <careerContext.Provider value={{
-                                            update: (val) => {
-                                                this.setState({
-                                                    endFellowship: val
-                                                })
-                                            },
+                                            update: (val) => {this.setState({endFellowship: val})},
                                         }}>
                                             <GeneratorTextField style={mygrid} generated={this.state.endFellowship}/>
                                         </careerContext.Provider>
@@ -944,21 +616,14 @@ class CharacterGeneratorPage extends React.Component {
                                     <div className="grid-name-element title-column">A</div>
                                     <div className="grid-element">
                                         <careerContext.Provider value={{
-                                            update: (val) => {
-                                                this.setState({
-                                                    baseAttacks: val
-                                                })
-                                            },
+                                            update: (val) => {this.setState({baseAttacks: val})},
                                         }}>
                                             <GeneratorTextField style={mygrid} generated={this.state.baseAttacks}/>
                                         </careerContext.Provider>
                                     </div>
                                     <div className="grid-element">
                                         <careerContext.Provider value={{
-                                            update: (val) => {
-                                                this.setState({
-                                                    endAttacks: val
-                                                })
+                                            update: (val) => {this.setState({endAttacks: val})
                                             },
                                         }}>
                                             <GeneratorTextField style={mygrid} generated={this.state.endAttacks}/>
@@ -970,21 +635,14 @@ class CharacterGeneratorPage extends React.Component {
                                     <div className="grid-element">
                                         <careerContext.Provider value={{
                                             update: (val) => {
-                                                this.setState({
-                                                    baseWounds: val
-                                                })
-                                            },
+                                                this.setState({baseWounds: val})},
                                         }}>
                                             <GeneratorTextField style={mygrid} generated={this.state.baseWounds}/>
                                         </careerContext.Provider>
                                     </div>
                                     <div className="grid-element">
                                         <careerContext.Provider value={{
-                                            update: (val) => {
-                                                this.setState({
-                                                    endWounds: val
-                                                })
-                                            },
+                                            update: (val) => {this.setState({endWounds: val})},
                                         }}>
                                             <GeneratorTextField style={mygrid} generated={this.state.endWounds}/>
                                         </careerContext.Provider>
@@ -994,11 +652,7 @@ class CharacterGeneratorPage extends React.Component {
                                     <div className="grid-name-element title-column">SZ</div>
                                     <div className="grid-element">
                                         <careerContext.Provider value={{
-                                            update: (val) => {
-                                                this.setState({
-                                                    baseMovement: val
-                                                })
-                                            },
+                                            update: (val) => {this.setState({baseMovement: val})},
                                         }}>
                                             <GeneratorTextField style={mygrid} generated={this.state.baseMovement}/>
                                         </careerContext.Provider>
@@ -1006,10 +660,7 @@ class CharacterGeneratorPage extends React.Component {
                                     <div className="grid-element">
                                         <careerContext.Provider value={{
                                             update: (val) => {
-                                                this.setState({
-                                                    endMovement: val
-                                                })
-                                            },
+                                                this.setState({endMovement: val})},
                                         }}>
                                             <GeneratorTextField style={mygrid} generated={this.state.endMovement}/>
                                         </careerContext.Provider>
@@ -1019,22 +670,14 @@ class CharacterGeneratorPage extends React.Component {
                                     <div className="grid-name-element title-column">M</div>
                                     <div className="grid-element">
                                         <careerContext.Provider value={{
-                                            update: (val) => {
-                                                this.setState({
-                                                    baseMagic: val
-                                                })
-                                            },
+                                            update: (val) => {this.setState({baseMagic: val})},
                                         }}>
                                             <GeneratorTextField style={mygrid} generated={this.state.baseMagic}/>
                                         </careerContext.Provider>
                                     </div>
                                     <div className="grid-element">
                                         <careerContext.Provider value={{
-                                            update: (val) => {
-                                                this.setState({
-                                                    endMagic: val
-                                                })
-                                            },
+                                            update: (val) => {this.setState({endMagic: val})},
                                         }}>
                                             <GeneratorTextField style={mygrid} generated={this.state.endMagic}/>
                                         </careerContext.Provider>
@@ -1044,19 +687,15 @@ class CharacterGeneratorPage extends React.Component {
                         </div>
                         </div>
                         <div className="block-element">{this.state.generated &&
-                        <div className="positive-message">Aby zobaczyć wygenerowaną postać, kliknij <a
-                            href={this.state.href}>tutaj</a></div>}</div>
+                        <div className="positive-message">Aby zobaczyć wygenerowaną postać, kliknij <a href={this.state.href}>tutaj</a></div>}</div>
                         <div className="block-element">{this.state.isError &&
                         <ErrorGenerator errorText={this.state.errorText}/>}</div>
                             <button className="green-button" onClick={this.save}>Zapisz</button>
-                            {/* <button className="red-button">Anuluj</button> */}
                         </div>
                     </div>
                 </div>
 
         )
     }
-
 }
-
 export default CharacterGeneratorPage;

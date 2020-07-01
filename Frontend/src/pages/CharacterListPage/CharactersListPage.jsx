@@ -62,6 +62,7 @@ class CharactersListPage extends React.Component{
     }
 
     getAutocompleteFiltersSuccessHandler = response => {
+        response.data.skillNames = response.data.skillNames.filter(s => s.includes("+20")).map(s => s.split(" +")[0])
         this.setState({autocompleteData: response.data})
     }
 
@@ -101,7 +102,6 @@ class CharactersListPage extends React.Component{
 
         const races = Array.from(document.getElementsByClassName("characterFilterRace")).map(c => c.textContent);
         let raceStr = "";
-        console.log(races);
         if(races.includes("Człowiek")) raceStr += "HUMAN,";
         if(races.includes("Elf")) raceStr += "ELF,";
         if(races.includes("Krasnolud")) raceStr += "DWARF,"

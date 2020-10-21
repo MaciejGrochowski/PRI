@@ -23,7 +23,7 @@ public enum Month {
     String monthName;
 
     public static Month findByMonthName(String monthName){
-        Optional<Month> output = Arrays.asList(Month.values()).stream().filter(r -> r.monthName.equals(monthName)).findFirst();
+        Optional<Month> output = Arrays.stream(Month.values()).filter(r -> r.monthName.equals(monthName)).findFirst();
         return output.orElse(null);
     }
 

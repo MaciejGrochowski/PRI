@@ -87,6 +87,7 @@ class CharactersListPage extends React.Component{
     }
 
     onFilter = async data => {
+        console.log(this.state)
         let filterObject = {}
         const name = document.getElementById('characterFilterName');
         if(name && name.value!=="") filterObject = {...filterObject, name: name.value}

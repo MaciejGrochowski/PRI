@@ -5,7 +5,7 @@ import {Route} from 'react-router'
 import Menu from "./components/Menu/Menu";
 import {BrowserRouter} from "react-router-dom";
 import {fronendUrls} from "./commons/urls";
-import HistoriesListPage from "./pages/HistoriesListPage";
+import HistoriesListPage from "./pages/HistoryListPage/HistoriesListPage";
 import MainPage from "./pages/MainPage";
 import CharacterDetailsPage from "./pages/CharacterDetailsPage/CharacterDetailsPage";
 import CharacterGeneratorPage from "./pages/CharacterGeneratorPage/CharacterGeneratorPage";

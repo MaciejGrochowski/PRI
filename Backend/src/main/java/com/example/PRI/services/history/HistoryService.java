@@ -5,6 +5,7 @@ import com.example.PRI.converters.HistoryConverter;
 import com.example.PRI.dtos.characters.AutocompleteFilterCharactersOutputDto;
 import com.example.PRI.dtos.characters.CharacterDefaultAttributesOutputDto;
 import com.example.PRI.dtos.characters.CharacterListOutputDto;
+import com.example.PRI.dtos.characters.CharacterTagOutputDto;
 import com.example.PRI.dtos.histories.*;
 import com.example.PRI.entities.ImperialDate;
 import com.example.PRI.entities.Place;
@@ -18,6 +19,7 @@ import com.example.PRI.repositories.ImperialDateRepository;
 import com.example.PRI.repositories.history.HistoryRepository;
 import com.example.PRI.services.GeneralService;
 import com.example.PRI.services.PlaceService;
+import com.example.PRI.services.character.CharacterService;
 import com.example.PRI.services.character.CharacterSpecifications;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -35,6 +37,9 @@ public class HistoryService extends GeneralService {
 
     @Autowired
     PlaceService placeService;
+
+    @Autowired
+    CharacterService characterService;
 
     @Autowired
     HistoryRepository historyRepository;
@@ -156,5 +161,9 @@ public class HistoryService extends GeneralService {
 //            if(races.size() > 0) specifications = specifications.and(CharacterSpecifications.getByRaces(races));
 //            else return specifications.and(CharacterSpecifications.GetNoone());
 //        }
+    }
+
+    public List<CharacterTagOutputDto> getCharactersTags() {
+        return characterService.getDataForTags();
     }
 }

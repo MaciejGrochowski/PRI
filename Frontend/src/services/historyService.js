@@ -3,7 +3,8 @@ import {historyUrl, request} from "./util";
 
 const historyService = {
     getHistories: (requestBody) => getHistories(requestBody),
-    getAutocompleteFilters: () => getAutocompleteFilters()
+    getAutocompleteFilters: () => getAutocompleteFilters(),
+    getCharactersCreatingHistory: () => getCharactersCreatingHistory()
 }
 
 const getHistories = (requestBody) => {
@@ -13,6 +14,11 @@ const getHistories = (requestBody) => {
 
 const getAutocompleteFilters = () => {
     const url = historyUrl + "/autocomplete/filters";
+    return request.get(url);
+};
+
+const getCharactersCreatingHistory = () => {
+    const url = historyUrl + "/characterstags";
     return request.get(url);
 }
 

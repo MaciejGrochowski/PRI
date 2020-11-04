@@ -167,7 +167,7 @@ color: #FFD859!important;
 background-color: #292F2F;
 width: min-content!important;
 text-align: center!important;
-} 
+}
 
 .MuiTableCell-root.MuiTableCell-footer{
  width: initial!important;
@@ -198,7 +198,7 @@ background-color: #292F2F;
 
 .MuiAutocomplete-noOptions{
   background-color: #292F2F;
-  color:#FFD859!important; 
+  color:#FFD859!important;
 
 }
 
@@ -210,7 +210,7 @@ background-color: #292F2F;
 /* wybrane */
 .MuiAutocomplete-listbox{
   background-color: rgb(54, 63, 63);
-  color:#FFD859!important; 
+  color:#FFD859!important;
 }
 
 /* wszystko */

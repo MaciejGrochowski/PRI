@@ -14,6 +14,7 @@ import {table} from "../../styles/tables.css"
 import button from "../../styles/buttons.css";
 import Modal from "react-modal";
 import historyService from "../../services/historyService";
+import Wysiwyg from "../../components/Wysiwyg/Wysiwyg";
 
 class HistoriesListPage extends React.Component{
 
@@ -151,22 +152,22 @@ class HistoriesListPage extends React.Component{
     render(){
         return (
             <div className="globalStyles">
-                <header className="App-header">
 
+                <header className="App-header">
                     <Filter
                         columnsConfig={this.state.columnsConfig}
                         onFilter={this.onFilter}
                         isHiddenExpandListButton={true}
-                        // expandFilterList={this.expandFilterList}
-                        // expandFilterList={() => console.log("expandFilterList")}
                     />
+
+
                     <div className="table">
                         <Table
                             style = {table}
                             title={"Lista historii"}
                             columnsConfig={this.state.columnsConfig}
                             data={this.state.data}
-                            noRecordsMessage={textsPolish.noRecordsOnCharactersList}
+                            noRecordsMessage={textsPolish.noRecordsOnHistoryList}
                             countPerPage={this.state.countPerPage}
                             page={this.state.page}
                             ownOnChangePage={this.onChangePage}

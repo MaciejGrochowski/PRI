@@ -1,11 +1,11 @@
-  
+
   .popup-body{
     display: flex;
     flex-wrap: wrap;
     justify-content: left;
     padding: 3%;
   }
-  
+
 .dostosuj-button{
   display: block;
   z-index: 100;
@@ -17,7 +17,7 @@ text-overflow: ellipsis;
 white-space: nowrap;
   padding-left: 5%;
   padding-top: 1%;
-  margin-left: 8%; 
+  margin-left: 8%;
 }
   .container {
     display: block;
@@ -33,7 +33,7 @@ white-space: nowrap;
     -ms-user-select: none;
     user-select: none;
   }
-  
+
   .container input {
     position: absolute;
     opacity: 0;
@@ -41,7 +41,7 @@ white-space: nowrap;
     height: 0;
     width: 0;
   }
-  
+
   /* Create a custom checkbox */
   .checkmark {
     position: absolute;
@@ -52,18 +52,18 @@ white-space: nowrap;
     border: solid #FFD859;
     border-radius: 25%;
   }
-  
+
   /* On mouse-over, add a grey background color */
   .container:hover input ~ .checkmark {
     background-color: #292F2F;
   }
-  
+
   /* When the checkbox is checked, add a blue background */
   .container input:checked ~ .checkmark {
     background-color: #292F2F ;
 
   }
-  
+
   /* Create the checkmark/indicator (hidden when not checked) */
   .checkmark:after {
     content: "";
@@ -71,12 +71,12 @@ white-space: nowrap;
     display: none;
     color: #292F2F;
   }
-  
+
   /* Show the checkmark when checked */
   .container input:checked ~ .checkmark:after {
     display: block;
   }
-  
+
   /* Style the checkmark/indicator */
   .container .checkmark:after {
     left: 9px;
@@ -111,7 +111,7 @@ white-space: nowrap;
     max-height: 30%;
     overflow: auto;
   }
-  
+
   @media screen and (max-width: 700px){
     .box{
       width: 70%;

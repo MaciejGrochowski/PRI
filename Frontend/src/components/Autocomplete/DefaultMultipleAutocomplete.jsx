@@ -9,6 +9,7 @@ import {faSyncAlt} from "@fortawesome/free-solid-svg-icons";
 const element = <FontAwesomeIcon icon={faSyncAlt}/>
 
 //ToDo Opakować defaultMultipleAutocomplete w defaultGeneratorAutocomplete i pozbyć się stąd logiki generatora...
+//ToDo to już nie jest multiple defaultowo, zmień nazwę
 class DefaultMultipleAutocomplete extends React.Component {
 
     constructor() {

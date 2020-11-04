@@ -38,6 +38,12 @@ public class HistoryController {
         return historyService.getAutoCompletes();
     }
 
+    @Get("/characterstags")
+    public List<CharacterTagOutputDto> getTags(){
+        return historyService.getCharactersTags();
+
+
+    }
 
     @Get("/paged")
     public HistoryListOutputDto getSomeCharactersPaged(HistoryListFilterInputStringDto historyListInput) {

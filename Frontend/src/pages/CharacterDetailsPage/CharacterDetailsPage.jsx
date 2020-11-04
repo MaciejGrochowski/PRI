@@ -54,7 +54,7 @@ class CharacterDetailsPage extends React.Component {
         return (
             <div className = "globalStyles">
                 <div className = "pageWithContext">
-            <div className = "pageName">{this.state.characterData.name + " " + this.state.characterData.surname} </div>
+            <div className = "pageName">{this.state.characterData.name + " " + this.state.characterData.surname +"#" + this.getCharacterId()} </div>
             <div className="stats-button-element">
                 <button className = "detailsTypeButton" onClick = {() => this.changeVisibleState(true, false, false)}>Statystyki Ogólne</button>
                 <button className = "detailsTypeButton" onClick = {() => this.changeVisibleState(false, true, false)}>Statystyki Bojowe</button>

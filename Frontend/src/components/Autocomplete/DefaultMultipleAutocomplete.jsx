@@ -196,11 +196,7 @@ render()
                     />
                     {this.props.canBeGenerated &&
                     <button className="detaleButton small" onClick={() => this.randomClick()} disabled={this.props.disabled}><span>{element}</span></button>}
-                    <Tooltip title="{this.props.tooltipText}" placement='right-start'>
-                       <IconButton aria-label="info">
-                          <InfoOutlinedIcon />
-                       </IconButton>
-                    </Tooltip>
+
                 </div>
             }</careerContext.Consumer>
     )

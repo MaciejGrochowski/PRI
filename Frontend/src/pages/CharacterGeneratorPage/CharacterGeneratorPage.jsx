@@ -254,7 +254,6 @@ class CharacterGeneratorPage extends React.Component {
                                 canBeGenerated
                                 disablePortal
                                 onRandomClick={() => this.generateOneAttribute("Miejsce urodzenia")}
-                                tooltipText = "nowy tekst wadawd awadwa daw ddwa dawdawd a wd a"
                             />
                             </careerContext.Provider>
                                 <careerContext.Provider value={{

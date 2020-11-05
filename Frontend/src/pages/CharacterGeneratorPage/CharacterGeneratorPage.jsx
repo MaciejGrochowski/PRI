@@ -9,11 +9,6 @@ import {faSyncAlt} from '@fortawesome/free-solid-svg-icons';
 import ErrorGenerator from "../../components/ErrorLayout/ErrorGenerator";
 import {careerContext} from "./context";
 import GeneratorTextField from "../../components/Generator/GeneratorTextField";
-import { Tooltip } from '@material-ui/core';
-import { IconButton } from '@material-ui/core';
-import AddIcon from '@material-ui/icons/Add';
-import Fab from '@material-ui/core/Fab';
-import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 import {
     fullRandomGenerateSuccessHandler,
     generateOneAttributeSuccessHandler,
@@ -170,11 +165,6 @@ class CharacterGeneratorPage extends React.Component {
                                 />
                             </careerContext.Provider>
 
-                                <Tooltip title="Info">
-                                  <IconButton aria-label="info">
-                                    <InfoOutlinedIcon />
-                                  </IconButton>
-                                  </Tooltip>
 
                             <careerContext.Provider value={{
                                 update: (val) => {this.setState({race: val})},}}>
@@ -264,6 +254,7 @@ class CharacterGeneratorPage extends React.Component {
                                 canBeGenerated
                                 disablePortal
                                 onRandomClick={() => this.generateOneAttribute("Miejsce urodzenia")}
+                                tooltipText = "nowy tekst wadawd awadwa daw ddwa dawdawd a wd a"
                             />
                             </careerContext.Provider>
                                 <careerContext.Provider value={{

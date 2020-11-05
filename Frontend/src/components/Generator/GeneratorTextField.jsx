@@ -8,6 +8,9 @@ import {TextField} from "@material-ui/core";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faSyncAlt} from "@fortawesome/free-solid-svg-icons";
 
+import { Tooltip } from '@material-ui/core';
+import { IconButton } from '@material-ui/core';
+import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 
 const element = <FontAwesomeIcon icon={faSyncAlt}/>
 
@@ -55,6 +58,11 @@ class GeneratorTextField extends React.Component {
                                onBlur={(event) => this.onBlur(event, v)}
                     />
                     {this.props.canBeGenerated && <button className="detaleButton small" onClick={() => this.props.onRandomClick()} disabled={this.props.disabled}><span>{element}</span></button>}
+                    <Tooltip title="{this.props.tooltipText}" placement='right-start'>
+                       <IconButton aria-label="info">
+                          <InfoOutlinedIcon />
+                       </IconButton>
+                    </Tooltip>
                     </div>
                 }
             </careerContext.Consumer>

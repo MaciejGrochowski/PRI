@@ -50,7 +50,11 @@ class HistoriesListPage extends React.Component{
         this.setColumnsConfig()
 
         let historyId = this.getHistoryId();
-        if(historyId > 0) this.setState({isPopupOpen: true, idPopupHistory: historyId})
+        if(historyId > 0){
+            this.setState({isPopupOpen: true, idPopupHistory: historyId})
+            window.history.pushState({}, null, window.location.href.substring(0, window.location.href.lastIndexOf("/")));
+
+        }
     }
 
     getHistoryId = () => {

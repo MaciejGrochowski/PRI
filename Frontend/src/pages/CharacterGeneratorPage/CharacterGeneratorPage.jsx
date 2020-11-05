@@ -9,6 +9,7 @@ import {faSyncAlt} from '@fortawesome/free-solid-svg-icons';
 import ErrorGenerator from "../../components/ErrorLayout/ErrorGenerator";
 import {careerContext} from "./context";
 import GeneratorTextField from "../../components/Generator/GeneratorTextField";
+import {textsPolish} from "../../commons/texts-pl";
 import {
     fullRandomGenerateSuccessHandler,
     generateOneAttributeSuccessHandler,
@@ -17,7 +18,9 @@ import {
     mapSkillsArrayToString,
     mapTalentsArrayToString
 } from "./util";
+import GeneratorTooltip from "../../components/Tooltip/GeneratorTooltip";
 
+//TODO refactor 
 const mygrid = {
     all: 'none',
     width: '30px',
@@ -152,8 +155,8 @@ class CharacterGeneratorPage extends React.Component {
                             <careerContext.Provider value={{update: (val) => {this.setState({name: val})},}}>
                                 <GeneratorTextField label="Imię" generated={this.state.name} canBeGenerated onRandomClick={() => this.generateOneAttribute("Imię")}
                                                     disabled={this.state.race===undefined || this.state.race==="" || this.state.race === null ||
-                                                    this.state.sex===undefined || this.state.sex==="" || this.state.sex === null }
-                                                    />
+                                                    this.state.sex===undefined || this.state.sex==="" || this.state.sex === null } tooltip tootipText={textsPolish.toolTipMakarena}
+                                                    />               
                             </careerContext.Provider>
 
                             <careerContext.Provider value={{
@@ -203,6 +206,7 @@ class CharacterGeneratorPage extends React.Component {
                                     id="characterGeneratorCurrentCareer"
                                     canBeGenerated
                                     disablePortal
+                                    tooltip tootipText={textsPolish.toolTipMakarena}
                                     generated={this.state.currentCareer}
                                     onRandomClick={() => this.generateOneAttribute("Profesja")}
                                     disabled={this.state.race === undefined || this.state.race === "" || this.state.race === null

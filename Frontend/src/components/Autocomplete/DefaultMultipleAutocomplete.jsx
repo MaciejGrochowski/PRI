@@ -5,10 +5,7 @@ import {Tag} from "./DefaultMultipleAutocomplete.style";
 import {careerContext} from "../../pages/CharacterGeneratorPage/context";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faSyncAlt} from "@fortawesome/free-solid-svg-icons";
-
-import { Tooltip } from '@material-ui/core';
-import { IconButton } from '@material-ui/core';
-import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
+import GeneratorTooltip from '../Tooltip/GeneratorTooltip'
 
 const element = <FontAwesomeIcon icon={faSyncAlt}/>
 
@@ -196,7 +193,7 @@ render()
                     />
                     {this.props.canBeGenerated &&
                     <button className="detaleButton small" onClick={() => this.randomClick()} disabled={this.props.disabled}><span>{element}</span></button>}
-
+                    {this.props.tooltip && <GeneratorTooltip content={this.props.tootipText}/>}
                 </div>
             }</careerContext.Consumer>
     )

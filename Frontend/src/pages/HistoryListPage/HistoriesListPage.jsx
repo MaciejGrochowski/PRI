@@ -7,7 +7,7 @@ import Filter from "../../components/Filter/Filter";
 import {columnConfig} from "./ColumnsConfig";
 import "../../styles/globalStyles.css";
 import "../../styles/tables.css";
-import DefaultPopup from "../../components/Popup/DefaultPopup";
+import CustomizeFiltersPopup from "../../components/Popup/CustomizeFiltersPopup/CustomizeFiltersPopup";
 import {starSigns} from "../../enums/StarSigns";
 import {religions} from "../../enums/Religions";
 import {table} from "../../styles/tables.css"
@@ -15,6 +15,7 @@ import button from "../../styles/buttons.css";
 import Modal from "react-modal";
 import historyService from "../../services/historyService";
 import Wysiwyg from "../../components/Wysiwyg/Wysiwyg";
+import HistoryDetailsPopup from "../../components/Popup/HistoryDetailsPopup/HistoryDetailsPopup";
 
 class HistoriesListPage extends React.Component{
 
@@ -37,7 +38,9 @@ class HistoriesListPage extends React.Component{
                 historyYear: true,
                 historyPlace: true,
             },
-            columnsConfig: []
+            columnsConfig: [],
+            isPopupOpen: false,
+            idPopupHistory: 0
         }
     }
 
@@ -45,6 +48,17 @@ class HistoriesListPage extends React.Component{
         this.getHistories();
         this.getAutoCompleteHistories();
         this.setColumnsConfig()
+
+        let historyId = this.getHistoryId();
+        if(historyId > 0) this.setState({isPopupOpen: true, idPopupHistory: historyId})
+    }
+
+    getHistoryId = () => {
+        const tmp = window.location.pathname.split("/");
+        if(Number.isInteger(parseInt(tmp[tmp.length-1]))){
+            return parseInt(tmp[tmp.length-1])
+        }
+        return 0;
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
@@ -64,7 +78,6 @@ class HistoriesListPage extends React.Component{
     }
 
     getAutocompleteFiltersSuccessHandler = response => {
-        // response.data.skillNames = response.data.skillNames.filter(s => s.includes("+20")).map(s => s.split(" +")[0])
         this.setState({autocompleteData: response.data})
     }
 
@@ -109,6 +122,13 @@ class HistoriesListPage extends React.Component{
         const historyFilterPlace = Array.from(document.getElementsByClassName("historyFilterPlace")).map(c => c.textContent)
         if(historyFilterPlace.length > 0) filterObject = {...filterObject, historyFilterPlace: this.mapFilterArrayToString(historyFilterPlace, this.state.placeNames)}
 
+        // const historyFilterCharacters = Array.from(document.getElementsByClassName("historyFilterCharacters")).map(c => c.textContent)
+        // if(historyFilterCharacters.length > 0) filterObject = {...filterObject, historyFilterCharacters: this.mapFilterArrayToString(historyFilterCharacters, this.state.characterNames)}
+
+        const historyFilterCharacters = document.getElementById('historyFilterCharacters');
+        if(historyFilterCharacters && historyFilterCharacters.value !== "") filterObject = {...filterObject, historyFilterCharacters: historyFilterCharacters.value};
+
+
         await this.setState({filterObject: filterObject, page: 0})
 
         this.getHistories();
@@ -149,11 +169,25 @@ class HistoriesListPage extends React.Component{
         this.getHistories()
     }
 
+    onDetailsClick = rowData => {
+        console.log(rowData);
+        this.setState({isPopupOpen: true, idPopupHistory: rowData.id})
+    }
+
     render(){
         return (
             <div className="globalStyles">
 
                 <header className="App-header">
+
+                    <HistoryDetailsPopup
+                    isOpen={this.state.isPopupOpen}
+                    title={"Szczegóły"}
+                    onRequestClose={() => this.setState({isPopupOpen: false, idPopupHistory: 0})}
+                    historyId={this.state.idPopupHistory}
+
+                    />
+
                     <Filter
                         columnsConfig={this.state.columnsConfig}
                         onFilter={this.onFilter}
@@ -166,6 +200,7 @@ class HistoriesListPage extends React.Component{
                             style = {table}
                             title={"Lista historii"}
                             columnsConfig={this.state.columnsConfig}
+                            notVisibleColumns={"Postacie uczestniczące"}
                             data={this.state.data}
                             noRecordsMessage={textsPolish.noRecordsOnHistoryList}
                             countPerPage={this.state.countPerPage}
@@ -173,8 +208,8 @@ class HistoriesListPage extends React.Component{
                             ownOnChangePage={this.onChangePage}
                             onChangeCountPerPage={this.onChangeCountPerPage}
                             count={this.state.count}
-                            // onDetailsClick={this.onDetailsClick}
-                            onDetailsClick={() => console.log("onDetailsClick")}
+                            onDetailsClick={this.onDetailsClick}
+                            // onDetailsClick={() => console.log("onDetailsClick")}
                             onOrderChange={this.onOrderChange}
                         />
                     </div>

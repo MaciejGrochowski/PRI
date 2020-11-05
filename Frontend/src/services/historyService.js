@@ -4,10 +4,24 @@ import {historyUrl, request} from "./util";
 const historyService = {
     getHistories: (requestBody) => getHistories(requestBody),
     getAutocompleteFilters: () => getAutocompleteFilters(),
-    getCharactersCreatingHistory: () => getCharactersCreatingHistory()
+    getCharactersCreatingHistory: () => getCharactersCreatingHistory(),
+    createHistory: data => createHistory(data),
+    getHistoryDetails: historyId => getHistoryDetails(historyId)
+
+
 }
 
-const getHistories = (requestBody) => {
+const createHistory = data => {
+    const url = historyUrl;
+    return request.post(url, data);
+}
+
+const getHistoryDetails = historyId => {
+    const url = historyUrl + "/" + historyId;
+    return request.get(url)
+}
+
+const getHistories = requestBody => {
     const url = historyUrl + "/paged";
     return request.get(url, {params: requestBody});
 };

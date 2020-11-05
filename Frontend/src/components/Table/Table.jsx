@@ -19,9 +19,13 @@ class Table extends React.Component {
 
     componentDidUpdate(prevProps, prevState){
         console.log(this.props.columnsConfig)
+        let columnsConfig = this.props.columnsConfig
+
+        if(this.props.notVisibleColumns){
+            columnsConfig = columnsConfig.filter(c => !this.props.notVisibleColumns.includes(c.title))
+        }
+
         if(this.props.columnsConfig !== prevProps.columnsConfig && this.props.onDetailsClick) {
-            console.log("TMP")
-            let columnsConfig = this.props.columnsConfig
             columnsConfig.push(
                 {
                     title: 'Detale',

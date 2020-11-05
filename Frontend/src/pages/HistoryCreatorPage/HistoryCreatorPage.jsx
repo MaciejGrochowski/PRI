@@ -13,12 +13,17 @@ import Autocomplete from "@material-ui/lab/Autocomplete";
 class HistoryCreatorPage extends React.Component {
 
 
-    constructor(){
+    constructor() {
         super();
 
         this.state = {
             characters: [],
-            places: []
+            places: [],
+            place: "",
+            day: "",
+            month: "",
+            year: ""
+
         }
     }
 
@@ -50,8 +55,16 @@ class HistoryCreatorPage extends React.Component {
     }
 
 
-    saveHistory(){
-        console.log("SAVED");
+    saveHistory = description => {
+        let data = {
+            description: description,
+            place: this.state.place,
+            day: this.state.day,
+            month: this.state.month,
+            year: this.state.year
+        }
+
+        historyService.createHistory(data).then(r => console.log(r));
     }
 
 
@@ -63,12 +76,6 @@ class HistoryCreatorPage extends React.Component {
                 <TextField value={this.state.day} onChange={(event) => {
                     this.setState({day: event.target.value});
                 }}  label="Dzień"/>
-
-                {/*<div className="ziemniak"><DefaultMultipleAutocomplete*/}
-                {/*    labelName="Miesiąc historii"*/}
-                {/*    options={months}*/}
-                {/*    value*/}
-                {/*/></div>*/}
 
                 <div className="ziemniak">
                 <Autocomplete
@@ -83,11 +90,15 @@ class HistoryCreatorPage extends React.Component {
 
                 <TextField value={this.state.year} onChange={(event) => {
                     this.setState({year: event.target.value});
-                }}  label="year"/>
+                }}  label="Rok"/>
 
-                <div className="ziemniak"><DefaultMultipleAutocomplete
-                    labelName="Miejsce"
+                <div className="ziemniak"><Autocomplete
+                    renderInput={(params) => <TextField {...params} label="Miejsce" />}
                     options={this.state.places || []}
+                    value={this.state.place}
+                    onChange={(event, newValue) => {
+                        this.setState({place: newValue});
+                    }}
                 /></div>
 
                 <Wysiwyg

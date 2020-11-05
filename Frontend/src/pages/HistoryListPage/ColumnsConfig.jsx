@@ -10,20 +10,17 @@ export const columnConfig = (autocompleteData={}, visibilityProperties={}) => {
         {
             title: 'Twórca', field: 'createdBy',
             removable: true,
-            hidden: !visibilityProperties.createdBy,
             filter: <div class="ziemniak"><TextField label="Twórca" id="historyCreatedBy"/></div>
         },
         {
             title: 'Dzień',
             field: 'historyDay',
-            hidden: !visibilityProperties.historyDay,
             filter: <div class="ziemniak"><TextField label="Dzień" id="historyDay"/></div>,
             customSort: (a,b) => parseInt(a) > parseInt(b)
         },
         {
             title: 'Miesiąc',
             field: 'historyMonth',
-            hidden: !visibilityProperties.historyMonth,
             filter: <div className="ziemniak"><DefaultMultipleAutocomplete
                 labelName="Miesiąc"
                 options={autocompleteData.monthNames || []}
@@ -34,12 +31,10 @@ export const columnConfig = (autocompleteData={}, visibilityProperties={}) => {
         {
             title: 'Rok',
             field: 'historyYear',
-            hidden: !visibilityProperties.historyYear,
             filter: <div class="ziemniak"><TextField label="Rok" id="historyYear"/></div>
         },
         {
             title: 'Miejsce',
-            hidden: !visibilityProperties.historyPlace,
             field: 'historyPlace',
             filter: <div className="ziemniak"><DefaultMultipleAutocomplete
                 labelName="Miejsce"
@@ -47,6 +42,15 @@ export const columnConfig = (autocompleteData={}, visibilityProperties={}) => {
                 id="historyFilterPlace"
                 multiple
             /></div>
-        }
+        },
+        {
+            title: 'Postacie uczestniczące',
+            field: 'historyCharacters',
+            filter: <div className="ziemniak"><DefaultMultipleAutocomplete
+                labelName="Postacie uczestniczące"
+                options={autocompleteData.characterNames || []}
+                id="historyFilterCharacters"
+            /></div>
+        },
     ]
 }

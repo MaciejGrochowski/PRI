@@ -195,4 +195,13 @@ public class HistorySpecifications {
             return criteriaBuilder.isTrue(placesJoin.get("name").in(places.stream().map(Place::getName).collect(Collectors.toList())));
         };
     }
+
+    public static Specification<History> getByCharacterInDescription(String historyCharactersInDescription) {
+        return (root, query, criteriaBuilder) -> {
+            return criteriaBuilder.like(
+                    root.<String>get("description"), "%" + historyCharactersInDescription + "%");
+//            return query.where(criteriaBuilder.like(root.get("description"), "%" + historyCharactersInDescription)).getRestriction();
+//            return criteriaBuilder.like(root.get("description"), historyCharactersInDescription);
+        };
+    }
 }

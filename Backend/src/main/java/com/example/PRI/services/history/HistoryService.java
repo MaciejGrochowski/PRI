@@ -18,6 +18,7 @@ import com.example.PRI.enums.Race;
 import com.example.PRI.repositories.ImperialDateRepository;
 import com.example.PRI.repositories.history.HistoryRepository;
 import com.example.PRI.services.GeneralService;
+import com.example.PRI.services.ImperialDateService;
 import com.example.PRI.services.PlaceService;
 import com.example.PRI.services.character.CharacterService;
 import com.example.PRI.services.character.CharacterSpecifications;
@@ -32,6 +33,8 @@ import org.springframework.stereotype.Service;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import static com.example.PRI.converters.HistoryConverter.convertDetails;
+
 @Service
 public class HistoryService extends GeneralService {
 
@@ -45,33 +48,18 @@ public class HistoryService extends GeneralService {
     HistoryRepository historyRepository;
 
     @Autowired
-    ImperialDateRepository imperialDateRepository;
-
-    public void produceTestHistories() {
-        for(int i=0; i<20;i++){
-            History h = new History();
-            h.setId(i);
-            ImperialDate id = new ImperialDate();
-            id.setDay(i);
-            id.setMonth(Month.ERNTEZEIT);
-            id.setYear(2400+i);
-            h.setCreatedDate(new Date());
-            h.setDate(id);
-            imperialDateRepository.save(id);
-            historyRepository.save(h);
-        }
-
-    }
+    ImperialDateService imperialDateService;
 
     public AutocompleteFiltersHistoriesOutputDto getAutoCompletes(){
         AutocompleteFiltersHistoriesOutputDto output = new AutocompleteFiltersHistoriesOutputDto();
+        output.setCharacterNames(getCharactersTags().stream().map(CharacterTagOutputDto::getText).collect(Collectors.toList()));
         output.setPlaceNames(placeService.getAllNames().stream().sorted().collect(Collectors.toList()));
         output.setMonthNames(Arrays.stream(Month.values()).map(Month::getMonthName).collect(Collectors.toList()));
         return output;
     }
 
 
-    public HistoryListOutputDto getSomeCharactersPaged(HistoryListFilterInputDto requestInfo) {
+    public HistoryListOutputDto getSomeHistoriesPaged(HistoryListFilterInputDto requestInfo) {
         HistoryListOutputDto output = new HistoryListOutputDto();
 //        produceTestHistories();
 
@@ -145,6 +133,12 @@ public class HistoryService extends GeneralService {
         }
 
 
+        if(requestInfo.getFilters().containsKey("historyFilterCharacters")){
+            String historyFilterCharactersData = requestInfo.getFilters().get("historyFilterCharacters");
+            specifications = specifications.and(HistorySpecifications.getByCharacterInDescription(historyFilterCharactersData));
+        }
+
+
 
         return specifications;
 //
@@ -165,5 +159,37 @@ public class HistoryService extends GeneralService {
 
     public List<CharacterTagOutputDto> getCharactersTags() {
         return characterService.getDataForTags();
+    }
+
+    public long save(HistoryInputDto historyInputDto) {
+        History newHistory = new History();
+        ImperialDate imperialDate = new ImperialDate();
+
+        imperialDate.setDay(Integer.valueOf(historyInputDto.getDay()));
+        imperialDate.setYear(Integer.valueOf(historyInputDto.getYear()));
+        imperialDate.setMonth(Month.findByMonthName(historyInputDto.getMonth()));
+        imperialDate = imperialDateService.save(imperialDate);
+        newHistory.setDate(imperialDate);
+
+        Optional<Place> place = placeService.findByName(historyInputDto.getPlace());
+        place.ifPresent(newHistory::setPlace);
+
+        newHistory.setCreatedDate(new Date());
+        newHistory.setDescription(historyInputDto.getDescription());
+
+        newHistory = historyRepository.save(newHistory);
+
+        return newHistory.getId();
+
+
+    }
+
+    public HistoryDetailsOutputDto getDetailsById(Long id) {
+        Optional<History> optionalHistory = historyRepository.findById(id);
+        HistoryDetailsOutputDto output = new HistoryDetailsOutputDto();
+        if(optionalHistory.isPresent()){
+            output = convertDetails(optionalHistory.get());
+        }
+        return output;
     }
 }

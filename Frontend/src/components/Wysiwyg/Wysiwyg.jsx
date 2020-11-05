@@ -30,6 +30,26 @@ class Wysiwyg extends React.Component {
         return (<>
             <Editor
                 wrapperClassName="demo-wrapper"
+                toolbar={{
+                    options: ['inline', 'fontSize', 'list', 'textAlign', 'history'],
+                    inline: {
+                        options: ['bold', 'italic', 'underline', 'strikethrough'],
+                        // bold: { className: 'bordered-option-classname' },
+                        // italic: { className: 'bordered-option-classname' },
+                        // underline: { className: 'bordered-option-classname' },
+                        // strikethrough: { className: 'bordered-option-classname' },
+                    },
+                    // blockType: {
+                    //     className: 'bordered-option-classname',
+                    // },
+                    // fontSize: {
+                    //     className: 'bordered-option-classname',
+                    // },
+                    // fontFamily: {
+                    //     className: 'bordered-option-classname',
+                    // },
+                }}
+
                 editorClassName="demo-editor"
                 onEditorStateChange={this.onEditorStateChange}
                 editorState={this.state.editorState}
@@ -50,7 +70,7 @@ class Wysiwyg extends React.Component {
                 }}
                 hashtag={{}}
             />
-                <button onClick={saveHistory}>Zapisz</button>
+                <button onClick={() => saveHistory(draftToHtml(convertToRaw(this.state.editorState.getCurrentContent())))}>Zapisz</button>
             {parse(draftToHtml(convertToRaw(this.state.editorState.getCurrentContent())))}
         </>
         )

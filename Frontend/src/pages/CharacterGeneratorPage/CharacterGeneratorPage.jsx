@@ -163,8 +163,8 @@ class CharacterGeneratorPage extends React.Component {
                                 update: (val) => {this.setState({surname: val})},}}>
                                 <GeneratorTextField label="Nazwisko" generated={this.state.surname} canBeGenerated onRandomClick={() => this.generateOneAttribute("Nazwisko")}
                                                     disabled={this.state.race===undefined || this.state.race==="" || this.state.race === null ||
-                                                    this.state.sex===undefined || this.state.sex==="" || this.state.sex === null
-                                                    }
+                                                    this.state.sex===undefined || this.state.sex==="" || this.state.sex === null} tooltip tootipText={textsPolish.toolTipMakarena}
+                                                    
                                 />
                             </careerContext.Provider>
 
@@ -173,6 +173,7 @@ class CharacterGeneratorPage extends React.Component {
                                 update: (val) => {this.setState({race: val})},}}>
                                 <DefaultMultipleAutocomplete
                                 labelName="Rasa"
+                                tooltip tootipText={textsPolish.toolTipMakarena}
                                 options={["Człowiek", "Elf", "Krasnolud", "Niziołek"]}
                                 id="characterGeneratorRace"
                                 width={135}
@@ -188,6 +189,7 @@ class CharacterGeneratorPage extends React.Component {
                                 update: (val) => {this.setState({sex: val})},}}>
                                 <DefaultMultipleAutocomplete
                                 labelName="Płeć"
+                                tooltip tootipText={textsPolish.toolTipMakarena}
                                 options={["Mężczyzna", "Kobieta"]}
                                 id="characterGeneratorSex"
                                 width={138}
@@ -233,6 +235,7 @@ class CharacterGeneratorPage extends React.Component {
                                 update: (val) => {this.setState({livePlace: val})},}}>
                                 <DefaultMultipleAutocomplete
                                 labelName="Miejsce pobytu"
+                                tooltip tootipText={textsPolish.toolTipMakarena}
                                 options={this.state.autocompleteData.placeNames || []}
                                 id="characterGeneratorLivePlace"
                                 canBeGenerated
@@ -252,6 +255,7 @@ class CharacterGeneratorPage extends React.Component {
                                 update: (val) => {this.setState({birthPlace: val})},}}>
                                 <DefaultMultipleAutocomplete
                                 labelName="Miejsce urodzenia"
+                                tooltip tootipText={textsPolish.toolTipMakarena}
                                 options={this.state.autocompleteData.placeNames || []}
                                 id="characterGeneratorBirthPlace"
                                 generated={this.state.birthPlace}
@@ -262,7 +266,8 @@ class CharacterGeneratorPage extends React.Component {
                             </careerContext.Provider>
                                 <careerContext.Provider value={{
                                     update: (val) => {this.setState({dayOfBirth: val})},}}>
-                                    <GeneratorTextField label="Dzień urodzenia" generated={this.state.dayOfBirth}/>
+                                    <GeneratorTextField label="Dzień urodzenia" generated={this.state.dayOfBirth} 
+                                    tooltip tootipText={textsPolish.toolTipMakarena}/>
                                 </careerContext.Provider>
 
                                 <careerContext.Provider value={{
@@ -270,6 +275,7 @@ class CharacterGeneratorPage extends React.Component {
                                 }}><DefaultMultipleAutocomplete
                                     labelName="Miesiąc urodzenia"
                                     options={months}
+                                    tooltip tootipText={textsPolish.toolTipMakarena}
                                     id="characterGeneratorMonthOfBirth"
                                     width={150}
                                     disablePortal
@@ -282,7 +288,8 @@ class CharacterGeneratorPage extends React.Component {
                                     <GeneratorTextField label="Rok urodzenia" generated={this.state.yearOfBirth}
                                                         canBeGenerated
                                                         onRandomClick={() => this.generateOneAttribute("Data urodzenia")}
-                                                        disabled={this.state.race===undefined || this.state.race==="" || this.state.race === null}
+                                                        disabled={this.state.race===undefined || this.state.race==="" || this.state.race === null} 
+                                                        tooltip tootipText={textsPolish.toolTipMakarena}
                                     />
                                 </careerContext.Provider>
                             <careerContext.Provider value={{
@@ -293,6 +300,7 @@ class CharacterGeneratorPage extends React.Component {
                                 id="characterGeneratorReligion"
                                 canBeGenerated
                                 disablePortal
+                                tooltip tootipText={textsPolish.toolTipMakarena}
                                 generated={this.state.religion}
                                 onRandomClick={() => this.generateOneAttribute("Religia")}
                                 notSortOptions
@@ -307,16 +315,17 @@ class CharacterGeneratorPage extends React.Component {
                 <div className = "column-1">
                                 <careerContext.Provider value={{
                                     update: (val) => {this.setState({height: val})},}}>
-                                    <GeneratorTextField label="Wzrost" generated={this.state.height} canBeGenerated onRandomClick={() => this.generateOneAttribute("Wzrost")} disabled={this.state.race===undefined || this.state.race==="" || this.state.race === null || this.state.sex===undefined || this.state.sex==="" || this.state.sex === null}/>
+                                    <GeneratorTextField label="Wzrost" generated={this.state.height} canBeGenerated onRandomClick={() => this.generateOneAttribute("Wzrost")} disabled={this.state.race===undefined || this.state.race==="" || this.state.race === null || this.state.sex===undefined || this.state.sex==="" || this.state.sex === null} tooltip tootipText={textsPolish.toolTipMakarena}/>
                                 </careerContext.Provider>
                                 <careerContext.Provider value={{
                                     update: (val) => {this.setState({weight: val})},}}>
-                                <GeneratorTextField label="Waga" generated={this.state.weight} canBeGenerated onRandomClick={() => this.generateOneAttribute("Waga")} disabled={this.state.race===undefined || this.state.race==="" || this.state.race === null || this.state.sex===undefined || this.state.sex==="" || this.state.sex === null}/>
+                                <GeneratorTextField label="Waga" generated={this.state.weight} canBeGenerated onRandomClick={() => this.generateOneAttribute("Waga")} disabled={this.state.race===undefined || this.state.race==="" || this.state.race === null || this.state.sex===undefined || this.state.sex==="" || this.state.sex === null} tooltip tootipText={textsPolish.toolTipMakarena}/>
                                 </careerContext.Provider>
                                 <careerContext.Provider value={{
                                 update: (val) => {this.setState({eyeColor: val})},}}>
                                 <DefaultMultipleAutocomplete
                                 labelName="Kolor oczu"
+                                tooltip tootipText={textsPolish.toolTipMakarena}
                                 options={this.state.autocompleteData.eyeColors || []}
                                 id="characterGeneratorEyeColor"
                                 canBeGenerated
@@ -334,6 +343,7 @@ class CharacterGeneratorPage extends React.Component {
                                 id="characterGeneratorHairColor"
                                 canBeGenerated
                                 disablePortal
+                                tooltip tootipText={textsPolish.toolTipMakarena}
                                 generated={this.state.hairColor}
                                 onRandomClick={() => this.generateOneAttribute("Kolor włosów")}
                                 disabled={this.state.race===undefined || this.state.race==="" || this.state.race === null}
@@ -346,6 +356,7 @@ class CharacterGeneratorPage extends React.Component {
                                 id="characterGeneratorPersonality"
                                 multiple
                                 disablePortal
+                                tooltip tootipText={textsPolish.toolTipMakarena}
                                 canBeGenerated
                                 generated={this.state.personalities}
                                 onRandomClick={() => this.generateOneAttribute("Cechy charakteru")}
@@ -363,6 +374,7 @@ class CharacterGeneratorPage extends React.Component {
                                 options={this.state.autocompleteData.apperanceNames || []}
                                 id="characterGeneratorApperances"
                                 multiple
+                                tooltip tootipText={textsPolish.toolTipMakarena}
                                 canBeGenerated
                                 disablePortal
                                 generated={this.state.apperances}
@@ -381,6 +393,7 @@ class CharacterGeneratorPage extends React.Component {
                                 update: (val) => {this.setState({previousCareers: val})},}}>
                                 <DefaultMultipleAutocomplete
                                 labelName="Poprzednie profesje"
+                                tooltip tootipText={textsPolish.toolTipMakarena}
                                 options={this.state.autocompleteData.careerNames || []}
                                 id="characterGeneratorPreviousCareers"
                                 multiple
@@ -392,6 +405,7 @@ class CharacterGeneratorPage extends React.Component {
                                 update: (val) => {this.setState({dominatingEmotions: val})},}}>
                                 <DefaultMultipleAutocomplete
                                 labelName="Dominujące emocje"
+                                tooltip tootipText={textsPolish.toolTipMakarena}
                                 options={this.state.autocompleteData.emotionNames || []}
                                 id="characterGeneratorEmotions"
                                 multiple
@@ -408,6 +422,7 @@ class CharacterGeneratorPage extends React.Component {
                                 update: (val) => {this.setState({skills: val})},
                             }}><DefaultMultipleAutocomplete
                                 labelName="Umiejętności"
+                                tooltip tootipText={textsPolish.toolTipMakarena}
                                 options={this.state.autocompleteData.skillNames || []}
                                 id="characterGeneratorSkills"
                                 multiple
@@ -424,6 +439,7 @@ class CharacterGeneratorPage extends React.Component {
                                 update: (val) => {this.setState({talents: val})},
                             }}><DefaultMultipleAutocomplete
                                 labelName="Zdolności"
+                                tooltip tootipText={textsPolish.toolTipMakarena}
                                 options={this.state.autocompleteData.talentNames || []}
                                 id="characterGeneratorTalents"
                                 multiple
@@ -444,6 +460,7 @@ class CharacterGeneratorPage extends React.Component {
                                                     generated={this.state.prediction}
                                                     onRandomClick={() => this.generateOneAttribute("Przepowiednia")}
                                                     disabled={false}
+                                                    tooltip tootipText={textsPolish.toolTipMakarena}
                                 />
                             </careerContext.Provider>
                     </div>

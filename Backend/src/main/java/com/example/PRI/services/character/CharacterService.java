@@ -318,7 +318,7 @@ public class CharacterService extends GeneralService {
 
         for(Character c : allCharacters ){
             CharacterTagOutputDto tag = new CharacterTagOutputDto();
-            tag.setText(c.getName().getName() + " " + c.getSurname().getSurname() + "#" + c.getId());
+            tag.setText(c.getName().getName() + (c.getSurname() != null ? " " + c.getSurname().getSurname() : "") + "#" + c.getId());
             tag.setValue(tag.getText());
             tag.setUrl(String.valueOf(c.getId()));
             output.add(tag);

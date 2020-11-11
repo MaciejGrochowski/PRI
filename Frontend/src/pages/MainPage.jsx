@@ -8,7 +8,8 @@ class MainPage extends React.Component {
     render(){
         return (
             <div className = "plainPage">
-                Strona główna
+                        <h1>Welcome!</h1>
+                        <p>Click  to see a greeting.</p>
             </div>
         )
     }

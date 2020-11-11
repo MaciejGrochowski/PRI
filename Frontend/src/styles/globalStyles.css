@@ -46,15 +46,15 @@ body{
     /* color: grey!important; */
 }
 .Mui-disabled .MuiSvgIcon-root{
-    color: grey!important
+    color: grey!important;
   }
 
 .MuiFormControl-root.Mui-disabled{
-    border-bottom: none!important 
+    border-bottom: none!important;
 }
 .MuiFormLabel-root.Mui-disabled{
     color: grey!important;
-    border-bottom: none!important
+    border-bottom: none!important;
 }
 
 .flex-div{
@@ -155,4 +155,9 @@ body{
 a{
 color: #FFD859!important;
 
+}
+
+div #toolTipDiv{
+    padding: 5px;
+    margin-top: 20px;
 }

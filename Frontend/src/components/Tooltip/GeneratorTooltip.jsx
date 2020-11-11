@@ -12,13 +12,16 @@ class GeneratorTooltip extends React.Component {
         }
     }
 
+
     render() {
-        return(
-            <Tooltip title={this.props.content}>
+    return(
+        <div class="toolTipDiv" id={"toolTipId"}>
+            <Tooltip title={this.props.content} placement={"right-start"}>
                 <IconButton aria-label="info">
                     <InfoOutlinedIcon />
                 </IconButton>
             </Tooltip>
+    </div>
         )
     }
 }

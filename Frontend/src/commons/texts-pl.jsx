@@ -22,7 +22,6 @@ export const textsPolish = {
     toolTipEmotions: "makrena",
     toolTipSkills: "makrena",
     toolTipTalents: "makrena",
-    toolTipAbilities: "makrena",
     toolTipProphecy: "makrena",
 
 }

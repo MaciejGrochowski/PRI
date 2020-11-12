@@ -103,16 +103,12 @@ randomClick = () => {
 }
 
 setGenerated = () => {
-        // console.log("Wartości znane autocompletowi")
-        // console.log(this.props.generated)
     if (Array.isArray(this.props.generated)) {
-        // console.log("Wartości wygenerowane zostały zinterpretowane jako tablica.")
         this.setState({values: this.props.generated})
         this.setOptionsWithoutChoosenValues(this.props.generated)
         return
     }
     if (this.props.generated === "") {
-        // console.log("Wartości wygenerowane zostały zinterpretowane jako pusty string.")
         this.setState({values: []});
         return
     }
@@ -121,7 +117,6 @@ setGenerated = () => {
         this.setState({values: this.props.generated})
     }
     else {
-        //console.log("Wartości wygenerowane zostały zinterpretowane jako coś innego.")
         this.setOptionsWithoutChoosenValues(this.props.generated.split(","))
         this.setState({values: this.props.generated.split(",")})
     }
@@ -160,8 +155,9 @@ filterOptions = (input, state) => {
 
 render()
 {
-    const {labelName, id} = this.props;
+    const {labelName, id, defaultValue} = this.props;
     const width = this.props.width ? this.props.width : 300;
+    console.log(defaultValue);
     return (
         <careerContext.Consumer>
             {v =>
@@ -176,7 +172,7 @@ render()
                         style={{width: width}}
                         popupIcon={<div/>}
                         renderInput={(params) => (
-                            <TextField {...params} multiline label={labelName}/>
+                            <TextField {...params} multiline label={labelName} defaultValue={defaultValue}/>
                         )}
                          renderTags={(value, getTagProps, index) => (
                         //     <div className = {this.props.multiple &&

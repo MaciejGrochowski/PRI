@@ -91,4 +91,11 @@ public class HistoryController {
         return output;
     }
 
+    @Get("/character/{character}/{id}")
+    public List<HistoryListCharacterDetailsOutputDto> getFirstHistoriesOfCharacter(@PathVariable String character, @PathVariable Long id){
+        character = character.replace("-", " ");
+        character += "#" + id.toString();
+        return historyService.getFirstHistoriesOfCharacter(character);
+    }
+
 }

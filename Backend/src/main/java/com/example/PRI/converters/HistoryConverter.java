@@ -1,10 +1,12 @@
 package com.example.PRI.converters;
 
 import com.example.PRI.dtos.histories.HistoryDetailsOutputDto;
+import com.example.PRI.dtos.histories.HistoryListCharacterDetailsOutputDto;
 import com.example.PRI.dtos.histories.HistoryOutputDto;
 import com.example.PRI.entities.Place;
 import com.example.PRI.entities.User;
 import com.example.PRI.entities.history.History;
+import org.jsoup.Jsoup;
 
 import java.util.Date;
 
@@ -27,6 +29,13 @@ public class HistoryConverter {
         output.setCreator(null); //Todo createdBy here when users ready
         output.setPlace(h.getPlace().getName());
         output.setDescription(h.getDescription());
+        return output;
+    }
+
+    public static HistoryListCharacterDetailsOutputDto convertForCharacterDetails(History c) {
+        HistoryListCharacterDetailsOutputDto output = new HistoryListCharacterDetailsOutputDto();
+        output.setBeginDescription(Jsoup.parse(c.getDescription()).text());
+        output.setId(c.getId());
         return output;
     }
 }

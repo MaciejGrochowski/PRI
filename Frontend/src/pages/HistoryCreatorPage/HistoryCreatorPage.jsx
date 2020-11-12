@@ -64,7 +64,7 @@ class HistoryCreatorPage extends React.Component {
             year: this.state.year
         }
 
-        historyService.createHistory(data).then(r => console.log(r));
+        historyService.createHistory(data).then(r => window.open(fronendUrls.historyList + "/" + r.data));
     }
 
 

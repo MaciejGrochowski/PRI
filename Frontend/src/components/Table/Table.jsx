@@ -102,7 +102,7 @@ class Table extends React.Component {
                 data={data}
 
                 options={{
-                    selection: true,
+                    selection: this.props.selection,
                     toolbar: false,
                     search: false,
                     paging: true,

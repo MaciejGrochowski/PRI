@@ -276,6 +276,7 @@ class CharactersListPage extends React.Component{
                         count={this.state.count}
                         onDetailsClick={this.onDetailsClick}
                         onOrderChange={this.onOrderChange}
+                        selection
                     />
                     </div>
                 </header>

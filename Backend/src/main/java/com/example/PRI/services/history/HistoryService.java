@@ -135,7 +135,10 @@ public class HistoryService extends GeneralService {
 
         if(requestInfo.getFilters().containsKey("historyFilterCharacters")){
             String historyFilterCharactersData = requestInfo.getFilters().get("historyFilterCharacters");
+//            if(historyFilterCharactersData.contains("#")) historyFilterCharactersData = historyFilterCharactersData.substring(historyFilterCharactersData.lastIndexOf("#"));
+
             specifications = specifications.and(HistorySpecifications.getByCharacterInDescription(historyFilterCharactersData));
+
         }
 
 
@@ -155,6 +158,22 @@ public class HistoryService extends GeneralService {
 //            if(races.size() > 0) specifications = specifications.and(CharacterSpecifications.getByRaces(races));
 //            else return specifications.and(CharacterSpecifications.GetNoone());
 //        }
+    }
+
+    public List<HistoryListCharacterDetailsOutputDto> getFirstHistoriesOfCharacter(String inputCharacter){
+        List<HistoryListCharacterDetailsOutputDto> output = new ArrayList<>();
+        Pageable pageable;
+        pageable = PageRequest.of(0, 10, Sort.by("createdDate").descending());
+
+        Specification<History> specifications = HistorySpecifications.getAll();
+        specifications = specifications.and(HistorySpecifications.getByCharacterInDescription(inputCharacter));
+
+        Page<History> historyFilteredPage = historyRepository.findAll(specifications, pageable);
+
+        historyFilteredPage.get().forEach(c -> output.add(HistoryConverter.convertForCharacterDetails(c)));
+
+        return output;
+
     }
 
     public List<CharacterTagOutputDto> getCharactersTags() {

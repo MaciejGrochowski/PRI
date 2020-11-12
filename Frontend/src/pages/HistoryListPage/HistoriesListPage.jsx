@@ -40,17 +40,31 @@ class HistoriesListPage extends React.Component{
             },
             columnsConfig: [],
             isPopupOpen: false,
-            idPopupHistory: 0
+            idPopupHistory: 0,
+            characterLoadByPage: ""
         }
     }
 
-    componentDidMount() {
+    async componentDidMount() {
+        if(window.location.pathname.includes("character")){
+            const tmp = window.location.pathname.split("/");
+            let name = tmp[tmp.length-2];
+            const id = tmp[tmp.length-1];
+            name = name.replace("-", " ");
+            const tag = name + "#" + id;
+            await this.setState({
+                characterLoadByPage: tag
+            })
+            // setTimeout(function(){ document.getElementById("historyFilterCharacters").value = tag }, 3000);
+            // window.history.pushState({}, null, window.location.href.substring(0, window.location.href.indexOf("/character")));
+        }
+
         this.getHistories();
         this.getAutoCompleteHistories();
         this.setColumnsConfig()
 
         let historyId = this.getHistoryId();
-        if(historyId > 0){
+        if(historyId > 0 && this.state.characterLoadByPage === "" ){
             this.setState({isPopupOpen: true, idPopupHistory: historyId})
             window.history.pushState({}, null, window.location.href.substring(0, window.location.href.lastIndexOf("/")));
 
@@ -71,7 +85,7 @@ class HistoriesListPage extends React.Component{
 
     setColumnsConfig = async () => {
         await this.setState({
-            columnsConfig: columnConfig(this.state.autocompleteData, this.state.visibilityProperties)
+            columnsConfig: columnConfig(this.state.autocompleteData, this.state.characterLoadByPage)
         })
     }
 
@@ -139,13 +153,21 @@ class HistoriesListPage extends React.Component{
     }
 
     getHistories = () => {
-        const requestBody = {
+        let requestBody = {
             sortedBy: this.state.sortBy,
             filters: this.state.filterObject,
             isAscending: this.state.sortOrder === "asc",
             currentPage: this.state.page,
             rowsPerPage: this.state.countPerPage
         }
+
+        if(this.state.characterLoadByPage !== "") {
+            requestBody.filters = {
+                ...requestBody.filterObject,
+                historyFilterCharacters: this.state.characterLoadByPage
+            };
+        }
+
 
         historyService.getHistories(requestBody)
             .then(r => this.getHistoriesSuccessHandler(r))
@@ -174,14 +196,12 @@ class HistoriesListPage extends React.Component{
     }
 
     onDetailsClick = rowData => {
-        console.log(rowData);
         this.setState({isPopupOpen: true, idPopupHistory: rowData.id})
     }
 
     render(){
         return (
             <div className="globalStyles">
-
                 <header className="App-header">
 
                     <HistoryDetailsPopup
@@ -198,7 +218,9 @@ class HistoriesListPage extends React.Component{
                         isHiddenExpandListButton={true}
                     />
 
-
+                    <div>
+                        {this.state.characterLoadByPage && "Historie postaci " + this.state.characterLoadByPage}
+                    </div>
                     <div className="table">
                         <Table
                             style = {table}

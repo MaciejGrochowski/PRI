@@ -6,9 +6,15 @@ const historyService = {
     getAutocompleteFilters: () => getAutocompleteFilters(),
     getCharactersCreatingHistory: () => getCharactersCreatingHistory(),
     createHistory: data => createHistory(data),
-    getHistoryDetails: historyId => getHistoryDetails(historyId)
+    getHistoryDetails: historyId => getHistoryDetails(historyId),
+    getHistoriesByCharacter: (name, id) => getHistoriesByCharacter(name, id)
 
 
+}
+
+const getHistoriesByCharacter = (name, id) => {
+    const url = historyUrl + "/character/" + name + "/" + id;
+    return request.get(url);
 }
 
 const createHistory = data => {

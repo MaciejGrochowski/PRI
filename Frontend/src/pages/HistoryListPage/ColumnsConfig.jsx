@@ -1,11 +1,11 @@
 import {TextField} from "@material-ui/core";
-import MenuItem from "@material-ui/core/MenuItem";
 import ziemniak from "../../styles/filters.css";
 import DefaultMultipleAutocomplete from "../../components/Autocomplete/DefaultMultipleAutocomplete";
 import React from "react";
 //ToDo Więcej autocompletów...
 
-export const columnConfig = (autocompleteData={}, visibilityProperties={}) => {
+export const columnConfig = (autocompleteData={}, isCharacterFilter) => {
+    console.log(isCharacterFilter);
     return [
         {
             title: 'Twórca', field: 'createdBy',
@@ -46,6 +46,7 @@ export const columnConfig = (autocompleteData={}, visibilityProperties={}) => {
         {
             title: 'Postacie uczestniczące',
             field: 'historyCharacters',
+            hidden: isCharacterFilter,
             filter: <div className="ziemniak"><DefaultMultipleAutocomplete
                 labelName="Postacie uczestniczące"
                 options={autocompleteData.characterNames || []}

@@ -18,7 +18,6 @@ import {
     mapSkillsArrayToString,
     mapTalentsArrayToString
 } from "./util";
-import GeneratorTooltip from "../../components/Tooltip/GeneratorTooltip";
 
 //TODO refactor 
 const mygrid = {
@@ -275,9 +274,10 @@ class CharacterGeneratorPage extends React.Component {
                                 }}><DefaultMultipleAutocomplete
                                     labelName="Miesiąc urodzenia"
                                     options={months}
-                                    tooltip tootipText={textsPolish.toolTipMonthOfBorn}
+                                    TooltipReplacement wd={"ad"}
                                     id="characterGeneratorMonthOfBirth"
                                     width={150}
+                                    tooltip tootipText={textsPolish.toolTipMonthOfBorn}
                                     disablePortal
                                     generated={this.state.monthOfBirth}
                                     notSortOptions

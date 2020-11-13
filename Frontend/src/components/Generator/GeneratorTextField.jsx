@@ -55,7 +55,7 @@ class GeneratorTextField extends React.Component {
                                onBlur={(event) => this.onBlur(event, v)}
                     />
                     {this.props.canBeGenerated && <button className="detaleButton small" onClick={() => this.props.onRandomClick()} disabled={this.props.disabled}><span>{element}</span></button>}
-                   {this.props.tooltip && <GeneratorTooltip content={this.props.tootipText}/>
+                   {this.props.tooltip && <GeneratorTooltip content={this.props.tootipText} />
                    }
                     </div>
                 }

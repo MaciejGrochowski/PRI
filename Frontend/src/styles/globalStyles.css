@@ -157,14 +157,11 @@ color: #FFD859!important;
 
 }
 
-.CoolTooltip span.MuiIconButton-label {
-    margin-top: 28px;
-    margin-left: 8px;
-}
+
+
 
 .CoolTooltip button.MuiButtonBase-root.MuiIconButton-root {
     padding: 0;
-}
-.CoolTooltip button.MuiButtonBase-root.MuiIconButton-root:hover {
-    background-color: rgba(0,0,0,0);
+    margin-top: 32px;
+    margin-left: 5px;
 }

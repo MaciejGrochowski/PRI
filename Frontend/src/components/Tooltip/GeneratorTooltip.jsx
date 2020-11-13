@@ -16,7 +16,7 @@ class GeneratorTooltip extends React.Component {
     render() {
     return(
         <div class={"CoolTooltip"}>
-            <Tooltip title={this.props.content} placement={"right-start"}
+            <Tooltip title={this.props.content} placement={"right-start"} arrow
                      classes={{ label: 'myTooltip' }}>
                 <IconButton aria-label="info">
                     <InfoOutlinedIcon />

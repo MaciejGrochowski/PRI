@@ -133,7 +133,7 @@ class CharacterGeneratorPage extends React.Component {
 
     generateOneAttributeErrorHandler = error => {this.setState({isError: true, errorText: error.response.data.message})}
 
-    generateOneAttributeSuccessHandler = (attrName, response) => {return generateOneAttributeSuccessHandler(attrName, response);}
+    generateOneAttributeSuccessHandler = (attrName, response) => {this.setState(generateOneAttributeSuccessHandler(attrName, response));}
 
     render() {
         return (

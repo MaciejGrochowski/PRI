@@ -157,11 +157,24 @@ color: #FFD859!important;
 
 }
 
-
-
-
 .CoolTooltip button.MuiButtonBase-root.MuiIconButton-root {
     padding: 0;
     margin-top: 32px;
     margin-left: 5px;
+}
+
+.MuiTooltip-popper{
+    width: 210px;
+}
+
+@media only screen and (max-width: 1180px) {
+    .MuiTooltip-popper{
+        width: 180px;
+    }
+}
+
+@media only screen and (max-width: 1015px) {
+    .MuiTooltip-popper{
+        width: 130px;
+    }
 }

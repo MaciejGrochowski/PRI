@@ -16,7 +16,8 @@ class GeneratorTextField extends React.Component {
     constructor() {
         super();
         this.state = {
-            value: ""
+            value: "",
+            errorText: {}
         }
     }
 
@@ -35,6 +36,13 @@ class GeneratorTextField extends React.Component {
     onChangeFunction(event, v){
         this.setState({value:event.target.value});
         // v.update(event.target.value);
+        if (event.target.value.match("elo")) {
+            this.setState({ errorText: "no elo" })
+            console.log("elo")
+        } else {
+            this.setState({ errorText: "Invalid format: ###-###-####" })
+            console.log("elo2")
+        }
     }
 
     onBlur = (event, v) => {
@@ -51,6 +59,7 @@ class GeneratorTextField extends React.Component {
                                style={this.props.style}
                                id="characterGeneratorYearOfBirth"
                                value={this.state.value}
+                               errorText= {this.state.errorText}
                                onChange={event => this.onChangeFunction(event, v)}
                                onBlur={(event) => this.onBlur(event, v)}
                     />

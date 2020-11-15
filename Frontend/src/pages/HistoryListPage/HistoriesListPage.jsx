@@ -163,7 +163,7 @@ class HistoriesListPage extends React.Component{
 
         if(this.state.characterLoadByPage !== "") {
             requestBody.filters = {
-                ...requestBody.filterObject,
+                ...requestBody.filters,
                 historyFilterCharacters: this.state.characterLoadByPage
             };
         }

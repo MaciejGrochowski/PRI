@@ -1,11 +1,13 @@
+
 .globalStyles{
 
     background-color: #292F2F!important;
     color: white;
     font-size: medium;
     text-align: right;
-    
+
 }
+
 
 body{
     background-color: #292F2F;
@@ -50,7 +52,7 @@ body{
   }
 
 .MuiFormControl-root.Mui-disabled{
-    border-bottom: none!important 
+    border-bottom: none!important
 }
 .MuiFormLabel-root.Mui-disabled{
     color: grey!important;
@@ -156,3 +158,4 @@ a{
 color: #FFD859!important;
 
 }
+

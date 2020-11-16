@@ -36,7 +36,6 @@ overflow-wrap: break-word!important;
 
 .MuiFormControl-root{
   margin-top: 2%!important;
-  border-bottom: solid 1px white!important;
   color: white!important;
 }
 
@@ -70,12 +69,10 @@ max-width: 70%!important;
 }
 
 .MuiTableSortLabel-root{
-color: #FFD859!important;
+color: #DEDEDE!important;
 }
 
-.MuiTableSortLabel{
-color: #FFD859!important;
-}
+
 
 .App-header {
   background-color:#292F2F;
@@ -96,16 +93,8 @@ color: #FFD859!important;
 
 .MuiFormLabel-root{
 
-  color: #FFD859!important;
-
-}
-.MuiInput-underline:after{
-  border-bottom:  #FFD859!important;
 }
 
-.MuiInput-underline:hover{
-  border-bottom:  #FFD859!important;
-}
 
 .MuiInputBase-root{
   color: #FFD859!important;

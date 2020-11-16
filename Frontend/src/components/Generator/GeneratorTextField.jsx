@@ -7,9 +7,33 @@ import {careerContext} from "../../pages/CharacterGeneratorPage/context";
 import {TextField} from "@material-ui/core";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faSyncAlt} from "@fortawesome/free-solid-svg-icons";
+import { createMuiTheme } from '@material-ui/core/styles';
+import { grey, deepPurple, amber } from '@material-ui/core/colors';
+import { withStyles } from "@material-ui/core/styles";
 
+
+
+/*const CssTextField = withStyles({
+    root: {
+        '& label.Mui-focused': {
+            color: 'green',
+        },
+        '& .MuiInput-underline:after': {
+            borderBottomColor: 'green',
+        },
+    }
+})(TextField);*/
+const styles = {
+    root: {
+        background: "black"
+    },
+    input: {
+        color: "#2EFF22"
+    }
+};
 
 const element = <FontAwesomeIcon icon={faSyncAlt}/>
+
 
 class GeneratorTextField extends React.Component {
 
@@ -41,7 +65,7 @@ class GeneratorTextField extends React.Component {
             console.log("elo")
         } else {
             this.setState({ errorText: "Invalid format: ###-###-####" })
-            console.log("elo2")
+            console.log(this.state.errorText)
         }
     }
 
@@ -51,11 +75,12 @@ class GeneratorTextField extends React.Component {
 
 
     render() {
-
+        const { classes } = this.props;
         return (
             <careerContext.Consumer>
                 {v =><div className="generator-element">
-                    <TextField label={this.props.label}
+                    <TextField error={false}
+                               label={this.props.label}
                                style={this.props.style}
                                id="characterGeneratorYearOfBirth"
                                value={this.state.value}

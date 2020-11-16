@@ -24,6 +24,7 @@ padding-bottom: 3%;
 .demo-editor{
 background: dimgrey;
 min-height: 300px;
+padding: 5px;
 }
 .demo-wrapper a{
 color: black !important;
@@ -31,4 +32,12 @@ color: black !important;
 
 .demo-wrapper li{
 color: black !important;
+}
+
+.demo-editor a{
+color: white !important;
+}
+
+.demo-editor li{
+color: white !important;
 }

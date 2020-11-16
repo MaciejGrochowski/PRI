@@ -8,7 +8,7 @@ import DefaultMultipleAutocomplete from "../../components/Autocomplete/DefaultMu
 import TextField from "@material-ui/core/TextField";
 import {months} from "../../enums/Months";
 import Autocomplete from "@material-ui/lab/Autocomplete";
-
+import "../../styles/historyCreator.css";
 
 class HistoryCreatorPage extends React.Component {
 
@@ -73,11 +73,17 @@ class HistoryCreatorPage extends React.Component {
 
             <header className="App-header">
 
+            <div className = "History-creator-main-div">
+                        <div className="History-creator-upper">
+           <div className = "history-column">
+           Data:
+            <div className="History-buttons-line">
+            <div className="ziemniak">
                 <TextField value={this.state.day} onChange={(event) => {
                     this.setState({day: event.target.value});
                 }}  label="Dzień"/>
-
-                <div className="ziemniak">
+</div>
+<div className="ziemniak">
                 <Autocomplete
                     options={months}
                     value={this.state.month}
@@ -87,11 +93,16 @@ class HistoryCreatorPage extends React.Component {
                     renderInput={(params) => <TextField {...params} label="Miesiąc" />}
                 />
                 </div>
-
+<div className="ziemniak">
                 <TextField value={this.state.year} onChange={(event) => {
                     this.setState({year: event.target.value});
                 }}  label="Rok"/>
-
+</div>
+</div>
+</div>
+           <div className = "history-column">
+           Miejsce:
+            <div className="History-buttons-line">
                 <div className="ziemniak"><Autocomplete
                     renderInput={(params) => <TextField {...params} label="Miejsce" />}
                     options={this.state.places || []}
@@ -100,6 +111,8 @@ class HistoryCreatorPage extends React.Component {
                         this.setState({place: newValue});
                     }}
                 /></div>
+</div>
+</div></div>
 
                 <Wysiwyg
                 characterTags={this.state.characters}
@@ -107,7 +120,7 @@ class HistoryCreatorPage extends React.Component {
 
                 />
 
-
+            </div>
             </header>
         </div>
     )

@@ -169,7 +169,7 @@
   .green-button{
     color: greenyellow;
     border: greenyellow;
-    background-color: #292F2F; ;
+    background-color: #292F2F;
     border-radius: 25%;
     border: 2px solid greenyellow;
     text-decoration: none;
@@ -190,15 +190,18 @@
     color: tomato;
     border: tomato;
     background-color:#292F2F;
-    border-radius: 20%;
+    border-radius: 25%;
     border: 2px solid tomato;
-    text-decoration: none;
+    font-size: large;
+    text-decoration: bold;
     transition-duration: 0.4s;
     cursor: pointer;
     margin: 5%;
+    padding: 2%;
   }
 
   .red-button:hover{
     background-color: tomato;
     color: #292F2F;
+    text-decoration: bold;
   }

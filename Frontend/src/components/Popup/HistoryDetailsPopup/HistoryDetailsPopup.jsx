@@ -70,20 +70,20 @@ class HistoryDetailsPopup extends React.Component {
 
 
         return (
-            <div className = "dostosuj-button">
-                {/*ToDo class 'dostosuj-button' should have name 'customize-button'*/}
+            <div className = "customize-button">
+            <div className = "popup-body">
                 <Modal
                     isOpen={isOpen}
                     // onAfterOpen={() => console.log("open")}
                     onRequestClose={() => onRequestClose()}
                     style={customStyles}
                 >
-                    <div>Data Historii: {this.state.historyDay} {this.state.historyMonth} {this.state.historyYear}</div>
-                    <div>Miejsce Historii: {this.state.historyPlace}</div>
-                    <div>Twórca Historii: {this.state.historyCreator}</div>
-                    <div>Opis Historii: {this.state.historyDescription && parse(this.state.historyDescription)}</div>
+                    <div className = "flex-div"><div className = "yellow-color"> Data Historii:&nbsp;</div> {this.state.historyDay} {this.state.historyMonth} {this.state.historyYear}</div>
+                    <div className = "flex-div"><div className = "yellow-color">Miejsce Historii:&nbsp; </div> {this.state.historyPlace}</div>
+                    <div className = "flex-div"><div className = "yellow-color">Twórca Historii:&nbsp; </div> {this.state.historyCreator}</div>
+                    <div><div className = "yellow-color">Opis Historii:&nbsp; </div>{this.state.historyDescription && parse(this.state.historyDescription)}</div>
                 </Modal>
-            </div>
+            </div></div>
         );
     }
 }

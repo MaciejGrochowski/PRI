@@ -42,7 +42,7 @@ class CustomizeFiltersPopup extends React.Component {
 
 
         return (
-            <div className = "dostosuj-button">
+            <div className = "customize-button">
                 <Modal
                     isOpen={isOpen}
                     // onAfterOpen={() => console.log("open")}

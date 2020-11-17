@@ -25,6 +25,7 @@ padding-bottom: 3%;
 background: dimgrey;
 min-height: 300px;
 padding: 5px;
+font-size: initial;
 }
 .demo-wrapper a{
 color: black !important;
@@ -36,8 +37,18 @@ color: black !important;
 
 .demo-editor a{
 color: white !important;
+background: #292F2F !important;
 }
 
 .demo-editor li{
 color: white !important;
+}
+
+.demo-editor .rdw-suggestion-option-active{
+
+}
+
+.demo-editor .rdw-suggestion-option{
+background:#292F2F;
+border-bottom: none !important;
 }

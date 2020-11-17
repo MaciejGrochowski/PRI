@@ -11,18 +11,22 @@ const menuKatalogItems = [
         label: 'Postacie',
         link: fronendUrls.characterList
     },
-    // {
-    //     label: 'Historie',
-    //     link: fronendUrls.historyList
-    // },
+    {
+        label: 'Historie',
+        link: fronendUrls.historyList
+    },
 
 
 ]
 
 const menuGeneratorItems = [
     {
-        label: 'Generator',
+        label: 'Postać',
         link: fronendUrls.characterGenerator
+    },
+    {
+        label: 'Historię',
+        link: fronendUrls.historyCreator
     }
 ]
 

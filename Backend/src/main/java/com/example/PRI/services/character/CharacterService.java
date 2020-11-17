@@ -310,4 +310,19 @@ public class CharacterService extends GeneralService {
         Optional<Character> c = characterRepository.findById(id);
         return c.map(CharacterConverter::convertDetails).orElse(null);
     }
+
+    public List<CharacterTagOutputDto> getDataForTags() {
+        Page<Character> allCharacters = characterRepository.findAll(PageRequest.of(0, (int) characterRepository.count()));
+        //ToDo its limited by int, maybe it is better method?
+        List<CharacterTagOutputDto> output = new ArrayList<>();
+
+        for(Character c : allCharacters ){
+            CharacterTagOutputDto tag = new CharacterTagOutputDto();
+            tag.setText(c.getName().getName() + (c.getSurname() != null ? " " + c.getSurname().getSurname() : "") + "#" + c.getId());
+            tag.setValue(tag.getText());
+            tag.setUrl(String.valueOf(c.getId()));
+            output.add(tag);
+        }
+        return output;
+    }
 }

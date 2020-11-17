@@ -53,7 +53,7 @@ class Wysiwyg extends React.Component {
                     //     className: 'bordered-option-classname',
                     // },
                 }}
-
+                stripPastedStyles={true}
                 editorClassName="demo-editor"
                 onEditorStateChange={this.onEditorStateChange}
                 editorState={this.state.editorState}

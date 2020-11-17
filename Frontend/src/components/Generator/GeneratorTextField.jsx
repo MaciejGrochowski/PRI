@@ -7,30 +7,6 @@ import {careerContext} from "../../pages/CharacterGeneratorPage/context";
 import {TextField} from "@material-ui/core";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faSyncAlt} from "@fortawesome/free-solid-svg-icons";
-import { createMuiTheme } from '@material-ui/core/styles';
-import { grey, deepPurple, amber } from '@material-ui/core/colors';
-import { withStyles } from "@material-ui/core/styles";
-
-
-
-/*const CssTextField = withStyles({
-    root: {
-        '& label.Mui-focused': {
-            color: 'green',
-        },
-        '& .MuiInput-underline:after': {
-            borderBottomColor: 'green',
-        },
-    }
-})(TextField);*/
-const styles = {
-    root: {
-        background: "black"
-    },
-    input: {
-        color: "#2EFF22"
-    }
-};
 
 const element = <FontAwesomeIcon icon={faSyncAlt}/>
 
@@ -41,7 +17,8 @@ class GeneratorTextField extends React.Component {
         super();
         this.state = {
             value: "",
-            errorText: {}
+            errorText: "",
+            errorState: false
         }
     }
 
@@ -60,12 +37,12 @@ class GeneratorTextField extends React.Component {
     onChangeFunction(event, v){
         this.setState({value:event.target.value});
         // v.update(event.target.value);
-        if (event.target.value.match("elo")) {
-            this.setState({ errorText: "no elo" })
-            console.log("elo")
+        if (event.target.value.match("\\b[A-Z][a-z]*\\b") || event.target.value.match("^(?![\\s\\S])")) {
+            this.setState({ errorText: "" })
+            this.setState( {errorState: false})
         } else {
-            this.setState({ errorText: "Invalid format: ###-###-####" })
-            console.log(this.state.errorText)
+            this.setState({ errorText: "Imię powinno zaczynać się z wielkiej litery i zawierać litery A-Z" })
+            this.setState( {errorState: true} )
         }
     }
 
@@ -75,16 +52,15 @@ class GeneratorTextField extends React.Component {
 
 
     render() {
-        const { classes } = this.props;
         return (
             <careerContext.Consumer>
                 {v =><div className="generator-element">
-                    <TextField error={false}
+                    <TextField error={this.state.errorState}
                                label={this.props.label}
                                style={this.props.style}
                                id="characterGeneratorYearOfBirth"
                                value={this.state.value}
-                               errorText= {this.state.errorText}
+                               helperText = {this.state.errorText}
                                onChange={event => this.onChangeFunction(event, v)}
                                onBlur={(event) => this.onBlur(event, v)}
                     />
@@ -97,71 +73,3 @@ class GeneratorTextField extends React.Component {
 }
 
 export default GeneratorTextField;
-
-/*
-//import React from 'react';
-//import TextField from '@material-ui/core/TextField';
-import { makeStyles } from '@material-ui/core/styles';
-
-const useStyles = makeStyles((theme) => ({
-    root: {
-        '& .MuiTextField-root': {
-            margin: theme.spacing(1),
-            width: 200,
-        },
-    },
-}));
-
-export default function ValidationTextFields() {
-    const classes = useStyles();
-
-    return (
-        <form className={classes.root} noValidate autoComplete="off">
-            <div>
-                <TextField error id="standard-error" label="Error" defaultValue="Hello World" />
-                <TextField
-                    error
-                    id="standard-error-helper-text"
-                    label="Error"
-                    defaultValue="Hello World"
-                    helperText="Incorrect entry."
-                />
-            </div>
-            <div>
-                <TextField
-                    error
-                    id="filled-error"
-                    label="Error"
-                    defaultValue="Hello World"
-                    variant="filled"
-                />
-                <TextField
-                    error
-                    id="filled-error-helper-text"
-                    label="Error"
-                    defaultValue="Hello World"
-                    helperText="Incorrect entry."
-                    variant="filled"
-                />
-            </div>
-            <div>
-                <TextField
-                    error
-                    id="outlined-error"
-                    label="Error"
-                    defaultValue="Hello World"
-                    variant="outlined"
-                />
-                <TextField
-                    error
-                    id="outlined-error-helper-text"
-                    label="Error"
-                    defaultValue="Hello World"
-                    helperText="Incorrect entry."
-                    variant="outlined"
-                />
-            </div>
-        </form>
-    );
-}
-*/

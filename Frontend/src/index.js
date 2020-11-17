@@ -9,28 +9,31 @@ import { createMuiTheme } from "@material-ui/core/styles"
 const Theme = createMuiTheme({
     palette: {
         primary: {
-            main: "#DEDEDE"
+            main: "#FFD859"
         },
         secondary: { main: "#FFD859" },
     },
     overrides: {
         MuiTextField: {
             root: {
-                "&:hover:not($disabled):not($focused):not($error) $notchedOutline": {
-                    borderColor: "#FFD859",
-                },
                 "&$focused": {
-                    borderColor: "#DEDEDE",
+                    borderColor: "#FFD859",
                     borderWidth: 1
                 }
             }
         },
         MuiFormLabel: {
             root: {
-                color: "#FFD859",
+                color: "#DEDEDE",
                 "&$focused": {
-                color: "#FFD859"
-                 }
+                    color: "#FFD859"
+                }
+            }
+        },
+        MuiInputBase: {
+            root: {
+                    color: "rgba(222, 222, 222, 0.42)"
+
             }
         }
     }

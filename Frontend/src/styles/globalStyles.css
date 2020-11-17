@@ -11,6 +11,11 @@ body{
     background-color: #292F2F;
 }
 
+.MuiInputBase-multiline{
+padding: 0px;
+margin: 0px;
+}
+
 .pageWithContext{
     background-color: #292F2F!important;
     color: white;
@@ -21,6 +26,10 @@ body{
 
 }
 
+.MuiFormControl-fullWidth {
+    width: 100%;
+    min-width: 150px!important;
+}
 .plainPage{
     background-color: #292F2F!important;
     color: white;
@@ -48,6 +57,7 @@ body{
 .Mui-disabled .MuiSvgIcon-root{
     color: grey!important
   }
+
 
 .MuiFormControl-root.Mui-disabled{
     border-bottom: none!important

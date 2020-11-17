@@ -5,7 +5,11 @@ import '../../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import { EditorState, convertToRaw } from 'draft-js';
 import draftToHtml from 'draftjs-to-html';
 import parse from 'html-react-parser';
-
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faCheck, faTimes} from '@fortawesome/free-solid-svg-icons';
+import "../../styles/historyCreator.css";
+const element = <FontAwesomeIcon icon={faCheck}/>
+const element2 = <FontAwesomeIcon icon={faTimes}/>
 class Wysiwyg extends React.Component {
 
     constructor(){
@@ -49,7 +53,7 @@ class Wysiwyg extends React.Component {
                     //     className: 'bordered-option-classname',
                     // },
                 }}
-
+                stripPastedStyles={true}
                 editorClassName="demo-editor"
                 onEditorStateChange={this.onEditorStateChange}
                 editorState={this.state.editorState}
@@ -70,9 +74,13 @@ class Wysiwyg extends React.Component {
                 }}
                 hashtag={{}}
             />
-                <button onClick={() => saveHistory(draftToHtml(convertToRaw(this.state.editorState.getCurrentContent())))}>Zapisz</button>
-            {parse(draftToHtml(convertToRaw(this.state.editorState.getCurrentContent())))}
-        </>
+                <button className="green-button" onClick={() => saveHistory(draftToHtml(convertToRaw(this.state.editorState.getCurrentContent())))}>Zapisz <span>{element}</span></button>
+
+
+
+                <button className="red-button">Anuluj <span>{element2}</span></button>
+</>
+
         )
 
     }

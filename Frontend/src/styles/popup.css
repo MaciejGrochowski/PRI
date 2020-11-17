@@ -6,7 +6,7 @@
     padding: 3%;
   }
 
-.dostosuj-button{
+.customize-button{
   display: block;
   z-index: 100;
   }
@@ -19,7 +19,7 @@ white-space: nowrap;
   padding-top: 1%;
   margin-left: 8%;
 }
-  .container {
+.container {
     display: block;
     position: relative;
     padding-left: 3%;
@@ -34,7 +34,7 @@ white-space: nowrap;
     user-select: none;
   }
 
-  .container input {
+.container input {
     position: absolute;
     opacity: 0;
     cursor: pointer;

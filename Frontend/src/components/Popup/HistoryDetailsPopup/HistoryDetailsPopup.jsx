@@ -43,7 +43,6 @@ class HistoryDetailsPopup extends React.Component {
     }
 
     getHistoryDetails = historyId => {
-        console.warn(historyId);
         historyService.getHistoryDetails(historyId)
             .then(r => this.getHistoryDetailsSuccessHandler(r))
             .catch(e => this.getHistoryDetailsErrorHandler(e))
@@ -66,7 +65,7 @@ class HistoryDetailsPopup extends React.Component {
     }
 
     render() {
-        const {isOpen, onRequestClose} = this.props;
+        const {isOpen, onRequestClose, changeHistoryToNext, isPreviousButtonHidden, isNextButtonHidden} = this.props;
 
 
         return (
@@ -74,10 +73,11 @@ class HistoryDetailsPopup extends React.Component {
             <div className = "popup-body">
                 <Modal
                     isOpen={isOpen}
-                    // onAfterOpen={() => console.log("open")}
                     onRequestClose={() => onRequestClose()}
                     style={customStyles}
                 >
+                    <button hidden={isPreviousButtonHidden} onClick={() => changeHistoryToNext(this.props.historyId, false)}>Poprzednia</button>
+                    <button hidden={isNextButtonHidden} onClick={() => changeHistoryToNext(this.props.historyId, true)}>Następna</button>
                     <div className = "flex-div"><div className = "yellow-color"> Data Historii:&nbsp;</div> {this.state.historyDay} {this.state.historyMonth} {this.state.historyYear}</div>
                     <div className = "flex-div"><div className = "yellow-color">Miejsce Historii:&nbsp; </div> {this.state.historyPlace}</div>
                     <div className = "flex-div"><div className = "yellow-color">Twórca Historii:&nbsp; </div> {this.state.historyCreator}</div>

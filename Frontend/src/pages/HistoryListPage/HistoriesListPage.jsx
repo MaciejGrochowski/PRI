@@ -101,7 +101,7 @@ class HistoriesListPage extends React.Component{
 
     onChangePage = async page => {
         await this.setState({page: page})
-        this.getHistories();
+        return this.getHistories();
     }
 
     onChangeCountPerPage = async countPerPage => {
@@ -169,13 +169,11 @@ class HistoriesListPage extends React.Component{
         }
 
 
-        historyService.getHistories(requestBody)
+        return historyService.getHistories(requestBody)
             .then(r => this.getHistoriesSuccessHandler(r))
     }
 
     getHistoriesSuccessHandler = async response => {
-        console.log(response);
-
         this.setState({
             count: response.data.totalCount,
             data: response.data.list
@@ -199,6 +197,23 @@ class HistoriesListPage extends React.Component{
         this.setState({isPopupOpen: true, idPopupHistory: rowData.id})
     }
 
+    changeHistoryFromDetails = async (currentHistoryId, isNext) => {
+        let currentHistory = this.state.data.filter(h => h.id === currentHistoryId)[0];
+        let indexOfCurrentHistory = this.state.data.indexOf(currentHistory);
+        if(!isNext && this.state.page === 0 && indexOfCurrentHistory === 0) return;
+        if(isNext && this.state.page * this.state.countPerPage + indexOfCurrentHistory +1 === this.state.count) return;
+
+        if(isNext){
+            if(indexOfCurrentHistory+1 < this.state.countPerPage) this.setState({idPopupHistory: this.state.data[indexOfCurrentHistory+1].id})
+            else await this.onChangePage(this.state.page+1).then(r => this.setState({idPopupHistory: this.state.data[0].id}))
+        }
+        else{
+            if(indexOfCurrentHistory-1 >= 0) this.setState({idPopupHistory: this.state.data[indexOfCurrentHistory-1].id})
+            else await this.onChangePage(this.state.page-1).then(r => this.setState({idPopupHistory: this.state.data[this.state.countPerPage-1].id}))
+
+        }
+    }
+
     render(){
         return (
             <div className="globalStyles">
@@ -209,6 +224,9 @@ class HistoriesListPage extends React.Component{
                     title={"Szczegóły"}
                     onRequestClose={() => this.setState({isPopupOpen: false, idPopupHistory: 0})}
                     historyId={this.state.idPopupHistory}
+                    changeHistoryToNext={this.changeHistoryFromDetails}
+                    isPreviousButtonHidden={this.state.page === 0 && this.state.data.indexOf(this.state.data.filter(h => h.id === this.state.idPopupHistory)[0]) === 0}
+                    isNextButtonHidden={this.state.page * this.state.countPerPage + 1 + this.state.data.indexOf(this.state.data.filter(h => h.id === this.state.idPopupHistory)[0]) === this.state.count}
 
                     />
 

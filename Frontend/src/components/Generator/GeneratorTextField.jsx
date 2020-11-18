@@ -46,6 +46,16 @@ class GeneratorTextField extends React.Component {
         }
     }
 
+    checkLettersOnly(input){
+        if (input.match("\\b[A-Z][a-z]*\\b") || input.match("^(?![\\s\\S])")) {
+            this.setState({ errorText: "" })
+            this.setState( {errorState: false})
+        } else {
+            this.setState({ errorText: "Imię powinno zaczynać się z wielkiej litery i zawierać litery A-Z" })
+            this.setState( {errorState: true} )
+        }
+    }
+
     onBlur = (event, v) => {
         v.update(event.target.value);
     }

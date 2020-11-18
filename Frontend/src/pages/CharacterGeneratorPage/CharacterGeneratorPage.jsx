@@ -8,6 +8,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faSyncAlt} from '@fortawesome/free-solid-svg-icons';
 import ErrorGenerator from "../../components/ErrorLayout/ErrorGenerator";
 import {careerContext} from "./context";
+import {polishCodeErrors, textsPolish} from "../../commons/texts-pl";
 import GeneratorTextField from "../../components/Generator/GeneratorTextField";
 import {
     fullRandomGenerateSuccessHandler,
@@ -689,7 +690,7 @@ class CharacterGeneratorPage extends React.Component {
                         <div className="block-element">{this.state.generated &&
                         <div className="positive-message">Aby zobaczyć wygenerowaną postać, kliknij <a href={this.state.href}>tutaj</a></div>}</div>
                         <div className="block-element">{this.state.isError &&
-                        <ErrorGenerator errorText={this.state.errorText}/>}</div>
+                        <ErrorGenerator errorText={polishCodeErrors[this.state.errorText]}/>}</div>
                             <button className="green-button" onClick={this.save}>Zapisz</button>
                         </div>
                     </div>

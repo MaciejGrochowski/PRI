@@ -259,7 +259,7 @@ class CharacterGeneratorPage extends React.Component {
                                 <careerContext.Provider value={{
                                     update: (val) => {this.setState({dayOfBirth: val})},}}>
                                     <GeneratorTextField label="Dzień urodzenia" generated={this.state.dayOfBirth}
-                                                        typeOfValidation = "twoNumOnly"/>
+                                                        typeOfValidation = "NumOnly"/>
                                 </careerContext.Provider>
 
                                 <careerContext.Provider value={{
@@ -280,7 +280,7 @@ class CharacterGeneratorPage extends React.Component {
                                                         canBeGenerated
                                                         onRandomClick={() => this.generateOneAttribute("Data urodzenia")}
                                                         disabled={this.state.race===undefined || this.state.race==="" || this.state.race === null}
-                                                        typeOfValidation = "yearNumOnly"
+                                                        typeOfValidation = "NumOnly"
                                     />
                                 </careerContext.Provider>
                             <careerContext.Provider value={{
@@ -305,11 +305,13 @@ class CharacterGeneratorPage extends React.Component {
                 <div className = "column-1">
                                 <careerContext.Provider value={{
                                     update: (val) => {this.setState({height: val})},}}>
-                                    <GeneratorTextField label="Wzrost" generated={this.state.height} canBeGenerated onRandomClick={() => this.generateOneAttribute("Wzrost")} disabled={this.state.race===undefined || this.state.race==="" || this.state.race === null || this.state.sex===undefined || this.state.sex==="" || this.state.sex === null}/>
+                                    <GeneratorTextField label="Wzrost" generated={this.state.height} canBeGenerated onRandomClick={() => this.generateOneAttribute("Wzrost")} disabled={this.state.race===undefined || this.state.race===""
+                                    || this.state.race === null || this.state.sex===undefined || this.state.sex==="" || this.state.sex === null} typeOfValidation = "NumOnly"/>
                                 </careerContext.Provider>
                                 <careerContext.Provider value={{
                                     update: (val) => {this.setState({weight: val})},}}>
-                                <GeneratorTextField label="Waga" generated={this.state.weight} canBeGenerated onRandomClick={() => this.generateOneAttribute("Waga")} disabled={this.state.race===undefined || this.state.race==="" || this.state.race === null || this.state.sex===undefined || this.state.sex==="" || this.state.sex === null}/>
+                                <GeneratorTextField label="Waga" generated={this.state.weight} canBeGenerated onRandomClick={() => this.generateOneAttribute("Waga")} disabled={this.state.race===undefined || this.state.race===""
+                                || this.state.race === null || this.state.sex===undefined || this.state.sex==="" || this.state.sex === null} typeOfValidation = "NumOnly"/>
                                 </careerContext.Provider>
                                 <careerContext.Provider value={{
                                 update: (val) => {this.setState({eyeColor: val})},}}>

@@ -33,28 +33,51 @@ class GeneratorTextField extends React.Component {
         v.update("Los");
     }
 
+// TODO poprawić regexy bo dalej nie łapie gdy są znaki (!@#$) specjalne ale tak poza tym to git
+    checkLettersOnly(input){
+        if (input.match("\\b[A-Z]([a-z]?)*\\b") || input.match("^(?![\\s\\S])") || !input.match("[a-z]")) {
+            this.setState({ errorText: "" })
+            this.setState( {errorState: false})
+        } else {
+            this.setState({ errorText: this.props.label + " powinno zaczynać się z wielkiej litery i zawierać litery A-Z" })
+            this.setState( {errorState: true} )
+        }
+    }
+
+    twoNumOnly(input){
+        if (input.match("\\b[1-3][0-9]\\b|\\b[1-9]\\b") || input.match("^(?![\\s\\S])") || !input.match("[\\!\\@\\#\\$\\%\\^\\&\\*\\(\\)]")) {
+            this.setState({ errorText: "" })
+            this.setState( {errorState: false})
+        } else {
+            this.setState({ errorText: this.props.label + " może mieć tylko wartość 1-34" })
+            this.setState( {errorState: true} )
+        }
+    }
+
+    yearNumOnly(input){
+        if (input.match("\\b0\\b|\\b[1-2][0-9]{0,3}\\b|\\b[3-9][0-9]{0,2}\\b|\\b3000\\b")) {
+            this.setState({ errorText: "" })
+            this.setState( {errorState: false})
+        } else {
+            this.setState({ errorText: this.props.label + " może mieć tylko wartość 0-3000" })
+            this.setState( {errorState: true} )
+        }
+    }
 
     onChangeFunction(event, v){
         this.setState({value:event.target.value});
         // v.update(event.target.value);
-        if (event.target.value.match("\\b[A-Z][a-z]*\\b") || event.target.value.match("^(?![\\s\\S])")) {
-            this.setState({ errorText: "" })
-            this.setState( {errorState: false})
-        } else {
-            this.setState({ errorText: "Imię powinno zaczynać się z wielkiej litery i zawierać litery A-Z" })
-            this.setState( {errorState: true} )
-        }
+            if(this.props.typeOfValidation === "LetterOnly"){
+                this.checkLettersOnly(event.target.value)
+            }
+            else if (this.props.typeOfValidation === "twoNumOnly"){
+                this.twoNumOnly(event.target.value)
+            }
+            else if(this.props.typeOfValidation === "yearNumOnly"){
+                this.yearNumOnly(event.target.value)
+            }
     }
 
-    checkLettersOnly(input){
-        if (input.match("\\b[A-Z][a-z]*\\b") || input.match("^(?![\\s\\S])")) {
-            this.setState({ errorText: "" })
-            this.setState( {errorState: false})
-        } else {
-            this.setState({ errorText: "Imię powinno zaczynać się z wielkiej litery i zawierać litery A-Z" })
-            this.setState( {errorState: true} )
-        }
-    }
 
     onBlur = (event, v) => {
         v.update(event.target.value);

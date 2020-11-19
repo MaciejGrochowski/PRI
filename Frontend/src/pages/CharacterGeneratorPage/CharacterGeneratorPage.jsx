@@ -153,6 +153,7 @@ class CharacterGeneratorPage extends React.Component {
                                 <GeneratorTextField label="Imię" generated={this.state.name} canBeGenerated onRandomClick={() => this.generateOneAttribute("Imię")}
                                                     disabled={this.state.race===undefined || this.state.race==="" || this.state.race === null ||
                                                     this.state.sex===undefined || this.state.sex==="" || this.state.sex === null }
+                                                    typeOfValidation = "LetterOnly"
                                                     />
                             </careerContext.Provider>
 
@@ -160,8 +161,8 @@ class CharacterGeneratorPage extends React.Component {
                                 update: (val) => {this.setState({surname: val})},}}>
                                 <GeneratorTextField label="Nazwisko" generated={this.state.surname} canBeGenerated onRandomClick={() => this.generateOneAttribute("Nazwisko")}
                                                     disabled={this.state.race===undefined || this.state.race==="" || this.state.race === null ||
-                                                    this.state.sex===undefined || this.state.sex==="" || this.state.sex === null
-                                                    }
+                                                    this.state.sex===undefined || this.state.sex==="" || this.state.sex === null}
+                                                    typeOfValidation = "LetterOnly"
                                 />
                             </careerContext.Provider>
 
@@ -257,7 +258,8 @@ class CharacterGeneratorPage extends React.Component {
                             </careerContext.Provider>
                                 <careerContext.Provider value={{
                                     update: (val) => {this.setState({dayOfBirth: val})},}}>
-                                    <GeneratorTextField label="Dzień urodzenia" generated={this.state.dayOfBirth}/>
+                                    <GeneratorTextField label="Dzień urodzenia" generated={this.state.dayOfBirth}
+                                                        typeOfValidation = "twoNumOnly"/>
                                 </careerContext.Provider>
 
                                 <careerContext.Provider value={{
@@ -278,6 +280,7 @@ class CharacterGeneratorPage extends React.Component {
                                                         canBeGenerated
                                                         onRandomClick={() => this.generateOneAttribute("Data urodzenia")}
                                                         disabled={this.state.race===undefined || this.state.race==="" || this.state.race === null}
+                                                        typeOfValidation = "yearNumOnly"
                                     />
                                 </careerContext.Provider>
                             <careerContext.Provider value={{

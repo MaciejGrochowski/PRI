@@ -154,7 +154,8 @@ class CharacterGeneratorPage extends React.Component {
                             <careerContext.Provider value={{update: (val) => {this.setState({name: val})},}}>
                                 <GeneratorTextField label="Imię" generated={this.state.name} canBeGenerated onRandomClick={() => this.generateOneAttribute("Imię")}
                                                     disabled={this.state.race===undefined || this.state.race==="" || this.state.race === null ||
-                                                    this.state.sex===undefined || this.state.sex==="" || this.state.sex === null } tooltip tootipText={textsPolish.toolTipName}
+                                                    this.state.sex===undefined || this.state.sex==="" || this.state.sex === null }
+                                                    tooltip tootipText={textsPolish.toolTipName}
                                                     />               
                             </careerContext.Provider>
 

@@ -227,3 +227,6 @@ background-color: #292F2F;
   }
 }
 
+.CoolTooltip-NonActive{
+  display: none;
+}

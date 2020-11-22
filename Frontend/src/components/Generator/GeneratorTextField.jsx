@@ -32,10 +32,10 @@ class GeneratorTextField extends React.Component {
     }
 
 
-    onChangeFunction(event, v){
-        this.setState({value:event.target.value});
+    onChangeFunction(event, v) {
+        this.setState({value: event.target.value});
         // v.update(event.target.value);
-    }
+            }
 
     onBlur = (event, v) => {
         v.update(event.target.value);
@@ -55,8 +55,7 @@ class GeneratorTextField extends React.Component {
                                onBlur={(event) => this.onBlur(event, v)}
                     />
                     {this.props.canBeGenerated && <button className="detaleButton small" onClick={() => this.props.onRandomClick()} disabled={this.props.disabled}><span>{element}</span></button>}
-                   {this.props.tooltip && <GeneratorTooltip content={this.props.tootipText} />
-                   }
+                    {this.props.tooltip && <GeneratorTooltip showIt={!this.props.disabled} content={this.props.tootipText}/>}
                     </div>
                 }
             </careerContext.Consumer>

@@ -193,7 +193,7 @@ render()
                     />
                     {this.props.canBeGenerated &&
                     <button className="detaleButton small" onClick={() => this.randomClick()} disabled={this.props.disabled}><span>{element}</span></button>}
-                    {this.props.tooltip && <GeneratorTooltip content={this.props.tootipText}/>}
+                    {this.props.tooltip && <GeneratorTooltip showIt={!this.props.disabled} content={this.props.tootipText}/>}
                 </div>
             }</careerContext.Consumer>
     )

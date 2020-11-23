@@ -57,7 +57,7 @@ class GeneratorTextField extends React.Component {
                     {this.props.canBeGenerated && <button className="detaleButton small" onClick={() => this.props.onRandomClick()} disabled={this.props.disabled}><span>{element}</span></button>}
                     {this.props.tooltip && <GeneratorTooltip showIt={!this.props.disabled} content={this.props.tootipText}
                                     tooltipTypeName={this.props.label}
-                                    nameTooltipAtribute={this.props.ifTooltipName}
+                                    raceTooltipAtribute={this.props.ifTooltipRace}
                                     sexTooltipAtribute={this.props.ifTooltipSex}
                     />}
                     </div>

@@ -15,23 +15,37 @@ class GeneratorTooltip extends React.Component {
     tooltipTextGenerator(typeName){
         switch(typeName) {
             case 'Imię':
-                return this.nameText(this.props.nameTooltipAtribute,this.props.sexTooltipAtribute)
+                return this.nameText(this.props.raceTooltipAtribute,this.props.sexTooltipAtribute)
+            case 'Nazwisko':
+                return this.nameText(this.props.raceTooltipAtribute,this.props.sexTooltipAtribute)
+            case 'Rasa':
+                return this.raceText(this.props.birthPlaceTooltipAtribute)
             default:
                 return 'foo';
         }
     }
 
 //TODO dorobić reszte inteaktywnych tooltipów
-    nameText(showName, showSex){
+    nameText(showRace, showSex){
         let textContent = this.props.content
-        if (showName && showSex){
+        if (showRace && showSex){
             return textContent += "rasy, płci"
         }
-        else if(showName && !showSex){
+        else if(showRace && !showSex){
             return textContent += "rasy"
         }
-        else if(!showName && showSex){
+        else if(!showRace && showSex){
             return textContent += "płci"
+        }
+    }
+
+    raceText(showBirthPlace){
+        let textContent = this.props.content
+        if(showBirthPlace){
+            return textContent += "miejsca urodzenia"
+        }
+        else {
+            return textContent
         }
     }
 

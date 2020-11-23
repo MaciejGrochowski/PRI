@@ -156,7 +156,7 @@ class CharacterGeneratorPage extends React.Component {
                                                     disabled={this.state.race===undefined || this.state.race==="" || this.state.race === null ||
                                                     this.state.sex===undefined || this.state.sex==="" || this.state.sex === null }
                                                     tooltip tootipText={textsPolish.toolTipName}
-                                                    ifTooltipName={(this.state.race===undefined || this.state.race==="" || this.state.race === null)}
+                                                    ifTooltipRace={(this.state.race===undefined || this.state.race==="" || this.state.race === null)}
                                                     ifTooltipSex={(this.state.sex===undefined || this.state.sex==="" || this.state.sex === null)}
                                                     />               
                             </careerContext.Provider>
@@ -166,7 +166,8 @@ class CharacterGeneratorPage extends React.Component {
                                 <GeneratorTextField label="Nazwisko" generated={this.state.surname} canBeGenerated onRandomClick={() => this.generateOneAttribute("Nazwisko")}
                                                     disabled={this.state.race===undefined || this.state.race==="" || this.state.race === null ||
                                                     this.state.sex===undefined || this.state.sex==="" || this.state.sex === null} tooltip tootipText={textsPolish.toolTipSurname}
-                                                    
+                                                    ifTooltipRace={(this.state.race===undefined || this.state.race==="" || this.state.race === null)}
+                                                    ifTooltipSex={(this.state.sex===undefined || this.state.sex==="" || this.state.sex === null)}
                                 />
                             </careerContext.Provider>
 
@@ -184,6 +185,7 @@ class CharacterGeneratorPage extends React.Component {
                                 generated={this.state.race}
                                 onRandomClick={() => this.generateOneAttribute("Rasa")}
                                 disabled={this.state.birthPlace===undefined || this.state.birthPlace==="" || this.state.birthPlace === null}
+                                ifTooltipBirthPlace={this.state.birthPlace===undefined || this.state.birthPlace==="" || this.state.birthPlace === null}
                             />
                             </careerContext.Provider>
 

@@ -12,6 +12,28 @@ class GeneratorTooltip extends React.Component {
         }
     }
 
+    tooltipTextGenerator(typeName){
+        switch(typeName) {
+            case 'Imię':
+                return this.nameText(this.props.nameTooltipAtribute,this.props.sexTooltipAtribute)
+            default:
+                return 'foo';
+        }
+    }
+
+//TODO dorobić reszte inteaktywnych tooltipów
+    nameText(showName, showSex){
+        let textContent = this.props.content
+        if (showName && showSex){
+            return textContent += "rasy, płci"
+        }
+        else if(showName && !showSex){
+            return textContent += "rasy"
+        }
+        else if(!showName && showSex){
+            return textContent += "płci"
+        }
+    }
 
     render() {
         let tooltipClassName = 'CoolTooltip';
@@ -20,7 +42,7 @@ class GeneratorTooltip extends React.Component {
         }
     return(
         <div className={tooltipClassName}>
-            <Tooltip  title={this.props.content} placement={"right-start"} arrow
+            <Tooltip title={this.tooltipTextGenerator(this.props.tooltipTypeName)} placement={"right-start"} arrow
                      classes={{ label: 'myTooltip' }}>
                 <IconButton aria-label="info">
                     <InfoOutlinedIcon />

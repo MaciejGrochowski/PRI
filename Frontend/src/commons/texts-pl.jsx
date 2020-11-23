@@ -1,6 +1,6 @@
 export const textsPolish = {
     noRecordsOnCharactersList: 'Brak postaci spełniających kryteria',
-    toolTipName: "By wygenerować imię potrzebne są rasa i płeć",
+    toolTipName: "By wygenerować imię potrzeba: ",
     toolTipSurname: "By wygenerować nazwisko potrzebne są rasa i płeć",
     toolTipRace: "By wygenerować rase potrzebne jest miejsce urodzenia",
     toolTipSex: "By wygenerować płeć potrzebna jest rasa",

@@ -18,10 +18,14 @@ class GeneratorTooltip extends React.Component {
                 return this.nameText(this.props.raceTooltipAtribute,this.props.sexTooltipAtribute)
             case 'Nazwisko':
                 return this.nameText(this.props.raceTooltipAtribute,this.props.sexTooltipAtribute)
-            case 'Rasa':
-                return this.raceText(this.props.birthPlaceTooltipAtribute)
+            case 'Wzrost':
+                return this.nameText(this.props.raceTooltipAtribute,this.props.sexTooltipAtribute)
+            case 'Waga':
+                return this.nameText(this.props.raceTooltipAtribute,this.props.sexTooltipAtribute)
+            case 'Rok urodzenia':
+                return this.birthYearText(this.props.raceTooltipAtribute)
             default:
-                return 'foo';
+                return 'dont work';
         }
     }
 
@@ -39,13 +43,17 @@ class GeneratorTooltip extends React.Component {
         }
     }
 
-    raceText(showBirthPlace){
+    birthYearText(showBirthYear){
         let textContent = this.props.content
-        if(showBirthPlace){
-            return textContent += "miejsca urodzenia"
+        if(showBirthYear){
+            return textContent += "rasy"
         }
-        else {
-            return textContent
+    }
+
+    raceText(showRace){
+        let textContent = this.props.content
+        if(showRace){
+            return textContent += "miejsca urodzenia"
         }
     }
 

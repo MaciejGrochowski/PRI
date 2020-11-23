@@ -15,7 +15,7 @@ import javax.validation.constraints.Pattern;
 public class HistoryInputDto {
 
     @NotBlank(message = "NO_HISTORY_DAY")
-    @Pattern(regexp = "\\d\\d?", message = "DAY_OF_HISTORY_NOT_REGEXP")
+    @Pattern(regexp = "^[1-9]$|^[1-2][0-9]$|^3[0-4]$", message = "DAY_OF_HISTORY_NOT_REGEXP")
     String day;
 
     @NotBlank(message = "NO_MONTH_OF_HISTORY")
@@ -24,7 +24,7 @@ public class HistoryInputDto {
     String month;
 
     @NotBlank(message = "NO_YEAR_OF_HISTORY")
-    @Pattern(regexp = "\\d\\d?\\d?\\d?", message = "YEAR_OF_HISTORY_NOT_REGEXP")
+    @Pattern(regexp = "^[1-9]$|^[1-9][0-9]$|^[1-9][0-9][0-9]$|^[1-2][0-9][0-9][0-9]$|^3000$", message = "YEAR_OF_HISTORY_NOT_REGEXP")
     String year;
 
     @NotBlank(message = "NO_HISTORY_PLACE")

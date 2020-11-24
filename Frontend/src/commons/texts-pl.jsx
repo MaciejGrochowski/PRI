@@ -21,7 +21,6 @@ export const textsPolish = {
     toolTipSkills: "By wygenerować umiejętności musisz uzupełnić pola: ",
     toolTipTalents: "By wygenerować zdolności musisz uzupełnić pola: ",
     noRecordsOnHistoryList: 'Brak historii spełniających kryteria'
-
 }
 
 export const polishCodeErrors = {
@@ -75,13 +74,11 @@ export const polishCodeErrors = {
     MOVEMENT_NOT_REGEXP: 'Szybkość musi być liczbą z przedziału 1-99.',
 
     NO_HISTORY_DAY: 'Historia musi mieć dzień.',
-    DAY_OF_HISTORY_NOT_REGEXP: 'Dzień historii musi mieć wartość 1-34',
+    DAY_OF_HISTORY_NOT_REGEXP: 'Dzień historii musi być liczbą jedno lub dwucyfrową.',
     NO_MONTH_OF_HISTORY: 'Historia musi mieć miesiąc.',
     MONTH_OF_HISTORY_NOT_REGEXP: 'Miesiąc historii musi istnieć w świecie Warhammera.',
     NO_YEAR_OF_HISTORY: 'Historia musi mieć rok.',
-    YEAR_OF_HISTORY_NOT_REGEXP: 'Rok historii mieć wartość 1-3000.',
+    YEAR_OF_HISTORY_NOT_REGEXP: 'Rok historii musi być maksymalnie czterocyfrową liczbą.',
     NO_HISTORY_PLACE: 'Historia musi mieć miejsce.',
     NO_HISTORY_DESCRIPTION: 'Historia musi mieć opis.'
-
-
 }

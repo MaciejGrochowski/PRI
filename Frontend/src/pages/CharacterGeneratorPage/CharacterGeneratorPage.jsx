@@ -10,6 +10,7 @@ import ErrorGenerator from "../../components/ErrorLayout/ErrorGenerator";
 import {careerContext} from "./context";
 import {polishCodeErrors, textsPolish} from "../../commons/texts-pl";
 import GeneratorTextField from "../../components/Generator/GeneratorTextField";
+import {textsPolish} from "../../commons/texts-pl";
 import {
     fullRandomGenerateSuccessHandler,
     generateOneAttributeSuccessHandler,

@@ -198,9 +198,12 @@ render()
                              birthPlaceTooltipAtribute={this.props.ifTooltipBirthPlace}
                              raceTooltipAtribute={this.props.ifTooltipRace}
                              professionTooltipAtribute={this.props.ifTooltipProfession}
-                             yearOfBirthTooltipAtribute={this.props.idTooltipBirthYear}
+                             yearOfBirthTooltipAtribute={this.props.ifTooltipBirthYear}
                              sexTooltipAtribute={this.props.ifTooltipSex}
                              religionTooltipAtribute={this.props.ifTooltipReligion}
+                             baseStatsTooltipAtributet={this.props.ifTooltipBaseStats}
+                             heightTooltipAtributet={this.props.ifTooltipHeight}
+                             weightTooltipAtributet={this.props.ifTooltipWeight}
                     />}
                 </div>
             }</careerContext.Consumer>

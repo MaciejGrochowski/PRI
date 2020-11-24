@@ -233,6 +233,21 @@ class CharacterGeneratorPage extends React.Component {
                                     this.state.baseMagic === undefined || this.state.baseMagic === "" || this.state.baseMagic === null
                                         //ToDo warunki disabled powinny być najlepiej wyrzucone do osobnego pliku
                                     }
+                                    ifTooltipRace={(this.state.race===undefined || this.state.race==="" || this.state.race === null)}
+                                    ifTooltipSex={(this.state.sex===undefined || this.state.sex==="" || this.state.sex === null)}
+                                    ifTooltipBirthPlace={this.state.birthPlace === undefined || this.state.birthPlace === "" || this.state.birthPlace === null}
+                                    ifTooltipBaseStats={this.state.baseWeaponSkills === undefined || this.state.baseWeaponSkills === "" || this.state.baseWeaponSkills === null ||
+                                    this.state.baseBallisticSkills === undefined || this.state.baseBallisticSkills === "" || this.state.baseBallisticSkills === null ||
+                                    this.state.baseStrength === undefined || this.state.baseStrength === "" || this.state.baseStrength === null ||
+                                    this.state.baseToughness === undefined || this.state.baseToughness === "" || this.state.baseToughness === null ||
+                                    this.state.baseAgility === undefined || this.state.baseAgility === "" || this.state.baseAgility === null ||
+                                    this.state.baseIntelligence === undefined || this.state.baseIntelligence === "" || this.state.baseIntelligence === null ||
+                                    this.state.baseWillPower === undefined || this.state.baseWillPower === "" || this.state.baseWillPower === null ||
+                                    this.state.baseFellowship === undefined || this.state.baseFellowship === "" || this.state.baseFellowship === null ||
+                                    this.state.baseAttacks === undefined || this.state.baseAttacks === "" || this.state.baseAttacks === null ||
+                                    this.state.baseWounds === undefined || this.state.baseWounds === "" || this.state.baseWounds === null ||
+                                    this.state.baseMovement === undefined || this.state.baseMovement === "" || this.state.baseMovement === null ||
+                                    this.state.baseMagic === undefined || this.state.baseMagic === "" || this.state.baseMagic === null}
                                 />
                             </careerContext.Provider>
 
@@ -388,6 +403,10 @@ class CharacterGeneratorPage extends React.Component {
                                 this.state.yearOfBirth === undefined || this.state.yearOfBirth === "" || this.state.yearOfBirth === null ||
                                 this.state.currentCareer === undefined || this.state.currentCareer === "" || this.state.currentCareer === null
                                 }
+                                ifTooltipRace={this.state.race===undefined || this.state.race==="" || this.state.race === null}
+                                ifTooltipProfession={this.state.currentCareer === undefined || this.state.currentCareer === "" || this.state.currentCareer === null}
+                                ifTooltipReligion={this.state.religion === undefined || this.state.religion === "" || this.state.religion === null}
+                                ifTooltipBirthYear={this.state.yearOfBirth===undefined || this.state.yearOfBirth==="" || this.state.yearOfBirth === null}
                             />
                             </careerContext.Provider>
                             <careerContext.Provider value={{
@@ -410,6 +429,14 @@ class CharacterGeneratorPage extends React.Component {
                                 this.state.yearOfBirth === undefined || this.state.yearOfBirth === "" || this.state.yearOfBirth === null ||
                                 this.state.weight === undefined || this.state.weight === "" || this.state.weight === null ||
                                 this.state.height === undefined || this.state.height === "" || this.state.height === null}
+
+                                ifTooltipHeight={this.state.height === undefined || this.state.height === "" || this.state.height === null}
+                                ifTooltipWeight={this.state.weight === undefined || this.state.weight === "" || this.state.weight === null}
+                                ifTooltipRace={this.state.race===undefined || this.state.race==="" || this.state.race === null}
+                                ifTooltipProfession={this.state.currentCareer === undefined || this.state.currentCareer === "" || this.state.currentCareer === null}
+                                ifTooltipReligion={this.state.religion === undefined || this.state.religion === "" || this.state.religion === null}
+                                ifTooltipBirthYear={this.state.yearOfBirth===undefined || this.state.yearOfBirth==="" || this.state.yearOfBirth === null}
+                                ifTooltipSex={(this.state.sex===undefined || this.state.sex==="" || this.state.sex === null)}
                             />
                             </careerContext.Provider>
                             <careerContext.Provider value={{
@@ -440,7 +467,7 @@ class CharacterGeneratorPage extends React.Component {
                                     this.state.yearOfBirth===undefined || this.state.yearOfBirth==="" || this.state.yearOfBirth === null
                                 }
                                 ifTooltipRace={this.state.race===undefined || this.state.race==="" || this.state.race === null}
-                                idTooltipBirthYear={this.state.yearOfBirth===undefined || this.state.yearOfBirth==="" || this.state.yearOfBirth === null}
+                                ifTooltipBirthYear={this.state.yearOfBirth===undefined || this.state.yearOfBirth==="" || this.state.yearOfBirth === null}
                             />
                             </careerContext.Provider>
                             <careerContext.Provider value={{

@@ -20,5 +20,6 @@ export const textsPolish = {
     toolTipEmotions: "By wygenerować dominujące emocje musisz uzupełnić pola: ",
     toolTipSkills: "By wygenerować umiejętności musisz uzupełnić pola: ",
     toolTipTalents: "By wygenerować zdolności musisz uzupełnić pola: ",
+    noRecordsOnHistoryList: 'Brak historii spełniających kryteria'
 
 }

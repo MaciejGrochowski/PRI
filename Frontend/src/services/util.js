@@ -7,8 +7,8 @@ export const request = axios.create({
     }
 });
 
- export const localApiUrl = "http://localhost:8080/app";
-// export const localApiUrl = "http://150.254.78.172:8080/PRI-0.0.1-SNAPSHOT/app";
+ //export const localApiUrl = "http://localhost:8080/app";
+ export const localApiUrl = "https://janietakiork.projektstudencki.pl:8443/PRI-0.0.1-SNAPSHOT/app";
 
 //export const localApiUrl = "https://localhost:443/app"
 

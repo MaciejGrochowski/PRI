@@ -1,0 +1,54 @@
+.History-creator-main-div{
+border-bottom: solid 3px #FFD859;
+min-width: 500px;
+width: 70%;
+
+}
+.History-creator-upper{
+display: flex;
+text-align: start;
+justify-content: space-between!important;
+}
+
+.history-column{
+    display: block;
+    width: auto;
+    margin-bottom: 5%;
+}
+
+.History-buttons-line{
+display: flex;
+justify-content: space-between;
+padding-bottom: 3%;
+}
+.demo-editor{
+background: dimgrey;
+min-height: 300px;
+padding: 5px;
+font-size: initial;
+}
+.demo-wrapper a{
+color: black !important;
+}
+
+.demo-wrapper li{
+color: black !important;
+}
+
+.demo-editor a{
+color: white !important;
+background: #292F2F !important;
+}
+
+.demo-editor li{
+color: white !important;
+}
+
+.demo-editor .rdw-suggestion-option-active{
+
+}
+
+.demo-editor .rdw-suggestion-option{
+background:#292F2F;
+border-bottom: none !important;
+}

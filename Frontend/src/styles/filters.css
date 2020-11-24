@@ -16,7 +16,7 @@ max-width: 90%;
 .ziemniak{
     display: inline-block;
     backface-visibility: hidden;
-    margin-left: 10px;
-    padding-top: auto;
-    margin-top: auto;
+    margin-left: 10px !important;
+    padding: auto !important;
+
 }

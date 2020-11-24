@@ -1,6 +1,28 @@
 export const textsPolish = {
     noRecordsOnCharactersList: 'Brak postaci spełniających kryteria',
     noRecordsOnHistoryList: 'Brak historii spełniających kryteria',
+    toolTipName: "By wygenerować imię musisz uzupełnić pola: ",
+    toolTipSurname: "By wygenerować nazwisko musisz uzupełnić pola: ",
+    toolTipRace: "By wygenerować rase musisz uzupełnić pole: ",
+    toolTipSex: "By wygenerować płeć musisz uzupełnić pole: ",
+    toolTipProfession: "By wygenerować profesje musisz uzupełnić pola: ",
+    toolTipPlaceOfBeing: "By wygenerować miejsce pobytu musisz uzupełnić pola: ",
+    toolTipDayOfBorn: "By wygerować całą date urodzenia musisz uzupełnić pola: ",
+    toolTipMonthOfBorn: "By wygerować całą date urodzenia musisz uzupełnić pola: ",
+    toolTipYearOfBorn: "By wygerować całą date urodzenia musisz uzupełnić pole: ",
+    toolTipHeight: "By wygenerować wzrost musisz uzupełnić pola: ",
+    toolTipWeight: "By wygenerować wage musisz uzupełnić pola: ",
+    toolTipColorOfEyes: "By wygenerować kolor oczu musisz uzupełnić pole: ",
+    toolTipColorOfHair: "By wygenerować kolor włosów musisz uzupełnić pole: ",
+    toolTipCharacter: "By wygenerować cechy charakteru musisz uzupełnić pola:",
+    toolTipAppearance: "By wygenerować cechy wyglądu musisz uzupełnić pola: ",
+    toolTipPreviousProfession: "Poprzednie profesje zmieniają się przy losowaniu obecnej profesji",
+    toolTipReligion: "By wygerować religie potrzeba: ",
+    toolTipEmotions: "By wygenerować dominujące emocje musisz uzupełnić pola: ",
+    toolTipSkills: "By wygenerować umiejętności musisz uzupełnić pola: ",
+    toolTipTalents: "By wygenerować zdolności musisz uzupełnić pola: ",
+    noRecordsOnHistoryList: 'Brak historii spełniających kryteria'
+
 }
 
 export const polishCodeErrors = {

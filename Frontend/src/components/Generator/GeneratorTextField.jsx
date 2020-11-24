@@ -7,7 +7,7 @@ import {careerContext} from "../../pages/CharacterGeneratorPage/context";
 import {TextField} from "@material-ui/core";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faSyncAlt} from "@fortawesome/free-solid-svg-icons";
-
+import GeneratorTooltip from '../Tooltip/GeneratorTooltip'
 
 const element = <FontAwesomeIcon icon={faSyncAlt}/>
 
@@ -32,10 +32,10 @@ class GeneratorTextField extends React.Component {
     }
 
 
-    onChangeFunction(event, v){
-        this.setState({value:event.target.value});
+    onChangeFunction(event, v) {
+        this.setState({value: event.target.value});
         // v.update(event.target.value);
-    }
+            }
 
     onBlur = (event, v) => {
         v.update(event.target.value);
@@ -55,6 +55,11 @@ class GeneratorTextField extends React.Component {
                                onBlur={(event) => this.onBlur(event, v)}
                     />
                     {this.props.canBeGenerated && <button className="detaleButton small" onClick={() => this.props.onRandomClick()} disabled={this.props.disabled}><span>{element}</span></button>}
+                    {this.props.tooltip && <GeneratorTooltip showIt={!this.props.disabled} content={this.props.tootipText}
+                                    tooltipTypeName={this.props.label}
+                                    raceTooltipAtribute={this.props.ifTooltipRace}
+                                    sexTooltipAtribute={this.props.ifTooltipSex}
+                    />}
                     </div>
                 }
             </careerContext.Consumer>

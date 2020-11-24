@@ -11,20 +11,20 @@ export const columnConfig = (autocompleteData={}, visibilityProperties={}) => {
             title: 'Imię', field: 'name',
             removable: true,
             hidden: !visibilityProperties.name,
-            filter: <div class="ziemniak"><TextField label="Imię" id="characterFilterName"/></div>
+            filter: <div class="item-div"><TextField label="Imię" id="characterFilterName"/></div>
         },
         {
             title: 'Nazwisko',
             field: 'surname',
             hidden: !visibilityProperties.surname,
-            filter: <div class="ziemniak"><TextField label="Nazwisko" id="characterFilterSurname"/></div>
+            filter: <div class="item-div"><TextField label="Nazwisko" id="characterFilterSurname"/></div>
         },
         { //ToDo Kasia Ostylować to, aby rasa i płeć były krótsze jako autocomplety
             title: 'Płeć',
             field: 'sex',
             hidden: !visibilityProperties.sex,
             lookup: {"MALE": "M", "FEMALE": "K"},
-            filter: <div className="ziemniak"><DefaultMultipleAutocomplete
+            filter: <div className="item-div"><DefaultMultipleAutocomplete
                     labelName="Płeć"
                     options={["Mężczyzna", "Kobieta"]}
                     id="characterFilterSex"
@@ -35,7 +35,7 @@ export const columnConfig = (autocompleteData={}, visibilityProperties={}) => {
             field: 'race',
             hidden: !visibilityProperties.race,
             lookup: {"HUMAN": "Człowiek", "DWARF": "Krasnolud", "ELF": "Elf", "HALFLING": "Niziołek"},
-            filter: <div className="ziemniak"><DefaultMultipleAutocomplete
+            filter: <div className="item-div"><DefaultMultipleAutocomplete
                 labelName="Rasa"
                 options={["Człowiek", "Elf", "Krasnolud", "Niziołek"]}
                 id="characterFilterRace"
@@ -59,7 +59,7 @@ export const columnConfig = (autocompleteData={}, visibilityProperties={}) => {
             title: 'Miejsce pobytu',
             hidden: !visibilityProperties.livePlace,
             field: 'livePlace',
-            filter: <div className="ziemniak"><DefaultMultipleAutocomplete
+            filter: <div className="item-div"><DefaultMultipleAutocomplete
                 labelName="Miejsce pobytu"
                 options={autocompleteData.placeNames || []}
                 id="characterFilterLivePlaces"
@@ -70,7 +70,7 @@ export const columnConfig = (autocompleteData={}, visibilityProperties={}) => {
             title: 'Profesja',
             field: 'currentCareer',
             hidden: !visibilityProperties.currentCareer,
-            filter: <div class="ziemniak"><DefaultMultipleAutocomplete
+            filter: <div class="item-div"><DefaultMultipleAutocomplete
                 labelName="Profesje"
                 options={autocompleteData.careerNames || []}
                 id="characterFilterCareers"
@@ -82,21 +82,21 @@ export const columnConfig = (autocompleteData={}, visibilityProperties={}) => {
             title: 'Kolor oczu',
             field: 'eyeColor',
             hidden: !visibilityProperties.eyeColor,
-            filter: <div className="ziemniak"><TextField label="Kolor oczu" id="characterFilterEyeColor"/></div>
+            filter: <div className="item-div"><TextField label="Kolor oczu" id="characterFilterEyeColor"/></div>
         },
 
         {
             title: 'Kolor włosów',
             field: 'hairColor',
             hidden: !visibilityProperties.hairColor,
-            filter: <div className="ziemniak"><TextField label="Kolor włosów" id="characterFilterHairColor"/></div>
+            filter: <div className="item-div"><TextField label="Kolor włosów" id="characterFilterHairColor"/></div>
         },
 
         {
             title: 'Miejsce urodzenia',
             field: 'birthPlace',
             hidden: !visibilityProperties.birthPlace,
-            filter: <div className="ziemniak"><DefaultMultipleAutocomplete
+            filter: <div className="item-div"><DefaultMultipleAutocomplete
                 labelName="Miejsce urodzenia"
                 options={autocompleteData.placeNames || []}
                 id="characterFilterBirthPlaces"
@@ -108,7 +108,7 @@ export const columnConfig = (autocompleteData={}, visibilityProperties={}) => {
             title: 'Znak gwiezdny',
             field: 'starSign',
             hidden: !visibilityProperties.starSign,
-            filter: <div className="ziemniak"><DefaultMultipleAutocomplete
+            filter: <div className="item-div"><DefaultMultipleAutocomplete
                 labelName="Znak gwiezdny"
                 options={autocompleteData.starSignNames || []}
                 id="characterFilterStarSigns"
@@ -121,7 +121,7 @@ export const columnConfig = (autocompleteData={}, visibilityProperties={}) => {
             field: 'dominatingEmotions',
             hidden: !visibilityProperties.dominatingEmotions,
             sorting: false,
-            filter: <div className="ziemniak"><DefaultMultipleAutocomplete
+            filter: <div className="item-div"><DefaultMultipleAutocomplete
                 labelName="Emocje"
                 options={autocompleteData.emotionNames || []}
                 id="characterFilterEmotions"
@@ -133,7 +133,7 @@ export const columnConfig = (autocompleteData={}, visibilityProperties={}) => {
             title: 'Religia',
             field: 'religion',
             hidden: !visibilityProperties.religion,
-            filter: <div className="ziemniak"><DefaultMultipleAutocomplete
+            filter: <div className="item-div"><DefaultMultipleAutocomplete
                 labelName="Religia"
                 options={autocompleteData.religionNames || []}
                 id="characterFilterReligions"
@@ -146,7 +146,7 @@ export const columnConfig = (autocompleteData={}, visibilityProperties={}) => {
             title: 'Przepowiednia',
             field: 'prediction',
             hidden: !visibilityProperties.prediction,
-            filter: <div className="ziemniak"><TextField label="Przepowiednia" id="characterFilterPrediction"/></div>
+            filter: <div className="item-div"><TextField label="Przepowiednia" id="characterFilterPrediction"/></div>
         },
 
         {
@@ -154,7 +154,7 @@ export const columnConfig = (autocompleteData={}, visibilityProperties={}) => {
             sorting: false,
             hidden: !visibilityProperties.skills,
             field: 'skills',
-            filter: <div className="ziemniak"><DefaultMultipleAutocomplete
+            filter: <div className="item-div"><DefaultMultipleAutocomplete
                 labelName="Umiejętności"
                 options={autocompleteData.skillNames || []}
                 id="characterFilterSkills"
@@ -166,7 +166,7 @@ export const columnConfig = (autocompleteData={}, visibilityProperties={}) => {
             field: 'talents',
             hidden: !visibilityProperties.talents,
             sorting: false,
-            filter: <div className="ziemniak"><DefaultMultipleAutocomplete
+            filter: <div className="item-div"><DefaultMultipleAutocomplete
                 labelName="Zdolności"
                 options={autocompleteData.talentNames || []}
                 id="characterFilterTalents"
@@ -179,7 +179,7 @@ export const columnConfig = (autocompleteData={}, visibilityProperties={}) => {
             field: 'personalities',
             hidden: !visibilityProperties.personalities,
             sorting: false,
-            filter: <div className="ziemniak"><DefaultMultipleAutocomplete
+            filter: <div className="item-div"><DefaultMultipleAutocomplete
                 labelName="Cechy charakteru"
                 options={autocompleteData.personalityNames || []}
                 id="characterFilterPersonalities"
@@ -193,7 +193,7 @@ export const columnConfig = (autocompleteData={}, visibilityProperties={}) => {
             field: 'apperances',
             hidden: !visibilityProperties.apperances,
             sorting: false,
-            filter: <div className="ziemniak"><DefaultMultipleAutocomplete
+            filter: <div className="item-div"><DefaultMultipleAutocomplete
                 labelName="Cechy wyglądu"
                 options={autocompleteData.apperanceNames || []}
                 id="characterFilterApperances"

@@ -6,6 +6,9 @@ import CharacterDetailsSkillsView from "../../components/CharacterDetails/Charac
 import CharacterDetailsCombatStatsView from "../../components/CharacterDetails/CharacterDetailsCombatStatsView";
 import pageName from "../../styles/page.css";
 import CharacterCombatStats from "../../components/CharacterDetails/CharacterCombatStats";
+import CharacterDetailsHistoryView from "../../components/CharacterDetails/CharacterDetailsHistoryView";
+import historyService from "../../services/historyService";
+import {fronendUrls} from "../../commons/urls";
 
 class CharacterDetailsPage extends React.Component {
 
@@ -15,7 +18,9 @@ class CharacterDetailsPage extends React.Component {
             isVisibleGlobalStats: true,
             isVisibleCombatStats: false,
             isVisibleHistory: false,
-            characterData: {}
+            characterData: {},
+            historyData: [],
+            characterTag: ""
         }
     }
 
@@ -35,9 +40,15 @@ class CharacterDetailsPage extends React.Component {
         return undefined;
     }
 
-    getCharacterById = id => {
-        characterService.getCharacterById(id)
+    getCharacterById = async id => {
+        await characterService.getCharacterById(id)
             .then(response => this.getCharacterByIdSuccessHandler(response))
+        await historyService.getHistoriesByCharacter(this.state.characterData.name + (this.state.characterData.surname ? "-" + this.state.characterData.surname : ""), id)
+            .then(response =>this.getHistoriesByCharacterSuccessHandler(response))
+    }
+
+    getHistoriesByCharacterSuccessHandler = response => {
+        this.setState({historyData: response.data})
     }
 
     getCharacterByIdSuccessHandler = response => {
@@ -49,16 +60,22 @@ class CharacterDetailsPage extends React.Component {
         this.setState({isVisibleGlobalStats: global, isVisibleCombatStats: combat, isVisibleHistory: history})
     }
 
+    onGetMoreHistoriesClick = () => {
+        let characterTag = this.state.characterData.name + (this.state.characterData.surname ? "-" + this.state.characterData.surname : "");
+        let id = this.getCharacterId();
+        window.location.assign(fronendUrls.historyList + "/character/" + characterTag + "/" + id);
+    }
+
 
     render(){
         return (
             <div className = "globalStyles">
                 <div className = "pageWithContext">
-            <div className = "pageName">{this.state.characterData.name + " " + this.state.characterData.surname} </div>
+            <div className = "pageName">{this.state.characterData.name + (this.state.characterData.surname ? " " + this.state.characterData.surname : "") +"#" + this.getCharacterId()} </div>
             <div className="stats-button-element">
                 <button className = "detailsTypeButton" onClick = {() => this.changeVisibleState(true, false, false)}>Statystyki Ogólne</button>
                 <button className = "detailsTypeButton" onClick = {() => this.changeVisibleState(false, true, false)}>Statystyki Bojowe</button>
-                <button className = "detailsTypeButton" onClick = {() => this.changeVisibleState(false, false, true)} disabled>Historie</button>
+                <button className = "detailsTypeButton" onClick = {() => this.changeVisibleState(false, false, true)}>Historie</button>
                 </div>
             <div className = "block-element">
             {this.state.isVisibleGlobalStats &&
@@ -73,7 +90,7 @@ class CharacterDetailsPage extends React.Component {
                 </div>
             }
             {this.state.isVisibleHistory &&
-                <div className = "historie">History Maker!</div>
+                <CharacterDetailsHistoryView historyData={this.state.historyData} onGetMoreHistoriesClick={this.onGetMoreHistoriesClick} />
             }
             </div>
             </div>

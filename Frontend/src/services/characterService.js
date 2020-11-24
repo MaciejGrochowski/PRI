@@ -8,7 +8,7 @@ const characterService = {
     getCountOfCharacters: () => getCountOfCharacters(),
     getCharacters: (requestBody) => getCharacters(requestBody),
     getAutocompleteFilters: () => getAutocompleteFilters(),
-    getCharacterById: id => getCharacterById(id),
+    getCharacterById: id => getCharacterById(id)
 }
 
 const getCharacterById = id => {

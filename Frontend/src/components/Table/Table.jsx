@@ -18,8 +18,14 @@ class Table extends React.Component {
 
 
     componentDidUpdate(prevProps, prevState){
+        console.log(this.props.columnsConfig)
+        let columnsConfig = this.props.columnsConfig
+
+        if(this.props.notVisibleColumns){
+            columnsConfig = columnsConfig.filter(c => !this.props.notVisibleColumns.includes(c.title))
+        }
+
         if(this.props.columnsConfig !== prevProps.columnsConfig && this.props.onDetailsClick) {
-            let columnsConfig = this.props.columnsConfig
             columnsConfig.push(
                 {
                     title: 'Detale',
@@ -34,7 +40,6 @@ class Table extends React.Component {
     render(){
         const {data=[], noRecordsMessage="Brak danych", onChangeCountPerPage, ownOnChangePage, count, page, onOrderChange} = this.props;
         let columnsConfig = this.state.columnsConfig;
-        console.log(columnsConfig);
 
         const divStyle = {
             textDecoration: "none",
@@ -97,7 +102,7 @@ class Table extends React.Component {
                 data={data}
 
                 options={{
-                    selection: true,
+                    selection: this.props.selection,
                     toolbar: false,
                     search: false,
                     paging: true,

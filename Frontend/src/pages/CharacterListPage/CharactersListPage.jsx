@@ -7,7 +7,7 @@ import Filter from "../../components/Filter/Filter";
 import {columnConfig} from "./ColumnsConfig";
 import "../../styles/globalStyles.css";
 import "../../styles/tables.css";
-import DefaultPopup from "../../components/Popup/DefaultPopup";
+import CustomizeFiltersPopup from "../../components/Popup/CustomizeFiltersPopup/CustomizeFiltersPopup";
 import {starSigns} from "../../enums/StarSigns";
 import {religions} from "../../enums/Religions";
 import {table} from "../../styles/tables.css"
@@ -87,6 +87,7 @@ class CharactersListPage extends React.Component{
     }
 
     onFilter = async data => {
+        console.log(this.state)
         let filterObject = {}
         const name = document.getElementById('characterFilterName');
         if(name && name.value!=="") filterObject = {...filterObject, name: name.value}
@@ -252,8 +253,7 @@ class CharactersListPage extends React.Component{
                         onFilter={this.onFilter}
                         expandFilterList={this.expandFilterList}
                     />
-                    <DefaultPopup
-                    isOpen={this.state.showModal}
+                    <CustomizeFiltersPopup
                     onRequestClose={this.onClosePopup}
                     className="Modal"
                         onSave={this.saveChangeColumns}
@@ -276,6 +276,7 @@ class CharactersListPage extends React.Component{
                         count={this.state.count}
                         onDetailsClick={this.onDetailsClick}
                         onOrderChange={this.onOrderChange}
+                        selection
                     />
                     </div>
                 </header>

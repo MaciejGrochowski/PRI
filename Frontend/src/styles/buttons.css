@@ -1,6 +1,6 @@
 .button {
-    background-color: #292F2F; 
-    color: #FFD859; 
+    background-color: #292F2F;
+    color: #FFD859;
     border: 2px solid #FFD859;
     border-radius: 20%;
     padding: 10px 20px;
@@ -52,7 +52,7 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     display: flex;
-    
+
   }
 
   .detaleButton:disabled {
@@ -74,7 +74,7 @@
   }
 
   .stats-button-element{
-    width: 40%; 
+    width: 40%;
     display: flex;
     justify-content: space-between;
   }
@@ -94,7 +94,7 @@
     padding-left: 5%;
     padding-top: 2%;
     padding-bottom: 2%;
-    margin-right: 20px; 
+    margin-right: 20px;
     margin-top: 1px;
     margin-bottom: 1px;
   }
@@ -109,7 +109,7 @@
     padding-left: 5%;
     padding-top: 2%;
     padding-bottom: 2%;
-    margin-right: 20px!important; 
+    margin-right: 20px!important;
     margin-top: 1px!important;
     margin-bottom: 1px!important;
   }
@@ -120,7 +120,7 @@
     border: 1px solid #FFD859;
     margin-top: 0px;
     margin-bottom: 0px;
-    margin-right: 19px; 
+    margin-right: 19px;
 
   }
   .detailsTypeButton:focus{
@@ -129,7 +129,7 @@
     border: 1px solid #FFD859;
     margin-top: 0px;
     margin-bottom: 0px;
-    margin-right: 19px; 
+    margin-right: 19px;
   }
 
 
@@ -151,8 +151,8 @@
   }
 
   .menubutton:hover {
-    background-color: #292F2F; 
-    color: #FFD859; 
+    background-color: #292F2F;
+    color: #FFD859;
   }
 
   .filter-button{
@@ -169,7 +169,7 @@
   .green-button{
     color: greenyellow;
     border: greenyellow;
-    background-color: #292F2F; ;
+    background-color: #292F2F;
     border-radius: 25%;
     border: 2px solid greenyellow;
     text-decoration: none;
@@ -183,22 +183,25 @@
 
   .green-button:hover{
     background-color: greenyellow;
-    color: #292F2F; 
+    color: #292F2F;
     text-decoration: bold;
   }
   .red-button{
     color: tomato;
     border: tomato;
     background-color:#292F2F;
-    border-radius: 20%;
+    border-radius: 25%;
     border: 2px solid tomato;
-    text-decoration: none;
+    font-size: large;
+    text-decoration: bold;
     transition-duration: 0.4s;
     cursor: pointer;
     margin: 5%;
+    padding: 2%;
   }
 
   .red-button:hover{
     background-color: tomato;
-    color: #292F2F; 
+    color: #292F2F;
+    text-decoration: bold;
   }

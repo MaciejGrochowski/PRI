@@ -5,6 +5,7 @@ import {Tag} from "./DefaultMultipleAutocomplete.style";
 import {careerContext} from "../../pages/CharacterGeneratorPage/context";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faSyncAlt} from "@fortawesome/free-solid-svg-icons";
+import GeneratorTooltip from '../Tooltip/GeneratorTooltip'
 
 const element = <FontAwesomeIcon icon={faSyncAlt}/>
 
@@ -189,6 +190,18 @@ render()
                     />
                     {this.props.canBeGenerated &&
                     <button className="detaleButton small" onClick={() => this.randomClick()} disabled={this.props.disabled}><span>{element}</span></button>}
+                    {this.props.tooltip && <GeneratorTooltip showIt={!this.props.disabled} content={this.props.tootipText}
+                             tooltipTypeName={this.props.labelName}
+                             birthPlaceTooltipAtribute={this.props.ifTooltipBirthPlace}
+                             raceTooltipAtribute={this.props.ifTooltipRace}
+                             professionTooltipAtribute={this.props.ifTooltipProfession}
+                             yearOfBirthTooltipAtribute={this.props.ifTooltipBirthYear}
+                             sexTooltipAtribute={this.props.ifTooltipSex}
+                             religionTooltipAtribute={this.props.ifTooltipReligion}
+                             baseStatsTooltipAtributet={this.props.ifTooltipBaseStats}
+                             heightTooltipAtributet={this.props.ifTooltipHeight}
+                             weightTooltipAtributet={this.props.ifTooltipWeight}
+                    />}
                 </div>
             }</careerContext.Consumer>
     )

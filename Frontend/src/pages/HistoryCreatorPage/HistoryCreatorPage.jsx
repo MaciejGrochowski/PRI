@@ -92,12 +92,12 @@ class HistoryCreatorPage extends React.Component {
            <div className = "history-column">
            Data:
             <div className="History-buttons-line">
-            <div className="ziemniak">
+            <div className="item-div">
                 <TextField value={this.state.day} onChange={(event) => {
                     this.setState({day: event.target.value});
                 }}  label="Dzień"/>
 </div>
-<div className="ziemniak">
+<div className="item-div">
                 <Autocomplete
                     options={months}
                     value={this.state.month}
@@ -107,7 +107,7 @@ class HistoryCreatorPage extends React.Component {
                     renderInput={(params) => <TextField {...params} label="Miesiąc" />}
                 />
                 </div>
-<div className="ziemniak">
+<div className="item-div">
                 <TextField value={this.state.year} onChange={(event) => {
                     this.setState({year: event.target.value});
                 }}  label="Rok"/>
@@ -117,7 +117,7 @@ class HistoryCreatorPage extends React.Component {
            <div className = "history-column">
            Miejsce:
             <div className="History-buttons-line">
-                <div className="ziemniak"><Autocomplete
+                <div className="item-div"><Autocomplete
                     renderInput={(params) => <TextField {...params} label="Miejsce" />}
                     options={this.state.places || []}
                     value={this.state.place}

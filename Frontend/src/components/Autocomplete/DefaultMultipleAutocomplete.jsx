@@ -194,8 +194,13 @@ render()
                     {this.props.canBeGenerated &&
                     <button className="detaleButton small" onClick={() => this.randomClick()} disabled={this.props.disabled}><span>{element}</span></button>}
                     {this.props.tooltip && <GeneratorTooltip showIt={!this.props.disabled} content={this.props.tootipText}
-                             tooltipTypeName={this.props.label}
+                             tooltipTypeName={this.props.labelName}
                              birthPlaceTooltipAtribute={this.props.ifTooltipBirthPlace}
+                             raceTooltipAtribute={this.props.ifTooltipRace}
+                             professionTooltipAtribute={this.props.ifTooltipProfession}
+                             yearOfBirthTooltipAtribute={this.props.idTooltipBirthYear}
+                             sexTooltipAtribute={this.props.ifTooltipSex}
+                             religionTooltipAtribute={this.props.ifTooltipReligion}
                     />}
                 </div>
             }</careerContext.Consumer>

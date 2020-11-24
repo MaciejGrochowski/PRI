@@ -1,6 +1,5 @@
 export const textsPolish = {
     noRecordsOnCharactersList: 'Brak postaci spełniających kryteria',
-    noRecordsOnHistoryList: 'Brak historii spełniających kryteria',
     toolTipName: "By wygenerować imię musisz uzupełnić pola: ",
     toolTipSurname: "By wygenerować nazwisko musisz uzupełnić pola: ",
     toolTipRace: "By wygenerować rase musisz uzupełnić pole: ",

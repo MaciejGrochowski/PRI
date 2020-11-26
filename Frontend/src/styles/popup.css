@@ -3,9 +3,29 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: left;
-    padding: 3%;
+    padding: 5%;
   }
+.historyDetailBody{
+    padding: 5%;
+    padding-top: 2%;
 
+}
+.auto-margin{
+margin: auto;
+padding-top: 3%;
+padding-bottom: 3%;
+}
+
+.small{
+font-size: small !important;
+}
+
+.historyDetailHeader{
+    font-size: large;
+    padding-bottom: 2%;
+    border-bottom: solid 1px white;
+    margin: auto;
+}
 .customize-button{
   display: block;
   z-index: 100;

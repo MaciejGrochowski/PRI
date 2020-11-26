@@ -21,7 +21,7 @@ class CharacterDetailsHistoryView extends React.Component {
             Historie:
             </div>
             <div className = "border-left">
-                {historyData===[] && <div className = "one-history-brief">Brak historii do wyświetlenia.</div>}
+                {historyData && historyData.length<1 && <div className = "one-history-brief">Brak historii do wyświetlenia.</div>}
 
 
                 {historyData && historyData.map((item, i) => (
@@ -33,7 +33,7 @@ class CharacterDetailsHistoryView extends React.Component {
 
                         }
                       </div>
-                      <button className = "detaleButton" onClick = {() => onGetMoreHistoriesClick()}><div className = "normal-text">Więcej historii z tą postacią</div></button>
+                     {historyData && historyData.length > 0 &&<button className = "detaleButton" onClick = {() => onGetMoreHistoriesClick()}><div className = "normal-text">Więcej historii z tą postacią</div></button>}
                       </div>
             </div>
         )

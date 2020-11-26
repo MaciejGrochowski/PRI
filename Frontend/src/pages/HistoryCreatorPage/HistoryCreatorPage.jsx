@@ -9,6 +9,8 @@ import TextField from "@material-ui/core/TextField";
 import {months} from "../../enums/Months";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import "../../styles/historyCreator.css";
+import ErrorGenerator from "../../components/ErrorLayout/ErrorGenerator";
+import {polishCodeErrors} from "../../commons/texts-pl";
 
 class HistoryCreatorPage extends React.Component {
 
@@ -22,7 +24,9 @@ class HistoryCreatorPage extends React.Component {
             place: "",
             day: "",
             month: "",
-            year: ""
+            year: "",
+            isError: false,
+            errorText: ''
 
         }
     }
@@ -35,24 +39,24 @@ class HistoryCreatorPage extends React.Component {
             .then(r => this.getPlaceNamesSuccessHandler(r))
             .catch(e => this.getPlaceNamesErrorHandler(e))
 
-    }
+    };
 
     getCharactersCreatingHistorySuccessHandler = response => {
         let characters = response.data.map(r => ({text: r.text, value: r.value, url: fronendUrls.characterDetails +"/" + r.url}))
         this.setState({characters: characters})
-    }
+    };
 
     getCharactersCreatingHistoryErrorHandler = error => {
         console.log(error);
-    }
+    };
 
     getPlaceNamesSuccessHandler = response => {
         this.setState({places: response.data})
-    }
+    };
 
     getPlaceNamesErrorHandler = error => {
         console.log(error);
-    }
+    };
 
 
     saveHistory = description => {
@@ -62,10 +66,20 @@ class HistoryCreatorPage extends React.Component {
             day: this.state.day,
             month: this.state.month,
             year: this.state.year
-        }
+        };
 
-        historyService.createHistory(data).then(r => window.open(fronendUrls.historyList + "/" + r.data));
-    }
+        historyService.createHistory(data)
+            .then(r => window.open(fronendUrls.historyList + "/" + r.data))
+            .catch(e => this.saveHistoryErrorHandler(e))
+    };
+
+    saveHistoryErrorHandler = error => {
+        if(error.response.data.errors){
+            const errorMsg = error.response.data.errors.map(e => e.defaultMessage)[0]
+            this.setState({isError: true, errorText: errorMsg})
+        }
+        else this.setState({isError: true, errorText: error.response.data.message})
+    };
 
 
     render(){
@@ -78,12 +92,12 @@ class HistoryCreatorPage extends React.Component {
            <div className = "history-column">
            Data:
             <div className="History-buttons-line">
-            <div className="ziemniak">
+            <div className="item-div">
                 <TextField value={this.state.day} onChange={(event) => {
                     this.setState({day: event.target.value});
                 }}  label="Dzień"/>
 </div>
-<div className="ziemniak">
+<div className="item-div">
                 <Autocomplete
                     options={months}
                     value={this.state.month}
@@ -93,7 +107,7 @@ class HistoryCreatorPage extends React.Component {
                     renderInput={(params) => <TextField {...params} label="Miesiąc" />}
                 />
                 </div>
-<div className="ziemniak">
+<div className="item-div">
                 <TextField value={this.state.year} onChange={(event) => {
                     this.setState({year: event.target.value});
                 }}  label="Rok"/>
@@ -103,7 +117,7 @@ class HistoryCreatorPage extends React.Component {
            <div className = "history-column">
            Miejsce:
             <div className="History-buttons-line">
-                <div className="ziemniak"><Autocomplete
+                <div className="item-div"><Autocomplete
                     renderInput={(params) => <TextField {...params} label="Miejsce" />}
                     options={this.state.places || []}
                     value={this.state.place}
@@ -113,6 +127,9 @@ class HistoryCreatorPage extends React.Component {
                 /></div>
 </div>
 </div></div>
+
+                <div className="block-element">{this.state.isError &&
+                <ErrorGenerator errorText={polishCodeErrors[this.state.errorText]}/>}</div>
 
                 <Wysiwyg
                 characterTags={this.state.characters}

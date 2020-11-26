@@ -74,11 +74,8 @@ class Wysiwyg extends React.Component {
                 }}
                 hashtag={{}}
             />
-                <button className="green-button" onClick={() => saveHistory(draftToHtml(convertToRaw(this.state.editorState.getCurrentContent())))}>Zapisz <span>{element}</span></button>
+                <div className = "center-content"><button className="green-button" onClick={() => saveHistory(draftToHtml(convertToRaw(this.state.editorState.getCurrentContent())))}>Zapisz <span>{element}</span></button></div>
 
-
-
-                <button className="red-button">Anuluj <span>{element2}</span></button>
 </>
 
         )

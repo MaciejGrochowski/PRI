@@ -8,6 +8,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faSyncAlt} from '@fortawesome/free-solid-svg-icons';
 import ErrorGenerator from "../../components/ErrorLayout/ErrorGenerator";
 import {careerContext} from "./context";
+import {polishCodeErrors, textsPolish} from "../../commons/texts-pl";
 import GeneratorTextField from "../../components/Generator/GeneratorTextField";
 import {
     fullRandomGenerateSuccessHandler,
@@ -18,6 +19,7 @@ import {
     mapTalentsArrayToString
 } from "./util";
 
+//TODO refactor 
 const mygrid = {
     all: 'none',
     width: '30px',
@@ -153,17 +155,22 @@ class CharacterGeneratorPage extends React.Component {
                                 <GeneratorTextField label="Imię" generated={this.state.name} canBeGenerated onRandomClick={() => this.generateOneAttribute("Imię")}
                                                     disabled={this.state.race===undefined || this.state.race==="" || this.state.race === null ||
                                                     this.state.sex===undefined || this.state.sex==="" || this.state.sex === null }
-                                                    />
+                                                    tooltip tootipText={textsPolish.toolTipName}
+                                                    ifTooltipRace={(this.state.race===undefined || this.state.race==="" || this.state.race === null)}
+                                                    ifTooltipSex={(this.state.sex===undefined || this.state.sex==="" || this.state.sex === null)}
+                                                    />               
                             </careerContext.Provider>
 
                             <careerContext.Provider value={{
                                 update: (val) => {this.setState({surname: val})},}}>
                                 <GeneratorTextField label="Nazwisko" generated={this.state.surname} canBeGenerated onRandomClick={() => this.generateOneAttribute("Nazwisko")}
                                                     disabled={this.state.race===undefined || this.state.race==="" || this.state.race === null ||
-                                                    this.state.sex===undefined || this.state.sex==="" || this.state.sex === null
-                                                    }
+                                                    this.state.sex===undefined || this.state.sex==="" || this.state.sex === null} tooltip tootipText={textsPolish.toolTipSurname}
+                                                    ifTooltipRace={(this.state.race===undefined || this.state.race==="" || this.state.race === null)}
+                                                    ifTooltipSex={(this.state.sex===undefined || this.state.sex==="" || this.state.sex === null)}
                                 />
                             </careerContext.Provider>
+
 
                             <careerContext.Provider value={{
                                 update: (val) => {this.setState({race: val})},}}>
@@ -177,6 +184,8 @@ class CharacterGeneratorPage extends React.Component {
                                 generated={this.state.race}
                                 onRandomClick={() => this.generateOneAttribute("Rasa")}
                                 disabled={this.state.birthPlace===undefined || this.state.birthPlace==="" || this.state.birthPlace === null}
+                                tooltip tootipText={textsPolish.toolTipRace}
+                                ifTooltipBirthPlace={this.state.birthPlace===undefined || this.state.birthPlace==="" || this.state.birthPlace === null}
                             />
                             </careerContext.Provider>
 
@@ -184,6 +193,7 @@ class CharacterGeneratorPage extends React.Component {
                                 update: (val) => {this.setState({sex: val})},}}>
                                 <DefaultMultipleAutocomplete
                                 labelName="Płeć"
+                                tooltip tootipText={textsPolish.toolTipSex}
                                 options={["Mężczyzna", "Kobieta"]}
                                 id="characterGeneratorSex"
                                 width={138}
@@ -192,6 +202,7 @@ class CharacterGeneratorPage extends React.Component {
                                 generated={this.state.sex}
                                 onRandomClick={() => this.generateOneAttribute("Płeć")}
                                 disabled={this.state.race === undefined || this.state.race === "" || this.state.race === null}
+                                ifTooltipRace={(this.state.race===undefined || this.state.race==="" || this.state.race === null)}
                             /></careerContext.Provider>
 
                             <careerContext.Provider value={{
@@ -202,6 +213,7 @@ class CharacterGeneratorPage extends React.Component {
                                     id="characterGeneratorCurrentCareer"
                                     canBeGenerated
                                     disablePortal
+                                    tooltip tootipText={textsPolish.toolTipProfession}
                                     generated={this.state.currentCareer}
                                     onRandomClick={() => this.generateOneAttribute("Profesja")}
                                     disabled={this.state.race === undefined || this.state.race === "" || this.state.race === null
@@ -221,6 +233,21 @@ class CharacterGeneratorPage extends React.Component {
                                     this.state.baseMagic === undefined || this.state.baseMagic === "" || this.state.baseMagic === null
                                         //ToDo warunki disabled powinny być najlepiej wyrzucone do osobnego pliku
                                     }
+                                    ifTooltipRace={(this.state.race===undefined || this.state.race==="" || this.state.race === null)}
+                                    ifTooltipSex={(this.state.sex===undefined || this.state.sex==="" || this.state.sex === null)}
+                                    ifTooltipBirthPlace={this.state.birthPlace === undefined || this.state.birthPlace === "" || this.state.birthPlace === null}
+                                    ifTooltipBaseStats={this.state.baseWeaponSkills === undefined || this.state.baseWeaponSkills === "" || this.state.baseWeaponSkills === null ||
+                                    this.state.baseBallisticSkills === undefined || this.state.baseBallisticSkills === "" || this.state.baseBallisticSkills === null ||
+                                    this.state.baseStrength === undefined || this.state.baseStrength === "" || this.state.baseStrength === null ||
+                                    this.state.baseToughness === undefined || this.state.baseToughness === "" || this.state.baseToughness === null ||
+                                    this.state.baseAgility === undefined || this.state.baseAgility === "" || this.state.baseAgility === null ||
+                                    this.state.baseIntelligence === undefined || this.state.baseIntelligence === "" || this.state.baseIntelligence === null ||
+                                    this.state.baseWillPower === undefined || this.state.baseWillPower === "" || this.state.baseWillPower === null ||
+                                    this.state.baseFellowship === undefined || this.state.baseFellowship === "" || this.state.baseFellowship === null ||
+                                    this.state.baseAttacks === undefined || this.state.baseAttacks === "" || this.state.baseAttacks === null ||
+                                    this.state.baseWounds === undefined || this.state.baseWounds === "" || this.state.baseWounds === null ||
+                                    this.state.baseMovement === undefined || this.state.baseMovement === "" || this.state.baseMovement === null ||
+                                    this.state.baseMagic === undefined || this.state.baseMagic === "" || this.state.baseMagic === null}
                                 />
                             </careerContext.Provider>
 
@@ -228,6 +255,7 @@ class CharacterGeneratorPage extends React.Component {
                                 update: (val) => {this.setState({livePlace: val})},}}>
                                 <DefaultMultipleAutocomplete
                                 labelName="Miejsce pobytu"
+                                tooltip tootipText={textsPolish.toolTipPlaceOfBeing}
                                 options={this.state.autocompleteData.placeNames || []}
                                 id="characterGeneratorLivePlace"
                                 canBeGenerated
@@ -239,8 +267,13 @@ class CharacterGeneratorPage extends React.Component {
                                 this.state.religion === undefined || this.state.religion === "" || this.state.religion === null ||
                                 this.state.race === undefined || this.state.race === "" || this.state.race === null ||
                                     this.state.sex=== undefined || this.state.sex === "" || this.state.sex === null
-
                                 }
+                                ifTooltipRace={this.state.race===undefined || this.state.race==="" || this.state.race === null}
+                                ifTooltipBirthPlace={this.state.birthPlace===undefined || this.state.birthPlace==="" || this.state.birthPlace === null}
+                                ifTooltipSex={this.state.sex===undefined || this.state.sex==="" || this.state.sex === null}
+                                ifTooltipProfession={this.state.currentCareer === undefined || this.state.currentCareer === "" || this.state.currentCareer === null}
+                                ifTooltipReligion={this.state.religion === undefined || this.state.religion === "" || this.state.religion === null}
+
                             />
                             </careerContext.Provider>
                             <careerContext.Provider value={{
@@ -257,7 +290,8 @@ class CharacterGeneratorPage extends React.Component {
                             </careerContext.Provider>
                                 <careerContext.Provider value={{
                                     update: (val) => {this.setState({dayOfBirth: val})},}}>
-                                    <GeneratorTextField label="Dzień urodzenia" generated={this.state.dayOfBirth}/>
+                                    <GeneratorTextField label="Dzień urodzenia" generated={this.state.dayOfBirth}
+                                    tooltip tootipText={textsPolish.toolTipDayOfBorn}/>
                                 </careerContext.Provider>
 
                                 <careerContext.Provider value={{
@@ -265,8 +299,10 @@ class CharacterGeneratorPage extends React.Component {
                                 }}><DefaultMultipleAutocomplete
                                     labelName="Miesiąc urodzenia"
                                     options={months}
+                                    TooltipReplacement wd={"ad"}
                                     id="characterGeneratorMonthOfBirth"
                                     width={150}
+                                    tooltip tootipText={textsPolish.toolTipMonthOfBorn}
                                     disablePortal
                                     generated={this.state.monthOfBirth}
                                     notSortOptions
@@ -277,7 +313,9 @@ class CharacterGeneratorPage extends React.Component {
                                     <GeneratorTextField label="Rok urodzenia" generated={this.state.yearOfBirth}
                                                         canBeGenerated
                                                         onRandomClick={() => this.generateOneAttribute("Data urodzenia")}
-                                                        disabled={this.state.race===undefined || this.state.race==="" || this.state.race === null}
+                                                        disabled={this.state.race===undefined || this.state.race==="" || this.state.race === null} 
+                                                        tooltip tootipText={textsPolish.toolTipYearOfBorn}
+                                                        ifTooltipRace={(this.state.race===undefined || this.state.race==="" || this.state.race === null)}
                                     />
                                 </careerContext.Provider>
                             <careerContext.Provider value={{
@@ -288,6 +326,7 @@ class CharacterGeneratorPage extends React.Component {
                                 id="characterGeneratorReligion"
                                 canBeGenerated
                                 disablePortal
+                                tooltip tootipText={textsPolish.toolTipReligion}
                                 generated={this.state.religion}
                                 onRandomClick={() => this.generateOneAttribute("Religia")}
                                 notSortOptions
@@ -296,22 +335,33 @@ class CharacterGeneratorPage extends React.Component {
                                 this.state.currentCareer === undefined || this.state.currentCareer === "" || this.state.currentCareer === null ||
                                 this.state.birthPlace === undefined || this.state.birthPlace === "" || this.state.birthPlace === null
                                 }
+                                ifTooltipRace={this.state.race===undefined || this.state.race==="" || this.state.race === null}
+                                ifTooltipBirthPlace={this.state.birthPlace===undefined || this.state.birthPlace==="" || this.state.birthPlace === null}
+                                ifTooltipSex={this.state.sex===undefined || this.state.sex==="" || this.state.sex === null}
+                                ifTooltipProfession={this.state.currentCareer === undefined || this.state.currentCareer === "" || this.state.currentCareer === null}
                             />
                             </careerContext.Provider>
                 </div>
                 <div className = "column-1">
                                 <careerContext.Provider value={{
                                     update: (val) => {this.setState({height: val})},}}>
-                                    <GeneratorTextField label="Wzrost" generated={this.state.height} canBeGenerated onRandomClick={() => this.generateOneAttribute("Wzrost")} disabled={this.state.race===undefined || this.state.race==="" || this.state.race === null || this.state.sex===undefined || this.state.sex==="" || this.state.sex === null}/>
+                                    <GeneratorTextField label="Wzrost" generated={this.state.height} canBeGenerated onRandomClick={() => this.generateOneAttribute("Wzrost")} disabled={this.state.race===undefined || this.state.race==="" || this.state.race === null || this.state.sex===undefined || this.state.sex==="" || this.state.sex === null} tooltip tootipText={textsPolish.toolTipHeight}
+                                                        ifTooltipRace={(this.state.race===undefined || this.state.race==="" || this.state.race === null)}
+                                                        ifTooltipSex={(this.state.sex===undefined || this.state.sex==="" || this.state.sex === null)}
+                                    />
                                 </careerContext.Provider>
                                 <careerContext.Provider value={{
                                     update: (val) => {this.setState({weight: val})},}}>
-                                <GeneratorTextField label="Waga" generated={this.state.weight} canBeGenerated onRandomClick={() => this.generateOneAttribute("Waga")} disabled={this.state.race===undefined || this.state.race==="" || this.state.race === null || this.state.sex===undefined || this.state.sex==="" || this.state.sex === null}/>
+                                <GeneratorTextField label="Waga" generated={this.state.weight} canBeGenerated onRandomClick={() => this.generateOneAttribute("Waga")} disabled={this.state.race===undefined || this.state.race==="" || this.state.race === null || this.state.sex===undefined || this.state.sex==="" || this.state.sex === null} tooltip tootipText={textsPolish.toolTipWeight}
+                                                    ifTooltipRace={(this.state.race===undefined || this.state.race==="" || this.state.race === null)}
+                                                    ifTooltipSex={(this.state.sex===undefined || this.state.sex==="" || this.state.sex === null)}
+                                />
                                 </careerContext.Provider>
                                 <careerContext.Provider value={{
                                 update: (val) => {this.setState({eyeColor: val})},}}>
                                 <DefaultMultipleAutocomplete
                                 labelName="Kolor oczu"
+                                tooltip tootipText={textsPolish.toolTipColorOfEyes}
                                 options={this.state.autocompleteData.eyeColors || []}
                                 id="characterGeneratorEyeColor"
                                 canBeGenerated
@@ -319,6 +369,7 @@ class CharacterGeneratorPage extends React.Component {
                                 generated={this.state.eyeColor}
                                 onRandomClick={() => this.generateOneAttribute("Kolor oczu")}
                                 disabled={this.state.race===undefined || this.state.race==="" || this.state.race === null}
+                                ifTooltipRace={(this.state.race===undefined || this.state.race==="" || this.state.race === null)}
                             /></careerContext.Provider>
 
                             <careerContext.Provider value={{
@@ -329,9 +380,11 @@ class CharacterGeneratorPage extends React.Component {
                                 id="characterGeneratorHairColor"
                                 canBeGenerated
                                 disablePortal
+                                tooltip tootipText={textsPolish.toolTipColorOfHair}
                                 generated={this.state.hairColor}
                                 onRandomClick={() => this.generateOneAttribute("Kolor włosów")}
                                 disabled={this.state.race===undefined || this.state.race==="" || this.state.race === null}
+                                ifTooltipRace={(this.state.race===undefined || this.state.race==="" || this.state.race === null)}
                             /></careerContext.Provider>
                             <careerContext.Provider value={{
                                 update: (val) => {this.setState({personalities: val})},
@@ -341,6 +394,7 @@ class CharacterGeneratorPage extends React.Component {
                                 id="characterGeneratorPersonality"
                                 multiple
                                 disablePortal
+                                tooltip tootipText={textsPolish.toolTipCharacter}
                                 canBeGenerated
                                 generated={this.state.personalities}
                                 onRandomClick={() => this.generateOneAttribute("Cechy charakteru")}
@@ -349,6 +403,10 @@ class CharacterGeneratorPage extends React.Component {
                                 this.state.yearOfBirth === undefined || this.state.yearOfBirth === "" || this.state.yearOfBirth === null ||
                                 this.state.currentCareer === undefined || this.state.currentCareer === "" || this.state.currentCareer === null
                                 }
+                                ifTooltipRace={this.state.race===undefined || this.state.race==="" || this.state.race === null}
+                                ifTooltipProfession={this.state.currentCareer === undefined || this.state.currentCareer === "" || this.state.currentCareer === null}
+                                ifTooltipReligion={this.state.religion === undefined || this.state.religion === "" || this.state.religion === null}
+                                ifTooltipBirthYear={this.state.yearOfBirth===undefined || this.state.yearOfBirth==="" || this.state.yearOfBirth === null}
                             />
                             </careerContext.Provider>
                             <careerContext.Provider value={{
@@ -358,6 +416,7 @@ class CharacterGeneratorPage extends React.Component {
                                 options={this.state.autocompleteData.apperanceNames || []}
                                 id="characterGeneratorApperances"
                                 multiple
+                                tooltip tootipText={textsPolish.toolTipAppearance}
                                 canBeGenerated
                                 disablePortal
                                 generated={this.state.apperances}
@@ -370,12 +429,21 @@ class CharacterGeneratorPage extends React.Component {
                                 this.state.yearOfBirth === undefined || this.state.yearOfBirth === "" || this.state.yearOfBirth === null ||
                                 this.state.weight === undefined || this.state.weight === "" || this.state.weight === null ||
                                 this.state.height === undefined || this.state.height === "" || this.state.height === null}
+
+                                ifTooltipHeight={this.state.height === undefined || this.state.height === "" || this.state.height === null}
+                                ifTooltipWeight={this.state.weight === undefined || this.state.weight === "" || this.state.weight === null}
+                                ifTooltipRace={this.state.race===undefined || this.state.race==="" || this.state.race === null}
+                                ifTooltipProfession={this.state.currentCareer === undefined || this.state.currentCareer === "" || this.state.currentCareer === null}
+                                ifTooltipReligion={this.state.religion === undefined || this.state.religion === "" || this.state.religion === null}
+                                ifTooltipBirthYear={this.state.yearOfBirth===undefined || this.state.yearOfBirth==="" || this.state.yearOfBirth === null}
+                                ifTooltipSex={(this.state.sex===undefined || this.state.sex==="" || this.state.sex === null)}
                             />
                             </careerContext.Provider>
                             <careerContext.Provider value={{
                                 update: (val) => {this.setState({previousCareers: val})},}}>
                                 <DefaultMultipleAutocomplete
                                 labelName="Poprzednie profesje"
+                                tooltip tootipText={textsPolish.toolTipPreviousProfession}
                                 options={this.state.autocompleteData.careerNames || []}
                                 id="characterGeneratorPreviousCareers"
                                 multiple
@@ -387,6 +455,7 @@ class CharacterGeneratorPage extends React.Component {
                                 update: (val) => {this.setState({dominatingEmotions: val})},}}>
                                 <DefaultMultipleAutocomplete
                                 labelName="Dominujące emocje"
+                                tooltip tootipText={textsPolish.toolTipEmotions}
                                 options={this.state.autocompleteData.emotionNames || []}
                                 id="characterGeneratorEmotions"
                                 multiple
@@ -397,12 +466,15 @@ class CharacterGeneratorPage extends React.Component {
                                 disabled={this.state.race===undefined || this.state.race==="" || this.state.race === null ||
                                     this.state.yearOfBirth===undefined || this.state.yearOfBirth==="" || this.state.yearOfBirth === null
                                 }
+                                ifTooltipRace={this.state.race===undefined || this.state.race==="" || this.state.race === null}
+                                ifTooltipBirthYear={this.state.yearOfBirth===undefined || this.state.yearOfBirth==="" || this.state.yearOfBirth === null}
                             />
                             </careerContext.Provider>
                             <careerContext.Provider value={{
                                 update: (val) => {this.setState({skills: val})},
                             }}><DefaultMultipleAutocomplete
                                 labelName="Umiejętności"
+                                tooltip tootipText={textsPolish.toolTipSkills}
                                 options={this.state.autocompleteData.skillNames || []}
                                 id="characterGeneratorSkills"
                                 multiple
@@ -411,14 +483,17 @@ class CharacterGeneratorPage extends React.Component {
                                 generated={this.state.skills}
                                 onRandomClick={() => this.generateOneAttribute("Umiejętności")}
                                 disabled={this.state.currentCareer === undefined || this.state.currentCareer === "" || this.state.currentCareer === null ||
-                                this.state.race === undefined || this.state.race === "" || this.state.race === null
-                                }
+                                this.state.race === undefined || this.state.race === "" || this.state.race === null}
+                                    ifTooltipRace={this.state.race===undefined || this.state.race==="" || this.state.race === null}
+                                    ifTooltipProfession={this.state.currentCareer === undefined || this.state.currentCareer === "" || this.state.currentCareer === null}
+
                             /></careerContext.Provider>
 
                             <careerContext.Provider value={{
                                 update: (val) => {this.setState({talents: val})},
                             }}><DefaultMultipleAutocomplete
                                 labelName="Zdolności"
+                                tooltip tootipText={textsPolish.toolTipTalents}
                                 options={this.state.autocompleteData.talentNames || []}
                                 id="characterGeneratorTalents"
                                 multiple
@@ -429,6 +504,8 @@ class CharacterGeneratorPage extends React.Component {
                                 disabled={this.state.currentCareer === undefined || this.state.currentCareer === "" || this.state.currentCareer === null ||
                                 this.state.race === undefined || this.state.race === "" || this.state.race === null
                                 }
+                                ifTooltipRace={this.state.race===undefined || this.state.race==="" || this.state.race === null}
+                                ifTooltipProfession={this.state.currentCareer === undefined || this.state.currentCareer === "" || this.state.currentCareer === null}
                             /></careerContext.Provider>
 
 
@@ -439,6 +516,7 @@ class CharacterGeneratorPage extends React.Component {
                                                     generated={this.state.prediction}
                                                     onRandomClick={() => this.generateOneAttribute("Przepowiednia")}
                                                     disabled={false}
+                                                    tooltip tootipText={textsPolish.toolTipProphecy}
                                 />
                             </careerContext.Provider>
                     </div>
@@ -689,7 +767,7 @@ class CharacterGeneratorPage extends React.Component {
                         <div className="block-element">{this.state.generated &&
                         <div className="positive-message">Aby zobaczyć wygenerowaną postać, kliknij <a href={this.state.href}>tutaj</a></div>}</div>
                         <div className="block-element">{this.state.isError &&
-                        <ErrorGenerator errorText={this.state.errorText}/>}</div>
+                        <ErrorGenerator errorText={polishCodeErrors[this.state.errorText]}/>}</div>
                             <button className="green-button" onClick={this.save}>Zapisz</button>
                         </div>
                     </div>

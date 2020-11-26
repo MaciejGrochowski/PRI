@@ -3,7 +3,6 @@ export const apiUrls = {
     characters: '/characters'
 }
 
-
 export const fronendUrls = {
     mainPage: '/',
     characterList: '/characters',

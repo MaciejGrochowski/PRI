@@ -6,6 +6,12 @@ import popup from "../../../styles/popup.css";
 import historyService from "../../../services/historyService";
 import parse from "html-react-parser";
 
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faAngleRight, faAngleLeft} from '@fortawesome/free-solid-svg-icons';
+
+const elementPrev = <FontAwesomeIcon icon={faAngleLeft}/>
+const elementNext = <FontAwesomeIcon icon={faAngleRight}/>
+
 const customStyles = {
     content: {
         top: '50%',
@@ -16,7 +22,9 @@ const customStyles = {
         transform: 'translate(-50%, -50%)',
         backgroundColor: '#292F2F',
         color: 'white',
-        zIndex: '100!important'
+        zIndex: '100!important',
+        height: '60%',
+        width: '60%'
     }
 };
 
@@ -43,7 +51,6 @@ class HistoryDetailsPopup extends React.Component {
     }
 
     getHistoryDetails = historyId => {
-        console.warn(historyId);
         historyService.getHistoryDetails(historyId)
             .then(r => this.getHistoryDetailsSuccessHandler(r))
             .catch(e => this.getHistoryDetailsErrorHandler(e))
@@ -66,7 +73,7 @@ class HistoryDetailsPopup extends React.Component {
     }
 
     render() {
-        const {isOpen, onRequestClose} = this.props;
+        const {isOpen, onRequestClose, changeHistoryToNext, isPreviousButtonHidden, isNextButtonHidden} = this.props;
 
 
         return (
@@ -74,14 +81,21 @@ class HistoryDetailsPopup extends React.Component {
             <div className = "popup-body">
                 <Modal
                     isOpen={isOpen}
-                    // onAfterOpen={() => console.log("open")}
                     onRequestClose={() => onRequestClose()}
                     style={customStyles}
                 >
+                <div className = "flex-component">
+                    <div className = "auto-margin"><button className = "detaleButton small" disabled={isPreviousButtonHidden} onClick={() => changeHistoryToNext(this.props.historyId, false)}><span>{elementPrev}</span> Poprzednia</button></div>
+                    <div className = "auto-margin"><button className = "detaleButton small" disabled={isNextButtonHidden} onClick={() => changeHistoryToNext(this.props.historyId, true)}>Następna <span>{elementNext}</span></button></div>
+                </div>
+                <div className="historyDetailBody">
+                <div className="historyDetailHeader">
                     <div className = "flex-div"><div className = "yellow-color"> Data Historii:&nbsp;</div> {this.state.historyDay} {this.state.historyMonth} {this.state.historyYear}</div>
                     <div className = "flex-div"><div className = "yellow-color">Miejsce Historii:&nbsp; </div> {this.state.historyPlace}</div>
                     <div className = "flex-div"><div className = "yellow-color">Twórca Historii:&nbsp; </div> {this.state.historyCreator}</div>
-                    <div><div className = "yellow-color">Opis Historii:&nbsp; </div>{this.state.historyDescription && parse(this.state.historyDescription)}</div>
+                </div>
+                    {this.state.historyDescription && parse(this.state.historyDescription)}
+                </div>
                 </Modal>
             </div></div>
         );

@@ -23,4 +23,3 @@ export const placeUrl = apiUrl + "/places";
 export const historyUrl = apiUrl + "/histories"
 
 export const generatorUrl = apiUrl + "/generator";
-//com

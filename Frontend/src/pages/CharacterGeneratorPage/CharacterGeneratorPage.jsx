@@ -71,7 +71,7 @@ class CharacterGeneratorPage extends React.Component {
             hairColor: this.state.hairColor,
             livePlace: this.state.livePlace,
             birthPlace: this.state.birthPlace,
-            dominatingEmotions: Array.isArray(this.state.dominatingEmotions) ? this.mapFilterArrayToString(this.state.dominatingEmotions) : this.state.dominatingEmotions,
+            dominatingEmotions: Array.isArray(this.state.dominatingEmotions) ? mapFilterArrayToString(this.state.dominatingEmotions) : this.state.dominatingEmotions,
             religion: this.state.religion,
             skills: Array.isArray(this.state.skills) ? mapArrayToStringWithoutSpaces(this.state.skills) : this.state.skills,
             talents: Array.isArray(this.state.talents) ? mapArrayToStringWithoutSpaces(this.state.talents) : this.state.talents,

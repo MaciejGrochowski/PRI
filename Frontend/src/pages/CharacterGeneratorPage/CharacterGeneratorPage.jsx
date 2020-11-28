@@ -17,7 +17,13 @@ import {
     mapSkillsArrayToString,
     mapTalentsArrayToString
 } from "./util";
-import {validationName} from "./validation";
+import {
+    validationDayOfBorn,
+    validationHeight,
+    validationName,
+    validationSurname, validationWeight,
+    validationYearOfBorn
+} from "./validation";
 
 const mygrid = {
     all: 'none',
@@ -163,7 +169,7 @@ class CharacterGeneratorPage extends React.Component {
                                 <GeneratorTextField label="Nazwisko" generated={this.state.surname} canBeGenerated onRandomClick={() => this.generateOneAttribute("Nazwisko")}
                                                     disabled={this.state.race===undefined || this.state.race==="" || this.state.race === null ||
                                                     this.state.sex===undefined || this.state.sex==="" || this.state.sex === null}
-                                                    typeOfValidation = "LetterOnly"
+                                                    validationFunc={validationSurname}
                                 />
                             </careerContext.Provider>
 
@@ -260,7 +266,7 @@ class CharacterGeneratorPage extends React.Component {
                                 <careerContext.Provider value={{
                                     update: (val) => {this.setState({dayOfBirth: val})},}}>
                                     <GeneratorTextField label="Dzień urodzenia" generated={this.state.dayOfBirth}
-                                                        typeOfValidation = "NumOnly"/>
+                                                        validationFunc={validationDayOfBorn}/>
                                 </careerContext.Provider>
 
                                 <careerContext.Provider value={{
@@ -281,7 +287,7 @@ class CharacterGeneratorPage extends React.Component {
                                                         canBeGenerated
                                                         onRandomClick={() => this.generateOneAttribute("Data urodzenia")}
                                                         disabled={this.state.race===undefined || this.state.race==="" || this.state.race === null}
-                                                        typeOfValidation = "NumOnly"
+                                                        validationFunc={validationYearOfBorn}
                                     />
                                 </careerContext.Provider>
                             <careerContext.Provider value={{
@@ -307,12 +313,12 @@ class CharacterGeneratorPage extends React.Component {
                                 <careerContext.Provider value={{
                                     update: (val) => {this.setState({height: val})},}}>
                                     <GeneratorTextField label="Wzrost" generated={this.state.height} canBeGenerated onRandomClick={() => this.generateOneAttribute("Wzrost")} disabled={this.state.race===undefined || this.state.race===""
-                                    || this.state.race === null || this.state.sex===undefined || this.state.sex==="" || this.state.sex === null} typeOfValidation = "NumOnly"/>
+                                    || this.state.race === null || this.state.sex===undefined || this.state.sex==="" || this.state.sex === null} validationFunc={validationHeight}/>
                                 </careerContext.Provider>
                                 <careerContext.Provider value={{
                                     update: (val) => {this.setState({weight: val})},}}>
                                 <GeneratorTextField label="Waga" generated={this.state.weight} canBeGenerated onRandomClick={() => this.generateOneAttribute("Waga")} disabled={this.state.race===undefined || this.state.race===""
-                                || this.state.race === null || this.state.sex===undefined || this.state.sex==="" || this.state.sex === null} typeOfValidation = "NumOnly"/>
+                                || this.state.race === null || this.state.sex===undefined || this.state.sex==="" || this.state.sex === null} validationFunc={validationWeight}/>
                                 </careerContext.Provider>
                                 <careerContext.Provider value={{
                                 update: (val) => {this.setState({eyeColor: val})},}}>

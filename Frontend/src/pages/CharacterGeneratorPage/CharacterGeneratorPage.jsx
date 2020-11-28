@@ -17,6 +17,7 @@ import {
     mapSkillsArrayToString,
     mapTalentsArrayToString
 } from "./util";
+import {validationName} from "./validation";
 
 const mygrid = {
     all: 'none',
@@ -153,7 +154,7 @@ class CharacterGeneratorPage extends React.Component {
                                 <GeneratorTextField label="Imię" generated={this.state.name} canBeGenerated onRandomClick={() => this.generateOneAttribute("Imię")}
                                                     disabled={this.state.race===undefined || this.state.race==="" || this.state.race === null ||
                                                     this.state.sex===undefined || this.state.sex==="" || this.state.sex === null }
-                                                    typeOfValidation = "LetterOnly"
+                                                    validationFunc={validationName}
                                                     />
                             </careerContext.Provider>
 

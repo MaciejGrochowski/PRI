@@ -33,7 +33,7 @@ class GeneratorTextField extends React.Component {
         v.update("Los");
     }
 
-    checkLettersOnly(input){
+    checkLettersOnly(input){ //ToDo remove it after refactor
         if (this.props.label === "Imię") {
             if (input.match("^[A-Z]([a-z]?)*$") || input.match("^(?![\\s\\S])")) {
                 this.setState({errorText: ""})
@@ -54,7 +54,7 @@ class GeneratorTextField extends React.Component {
         }
     }
 
-    checkNumOnly(input) {
+    checkNumOnly(input) { //ToDo remove it after refactor
         if (this.props.label === "Dzień urodzenia")
             if (input.match("^[1-3][0-9]$|^[1-9]$") || input.match("^(?![\\s\\S])")) {
                 this.setState({errorText: ""})
@@ -94,13 +94,22 @@ class GeneratorTextField extends React.Component {
 
     onChangeFunction(event, v){
         this.setState({value:event.target.value});
+
+        if(this.props.validationFunc){
+            let validationEffect = this.props.validationFunc(event.target.value)
+            this.setState({
+                errorText: validationEffect.errorText,
+                errorState: validationEffect.errorState
+            })
+        }
+
         // v.update(event.target.value);
             if(this.props.typeOfValidation === "LetterOnly"){
                 this.checkLettersOnly(event.target.value)
             }
             else if (this.props.typeOfValidation === "NumOnly"){
                 this.checkNumOnly(event.target.value)
-            }
+            } //ToDo remove it after change validation
     }
 
 

@@ -16,8 +16,7 @@ class GeneratorTextField extends React.Component {
     constructor() {
         super();
         this.state = {
-            value: "",
-            test:""
+            value: ""
         }
     }
 

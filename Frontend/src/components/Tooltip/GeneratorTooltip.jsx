@@ -10,7 +10,7 @@ class GeneratorTooltip extends React.Component {
     constructor(probs) {
         super(probs);
         this.state = {
-            ye: ""
+
         }
     }
 

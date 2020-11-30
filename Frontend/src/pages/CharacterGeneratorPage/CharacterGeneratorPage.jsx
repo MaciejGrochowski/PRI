@@ -768,7 +768,7 @@ class CharacterGeneratorPage extends React.Component {
                         <div className="positive-message">Aby zobaczyć wygenerowaną postać, kliknij <a href={this.state.href}>tutaj</a></div>}</div>
                         <div className="block-element">{this.state.isError &&
                         <ErrorGenerator errorText={polishCodeErrors[this.state.errorText]}/>}</div>
-                            <button className="green-button" onClick={this.save}>Zapisz</button>
+                            <button disabled={this.state.generated} className="green-button" onClick={this.save}>Zapisz</button>
                         </div>
                     </div>
                 </div>

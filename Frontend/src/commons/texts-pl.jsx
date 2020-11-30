@@ -5,7 +5,7 @@ export const textsPolish = {
     dayOfBornValidationText: 'Dzień urodzenia może mieć tylko wartość 1-34.',
     yearOfBornValidationText: 'Rok urodzenia może mieć tylko wartość 0-3000.',
     heightValidationText: 'Wzrost może mieć tylko wartość 50-300.',
-    weightValidationText: 'Waga może mieć tylko wartość 10-800.'
+    weightValidationText: 'Waga może mieć tylko wartość 10-800.',
     toolTipName: "By wygenerować imię musisz uzupełnić pola: ",
     toolTipSurname: "By wygenerować nazwisko musisz uzupełnić pola: ",
     toolTipRace: "By wygenerować rase musisz uzupełnić pole: ",

@@ -175,7 +175,8 @@ class CharacterGeneratorPage extends React.Component {
                                                     disabled={this.state.race===undefined || this.state.race==="" || this.state.race === null ||
                                                     this.state.sex===undefined || this.state.sex==="" || this.state.sex === null}
                                                     validationFunc={validationSurname}
-                                                    this.state.sex===undefined || this.state.sex==="" || this.state.sex === null} tooltip tootipText={textsPolish.toolTipSurname}
+                                                    // this.state.sex===undefined || this.state.sex==="" || this.state.sex === null}
+                                tooltip tootipText={textsPolish.toolTipSurname}
                                                     ifTooltipRace={(this.state.race===undefined || this.state.race==="" || this.state.race === null)}
                                                     ifTooltipSex={(this.state.sex===undefined || this.state.sex==="" || this.state.sex === null)}
                                 />
@@ -301,7 +302,7 @@ class CharacterGeneratorPage extends React.Component {
                                 <careerContext.Provider value={{
                                     update: (val) => {this.setState({dayOfBirth: val})},}}>
                                     <GeneratorTextField label="Dzień urodzenia" generated={this.state.dayOfBirth}
-                                                        validationFunc={validationDayOfBorn}/>
+                                                        validationFunc={validationDayOfBorn}
                                     tooltip tootipText={textsPolish.toolTipDayOfBorn}/>
                                 </careerContext.Provider>
 

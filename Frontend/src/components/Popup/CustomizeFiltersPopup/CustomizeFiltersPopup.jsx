@@ -1,8 +1,8 @@
 import React from 'react';
 import Modal from 'react-modal';
-import test from '../../styles/popup.css';
-import button from "../../styles/buttons.css";
-import popup from "../../styles/popup.css";
+import test from '../../../styles/popup.css';
+import button from "../../../styles/buttons.css";
+import popup from "../../../styles/popup.css";
 
 const customStyles = {
     content: {
@@ -18,9 +18,7 @@ const customStyles = {
     }
 };
 
-// Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
-
-class DefaultPopup extends React.Component {
+class CustomizeFiltersPopup extends React.Component {
 
     save = columnsConfig => {
         let object = {}
@@ -44,7 +42,7 @@ class DefaultPopup extends React.Component {
 
 
         return (
-            <div className = "dostosuj-button">
+            <div className = "customize-button">
                 <Modal
                     isOpen={isOpen}
                     // onAfterOpen={() => console.log("open")}
@@ -73,4 +71,4 @@ class DefaultPopup extends React.Component {
     }
 }
 
-export default DefaultPopup;
+export default CustomizeFiltersPopup;

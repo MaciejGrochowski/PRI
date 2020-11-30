@@ -8,6 +8,7 @@ import com.example.PRI.entities.Place;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
@@ -29,12 +30,7 @@ public class History extends GeneralEntity {
 
     Date createdDate;
 
-    @ManyToMany
-    List<Character> mainCharacters;
-
-    @ManyToMany
-    List<Character> additionalCharacters;
-
+    @Type(type="text")
     String description;
 
     @ManyToOne

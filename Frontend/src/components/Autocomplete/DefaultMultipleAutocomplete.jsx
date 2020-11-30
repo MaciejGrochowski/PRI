@@ -5,10 +5,12 @@ import {Tag} from "./DefaultMultipleAutocomplete.style";
 import {careerContext} from "../../pages/CharacterGeneratorPage/context";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faSyncAlt} from "@fortawesome/free-solid-svg-icons";
+import GeneratorTooltip from '../Tooltip/GeneratorTooltip'
 
 const element = <FontAwesomeIcon icon={faSyncAlt}/>
 
 //ToDo Opakować defaultMultipleAutocomplete w defaultGeneratorAutocomplete i pozbyć się stąd logiki generatora...
+//ToDo to już nie jest multiple defaultowo, zmień nazwę
 class DefaultMultipleAutocomplete extends React.Component {
 
     constructor() {
@@ -102,16 +104,12 @@ randomClick = () => {
 }
 
 setGenerated = () => {
-        // console.log("Wartości znane autocompletowi")
-        // console.log(this.props.generated)
     if (Array.isArray(this.props.generated)) {
-        // console.log("Wartości wygenerowane zostały zinterpretowane jako tablica.")
         this.setState({values: this.props.generated})
         this.setOptionsWithoutChoosenValues(this.props.generated)
         return
     }
     if (this.props.generated === "") {
-        // console.log("Wartości wygenerowane zostały zinterpretowane jako pusty string.")
         this.setState({values: []});
         return
     }
@@ -120,7 +118,6 @@ setGenerated = () => {
         this.setState({values: this.props.generated})
     }
     else {
-        //console.log("Wartości wygenerowane zostały zinterpretowane jako coś innego.")
         this.setOptionsWithoutChoosenValues(this.props.generated.split(","))
         this.setState({values: this.props.generated.split(",")})
     }
@@ -159,8 +156,9 @@ filterOptions = (input, state) => {
 
 render()
 {
-    const {labelName, id} = this.props;
+    const {labelName, id, defaultValue} = this.props;
     const width = this.props.width ? this.props.width : 300;
+    console.log(defaultValue);
     return (
         <careerContext.Consumer>
             {v =>
@@ -175,7 +173,7 @@ render()
                         style={{width: width}}
                         popupIcon={<div/>}
                         renderInput={(params) => (
-                            <TextField {...params} multiline label={labelName}/>
+                            <TextField {...params} multiline label={labelName} defaultValue={defaultValue}/>
                         )}
                          renderTags={(value, getTagProps, index) => (
                         //     <div className = {this.props.multiple &&
@@ -192,6 +190,18 @@ render()
                     />
                     {this.props.canBeGenerated &&
                     <button className="detaleButton small" onClick={() => this.randomClick()} disabled={this.props.disabled}><span>{element}</span></button>}
+                    {this.props.tooltip && <GeneratorTooltip showIt={!this.props.disabled} content={this.props.tootipText}
+                             tooltipTypeName={this.props.labelName}
+                             birthPlaceTooltipAtribute={this.props.ifTooltipBirthPlace}
+                             raceTooltipAtribute={this.props.ifTooltipRace}
+                             professionTooltipAtribute={this.props.ifTooltipProfession}
+                             yearOfBirthTooltipAtribute={this.props.ifTooltipBirthYear}
+                             sexTooltipAtribute={this.props.ifTooltipSex}
+                             religionTooltipAtribute={this.props.ifTooltipReligion}
+                             baseStatsTooltipAtributet={this.props.ifTooltipBaseStats}
+                             heightTooltipAtributet={this.props.ifTooltipHeight}
+                             weightTooltipAtributet={this.props.ifTooltipWeight}
+                    />}
                 </div>
             }</careerContext.Consumer>
     )

@@ -14,163 +14,163 @@ import java.io.Serializable;
 @NoArgsConstructor
 public class CharacterInputDto implements Serializable {
 
-    @NotBlank(message = "Podaj miejsce urodzenia swojej postaci.")
+    @NotBlank(message = "NO_BIRTH_PLACE")
     String birthPlace;
 
-    @NotBlank (message = "Podaj poprawną rase.")
-    @Pattern(regexp ="Elf|Krasnolud|Człowiek|Niziołek", message = "Podaj poprawną rase.")
+    @NotBlank (message = "NO_RACE")
+    @Pattern(regexp ="Elf|Krasnolud|Człowiek|Niziołek", message = "RACE_NOT_REGEXP")
     String race;
 
-    @NotBlank(message = "Podaj kolor oczu swojej postaci.")
+    @NotBlank(message = "NO_EYE_COLOR")
     String eyeColor;
 
-    @NotBlank(message = "Podaj kolor włosów swojej postaci.")
+    @NotBlank(message = "NO_HAIR_COLOR")
     String hairColor;
 
-    @NotBlank (message = "Podaj poprawny dzień urodzin.")
-    @Pattern(regexp = "\\d\\d?", message = "Podaj poprawny dzień urodzin.")
+    @NotBlank (message = "NO_DAY_OF_BIRTH")
+    @Pattern(regexp = "\\d\\d?", message = "DAY_OF_BIRTH_NOT_REGEXP")
     String dayOfBirth;
 
-    @NotBlank (message = "Podaj poprawny miesiąc urodzin.")
+    @NotBlank (message = "NO_MONTH_OF_BIRTH")
     @Pattern(regexp ="Nachexen|Jahrdrung|Pflugzeit|Sigmarzeit|Sommerzeit|Vorgeheim|Nachgeheim|Erntezeit|Brauzeit|Kaldezeit|Ulriczeit|Vorhexen",
-            message = "Podaj poprawny miesiąc.")
+            message = "MONTH_OF_BIRTH_NOT_REGEXP")
     String monthOfBirth;
 
-    @NotBlank (message = "Podaj poprawny rok urodzin.")
-    @Pattern(regexp = "\\d\\d?\\d?\\d?", message = "Podaj poprawny rok urodzin.")
+    @NotBlank (message = "NO_YEAR_OF_BIRTH")
+    @Pattern(regexp = "\\d\\d?\\d?\\d?", message = "YEAR_OF_BIRTH_NOT_REGEXP")
     String yearOfBirth;
 
 
     String dominatingEmotions;
 
-    @NotBlank (message = "Podaj poprawną płeć.")
-    @Pattern(regexp ="Kobieta||Mężczyzna", message = "Podaj poprawną płeć.")
+    @NotBlank (message = "NO_SEX")
+    @Pattern(regexp ="Kobieta||Mężczyzna", message = "SEX_NOT_REGEXP")
     String sex;
 
-    @NotBlank(message = "Podaj religie swojej postaci.")
+    @NotBlank(message = "NO_RELIGION")
     String religion;
 
-    @NotBlank (message = "Podaj poprawną wagę.")
-    @Pattern(regexp = "\\d\\d\\d?", message = "Podaj poprawną wagę.")
+    @NotBlank (message = "NO_WEIGHT")
+    @Pattern(regexp = "\\d\\d\\d?", message = "WEIGHT_NOT_REGEXP")
     String weight;
 
-    @NotBlank (message = "Podaj poprawny wzrost.")
-    @Pattern(regexp = "\\d\\d\\d?", message = "Podaj poprawny wzrost.")
+    @NotBlank (message = "NO_HEIGHT")
+    @Pattern(regexp = "\\d\\d\\d?", message = "HEIGHT_NOT_REGEXP")
     String height;
 
     String surname;
 
-    @NotBlank (message = "Podaj poprawne imię.")
-    @Pattern(regexp = "[a-zA-Z]*", message = "Podaj poprawne imię.")
+    @NotBlank (message = "NO_NAME")
+    @Pattern(regexp = "[a-zA-Z]*", message = "NAME_NOT_REGEXP")
     String name;
 
     String prediction;
     String previousCareers;
 
-    @NotBlank(message = "Podaj profesje swojej postaci.")
+    @NotBlank(message = "NO_CURRENT_CAREER")
     String currentCareer;
 
-    @NotBlank (message = "Wybierz umiejętności swojej postaci.")
+    @NotBlank (message = "NO_SKILLS")
     String skills;
 
-    @NotBlank (message = "Wybierz zdolności swojej postaci.")
+    @NotBlank (message = "NO_TALENTS")
     String talents;
 
-    @NotBlank (message = "Wartość obecnej walki wręcz może wynosić od 1 do 99.")
-    @Pattern(regexp = "[1-9][0-9]?", message = "Wartość obecnej walki wręcz może wynosić od 1 do 99.")
+    @NotBlank (message = "NO_WEAPON_SKILLS")
+    @Pattern(regexp = "[1-9][0-9]?", message = "WEAPON_SKILLS_NOT_REGEXP")
     String endWeaponSkills;
 
-    @NotBlank (message = "Wartość obecnych umiejętności strzeleckich może wynosić od 1 do 99.")
-    @Pattern(regexp = "[1-9][0-9]?", message = "Wartość obecnych umiejętności strzeleckich może wynosić od 1 do 99.")
+    @NotBlank (message = "NO_BALLISTIC_SKILLS")
+    @Pattern(regexp = "[1-9][0-9]?", message = "BALLISTIC_SKILLS_NOT_REGEXP")
     String endBallisticSkills;
 
-    @NotBlank (message = "Wartość obecnej krzepy może wynosić od 1 do 99.")
-    @Pattern(regexp = "[1-9][0-9]?", message = "Wartość obecnej krzepy może wynosić od 1 do 99.")
+    @NotBlank (message = "NO_STRENGTH")
+    @Pattern(regexp = "[1-9][0-9]?", message = "STRENGTH_NOT_REGEXP")
     String endStrength;
 
-    @NotBlank (message = "Wartość obecnej odporności może wynosić od 1 do 99.")
-    @Pattern(regexp = "[1-9][0-9]?", message = "Wartość obecnej odporności może wynosić od 1 do 99.")
+    @NotBlank (message = "NO_TOUGHNESS")
+    @Pattern(regexp = "[1-9][0-9]?", message = "TOUGHNESS_NOT_REGEXP")
     String endToughness;
 
-    @NotBlank (message = "Wartość obecnej zręczności może wynosić od 1 do 99.")
-    @Pattern(regexp = "[1-9][0-9]?", message = "Wartość obecnej zręczności może wynosić od 1 do 99.")
+    @NotBlank (message = "NO_AGILITY")
+    @Pattern(regexp = "[1-9][0-9]?", message = "AGILITY_NOT_REGEXP")
     String endAgility;
 
-    @NotBlank (message = "Wartość obecnej inteligencji może wynosić od 1 do 99.")
-    @Pattern(regexp = "[1-9][0-9]??", message = "Wartość obecnej inteligencji może wynosić od 1 do 99.")
+    @NotBlank (message = "NO_INTELLIGENCE")
+    @Pattern(regexp = "[1-9][0-9]??", message = "INTELLIGENCE_NOT_REGEXP")
     String endIntelligence;
 
-    @NotBlank (message = "Wartość obecnej siły woli może wynosić od 1 do 99.")
-    @Pattern(regexp = "[1-9][0-9]?", message = "Wartość obecnej siły woli może wynosić od 1 do 99.")
+    @NotBlank (message = "NO_WILLPOWER")
+    @Pattern(regexp = "[1-9][0-9]?", message = "WILLPOWER_NOT_REGEXP")
     String endWillPower;
 
-    @NotBlank (message = "Wartość obecnej ogłady może wynosić od 1 do 99.")
-    @Pattern(regexp = "[1-9][0-9]?", message = "Wartość obecnej ogłady może wynosić od 1 do 99.")
+    @NotBlank (message = "NO_FELLOWSHIP")
+    @Pattern(regexp = "[1-9][0-9]?", message = "FELLOWSHIP_NOT_REGEXP")
     String endFellowship;
 
-    @NotBlank (message = "Wartość obecnego ataku może wynosić od 1 do 99.")
-    @Pattern(regexp = "[1-9][0-9]?", message = "Wartość obecnego ataku może wynosić od 1 do 99.")
+    @NotBlank (message = "NO_ATTACKS")
+    @Pattern(regexp = "[1-9][0-9]?", message = "ATTACKS_NOT_REGEXP")
     String endAttacks;
 
-    @NotBlank (message = "Wartość obecnej żywotności może wynosić od 1 do 99.")
-    @Pattern(regexp = "[1-9][0-9]?", message = "Wartość obecnej żywotności może wynosić od 1 do 99.")
+    @NotBlank (message = "NO_WOUNDS")
+    @Pattern(regexp = "[1-9][0-9]?", message = "WOUNDS_NOT_REGEXP")
     String endWounds; // żywotność
 
-    @NotBlank (message = "Wartość obecnej magii może wynosić od 0 do 99.")
-    @Pattern(regexp = "0|[1-9][0-9]?", message = "Wartość obecnej magii może wynosić od 0 do 99.")
+    @NotBlank (message = "NO_MAGIC")
+    @Pattern(regexp = "0|[1-9][0-9]?", message = "MAGIC_NOT_REGEXP")
     String endMagic; // magia
 
-    @NotBlank (message = "Wartość obecnej szybkości może wynosić od 1 do 99.")
-    @Pattern(regexp = "[1-9][0-9]?", message = "Wartość obecnej szybkości może wynosić od 1 do 99.")
+    @NotBlank (message = "NO_MOVEMENT")
+    @Pattern(regexp = "[1-9][0-9]?", message = "MOVEMENT_NOT_REGEXP")
     String endMovement; // szybkość
 
 
-    @NotBlank (message = "Wartość bazowej walki wręcz może wynosić od 1 do 99.")
-    @Pattern(regexp = "[1-9][0-9]?", message = "Wartość bazowej walki wręcz może wynosić od 1 do 99.")
+    @NotBlank (message = "NO_WEAPON_SKILLS")
+    @Pattern(regexp = "[1-9][0-9]?", message = "WEAPON_SKILLS_NOT_REGEXP")
     String baseWeaponSkills;
 
-    @NotBlank (message = "Wartość bazowych umiejętności strzeleckich może wynosić od 1 do 99.")
-    @Pattern(regexp = "[1-9][0-9]?", message = "Wartość bazowych umiejętności strzeleckich może wynosić od 1 do 99.")
+    @NotBlank (message = "NO_BALLISTIC_SKILLS")
+    @Pattern(regexp = "[1-9][0-9]?", message = "BALLISTIC_SKILLS_NOT_REGEXP")
     String baseBallisticSkills;
 
-    @NotBlank (message = "Wartość bazowej krzepy może wynosić od 1 do 99.")
-    @Pattern(regexp = "[1-9][0-9]?", message = "Wartość bazowej krzepy może wynosić od 1 do 99.")
+    @NotBlank (message = "NO_STRENGTH")
+    @Pattern(regexp = "[1-9][0-9]?", message = "STRENGTH_NOT_REGEXP")
     String baseStrength;
 
-    @NotBlank (message = "Wartość bazowej odporności może wynosić od 1 do 99.")
-    @Pattern(regexp = "[1-9][0-9]?", message = "Wartość bazowej odporności może wynosić od 1 do 99.")
+    @NotBlank (message = "NO_TOUGHNESS")
+    @Pattern(regexp = "[1-9][0-9]?", message = "TOUGHNESS_NOT_REGEXP")
     String baseToughness;
 
-    @NotBlank (message = "Wartość bazowej zręczności może wynosić od 1 do 99.")
-    @Pattern(regexp = "[1-9][0-9]?", message = "Wartość bazowej zręczności może wynosić od 1 do 99.")
+    @NotBlank (message = "NO_AGILITY")
+    @Pattern(regexp = "[1-9][0-9]?", message = "AGILITY_NOT_REGEXP")
     String baseAgility;
 
-    @NotBlank (message = "Wartość bazowej inteligencji może wynosić od 1 do 99.")
-    @Pattern(regexp = "[1-9][0-9]??", message = "Wartość bazowej inteligencji może wynosić od 1 do 99.")
+    @NotBlank (message = "NO_INTELLIGENCE")
+    @Pattern(regexp = "[1-9][0-9]??", message = "INTELLIGENCE_NOT_REGEXP")
     String baseIntelligence;
 
-    @NotBlank (message = "Wartość bazowej siły woli może wynosić od 1 do 99.")
-    @Pattern(regexp = "[1-9][0-9]?", message = "Wartość bazowej siły woli może wynosić od 1 do 99.")
+    @NotBlank (message = "NO_WILLPOWER")
+    @Pattern(regexp = "[1-9][0-9]?", message = "WILLPOWER_NOT_REGEXP")
     String baseWillPower;
 
-    @NotBlank (message = "Wartość bazowej ogłady może wynosić od 1 do 99.")
-    @Pattern(regexp = "[1-9][0-9]?", message = "Wartość bazowej ogłady może wynosić od 1 do 99.")
+    @NotBlank (message = "NO_FELLOWSHIP")
+    @Pattern(regexp = "[1-9][0-9]?", message = "FELLOWSHIP_NOT_REGEXP")
     String baseFellowship;
 
-    @NotBlank (message = "Wartość bazowego ataku może wynosić od 1 do 99.")
-    @Pattern(regexp = "[1-9][0-9]?", message = "Wartość bazowego ataku może wynosić od 1 do 99.")
+    @NotBlank (message = "NO_ATTACKS")
+    @Pattern(regexp = "[1-9][0-9]?", message = "ATTACKS_NOT_REGEXP")
     String baseAttacks;
 
-    @NotBlank (message = "Wartość bazowej żywotności może wynosić od 1 do 99.")
-    @Pattern(regexp = "[1-9][0-9]?", message = "Wartość bazowej żywotności może wynosić od 1 do 99.")
+    @NotBlank (message = "NO_WOUNDS")
+    @Pattern(regexp = "[1-9][0-9]?", message = "WOUNDS_NOT_REGEXP")
     String baseWounds; // żywotność
 
-    @NotBlank (message = "Wartość bazowej magii może wynosić od 0 do 99.")
-    @Pattern(regexp = "0|[1-9][0-9]?", message = "Wartość bazowej magii może wynosić od 0 do 99.")
+    @NotBlank (message = "NO_MAGIC")
+    @Pattern(regexp = "0|[1-9][0-9]?", message = "MAGIC_NOT_REGEXP")
     String baseMagic; // magia
 
-    @NotBlank (message = "Wartość bazowej szybkości może wynosić od 1 do 99.")
-    @Pattern(regexp = "[1-9][0-9]?", message = "Wartość bazowej szybkości może wynosić od 1 do 99.")
+    @NotBlank (message = "NO_MOVEMENT")
+    @Pattern(regexp = "[1-9][0-9]?", message = "MOVEMENT_NOT_REGEXP")
     String baseMovement; // szybkość
 
 
@@ -178,7 +178,7 @@ public class CharacterInputDto implements Serializable {
     String apperance;
 
 
-    @NotBlank(message = "Podaj miejsce pobytu swojej postaci.")
+    @NotBlank(message = "NO_LIVE_PLACE")
     String livePlace;
 
 //    @ManyToOne

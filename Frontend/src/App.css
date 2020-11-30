@@ -36,6 +36,7 @@ overflow-wrap: break-word!important;
 
 .MuiFormControl-root{
   margin-top: 2%!important;
+  border-bottom: solid 1px white!important;
   color: white!important;
 }
 
@@ -156,7 +157,7 @@ color: #DEDEDE!important;
 background-color: #292F2F;
 width: min-content!important;
 text-align: center!important;
-} 
+}
 
 .MuiTableCell-root.MuiTableCell-footer{
  width: initial!important;
@@ -187,7 +188,7 @@ background-color: #292F2F;
 
 .MuiAutocomplete-noOptions{
   background-color: #292F2F;
-  color:#FFD859!important; 
+  color:#FFD859!important;
 
 }
 
@@ -199,7 +200,7 @@ background-color: #292F2F;
 /* wybrane */
 .MuiAutocomplete-listbox{
   background-color: rgb(54, 63, 63);
-  color:#FFD859!important; 
+  color:#FFD859!important;
 }
 
 /* wszystko */
@@ -222,3 +223,6 @@ background-color: #292F2F;
   border-bottom: 1px solid rgba(222, 222, 222, 0.42)!important;
 }
 
+.CoolTooltip-NonActive{
+  display: none;
+}

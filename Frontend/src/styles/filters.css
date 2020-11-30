@@ -13,10 +13,10 @@ max-width: 90%;
     justify-content: left;
 }
 
-.ziemniak{
+.item-div{
     display: inline-block;
     backface-visibility: hidden;
-    margin-left: 10px;
-    padding-top: auto;
-    margin-top: auto;
+    margin-left: 10px !important;
+    padding: auto !important;
+
 }

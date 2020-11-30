@@ -1,0 +1,15 @@
+.border-left{
+display: block;
+width: 50%;
+border-left: solid 3px #FFD859;
+padding-left: 20px;
+}
+.one-history-brief{
+display: flex;
+justify-content: space-between;
+padding: 5px;
+}
+
+.normal-text{
+font-size: small;
+}

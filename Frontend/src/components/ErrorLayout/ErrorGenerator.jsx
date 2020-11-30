@@ -12,7 +12,7 @@ class ErrorGenerator extends React.Component {
 
 
         const {errorText} = this.props; //zmienna errorText to tekst błędu z backendu.
-        return (<div className = "error-message">Error: {errorText}</div>
+        return (<div className = "error-message">Błąd: {errorText}</div>
 
         )
     }

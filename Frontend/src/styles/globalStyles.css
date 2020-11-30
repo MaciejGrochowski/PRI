@@ -13,6 +13,11 @@ body{
     background-color: #292F2F;
 }
 
+.MuiInputBase-multiline{
+padding: 0px;
+margin: 0px;
+}
+
 .pageWithContext{
     background-color: #292F2F!important;
     color: white;
@@ -23,6 +28,10 @@ body{
 
 }
 
+.MuiFormControl-fullWidth {
+    width: 100%;
+    min-width: 150px!important;
+}
 .plainPage{
     background-color: #292F2F!important;
     color: white;
@@ -48,15 +57,17 @@ body{
     /* color: grey!important; */
 }
 .Mui-disabled .MuiSvgIcon-root{
-    color: grey!important
+    color: grey!important;
   }
+
 
 .MuiFormControl-root.Mui-disabled{
     border-bottom: none!important
 }
+
 .MuiFormLabel-root.Mui-disabled{
     color: grey!important;
-    border-bottom: none!important
+    border-bottom: none!important;
 }
 
 .flex-div{
@@ -85,6 +96,10 @@ body{
 .space-between-component{
     justify-content: space-between;
 }
+.center-content{
+    margin: auto!important;
+    align-items: center;
+}
 
 .flex-component{
     display: flex;
@@ -92,6 +107,7 @@ body{
     width: 90%;
     padding-bottom: 1%;
     border-bottom: solid 1px white;
+    margin: auto;
 }
 
 
@@ -158,3 +174,25 @@ a{
 color: #FFD859!important;
 }
 
+
+.CoolTooltip button.MuiButtonBase-root.MuiIconButton-root {
+    padding: 0;
+    margin-top: 32px;
+    margin-left: 5px;
+}
+
+.MuiTooltip-popper{
+    width: 210px;
+}
+
+@media only screen and (max-width: 1180px) {
+    .MuiTooltip-popper{
+        width: 180px;
+    }
+}
+
+@media only screen and (max-width: 1015px) {
+    .MuiTooltip-popper{
+        width: 130px;
+    }
+}

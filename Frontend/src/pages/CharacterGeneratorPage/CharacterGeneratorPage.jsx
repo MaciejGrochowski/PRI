@@ -18,6 +18,13 @@ import {
     mapSkillsArrayToString,
     mapTalentsArrayToString
 } from "./util";
+import {
+    validationDayOfBorn,
+    validationHeight,
+    validationName,
+    validationSurname, validationWeight,
+    validationYearOfBorn
+} from "./validation";
 
 //TODO refactor 
 const mygrid = {
@@ -158,13 +165,16 @@ class CharacterGeneratorPage extends React.Component {
                                                     tooltip tootipText={textsPolish.toolTipName}
                                                     ifTooltipRace={(this.state.race===undefined || this.state.race==="" || this.state.race === null)}
                                                     ifTooltipSex={(this.state.sex===undefined || this.state.sex==="" || this.state.sex === null)}
-                                                    />               
+                                                    validationFunc={validationName}
+                                                    />
                             </careerContext.Provider>
 
                             <careerContext.Provider value={{
                                 update: (val) => {this.setState({surname: val})},}}>
                                 <GeneratorTextField label="Nazwisko" generated={this.state.surname} canBeGenerated onRandomClick={() => this.generateOneAttribute("Nazwisko")}
                                                     disabled={this.state.race===undefined || this.state.race==="" || this.state.race === null ||
+                                                    this.state.sex===undefined || this.state.sex==="" || this.state.sex === null}
+                                                    validationFunc={validationSurname}
                                                     this.state.sex===undefined || this.state.sex==="" || this.state.sex === null} tooltip tootipText={textsPolish.toolTipSurname}
                                                     ifTooltipRace={(this.state.race===undefined || this.state.race==="" || this.state.race === null)}
                                                     ifTooltipSex={(this.state.sex===undefined || this.state.sex==="" || this.state.sex === null)}
@@ -291,6 +301,7 @@ class CharacterGeneratorPage extends React.Component {
                                 <careerContext.Provider value={{
                                     update: (val) => {this.setState({dayOfBirth: val})},}}>
                                     <GeneratorTextField label="Dzień urodzenia" generated={this.state.dayOfBirth}
+                                                        validationFunc={validationDayOfBorn}/>
                                     tooltip tootipText={textsPolish.toolTipDayOfBorn}/>
                                 </careerContext.Provider>
 
@@ -313,6 +324,8 @@ class CharacterGeneratorPage extends React.Component {
                                     <GeneratorTextField label="Rok urodzenia" generated={this.state.yearOfBirth}
                                                         canBeGenerated
                                                         onRandomClick={() => this.generateOneAttribute("Data urodzenia")}
+                                                        disabled={this.state.race===undefined || this.state.race==="" || this.state.race === null}
+                                                        validationFunc={validationYearOfBorn}
                                                         disabled={this.state.race===undefined || this.state.race==="" || this.state.race === null} 
                                                         tooltip tootipText={textsPolish.toolTipYearOfBorn}
                                                         ifTooltipRace={(this.state.race===undefined || this.state.race==="" || this.state.race === null)}

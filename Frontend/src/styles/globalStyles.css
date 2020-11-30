@@ -1,3 +1,4 @@
+
 .globalStyles{
 
     background-color: #292F2F!important;
@@ -6,6 +7,7 @@
     text-align: right;
 
 }
+
 
 body{
     background-color: #292F2F;
@@ -60,8 +62,9 @@ margin: 0px;
 
 
 .MuiFormControl-root.Mui-disabled{
-    border-bottom: none!important;
+    border-bottom: none!important
 }
+
 .MuiFormLabel-root.Mui-disabled{
     color: grey!important;
     border-bottom: none!important;
@@ -169,8 +172,8 @@ margin: 0px;
 
 a{
 color: #FFD859!important;
-
 }
+
 
 .CoolTooltip button.MuiButtonBase-root.MuiIconButton-root {
     padding: 0;

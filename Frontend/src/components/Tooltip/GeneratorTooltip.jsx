@@ -63,8 +63,6 @@ class GeneratorTooltip extends React.Component {
         }
     }
 
-//TODO dorobić reszte inteaktywnych tooltipów
-
 
     render() {
         let tooltipClassName = 'CoolTooltip';

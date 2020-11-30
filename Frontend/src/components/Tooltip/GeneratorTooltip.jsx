@@ -65,6 +65,7 @@ class GeneratorTooltip extends React.Component {
 
 
     render() {
+        let cool="";
         let tooltipClassName = 'CoolTooltip';
         if (this.props.showIt && this.props.tooltipTypeName!=="Poprzednie profesje") {
             tooltipClassName += '-NonActive';

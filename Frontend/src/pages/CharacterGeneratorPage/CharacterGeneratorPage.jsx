@@ -362,6 +362,7 @@ class CharacterGeneratorPage extends React.Component {
                                     <GeneratorTextField label="Wzrost" generated={this.state.height} canBeGenerated onRandomClick={() => this.generateOneAttribute("Wzrost")} disabled={this.state.race===undefined || this.state.race==="" || this.state.race === null || this.state.sex===undefined || this.state.sex==="" || this.state.sex === null} tooltip tootipText={textsPolish.toolTipHeight}
                                                         ifTooltipRace={(this.state.race===undefined || this.state.race==="" || this.state.race === null)}
                                                         ifTooltipSex={(this.state.sex===undefined || this.state.sex==="" || this.state.sex === null)}
+                                                        validationFunc={validationHeight}
                                     />
                                 </careerContext.Provider>
                                 <careerContext.Provider value={{
@@ -369,6 +370,7 @@ class CharacterGeneratorPage extends React.Component {
                                 <GeneratorTextField label="Waga" generated={this.state.weight} canBeGenerated onRandomClick={() => this.generateOneAttribute("Waga")} disabled={this.state.race===undefined || this.state.race==="" || this.state.race === null || this.state.sex===undefined || this.state.sex==="" || this.state.sex === null} tooltip tootipText={textsPolish.toolTipWeight}
                                                     ifTooltipRace={(this.state.race===undefined || this.state.race==="" || this.state.race === null)}
                                                     ifTooltipSex={(this.state.sex===undefined || this.state.sex==="" || this.state.sex === null)}
+                                                    validationFunc={validationWeight}
                                 />
                                 </careerContext.Provider>
                                 <careerContext.Provider value={{

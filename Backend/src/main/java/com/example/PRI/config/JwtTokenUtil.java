@@ -1,4 +1,4 @@
-package com.example.PRI.securingweb.config;
+package com.example.PRI.config;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -6,7 +6,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
 
+import com.example.PRI.services.UserService;
 import io.jsonwebtoken.JwtBuilder;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
@@ -46,9 +48,12 @@ public class JwtTokenUtil implements Serializable {
         return Jwts.parser().setSigningKey(secret).parseClaimsJws(token).getBody();
     }
 
+    @Autowired
+    UserService userService;
+
     private Boolean isTokenExpired(String token) {
         final Date expiration = getExpirationDateFromToken(token);
-        return expiration.before(new Date());
+        return userService.isTokenExpired(token) || expiration.before(new Date());
     }
 
     private Boolean ignoreTokenExpiration(String token) {
@@ -72,6 +77,7 @@ public class JwtTokenUtil implements Serializable {
 //		return Jwts.builder().setClaims(claims).setSubject(subject).setIssuedAt(new Date(System.currentTimeMillis()))
 //				.setExpiration(new Date(System.currentTimeMillis() + JWT_TOKEN_VALIDITY*1000)).signWith(SignatureAlgorithm.HS512, secret).compact();
     }
+
 
     public Boolean canTokenBeRefreshed(String token) {
         return (!isTokenExpired(token) || ignoreTokenExpiration(token));

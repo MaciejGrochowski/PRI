@@ -1,4 +1,4 @@
-package com.example.PRI.securingweb.model;
+package com.example.PRI.dtos.users;
 
 import java.io.Serializable;
 

@@ -1,4 +1,4 @@
-package com.example.PRI.securingweb.config;
+package com.example.PRI.config;
 
 import java.io.IOException;
 import java.io.Serializable;

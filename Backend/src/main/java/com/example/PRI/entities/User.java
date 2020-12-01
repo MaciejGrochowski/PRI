@@ -6,9 +6,11 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import com.example.PRI.entities.character.Character;
+import com.example.PRI.entities.AuthorizationToken;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import java.util.List;
 
 @Entity(name ="users")
@@ -23,7 +25,7 @@ public class User extends GeneralEntity {
     String mail;
     String discord;
     String facebook;
-
+    String token;
     @OneToMany
     List<Character> characters;
 
@@ -32,5 +34,6 @@ public class User extends GeneralEntity {
 
     @OneToMany
     List<Session> sessions;
+
 
 }

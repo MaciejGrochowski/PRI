@@ -6,7 +6,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import com.example.PRI.entities.character.Character;
-import com.example.PRI.entities.AuthorizationToken;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;

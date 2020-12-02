@@ -9,5 +9,6 @@ export const fronendUrls = {
     historyList: '/histories',
     characterDetails: '/characterDetails',
     characterGenerator: '/generator',
-    historyCreator: '/history/create'
+    historyCreator: '/history/create',
+    loginPage: "/login"
 }

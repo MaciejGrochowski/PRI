@@ -7,8 +7,10 @@ export const request = axios.create({
     }
 });
 
- //export const localApiUrl = "http://localhost:8080/app";
- export const localApiUrl = "https://janietakiork.projektstudencki.pl:8443/PRI-0.0.1-SNAPSHOT/app";
+export const baseApiUrl = "http://localhost:8080";
+
+ export const localApiUrl = baseApiUrl + "/app";
+ // export const localApiUrl = "https://janietakiork.projektstudencki.pl:8443/PRI-0.0.1-SNAPSHOT/app";
 
 //export const localApiUrl = "https://localhost:443/app"
 

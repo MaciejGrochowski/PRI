@@ -69,7 +69,7 @@ public class JwtAuthenticationController {
         }
     }
 
-    @RequestMapping(value = "/logoutt", method = RequestMethod.POST)
+    @RequestMapping(value = "/logout-user", method = RequestMethod.POST)
     private void logout(Authentication auth){
      userService.logoutUser(auth);
         return;

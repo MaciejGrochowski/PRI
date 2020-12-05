@@ -4,7 +4,9 @@ import {TextField} from "@material-ui/core";
 import PasswordField from 'material-ui-password-field'
 import loginService from "../services/loginService";
 import Cookie from "js-cookie";
-
+import {authorizationRequest, getToken} from "../services/util";
+import {contactsFetched} from "../actions";
+import { connect } from "react-redux";
 
 
 class LoginPage extends React.Component {
@@ -17,14 +19,12 @@ class LoginPage extends React.Component {
         }
     }
 
-    saveTokenInCookies = response => {
+    saveTokenInCookies = async response => {
 
-        var jwt = require("jsonwebtoken");
-        console.log(response.data);
+        await Cookie.set("token", response.data, {expires: 5, secure: true, sameSite: 'strict'});
+        this.props.contactsFetched(true);
 
-        console.log(jwt.decode(response.data.token));
 
-        Cookie.set("token", response.data);
     }
 
     login = () => {
@@ -56,4 +56,13 @@ class LoginPage extends React.Component {
 
 }
 
-export default LoginPage;
+
+const mapStateToProps = (state) => {
+    return {
+        contacts: state.contacts // (1)
+    }
+};
+const mapDispatchToProps = { contactsFetched }; // (2)
+
+
+export default LoginPage = connect(mapStateToProps, mapDispatchToProps)(LoginPage);

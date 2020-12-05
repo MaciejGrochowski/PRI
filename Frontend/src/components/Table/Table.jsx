@@ -18,7 +18,6 @@ class Table extends React.Component {
 
 
     componentDidUpdate(prevProps, prevState){
-        console.log(this.props.columnsConfig)
         let columnsConfig = this.props.columnsConfig
 
         if(this.props.notVisibleColumns){

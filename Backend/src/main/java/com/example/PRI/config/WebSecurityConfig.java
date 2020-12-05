@@ -65,7 +65,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 antMatchers("/app/characters/autocomplete/*").permitAll().
                 antMatchers("/logout-user").permitAll().
                 // all other requests need to be authenticated
-                        anyRequest().authenticated().and().
+                        anyRequest().permitAll().and().
                 // make sure we use stateless session; session won't be used to
                 // store user's state.
                         exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint).and().sessionManagement()

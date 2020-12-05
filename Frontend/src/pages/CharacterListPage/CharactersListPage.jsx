@@ -13,6 +13,7 @@ import {religions} from "../../enums/Religions";
 import {table} from "../../styles/tables.css"
 import button from "../../styles/buttons.css";
 import Modal from "react-modal";
+import {fronendUrls} from "../../commons/urls";
 
 class CharactersListPage extends React.Component{
 
@@ -240,7 +241,8 @@ class CharactersListPage extends React.Component{
     }
 
     onDetailsClick = rowData => {
-        window.open("/characterDetails/" + rowData.id);
+        return fronendUrls.characterDetails + "/" + rowData.id;
+        // window.open("/characterDetails/" + rowData.id);
     }
 
     render(){
@@ -275,6 +277,7 @@ class CharactersListPage extends React.Component{
                         onChangeCountPerPage={this.onChangeCountPerPage}
                         count={this.state.count}
                         onDetailsClick={this.onDetailsClick}
+                        detailsLink={fronendUrls.characterDetails}
                         onOrderChange={this.onOrderChange}
                         selection
                     />

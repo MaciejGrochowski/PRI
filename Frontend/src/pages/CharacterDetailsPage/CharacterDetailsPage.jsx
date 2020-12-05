@@ -65,6 +65,12 @@ class CharacterDetailsPage extends React.Component {
         let id = this.getCharacterId();
         window.location.assign(fronendUrls.historyList + "/character/" + characterTag + "/" + id);
     }
+    
+    getLinkToMoreHistories = () => {
+        let characterTag = this.state.characterData.name + (this.state.characterData.surname ? "-" + this.state.characterData.surname : "");
+        let id = this.getCharacterId();
+        return fronendUrls.historyList + "/character/" + characterTag + "/" + id;
+    }
 
 
     render(){
@@ -90,7 +96,7 @@ class CharacterDetailsPage extends React.Component {
                 </div>
             }
             {this.state.isVisibleHistory &&
-                <CharacterDetailsHistoryView historyData={this.state.historyData} onGetMoreHistoriesClick={this.onGetMoreHistoriesClick} />
+                <CharacterDetailsHistoryView historyData={this.state.historyData} onGetMoreHistoriesClick={this.onGetMoreHistoriesClick} getLinkToMoreHistories={this.getLinkToMoreHistories} />
             }
             </div>
             </div>

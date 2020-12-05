@@ -69,7 +69,7 @@ class HistoryCreatorPage extends React.Component {
         };
 
         historyService.createHistory(data)
-            .then(r => window.open(fronendUrls.historyList + "/" + r.data))
+            .then(r => window.open(fronendUrls.historyList + "/" + r.data)) //ToDo to jakoś inaczej zrobić...
             .catch(e => this.saveHistoryErrorHandler(e))
     };
 

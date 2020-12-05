@@ -16,6 +16,7 @@ import Modal from "react-modal";
 import historyService from "../../services/historyService";
 import Wysiwyg from "../../components/Wysiwyg/Wysiwyg";
 import HistoryDetailsPopup from "../../components/Popup/HistoryDetailsPopup/HistoryDetailsPopup";
+import {fronendUrls} from "../../commons/urls";
 
 class HistoriesListPage extends React.Component{
 
@@ -66,10 +67,11 @@ class HistoriesListPage extends React.Component{
         let historyId = this.getHistoryId();
         if(historyId > 0 && this.state.characterLoadByPage === "" ){
             this.setState({isPopupOpen: true, idPopupHistory: historyId})
-            window.history.pushState({}, null, window.location.href.substring(0, window.location.href.lastIndexOf("/")));
 
         }
     }
+
+    //ToDo refactor - id of current history should have source only in URL; this.state.idPopupHistory is reduntant.
 
     getHistoryId = () => {
         const tmp = window.location.pathname.split("/");
@@ -204,14 +206,28 @@ class HistoriesListPage extends React.Component{
         if(isNext && this.state.page * this.state.countPerPage + indexOfCurrentHistory +1 === this.state.count) return;
 
         if(isNext){
-            if(indexOfCurrentHistory+1 < this.state.countPerPage) this.setState({idPopupHistory: this.state.data[indexOfCurrentHistory+1].id})
-            else await this.onChangePage(this.state.page+1).then(r => this.setState({idPopupHistory: this.state.data[0].id}))
+            if(indexOfCurrentHistory+1 < this.state.countPerPage) {
+                this.setState({idPopupHistory: this.state.data[indexOfCurrentHistory+1].id})
+                window.history.pushState({}, null, fronendUrls.historyList + "/" +  this.state.data[indexOfCurrentHistory+1].id);
+            }
+            else await this.onChangePage(this.state.page+1).then(r => {
+                this.setState({idPopupHistory: this.state.data[0].id})
+                window.history.pushState({}, null, fronendUrls.historyList + "/" + this.state.data[0].id);
+            })
         }
         else{
-            if(indexOfCurrentHistory-1 >= 0) this.setState({idPopupHistory: this.state.data[indexOfCurrentHistory-1].id})
-            else await this.onChangePage(this.state.page-1).then(r => this.setState({idPopupHistory: this.state.data[this.state.countPerPage-1].id}))
+            if(indexOfCurrentHistory-1 >= 0) {
+                this.setState({idPopupHistory: this.state.data[indexOfCurrentHistory-1].id});
+                window.history.pushState({}, null, fronendUrls.historyList + "/" + this.state.data[indexOfCurrentHistory-1].id );
+
+            }
+            else await this.onChangePage(this.state.page-1).then(r => {
+                this.setState({idPopupHistory: this.state.data[this.state.countPerPage-1].id});
+                window.history.pushState({}, null, fronendUrls.historyList + "/" + this.state.data[indexOfCurrentHistory-1].id );
+            })
 
         }
+
     }
 
     render(){
@@ -222,7 +238,7 @@ class HistoriesListPage extends React.Component{
                     <HistoryDetailsPopup
                     isOpen={this.state.isPopupOpen}
                     title={"Szczegóły"}
-                    onRequestClose={() => this.setState({isPopupOpen: false, idPopupHistory: 0})}
+                    onRequestClose={() => {this.setState({isPopupOpen: false, idPopupHistory: 0}); window.history.pushState({}, null, fronendUrls.historyList);}}
                     historyId={this.state.idPopupHistory}
                     changeHistoryToNext={this.changeHistoryFromDetails}
                     isPreviousButtonHidden={this.state.page === 0 && this.state.data.indexOf(this.state.data.filter(h => h.id === this.state.idPopupHistory)[0]) === 0}
@@ -254,6 +270,7 @@ class HistoriesListPage extends React.Component{
                             count={this.state.count}
                             onDetailsClick={this.onDetailsClick}
                             // onDetailsClick={() => console.log("onDetailsClick")}
+                            detailsLink={fronendUrls.historyList}
                             onOrderChange={this.onOrderChange}
                         />
                     </div>

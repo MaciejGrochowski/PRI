@@ -25,6 +25,7 @@ import {
     validationSurname, validationWeight,
     validationYearOfBorn
 } from "./validation";
+import {Link} from "react-router-dom";
 
 //TODO refactor 
 const mygrid = {
@@ -781,7 +782,7 @@ class CharacterGeneratorPage extends React.Component {
                         </div>
                         </div>
                         <div className="block-element">{this.state.generated &&
-                        <div className="positive-message">Aby zobaczyć wygenerowaną postać, kliknij <a href={this.state.href}>tutaj</a></div>}</div>
+                        <div className="positive-message">Aby zobaczyć wygenerowaną postać, kliknij <Link to={this.state.href}>tutaj</Link></div>}</div>
                         <div className="block-element">{this.state.isError &&
                         <ErrorGenerator errorText={polishCodeErrors[this.state.errorText]}/>}</div>
                             <button disabled={this.state.generated} className="green-button" onClick={this.save}>Zapisz</button>

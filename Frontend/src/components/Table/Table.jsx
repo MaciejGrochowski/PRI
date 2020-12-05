@@ -3,6 +3,8 @@ import MaterialTable from "material-table";
 import TablePagination from "@material-ui/core/TablePagination";
 import mystyle from "../../styles/tables.css";
 import button from "../../styles/buttons.css";
+import {Link} from "react-router-dom";
+
 class Table extends React.Component {
 
     constructor() {
@@ -29,7 +31,7 @@ class Table extends React.Component {
                 {
                     title: 'Detale',
                     field: '',
-                    render: rowData => <button className = "detaleButton small" onClick={() => this.props.onDetailsClick(rowData)}>Detale</button>,
+                    render: rowData => <Link to={this.props.detailsLink + "/" + rowData.id} className = "detaleButton small" onClick={() => this.props.onDetailsClick(rowData)}>Detale</Link>,
                     sorting: false
                 })
             this.setState({columnsConfig: columnsConfig})

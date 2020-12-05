@@ -1,6 +1,7 @@
 import React from "react";
 import {fronendUrls} from "../../commons/urls";
 import "./../../styles/history.css";
+import {Link} from "react-router-dom";
 class CharacterDetailsHistoryView extends React.Component {
 
 
@@ -12,7 +13,7 @@ class CharacterDetailsHistoryView extends React.Component {
     }
 
     render(){
-        const {historyData=[], onGetMoreHistoriesClick} = this.props;
+        const {historyData=[], onGetMoreHistoriesClick, getLinkToMoreHistories} = this.props;
         console.log(historyData);
         return (
             <div className = "globalStyles">
@@ -27,13 +28,13 @@ class CharacterDetailsHistoryView extends React.Component {
                 {historyData && historyData.map((item, i) => (
                     <div className = "one-history-brief">
                     <span>{item.beginDescription.substring(0, 80)}</span>
-                    <button className = "detaleButton" onClick = {() => window.location.assign(fronendUrls.historyList + "/" + item.id) }><div className = "normal-text">Więcej</div></button>
+                    <Link className = "detaleButton" to={fronendUrls.historyList + "/" + item.id}><div className = "normal-text">Więcej</div></Link>
                     </div>
                         ))
 
                         }
                       </div>
-                     {historyData && historyData.length > 0 &&<button className = "detaleButton" onClick = {() => onGetMoreHistoriesClick()}><div className = "normal-text">Więcej historii z tą postacią</div></button>}
+                     {historyData && historyData.length > 0 &&<Link to={getLinkToMoreHistories()} className = "detaleButton"><div className = "normal-text">Więcej historii z tą postacią</div></Link>}
                       </div>
             </div>
         )

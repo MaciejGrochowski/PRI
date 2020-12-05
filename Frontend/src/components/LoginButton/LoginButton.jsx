@@ -3,7 +3,7 @@ import filter from "../../styles/filters.css";
 import button from "../../styles/buttons.css";
 import {Link} from "react-router-dom";
 import {fronendUrls} from "../../commons/urls";
-import {contactsFetched} from "../../actions";
+import {loginStatusChange} from "../../actions";
 import { connect } from "react-redux";
 import {getInfoFromToken, getToken, isValidToken} from "../../services/util";
 import {ItemMenu} from "../Menu/ExampleMenu.style";
@@ -14,14 +14,14 @@ import LogoutButton from "../LogoutButton/LogoutButton";
 class LoginButton extends React.Component {
 
     componentDidMount() {
-        if(!this.props.contacts && getToken() && isValidToken(getToken())) this.props.contactsFetched(true);
-        if(this.props.contacts && !getToken() || !isValidToken(getToken())) this.props.contactsFetched(false);
+        if(!this.props.isLogged && getToken() && isValidToken(getToken())) this.props.loginStatusChange(true);
+        if(this.props.isLogged && !getToken() || !isValidToken(getToken())) this.props.loginStatusChange(false);
 
     }
 
 
     render(){
-        return (<div>{this.props.contacts ? <div>{"Witaj, " + getInfoFromToken(getToken()).sub} <LogoutButton/> </div> : this.props.notLoggedShowComponent}</div>
+        return (<div>{this.props.isLogged ? <div>{"Witaj, " + getInfoFromToken(getToken()).sub} <LogoutButton/> </div> : this.props.notLoggedShowComponent}</div>
 
         )
     }
@@ -30,10 +30,10 @@ class LoginButton extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        contacts: state.contacts // (1)
+        isLogged: state.isLogged // (1)
     }
 };
-const mapDispatchToProps = { contactsFetched }; // (2)
+const mapDispatchToProps = { loginStatusChange }; // (2)
 
 
 export default LoginButton = connect(mapStateToProps, mapDispatchToProps)(LoginButton);

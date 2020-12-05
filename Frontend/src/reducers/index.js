@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
-import { contacts } from "./contacts";
+import { isLogged } from "./isLogged";
 
 export default combineReducers({
-    contacts
+    isLogged
 });

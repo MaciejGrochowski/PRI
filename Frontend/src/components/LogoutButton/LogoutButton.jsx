@@ -3,7 +3,7 @@ import filter from "../../styles/filters.css";
 import button from "../../styles/buttons.css";
 import {Link} from "react-router-dom";
 import {fronendUrls} from "../../commons/urls";
-import {contactsFetched} from "../../actions";
+import {loginStatusChange} from "../../actions";
 import { connect } from "react-redux";
 import {getInfoFromToken, getToken, isValidToken, logoutCookie} from "../../services/util";
 import {ItemMenu} from "../Menu/ExampleMenu.style";
@@ -25,7 +25,7 @@ class LogoutButton extends React.Component {
         loginService.logout()
             .then(r => {
                 this.setState({logouted: true})
-                this.props.contactsFetched(false);
+                this.props.loginStatusChange(false);
                 logoutCookie();
             })
 
@@ -48,10 +48,10 @@ class LogoutButton extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        contacts: state.contacts // (1)
+        isLogged: state.isLogged // (1)
     }
 };
-const mapDispatchToProps = { contactsFetched }; // (2)
+const mapDispatchToProps = { loginStatusChange }; // (2)
 
 
 export default LogoutButton = connect(mapStateToProps, mapDispatchToProps)(LogoutButton);

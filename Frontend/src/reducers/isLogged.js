@@ -1,7 +1,7 @@
-export const contacts = (state = false, action) => { // (1)
+export const isLogged = (state = false, action) => { // (1)
     switch (action.type) { // (2)
         case 'LOGIN_CHANGE':
-            return action.contacts;
+            return action.isLogged;
         default:
             return state
     }

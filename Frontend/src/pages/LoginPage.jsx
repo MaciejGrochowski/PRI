@@ -5,7 +5,7 @@ import PasswordField from 'material-ui-password-field'
 import loginService from "../services/loginService";
 import Cookie from "js-cookie";
 import {authorizationRequest, getToken} from "../services/util";
-import {contactsFetched} from "../actions";
+import {loginStatusChange} from "../actions";
 import { connect } from "react-redux";
 
 
@@ -22,7 +22,7 @@ class LoginPage extends React.Component {
     saveTokenInCookies = async response => {
 
         await Cookie.set("token", response.data, {expires: 5, secure: true, sameSite: 'strict'});
-        this.props.contactsFetched(true);
+        this.props.loginStatusChange(true);
 
 
     }
@@ -59,10 +59,10 @@ class LoginPage extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        contacts: state.contacts // (1)
+        isLogged: state.isLogged // (1)
     }
 };
-const mapDispatchToProps = { contactsFetched }; // (2)
+const mapDispatchToProps = { loginStatusChange }; // (2)
 
 
 export default LoginPage = connect(mapStateToProps, mapDispatchToProps)(LoginPage);

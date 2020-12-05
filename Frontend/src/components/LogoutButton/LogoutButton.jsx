@@ -36,7 +36,7 @@ class LogoutButton extends React.Component {
     render(){
         if (this.state.logouted) {
             console.log(true);
-            return <Redirect push to={fronendUrls.mainPage} /> //ToDo all redirects shouls use this method, not window/document changes.
+            return <Redirect push to={fronendUrls.mainPage} />
         }
 
         return (<button onClick={() => this.logout()}>Wyloguj</button>

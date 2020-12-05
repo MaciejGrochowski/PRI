@@ -241,7 +241,6 @@ class CharactersListPage extends React.Component{
 
     onDetailsClick = rowData => {
         return fronendUrls.characterDetails + "/" + rowData.id;
-        // window.open("/characterDetails/" + rowData.id);
     }
 
     render(){

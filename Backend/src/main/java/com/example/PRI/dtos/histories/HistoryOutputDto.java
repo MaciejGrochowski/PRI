@@ -19,5 +19,6 @@ public class HistoryOutputDto {
     String historyPlace;
     String createdBy;
     Date createdTime;
+    String historyTitle;
 
 }

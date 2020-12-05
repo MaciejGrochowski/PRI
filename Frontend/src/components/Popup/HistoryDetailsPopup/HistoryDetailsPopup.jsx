@@ -38,6 +38,7 @@ class HistoryDetailsPopup extends React.Component {
             historyYear: null,
             historyPlace: null,
             historyCreator: "tmpUserName",
+            historyTitle: null,
             historyDescription: null
         }
     }
@@ -68,7 +69,8 @@ class HistoryDetailsPopup extends React.Component {
             historyYear: data.year,
             historyPlace: data.place,
             historyCreator: data.creator,
-            historyDescription: data.description
+            historyDescription: data.description,
+            historyTitle: data.title
         })
     }
 
@@ -94,6 +96,7 @@ class HistoryDetailsPopup extends React.Component {
                     <div className = "flex-div"><div className = "yellow-color">Miejsce Historii:&nbsp; </div> {this.state.historyPlace}</div>
                     <div className = "flex-div"><div className = "yellow-color">Twórca Historii:&nbsp; </div> {this.state.historyCreator}</div>
                 </div>
+                    {this.state.historyTitle && <div>Tytuł: {this.state.historyTitle}</div>}
                     {this.state.historyDescription && parse(this.state.historyDescription)}
                 </div>
                 </Modal>

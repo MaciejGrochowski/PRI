@@ -204,4 +204,9 @@ public class HistorySpecifications {
 //            return criteriaBuilder.like(root.get("description"), historyCharactersInDescription);
         };
     }
+
+    public static Specification<History> getByHistoryTitle(String title) {
+        return (root, query, criteriaBuilder) -> criteriaBuilder.like(
+                root.<String>get("title"), "%" + title + "%");
+    }
 }

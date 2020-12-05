@@ -14,7 +14,7 @@ public class HistoryConverter {
         if(c.getCreatedBy() == null) c.setCreatedBy(new User());
          //ToDo Delete this after users - all histories must have creator
         return new HistoryOutputDto(c.getId(), c.getDate().getDay().toString(), c.getDate().getMonth().getMonthName(),
-                c.getDate().getYear().toString(), c.getPlace().getName(), c.getCreatedBy().getUsername(), c.getCreatedDate());
+                c.getDate().getYear().toString(), c.getPlace().getName(), c.getCreatedBy().getUsername(), c.getCreatedDate(), c.getTitle());
 
     }
 
@@ -26,6 +26,7 @@ public class HistoryConverter {
         output.setCreator(null); //Todo createdBy here when users ready
         output.setPlace(h.getPlace().getName());
         output.setDescription(h.getDescription());
+        output.setTitle(h.getTitle());
         return output;
     }
 

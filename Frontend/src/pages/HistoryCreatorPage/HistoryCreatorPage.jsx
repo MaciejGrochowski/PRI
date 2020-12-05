@@ -29,6 +29,7 @@ class HistoryCreatorPage extends React.Component {
             day: "",
             month: "",
             year: "",
+            title: "",
             isError: false,
             errorText: ''
 
@@ -71,7 +72,8 @@ class HistoryCreatorPage extends React.Component {
             place: this.state.place,
             day: this.state.day,
             month: this.state.month,
-            year: this.state.year
+            year: this.state.year,
+            title: this.state.title
         };
 
         historyService.createHistory(data)
@@ -123,6 +125,7 @@ class HistoryCreatorPage extends React.Component {
 </div>
 </div>
 </div>
+
            <div className = "history-column">
            Miejsce:
             <div className="History-buttons-line">
@@ -135,8 +138,15 @@ class HistoryCreatorPage extends React.Component {
                     }}
                 /></div>
 </div>
-</div></div>
+</div>
 
+                        </div>
+
+                <div className="block-element">Tytuł
+                <TextField value={this.state.title} onChange={(event) => {
+                    this.setState({title: event.target.value});
+                }}  label="Tytuł"/>
+                </div>
                 <div className="block-element">{this.state.isError &&
                 <ErrorGenerator errorText={"Błąd: " + polishCodeErrors[this.state.errorText]}/>}</div>
 

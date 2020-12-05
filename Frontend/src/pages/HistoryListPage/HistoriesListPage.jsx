@@ -123,9 +123,14 @@ class HistoriesListPage extends React.Component{
 
     onFilter = async data => {
         let filterObject = {};
+        
 
         const createdBy = document.getElementById('historyCreatedBy');
         if(createdBy && createdBy.value!=="") filterObject = {...filterObject, createdBy: createdBy.value};
+
+        const historyTitle = document.getElementById('historyTitle');
+        if(historyTitle && historyTitle.value!=="") filterObject = {...filterObject, historyTitle: historyTitle.value};
+
 
         const historyDay = document.getElementById('historyDay');
         if(historyDay && historyDay.value!=="") filterObject = {...filterObject, historyDay: historyDay.value};

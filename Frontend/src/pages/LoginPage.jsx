@@ -55,7 +55,7 @@ class LoginPage extends React.Component {
                     onChange={event => this.setState({password:event.target.value})}
                 />
 
-                <Link to={fronendUrls.mainPage} onClick={() => this.login()}>Zaloguj</Link>
+                <Link onClick={() => this.login()}>Zaloguj</Link>
             </div>
         )
     }

@@ -11,6 +11,7 @@ import LoginPage from "./pages/LoginPage";
 import CharacterDetailsPage from "./pages/CharacterDetailsPage/CharacterDetailsPage";
 import CharacterGeneratorPage from "./pages/CharacterGeneratorPage/CharacterGeneratorPage";
 import HistoryCreatorPage from "./pages/HistoryCreatorPage/HistoryCreatorPage";
+import UserProfilePage from "./pages/UserProfilePage/UserProfilePage";
 
 class App extends React.Component{
 
@@ -25,6 +26,7 @@ class App extends React.Component{
         <Route path={fronendUrls.characterGenerator} component={CharacterGeneratorPage} />
         <Route path={fronendUrls.historyCreator} component={HistoryCreatorPage} />
         <Route path={fronendUrls.loginPage} component={LoginPage} />
+        <Route path={fronendUrls.userProfilePage + "/:username"} component={UserProfilePage} />
 
 
             </BrowserRouter>

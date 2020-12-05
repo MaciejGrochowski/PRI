@@ -30,6 +30,8 @@ public class History extends GeneralEntity {
     @Type(type="text")
     String description;
 
+    String title;
+
     @ManyToOne
     Place place;
 

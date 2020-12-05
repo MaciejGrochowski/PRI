@@ -1,27 +1,17 @@
 package com.example.PRI.services.history;
 
-import com.example.PRI.converters.CharacterConverter;
 import com.example.PRI.converters.HistoryConverter;
-import com.example.PRI.dtos.characters.AutocompleteFilterCharactersOutputDto;
-import com.example.PRI.dtos.characters.CharacterDefaultAttributesOutputDto;
-import com.example.PRI.dtos.characters.CharacterListOutputDto;
 import com.example.PRI.dtos.characters.CharacterTagOutputDto;
 import com.example.PRI.dtos.histories.*;
 import com.example.PRI.entities.ImperialDate;
 import com.example.PRI.entities.Place;
-import com.example.PRI.entities.character.Character;
-import com.example.PRI.entities.character.Name;
-import com.example.PRI.entities.character.Surname;
 import com.example.PRI.entities.history.History;
 import com.example.PRI.enums.Month;
-import com.example.PRI.enums.Race;
-import com.example.PRI.repositories.ImperialDateRepository;
 import com.example.PRI.repositories.history.HistoryRepository;
 import com.example.PRI.services.GeneralService;
 import com.example.PRI.services.ImperialDateService;
 import com.example.PRI.services.PlaceService;
 import com.example.PRI.services.character.CharacterService;
-import com.example.PRI.services.character.CharacterSpecifications;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -63,8 +53,6 @@ public class HistoryService extends GeneralService {
         HistoryListOutputDto output = new HistoryListOutputDto();
 //        produceTestHistories();
 
-
-
         if(requestInfo.getSortedBy() != null && requestInfo.getSortedBy().equals("historyDay")) requestInfo.setSortedBy("date.day");
         if(requestInfo.getSortedBy() != null && requestInfo.getSortedBy().equals("historyMonth")) requestInfo.setSortedBy("date.month");
         if(requestInfo.getSortedBy() != null && requestInfo.getSortedBy().equals("historyYear")) requestInfo.setSortedBy("date.year");
@@ -73,7 +61,7 @@ public class HistoryService extends GeneralService {
 
         Pageable pageable;
         if (requestInfo.getSortedBy() == null)
-            pageable = PageRequest.of(requestInfo.getCurrentPage(), requestInfo.getRowsPerPage());
+            pageable = PageRequest.of(requestInfo.getCurrentPage(), requestInfo.getRowsPerPage(), Sort.by("id").descending());
         else {
             if (requestInfo.getIsAscending())
                 pageable = PageRequest.of(requestInfo.getCurrentPage(),
@@ -101,7 +89,13 @@ public class HistoryService extends GeneralService {
         Specification<History> specifications = HistorySpecifications.getAll();
         if (requestInfo.getFilters() == null || requestInfo.getFilters().size() == 0) return specifications;
 
-//
+
+
+        if (requestInfo.getFilters().containsKey("historyTitle")) {
+            String title = requestInfo.getFilters().get("historyTitle");
+            specifications = specifications.and(HistorySpecifications.getByHistoryTitle(title));
+        }
+
         if (requestInfo.getFilters().containsKey("historyDay")) {
             int day = Integer.parseInt(requestInfo.getFilters().get("historyDay"));
             specifications = specifications.and(HistorySpecifications.getByHistoryDay(day));
@@ -195,6 +189,7 @@ public class HistoryService extends GeneralService {
 
         newHistory.setCreatedDate(new Date());
         newHistory.setDescription(historyInputDto.getDescription());
+        newHistory.setTitle(historyInputDto.getTitle());
 
         newHistory = historyRepository.save(newHistory);
 

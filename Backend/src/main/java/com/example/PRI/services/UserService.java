@@ -1,27 +1,20 @@
 package com.example.PRI.services;
 
+import com.example.PRI.converters.UserConverter;
+import com.example.PRI.dtos.users.UserDetailsOutputDto;
 import com.example.PRI.entities.User;
-import com.example.PRI.entities.history.History;
-import com.example.PRI.entities.session.Session;
 import com.example.PRI.repositories.UserRepository;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import com.example.PRI.entities.character.Character;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserService extends GeneralService {
 
     @Autowired
     UserRepository userRepository;
-
 
     public User findByUsername(String username) {
         return userRepository.findByUsername(username);
@@ -50,5 +43,20 @@ public class UserService extends GeneralService {
     public void logoutUser(Authentication auth) {
         org.springframework.security.core.userdetails.User user = (org.springframework.security.core.userdetails.User)auth.getPrincipal();
         logoutUser(user.getUsername());
+    }
+
+//    private void changeMailOfUser(String username){
+//        User user = findByUsername(username);
+////        user.setMail();
+//    }
+
+//    public void changeMailOfUser(Authentication auth) {
+//        org.springframework.security.core.userdetails.User user = (org.springframework.security.core.userdetails.User)auth.getPrincipal();
+//        changeMailOfUser(user.getUsername());
+//    }
+
+    public UserDetailsOutputDto getDetailsByUsername(String username) {
+        Optional<User> c = Optional.ofNullable(userRepository.findByUsername(username));
+        return c.map(UserConverter::convertDetails).orElse(null);
     }
 }

@@ -1,9 +1,7 @@
 package com.example.PRI.converters;
 
-import com.example.PRI.dtos.characters.CharacterDefaultAttributesOutputDto;
-import com.example.PRI.dtos.characters.CharacterDetailsOutputDto;
-import com.example.PRI.dtos.characters.SkillOutputDto;
-import com.example.PRI.dtos.characters.StatisticsOutputDto;
+import com.example.PRI.dtos.characters.*;
+import com.example.PRI.entities.User;
 import com.example.PRI.entities.character.*;
 import com.example.PRI.entities.character.Character;
 import com.example.PRI.enums.Race;
@@ -17,6 +15,19 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class CharacterConverter {
+
+
+    public static UserCharacterOutputDto convertToUserProfileCharacter(Character character){
+        UserCharacterOutputDto output = new UserCharacterOutputDto();
+        output.setName(character.getName().getName());
+        output.setSurname(character.getSurname().getSurname());
+        output.setRace(character.getRace().getName());
+        output.setSex(character.getSex().getName());
+        output.setCareer(character.getCurrentCareer().getName());
+        output.setLivePlace(character.getLivePlace().getName());
+        return output;
+
+    }
 
     public static CharacterDefaultAttributesOutputDto convert(Character character) {
         CharacterDefaultAttributesOutputDto output = new CharacterDefaultAttributesOutputDto();

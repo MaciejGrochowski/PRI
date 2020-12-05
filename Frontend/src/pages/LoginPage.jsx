@@ -7,6 +7,9 @@ import Cookie from "js-cookie";
 import {authorizationRequest, getToken} from "../services/util";
 import {loginStatusChange} from "../actions";
 import { connect } from "react-redux";
+import {fronendUrls} from "../commons/urls";
+import {Redirect} from 'react-router'
+
 
 
 class LoginPage extends React.Component {
@@ -35,6 +38,9 @@ class LoginPage extends React.Component {
     }
 
     render(){
+        if (this.props.isLogged) {
+            return <Redirect push to={fronendUrls.mainPage} />
+        }
         return (
             <div className = "plainPage">
 
@@ -49,7 +55,7 @@ class LoginPage extends React.Component {
                     onChange={event => this.setState({password:event.target.value})}
                 />
 
-                <button onClick={() => this.login()}>Loguj</button>
+                <Link to={fronendUrls.mainPage} onClick={() => this.login()}>Zaloguj</Link>
             </div>
         )
     }

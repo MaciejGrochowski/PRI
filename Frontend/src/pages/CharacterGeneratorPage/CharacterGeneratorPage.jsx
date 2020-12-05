@@ -26,6 +26,12 @@ import {
     validationYearOfBorn
 } from "./validation";
 import {Link} from "react-router-dom";
+import {loginStatusChange} from "../../actions";
+import {connect} from "react-redux";
+import {fronendUrls} from "../../commons/urls";
+import {ItemMenu} from "../../components/Menu/ExampleMenu.style";
+import NeedLoginInformation from "../../components/NeedLoginInformation/NeedLoginInformation";
+import {getToken, isValidToken} from "../../services/util";
 
 //TODO refactor 
 const mygrid = {
@@ -60,6 +66,8 @@ class CharacterGeneratorPage extends React.Component {
     }
 
     componentDidMount() {
+        if(!this.props.isLogged && getToken() && isValidToken(getToken())) this.props.loginStatusChange(true);
+        if(this.props.isLogged && !getToken() || !isValidToken(getToken())) this.props.loginStatusChange(false);
         characterService.getAutocompleteFilters()
             .then(r => this.getAutocompleteSuccessHandler(r))
     }
@@ -149,6 +157,8 @@ class CharacterGeneratorPage extends React.Component {
         return (
             <div className="pageWithContext">
                 <div className="pageName">Tworzenie postaci</div>
+                {!this.props.isLogged &&
+                <NeedLoginInformation text={textsPolish.needLoginToSaveCharacter}/>}
                 <div className="block-element">
                     <div className="flex-component space-between-component">
                         <div className="white-caption">Statystyki:</div>
@@ -784,8 +794,8 @@ class CharacterGeneratorPage extends React.Component {
                         <div className="block-element">{this.state.generated &&
                         <div className="positive-message">Aby zobaczyć wygenerowaną postać, kliknij <Link to={this.state.href}>tutaj</Link></div>}</div>
                         <div className="block-element">{this.state.isError &&
-                        <ErrorGenerator errorText={polishCodeErrors[this.state.errorText]}/>}</div>
-                            <button disabled={this.state.generated} className="green-button" onClick={this.save}>Zapisz</button>
+                        <ErrorGenerator errorText={"Błąd: " + polishCodeErrors[this.state.errorText]}/>}</div>
+                            <button disabled={this.state.generated || !this.props.isLogged} className="green-button" onClick={this.save}>Zapisz</button>
                         </div>
                     </div>
                 </div>
@@ -793,4 +803,14 @@ class CharacterGeneratorPage extends React.Component {
         )
     }
 }
-export default CharacterGeneratorPage;
+
+
+const mapStateToProps = (state) => {
+    return {
+        isLogged: state.isLogged // (1)
+    }
+};
+const mapDispatchToProps = { loginStatusChange }; // (2)
+
+
+export default CharacterGeneratorPage = connect(mapStateToProps, mapDispatchToProps)(CharacterGeneratorPage);

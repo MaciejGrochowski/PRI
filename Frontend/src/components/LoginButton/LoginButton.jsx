@@ -16,7 +16,6 @@ class LoginButton extends React.Component {
     componentDidMount() {
         if(!this.props.isLogged && getToken() && isValidToken(getToken())) this.props.loginStatusChange(true);
         if(this.props.isLogged && !getToken() || !isValidToken(getToken())) this.props.loginStatusChange(false);
-
     }
 
 

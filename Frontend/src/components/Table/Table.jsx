@@ -112,6 +112,7 @@ class Table extends React.Component {
                     pageSizeOptions: [10, 30, 50],
                     paginationType: "stepped",
                     headerStyle: divStyle,
+                    draggable: false
                 }
                 }
 

@@ -32,7 +32,7 @@ class CharacterDetailsPage extends React.Component {
         }
     }
 
-    getCharacterId = () => {
+    getCharacterId = () => { //ToDo refactor with react-router
         const tmp = window.location.pathname.split("/");
         if(Number.isInteger(parseInt(tmp[tmp.length-1]))){
             return parseInt(tmp[tmp.length-1])

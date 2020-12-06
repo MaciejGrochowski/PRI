@@ -3,19 +3,24 @@ package com.example.PRI.services.character.generator;
 import com.example.PRI.converters.CharacterConverter;
 import com.example.PRI.dtos.characters.CharacterDetailsOutputDto;
 import com.example.PRI.dtos.characters.CharacterInputDto;
+import com.example.PRI.entities.User;
 import com.example.PRI.entities.character.Career;
 import com.example.PRI.entities.character.Character;
 import com.example.PRI.entities.character.Surname;
 import com.example.PRI.enums.Race;
 import com.example.PRI.enums.Sex;
-import com.example.PRI.repositories.character.CharacterRepository;
 import com.example.PRI.services.GeneralService;
-import com.example.PRI.services.character.*;
+import com.example.PRI.services.UserService;
+import com.example.PRI.services.character.CharacterSaveService;
+import com.example.PRI.services.character.CharacterService;
+import com.example.PRI.services.character.StatisticsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class CharacterGenerator extends GeneralService {
@@ -207,10 +212,18 @@ public class CharacterGenerator extends GeneralService {
     @Autowired
     StatisticsService statisticsService;
 
+    @Autowired
+    UserService userService;
+
 
     @Transactional
-    public long save(CharacterInputDto characterInputDto) {
+    public long save(CharacterInputDto characterInputDto, Authentication auth) {
+
+        String username = userService.getUsernameFromAuthentication(auth);
+        User user = userService.findByUsername(username);
+
         Character character = new Character();
+        character.setCreatedBy(user);
         character.setName(characterSaveService.nameConvert(characterInputDto.getName()));
         character.setSurname(characterSaveService.surnameConvert(characterInputDto.getSurname()));
         character.setPrediction(characterSaveService.predictionConvert(characterInputDto.getPrediction()));

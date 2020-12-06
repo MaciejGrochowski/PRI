@@ -63,7 +63,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 // dont authenticate this particular request
                 .authorizeRequests().antMatchers("/authenticate").permitAll().
                 antMatchers("/app/characters/autocomplete/*").permitAll().
-                antMatchers("/logout-user").permitAll().
+                antMatchers("/logout-user").authenticated().
+                antMatchers("/app/generator/save").authenticated().
                 // all other requests need to be authenticated
                         anyRequest().permitAll().and().
                 // make sure we use stateless session; session won't be used to

@@ -3,8 +3,8 @@ package com.example.PRI.services.character;
 import com.example.PRI.dtos.characters.CharacterInputDto;
 import com.example.PRI.entities.ImperialDate;
 import com.example.PRI.entities.Place;
-import com.example.PRI.entities.character.*;
 import com.example.PRI.entities.character.Character;
+import com.example.PRI.entities.character.*;
 import com.example.PRI.enums.*;
 import com.example.PRI.exceptions.CharacterSaveException;
 import com.example.PRI.services.ImperialDateService;
@@ -14,10 +14,11 @@ import com.example.PRI.services.character.generator.EyeColorGenerator;
 import com.example.PRI.services.character.generator.SurnameGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.HttpClientErrorException;
 
-import javax.validation.constraints.Min;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -295,6 +296,7 @@ public class CharacterSaveService {
         } else throw new CharacterSaveException("Niepoprawny format wagi.", new IllegalArgumentException());
         return newWeight;
     }
+    //TODO THIS SHOULD BE IN CONVERTER CLASS!!!
 
     public List<Personality> personalityListConvert(String inputPersonality) {
         if (inputPersonality == null) return null;

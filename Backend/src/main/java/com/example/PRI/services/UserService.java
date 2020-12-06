@@ -40,9 +40,14 @@ public class UserService extends GeneralService {
         userRepository.save(user);
     }
 
-    public void logoutUser(Authentication auth) {
+    public String getUsernameFromAuthentication(Authentication auth){
         org.springframework.security.core.userdetails.User user = (org.springframework.security.core.userdetails.User)auth.getPrincipal();
-        logoutUser(user.getUsername());
+        return user.getUsername();
+    }
+
+    public void logoutUser(Authentication auth) {
+        if(auth==null) return;
+        logoutUser(getUsernameFromAuthentication(auth));
     }
 
 //    private void changeMailOfUser(String username){

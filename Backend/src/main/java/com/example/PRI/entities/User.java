@@ -1,16 +1,16 @@
 package com.example.PRI.entities;
 
+import com.example.PRI.entities.character.Character;
 import com.example.PRI.entities.history.History;
 import com.example.PRI.entities.session.Session;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import com.example.PRI.entities.character.Character;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import java.util.List;
 
 @Entity(name ="users")
@@ -30,7 +30,7 @@ public class User extends GeneralEntity {
     String discord;
     String facebook;
     String token;
-    @OneToMany
+    @OneToMany(cascade= CascadeType.ALL)
     List<Character> characters;
 
     @OneToMany

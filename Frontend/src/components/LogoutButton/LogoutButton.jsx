@@ -28,6 +28,11 @@ class LogoutButton extends React.Component {
                 this.props.loginStatusChange(false);
                 logoutCookie();
             })
+            .catch(e => {
+                this.setState({logouted: true})
+                this.props.loginStatusChange(false);
+                logoutCookie();
+            })
 
 
     }

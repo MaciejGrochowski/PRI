@@ -1,4 +1,4 @@
-import {generatorUrl, request} from "./util";
+import {authorizationRequest, generatorUrl, request} from "./util";
 
 
 const generatorService = {
@@ -9,7 +9,7 @@ const generatorService = {
 
 const save = characterInput => {
     const url = generatorUrl + "/save";
-    return request.post(url, characterInput);
+    return authorizationRequest().post(url, characterInput);
 }
 
 const fullRandomGenerate = () => {

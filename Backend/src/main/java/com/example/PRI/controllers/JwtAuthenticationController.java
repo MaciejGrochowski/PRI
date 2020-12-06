@@ -1,13 +1,11 @@
 package com.example.PRI.controllers;
 
-import java.security.Principal;
 import java.util.Objects;
 
 import com.example.PRI.config.JwtTokenUtil;
-import com.example.PRI.controllers.annotations.Post;
 import com.example.PRI.dtos.users.JwtRequest;
 import com.example.PRI.dtos.users.JwtResponse;
-import com.example.PRI.services.UserService;
+import com.example.PRI.services.UserOfAppService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -15,7 +13,6 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -38,7 +35,7 @@ public class JwtAuthenticationController {
     private UserDetailsService jwtInMemoryUserDetailsService;
 
     @Autowired
-    UserService userService;
+    UserOfAppService userOfAppService;
 
     @RequestMapping(value = "/authenticate", method = RequestMethod.POST)
     public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtRequest authenticationRequest)
@@ -50,7 +47,7 @@ public class JwtAuthenticationController {
                 .loadUserByUsername(authenticationRequest.getUsername());
 
         final String token = jwtTokenUtil.generateToken(userDetails);
-        userService.saveTokenToUser(authenticationRequest.getUsername(), token);
+        userOfAppService.saveTokenToUser(authenticationRequest.getUsername(), token);
 
         return ResponseEntity.ok(new JwtResponse(token));
     }
@@ -71,7 +68,7 @@ public class JwtAuthenticationController {
 
     @RequestMapping(value = "/logout-user", method = RequestMethod.POST)
     private void logout(Authentication auth){
-     userService.logoutUser(auth);
+     userOfAppService.logoutUser(auth);
         return;
     }
 

@@ -7,17 +7,14 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity(name ="users")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class User extends GeneralEntity {
+public class UserOfApp extends GeneralEntity {
 
     @Column(unique = true)
     String username;
@@ -30,13 +27,15 @@ public class User extends GeneralEntity {
     String discord;
     String facebook;
     String token;
-    @OneToMany(cascade= CascadeType.ALL)
+
+
+    @OneToMany(mappedBy="createdBy")
     List<Character> characters;
 
-    @OneToMany
+    @OneToMany(mappedBy="createdBy")
     List<History> histories;
 
-    @OneToMany
+    @OneToMany(mappedBy="createdUserOfApp")
     List<Session> sessions;
 
 

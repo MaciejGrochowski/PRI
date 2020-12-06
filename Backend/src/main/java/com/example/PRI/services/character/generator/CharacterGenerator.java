@@ -3,14 +3,14 @@ package com.example.PRI.services.character.generator;
 import com.example.PRI.converters.CharacterConverter;
 import com.example.PRI.dtos.characters.CharacterDetailsOutputDto;
 import com.example.PRI.dtos.characters.CharacterInputDto;
-import com.example.PRI.entities.User;
+import com.example.PRI.entities.UserOfApp;
 import com.example.PRI.entities.character.Career;
 import com.example.PRI.entities.character.Character;
 import com.example.PRI.entities.character.Surname;
 import com.example.PRI.enums.Race;
 import com.example.PRI.enums.Sex;
 import com.example.PRI.services.GeneralService;
-import com.example.PRI.services.UserService;
+import com.example.PRI.services.UserOfAppService;
 import com.example.PRI.services.character.CharacterSaveService;
 import com.example.PRI.services.character.CharacterService;
 import com.example.PRI.services.character.StatisticsService;
@@ -213,14 +213,14 @@ public class CharacterGenerator extends GeneralService {
     StatisticsService statisticsService;
 
     @Autowired
-    UserService userService;
+    UserOfAppService userOfAppService;
 
 
     @Transactional
     public long save(CharacterInputDto characterInputDto, Authentication auth) {
 
-        String username = userService.getUsernameFromAuthentication(auth);
-        User user = userService.findByUsername(username);
+        String username = userOfAppService.getUsernameFromAuthentication(auth);
+        UserOfApp user = userOfAppService.findByUsername(username);
 
         Character character = new Character();
         character.setCreatedBy(user);

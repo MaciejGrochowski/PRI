@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
 
-import com.example.PRI.services.UserService;
+import com.example.PRI.services.UserOfAppService;
 import io.jsonwebtoken.JwtBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -49,11 +49,11 @@ public class JwtTokenUtil implements Serializable {
     }
 
     @Autowired
-    UserService userService;
+    UserOfAppService userOfAppService;
 
     private Boolean isTokenExpired(String token) {
         final Date expiration = getExpirationDateFromToken(token);
-        return userService.isTokenExpired(token) || expiration.before(new Date());
+        return userOfAppService.isTokenExpired(token) || expiration.before(new Date());
     }
 
     private Boolean ignoreTokenExpiration(String token) {

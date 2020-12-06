@@ -1,9 +1,9 @@
 package com.example.PRI.services;
 
-import com.example.PRI.converters.UserConverter;
-import com.example.PRI.dtos.users.UserDetailsOutputDto;
-import com.example.PRI.entities.User;
-import com.example.PRI.repositories.UserRepository;
+import com.example.PRI.converters.UserOfAppConverter;
+import com.example.PRI.dtos.users.UserOfAppDetailsOutputDto;
+import com.example.PRI.entities.UserOfApp;
+import com.example.PRI.repositories.UserOfAppRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
@@ -11,23 +11,23 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 @Service
-public class UserService extends GeneralService {
+public class UserOfAppService extends GeneralService {
 
     @Autowired
-    UserRepository userRepository;
+    UserOfAppRepository userOfAppRepository;
 
-    public User findByUsername(String username) {
-        return userRepository.findByUsername(username);
+    public UserOfApp findByUsername(String username) {
+        return userOfAppRepository.findByUsername(username);
     }
 
     public void saveTokenToUser(String username, String token) {
-        User user = findByUsername(username);
-        user.setToken(token);
-        userRepository.save(user);
+        UserOfApp userOFApp = findByUsername(username);
+        userOFApp.setToken(token);
+        userOfAppRepository.save(userOFApp);
     }
 
-    private User findByToken(String token){
-        return userRepository.findByToken(token);
+    private UserOfApp findByToken(String token){
+        return userOfAppRepository.findByToken(token);
     }
 
     public Boolean isTokenExpired(String token) {
@@ -35,9 +35,9 @@ public class UserService extends GeneralService {
     }
 
     private void logoutUser(String username){
-        User user = findByUsername(username);
-        user.setToken(null);
-        userRepository.save(user);
+        UserOfApp userOFApp = findByUsername(username);
+        userOFApp.setToken(null);
+        userOfAppRepository.save(userOFApp);
     }
 
     public String getUsernameFromAuthentication(Authentication auth){
@@ -60,8 +60,8 @@ public class UserService extends GeneralService {
 //        changeMailOfUser(user.getUsername());
 //    }
 
-    public UserDetailsOutputDto getDetailsByUsername(String username) {
-        Optional<User> c = Optional.ofNullable(userRepository.findByUsername(username));
-        return c.map(UserConverter::convertDetails).orElse(null);
+    public UserOfAppDetailsOutputDto getDetailsByUsername(String username) {
+        Optional<UserOfApp> c = Optional.ofNullable(userOfAppRepository.findByUsername(username));
+        return c.map(UserOfAppConverter::convertDetails).orElse(null);
     }
 }

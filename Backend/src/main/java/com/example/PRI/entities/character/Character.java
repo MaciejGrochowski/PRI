@@ -3,7 +3,7 @@ package com.example.PRI.entities.character;
 import com.example.PRI.entities.GeneralEntity;
 import com.example.PRI.entities.ImperialDate;
 import com.example.PRI.entities.Place;
-import com.example.PRI.entities.User;
+import com.example.PRI.entities.UserOfApp;
 import com.example.PRI.enums.Race;
 import com.example.PRI.enums.Religion;
 import com.example.PRI.enums.Sex;
@@ -109,7 +109,7 @@ public class Character extends GeneralEntity {
 
     @ManyToOne
     @JoinColumn(name="created_by", referencedColumnName="username")
-    User createdBy; //User tworzacy
+    UserOfApp createdBy; //User tworzacy
     Date createdDate;
 
 }

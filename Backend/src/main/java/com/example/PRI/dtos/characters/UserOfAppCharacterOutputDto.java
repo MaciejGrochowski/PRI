@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserCharacterOutputDto {
+public class UserOfAppCharacterOutputDto {
 
     String name;
     String surname;

@@ -1,28 +1,25 @@
 package com.example.PRI.controllers;
 
 import com.example.PRI.controllers.annotations.Get;
-import com.example.PRI.dtos.characters.CharacterDetailsOutputDto;
-import com.example.PRI.dtos.users.UserDetailsOutputDto;
-import com.example.PRI.services.UserService;
+import com.example.PRI.dtos.users.UserOfAppDetailsOutputDto;
+import com.example.PRI.services.UserOfAppService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping(value = "/app/users")
-public class UserController {
+public class UserOfAppController {
 
     @Autowired
-    UserService userService;
+    UserOfAppService userOfAppService;
 
 
 
         @Get("/user/{username}")
-        public UserDetailsOutputDto getDetailsByUsername(@PathVariable String username){
-            UserDetailsOutputDto output = userService.getDetailsByUsername(username);
+        public UserOfAppDetailsOutputDto getDetailsByUsername(@PathVariable String username){
+            UserOfAppDetailsOutputDto output = userOfAppService.getDetailsByUsername(username);
             return output;
         }
 

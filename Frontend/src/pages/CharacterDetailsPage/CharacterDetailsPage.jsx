@@ -92,6 +92,7 @@ class CharacterDetailsPage extends React.Component {
             {this.state.isVisibleHistory &&
                 <CharacterDetailsHistoryView historyData={this.state.historyData} getLinkToMoreHistories={this.getLinkToMoreHistories} />
             }
+
             </div>
             </div>
             </div>

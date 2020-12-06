@@ -5,12 +5,14 @@ import com.example.PRI.dtos.characters.CharacterTagOutputDto;
 import com.example.PRI.dtos.histories.*;
 import com.example.PRI.entities.ImperialDate;
 import com.example.PRI.entities.Place;
+import com.example.PRI.entities.UserOfApp;
 import com.example.PRI.entities.history.History;
 import com.example.PRI.enums.Month;
 import com.example.PRI.repositories.history.HistoryRepository;
 import com.example.PRI.services.GeneralService;
 import com.example.PRI.services.ImperialDateService;
 import com.example.PRI.services.PlaceService;
+import com.example.PRI.services.UserOfAppService;
 import com.example.PRI.services.character.CharacterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -18,6 +20,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -39,6 +42,9 @@ public class HistoryService extends GeneralService {
 
     @Autowired
     ImperialDateService imperialDateService;
+
+    @Autowired
+    UserOfAppService userService;
 
     public AutocompleteFiltersHistoriesOutputDto getAutoCompletes(){
         AutocompleteFiltersHistoriesOutputDto output = new AutocompleteFiltersHistoriesOutputDto();
@@ -174,9 +180,12 @@ public class HistoryService extends GeneralService {
         return characterService.getDataForTags();
     }
 
-    public long save(HistoryInputDto historyInputDto) {
+    public long save(HistoryInputDto historyInputDto, Authentication auth) {
         History newHistory = new History();
         ImperialDate imperialDate = new ImperialDate();
+
+        UserOfApp user = userService.findByUsername(userService.getUsernameFromAuthentication(auth));
+        newHistory.setCreatedBy(user);
 
         imperialDate.setDay(Integer.valueOf(historyInputDto.getDay()));
         imperialDate.setYear(Integer.valueOf(historyInputDto.getYear()));

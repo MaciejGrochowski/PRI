@@ -20,7 +20,13 @@ class LoginButton extends React.Component {
 
 
     render(){
-        return (<div>{this.props.isLogged ? <div>{"Witaj, " + getInfoFromToken(getToken()).sub} <LogoutButton/> </div> : this.props.notLoggedShowComponent}</div>
+
+        let username = getInfoFromToken(getToken()).sub;
+
+        let welcome = <>Witaj, <Link to={fronendUrls.userProfilePage + "/" + username}>{username}</Link></>;
+
+
+        return (<div>{this.props.isLogged ? <div>{welcome} <LogoutButton/> </div> : this.props.notLoggedShowComponent}</div>
 
         )
     }

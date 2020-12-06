@@ -15,4 +15,5 @@ public class UserOfAppCharacterOutputDto {
     String sex;
     String career;
     String livePlace;
+    long id;
 }

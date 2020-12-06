@@ -14,7 +14,8 @@ public class CharacterConverter {
     public static UserOfAppCharacterOutputDto convertToUserProfileCharacter(Character character){
         UserOfAppCharacterOutputDto output = new UserOfAppCharacterOutputDto();
         output.setName(character.getName().getName());
-        output.setSurname(character.getSurname().getSurname());
+        output.setSurname(character.getSurname()==null ? "" : character.getSurname().getSurname());
+        output.setId(character.getId());
         output.setRace(character.getRace().getName());
         output.setSex(character.getSex().getName());
         output.setCareer(character.getCurrentCareer().getName());

@@ -4,6 +4,7 @@ import userService from "../../services/userService";
 import {TextField} from "@material-ui/core";
 import {getInfoFromToken, getToken} from "../../services/util";
 import {Link} from "react-router-dom";
+import {fronendUrls} from "../../commons/urls";
 
 
 class UserProfilePage extends React.Component {
@@ -50,7 +51,7 @@ class UserProfilePage extends React.Component {
 
 
     isProfileLoggedUser = () => {
-        return getInfoFromToken(getToken()) === this.props.match.params.username;
+        return getInfoFromToken(getToken()).sub === this.props.match.params.username;
     }
 
     saveFacebook = () => {
@@ -94,6 +95,31 @@ class UserProfilePage extends React.Component {
                 {!this.state.isEditingDescription && <button onClick={() => this.setState({isEditingDescription: true})}>Edytuj</button>}
                     {this.state.isEditingDescription && <button onClick={() => this.saveDescription()}>Zapisz</button>}
                 </span>}
+
+                Lista postaci:
+                {this.state.characters && this.state.characters.map((item, i) => (
+                    <div className = "one-history-brief">
+                        <span>{item.id}</span>
+                        <span>{item.name}</span>
+                        <span>{item.surname}</span>
+                        <span>{item.career}</span>
+                        <span>{item.livePlace}</span>
+                        <span>{item.race}</span>
+                        <span>{item.sex}</span>
+                        {/*<Link className = "detaleButton" to={fronendUrls.historyList + "/" + item.id}><div className = "normal-text">Więcej</div></Link>*/}
+                    </div>
+                ))
+                }
+
+                Lista historii:
+                {this.state.histories && this.state.histories.map((item, i) => (
+                    <div className = "one-history-brief">
+                        <span>{item.id}</span>
+                        <span>{item.beginDescription}</span>
+                        {/*<Link className = "detaleButton" to={fronendUrls.historyList + "/" + item.id}><div className = "normal-text">Więcej</div></Link>*/}
+                    </div>
+                ))
+                }
 
             </div>
         )

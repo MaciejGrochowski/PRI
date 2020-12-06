@@ -2,11 +2,12 @@ package com.example.PRI.controllers;
 
 import com.example.PRI.controllers.annotations.Get;
 import com.example.PRI.controllers.annotations.Post;
-import com.example.PRI.dtos.characters.*;
+import com.example.PRI.dtos.characters.CharacterTagOutputDto;
 import com.example.PRI.dtos.histories.*;
 import com.example.PRI.services.history.HistoryService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -46,9 +47,9 @@ public class HistoryController {
     }
 
     @Post
-    public long save(@Valid @RequestBody HistoryInputDto historyInputDto){
+    public long save(@Valid @RequestBody HistoryInputDto historyInputDto, Authentication auth){
 
-        return historyService.save(historyInputDto);
+        return historyService.save(historyInputDto, auth);
     }
 
     @Get("/paged")

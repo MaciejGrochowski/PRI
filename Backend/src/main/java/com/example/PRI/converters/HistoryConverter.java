@@ -23,7 +23,7 @@ public class HistoryConverter {
         output.setDay(h.getDate().getDay().toString());
         output.setMonth(h.getDate().getMonth().getMonthName());
         output.setYear(h.getDate().getYear().toString());
-        output.setCreator(null); //Todo createdBy here when users ready
+        output.setCreator(h.getCreatedBy() == null ? "" : h.getCreatedBy().getUsername());
         output.setPlace(h.getPlace().getName());
         output.setDescription(h.getDescription());
         output.setTitle(h.getTitle());

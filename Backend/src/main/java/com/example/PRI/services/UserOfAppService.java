@@ -2,10 +2,13 @@ package com.example.PRI.services;
 
 import com.example.PRI.converters.UserOfAppConverter;
 import com.example.PRI.dtos.users.UserOfAppDetailsOutputDto;
+import com.example.PRI.dtos.users.UserOfAppInputDto;
 import com.example.PRI.entities.UserOfApp;
+import com.example.PRI.exceptions.changeUsernameException;
 import com.example.PRI.repositories.UserOfAppRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -41,7 +44,7 @@ public class UserOfAppService extends GeneralService {
     }
 
     public String getUsernameFromAuthentication(Authentication auth){
-        org.springframework.security.core.userdetails.User user = (org.springframework.security.core.userdetails.User)auth.getPrincipal();
+        User user = (User)auth.getPrincipal();
         return user.getUsername();
     }
 
@@ -64,4 +67,18 @@ public class UserOfAppService extends GeneralService {
         Optional<UserOfApp> c = Optional.ofNullable(userOfAppRepository.findByUsername(username));
         return c.map(UserOfAppConverter::convertDetails).orElse(null);
     }
+
+    private void updateUser(UserOfAppInputDto user, String authUsername){
+        UserOfApp u = userOfAppRepository.findByUsername(authUsername);
+        u.setDescription(user.getDescription());
+        u.setMail(user.getMail());
+        u.setDiscord(user.getDiscord());
+        u.setFacebook(user.getFacebook());
+        userOfAppRepository.save(u);
+    }
+
+    public void updateUser(UserOfAppInputDto user, Authentication auth){
+            updateUser(user, ((User) auth.getPrincipal()).getUsername());
+    }
+
 }

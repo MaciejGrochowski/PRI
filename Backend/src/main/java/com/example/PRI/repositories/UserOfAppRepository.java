@@ -11,4 +11,6 @@ public interface UserOfAppRepository extends CrudRepository<UserOfApp, Long> {
     UserOfApp findByUsername(String username);
 
     UserOfApp findByToken(String token);
+
+    UserOfApp findByPassword(String encode);
 }

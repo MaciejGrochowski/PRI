@@ -47,6 +47,9 @@ class HistoriesListPage extends React.Component{
     }
 
     async componentDidMount() {
+
+        console.log(this.props.match.params);
+
         if(window.location.pathname.includes("character")){
             const tmp = window.location.pathname.split("/");
             let name = tmp[tmp.length-2];

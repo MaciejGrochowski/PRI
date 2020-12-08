@@ -1,7 +1,6 @@
 package com.example.PRI.services;
 
 import com.example.PRI.converters.UserOfAppConverter;
-import com.example.PRI.dtos.users.JwtRequest;
 import com.example.PRI.dtos.users.UserOfAppCredentialsInputDto;
 import com.example.PRI.dtos.users.UserOfAppDetailsOutputDto;
 import com.example.PRI.dtos.users.UserOfAppInputDto;
@@ -24,7 +23,7 @@ public class UserOfAppService extends GeneralService {
     UserOfAppRepository userOfAppRepository;
 
     @Autowired
-    PasswordEncoder bCryptPasswordEncoder;
+    PasswordEncoder passwordEncoder;
 
     public UserOfApp findByUsername(String username) {
         return userOfAppRepository.findByUsername(username);
@@ -90,12 +89,12 @@ public class UserOfAppService extends GeneralService {
 
     public void updateUserCredentials(@Valid UserOfAppCredentialsInputDto user, Authentication auth) throws notUniqueArgumentException {
         String oldUsername = ((User) auth.getPrincipal()).getUsername();
-        if(((User) auth.getPrincipal()).getPassword().equals(bCryptPasswordEncoder.encode(user.getOldPassword()))){
+
+        if(passwordEncoder.matches(user.getOldPassword(), ((User) auth.getPrincipal()).getPassword())){
             updateUserCredentials(oldUsername, user);
         }
         else throw new notUniqueArgumentException("Niepoprawne stare hasło", new Exception());
     }
-
     private void updateUserCredentials(String oldUsername, UserOfAppCredentialsInputDto user) throws notUniqueArgumentException {
         if (userOfAppRepository.findByUsername(user.getUsername()) != null && !oldUsername.equals(userOfAppRepository.findByUsername(user.getUsername()).getUsername())) {
             throw new notUniqueArgumentException("Już istnieje taka nazwa użytkownika", new Exception());
@@ -103,7 +102,7 @@ public class UserOfAppService extends GeneralService {
         else {
             UserOfApp u = userOfAppRepository.findByUsername(oldUsername);
             u.setUsername(user.getUsername());
-            u.setPassword(bCryptPasswordEncoder.encode(user.getNewPassword()));
+            u.setPassword(passwordEncoder.encode(user.getNewPassword()));
             userOfAppRepository.save(u);
         }
 

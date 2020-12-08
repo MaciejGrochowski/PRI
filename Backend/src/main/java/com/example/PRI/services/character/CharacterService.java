@@ -3,16 +3,17 @@ package com.example.PRI.services.character;
 import com.example.PRI.converters.CharacterConverter;
 import com.example.PRI.dtos.characters.*;
 import com.example.PRI.entities.Place;
-import com.example.PRI.entities.character.*;
+import com.example.PRI.entities.UserOfApp;
 import com.example.PRI.entities.character.Character;
+import com.example.PRI.entities.character.*;
 import com.example.PRI.enums.Race;
 import com.example.PRI.enums.Religion;
 import com.example.PRI.enums.Sex;
 import com.example.PRI.enums.StarSign;
 import com.example.PRI.repositories.character.CharacterRepository;
-import com.example.PRI.repositories.character.NameRepository;
 import com.example.PRI.services.GeneralService;
 import com.example.PRI.services.PlaceService;
+import com.example.PRI.services.UserOfAppService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -126,8 +127,26 @@ public class CharacterService extends GeneralService {
         return output;
     }
 
+    @Autowired
+    UserOfAppService userService;
+
     private Specification<Character> getSpecificationsFromFilter(CharacterListFilterInputDto requestInfo) {
         Specification<Character> specifications = CharacterSpecifications.getAll();
+
+
+
+
+
+//        specifications = specifications.and(CharacterSpecifications.getByUsername(Collections.singletonList(userService.findByUsername("chomik123"))));
+
+        if(requestInfo.getFilters().containsKey("createdBy")){
+            String username = requestInfo.getFilters().get("createdBy");
+            UserOfApp user = userService.findByUsername(username);
+            if(user != null) specifications = specifications.and(CharacterSpecifications.getByUser(Collections.singletonList(user)));
+            else return specifications.and(CharacterSpecifications.GetNoone());
+        }
+
+
         if (requestInfo.getFilters() == null || requestInfo.getFilters().size() == 0) return specifications;
 
         if (requestInfo.getFilters().containsKey("name")) {

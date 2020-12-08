@@ -20,8 +20,8 @@ class App extends React.Component{
             <BrowserRouter history={this.props.history}>
                 <Menu/>
         <Route path={fronendUrls.mainPage} exact={true} component={MainPage}/>
-        <Route path={fronendUrls.characterList} component={CharactersListPage} />
-        <Route path={fronendUrls.historyList} component={HistoriesListPage} />
+                <Route path={fronendUrls.characterList + "(/user)?/:username?"} component={CharactersListPage} />
+        <Route path={fronendUrls.historyList +"/:typeOfData?/:data?/(historyId)?/:historyId?"} component={HistoriesListPage} />
         <Route path={fronendUrls.characterDetails} component={CharacterDetailsPage} />
         <Route path={fronendUrls.characterGenerator} component={CharacterGeneratorPage} />
         <Route path={fronendUrls.historyCreator} component={HistoryCreatorPage} />

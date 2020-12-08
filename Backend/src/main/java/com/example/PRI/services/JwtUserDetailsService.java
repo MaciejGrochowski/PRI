@@ -1,7 +1,5 @@
 package com.example.PRI.services;
 
-import java.util.ArrayList;
-
 import com.example.PRI.entities.UserOfApp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;
@@ -10,6 +8,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
 
 @Service
 public class JwtUserDetailsService implements UserDetailsService {
@@ -20,6 +20,10 @@ public class JwtUserDetailsService implements UserDetailsService {
 
     @Autowired
     UserOfAppService userOfAppService;
+
+    public String encrypt(String password){
+        return bCryptPasswordEncoder.encode(password);
+    }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

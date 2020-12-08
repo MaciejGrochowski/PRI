@@ -175,7 +175,13 @@ class CharactersListPage extends React.Component{
         this.setColumnsConfig();
     }
 
-    getCharacters = () => {
+    getCharacters = async () => {
+
+        const username = this.props.match.params.username
+        console.log(username)
+        console.log(this.props.match.params)
+        if(username && username.value!=="") await this.setState({filterObject : {...this.state.filterObject, createdBy: username}})
+
         const requestBody = {
             sortedBy: this.state.sortBy,
             filters: this.state.filterObject,
@@ -247,6 +253,10 @@ class CharactersListPage extends React.Component{
         return (
             <div className="globalStyles">
                 <header className="App-header">
+
+                    {this.props.match.params.username &&
+                    <div>Postacie użytkownika {this.props.match.params.username}</div>
+                    }
 
                     <Filter
                         columnsConfig={this.state.columnsConfig}

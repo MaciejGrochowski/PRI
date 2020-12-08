@@ -7,7 +7,6 @@ import com.example.PRI.dtos.users.UserOfAppInputDto;
 import com.example.PRI.entities.UserOfApp;
 import com.example.PRI.exceptions.notUniqueArgumentException;
 import com.example.PRI.repositories.UserOfAppRepository;
-import org.hibernate.NonUniqueObjectException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.User;
@@ -77,7 +76,7 @@ public class UserOfAppService extends GeneralService {
     private void updateUser(UserOfAppInputDto user, String authUsername){
         UserOfApp u = userOfAppRepository.findByUsername(authUsername);
         u.setDescription(user.getDescription());
-        u.setMail(user.getMail());
+//        u.setMail(user.getMail());
         u.setDiscord(user.getDiscord());
         u.setFacebook(user.getFacebook());
         userOfAppRepository.save(u);
@@ -95,7 +94,7 @@ public class UserOfAppService extends GeneralService {
 
     private void updateUserCredentials(String oldUsername, String oldPassword, JwtRequest user) throws notUniqueArgumentException {
         if (userOfAppRepository.findByUsername(user.getUsername()) != null && !oldUsername.equals(userOfAppRepository.findByUsername(user.getUsername()).getUsername())) {
-            throw new notUniqueArgumentException("Już istnieje taka nazwa użtykownika", new Exception());
+            throw new notUniqueArgumentException("Już istnieje taka nazwa użytkownika", new Exception());
         }
         else {
             UserOfApp u = userOfAppRepository.findByUsername(oldUsername);

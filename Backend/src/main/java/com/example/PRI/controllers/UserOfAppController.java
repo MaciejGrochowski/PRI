@@ -1,6 +1,7 @@
 package com.example.PRI.controllers;
 
 import com.example.PRI.controllers.annotations.Get;
+import com.example.PRI.controllers.annotations.Put;
 import com.example.PRI.dtos.users.JwtRequest;
 import com.example.PRI.dtos.users.UserOfAppInputDto;
 import com.example.PRI.dtos.users.UserOfAppDetailsOutputDto;
@@ -27,7 +28,7 @@ public class UserOfAppController {
             return output;
         }
 
-        @RequestMapping(value = "/update/details", method = RequestMethod.PUT)
+        @Put
         public void updateUserDetails(@Valid @RequestBody UserOfAppInputDto user, Authentication auth){
             userOfAppService.updateUser(user, auth);
         }

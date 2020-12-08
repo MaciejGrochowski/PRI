@@ -56,16 +56,25 @@ class UserProfilePage extends React.Component {
         return tokenInfo ? getInfoFromToken(getToken()).sub === this.props.match.params.username : false;
     }
 
-    saveFacebook = () => {
-        this.setState({isEditingFacebook: false})
+    saveProfile = () => {
+        let input = {
+            facebook: this.state.facebook,
+            discord: this.state.discord,
+            description: this.state.description
+        }
+
+        userService.editProfile(input)
+            .then(r => console.log(r))
+            .catch(e => console.log(e))
+
+
+
+        this.setState({isEditingProfile: false});
+
     }
 
-    saveDiscord = () => {
-        this.setState({isEditingDiscord: false})
-    }
-
-    saveDescription = () => {
-        this.setState({isEditingDescription: false})
+    onClickEditButton = () => {
+        this.setState({isEditingProfile: true})
     }
 
     render(){
@@ -80,29 +89,25 @@ class UserProfilePage extends React.Component {
 
 <div className = "user-profile-block">
 <div className="user-profile-subtitle">Opis: </div>
-<div><TextField onChange={(event) => this.setState({description: event.target.value})} disabled={!this.state.isEditingDescription} value={this.state.description}/></div>
-                {this.isProfileLoggedUser() && <div>
-                {!this.state.isEditingDescription && <button onClick={() => this.setState({isEditingDescription: true})}>Edytuj</button>}
-                    {this.state.isEditingDescription && <button onClick={() => this.saveDescription()}>Zapisz</button>}
-                </div>}
+<div><TextField onChange={(event) => this.setState({description: event.target.value})} disabled={!this.state.isEditingProfile} value={this.state.description}/></div>
 </div>
+
+                {this.isProfileLoggedUser() && <div>
+                    {!this.state.isEditingProfile && <button onClick={this.onClickEditButton}>Edytuj użytkownika</button>}
+                    {this.state.isEditingProfile && <button onClick={() => this.saveProfile()}>Zapisz</button>}
+                </div>}
+
+
                 <div>Mail: <TextField disabled value={this.state.mail}/></div>
 
                 {/*{this.state.isEditingFacebook ?*/}
                 {/*    <div>Facebook: <TextField onChange={(event) => this.setState({facebook: event.target.value})} disabled={!this.state.isEditingFacebook} value={this.state.facebook}/></div> :*/}
                 {/*    <div>Facebook: <Link to={this.state.facebook}>{this.state.facebook}</Link></div>*/}
                 {/*}*/}
-                <div>Facebook: <TextField onChange={(event) => this.setState({facebook: event.target.value})} disabled={!this.state.isEditingFacebook} value={this.state.facebook}/></div>
-                {this.isProfileLoggedUser() && <div>
-                {!this.state.isEditingFacebook && <button onClick={() => this.setState({isEditingFacebook: true})}>Edytuj</button>}
-                {this.state.isEditingFacebook && <button onClick={() => this.saveFacebook()}>Zapisz</button>}
-                </div>}
+                <div>Facebook: <TextField onChange={(event) => this.setState({facebook: event.target.value})} disabled={!this.state.isEditingProfile} value={this.state.facebook}/></div>
 
-                <div>Discord: <TextField onChange={(event) => this.setState({discord: event.target.value})} disabled={!this.state.isEditingDiscord} value={this.state.discord}/></div>
-                {this.isProfileLoggedUser() && <div>
-                {!this.state.isEditingDiscord && <button onClick={() => this.setState({isEditingDiscord: true})}>Edytuj</button>}
-                    {this.state.isEditingDiscord && <button onClick={() => this.saveDiscord()}>Zapisz</button>}
-                </div>}
+                <div>Discord: <TextField onChange={(event) => this.setState({discord: event.target.value})} disabled={!this.state.isEditingProfile} value={this.state.discord}/></div>
+
 
 
 </div>

@@ -1,0 +1,71 @@
+.container-login-page{
+   padding: 50%;
+    position: fixed;
+}
+
+.login-body{
+display: block;
+ width: 30%;
+  position: absolute;
+  margin-top: 2%;
+  top: 10%;
+  left: 35%;
+
+}
+
+.margin-login-body{
+  margin-right: 10%;
+  margin-left: 10%;
+}
+.login-title{
+color: white;
+font-weight: bold;
+font-size: xxx-large;
+margin-bottom: 5%;
+margin-top: 5%;
+border-top: solid #FFD859 5px;
+}
+.block-component .MuiFormControl-root {
+    width: -webkit-fill-available!important;
+    width: -moz-available!important
+}
+
+.block-component .MuiInput-root {
+    width: -webkit-fill-available!important;
+    width: -moz-available!important
+}
+
+.block-component{
+margin-top: 5%;
+margin-bottom: 5%;
+}
+
+.block-component a{
+margin: auto !important;
+position: center;
+text-decoration: none!important;
+}
+
+.zaloguj-button{
+    font-size: large;
+    text-decoration: none;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: flex;
+    margin: auto!important;
+    padding: 5%;
+    width: -webkit-fill-available!important;
+    width: -moz-available!important
+
+}
+
+.zaloguj-button:hover{
+    color: #FFD859;
+    border-bottom: 3px solid #FFD859;
+}
+
+.login-description{
+color: white;
+}

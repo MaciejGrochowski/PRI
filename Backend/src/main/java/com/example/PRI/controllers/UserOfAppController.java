@@ -27,12 +27,12 @@ public class UserOfAppController {
             return output;
         }
 
-        @RequestMapping(value = "/update", method = RequestMethod.POST)
+        @RequestMapping(value = "/update/details", method = RequestMethod.PUT)
         public void updateUserDetails(@Valid @RequestBody UserOfAppInputDto user, Authentication auth){
             userOfAppService.updateUser(user, auth);
         }
 
-        @RequestMapping(value = "/update/credentials", method = RequestMethod.POST)
+        @RequestMapping(value = "/update/credentials", method = RequestMethod.PUT)
         public void updateUserDetails(@Valid @RequestBody JwtRequest user, Authentication auth) throws notUniqueArgumentException {
             userOfAppService.updateUserCredentials(user, auth);
         }

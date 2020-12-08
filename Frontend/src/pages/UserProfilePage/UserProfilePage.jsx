@@ -5,6 +5,7 @@ import {TextField} from "@material-ui/core";
 import {getInfoFromToken, getToken} from "../../services/util";
 import {Link} from "react-router-dom";
 import {fronendUrls} from "../../commons/urls";
+import "../../styles/userProfile.css";
 
 
 class UserProfilePage extends React.Component {
@@ -51,7 +52,8 @@ class UserProfilePage extends React.Component {
 
 
     isProfileLoggedUser = () => {
-        return getInfoFromToken(getToken()).sub === this.props.match.params.username;
+        let tokenInfo = getInfoFromToken(getToken());
+        return tokenInfo ? getInfoFromToken(getToken()).sub === this.props.match.params.username : false;
     }
 
     saveFacebook = () => {
@@ -69,43 +71,51 @@ class UserProfilePage extends React.Component {
     render(){
         return (
             <div className = "plainPage">
+            <div className = "user-profile-main-div">
+            <div className = "page-title"> {this.state.username} </div>
 
-                <span>Nazwa użytkownika: <TextField disabled value={this.state.username}/></span>
+            <div className = "user-profile-container">
 
-                <span>Mail: <TextField disabled value={this.state.mail}/></span>
+{/*                <div>Nazwa użytkownika: <TextField disabled value={this.state.username}/></div> */}
 
-                {/*{this.state.isEditingFacebook ?*/}
-                {/*    <span>Facebook: <TextField onChange={(event) => this.setState({facebook: event.target.value})} disabled={!this.state.isEditingFacebook} value={this.state.facebook}/></span> :*/}
-                {/*    <span>Facebook: <Link to={this.state.facebook}>{this.state.facebook}</Link></span>*/}
-                {/*}*/}
-                <span>Facebook: <TextField onChange={(event) => this.setState({facebook: event.target.value})} disabled={!this.state.isEditingFacebook} value={this.state.facebook}/></span>
-                {this.isProfileLoggedUser() && <span>
-                {!this.state.isEditingFacebook && <button onClick={() => this.setState({isEditingFacebook: true})}>Edytuj</button>}
-                {this.state.isEditingFacebook && <button onClick={() => this.saveFacebook()}>Zapisz</button>}
-                </span>}
-
-                <span>Discord: <TextField onChange={(event) => this.setState({discord: event.target.value})} disabled={!this.state.isEditingDiscord} value={this.state.discord}/></span>
-                {this.isProfileLoggedUser() && <span>
-                {!this.state.isEditingDiscord && <button onClick={() => this.setState({isEditingDiscord: true})}>Edytuj</button>}
-                    {this.state.isEditingDiscord && <button onClick={() => this.saveDiscord()}>Zapisz</button>}
-                </span>}
-
-                <span>Opis: <TextField onChange={(event) => this.setState({description: event.target.value})} disabled={!this.state.isEditingDescription} value={this.state.description}/></span>
-                {this.isProfileLoggedUser() && <span>
+<div className = "user-profile-block">
+<div className="user-profile-subtitle">Opis: </div>
+<div><TextField onChange={(event) => this.setState({description: event.target.value})} disabled={!this.state.isEditingDescription} value={this.state.description}/></div>
+                {this.isProfileLoggedUser() && <div>
                 {!this.state.isEditingDescription && <button onClick={() => this.setState({isEditingDescription: true})}>Edytuj</button>}
                     {this.state.isEditingDescription && <button onClick={() => this.saveDescription()}>Zapisz</button>}
-                </span>}
+                </div>}
+</div>
+                <div>Mail: <TextField disabled value={this.state.mail}/></div>
 
+                {/*{this.state.isEditingFacebook ?*/}
+                {/*    <div>Facebook: <TextField onChange={(event) => this.setState({facebook: event.target.value})} disabled={!this.state.isEditingFacebook} value={this.state.facebook}/></div> :*/}
+                {/*    <div>Facebook: <Link to={this.state.facebook}>{this.state.facebook}</Link></div>*/}
+                {/*}*/}
+                <div>Facebook: <TextField onChange={(event) => this.setState({facebook: event.target.value})} disabled={!this.state.isEditingFacebook} value={this.state.facebook}/></div>
+                {this.isProfileLoggedUser() && <div>
+                {!this.state.isEditingFacebook && <button onClick={() => this.setState({isEditingFacebook: true})}>Edytuj</button>}
+                {this.state.isEditingFacebook && <button onClick={() => this.saveFacebook()}>Zapisz</button>}
+                </div>}
+
+                <div>Discord: <TextField onChange={(event) => this.setState({discord: event.target.value})} disabled={!this.state.isEditingDiscord} value={this.state.discord}/></div>
+                {this.isProfileLoggedUser() && <div>
+                {!this.state.isEditingDiscord && <button onClick={() => this.setState({isEditingDiscord: true})}>Edytuj</button>}
+                    {this.state.isEditingDiscord && <button onClick={() => this.saveDiscord()}>Zapisz</button>}
+                </div>}
+
+
+</div>
                 Lista postaci:
                 {this.state.characters && this.state.characters.map((item, i) => (
                     <div className = "one-history-brief">
-                        <span>{item.id}</span>
-                        <span>{item.name}</span>
-                        <span>{item.surname}</span>
-                        <span>{item.career}</span>
-                        <span>{item.livePlace}</span>
-                        <span>{item.race}</span>
-                        <span>{item.sex}</span>
+                        <div>{item.id}</div>
+                        <div>{item.name}</div>
+                        <div>{item.surname}</div>
+                        <div>{item.career}</div>
+                        <div>{item.livePlace}</div>
+                        <div>{item.race}</div>
+                        <div>{item.sex}</div>
                         {/*<Link className = "detaleButton" to={fronendUrls.historyList + "/" + item.id}><div className = "normal-text">Więcej</div></Link>*/}
                     </div>
                 ))
@@ -114,13 +124,13 @@ class UserProfilePage extends React.Component {
                 Lista historii:
                 {this.state.histories && this.state.histories.map((item, i) => (
                     <div className = "one-history-brief">
-                        <span>{item.id}</span>
-                        <span>{item.beginDescription}</span>
+                        <div>{item.id}</div>
+                        <div>{item.beginDescription}</div>
                         {/*<Link className = "detaleButton" to={fronendUrls.historyList + "/" + item.id}><div className = "normal-text">Więcej</div></Link>*/}
                     </div>
                 ))
                 }
-
+</div>
             </div>
         )
     }

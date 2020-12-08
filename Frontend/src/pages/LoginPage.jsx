@@ -8,6 +8,7 @@ import {authorizationRequest, getToken} from "../services/util";
 import {loginStatusChange} from "../actions";
 import { connect } from "react-redux";
 import {fronendUrls} from "../commons/urls";
+import "../styles/login-page.css";
 import {Redirect} from 'react-router'
 
 
@@ -42,21 +43,27 @@ class LoginPage extends React.Component {
             return <Redirect push to={fronendUrls.mainPage} />
         }
         return (
-            <div className = "plainPage">
-
+<div className = "container-login-page">
+<div className = "login-body">
+<div className = "margin-login-body">
+<div className = "login-title">Zaloguj się</div>
+                <div className="block-component">
                 <TextField label="Login" value={this.state.username} onChange={event => this.setState({username:event.target.value})} />
-
-                <PasswordField
+                </div>
+                <div className="block-component"><PasswordField
                     // hintText="At least 8 characters"
                     // floatingLabelText="Enter your password"
                     // errorText="Your password is too short"
                     label="Hasło"
                     value={this.state.password}
                     onChange={event => this.setState({password:event.target.value})}
-                />
+                /></div>
 
-                <Link onClick={() => this.login()}>Zaloguj</Link>
-            </div>
+                <div className="block-component"><div className = "zaloguj-button"><Link onClick={() => this.login()}>Zaloguj</Link></div></div>
+                <div className="login-description">Nie masz jeszcze konta? Zarejestruj się!</div>
+                </div>
+                </div>
+                </div>
         )
     }
 

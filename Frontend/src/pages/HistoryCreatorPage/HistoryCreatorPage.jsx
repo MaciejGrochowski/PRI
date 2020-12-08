@@ -142,11 +142,14 @@ class HistoryCreatorPage extends React.Component {
 
                         </div>
 
-                <div className="block-element">Tytuł
+<div className = "History-creator-upper">
+            <div className = "history-column">
+                Tytuł:
+                <div className="title-history-creator History-creator-upper item-div">
                 <TextField value={this.state.title} onChange={(event) => {
                     this.setState({title: event.target.value});
                 }}  label="Tytuł"/>
-                </div>
+                </div></div></div>
                 <div className="block-element">{this.state.isError &&
                 <ErrorGenerator errorText={"Błąd: " + polishCodeErrors[this.state.errorText]}/>}</div>
 

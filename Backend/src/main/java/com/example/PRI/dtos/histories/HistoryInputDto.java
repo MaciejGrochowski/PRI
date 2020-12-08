@@ -34,6 +34,6 @@ public class HistoryInputDto {
     @Length(min = 9, message = "NO_HISTORY_DESCRIPTION")
     String description;
 
-    @Length(min = 1, max = 256)
+    @Length(min = 1, max = 256, message = "NO_HISTORY_TITLE")
     String title;
 }

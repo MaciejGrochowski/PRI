@@ -1,0 +1,33 @@
+.black-block{
+
+border-bottom: solid 3px #FFD859;
+width: 70%;
+margin: auto;
+}
+
+.page-title{
+display: block;
+font-size: xxx-large;
+color: #FFD859;
+border-bottom: solid 3px #FFD859;
+width: max-content;
+}
+
+.user-profile-main-div{
+display: block;;
+min-width: 500px;
+width: 70%;
+}
+
+.user-profile-container{
+display: flex;
+}
+
+.user-profile-block{
+display: block;
+padding: 5%;
+}
+
+.user-profile-subtitle{
+font-size: x-large;
+}

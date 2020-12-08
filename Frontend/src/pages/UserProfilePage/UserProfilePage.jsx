@@ -166,6 +166,8 @@ class UserProfilePage extends React.Component {
                 ))
                 }
 
+                <Link to={fronendUrls.characterList + "/user/" + this.state.username}>Więcej postaci</Link>
+
                 Lista historii:
                 {this.state.histories && this.state.histories.map((item, i) => (
                     <div className = "one-history-brief">
@@ -175,6 +177,7 @@ class UserProfilePage extends React.Component {
                     </div>
                 ))
                 }
+                <Link to={fronendUrls.historyList + "/user/" + this.state.username}>Więcej historii</Link>
 </div>
             </div>
         )

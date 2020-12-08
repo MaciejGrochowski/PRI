@@ -2,6 +2,7 @@ package com.example.PRI.services.history;
 
 import com.example.PRI.entities.ImperialDate;
 import com.example.PRI.entities.Place;
+import com.example.PRI.entities.UserOfApp;
 import com.example.PRI.entities.character.*;
 import com.example.PRI.entities.character.Character;
 import com.example.PRI.entities.history.History;
@@ -78,5 +79,13 @@ public class HistorySpecifications {
     public static Specification<History> getByHistoryTitle(String title) {
         return (root, query, criteriaBuilder) -> criteriaBuilder.like(
                 root.<String>get("title"), "%" + title + "%");
+    }
+
+    public static Specification<History> getByCreator(List<UserOfApp> users) {
+        return (root, query, cb) -> {
+            query.distinct(true);
+            Join<Character, UserOfApp> usersTab = root.join("createdBy");
+            return usersTab.in(users);
+        };
     }
 }

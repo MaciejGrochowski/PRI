@@ -21,7 +21,8 @@ class App extends React.Component{
                 <Menu/>
         <Route path={fronendUrls.mainPage} exact={true} component={MainPage}/>
                 <Route path={fronendUrls.characterList + "(/user)?/:username?"} component={CharactersListPage} />
-        <Route path={fronendUrls.historyList +"/:typeOfData?/:data?/(historyId)?/:historyId?"} component={HistoriesListPage} />
+        <Route path={fronendUrls.historyList} component={HistoriesListPage} />
+                {/*+"/:typeOfData?/:data?/(historyId)?/:historyId?"*/}
         <Route path={fronendUrls.characterDetails} component={CharacterDetailsPage} />
         <Route path={fronendUrls.characterGenerator} component={CharacterGeneratorPage} />
         <Route path={fronendUrls.historyCreator} component={HistoryCreatorPage} />

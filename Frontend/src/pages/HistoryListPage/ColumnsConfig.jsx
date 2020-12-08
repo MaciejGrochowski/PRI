@@ -4,11 +4,12 @@ import DefaultMultipleAutocomplete from "../../components/Autocomplete/DefaultMu
 import React from "react";
 //ToDo Więcej autocompletów...
 
-export const columnConfig = (autocompleteData={}, isCharacterFilter) => {
+export const columnConfig = (autocompleteData={}, isCharacterFilter, isUserFilter) => {
     return [
         {
             title: 'Twórca', field: 'createdBy',
             removable: true,
+            hidden: isUserFilter,
             filter: <div class="item-div"><TextField label="Twórca" id="historyCreatedBy"/></div>
         },
         {

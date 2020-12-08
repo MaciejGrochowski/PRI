@@ -3,6 +3,7 @@ package com.example.PRI.controllers;
 import com.example.PRI.controllers.annotations.Get;
 import com.example.PRI.controllers.annotations.Put;
 import com.example.PRI.dtos.users.JwtRequest;
+import com.example.PRI.dtos.users.UserOfAppCredentialsInputDto;
 import com.example.PRI.dtos.users.UserOfAppInputDto;
 import com.example.PRI.dtos.users.UserOfAppDetailsOutputDto;
 import com.example.PRI.exceptions.notUniqueArgumentException;
@@ -34,7 +35,7 @@ public class UserOfAppController {
         }
 
         @RequestMapping(value = "/update/credentials", method = RequestMethod.PUT)
-        public void updateUserDetails(@Valid @RequestBody JwtRequest user, Authentication auth) throws notUniqueArgumentException {
+        public void updateUserDetails(@Valid @RequestBody UserOfAppCredentialsInputDto user, Authentication auth) throws notUniqueArgumentException {
             userOfAppService.updateUserCredentials(user, auth);
         }
 

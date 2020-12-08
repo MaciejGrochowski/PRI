@@ -2,6 +2,7 @@ package com.example.PRI.services;
 
 import com.example.PRI.converters.UserOfAppConverter;
 import com.example.PRI.dtos.users.JwtRequest;
+import com.example.PRI.dtos.users.UserOfAppCredentialsInputDto;
 import com.example.PRI.dtos.users.UserOfAppDetailsOutputDto;
 import com.example.PRI.dtos.users.UserOfAppInputDto;
 import com.example.PRI.entities.UserOfApp;
@@ -13,6 +14,7 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import javax.validation.Valid;
 import java.util.Optional;
 
 @Service
@@ -86,20 +88,22 @@ public class UserOfAppService extends GeneralService {
             updateUser(user, ((User) auth.getPrincipal()).getUsername());
     }
 
-    public void updateUserCredentials(JwtRequest user, Authentication auth) throws notUniqueArgumentException {
+    public void updateUserCredentials(@Valid UserOfAppCredentialsInputDto user, Authentication auth) throws notUniqueArgumentException {
         String oldUsername = ((User) auth.getPrincipal()).getUsername();
-        String oldPassword = ((User) auth.getPrincipal()).getPassword();
-        updateUserCredentials(oldUsername, oldPassword, user);
+        if(((User) auth.getPrincipal()).getPassword().equals(bCryptPasswordEncoder.encode(user.getOldPassword()))){
+            updateUserCredentials(oldUsername, user);
+        }
+        else throw new notUniqueArgumentException("Niepoprawne stare hasło", new Exception());
     }
 
-    private void updateUserCredentials(String oldUsername, String oldPassword, JwtRequest user) throws notUniqueArgumentException {
+    private void updateUserCredentials(String oldUsername, UserOfAppCredentialsInputDto user) throws notUniqueArgumentException {
         if (userOfAppRepository.findByUsername(user.getUsername()) != null && !oldUsername.equals(userOfAppRepository.findByUsername(user.getUsername()).getUsername())) {
             throw new notUniqueArgumentException("Już istnieje taka nazwa użytkownika", new Exception());
         }
         else {
             UserOfApp u = userOfAppRepository.findByUsername(oldUsername);
             u.setUsername(user.getUsername());
-            u.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+            u.setPassword(bCryptPasswordEncoder.encode(user.getNewPassword()));
             userOfAppRepository.save(u);
         }
 

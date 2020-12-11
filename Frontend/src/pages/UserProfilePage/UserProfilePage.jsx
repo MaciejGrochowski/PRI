@@ -6,6 +6,7 @@ import {getInfoFromToken, getToken} from "../../services/util";
 import {Link} from "react-router-dom";
 import {fronendUrls} from "../../commons/urls";
 import "../../styles/userProfile.css";
+import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 
 
 class UserProfilePage extends React.Component {
@@ -79,7 +80,6 @@ class UserProfilePage extends React.Component {
 
     render(){
         return (
-            <div className = "plainPage">
             <div className = "user-profile-main-div">
             <div className = "page-title"> {this.state.username} </div>
 
@@ -87,11 +87,21 @@ class UserProfilePage extends React.Component {
 
 {/*                <div>Nazwa użytkownika: <TextField disabled value={this.state.username}/></div> */}
 
-<div className = "user-profile-block">
-<div className="user-profile-subtitle">Opis: </div>
-<div><TextField onChange={(event) => this.setState({description: event.target.value})} disabled={!this.state.isEditingProfile} value={this.state.description}/></div>
-</div>
+            <div className = "user-profile-block">
+            {/*<div className="user-profile-subtitle">Opis: </div>*/}
+            <div>       <TextField
+                        id="outlined-textarea"
+                        label="Opis"
+                        placeholder="Brak opisu."
+                        rows={10}
+                        rowsMax={10}
+                        fullWidth
+                        multiline
+                        variant="outlined"
+                            onChange={(event) => this.setState({description: event.target.value})} disabled={!this.state.isEditingProfile} value={this.state.description}/></div>
+            </div>
 
+            <div className = "user-profile-block">
                 {this.isProfileLoggedUser() && <div>
                     {!this.state.isEditingProfile && <button onClick={this.onClickEditButton}>Edytuj użytkownika</button>}
                     {this.state.isEditingProfile && <button onClick={() => this.saveProfile()}>Zapisz</button>}
@@ -109,7 +119,7 @@ class UserProfilePage extends React.Component {
                 <div>Discord: <TextField onChange={(event) => this.setState({discord: event.target.value})} disabled={!this.state.isEditingProfile} value={this.state.discord}/></div>
 
 
-
+</div>
 </div>
                 Lista postaci:
                 {this.state.characters && this.state.characters.map((item, i) => (
@@ -136,7 +146,6 @@ class UserProfilePage extends React.Component {
                 ))
                 }
 </div>
-            </div>
         )
     }
 

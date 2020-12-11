@@ -182,7 +182,7 @@ class CharacterGeneratorPage extends React.Component {
 
                             <careerContext.Provider value={{
                                 update: (val) => {this.setState({surname: val})},}}>
-                                <GeneratorTextField label="Nazwisko" generated={this.state.surname} canBeGenerated onRandomClick={() => this.generateOneAttribute("Nazwisko")}
+                                <GeneratorTextField label="Nazwisko" generated={this.state.surname} canBeGenerated onRandomClick={() => this.generateOneAttribute("Nazwisko")} //ToDo dont use polish names of attributes! (Frontend and backend)
                                                     disabled={this.state.race===undefined || this.state.race==="" || this.state.race === null ||
                                                     this.state.sex===undefined || this.state.sex==="" || this.state.sex === null}
                                                     validationFunc={validationSurname}

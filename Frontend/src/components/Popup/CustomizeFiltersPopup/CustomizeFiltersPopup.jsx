@@ -22,7 +22,7 @@ class CustomizeFiltersPopup extends React.Component {
 
     save = columnsConfig => {
         let object = {}
-        const form = document.getElementById("visibilityCharactersColumns");
+        const form = document.getElementById("visibilityCharactersColumns"); //ToDo this shouldnt use getElementById
 
         for (let i=0; i<columnsConfig.length ; i++){
             const fieldName = columnsConfig[i].field;

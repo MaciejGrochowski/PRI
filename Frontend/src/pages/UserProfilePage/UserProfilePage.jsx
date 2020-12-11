@@ -7,6 +7,7 @@ import {Link} from "react-router-dom";
 import {fronendUrls} from "../../commons/urls";
 import "../../styles/userProfile.css";
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
+import ChangeCredentialsModal from "../../components/ChangeCredentialsModal/ChangeCredentialsModal";
 
 
 class UserProfilePage extends React.Component {
@@ -24,7 +25,9 @@ class UserProfilePage extends React.Component {
             sessions: [],
             isEditingDiscord: false,
             isEditingFacebook: false,
-            isEditingDescription: false
+            isEditingDescription: false,
+            isPasswordChanging: false,
+            isUsernameChanging: false
         }
     }
 
@@ -47,7 +50,7 @@ class UserProfilePage extends React.Component {
             description: response.data.description,
             characters: response.data.characters,
             histories: response.data.histories,
-            sessions: response.data.sessions
+            sessions: response.data.sessions,
         })
     }
 
@@ -63,14 +66,38 @@ class UserProfilePage extends React.Component {
             discord: this.state.discord,
             description: this.state.description
         }
-
         userService.editProfile(input)
+            .then(r => console.log(r))
+            .catch(e => console.log(e))
+        this.setState({isEditingProfile: false});
+    }
+
+    saveCredentials = (username, password, newPassword) => {
+        let input;
+        if(newPassword){
+            input = {
+                username: this.state.username, //ToDo zmiana uzytkownika LUB
+                oldPassword: password,
+                newPassword: newPassword
+            }
+        }
+        if(username !== this.state.username){
+            input = {
+                username: username,
+                oldPassword: password,
+                newPassword: password
+            }
+        }
+
+        userService.editCredentials(input)
             .then(r => console.log(r))
             .catch(e => console.log(e))
 
 
-
-        this.setState({isEditingProfile: false});
+        this.setState({
+            isPasswordChanging: false,
+            isUsernameChanging: false
+        })
 
     }
 
@@ -103,9 +130,21 @@ class UserProfilePage extends React.Component {
 
             <div className = "user-profile-block">
                 {this.isProfileLoggedUser() && <div>
-                    {!this.state.isEditingProfile && <button onClick={this.onClickEditButton}>Edytuj użytkownika</button>}
+                    <button onClick={() => this.setState({isPasswordChanging: true})}>Edytuj hasło</button>
+                    <button onClick={() => this.setState({isUsernameChanging: true})}>Edytuj nazwę użytkownika</button>
+                    {!this.state.isEditingProfile && <button onClick={this.onClickEditButton}>Edytuj profil</button>}
                     {this.state.isEditingProfile && <button onClick={() => this.saveProfile()}>Zapisz</button>}
                 </div>}
+
+                <ChangeCredentialsModal
+                isOpen={this.state.isPasswordChanging || this.state.isUsernameChanging}
+                onRequestClose={() => this.setState({isPasswordChanging: false, isUsernameChanging: false})}
+                isUsernameChanging={this.state.isUsernameChanging}
+                isPasswordChanging={this.state.isPasswordChanging}
+                onSave={this.saveCredentials}
+                username={this.state.username}
+
+                />
 
 
                 <div>Mail: <TextField disabled value={this.state.mail}/></div>
@@ -136,6 +175,8 @@ class UserProfilePage extends React.Component {
                 ))
                 }
 
+                <Link to={fronendUrls.characterList + "/user/" + this.state.username}>Więcej postaci</Link>
+
                 Lista historii:
                 {this.state.histories && this.state.histories.map((item, i) => (
                     <div className = "one-history-brief">
@@ -145,6 +186,7 @@ class UserProfilePage extends React.Component {
                     </div>
                 ))
                 }
+                <Link to={fronendUrls.historyList + "/user/" + this.state.username}>Więcej historii</Link>
 </div>
         )
     }

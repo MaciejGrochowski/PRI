@@ -3,7 +3,13 @@ import {userUrl, request, authorizationRequest} from "./util";
 
 const userService = {
     getUserByUsername: username => getUserByUsername(username),
-    editProfile: profileData => editProfile(profileData)
+    editProfile: profileData => editProfile(profileData),
+    editCredentials: credentials => editCredentials(credentials)
+}
+
+const editCredentials = credentials => {
+    const url = userUrl + "/credentials";
+    return authorizationRequest().put(url, credentials);
 }
 
 const getUserByUsername = username => {

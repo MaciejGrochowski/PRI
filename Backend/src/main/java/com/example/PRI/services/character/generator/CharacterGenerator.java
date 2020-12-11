@@ -225,7 +225,11 @@ public class CharacterGenerator extends GeneralService {
         Character character = new Character();
         character.setCreatedBy(user);
         character.setName(characterSaveService.nameConvert(characterInputDto.getName()));
-        character.setSurname(characterSaveService.surnameConvert(characterInputDto.getSurname()));
+
+        if(!(characterInputDto.getSurname() == null || characterInputDto.getSurname().length() == 0)) {
+            character.setSurname(characterSaveService.surnameConvert(characterInputDto.getSurname()));
+        }
+
         character.setPrediction(characterSaveService.predictionConvert(characterInputDto.getPrediction()));
         character.setCurrentCareer(characterSaveService.currentCareerConvert(characterInputDto.getCurrentCareer()));
         character.setPreviousCareers(characterSaveService.previousCareersConvert(characterInputDto.getPreviousCareers(),characterInputDto.getCurrentCareer()));

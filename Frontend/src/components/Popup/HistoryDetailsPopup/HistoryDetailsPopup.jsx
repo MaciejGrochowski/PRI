@@ -8,6 +8,8 @@ import parse from "html-react-parser";
 
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faAngleRight, faAngleLeft} from '@fortawesome/free-solid-svg-icons';
+import {fronendUrls} from "../../../commons/urls";
+import {Link} from "react-router-dom";
 
 const elementPrev = <FontAwesomeIcon icon={faAngleLeft}/>
 const elementNext = <FontAwesomeIcon icon={faAngleRight}/>
@@ -94,7 +96,7 @@ class HistoryDetailsPopup extends React.Component {
                 <div className="historyDetailHeader">
                     <div className = "flex-div"><div className = "yellow-color"> Data Historii:&nbsp;</div> {this.state.historyDay} {this.state.historyMonth} {this.state.historyYear}</div>
                     <div className = "flex-div"><div className = "yellow-color">Miejsce Historii:&nbsp; </div> {this.state.historyPlace}</div>
-                    <div className = "flex-div"><div className = "yellow-color">Twórca Historii:&nbsp; </div> {this.state.historyCreator}</div>
+                    <div className = "flex-div"><div className = "yellow-color">Twórca Historii:&nbsp; </div> <Link to={fronendUrls.userProfilePage + "/" + this.state.historyCreator}>{this.state.historyCreator}</Link></div>
                 </div>
                     {this.state.historyTitle && <div>Tytuł: {this.state.historyTitle}</div>}
                     {this.state.historyDescription && parse(this.state.historyDescription)}

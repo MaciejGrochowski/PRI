@@ -1,18 +1,9 @@
 import React from 'react';
 import Modal from 'react-modal';
-import test from '../../../styles/popup.css';
-import button from "../../../styles/buttons.css";
-import popup from "../../../styles/popup.css";
-import historyService from "../../../services/historyService";
-import parse from "html-react-parser";
-
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faAngleRight, faAngleLeft} from '@fortawesome/free-solid-svg-icons';
+import button from "../../styles/buttons.css";
 import {TextField} from "@material-ui/core";
 import PasswordField from "material-ui-password-field";
 
-const elementPrev = <FontAwesomeIcon icon={faAngleLeft}/>
-const elementNext = <FontAwesomeIcon icon={faAngleRight}/>
 
 const customStyles = {
     content: {
@@ -30,7 +21,7 @@ const customStyles = {
     }
 };
 
-class HistoryDetailsPopup extends React.Component {
+class ChangeCredentialsModal extends React.Component {
 
     constructor() {
         super();
@@ -41,14 +32,19 @@ class HistoryDetailsPopup extends React.Component {
         }
     }
 
-    componentDidMount() {
-        this.setState({
-            username: this.props.username
-        })
-    }
+     componentDidUpdate(prevProps, prevState){
+
+        if(prevProps.isOpen !== this.props.isOpen ){
+            this.setState({
+                username: this.props.username,
+                password: "",
+                newPassword: ""
+            })
+        }
+     }
 
     render() {
-        const {isOpen, onRequestClose, isUsernameChanging, isPasswordChanging} = this.props;
+        const {isOpen, onRequestClose, isUsernameChanging, isPasswordChanging, onSave} = this.props;
 
 
         return (
@@ -59,6 +55,8 @@ class HistoryDetailsPopup extends React.Component {
                         onRequestClose={() => onRequestClose()}
                         style={customStyles}
                     >
+
+                        <div>Uwaga - po zmianie użytkownika lub hasła zostaniesz automatycznie wylogowany. Możesz zalogować się ponownie przy użyciu nowych danych.</div>
 
                         <TextField onChange={(event) => this.setState({username: event.target.value})} disabled={!isUsernameChanging} value={this.state.username}/>
 
@@ -80,6 +78,9 @@ class HistoryDetailsPopup extends React.Component {
                             onChange={event => this.setState({newPassword:event.target.value})}
                         />}
 
+                        <button type="submit" className="button" onClick={() => onSave(this.state.username, this.state.password, this.state.newPassword)}>Zapisz</button>
+
+
 
                     </Modal>
                 </div></div>
@@ -87,4 +88,4 @@ class HistoryDetailsPopup extends React.Component {
     }
 }
 
-export default HistoryDetailsPopup;
+export default ChangeCredentialsModal;

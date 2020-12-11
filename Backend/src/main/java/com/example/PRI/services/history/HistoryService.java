@@ -96,6 +96,14 @@ public class HistoryService extends GeneralService {
         if (requestInfo.getFilters() == null || requestInfo.getFilters().size() == 0) return specifications;
 
 
+        if(requestInfo.getFilters().containsKey("createdBy")){
+            String username = requestInfo.getFilters().get("createdBy");
+            UserOfApp user = userService.findByUsername(username);
+            if(user!=null) specifications = specifications.and(HistorySpecifications.getByCreator(Collections.singletonList(user)));
+            else return specifications.and(HistorySpecifications.GetNoone());
+        }
+
+
 
         if (requestInfo.getFilters().containsKey("historyTitle")) {
             String title = requestInfo.getFilters().get("historyTitle");

@@ -73,7 +73,7 @@ class Menu extends React.Component {
                 </div>
 <div className= "menu-column">
                     <LoginButton
-                    notLoggedShowComponent={<Link className="menuLink" to={fronendUrls.loginPage}><button className="menuLink"><ItemMenu>Zaloguj się</ItemMenu></button></Link>}
+                    notLoggedShowComponent={<Link className="menuLink" to={fronendUrls.loginPage}><ItemMenu>Zaloguj się</ItemMenu></Link>}
                     /> </div>
             </nav>)}
                 <button className="menubutton" onClick={this.onExpanded}>Menu</button>

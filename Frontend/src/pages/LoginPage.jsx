@@ -60,7 +60,7 @@ class LoginPage extends React.Component {
                 /></div>
 
                 <div className="block-component"><div className = "zaloguj-button"><Link onClick={() => this.login()}>Zaloguj</Link></div></div>
-                <div className="login-description">Nie masz jeszcze konta? Zarejestruj się!</div>
+    <div className="login-description">Nie masz jeszcze konta? <Link to={fronendUrls.registerPage}>Zarejestruj się!</Link></div>
                 </div>
                 </div>
                 </div>

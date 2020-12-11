@@ -11,5 +11,6 @@ export const fronendUrls = {
     characterGenerator: '/generator',
     historyCreator: '/history/create',
     loginPage: "/login",
-    userProfilePage: "/user"
+    userProfilePage: "/user",
+    registerPage: '/register'
 }

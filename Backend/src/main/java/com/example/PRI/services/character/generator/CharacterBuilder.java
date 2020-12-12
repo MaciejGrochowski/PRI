@@ -2,17 +2,18 @@ package com.example.PRI.services.character.generator;
 
 import com.example.PRI.entities.ImperialDate;
 import com.example.PRI.entities.Place;
-import com.example.PRI.entities.character.*;
 import com.example.PRI.entities.character.Character;
+import com.example.PRI.entities.character.*;
 import com.example.PRI.enums.Race;
 import com.example.PRI.enums.Religion;
 import com.example.PRI.enums.Sex;
+import com.example.PRI.services.RandomService;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
 import java.util.HashMap;
-import java.util.Map;
 import java.util.List;
+import java.util.Map;
 
 import static com.example.PRI.services.character.generator.MapperJsonStringToMap.mapJsonStringToMap;
 
@@ -22,10 +23,16 @@ public class CharacterBuilder {
 
     private Character character;
     private HashMap<String, String> properties;
+    private RandomService randomService;
 
     public CharacterBuilder initialize(){
+        return this.initialize(System.currentTimeMillis());
+    }
+
+    public CharacterBuilder initialize(Long seed){
         character = new Character();
         properties = new HashMap<>();
+        randomService = new RandomService(seed);
         return this;
     }
 
@@ -37,9 +44,11 @@ public class CharacterBuilder {
         return properties;
     }
 
+    public RandomService getRandomService() { return randomService;}
+
 
     public CharacterBuilder buildBirthPlace(CharacterBirthPlaceGenerator service){
-        HashMap<String, String> newProps = service.generateBirthPlace(character);
+        HashMap<String, String> newProps = service.generateBirthPlace(character, randomService); //ToDo use randomService in all generators.
         this.putAllProperties(newProps);
         Place parent = character.getBirthPlace().getParent();
         while(parent != null){

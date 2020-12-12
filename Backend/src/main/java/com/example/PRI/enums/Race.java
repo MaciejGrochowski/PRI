@@ -22,6 +22,7 @@ public enum Race {
                     "Strażnik pól:0," +
                     "Tarczownik:0," +
                     "Uczeń czarodzieja: 0.003," +
+                    "Wojownik klanowy: 0," +
                     "Zabójca trolli:0," +
                     "Leśny duch:0,"+
                     "Spracowane dłonie:0.005,"+
@@ -62,6 +63,7 @@ public enum Race {
                     "Szlachcic:0.005," +
                     "Strażnik więzienny:0," +
                     "Tarczownik:0," +
+                    "Wojownik klanowy:0.05," +
                     "Zabójca trolli:0," +
                     "Żołnierz:0," +
                     "Leśny duch:0.05,"+
@@ -140,6 +142,7 @@ public enum Race {
                     "Szlachcic:0.005," +
                     "Tarczownik:0.03," +
                     "Uczeń czarodzieja:0," +
+                    "Wojownik klanowy:0," +
                     "Zabójca trolli:0.05," +
                     "Leśny duch:0," +
                     "Zabójca olbrzymów:0.05," +
@@ -204,6 +207,7 @@ public enum Race {
                     "Strażnik pól:0.07," +
                     "Tarczownik:0," +
                     "Uczeń czarodzieja:0," +
+                    "Wojownik klanowy:0," +
                     "Zabójca trolli:0," +
                     "Leśny duch:0," +
                     "Zabójca olbrzymów:0," +

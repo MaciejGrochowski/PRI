@@ -7,7 +7,7 @@
     "talents": null,
     "careerExits": [{"id": 7},{"id": 67},{"id": 8},{"id": 74},{"id": 38},{"id": 111}],
     "dominatingStat": "INT+10,SW+10,OGD+10",
-    "properties": "isNotVilliage:1,Fanatyk:0.05,Obowiązkowy:0.02,Obłudny:0.01,Atrakcyjna twarz:0.01,Urodziwy:0.01",
+    "properties": "isNotVilliage:1,Gaduła:0.1,Guzdrała:0.1,Oddany:0.1,Pomysłowy:0.1,Lojalny:0.2,Opiekuńczy:0.1,Wątły:0.1,Piegowaty:0.1,Pyzaty:0.1,Powściągliwy:0.1,Oddany:0.1,Miłosierny:0.1,Dwulicowy:0.1,Krótka bródka:0.1,Kościsty:0.1,Kilkudniowy zarost:0.1,Zawzięty:0.1,Ciepłe spojrzenie:0.1,Bystry:0.1,Lojalny:0.1,Uczynny:0.1,Uczciwy:0.1,Bezinteresowny:0.1,Przezorny:0.1",
   "bestNextCareer": "Kapłan"},
   {"id": 2,
     "name": "Banita",

@@ -1,6 +1,8 @@
 import React from "react";
 import styled, { css } from 'styled-components';
 
+//ToDo delete that??
+
 //To Styl używający biblioteki styled-components
 //export - odpowiada za eksportowanie obiektu poza ten plik i możliwość jego importowania
 //const - zapewnia, że styl nie ulegnie zmianie podczas działania aplikacji

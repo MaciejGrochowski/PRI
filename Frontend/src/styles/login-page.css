@@ -47,6 +47,8 @@ text-decoration: none!important;
 }
 
 .zaloguj-button{
+    width: max-content;
+    margin: auto;
     font-size: large;
     text-decoration: none;
     transition-duration: 0.4s;
@@ -56,8 +58,6 @@ text-decoration: none!important;
     display: flex;
     margin: auto!important;
     padding: 5%;
-    width: -webkit-fill-available!important;
-    width: -moz-available!important
 
 }
 

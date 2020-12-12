@@ -2,7 +2,6 @@ package com.example.PRI.jsonDeserializationController;
 
 import com.example.PRI.entities.Place;
 import com.example.PRI.entities.character.*;
-import com.example.PRI.services.EmailService;
 import com.example.PRI.services.PlaceService;
 import com.example.PRI.services.character.*;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -10,8 +9,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import javax.mail.MessagingException;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -70,7 +67,6 @@ public class DeserializationController {
     @Autowired
     CareerTalentService careerTalentService;
 
-    public static EmailService emailService;
 
     final String path = "./";
 

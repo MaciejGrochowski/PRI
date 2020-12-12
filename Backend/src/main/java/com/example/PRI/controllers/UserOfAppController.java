@@ -4,7 +4,7 @@ import com.example.PRI.controllers.annotations.Get;
 import com.example.PRI.controllers.annotations.Put;
 import com.example.PRI.dtos.users.UserOfAppCredentialsInputDto;
 import com.example.PRI.dtos.users.UserOfAppDetailsOutputDto;
-import com.example.PRI.dtos.users.UserOfAppInputDto;
+import com.example.PRI.dtos.users.UserOfAppDetailsInputDto;
 import com.example.PRI.exceptions.notUniqueArgumentException;
 import com.example.PRI.services.UserOfAppService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +29,7 @@ public class UserOfAppController {
         }
 
         @Put
-        public void updateUserDetails(@Valid @RequestBody UserOfAppInputDto user, Authentication auth){
+        public void updateUserDetails(@Valid @RequestBody UserOfAppDetailsInputDto user, Authentication auth){
             userOfAppService.updateUser(user, auth);
         }
 

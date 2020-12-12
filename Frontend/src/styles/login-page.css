@@ -1,6 +1,4 @@
 .container-login-page{
-   padding: 50%;
-    position: fixed;
 }
 
 .login-body{
@@ -8,7 +6,7 @@ display: block;
  width: 30%;
   position: absolute;
   margin-top: 2%;
-  top: 10%;
+  top: 20%;
   left: 35%;
 
 }
@@ -47,6 +45,8 @@ text-decoration: none!important;
 }
 
 .zaloguj-button{
+    border: none;
+    color: white;
     width: max-content;
     margin: auto;
     font-size: large;
@@ -58,8 +58,15 @@ text-decoration: none!important;
     display: flex;
     margin: auto!important;
     padding: 5%;
+    background-color: #292F2F;
 
 }
+
+.zaloguj-button:disabled{
+    color: grey !important;
+    border: none !important;
+}
+
 
 .zaloguj-button:hover{
     color: #FFD859;

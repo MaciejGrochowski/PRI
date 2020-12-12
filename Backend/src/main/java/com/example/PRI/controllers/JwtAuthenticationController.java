@@ -3,8 +3,12 @@ package com.example.PRI.controllers;
 import java.util.Objects;
 
 import com.example.PRI.config.JwtTokenUtil;
+import com.example.PRI.controllers.annotations.Post;
 import com.example.PRI.dtos.users.JwtRequest;
 import com.example.PRI.dtos.users.JwtResponse;
+import com.example.PRI.dtos.users.UserOfAppInputDto;
+import com.example.PRI.entities.UserOfApp;
+import com.example.PRI.exceptions.notUniqueArgumentException;
 import com.example.PRI.services.UserOfAppService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -20,6 +24,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.validation.Valid;
 
 @RestController
 @CrossOrigin
@@ -37,7 +43,8 @@ public class JwtAuthenticationController {
     @Autowired
     UserOfAppService userOfAppService;
 
-    @RequestMapping(value = "/authenticate", method = RequestMethod.POST)
+    //@RequestMapping(value = "/authenticate", method = RequestMethod.POST)
+    @Post("/authenticate")
     public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtRequest authenticationRequest)
             throws Exception {
 
@@ -66,10 +73,16 @@ public class JwtAuthenticationController {
         }
     }
 
-    @RequestMapping(value = "/logout-user", method = RequestMethod.POST)
+    @Post("/logout-user")
+    //@RequestMapping(value = "/logout-user", method = RequestMethod.POST)
     private void logout(Authentication auth){
      userOfAppService.logoutUser(auth);
-        return;
+    }
+
+    //@RequestMapping(value = "/register", method = RequestMethod.POST)
+    @Post("/register")
+    public void register(@RequestBody UserOfAppInputDto userOfAppInputDto) throws notUniqueArgumentException {
+        userOfAppService.register(userOfAppInputDto);
     }
 
 }

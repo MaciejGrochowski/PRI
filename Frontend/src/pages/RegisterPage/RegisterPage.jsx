@@ -85,7 +85,12 @@ class RegisterPage extends React.Component {
 
 
         return (
-            <div className = "plainPage">
+                <div className = "container-login-page">
+                <div className = "login-body">
+                <div className = "margin-login-body">
+                <div className = "login-title">Zarejestruj się</div>
+
+                <div className="block-component">
                 <TextField error={this.state.errorState.username}
                            label={textsPolish.register.username}
                            value={this.state.registerData.username}
@@ -94,7 +99,8 @@ class RegisterPage extends React.Component {
                                    element => this.setState({registerData: {...this.state.registerData, username: element}}),
                                validationUsername)}
                 />
-
+</div>
+                <div className="block-component">
                 <TextField error={this.state.errorState.mail}
                            label={textsPolish.register.mail}
                            value={this.state.registerData.mail}
@@ -103,9 +109,10 @@ class RegisterPage extends React.Component {
                                element => this.setState({registerData: {...this.state.registerData, mail: element}}),
                                validationMail)}
                 />
-
+</div>
                 {/*ToDo why showing text-validation not work in PasswordField??*/}
-                <PasswordField
+                <div className="block-component">
+                    <PasswordField
                     error={this.state.errorState.password}
                            label={textsPolish.register.password}
                            value={this.state.registerData.password}
@@ -116,9 +123,10 @@ class RegisterPage extends React.Component {
                                validationPassword)}
                 />
                 <div>{this.state.errorText.password}</div>
+</div>
 
-
-                <PasswordField error={this.state.errorState.confirmPassword}
+                <div className="block-component">
+                                <PasswordField error={this.state.errorState.confirmPassword}
                                label={textsPolish.register.confirmPassword}
                                value={this.state.registerData.confirmPassword}
                                errorText={this.state.errorText.confirmPassword}
@@ -127,7 +135,8 @@ class RegisterPage extends React.Component {
                                    element => this.setState({registerData: {...this.state.registerData, confirmPassword: element}}))}
                 />
                 <div>{this.state.errorText.confirmPassword}</div>
-
+</div>
+                <div className="block-component">
                 <TextField error={this.state.errorState.facebook}
                            label={textsPolish.register.facebook}
                            value={this.state.registerData.facebook}
@@ -136,6 +145,8 @@ class RegisterPage extends React.Component {
                                element => this.setState({registerData: {...this.state.registerData, facebook: element}}),
                                validationFacebook)}
                 />
+</div>
+                <div className="block-component">
 
                 <TextField error={this.state.errorState.discord}
                            label={textsPolish.register.discord}
@@ -145,7 +156,8 @@ class RegisterPage extends React.Component {
                                element => this.setState({registerData: {...this.state.registerData, discord: element}}),
                                validationDiscord)}
                 />
-
+</div>
+                <div className="block-component">
                 <TextField error={this.state.errorState.description}
                            label={textsPolish.register.description}
                            value={this.state.registerData.description}
@@ -154,13 +166,18 @@ class RegisterPage extends React.Component {
                                element => this.setState({registerData: {...this.state.registerData, description: element}}),
                                validationDescription)}
                 />
-
-                <button disabled={!this.isPreparedForRegister()} onClick={() => this.register()}>Zarejestruj</button>
+</div>
+                <div className="block-component">
+                <button className = "zaloguj-button" disabled={!this.isPreparedForRegister()} onClick={() => this.register()}>Zarejestruj</button>
+</div>
 
 
 
 
             </div>
+            </div>
+            </div>
+
         )
     }
 

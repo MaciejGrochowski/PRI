@@ -13,4 +13,6 @@ public interface UserOfAppRepository extends CrudRepository<UserOfApp, Long> {
     UserOfApp findByToken(String token);
 
     UserOfApp findByPassword(String encode);
+
+    String findByMail(String mail);
 }

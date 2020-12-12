@@ -137,6 +137,7 @@ class UserProfilePage extends React.Component {
                 </div>}
 
                 <ChangeCredentialsModal
+                title={this.state.isPasswordChanging? "Edytuj hasło": "Edytuj nazwę użytkownika"}
                 isOpen={this.state.isPasswordChanging || this.state.isUsernameChanging}
                 onRequestClose={() => this.setState({isPasswordChanging: false, isUsernameChanging: false})}
                 isUsernameChanging={this.state.isUsernameChanging}
@@ -147,15 +148,15 @@ class UserProfilePage extends React.Component {
                 />
 
 
-                <div>Mail: <TextField disabled value={this.state.mail}/></div>
+                <div className="flex-div"><div>Mail: <TextField disabled value={this.state.mail}/></div></div>
 
                 {/*{this.state.isEditingFacebook ?*/}
                 {/*    <div>Facebook: <TextField onChange={(event) => this.setState({facebook: event.target.value})} disabled={!this.state.isEditingFacebook} value={this.state.facebook}/></div> :*/}
                 {/*    <div>Facebook: <Link to={this.state.facebook}>{this.state.facebook}</Link></div>*/}
                 {/*}*/}
-                <div>Facebook: <TextField onChange={(event) => this.setState({facebook: event.target.value})} disabled={!this.state.isEditingProfile} value={this.state.facebook}/></div>
+                <div className="flex-component"><div>Facebook: <TextField onChange={(event) => this.setState({facebook: event.target.value})} disabled={!this.state.isEditingProfile} value={this.state.facebook}/></div></div>
 
-                <div>Discord: <TextField onChange={(event) => this.setState({discord: event.target.value})} disabled={!this.state.isEditingProfile} value={this.state.discord}/></div>
+                <div className="flex-element"><div>Discord: <TextField onChange={(event) => this.setState({discord: event.target.value})} disabled={!this.state.isEditingProfile} value={this.state.discord}/></div></div>
 
 
 </div>

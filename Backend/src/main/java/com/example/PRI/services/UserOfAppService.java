@@ -3,6 +3,7 @@ package com.example.PRI.services;
 import com.example.PRI.converters.UserOfAppConverter;
 import com.example.PRI.dtos.users.UserOfAppCredentialsInputDto;
 import com.example.PRI.dtos.users.UserOfAppDetailsOutputDto;
+import com.example.PRI.dtos.users.UserOfAppDetailsInputDto;
 import com.example.PRI.dtos.users.UserOfAppInputDto;
 import com.example.PRI.entities.UserOfApp;
 import com.example.PRI.exceptions.notUniqueArgumentException;
@@ -74,7 +75,7 @@ public class UserOfAppService extends GeneralService {
         return c.map(UserOfAppConverter::convertDetails).orElse(null);
     }
 
-    private void updateUser(UserOfAppInputDto user, String authUsername){
+    private void updateUser(UserOfAppDetailsInputDto user, String authUsername){
         UserOfApp u = userOfAppRepository.findByUsername(authUsername);
         u.setDescription(user.getDescription());
 //        u.setMail(user.getMail());
@@ -83,7 +84,7 @@ public class UserOfAppService extends GeneralService {
         userOfAppRepository.save(u);
     }
 
-    public void updateUser(UserOfAppInputDto user, Authentication auth){
+    public void updateUser(UserOfAppDetailsInputDto user, Authentication auth){
             updateUser(user, ((User) auth.getPrincipal()).getUsername());
     }
 
@@ -104,6 +105,31 @@ public class UserOfAppService extends GeneralService {
             u.setUsername(user.getUsername());
             u.setPassword(passwordEncoder.encode(user.getNewPassword()));
             userOfAppRepository.save(u);
+        }
+
+    }
+
+    public void register(UserOfAppInputDto userOfAppInputDto) throws notUniqueArgumentException {
+        if(!userOfAppInputDto.getPassword().equals(userOfAppInputDto.getConfirmPassword())){
+            throw new notUniqueArgumentException("Hasła nie są identyczne", new Exception());
+        }
+        else {
+            saveNewUser(userOfAppInputDto);}
+    }
+
+    private void saveNewUser(UserOfAppInputDto userOfAppInputDto) throws notUniqueArgumentException {
+        if(userOfAppRepository.findByMail(userOfAppInputDto.getMail())==null && userOfAppRepository.findByUsername(userOfAppInputDto.getUsername())==null){
+                UserOfApp user = new UserOfApp();
+                user.setUsername(userOfAppInputDto.getUsername());
+                user.setPassword(passwordEncoder.encode(userOfAppInputDto.getPassword()));
+                user.setDescription(userOfAppInputDto.getDescription());
+                user.setDiscord(userOfAppInputDto.getDiscord());
+                user.setMail(userOfAppInputDto.getMail());
+                user.setFacebook(userOfAppInputDto.getFacebook());
+                userOfAppRepository.save(user);
+            }
+        else{
+            throw new notUniqueArgumentException("Nazwa lub email istnieją już w bazie", new Exception());
         }
 
     }

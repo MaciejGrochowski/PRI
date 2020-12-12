@@ -3,15 +3,15 @@ package com.example.PRI.entities;
 import com.example.PRI.entities.character.Character;
 import com.example.PRI.entities.history.History;
 import com.example.PRI.entities.session.Session;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.List;
 
+@EqualsAndHashCode(callSuper = true)
 @Entity(name ="users")
 @Data
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserOfApp extends GeneralEntity {
@@ -37,6 +37,5 @@ public class UserOfApp extends GeneralEntity {
 
     @OneToMany(mappedBy="createdUserOfApp")
     List<Session> sessions;
-
 
 }

@@ -2,6 +2,7 @@ package com.example.PRI.controllers;
 
 
 import com.example.PRI.controllers.annotations.Get;
+import com.example.PRI.controllers.annotations.Post;
 import com.example.PRI.dtos.characters.CharacterDetailsOutputDto;
 import com.example.PRI.dtos.characters.CharacterInputDto;
 import com.example.PRI.entities.character.Character;
@@ -52,8 +53,8 @@ public class CharacterGeneratorController {
         return characterGenerator.generateAttribute(attrName, character);
     }
 
-//    @Post("/save")
-    @RequestMapping(value = "/save", method = RequestMethod.POST)
+    @Post("/save")
+//    @RequestMapping(value = "/save", method = RequestMethod.POST)
     public long save(@Valid @RequestBody CharacterInputDto character, Authentication auth){
         character = this.trimCharacter(character);
         return characterGenerator.save(character, auth);

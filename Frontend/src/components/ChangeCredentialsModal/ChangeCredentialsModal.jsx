@@ -16,8 +16,8 @@ const customStyles = {
         backgroundColor: '#292F2F',
         color: 'white',
         zIndex: '100!important',
-        height: '60%',
-        width: '60%'
+        height: '50%',
+        width: '50%'
     }
 };
 
@@ -55,11 +55,13 @@ class ChangeCredentialsModal extends React.Component {
                         onRequestClose={() => onRequestClose()}
                         style={customStyles}
                     >
-
-                        <div>Uwaga - po zmianie użytkownika lub hasła zostaniesz automatycznie wylogowany. Możesz zalogować się ponownie przy użyciu nowych danych.</div>
-
+                        <div>{this.props.title}</div>
+                        <div className = "positive-message">Uwaga - po zmianie użytkownika lub hasła zostaniesz automatycznie wylogowany. Możesz zalogować się ponownie przy użyciu nowych danych.</div>
+<div className="login-body">
+<div className="block-component">
                         <TextField onChange={(event) => this.setState({username: event.target.value})} disabled={!isUsernameChanging} value={this.state.username}/>
-
+</div>
+<div className="block-component">
                         <PasswordField
                             // hintText="At least 8 characters"
                             // floatingLabelText="Enter your password"
@@ -67,8 +69,8 @@ class ChangeCredentialsModal extends React.Component {
                             label="Hasło"
                             value={this.state.password}
                             onChange={event => this.setState({password:event.target.value})}
-                        />
-
+                        /></div>
+<div className="block-component">
                         {isPasswordChanging && <PasswordField
                             // hintText="At least 8 characters"
                             // floatingLabelText="Enter your password"
@@ -77,11 +79,12 @@ class ChangeCredentialsModal extends React.Component {
                             value={this.state.newPassword}
                             onChange={event => this.setState({newPassword:event.target.value})}
                         />}
+                        </div>
+<div className="block-component">
+                        <button type="submit" className="zaloguj-button" onClick={() => onSave(this.state.username, this.state.password, this.state.newPassword)}>Zapisz</button>
+</div>
 
-                        <button type="submit" className="button" onClick={() => onSave(this.state.username, this.state.password, this.state.newPassword)}>Zapisz</button>
-
-
-
+</div>
                     </Modal>
                 </div></div>
         );

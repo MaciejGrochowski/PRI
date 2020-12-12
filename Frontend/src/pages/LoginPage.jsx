@@ -52,14 +52,15 @@ class LoginPage extends React.Component {
                 </div>
                 <div className="block-component"><PasswordField
                     // hintText="At least 8 characters"
-                    // floatingLabelText="Enter your password"
+                    floatingLabelText="Enter your password"
                     // errorText="Your password is too short"
                     label="Hasło"
+                    Placeholder="Enter your password"
                     value={this.state.password}
                     onChange={event => this.setState({password:event.target.value})}
                 /></div>
 
-                <div className="block-component"><div className = "zaloguj-button"><Link onClick={() => this.login()}>Zaloguj</Link></div></div>
+                <div className="block-component"><button className = "zaloguj-button"><Link onClick={() => this.login()}>Zaloguj</Link></button></div>
     <div className="login-description">Nie masz jeszcze konta? <Link to={fronendUrls.registerPage}>Zarejestruj się!</Link></div>
                 </div>
                 </div>

@@ -4,19 +4,16 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.io.Serializable;
-
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserOfAppInputDto implements Serializable {
-
-    String description;
-
-//    @NotBlank(message = "NO_EMAIL")
-//    String mail;
-    String discord;
+public class UserOfAppInputDto {
+    String mail;
+    String password;
+    String username;
+    String confirmPassword;
     String facebook;
-
+    String discord;
+    String description;
+    //{"mail":"Chomik","password":"Chomik","username":"Chomik","confirmPassword":"Chomik","facebook":"Chomik","discord":"Chomik","description":"Chomik"}
 }

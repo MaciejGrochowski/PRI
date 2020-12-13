@@ -1,5 +1,4 @@
 import React from "react";
-import {Link} from "react-router-dom";
 import "../../styles/globalStyles.css";
 import {TextField} from "@material-ui/core";
 import {textsPolish} from "../../commons/texts-pl";
@@ -10,8 +9,8 @@ import {
     validationPassword,
     validationUsername
 } from "./validation";
-import PasswordField from "material-ui-password-field/lib/PasswordField";
 import loginService from "../../services/loginService";
+import PasswordField from "../../components/PasswordField/PasswordField";
 
 
 class RegisterPage extends React.Component {
@@ -23,6 +22,12 @@ class RegisterPage extends React.Component {
             errorText: {},
             registerData: {},
             registered: false
+        }
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        if(prevState.registerData.password !== this.state.registerData.password && prevState.registerData.confirmPassword === this.state.registerData.confirmPassword){
+            this.checkPasswordsSame();
         }
     }
 
@@ -75,7 +80,6 @@ class RegisterPage extends React.Component {
     }
 
 
-
     render(){
 
         if(this.state.registered)
@@ -112,29 +116,29 @@ class RegisterPage extends React.Component {
 </div>
                 {/*ToDo why showing text-validation not work in PasswordField??*/}
                 <div className="block-component">
+
                     <PasswordField
                     error={this.state.errorState.password}
-                           label={textsPolish.register.password}
-                           value={this.state.registerData.password}
-                           errorText={this.state.errorText.password}
-                           helperText = {this.state.errorText.password}
-                           onChange={event => this.onChangeFunction(event, "password",
-                               element => this.setState({registerData: {...this.state.registerData, password: element}}),
-                               validationPassword)}
-                />
-                <div>{this.state.errorText.password}</div>
+                    label={textsPolish.register.password}
+                    valueName={"password"}
+                    value={this.state.registerData.password}
+                    errorText={this.state.errorText.password}
+                    handleChangePassword={this.onChangeFunction}
+                    setStateFunction={ element => this.setState({registerData: {...this.state.registerData, password: element}})}
+                    validationFunc={validationPassword}
+                    />
 </div>
 
                 <div className="block-component">
-                                <PasswordField error={this.state.errorState.confirmPassword}
-                               label={textsPolish.register.confirmPassword}
-                               value={this.state.registerData.confirmPassword}
-                               errorText={this.state.errorText.confirmPassword}
-                               helperText = {this.state.errorText.confirmPassword}
-                               onChange={event => this.onChangeFunction(event, "confirmPassword",
-                                   element => this.setState({registerData: {...this.state.registerData, confirmPassword: element}}))}
-                />
-                <div>{this.state.errorText.confirmPassword}</div>
+                    <PasswordField
+                        error={this.state.errorState.confirmPassword}
+                        label={textsPolish.register.confirmPassword}
+                        valueName={"confirmPassword"}
+                        value={this.state.registerData.confirmPassword}
+                        errorText={this.state.errorText.confirmPassword}
+                        handleChangePassword={this.onChangeFunction}
+                        setStateFunction={ element => this.setState({registerData: {...this.state.registerData, confirmPassword: element}})}
+                    />
 </div>
                 <div className="block-component">
                 <TextField error={this.state.errorState.facebook}

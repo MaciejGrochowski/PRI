@@ -1,15 +1,14 @@
 import React from "react";
 import {Link} from "react-router-dom";
 import {TextField} from "@material-ui/core";
-import PasswordField from 'material-ui-password-field'
 import loginService from "../services/loginService";
 import Cookie from "js-cookie";
-import {authorizationRequest, getToken} from "../services/util";
 import {loginStatusChange} from "../actions";
 import { connect } from "react-redux";
 import {fronendUrls} from "../commons/urls";
 import "../styles/login-page.css";
 import {Redirect} from 'react-router'
+import PasswordField from "../components/PasswordField/PasswordField";
 
 
 
@@ -38,6 +37,10 @@ class LoginPage extends React.Component {
             .catch(error => console.log(error))
     }
 
+    handleChangePassword = event => {
+        this.setState({password: event.target.value})
+    }
+
     render(){
         if (this.props.isLogged) {
             return <Redirect push to={fronendUrls.mainPage} />
@@ -50,15 +53,12 @@ class LoginPage extends React.Component {
                 <div className="block-component">
                 <TextField label="Login" value={this.state.username} onChange={event => this.setState({username:event.target.value})} />
                 </div>
-                <div className="block-component"><PasswordField
-                    // hintText="At least 8 characters"
-                    floatingLabelText="Enter your password"
-                    // errorText="Your password is too short"
-                    label="Hasło"
-                    Placeholder="Enter your password"
-                    value={this.state.password}
-                    onChange={event => this.setState({password:event.target.value})}
-                /></div>
+                <div className="block-component">
+                    <PasswordField
+                        handleChangePassword={this.handleChangePassword}
+                        label={"Hasło"}
+                    />
+                </div>
 
                 <div className="block-component"><button className = "zaloguj-button"><Link onClick={() => this.login()}>Zaloguj</Link></button></div>
     <div className="login-description">Nie masz jeszcze konta? <Link to={fronendUrls.registerPage}>Zarejestruj się!</Link></div>

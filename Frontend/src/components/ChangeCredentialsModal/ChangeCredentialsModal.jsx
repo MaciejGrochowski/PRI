@@ -2,7 +2,9 @@ import React from 'react';
 import Modal from 'react-modal';
 import button from "../../styles/buttons.css";
 import {TextField} from "@material-ui/core";
-import PasswordField from "material-ui-password-field";
+import PasswordField from "../PasswordField/PasswordField";
+import {textsPolish} from "../../commons/texts-pl";
+import {validationPassword} from "../../pages/RegisterPage/validation";
 
 
 const customStyles = {
@@ -28,7 +30,8 @@ class ChangeCredentialsModal extends React.Component {
         this.state = {
             username: "",
             password: "",
-            newPassword: ""
+            newPassword: "",
+            errorNewPassword: {}
         }
     }
 
@@ -42,6 +45,26 @@ class ChangeCredentialsModal extends React.Component {
             })
         }
      }
+
+     handleChangePassword = password => this.setState({password: password});
+
+    handleChangeConfirmPassword = event => {
+        this.setState({confirmPassword: event.target.value})
+        let tmp = validationPassword(event.target.value)
+        if(tmp.errorState){
+            this.setState({
+                errorNewPassword: {
+                    errorState: tmp.errorState,
+                    errorText: tmp.errorText
+                }
+            })
+        }
+        else{
+            this.setState({errorNewPassword: {}})
+        }
+    }
+
+
 
     render() {
         const {isOpen, onRequestClose, isUsernameChanging, isPasswordChanging, onSave} = this.props;
@@ -62,22 +85,19 @@ class ChangeCredentialsModal extends React.Component {
                         <TextField onChange={(event) => this.setState({username: event.target.value})} disabled={!isUsernameChanging} value={this.state.username}/>
 </div>
 <div className="block-component">
-                        <PasswordField
-                            // hintText="At least 8 characters"
-                            // floatingLabelText="Enter your password"
-                            // errorText="Your password is too short"
-                            label="Hasło"
-                            value={this.state.password}
-                            onChange={event => this.setState({password:event.target.value})}
-                        /></div>
+    <PasswordField
+        handleChangePassword={this.handleChangePassword}
+        label={"Stare hasło"}
+    />
+</div>
 <div className="block-component">
-                        {isPasswordChanging && <PasswordField
-                            // hintText="At least 8 characters"
-                            // floatingLabelText="Enter your password"
-                            // errorText="Your password is too short"
-                            label="Nowe hasło"
-                            value={this.state.newPassword}
-                            onChange={event => this.setState({newPassword:event.target.value})}
+                        {isPasswordChanging &&
+                        <PasswordField
+                            error={this.state.errorNewPassword.errorState}
+                            label={"Nowe hasło"}
+                            value={this.state.confirmPassword}
+                            errorText={this.state.errorNewPassword.errorText}
+                            handleChangePassword={this.handleChangeConfirmPassword}
                         />}
                         </div>
 <div className="block-component">

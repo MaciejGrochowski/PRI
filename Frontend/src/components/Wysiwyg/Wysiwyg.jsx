@@ -20,8 +20,8 @@ class Wysiwyg extends React.Component {
     }
 
     onEditorStateChange = (editorState) => {
-        let tmp = parse(draftToHtml(convertToRaw(this.state.editorState.getCurrentContent())))
-        console.log(tmp);
+        // let tmp = parse(draftToHtml(convertToRaw(this.state.editorState.getCurrentContent())))
+        // console.log(tmp);
 
         this.setState({
             editorState,
@@ -61,16 +61,6 @@ class Wysiwyg extends React.Component {
                     separator: ' ',
                     trigger: '@',
                     suggestions: characterTags
-                    // suggestions: [
-                    //     {text: 'APPLE', value: 'apple', url: 'apple'},
-                    //     {text: 'BANANA', value: 'banana', url: '/characterDetails/2'},
-                    //     {text: 'CHERRY', value: 'cherry', url: 'cherry'},
-                    //     {text: 'DURIAN', value: 'durian', url: 'durian'},
-                    //     {text: 'EGGFRUIT', value: 'eggfruit', url: 'eggfruit'},
-                    //     {text: 'FIG', value: 'fig', url: 'fig'},
-                    //     {text: 'GRAPEFRUIT', value: 'grapefruit', url: 'grapefruit'},
-                    //     {text: 'HONEYDEW', value: 'honeydew', url: 'honeydew'},
-                    // ],
                 }}
                 hashtag={{}}
             />

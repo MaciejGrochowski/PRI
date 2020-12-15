@@ -24,7 +24,9 @@ padding-right: 5%;
 .user-profile-container{
 display: flex;
 }
-
+.user-profile-block{
+display: block;
+}
 .user-profile-block{
 display: block;
 padding: 5%;
@@ -33,4 +35,24 @@ width: 50%;
 
 .user-profile-subtitle{
 font-size: x-large;
+color: white;
+}
+.text{
+color: white;
+}
+
+.one-element-brief{
+display: block;
+color: white;
+border: 1px solid black;
+border-bottom: 5px solid grey;
+padding: 3%;
+margin: 3%;
+}
+
+.short-history-title{
+text-align: center;
+font-weight: bold;
+font-size: large;
+padding-bottom: 10px;
 }

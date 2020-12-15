@@ -11,5 +11,6 @@ import lombok.NoArgsConstructor;
 
 public class HistoryListCharacterDetailsOutputDto {
     String beginDescription;
+    String title;
     Long id;
 }

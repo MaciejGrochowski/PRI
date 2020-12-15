@@ -33,6 +33,7 @@ public class HistoryConverter {
     public static HistoryListCharacterDetailsOutputDto convertForCharacterDetails(History c) {
         HistoryListCharacterDetailsOutputDto output = new HistoryListCharacterDetailsOutputDto();
         output.setBeginDescription(Jsoup.parse(c.getDescription()).text());
+        output.setTitle(c.getTitle());
         output.setId(c.getId());
         return output;
     }

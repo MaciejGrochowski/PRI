@@ -22,7 +22,6 @@ class LoginButton extends React.Component {
     render(){
 
         let username = getInfoFromToken(getToken());
-        console.log(username)
         if(username) username=username.sub;
 
         let welcome = <>Witaj, <Link to={fronendUrls.userProfilePage + "/" + username}>{username}</Link></>;

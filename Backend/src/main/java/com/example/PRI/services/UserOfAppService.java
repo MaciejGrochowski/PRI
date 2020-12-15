@@ -85,7 +85,10 @@ public class UserOfAppService extends GeneralService {
     }
 
     public void updateUser(UserOfAppDetailsInputDto user, Authentication auth){
+        UserOfApp userDb = findByUsername(((User) auth.getPrincipal()).getUsername());
+        if(userDb.getPassword().equals(((User) auth.getPrincipal()).getPassword())){
             updateUser(user, ((User) auth.getPrincipal()).getUsername());
+        }
     }
 
     public void updateUserCredentials(@Valid UserOfAppCredentialsInputDto user, Authentication auth) throws notUniqueArgumentException {

@@ -46,10 +46,12 @@ class ChangeCredentialsModal extends React.Component {
         }
      }
 
-     handleChangePassword = password => this.setState({password: password});
+     handleChangePassword = event => this.setState({password: event.target.value});
+
+    handleChangeUsername = event => this.setState({username: event.target.value})
 
     handleChangeConfirmPassword = event => {
-        this.setState({confirmPassword: event.target.value})
+        this.setState({newPassword: event.target.value})
         let tmp = validationPassword(event.target.value)
         if(tmp.errorState){
             this.setState({
@@ -82,12 +84,13 @@ class ChangeCredentialsModal extends React.Component {
 <div className="login-body">
 <div className = "login-title">{this.props.title}</div>
 <div className="block-component">
-                        <TextField onChange={(event) => this.setState({username: event.target.value})} disabled={!isUsernameChanging} value={this.state.username}/>
+                        <TextField onChange={this.handleChangeUsername} disabled={!isUsernameChanging} value={this.state.username}/>
 </div>
 <div className="block-component">
     <PasswordField
         handleChangePassword={this.handleChangePassword}
         label={"Stare hasło"}
+        value={this.state.oldPassword}
     />
 </div>
 <div className="block-component">
@@ -95,7 +98,7 @@ class ChangeCredentialsModal extends React.Component {
                         <PasswordField
                             error={this.state.errorNewPassword.errorState}
                             label={"Nowe hasło"}
-                            value={this.state.confirmPassword}
+                            value={this.state.newPassword}
                             errorText={this.state.errorNewPassword.errorText}
                             handleChangePassword={this.handleChangeConfirmPassword}
                         />}

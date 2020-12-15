@@ -162,7 +162,8 @@ class UserProfilePage extends React.Component {
 </div>
 </div>
                 Lista postaci:
-                {this.state.characters && this.state.characters.map((item, i) => (
+                {/*ToDo get only a first 10 characters/histories on backend, not slice it on frontend*/}
+                {this.state.characters && this.state.characters.slice(0,10).map((item, i) => (
                     <div className = "one-history-brief">
                         <div>{item.id}</div>
                         <div>{item.name}</div>
@@ -179,7 +180,7 @@ class UserProfilePage extends React.Component {
                 <Link to={fronendUrls.characterList + "/user/" + this.state.username}>Więcej postaci</Link>
 
                 Lista historii:
-                {this.state.histories && this.state.histories.map((item, i) => (
+                {this.state.histories && this.state.histories.slice(0,10).map((item, i) => (
                     <div className = "one-history-brief">
                         <div>{item.id}</div>
                         <div>{item.beginDescription}</div>

@@ -78,9 +78,9 @@ class ChangeCredentialsModal extends React.Component {
                         onRequestClose={() => onRequestClose()}
                         style={customStyles}
                     >
-                        <div>{this.props.title}</div>
                         <div className = "positive-message">Uwaga - po zmianie użytkownika lub hasła zostaniesz automatycznie wylogowany. Możesz zalogować się ponownie przy użyciu nowych danych.</div>
 <div className="login-body">
+<div className = "login-title">{this.props.title}</div>
 <div className="block-component">
                         <TextField onChange={(event) => this.setState({username: event.target.value})} disabled={!isUsernameChanging} value={this.state.username}/>
 </div>

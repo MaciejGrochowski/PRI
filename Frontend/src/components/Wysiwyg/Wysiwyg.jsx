@@ -62,7 +62,6 @@ class Wysiwyg extends React.Component {
                     trigger: '@',
                     suggestions: characterTags
                 }}
-                hashtag={{}}
             />
                 <div className = "center-content"><button className="green-button" onClick={() => saveHistory(draftToHtml(convertToRaw(this.state.editorState.getCurrentContent())))}>Zapisz <span>{element}</span></button></div>
 

@@ -38,6 +38,14 @@ export const textsPolish = {
         description: 'Opis profilu',
         mail: 'Adres e-mail',
         notSamePasswords: 'Hasła nie są takie same.'
+    },
+    registerTooltipTexts: {
+        username: 'Nazwa użytkownika może posiadać łącznie 3-20 liter, liczb i znaków specjalnych.',
+        password: 'Hasło musi zawierać 3-20 znaków dużą literę i znak specjalny.',
+        facebook: 'Link do profilu na Facebooku',
+        discord: 'Nazwa użytkownika Discord np. Ork#1234',
+        description: 'Opis profilu może mieć maksymalnie 1000 znaków.',
+        mail: 'Adres e-mail',
     }
 };
 

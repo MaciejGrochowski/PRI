@@ -13,28 +13,11 @@ class RegisterTooltip extends React.Component {
         }
     }
 
-    tooltipTextGenerator(typeName){
-        switch(typeName) {
-            case 'username':
-                return
-            case 'password':
-                return
-            case 'facebookLink':
-                return
-            case 'discord':
-                return
-            case 'description':
-                return
-            default:
-                return 'dont work';
-        }
-    }
-
 
     render() {
         return(
-            <div className={"registerTooltip"}>
-                <Tooltip title={this.tooltipTextGenerator(this.props.tooltipTypeName)} placement={"right-start"} arrow
+            <div class="registerTooltip">
+                <Tooltip title={this.props.tooltipTextName} placement={"right-start"} arrow
                          classes={{ label: 'myTooltip' }}>
                     <IconButton aria-label="info">
                         <InfoOutlinedIcon />

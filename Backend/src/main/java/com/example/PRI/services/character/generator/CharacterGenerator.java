@@ -86,7 +86,7 @@ public class CharacterGenerator extends GeneralService {
         if(attribute.equals("miejsce-urodzenia")) return characterBuilder.buildBirthPlace(characterBirthPlaceGenerator).getCharacter();
         else if(character.getBirthPlace() != null) characterBuilder.buildBirthPlace(characterBirthPlaceGenerator, character.getBirthPlace());
 
-        if(attribute.equals("rasa")) {
+        if(attribute.equals("rasa")) { //ToDo enumy zamiast stringów
             do {
                 characterBuilder.buildRace(new RaceGenerator());
             }
@@ -219,8 +219,11 @@ public class CharacterGenerator extends GeneralService {
     @Transactional
     public long save(CharacterInputDto characterInputDto, Authentication auth) {
 
+        if(auth==null || !auth.isAuthenticated()) return -1; //ToDo check it and do-it
+
         String username = userOfAppService.getUsernameFromAuthentication(auth);
         UserOfApp user = userOfAppService.findByUsername(username);
+
 
         Character character = new Character();
         character.setCreatedBy(user);

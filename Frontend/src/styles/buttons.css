@@ -27,6 +27,7 @@
 
   button:disabled{
     color: grey!important;
+    background: none!important;
   }
 .reverse{
   color: #292F2F;
@@ -186,6 +187,13 @@
     color: #292F2F;
     text-decoration: bold;
   }
+
+  .green-button:disabled{
+      border: 2px solid grey!important;
+      background: none!important;
+      color: grey!important;
+  }
+
   .red-button{
     color: tomato;
     border: tomato;

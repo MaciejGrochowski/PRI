@@ -9,6 +9,6 @@ export const months = [
     "Erntezeit",
     "Brauzeit",
     "Kaldezeit",
-    "Ulrichzeit",
+    "Ulriczeit",
     "Vorhexen"
 ]

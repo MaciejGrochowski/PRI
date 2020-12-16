@@ -1,3 +1,4 @@
+
 .globalStyles{
 
     background-color: #292F2F!important;
@@ -6,6 +7,7 @@
     text-align: right;
 
 }
+
 
 body{
     background-color: #292F2F;
@@ -55,16 +57,17 @@ margin: 0px;
     /* color: grey!important; */
 }
 .Mui-disabled .MuiSvgIcon-root{
-    color: grey!important
+    color: grey!important;
   }
 
 
 .MuiFormControl-root.Mui-disabled{
     border-bottom: none!important
 }
+
 .MuiFormLabel-root.Mui-disabled{
     color: grey!important;
-    border-bottom: none!important
+    border-bottom: none!important;
 }
 
 .flex-div{
@@ -169,5 +172,27 @@ margin: 0px;
 
 a{
 color: #FFD859!important;
+}
 
+
+.CoolTooltip button.MuiButtonBase-root.MuiIconButton-root {
+    padding: 0;
+    margin-top: 32px;
+    margin-left: 5px;
+}
+
+.MuiTooltip-popper{
+    width: 210px;
+}
+
+@media only screen and (max-width: 1180px) {
+    .MuiTooltip-popper{
+        width: 180px;
+    }
+}
+
+@media only screen and (max-width: 1015px) {
+    .MuiTooltip-popper{
+        width: 130px;
+    }
 }

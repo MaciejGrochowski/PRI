@@ -65,6 +65,7 @@ class HistoriesListPage extends React.Component{
 
         let historyId = this.getHistoryId();
         if(historyId > 0 && this.state.characterLoadByPage === "" ){
+            this.setState({historyWithoutPreviousOrNext: true})
             this.setState({isPopupOpen: true, idPopupHistory: historyId})
             window.history.pushState({}, null, window.location.href.substring(0, window.location.href.lastIndexOf("/")));
 
@@ -222,11 +223,12 @@ class HistoriesListPage extends React.Component{
                     <HistoryDetailsPopup
                     isOpen={this.state.isPopupOpen}
                     title={"Szczegóły"}
-                    onRequestClose={() => this.setState({isPopupOpen: false, idPopupHistory: 0})}
+                    onRequestClose={() => this.setState({isPopupOpen: false, idPopupHistory: 0, historyWithoutPreviousOrNext: false})}
                     historyId={this.state.idPopupHistory}
                     changeHistoryToNext={this.changeHistoryFromDetails}
                     isPreviousButtonHidden={this.state.page === 0 && this.state.data.indexOf(this.state.data.filter(h => h.id === this.state.idPopupHistory)[0]) === 0}
                     isNextButtonHidden={this.state.page * this.state.countPerPage + 1 + this.state.data.indexOf(this.state.data.filter(h => h.id === this.state.idPopupHistory)[0]) === this.state.count}
+                    removeButtons={this.state.historyWithoutPreviousOrNext} //ToDo refactor that
 
                     />
 

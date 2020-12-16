@@ -24,12 +24,6 @@ public class CharacterController {
         return characterService.getCountCharacters();
     }
 
-    @Get
-    public List<CharacterDefaultAttributesOutputDto> getAllCharacters() {
-        return characterService.getAllCharacters();
-    }
-
-
     @Get("/paged")
     public CharacterListOutputDto getSomeCharactersPaged(CharacterListFilterInputStringDto characterListInput) {
         Map<String, String> map = this.getMapFromString(characterListInput.getFilters());
@@ -54,11 +48,6 @@ public class CharacterController {
             e.printStackTrace();
         }
         return new HashMap<>();
-    }
-
-    @Get("/example")
-    public List<CharacterDefaultAttributesOutputDto> getSomeCharactersByHeight() {
-        return characterService.getByHeight();
     }
 
     @Get("/autocomplete/filters")

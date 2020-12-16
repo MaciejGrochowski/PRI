@@ -100,9 +100,11 @@ public class CharacterService extends GeneralService {
     }
 
     public CharacterListOutputDto getSomeCharactersPaged(CharacterListFilterInputDto requestInfo) {
+
+        if(requestInfo.getRowsPerPage() > 100) requestInfo.setRowsPerPage(100);
         Pageable pageable;
         if (requestInfo.getSortedBy() == null)
-            pageable = PageRequest.of(requestInfo.getCurrentPage(), requestInfo.getRowsPerPage());
+            pageable = PageRequest.of(requestInfo.getCurrentPage(), requestInfo.getRowsPerPage(), Sort.by("id").descending());
         else {
             if (requestInfo.getIsAscending())
                 pageable = PageRequest.of(requestInfo.getCurrentPage(),

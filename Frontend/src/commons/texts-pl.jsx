@@ -1,6 +1,32 @@
 export const textsPolish = {
     noRecordsOnCharactersList: 'Brak postaci spełniających kryteria',
-    noRecordsOnHistoryList: 'Brak historii spełniających kryteria',
+    nameValidationText: 'Imię powinno zaczynać się z wielkiej litery i zawierać litery A-Z.',
+    surnameValidationText: 'Poprawne formy nazwisk to: Von Munder | von Munder | Munder.',
+    dayOfBornValidationText: 'Dzień urodzenia może mieć tylko wartość 1-34.',
+    yearOfBornValidationText: 'Rok urodzenia może mieć tylko wartość 0-3000.',
+    heightValidationText: 'Wzrost może mieć tylko wartość 50-300.',
+    weightValidationText: 'Waga może mieć tylko wartość 10-800.',
+    toolTipName: "By wygenerować imię musisz uzupełnić pola: ",
+    toolTipSurname: "By wygenerować nazwisko musisz uzupełnić pola: ",
+    toolTipRace: "By wygenerować rase musisz uzupełnić pole: ",
+    toolTipSex: "By wygenerować płeć musisz uzupełnić pole: ",
+    toolTipProfession: "By wygenerować profesje musisz uzupełnić pola: ",
+    toolTipPlaceOfBeing: "By wygenerować miejsce pobytu musisz uzupełnić pola: ",
+    toolTipDayOfBorn: "By wygerować całą date urodzenia musisz uzupełnić pola: ",
+    toolTipMonthOfBorn: "By wygerować całą date urodzenia musisz uzupełnić pola: ",
+    toolTipYearOfBorn: "By wygerować całą date urodzenia musisz uzupełnić pole: ",
+    toolTipHeight: "By wygenerować wzrost musisz uzupełnić pola: ",
+    toolTipWeight: "By wygenerować wage musisz uzupełnić pola: ",
+    toolTipColorOfEyes: "By wygenerować kolor oczu musisz uzupełnić pole: ",
+    toolTipColorOfHair: "By wygenerować kolor włosów musisz uzupełnić pole: ",
+    toolTipCharacter: "By wygenerować cechy charakteru musisz uzupełnić pola:",
+    toolTipAppearance: "By wygenerować cechy wyglądu musisz uzupełnić pola: ",
+    toolTipPreviousProfession: "Poprzednie profesje zmieniają się przy losowaniu obecnej profesji",
+    toolTipReligion: "By wygerować religie potrzeba: ",
+    toolTipEmotions: "By wygenerować dominujące emocje musisz uzupełnić pola: ",
+    toolTipSkills: "By wygenerować umiejętności musisz uzupełnić pola: ",
+    toolTipTalents: "By wygenerować zdolności musisz uzupełnić pola: ",
+    noRecordsOnHistoryList: 'Brak historii spełniających kryteria'
 }
 
 export const polishCodeErrors = {
@@ -54,13 +80,11 @@ export const polishCodeErrors = {
     MOVEMENT_NOT_REGEXP: 'Szybkość musi być liczbą z przedziału 1-99.',
 
     NO_HISTORY_DAY: 'Historia musi mieć dzień.',
-    DAY_OF_HISTORY_NOT_REGEXP: 'Dzień historii musi mieć wartość 1-34',
+    DAY_OF_HISTORY_NOT_REGEXP: 'Dzień historii musi być liczbą jedno lub dwucyfrową.',
     NO_MONTH_OF_HISTORY: 'Historia musi mieć miesiąc.',
     MONTH_OF_HISTORY_NOT_REGEXP: 'Miesiąc historii musi istnieć w świecie Warhammera.',
     NO_YEAR_OF_HISTORY: 'Historia musi mieć rok.',
-    YEAR_OF_HISTORY_NOT_REGEXP: 'Rok historii mieć wartość 1-3000.',
+    YEAR_OF_HISTORY_NOT_REGEXP: 'Rok historii musi być maksymalnie czterocyfrową liczbą.',
     NO_HISTORY_PLACE: 'Historia musi mieć miejsce.',
     NO_HISTORY_DESCRIPTION: 'Historia musi mieć opis.'
-
-
 }

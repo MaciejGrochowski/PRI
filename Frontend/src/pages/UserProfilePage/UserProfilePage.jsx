@@ -32,7 +32,6 @@ class UserProfilePage extends React.Component {
     }
 
     componentDidMount() {
-        console.log(this.props.match.params.username);
         this.getUser();
     }
 
@@ -129,11 +128,11 @@ class UserProfilePage extends React.Component {
             </div>
 
             <div className = "user-profile-block">
-                {this.isProfileLoggedUser() && <div>
-                    <button onClick={() => this.setState({isPasswordChanging: true})}>Edytuj hasło</button>
-                    <button onClick={() => this.setState({isUsernameChanging: true})}>Edytuj nazwę użytkownika</button>
-                    {!this.state.isEditingProfile && <button onClick={this.onClickEditButton}>Edytuj profil</button>}
-                    {this.state.isEditingProfile && <button onClick={() => this.saveProfile()}>Zapisz</button>}
+                {this.isProfileLoggedUser() && <div className = "user-profile-container">
+                    <button className = "detaleButton" onClick={() => this.setState({isPasswordChanging: true})}>Edytuj hasło</button>
+                    <button className = "detaleButton" onClick={() => this.setState({isUsernameChanging: true})}>Edytuj nazwę użytkownika</button>
+                    {!this.state.isEditingProfile && <button className = "detaleButton" onClick={this.onClickEditButton}>Edytuj profil</button>}
+                    {this.state.isEditingProfile && <button className = "detaleButton" onClick={() => this.saveProfile()}>Zapisz</button>}
                 </div>}
 
                 <ChangeCredentialsModal
@@ -148,46 +147,53 @@ class UserProfilePage extends React.Component {
                 />
 
 
-                <div className="flex-div"><div>Mail: <TextField disabled value={this.state.mail}/></div></div>
+                <div className = "user-profile-container"><div className = "text">Mail: <TextField disabled value={this.state.mail}/></div></div>
 
                 {/*{this.state.isEditingFacebook ?*/}
                 {/*    <div>Facebook: <TextField onChange={(event) => this.setState({facebook: event.target.value})} disabled={!this.state.isEditingFacebook} value={this.state.facebook}/></div> :*/}
                 {/*    <div>Facebook: <Link to={this.state.facebook}>{this.state.facebook}</Link></div>*/}
                 {/*}*/}
-                <div className="flex-component"><div>Facebook: <TextField onChange={(event) => this.setState({facebook: event.target.value})} disabled={!this.state.isEditingProfile} value={this.state.facebook}/></div></div>
+                <div className = "user-profile-container"><div className = "text">Facebook: <TextField onChange={(event) => this.setState({facebook: event.target.value})} disabled={!this.state.isEditingProfile} value={this.state.facebook}/></div></div>
 
-                <div className="flex-element"><div>Discord: <TextField onChange={(event) => this.setState({discord: event.target.value})} disabled={!this.state.isEditingProfile} value={this.state.discord}/></div></div>
+                <div className = "user-profile-container"><div className = "text">Discord: <TextField onChange={(event) => this.setState({discord: event.target.value})} disabled={!this.state.isEditingProfile} value={this.state.discord}/></div></div>
 
 
 </div>
 </div>
-                Lista postaci:
-                {this.state.characters && this.state.characters.map((item, i) => (
-                    <div className = "one-history-brief">
-                        <div>{item.id}</div>
-                        <div>{item.name}</div>
-                        <div>{item.surname}</div>
-                        <div>{item.career}</div>
-                        <div>{item.livePlace}</div>
-                        <div>{item.race}</div>
-                        <div>{item.sex}</div>
+<div className = "user-profile-container">
+<div className = "user-profile-block">
+                <div className = "user-profile-subtitle">Lista postaci:</div>
+                {/*ToDo get only a first 10 characters/histories on backend, not slice it on frontend*/}
+                {this.state.characters && this.state.characters.slice(0,10).map((item, i) => (
+                    <div className = "one-element-brief">
+                        <div className = "yellow-color">#{item.id}</div>
+                        <div className = "user-profile-container"><div className = "yellow-color">Imię: </div>	&nbsp; {item.name}</div>
+                        <div className = "user-profile-container"><div className = "yellow-color">Nazwisko:	&nbsp; </div>{item.surname}</div>
+                        <div className = "user-profile-container"><div className = "yellow-color">Rasa:	&nbsp; </div>{item.race}</div>
+                        <div className = "user-profile-container" ><div className = "yellow-color">Płeć: 	&nbsp;</div>{item.sex}</div>
+                        <div className = "user-profile-container"><div className = "yellow-color">Profesja: 	&nbsp;</div>{item.career}</div>
+                        <div className = "user-profile-container"><div className = "yellow-color">Miejsce pobytu:	&nbsp; </div>{item.livePlace}</div>
                         {/*<Link className = "detaleButton" to={fronendUrls.historyList + "/" + item.id}><div className = "normal-text">Więcej</div></Link>*/}
                     </div>
                 ))
                 }
 
-                <Link to={fronendUrls.characterList + "/user/" + this.state.username}>Więcej postaci</Link>
-
-                Lista historii:
-                {this.state.histories && this.state.histories.map((item, i) => (
-                    <div className = "one-history-brief">
-                        <div>{item.id}</div>
+                <Link className="detaleButton" to={fronendUrls.characterList + "/user/" + this.state.username}>Więcej postaci</Link>
+</div>
+<div className = "user-profile-block">
+                <div className = "user-profile-subtitle">Lista historii:</div>
+                {this.state.histories && this.state.histories.slice(0,10).map((item, i) => (
+                    <div className = "one-element-brief">
+                        {/*<div>{item.id}</div>*/}
+                        <div className="short-history-title">{item.title}</div>
                         <div>{item.beginDescription}</div>
                         {/*<Link className = "detaleButton" to={fronendUrls.historyList + "/" + item.id}><div className = "normal-text">Więcej</div></Link>*/}
                     </div>
                 ))
                 }
-                <Link to={fronendUrls.historyList + "/user/" + this.state.username}>Więcej historii</Link>
+                <Link className="detaleButton" to={fronendUrls.historyList + "/user/" + this.state.username}>Więcej historii</Link>
+</div>
+</div>
 </div>
         )
     }

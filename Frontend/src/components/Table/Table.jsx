@@ -2,7 +2,7 @@ import React from "react";
 import MaterialTable from "material-table";
 import TablePagination from "@material-ui/core/TablePagination";
 import mystyle from "../../styles/tables.css";
-import button from "../../styles/buttons.css";
+import button from "../../styles/buttons.css"; //ToDo css or styles objects, pick one
 import {Link} from "react-router-dom";
 
 class Table extends React.Component {
@@ -22,7 +22,7 @@ class Table extends React.Component {
     componentDidUpdate(prevProps, prevState){
         let columnsConfig = this.props.columnsConfig
 
-        if(this.props.notVisibleColumns){
+        if(this.props.notVisibleColumns){ //ToDo not mutate props!!
             columnsConfig = columnsConfig.filter(c => !this.props.notVisibleColumns.includes(c.title))
         }
 
@@ -62,6 +62,7 @@ class Table extends React.Component {
         };
         return(
             <div styleName = {mystyle.table}>
+                {/*ToDo this link shouldnt exist - it download icons with any render*/}
                 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
                 <MaterialTable
                 style={mystyle.table}

@@ -2,8 +2,8 @@ package com.example.PRI.services;
 
 import com.example.PRI.converters.UserOfAppConverter;
 import com.example.PRI.dtos.users.UserOfAppCredentialsInputDto;
-import com.example.PRI.dtos.users.UserOfAppDetailsOutputDto;
 import com.example.PRI.dtos.users.UserOfAppDetailsInputDto;
+import com.example.PRI.dtos.users.UserOfAppDetailsOutputDto;
 import com.example.PRI.dtos.users.UserOfAppInputDto;
 import com.example.PRI.entities.UserOfApp;
 import com.example.PRI.exceptions.notUniqueArgumentException;
@@ -46,7 +46,7 @@ public class UserOfAppService extends GeneralService {
 
     private void logoutUser(String username){
         UserOfApp userOFApp = findByUsername(username);
-        userOFApp.setToken(null);
+        userOFApp.setToken(null); //ToDo token should let more logged sessions
         userOfAppRepository.save(userOFApp);
     }
 
@@ -85,7 +85,10 @@ public class UserOfAppService extends GeneralService {
     }
 
     public void updateUser(UserOfAppDetailsInputDto user, Authentication auth){
+        UserOfApp userDb = findByUsername(((User) auth.getPrincipal()).getUsername());
+        if(userDb.getPassword().equals(((User) auth.getPrincipal()).getPassword())){
             updateUser(user, ((User) auth.getPrincipal()).getUsername());
+        }
     }
 
     public void updateUserCredentials(@Valid UserOfAppCredentialsInputDto user, Authentication auth) throws notUniqueArgumentException {
@@ -114,7 +117,8 @@ public class UserOfAppService extends GeneralService {
             throw new notUniqueArgumentException("Hasła nie są identyczne", new Exception());
         }
         else {
-            saveNewUser(userOfAppInputDto);}
+            saveNewUser(userOfAppInputDto);
+        }
     }
 
     private void saveNewUser(UserOfAppInputDto userOfAppInputDto) throws notUniqueArgumentException {

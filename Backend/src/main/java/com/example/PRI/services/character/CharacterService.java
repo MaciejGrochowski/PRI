@@ -100,7 +100,12 @@ public class CharacterService extends GeneralService {
         characterRepository.save(character);
     }
 
-    public CharacterListOutputDto getSomeCharactersPaged(CharacterListFilterInputDto requestInfo) {
+    public CharacterListOutputDto getSomeCharactersPaged(CharacterListFilterInputDto requestInfo) throws Throwable {
+        System.out.println("BEFORE");
+        System.out.println(Runtime.getRuntime().totalMemory());
+        System.out.println(Runtime.getRuntime().freeMemory());
+
+        System.out.println("------");
         Pageable pageable;
         if (requestInfo.getSortedBy() == null)
             pageable = PageRequest.of(requestInfo.getCurrentPage(), requestInfo.getRowsPerPage(), Sort.by("id").descending());
@@ -123,6 +128,12 @@ public class CharacterService extends GeneralService {
 
         output.setList(outputData);
         output.setTotalCount(charactersFilteredPage.getTotalElements());
+        System.out.println("AFTER");
+        System.out.println(Runtime.getRuntime().totalMemory());
+        System.out.println(Runtime.getRuntime().freeMemory());
+
+        super.finalize();
+
 
         return output;
     }

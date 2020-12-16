@@ -13,3 +13,10 @@ padding: 5px;
 .normal-text{
 font-size: small;
 }
+
+.history-title{
+font-size: xx-large;
+margin-top: 2%;
+font-weight: bold;
+text-align: center;
+}

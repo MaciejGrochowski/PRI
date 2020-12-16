@@ -60,6 +60,7 @@ class PasswordField extends React.Component {
                 value={this.state.password}
                 error={this.props.error}
                 onChange={this.handleChange('password')}
+                onKeyDown={this.props.onKeyDown}
                 endAdornment={
                     <InputAdornment position="end">
                         <IconButton

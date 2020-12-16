@@ -2,12 +2,9 @@
 }
 
 .login-body{
-display: block;
- width: 30%;
-  position: absolute;
-  margin-top: 2%;
-  top: 20%;
-  left: 35%;
+    display: block;
+    width: 40%;
+    margin: auto;
 
 }
 

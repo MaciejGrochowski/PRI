@@ -41,6 +41,12 @@ class LoginPage extends React.Component {
         this.setState({password: event.target.value})
     }
 
+    enterListener = event => {
+        if (event.keyCode === 13) {
+            this.login();
+        }
+    }
+
     render(){
         if (this.props.isLogged) {
             return <Redirect push to={fronendUrls.mainPage} />
@@ -57,6 +63,7 @@ class LoginPage extends React.Component {
                     <PasswordField
                         handleChangePassword={this.handleChangePassword}
                         label={"Hasło"}
+                        onKeyDown={(e) => this.enterListener(e)}
                     />
                 </div>
 

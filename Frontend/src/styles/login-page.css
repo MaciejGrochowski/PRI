@@ -36,6 +36,8 @@ border-top: solid #FFD859 5px;
 .block-component{
 margin-top: 5%;
 margin-bottom: 5%;
+    display:flex;
+    flex-direction:row;
 }
 
 .block-component a{
@@ -75,4 +77,12 @@ text-decoration: none!important;
 
 .login-description{
 color: white;
+}
+
+
+
+.registerTooltip button.MuiButtonBase-root.MuiIconButton-root{
+    padding: 0;
+    top: 50%;
+    margin-left: 5px;
 }

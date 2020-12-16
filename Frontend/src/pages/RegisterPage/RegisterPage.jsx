@@ -11,6 +11,8 @@ import {
 } from "./validation";
 import loginService from "../../services/loginService";
 import PasswordField from "../../components/PasswordField/PasswordField";
+import GeneratorTooltip from "../../components/Tooltip/GeneratorTooltip";
+import RegisterTooltip from "../../components/Tooltip/RegisterTooltip";
 
 
 class RegisterPage extends React.Component {
@@ -103,6 +105,7 @@ class RegisterPage extends React.Component {
                                    element => this.setState({registerData: {...this.state.registerData, username: element}}),
                                validationUsername)}
                 />
+                <RegisterTooltip />
 </div>
                 <div className="block-component">
                 <TextField error={this.state.errorState.mail}
@@ -113,6 +116,7 @@ class RegisterPage extends React.Component {
                                element => this.setState({registerData: {...this.state.registerData, mail: element}}),
                                validationMail)}
                 />
+                <RegisterTooltip />
 </div>
                 {/*ToDo why showing text-validation not work in PasswordField??*/}
                 <div className="block-component">
@@ -127,6 +131,7 @@ class RegisterPage extends React.Component {
                     setStateFunction={ element => this.setState({registerData: {...this.state.registerData, password: element}})}
                     validationFunc={validationPassword}
                     />
+                    <RegisterTooltip />
 </div>
 
                 <div className="block-component">
@@ -149,6 +154,7 @@ class RegisterPage extends React.Component {
                                element => this.setState({registerData: {...this.state.registerData, facebook: element}}),
                                validationFacebook)}
                 />
+                    <RegisterTooltip />
 </div>
                 <div className="block-component">
 
@@ -160,6 +166,7 @@ class RegisterPage extends React.Component {
                                element => this.setState({registerData: {...this.state.registerData, discord: element}}),
                                validationDiscord)}
                 />
+                    <RegisterTooltip />
 </div>
                 <div className="block-component">
                 <TextField error={this.state.errorState.description}
@@ -170,6 +177,7 @@ class RegisterPage extends React.Component {
                                element => this.setState({registerData: {...this.state.registerData, description: element}}),
                                validationDescription)}
                 />
+                    <RegisterTooltip />
 </div>
                 <div className="block-component">
                 <button className = "zaloguj-button" disabled={!this.isPreparedForRegister()} onClick={() => this.register()}>Zarejestruj</button>

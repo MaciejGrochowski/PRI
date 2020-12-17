@@ -1,22 +1,27 @@
-import {textsPolish} from "../../commons/texts-pl";
+import {polishCodeErrors, textsPolish} from "../../commons/texts-pl";
 
 
 //ToDo validation functions
 
 export const validationUsername = username => {
-    if (username.match("^[A-Z]([a-z]?)*$") || username.match("^(?![\\s\\S])")) {
+    if(username.match("^(?![\\s\\S])") || username.match("^.{3,20}$")){
         return {errorText: "", errorState: false}
-    } else {
-        return {errorState: true, errorText: "exampleError"}
+    }
+    if ((username.match("^.{0,2}$"))){
+        return {errorState: true, errorText: polishCodeErrors.registerErrors.usernameTooShort}
+    }
+    if ((username.match("^.{21,}$"))){
+        return {errorState: true, errorText: polishCodeErrors.registerErrors.usernameTooLong}
     }
 };
 
 
 export const validationMail = mail => {
-    if (mail.match("^[A-Z]([a-z]?)*$") || mail.match("^(?![\\s\\S])")) {
+    if (mail.match("^([a-zA-Z0-9_\\-\\.]+)@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.)|(([a-zA-Z0-9\\-]+\\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\\]?)$")
+        || mail.match("^(?![\\s\\S])")) {
         return {errorText: "", errorState: false}
     } else {
-        return {errorState: true, errorText: "exampleError"}
+        return {errorState: true, errorText: polishCodeErrors.registerErrors.emailNotCorrect}
     }
 };
 

@@ -11,7 +11,6 @@ import {
 } from "./validation";
 import loginService from "../../services/loginService";
 import PasswordField from "../../components/PasswordField/PasswordField";
-import GeneratorTooltip from "../../components/Tooltip/GeneratorTooltip";
 import RegisterTooltip from "../../components/Tooltip/RegisterTooltip";
 
 

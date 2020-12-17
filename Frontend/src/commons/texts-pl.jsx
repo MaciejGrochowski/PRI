@@ -107,5 +107,11 @@ export const polishCodeErrors = {
     YEAR_OF_HISTORY_NOT_REGEXP: 'Rok historii musi być maksymalnie czterocyfrową liczbą.',
     NO_HISTORY_PLACE: 'Historia musi mieć miejsce.',
     NO_HISTORY_DESCRIPTION: 'Historia musi mieć opis.',
-    NO_HISTORY_TITLE: 'Historia musi mieć tytuł.'
+    NO_HISTORY_TITLE: 'Historia musi mieć tytuł.',
+
+    registerErrors: {
+        usernameTooShort: 'Nazwa użytkownika jest zbyt krótka.',
+        usernameTooLong: 'Nazwa użytkownika jest zbyt długa.',
+        emailNotCorrect: 'Podaj poprawny adres email.'
+    }
 }

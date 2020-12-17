@@ -117,7 +117,7 @@ class RegisterPage extends React.Component {
                 />
                     <RegisterTooltip tooltipTextName={textsPolish.registerTooltipTexts.mail}/>
 </div>
-                {/*ToDo why showing text-validation not work in PasswordField??*/}
+
                 <div className="block-component">
 
                     <PasswordField

@@ -8,6 +8,7 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import FormControl from '@material-ui/core/FormControl';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
+import {FormHelperText} from "@material-ui/core";
 
 
 class PasswordField extends React.Component {
@@ -73,7 +74,7 @@ class PasswordField extends React.Component {
                     </InputAdornment>
                 }
             />
-            {this.props.error && <span>{this.props.errorText}</span>}
+            <FormHelperText id="my-helper-text" error={true}>{this.props.errorText}</FormHelperText>
         </FormControl>)
 
 

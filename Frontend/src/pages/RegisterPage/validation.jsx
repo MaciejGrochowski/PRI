@@ -13,6 +13,9 @@ export const validationUsername = username => {
     if ((username.match("^.{21,}$"))){
         return {errorState: true, errorText: polishCodeErrors.registerErrors.usernameTooLong}
     }
+    else {
+        return {errorState: true, errorText: textsPolish.registerTooltipTexts.username}
+    }
 };
 
 
@@ -26,11 +29,26 @@ export const validationMail = mail => {
 };
 
 export const validationPassword = password => {
-    if (password.match("^23$") || password.match("^(?![\\s\\S])")) {
-        return {errorText: "", errorState: false}
+    if ((password.match("^(?![\\s\\S])"))){
+        return {errorState: false, errorText: ""}
+    }
+    if ((password.match("^.{0,2}$"))){
+        return {errorState: true, errorText: polishCodeErrors.registerErrors.passwordTooShort}
+    }
+    if ((password.match("^.{21,}$"))){
+        return {errorState: true, errorText: polishCodeErrors.registerErrors.passwordTooLong}
+    }
+    if (password.match("^([a-zA-Z]*[\\|!@#$%^&*()\\-_\\\\\\/><.,=+~`'\"{}\\[\\]:;\\^]*)*$")) {
+        return {errorState: true, errorText: polishCodeErrors.registerErrors.passwordMissingNumber}
+    }
+    if (password.match("^([a-zA-Z]*\\d*)*$")) {
+        return {errorState: true, errorText: polishCodeErrors.registerErrors.passwordMissingSpecialSign}
+    }
+    if (password.match("^([a-z]*[\\|!@#$%^&*()\\-_\\\\\\/><.,=+~`'\"{}\\[\\]:;\\^]*\\d*)*$")) {
+        return {errorState: true, errorText: polishCodeErrors.registerErrors.passwordMissingCapitalLetter}
     }
     else {
-        return {errorState: true, errorText: polishCodeErrors.registerErrors.passwordTooShort}
+        return {errorState: false, errorText: ""}
     }
 };
 

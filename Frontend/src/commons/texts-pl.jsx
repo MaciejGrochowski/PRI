@@ -115,6 +115,9 @@ export const polishCodeErrors = {
         emailNotCorrect: 'Podaj poprawny adres email.',
         passwordTooShort: 'Hasło jest zbyt krótkie.',
         passwordTooLong: 'Hasło jest zbyt długie.',
+        passwordMissingNumber: 'Hasło musi posiadać co najmniej jedną liczbę.',
+        passwordMissingSpecialSign: 'Hasło musi posiadać co najmniej jeden znak specjalny.',
+        passwordMissingCapitalLetter: 'Hasło musi posiadać co najmniej jedną wielką litere.',
         facebookNotCorrect: 'Podaj poprawny adres do profilu na facebooku.',
         discordNotCorrect: 'Podaj poprawną nazwę użytkownika discord.',
         descriptionTooLong: 'Opis jest zbyt długi.'

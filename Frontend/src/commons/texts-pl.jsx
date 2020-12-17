@@ -112,6 +112,11 @@ export const polishCodeErrors = {
     registerErrors: {
         usernameTooShort: 'Nazwa użytkownika jest zbyt krótka.',
         usernameTooLong: 'Nazwa użytkownika jest zbyt długa.',
-        emailNotCorrect: 'Podaj poprawny adres email.'
+        emailNotCorrect: 'Podaj poprawny adres email.',
+        passwordTooShort: 'Hasło jest zbyt krótkie.',
+        passwordTooLong: 'Hasło jest zbyt długie.',
+        facebookNotCorrect: 'Podaj poprawny adres do profilu na facebooku.',
+        discordNotCorrect: 'Podaj poprawną nazwę użytkownika discord.',
+        descriptionTooLong: 'Opis jest zbyt długi.'
     }
 }

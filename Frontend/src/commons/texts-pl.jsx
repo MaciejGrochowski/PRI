@@ -30,13 +30,13 @@ export const textsPolish = {
     needLoginToSaveCharacter: "Aby zapisać postać w bazie danych, musisz być zalogowany.",
     needLoginToSaveHistory: "Aby zapisać historię, musisz być zalogowany.",
     register: {
-        username: 'Nazwa użytkownika',
-        password: 'Hasło',
-        confirmPassword: 'Powtórz hasło',
+        username: 'Nazwa użytkownika*',
+        password: 'Hasło*',
+        confirmPassword: 'Powtórz hasło*',
         facebook: 'Link do facebooka',
         discord: 'Discord',
         description: 'Opis profilu',
-        mail: 'Adres e-mail',
+        mail: 'Adres e-mail*',
         notSamePasswords: 'Hasła nie są takie same.'
     },
     registerTooltipTexts: {

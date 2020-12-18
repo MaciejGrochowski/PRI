@@ -80,7 +80,7 @@ public class Character extends GeneralEntity {
     @ManyToMany
     List<Talent> talents;
 
-    Integer endWeaponSkills;
+    Integer endWeaponSkills; //Todo class for that, we should use Statistics
     Integer endBallisticSkills;
     Integer endStrength;
     Integer endToughness;

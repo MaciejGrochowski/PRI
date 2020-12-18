@@ -111,10 +111,10 @@ class CharactersListPage extends React.Component {
             filterObject = {...filterObject, race: raceStr.substring(0, raceStr.length - 1)}
         }
 
-        const careers = Array.from(document.getElementsByClassName("characterFilterCareers")).map(c => c.textContent);
-        if (careers.length > 0) filterObject = {
+        const currentCareer = Array.from(document.getElementsByClassName("characterFilterCareers")).map(c => c.textContent);
+        if (currentCareer.length > 0) filterObject = {
             ...filterObject,
-            careers: this.mapFilterArrayToString(careers, this.state.autocompleteData.careerNames)
+            currentCareer: this.mapFilterArrayToString(currentCareer, this.state.autocompleteData.careerNames)
         }
 
         const eyeColor = document.getElementById('characterFilterEyeColor');

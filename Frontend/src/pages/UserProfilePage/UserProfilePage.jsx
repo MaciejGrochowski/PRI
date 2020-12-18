@@ -23,9 +23,6 @@ class UserProfilePage extends React.Component {
             characters: [],
             histories: [],
             sessions: [],
-            isEditingDiscord: false,
-            isEditingFacebook: false,
-            isEditingDescription: false,
             isPasswordChanging: false,
             isUsernameChanging: false
         }
@@ -149,10 +146,6 @@ class UserProfilePage extends React.Component {
 
                 <div className = "user-profile-container"><div className = "text">Mail: <TextField disabled value={this.state.mail}/></div></div>
 
-                {/*{this.state.isEditingFacebook ?*/}
-                {/*    <div>Facebook: <TextField onChange={(event) => this.setState({facebook: event.target.value})} disabled={!this.state.isEditingFacebook} value={this.state.facebook}/></div> :*/}
-                {/*    <div>Facebook: <Link to={this.state.facebook}>{this.state.facebook}</Link></div>*/}
-                {/*}*/}
                 <div className = "user-profile-container"><div className = "text">Facebook: <TextField onChange={(event) => this.setState({facebook: event.target.value})} disabled={!this.state.isEditingProfile} value={this.state.facebook}/></div></div>
 
                 <div className = "user-profile-container"><div className = "text">Discord: <TextField onChange={(event) => this.setState({discord: event.target.value})} disabled={!this.state.isEditingProfile} value={this.state.discord}/></div></div>

@@ -15,8 +15,6 @@ import {
     generateOneAttributeSuccessHandler,
     mapArrayToStringWithoutSpaces,
     mapFilterArrayToString,
-    mapSkillsArrayToString,
-    mapTalentsArrayToString
 } from "./util";
 import {
     validationDayOfBorn,
@@ -51,7 +49,7 @@ class CharacterGeneratorPage extends React.Component {
     constructor() {
         super();
         this.state = {
-            autocompleteData: { //To będzie z bazy danych pobierane na podobieństwo filtrów
+            autocompleteData: {
                 careerNames: [],
                 placeNames: [],
                 eyeColors: [],
@@ -78,7 +76,7 @@ class CharacterGeneratorPage extends React.Component {
     }
 
     getDataFromForm = () => {
-        let output = {
+        return {
             currentCareer: this.state.currentCareer,
             sex: this.state.sex,
             race: this.state.race,
@@ -110,7 +108,6 @@ class CharacterGeneratorPage extends React.Component {
             baseMovement: this.state.baseMovement, endMovement: this.state.endMovement,
             baseMagic: this.state.baseMagic, endMagic: this.state.endMagic
         };
-        return output;
     }
 
 
@@ -527,7 +524,7 @@ class CharacterGeneratorPage extends React.Component {
                                 disablePortal
                                 canBeGenerated
                                 generated={this.state.talents}
-                                onRandomClick={() => this.generateOneAttribute("Zdolności")}
+                                onRandomClick={() => this.generateOneAttribute(CharacterAttribute.TALENTS.name)}
                                 disabled={this.state.currentCareer === undefined || this.state.currentCareer === "" || this.state.currentCareer === null ||
                                 this.state.race === undefined || this.state.race === "" || this.state.race === null
                                 }

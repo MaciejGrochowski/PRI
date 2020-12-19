@@ -32,4 +32,6 @@ public class RandomService {
         return r.ints(minValue, maxValue).findFirst().getAsInt();
     }
 
+    public Double nextGaussian(){return r.nextGaussian();}
+
 }

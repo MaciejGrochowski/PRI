@@ -131,7 +131,7 @@ public class CharacterBuilder {
     }
 
     public CharacterBuilder buildWeight(WeightGenerator service) {
-        Map<String, String> newProps = service.generateWeight(character, properties);
+        Map<String, String> newProps = service.generateWeight(character, randomService, properties);
         putAllProperties(newProps);
         return this;
     }
@@ -144,7 +144,7 @@ public class CharacterBuilder {
     }
 
     public CharacterBuilder buildHeight(HeightGenerator service) {
-        Map<String, String> newProps = service.generateHeight(character, properties);
+        Map<String, String> newProps = service.generateHeight(character, randomService, properties);
         putAllProperties(newProps);
         return this;
     }

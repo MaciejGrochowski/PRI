@@ -66,7 +66,7 @@ public class CharacterBuilder {
     }
 
     public CharacterBuilder buildRace(RaceGenerator service){
-        Map<String, String> newProps = service.generateRace(character, properties);
+        HashMap<String, String> newProps = service.generateRace(character, randomService, properties);
         this.putAllProperties(newProps);
         return this;
     }

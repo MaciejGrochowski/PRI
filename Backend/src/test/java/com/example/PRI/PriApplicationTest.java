@@ -1,7 +1,9 @@
 package com.example.PRI;
 
+import com.example.PRI.entities.ImperialDate;
+import com.example.PRI.entities.character.*;
 import com.example.PRI.entities.character.Character;
-import com.example.PRI.entities.character.Statistics;
+import com.example.PRI.enums.Month;
 import com.example.PRI.enums.Race;
 import com.example.PRI.enums.Sex;
 import com.example.PRI.services.character.generator.*;
@@ -97,7 +99,6 @@ public class PriApplicationTest {
 
     @Test
     public void weightSeedCheck(){
-
         RaceGenerator raceGenerator = new RaceGenerator();
         raceGenerator.generateRace(characterBuilder.getCharacter(),characterBuilder.getRandomService(),characterBuilder.getProperties());
         characterBuilder.buildRace(raceGenerator);
@@ -116,7 +117,6 @@ public class PriApplicationTest {
 
     @Test
     public void heightSeedCheck(){
-
         RaceGenerator raceGenerator = new RaceGenerator();
         raceGenerator.generateRace(characterBuilder.getCharacter(),characterBuilder.getRandomService(),characterBuilder.getProperties());
         characterBuilder.buildRace(raceGenerator);
@@ -131,4 +131,75 @@ public class PriApplicationTest {
 
         assertEquals(142,characterBuilder.getCharacter().getHeight().intValue());
     }
+
+    //TODO findall daje null pointer
+    @Disabled
+    public void eyeColorSeedCheck(){
+        RaceGenerator raceGenerator = new RaceGenerator();
+        raceGenerator.generateRace(characterBuilder.getCharacter(),characterBuilder.getRandomService(),characterBuilder.getProperties());
+        characterBuilder.buildRace(raceGenerator);
+
+        EyeColorGenerator eyeColorGenerator = new EyeColorGenerator();
+        eyeColorGenerator.generateEyeColor(characterBuilder.getCharacter(),characterBuilder.getRandomService(),characterBuilder.getProperties());
+        characterBuilder.buildEyeColor(eyeColorGenerator);
+
+        System.out.println(characterBuilder.getCharacter().getEyeColor());
+    }
+
+    //TODO to samo co wyżej
+    @Disabled
+    public void hairColorSeedCheck(){
+        RaceGenerator raceGenerator = new RaceGenerator();
+        raceGenerator.generateRace(characterBuilder.getCharacter(),characterBuilder.getRandomService(),characterBuilder.getProperties());
+        characterBuilder.buildRace(raceGenerator);
+
+        HairColorGenerator hairColorGenerator = new HairColorGenerator();
+        hairColorGenerator.generateHairColor(characterBuilder.getCharacter(),characterBuilder.getRandomService(),characterBuilder.getProperties());
+        characterBuilder.buildHairColor(hairColorGenerator);
+
+        System.out.println(characterBuilder.getCharacter().getHairColor());
+    }
+
+    @Test
+    public void birthDateSeedCheck(){
+        ImperialDate imperialDateTest = new ImperialDate();
+        imperialDateTest.setDay(27);
+        imperialDateTest.setMonth(Month.VORGEHEIM);
+        imperialDateTest.setYear(2416);
+
+        RaceGenerator raceGenerator = new RaceGenerator();
+        raceGenerator.generateRace(characterBuilder.getCharacter(),characterBuilder.getRandomService(),characterBuilder.getProperties());
+        characterBuilder.buildRace(raceGenerator);
+
+        BirthDateGenerator birthDateGenerator = new BirthDateGenerator();
+        birthDateGenerator.generateBirthDate(characterBuilder.getCharacter(),characterBuilder.getRandomService(),characterBuilder.getProperties());
+        characterBuilder.buildBirthDate(birthDateGenerator);
+
+        assertEquals(imperialDateTest, characterBuilder.getCharacter().getBirthDate());
+    }
+
+
+    //TODO to samo co wyżej
+    @Disabled
+    public void emotionSeedCheck(){
+        RaceGenerator raceGenerator = new RaceGenerator();
+        raceGenerator.generateRace(characterBuilder.getCharacter(),characterBuilder.getRandomService(),characterBuilder.getProperties());
+        characterBuilder.buildRace(raceGenerator);
+
+        EmotionGenerator emotionGenerator = new EmotionGenerator();
+        emotionGenerator.generateEmotions(characterBuilder.getCharacter(),characterBuilder.getRandomService(),characterBuilder.getProperties());
+        characterBuilder.buildEmotions(emotionGenerator);
+
+        System.out.println(characterBuilder.getCharacter().getDominatingEmotions());
+    }
+
+    @Disabled
+    public void predictionSeedCheck(){
+        PredictionGenerator predictionGenerator = new PredictionGenerator();
+        predictionGenerator.generatePrediction(characterBuilder.getCharacter(),characterBuilder.getRandomService());
+        characterBuilder.buildPrediction(predictionGenerator);
+
+        System.out.println(characterBuilder.getCharacter().getPrediction());
+    }
+
 }

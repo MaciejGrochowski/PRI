@@ -93,7 +93,7 @@ public class CharacterBuilder {
     }
 
     public CharacterBuilder buildSurname(SurnameGenerator service) {
-        HashMap<String, String> newProps = service.generateSurname(character, randomService, properties);
+        Map<String, String> newProps = service.generateSurname(character, randomService, properties);
         this.putAllProperties(newProps);
         return this;
     }
@@ -156,7 +156,7 @@ public class CharacterBuilder {
         return this;
     }
     public CharacterBuilder buildEyeColor(EyeColorGenerator service) {
-        Map<String, String> newProps = service.generateEyeColor(character, properties);
+        Map<String, String> newProps = service.generateEyeColor(character, randomService, properties);
         putAllProperties(newProps);
         return this;
     }
@@ -169,7 +169,7 @@ public class CharacterBuilder {
     }
 
     public CharacterBuilder buildHairColor(HairColorGenerator service) {
-        Map<String, String> newProps = service.generateHairColor(character, properties);
+        Map<String, String> newProps = service.generateHairColor(character,randomService, properties);
         putAllProperties(newProps);
         return this;
     }
@@ -182,7 +182,7 @@ public class CharacterBuilder {
     }
 
     public CharacterBuilder buildBirthDate(BirthDateGenerator service) {
-        Map<String, String> newProps = service.generateBirthDate(character, properties);
+        Map<String, String> newProps = service.generateBirthDate(character, randomService, properties);
         putAllProperties(newProps);
         return this;
     }
@@ -195,7 +195,7 @@ public class CharacterBuilder {
     }
 
     public CharacterBuilder buildEmotions(EmotionGenerator service) {
-        Map<String, String> newProps = service.generateEmotions(character, properties);
+        Map<String, String> newProps = service.generateEmotions(character,randomService, properties);
         putAllProperties(newProps);
         return this;
     }
@@ -208,7 +208,7 @@ public class CharacterBuilder {
     }
 
     public CharacterBuilder buildPrediction(PredictionGenerator service) {
-        Map<String, String> newProps = service.generatePrediction(character);
+        Map<String, String> newProps = service.generatePrediction(character, randomService);
         putAllProperties(newProps);
         return this;
     }

@@ -29,12 +29,12 @@ public class SurnameGenerator extends GeneralService {
 
     RandomService randomService;
 
-    public HashMap<String, String> generateSurname(Character character, RandomService randomService, HashMap<String, String> properties) {
+    public Map<String, String> generateSurname(Character character, RandomService randomService, Map<String, String> properties) {
         this.randomService = randomService;
         Double surnameTypeRand = randomService.nextDouble();
         List<Surname> surnames = null;
         Surname outputSurname = null;
-        HashMap<String, String> newProps = new HashMap<>();
+        Map<String, String> newProps = new HashMap<>();
         if (character.getRace().equals(Race.HALFLING) && surnameTypeRand <= 0.3) {
             surnames = surnameService.findHalflingSurnames();
         } else if (character.getRace().equals(Race.ELF) && surnameTypeRand <= 0.25) {

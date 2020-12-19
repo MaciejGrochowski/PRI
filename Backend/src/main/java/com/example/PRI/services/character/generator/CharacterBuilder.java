@@ -93,7 +93,7 @@ public class CharacterBuilder {
     }
 
     public CharacterBuilder buildSurname(SurnameGenerator service) {
-        Map<String, String> newProps = service.generateSurname(character, properties);
+        HashMap<String, String> newProps = service.generateSurname(character, randomService, properties);
         this.putAllProperties(newProps);
         return this;
     }
@@ -105,7 +105,7 @@ public class CharacterBuilder {
     return this;
     }
     public CharacterBuilder buildBaseStats(StatisticsGenerator service) {
-        Map<String, String> newProps = service.generateBaseStats(character, properties);
+        Map<String, String> newProps = service.generateBaseStats(character, randomService, properties);
         putAllProperties(newProps);
         return this;
     }

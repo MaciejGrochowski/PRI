@@ -7,6 +7,7 @@ import com.example.PRI.enums.Race;
 import com.example.PRI.enums.Sex;
 import com.example.PRI.exceptions.CharacterGenerationException;
 import com.example.PRI.services.GeneralService;
+import com.example.PRI.services.RandomService;
 import com.example.PRI.services.character.NameService;
 import com.example.PRI.services.character.SurnameService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,16 +27,19 @@ public class SurnameGenerator extends GeneralService {
     @Autowired
     NameService nameService;
 
-    public Map<String, String> generateSurname(Character character, HashMap<String, String> properties) {
-        Random rand = new Random();
+    RandomService randomService;
+
+    public HashMap<String, String> generateSurname(Character character, RandomService randomService, HashMap<String, String> properties) {
+        this.randomService = randomService;
+        Double surnameTypeRand = randomService.nextDouble();
         List<Surname> surnames = null;
         Surname outputSurname = null;
-        Map<String, String> newProps = new HashMap<>();
-        if (character.getRace().equals(Race.HALFLING) && rand.nextDouble() <= 0.3) {
+        HashMap<String, String> newProps = new HashMap<>();
+        if (character.getRace().equals(Race.HALFLING) && surnameTypeRand <= 0.3) {
             surnames = surnameService.findHalflingSurnames();
-        } else if (character.getRace().equals(Race.ELF) && rand.nextDouble() <= 0.25) {
+        } else if (character.getRace().equals(Race.ELF) && surnameTypeRand <= 0.25) {
             surnames = surnameService.findElfSurnames();
-        } else if (character.getRace().equals(Race.HUMAN) && rand.nextDouble() <= 0.1) {
+        } else if (character.getRace().equals(Race.HUMAN) && surnameTypeRand <= 0.1) {
             surnames = surnameService.findHumanSurnames();
         } else if (character.getRace().equals(Race.DWARF))
             outputSurname = this.generateDwarfSurname(character.getSex());
@@ -47,8 +51,9 @@ public class SurnameGenerator extends GeneralService {
 
     private Surname generateElfHalflingHumanSurname(List<Surname> surnames) {
         if (surnames == null) return null;
+        Double surnameTypeRand = randomService.nextDouble();
         surnames = surnames.stream().filter(Surname::isUsedByGenerator).collect(Collectors.toList());
-        double randRoll = new Random().nextDouble();
+        double randRoll = surnameTypeRand;
         Collections.shuffle(surnames);
 
         for (Surname surname : surnames) {
@@ -60,11 +65,11 @@ public class SurnameGenerator extends GeneralService {
     }
 
     private Surname generateDwarfSurname(Sex sex) {
-        Random rand = new Random();
+        Double surnameTypeRand = randomService.nextDouble();
         List<Name> names = nameService.findByIsDwarf();
         names = names.stream().filter(Name::isUsedByGenerator).collect(Collectors.toList());
         Collections.shuffle(names);
-        double randomRoll = rand.nextDouble();
+        double randomRoll = surnameTypeRand;
         Name generatedName = null;
         for (Name name : names) {
             randomRoll -= name.getProbabilityNotGentry();

@@ -28,7 +28,7 @@ public class RaceGenerator {
                 }
             }
         }
-
+//TODO character birthplace must work
         if (r == null && properties.containsKey("isForest") && raceTypeRand < 0.08) r = Race.ELF;
         if (r == null && properties.containsKey("isMountains") && raceTypeRand < 0.1) r = Race.DWARF;
 //        if (r == null && (character.getBirthPlace().getPlaceType().equals(PlaceType.CITYSTATE) || properties.containsKey("isCapitol")) && raceTypeRand < 0.01) r = Race.HALFLING;

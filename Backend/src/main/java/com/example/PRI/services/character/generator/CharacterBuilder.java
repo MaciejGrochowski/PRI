@@ -80,7 +80,7 @@ public class CharacterBuilder {
     }
 
     public CharacterBuilder buildSex(SexGenerator service) {
-        Map<String, String> newProps = service.generateSex(character, properties);
+        HashMap<String, String> newProps = service.generateSex(character,randomService, properties);
         this.putAllProperties(newProps);
         return this;
     }

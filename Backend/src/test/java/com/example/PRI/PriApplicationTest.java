@@ -2,8 +2,11 @@ package com.example.PRI;
 
 import com.example.PRI.entities.character.Character;
 import com.example.PRI.enums.Race;
+import com.example.PRI.enums.Sex;
+import com.example.PRI.services.character.generator.CharacterBirthPlaceGenerator;
 import com.example.PRI.services.character.generator.CharacterBuilder;
 import com.example.PRI.services.character.generator.RaceGenerator;
+import com.example.PRI.services.character.generator.SexGenerator;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -30,4 +33,16 @@ public class PriApplicationTest {
             assertEquals(Race.DWARF,characterBuilder.getCharacter().getRace());
 
         }
+
+    @Test
+    public void sexSeedCheck(){
+        CharacterBuilder characterBuilder = new CharacterBuilder();
+        characterBuilder.initialize(1234L);
+        SexGenerator sexGenerator = new SexGenerator();
+        sexGenerator.generateSex(characterBuilder.getCharacter(),characterBuilder.getRandomService(),characterBuilder.getProperties());
+        characterBuilder.buildSex(sexGenerator);
+
+        assertEquals(Sex.FEMALE,characterBuilder.getCharacter().getSex());
+
+    }
 }

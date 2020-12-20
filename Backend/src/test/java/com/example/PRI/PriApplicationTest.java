@@ -1,18 +1,36 @@
 package com.example.PRI;
 
+import com.example.PRI.controllers.PlaceController;
 import com.example.PRI.entities.ImperialDate;
+import com.example.PRI.entities.Place;
 import com.example.PRI.entities.character.*;
 import com.example.PRI.entities.character.Character;
 import com.example.PRI.enums.Month;
+import com.example.PRI.enums.PlaceType;
 import com.example.PRI.enums.Race;
 import com.example.PRI.enums.Sex;
+import com.example.PRI.repositories.PlaceRepository;
+import com.example.PRI.services.PlaceService;
 import com.example.PRI.services.character.generator.*;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.jupiter.api.Disabled;
 import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.context.annotation.aspectj.EnableSpringConfigured;
+import org.springframework.stereotype.Service;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.web.servlet.MockMvc;
+
+import javax.persistence.Access;
+
+import java.util.Optional;
 
 import static org.junit.Assert.*;
 
@@ -20,8 +38,10 @@ import static org.junit.Assert.*;
 @SpringBootTest
 public class PriApplicationTest {
 
-    public CharacterBuilder characterBuilder = new CharacterBuilder();
+    @Autowired
+    PlaceService placeService;
 
+    public CharacterBuilder characterBuilder = new CharacterBuilder();
 
         @Test
         public void contextLoads() {
@@ -31,6 +51,20 @@ public class PriApplicationTest {
     public void initBuilderSeed(){
         characterBuilder.initialize(1234L);
     }
+
+    @Test
+    public void birthPlaceSeedCheck(){
+        Optional<Place> testPlaceOptional = placeService.findByName("Waldenhof");
+        Place testPlace = null;
+        if (testPlaceOptional.isPresent()) {testPlace = testPlaceOptional.get();};
+
+        CharacterBirthPlaceGenerator characterBirthPlaceGenerator = new CharacterBirthPlaceGenerator(placeService);
+        characterBirthPlaceGenerator.generateBirthPlace(characterBuilder.getCharacter(),characterBuilder.getRandomService());
+        characterBuilder.buildBirthPlace(characterBirthPlaceGenerator);
+        assertEquals(testPlace,characterBuilder.getCharacter().getBirthPlace());
+    }
+
+
 
         @Test
         public void raceSeedCheck(){
@@ -200,6 +234,31 @@ public class PriApplicationTest {
         characterBuilder.buildPrediction(predictionGenerator);
 
         System.out.println(characterBuilder.getCharacter().getPrediction());
+    }
+
+
+    @Disabled
+    public void currentCareerSeedCheck(){
+        RaceGenerator raceGenerator = new RaceGenerator();
+        raceGenerator.generateRace(characterBuilder.getCharacter(),characterBuilder.getRandomService(),characterBuilder.getProperties());
+        characterBuilder.buildRace(raceGenerator);
+
+        SexGenerator sexGenerator = new SexGenerator();
+        sexGenerator.generateSex(characterBuilder.getCharacter(),characterBuilder.getRandomService(),characterBuilder.getProperties());
+        characterBuilder.buildSex(sexGenerator);
+
+        StatisticsGenerator statisticsGenerator = new StatisticsGenerator();
+        statisticsGenerator.generateBaseStats(characterBuilder.getCharacter(),characterBuilder.getRandomService(),characterBuilder.getProperties());
+        characterBuilder.buildBaseStats(statisticsGenerator);
+
+        CharacterBirthPlaceGenerator characterBirthPlaceGenerator = new CharacterBirthPlaceGenerator(placeService);
+        characterBirthPlaceGenerator.generateBirthPlace(characterBuilder.getCharacter(),characterBuilder.getRandomService());
+        characterBuilder.buildBirthPlace(characterBirthPlaceGenerator);
+
+        CareerGenerator careerGenerator = new CareerGenerator();
+        careerGenerator.buildFirstCareer(characterBuilder.getCharacter(),characterBuilder.getRandomService(),characterBuilder.getProperties());
+
+        System.out.println(characterBuilder.getCharacter().getCurrentCareer());
     }
 
 }

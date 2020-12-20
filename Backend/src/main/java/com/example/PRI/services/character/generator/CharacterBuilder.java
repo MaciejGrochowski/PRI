@@ -7,10 +7,13 @@ import com.example.PRI.entities.character.*;
 import com.example.PRI.enums.Race;
 import com.example.PRI.enums.Religion;
 import com.example.PRI.enums.Sex;
+import com.example.PRI.services.PlaceService;
 import com.example.PRI.services.RandomService;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 
+import javax.persistence.Access;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,6 +23,7 @@ import static com.example.PRI.services.character.generator.MapperJsonStringToMap
 @NoArgsConstructor
 @AllArgsConstructor
 public class CharacterBuilder {
+
 
     private Character character;
     private HashMap<String, String> properties;
@@ -235,9 +239,9 @@ public class CharacterBuilder {
     public CharacterBuilder buildCareers(CareerGenerator service) {
         Map<String, String> newProps = FirstCareerPropertiesMapper.map(character, properties);
         putAllProperties(newProps);
-        newProps = service.buildFirstCareer(character, properties);
+        newProps = service.buildFirstCareer(character,randomService, properties);
         putAllProperties(newProps);
-        List<Map<String, String>> newPropsList = service.buildNextCareers(character, properties);
+        List<Map<String, String>> newPropsList = service.buildNextCareers(character,randomService, properties);
         for(Map<String, String> props : newPropsList){
             this.putAllProperties(props);
         }

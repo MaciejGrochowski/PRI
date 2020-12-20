@@ -24,6 +24,10 @@ public class CharacterBirthPlaceGenerator extends GeneralService {
 
     RandomService randomService;
 
+    public CharacterBirthPlaceGenerator(PlaceService placeService) {
+        this.placeService = placeService;
+    }
+
     public HashMap<String, String> generateBirthPlace(Character character, RandomService randomService){
         this.randomService = randomService;
 

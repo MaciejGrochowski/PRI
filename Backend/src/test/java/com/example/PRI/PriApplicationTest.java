@@ -11,6 +11,7 @@ import com.example.PRI.enums.Race;
 import com.example.PRI.enums.Sex;
 import com.example.PRI.repositories.PlaceRepository;
 import com.example.PRI.services.PlaceService;
+import com.example.PRI.services.character.CareerService;
 import com.example.PRI.services.character.generator.*;
 import org.junit.Before;
 import org.junit.Test;
@@ -40,6 +41,10 @@ public class PriApplicationTest {
 
     @Autowired
     PlaceService placeService;
+
+    @Autowired
+    CareerService careerService;
+
 
     public CharacterBuilder characterBuilder = new CharacterBuilder();
 
@@ -237,7 +242,7 @@ public class PriApplicationTest {
     }
 
 
-    @Disabled
+    @Test
     public void currentCareerSeedCheck(){
         RaceGenerator raceGenerator = new RaceGenerator();
         raceGenerator.generateRace(characterBuilder.getCharacter(),characterBuilder.getRandomService(),characterBuilder.getProperties());
@@ -257,6 +262,7 @@ public class PriApplicationTest {
 
         CareerGenerator careerGenerator = new CareerGenerator();
         careerGenerator.buildFirstCareer(characterBuilder.getCharacter(),characterBuilder.getRandomService(),characterBuilder.getProperties());
+        characterBuilder.buildCareers(careerGenerator);
 
         System.out.println(characterBuilder.getCharacter().getCurrentCareer());
     }

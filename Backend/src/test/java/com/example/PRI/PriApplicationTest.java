@@ -242,7 +242,7 @@ public class PriApplicationTest {
     }
 
 
-    @Test
+    @Disabled
     public void currentCareerSeedCheck(){
         RaceGenerator raceGenerator = new RaceGenerator();
         raceGenerator.generateRace(characterBuilder.getCharacter(),characterBuilder.getRandomService(),characterBuilder.getProperties());

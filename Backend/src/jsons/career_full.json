@@ -18,7 +18,7 @@
     "talents": null,
     "careerExits": [{"id": 67},{"id": 95},{"id": 105},{"id": 51},{"id": 56}],
     "dominatingStat": "WW+10,US+10,ZR+10",
-    "properties": "isVilliage:1,landJourney:0.1,Buntowniczy:0.04,Nieposłuszny:0.02,Kilkudniowy zarost:0.04,Przetłuszczone włosy:0.02,Długie włosy:0.1",
+    "properties": "isVilliage:1,landJourney:0.1,Broda:0.1,Buntowniczy:0.1,Pijacka czkawka:0.1,Agresywny:0.1,Arogancki:0.1,Blizna na twarzy:0.1,Niepozorny:0.1,Samolubny:0.1,Nieposłuszny:0.2,Impulsywny:0.1,Zdradziecki:0.1,Chciwy:0.2,Narwany:0.1,Krótka bródka:0.1,Szeroki w barach:0.1,Śmierdzący oddech:0.1, Blizna na ręce:0.1, Niedbały:0.1,Głupi:0.1,Dwulicowy:0.1,Wścibski:0.1,Kapryśny:0.1,Krótkie włosy:0.1,Blizny po ospie:0.1,Zimne spojrzenie:0.1,Zez:0.1",
     "bestNextCareer": "Rozbójnik"},
   {"id": 3,
     "name": "Berserker z Norski",

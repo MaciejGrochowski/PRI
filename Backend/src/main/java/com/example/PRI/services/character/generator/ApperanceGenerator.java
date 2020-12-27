@@ -5,6 +5,7 @@ import com.example.PRI.entities.character.Character;
 import com.example.PRI.enums.Religion;
 import com.example.PRI.exceptions.CharacterGenerationException;
 import com.example.PRI.services.GeneralService;
+import com.example.PRI.services.RandomService;
 import com.example.PRI.services.character.ApperanceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,11 +20,13 @@ public class ApperanceGenerator extends GeneralService {
     @Autowired
     ApperanceService apperanceService;
 
-    public Map<String, String> generateApperances(Character character, HashMap<String, String> properties) {
+    RandomService randomService;
+
+    public Map<String, String> generateApperances(Character character, RandomService randomService, HashMap<String, String> properties) {
+        this.randomService = randomService;
         Map<String, String> output = new HashMap<>();
         List<Apperance> apperances = apperanceService.findAll();
         apperances = apperances.stream().filter(a -> !properties.containsKey(a.getName()) || (properties.containsKey(a.getName()) && !properties.get(a.getName()).equals("0"))).collect(Collectors.toList());
-        Random rand = new Random();
         List<Apperance> characterApperances = new ArrayList<>();
 
         if(character.getCurrentCareer().getName().equals("Kapłan") || character.getCurrentCareer().getName().equals("Wybraniec boży") || character.getCurrentCareer().getName().equals("Arcykapłan")
@@ -33,13 +36,13 @@ public class ApperanceGenerator extends GeneralService {
         for (Apperance apperance : apperances) {
             if (properties.containsKey(apperance.getName())) {
                 double chance = Double.parseDouble(properties.get(apperance.getName()));
-                if (rand.nextDouble() < chance) {
+                if (randomService.nextDouble() < chance) {
                     if (characterApperances.stream().noneMatch(d -> d.getType().equals(apperance.getType())))
                         characterApperances.add(apperance);
                 }
             }
         }
-        int apperanceCount = randomApperanceCount(rand.nextDouble());
+        int apperanceCount = randomApperanceCount(randomService.nextDouble());
         while (characterApperances.size() < apperanceCount) {
             Apperance newApperance = this.getApperanceRandom(apperances);
             boolean noMatch = characterApperances.stream().map(Apperance::getType).noneMatch(e -> e.equals(newApperance.getType()));
@@ -57,7 +60,7 @@ public class ApperanceGenerator extends GeneralService {
 
     private Apperance getApperanceRandom(List<Apperance> apperances) {
         double sum = apperances.stream().mapToDouble(Apperance::getProbability).sum();
-        double randomRoll = new Random().nextDouble() * sum;
+        double randomRoll = randomService.nextDouble() * sum;
 
         for(Apperance apperance: apperances){
             randomRoll -= apperance.getProbability();

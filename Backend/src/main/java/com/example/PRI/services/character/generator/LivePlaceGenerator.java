@@ -6,6 +6,7 @@ import com.example.PRI.entities.character.Character;
 import com.example.PRI.enums.PlaceType;
 import com.example.PRI.services.GeneralService;
 import com.example.PRI.services.PlaceService;
+import com.example.PRI.services.RandomService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +19,9 @@ public class LivePlaceGenerator extends GeneralService {
     @Autowired
     PlaceService placeService;
 
-    public Map<String, String> generateLivePlace(Character character, HashMap<String, String> properties) {
+    RandomService randomService;
+    public Map<String, String> generateLivePlace(Character character, RandomService randomService, HashMap<String, String> properties) {
+        this.randomService=randomService;
         double landJourneyChance = 0.1 + 0.03 * character.getPreviousCareers().size();
         double nationJourneyChance = 0.05 + 0.01 * character.getPreviousCareers().size();
         //ToDo przypadki specjalne dla Miejsc Elfów i Miejsc Krasnoludów, które nie mają parentów Landów!!
@@ -46,9 +49,8 @@ public class LivePlaceGenerator extends GeneralService {
     }
 
     private Place randomPlace(List<Place> probablyPlaces) {
-        Random rand = new Random();
         while(true) {
-            double placeTypeRand = rand.nextDouble();
+            double placeTypeRand = randomService.nextDouble();
             PlaceType placeType;
             if (placeTypeRand < 0.12) placeType = PlaceType.VILLIAGE;
             else if (placeTypeRand < 0.26) placeType = PlaceType.SMALLTOWN;
@@ -56,7 +58,7 @@ public class LivePlaceGenerator extends GeneralService {
             else if (placeTypeRand < 0.77) placeType = PlaceType.CITY;
             else placeType = PlaceType.CITYSTATE;
             List<Place> maybe = probablyPlaces.stream().filter(p -> p.getPlaceType().equals(placeType)).collect(Collectors.toList());
-            if(maybe.size() > 0) return maybe.get(rand.nextInt(maybe.size()));
+            if(maybe.size() > 0) return maybe.get(randomService.nextInt(maybe.size()));
         }
     }
 

@@ -5,12 +5,15 @@ import com.example.PRI.entities.character.Character;
 import com.example.PRI.entities.character.Statistics;
 import com.example.PRI.entities.character.Talent;
 import com.example.PRI.exceptions.CharacterGenerationException;
+import com.example.PRI.services.RandomService;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
 public class CareerStatisticsGenerator {
-    public Map<String, String> generateCareerStatisticsGenerator(Character character, HashMap<String, String> properties) {
+    RandomService randomService;
+    public Map<String, String> generateCareerStatisticsGenerator(Character character, RandomService randomService, HashMap<String, String> properties) {
+        this.randomService = randomService;
         List<Career> allCareers = new ArrayList<>(character.getPreviousCareers());
         allCareers.add(character.getCurrentCareer());
         Set<Integer> weaponSkillMaxFromCareers = new HashSet<>();
@@ -25,7 +28,6 @@ public class CareerStatisticsGenerator {
         Set<Integer> woundsSkillMaxFromCareers = new HashSet<>();
         Set<Integer> movementSkillMaxFromCareers = new HashSet<>();
         Set<Integer> magicSkillMaxFromCareers = new HashSet<>();
-        Random random = new Random();
 
         if(allCareers.size() > 1){
             weaponSkillMaxFromCareers.add(allCareers.get(0).getStatistics().getWeaponSkill());
@@ -43,18 +45,18 @@ public class CareerStatisticsGenerator {
         }
         for(Career c : allCareers){
             Statistics stats = c.getStatistics();
-            if(stats.getWeaponSkill() > 0) weaponSkillMaxFromCareers.add(random.nextInt(stats.getWeaponSkill()/5 +1)*5);
-            if(stats.getBallisticSkill() > 0) ballisticSkillMaxFromCareers.add(random.nextInt(stats.getBallisticSkill()/5 +1)*5);
-            if(stats.getStrength() > 0) strengthMaxFromCareers.add(random.nextInt(stats.getStrength()/5 +1)*5);
-            if(stats.getToughness() > 0) toughnessMaxFromCareers.add(random.nextInt(stats.getToughness()/5 +1)*5);
-            if(stats.getAgility() > 0) agilityMaxFromCareers.add(random.nextInt(stats.getAgility()/5 +1)*5);
-            if(stats.getIntelligence() > 0) intelligenceMaxFromCareers.add(random.nextInt(stats.getIntelligence()/5 +1)*5);
-            if(stats.getWillPower() > 0) willPowerMaxFromCareers.add(random.nextInt(stats.getWillPower()/5 +1)*5);
-            if(stats.getFellowship() > 0) fellowshipMaxFromCareers.add(random.nextInt(stats.getFellowship()/5 +1)*5);
-            if(stats.getAttacks() > 0) attacksSkillMaxFromCareers.add(random.nextInt(stats.getAttacks() +1));
-            if(stats.getWounds() > 0) woundsSkillMaxFromCareers.add(random.nextInt(stats.getWounds() +1));
-            if(stats.getMovement() > 0) movementSkillMaxFromCareers.add(random.nextInt(stats.getMovement() +1));
-            if(stats.getMagic() > 0) magicSkillMaxFromCareers.add(random.nextInt(stats.getMagic()));
+            if(stats.getWeaponSkill() > 0) weaponSkillMaxFromCareers.add(randomService.nextInt(stats.getWeaponSkill()/5 +1)*5);
+            if(stats.getBallisticSkill() > 0) ballisticSkillMaxFromCareers.add(randomService.nextInt(stats.getBallisticSkill()/5 +1)*5);
+            if(stats.getStrength() > 0) strengthMaxFromCareers.add(randomService.nextInt(stats.getStrength()/5 +1)*5);
+            if(stats.getToughness() > 0) toughnessMaxFromCareers.add(randomService.nextInt(stats.getToughness()/5 +1)*5);
+            if(stats.getAgility() > 0) agilityMaxFromCareers.add(randomService.nextInt(stats.getAgility()/5 +1)*5);
+            if(stats.getIntelligence() > 0) intelligenceMaxFromCareers.add(randomService.nextInt(stats.getIntelligence()/5 +1)*5);
+            if(stats.getWillPower() > 0) willPowerMaxFromCareers.add(randomService.nextInt(stats.getWillPower()/5 +1)*5);
+            if(stats.getFellowship() > 0) fellowshipMaxFromCareers.add(randomService.nextInt(stats.getFellowship()/5 +1)*5);
+            if(stats.getAttacks() > 0) attacksSkillMaxFromCareers.add(randomService.nextInt(stats.getAttacks() +1));
+            if(stats.getWounds() > 0) woundsSkillMaxFromCareers.add(randomService.nextInt(stats.getWounds() +1));
+            if(stats.getMovement() > 0) movementSkillMaxFromCareers.add(randomService.nextInt(stats.getMovement() +1));
+            if(stats.getMagic() > 0) magicSkillMaxFromCareers.add(randomService.nextInt(stats.getMagic()));
         }
         if (character.getBaseStats() == null) throw new CharacterGenerationException("By wylosować obecne umiejętności bojowe, wprowadź poprawne bazowe umiejętności bojowe.", new IllegalArgumentException());
         weaponSkillMaxFromCareers.stream().mapToInt(v -> v).max().ifPresentOrElse(s -> character.setEndWeaponSkills(character.getBaseStats().getWeaponSkill() + s), () -> character.setEndWeaponSkills(character.getBaseStats().getWeaponSkill()));

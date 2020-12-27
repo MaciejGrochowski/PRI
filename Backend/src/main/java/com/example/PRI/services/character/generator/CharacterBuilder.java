@@ -122,7 +122,7 @@ public class CharacterBuilder {
     }
 
     public CharacterBuilder buildName(NameGenerator service) {
-        Map<String, String> newProps = service.generateName(character, properties);
+        Map<String, String> newProps = service.generateName(character, randomService, properties);
         putAllProperties(newProps);
         return this;
     }
@@ -259,7 +259,7 @@ public class CharacterBuilder {
     }
 
     public CharacterBuilder buildCareerStatistics(CareerStatisticsGenerator service) {
-        Map<String, String> newProps = service.generateCareerStatisticsGenerator(character, properties);
+        Map<String, String> newProps = service.generateCareerStatisticsGenerator(character, randomService, properties);
         putAllProperties(newProps);
         return this;
     }
@@ -282,7 +282,7 @@ public class CharacterBuilder {
     }
 
     public CharacterBuilder buildLivePlace(LivePlaceGenerator service) {
-        Map<String, String> newProps = service.generateLivePlace(character, properties);
+        Map<String, String> newProps = service.generateLivePlace(character,randomService, properties);
         putAllProperties(newProps);
         return this;
     }
@@ -295,7 +295,7 @@ public class CharacterBuilder {
     }
 
     public CharacterBuilder buildApperances(ApperanceGenerator service) {
-        Map<String, String> newProps = service.generateApperances(character, properties);
+        Map<String, String> newProps = service.generateApperances(character, randomService, properties);
         putAllProperties(newProps);
         return this;
     }
@@ -308,7 +308,7 @@ public class CharacterBuilder {
     }
 
     public CharacterBuilder buildPersonalities(PersonalityGenerator service) {
-        Map<String, String> newProps = service.generatePersonalities(character, properties);
+        Map<String, String> newProps = service.generatePersonalities(character, randomService, properties);
         putAllProperties(newProps);
         return this;
     }
@@ -321,7 +321,7 @@ public class CharacterBuilder {
     }
 
     public CharacterBuilder buildTalents(TalentGenerator service) {
-        Map<String, String> newProps = service.generateTalents(character, properties);
+        Map<String, String> newProps = service.generateTalents(character, randomService, properties);
         putAllProperties(newProps);
         return this;
     }
@@ -334,7 +334,7 @@ public class CharacterBuilder {
     }
 
     public CharacterBuilder buildSkills(SkillGenerator service) {
-        Map<String, String> newProps = service.generateSkills(character, properties);
+        Map<String, String> newProps = service.generateSkills(character, randomService, properties);
         putAllProperties(newProps);
         return this;
     }
@@ -349,7 +349,7 @@ public class CharacterBuilder {
     public CharacterBuilder buildReligion(ReligionGenerator service) {
         Map<String, String> newProps = service.prepareProps(character, properties);
         putAllProperties(newProps);
-        newProps = service.generateReligion(character, properties);
+        newProps = service.generateReligion(character, randomService, properties);
         putAllProperties(newProps);
         return this;
     }

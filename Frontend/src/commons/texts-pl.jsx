@@ -26,8 +26,28 @@ export const textsPolish = {
     toolTipEmotions: "By wygenerować dominujące emocje musisz uzupełnić pola: ",
     toolTipSkills: "By wygenerować umiejętności musisz uzupełnić pola: ",
     toolTipTalents: "By wygenerować zdolności musisz uzupełnić pola: ",
-    noRecordsOnHistoryList: 'Brak historii spełniających kryteria'
-}
+    noRecordsOnHistoryList: "Brak historii spełniających kryteria",
+    needLoginToSaveCharacter: "Aby zapisać postać w bazie danych, musisz być zalogowany.",
+    needLoginToSaveHistory: "Aby zapisać historię, musisz być zalogowany.",
+    register: {
+        username: 'Nazwa użytkownika*',
+        password: 'Hasło*',
+        confirmPassword: 'Powtórz hasło*',
+        facebook: 'Link do facebooka',
+        discord: 'Discord',
+        description: 'Opis profilu',
+        mail: 'Adres e-mail*',
+        notSamePasswords: 'Hasła nie są takie same.'
+    },
+    registerTooltipTexts: {
+        username: 'Nazwa użytkownika może posiadać łącznie 3-20 liter, liczb i znaków specjalnych.',
+        password: 'Hasło musi zawierać 3-20 znaków dużą literę i znak specjalny.',
+        facebook: 'Link do profilu na Facebooku',
+        discord: 'Nazwa użytkownika Discord np. Ork#1234',
+        description: 'Opis profilu może mieć maksymalnie 1000 znaków.',
+        mail: 'Adres e-mail',
+    }
+};
 
 export const polishCodeErrors = {
     NO_NAME: 'Postać musi mieć imię.',
@@ -86,5 +106,20 @@ export const polishCodeErrors = {
     NO_YEAR_OF_HISTORY: 'Historia musi mieć rok.',
     YEAR_OF_HISTORY_NOT_REGEXP: 'Rok historii musi być maksymalnie czterocyfrową liczbą.',
     NO_HISTORY_PLACE: 'Historia musi mieć miejsce.',
-    NO_HISTORY_DESCRIPTION: 'Historia musi mieć opis.'
+    NO_HISTORY_DESCRIPTION: 'Historia musi mieć opis.',
+    NO_HISTORY_TITLE: 'Historia musi mieć tytuł.',
+
+    registerErrors: {
+        usernameTooShort: 'Nazwa użytkownika jest zbyt krótka.',
+        usernameTooLong: 'Nazwa użytkownika jest zbyt długa.',
+        emailNotCorrect: 'Podaj poprawny adres email.',
+        passwordTooShort: 'Hasło jest zbyt krótkie.',
+        passwordTooLong: 'Hasło jest zbyt długie.',
+        passwordMissingNumber: 'Hasło musi posiadać co najmniej jedną liczbę.',
+        passwordMissingSpecialSign: 'Hasło musi posiadać co najmniej jeden znak specjalny.',
+        passwordMissingCapitalLetter: 'Hasło musi posiadać co najmniej jedną wielką litere.',
+        facebookNotCorrect: 'Podaj poprawny adres do profilu na facebooku.',
+        discordNotCorrect: 'Podaj poprawną nazwę użytkownika discord.',
+        descriptionTooLong: 'Opis jest zbyt długi.'
+    }
 }

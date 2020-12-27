@@ -80,7 +80,7 @@ public class LivePlaceGenerator extends GeneralService {
             placeToRandom.addAll(probablyPlaces.stream().filter(p -> p.getProperties().contains("isRoad")).collect(Collectors.toList()));
         if (career.getProperties().contains("isPopularRoad"))
             placeToRandom.addAll(probablyPlaces.stream().filter(p -> p.getProperties().contains("isPopularRoad")).collect(Collectors.toList()));
-        if (career.getProperties().contains("isVillage"))
+        if (career.getProperties().contains("isVilliage"))
             placeToRandom.addAll(probablyPlaces.stream().filter(p -> p.getPlaceType().equals(PlaceType.VILLIAGE)).collect(Collectors.toList()));
         if (career.getProperties().contains("isNotVilliage"))
             placeToRandom.addAll(probablyPlaces.stream().filter(p -> !p.getPlaceType().equals(PlaceType.VILLIAGE)).collect(Collectors.toList()));

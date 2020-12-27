@@ -2,7 +2,9 @@ import React from "react";
 import MaterialTable from "material-table";
 import TablePagination from "@material-ui/core/TablePagination";
 import mystyle from "../../styles/tables.css";
-import button from "../../styles/buttons.css";
+import button from "../../styles/buttons.css"; //ToDo css or styles objects, pick one
+import {Link} from "react-router-dom";
+
 class Table extends React.Component {
 
     constructor() {
@@ -18,10 +20,9 @@ class Table extends React.Component {
 
 
     componentDidUpdate(prevProps, prevState){
-        console.log(this.props.columnsConfig)
         let columnsConfig = this.props.columnsConfig
 
-        if(this.props.notVisibleColumns){
+        if(this.props.notVisibleColumns){ //ToDo not mutate props!!
             columnsConfig = columnsConfig.filter(c => !this.props.notVisibleColumns.includes(c.title))
         }
 
@@ -30,7 +31,7 @@ class Table extends React.Component {
                 {
                     title: 'Detale',
                     field: '',
-                    render: rowData => <button className = "detaleButton small" onClick={() => this.props.onDetailsClick(rowData)}>Detale</button>,
+                    render: rowData => <Link to={this.props.detailsLink + "/" + rowData.id} className = "detaleButton small" onClick={() => this.props.onDetailsClick(rowData)}>Detale</Link>,
                     sorting: false
                 })
             this.setState({columnsConfig: columnsConfig})
@@ -61,6 +62,7 @@ class Table extends React.Component {
         };
         return(
             <div styleName = {mystyle.table}>
+                {/*ToDo this link shouldnt exist - it download icons with any render*/}
                 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
                 <MaterialTable
                 style={mystyle.table}
@@ -111,6 +113,7 @@ class Table extends React.Component {
                     pageSizeOptions: [10, 30, 50],
                     paginationType: "stepped",
                     headerStyle: divStyle,
+                    draggable: false
                 }
                 }
 

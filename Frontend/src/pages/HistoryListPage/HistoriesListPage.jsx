@@ -16,7 +16,11 @@ import Modal from "react-modal";
 import historyService from "../../services/historyService";
 import Wysiwyg from "../../components/Wysiwyg/Wysiwyg";
 import HistoryDetailsPopup from "../../components/Popup/HistoryDetailsPopup/HistoryDetailsPopup";
+import {fronendUrls} from "../../commons/urls";
 
+
+//ToDo refactor - id of current history should have source only in URL; this.state.idPopupHistory is reduntant.
+//ToDo refactor - use react-router, not url as a string
 class HistoriesListPage extends React.Component{
 
     constructor() {
@@ -59,6 +63,16 @@ class HistoriesListPage extends React.Component{
             // window.history.pushState({}, null, window.location.href.substring(0, window.location.href.indexOf("/character")));
         }
 
+        if(window.location.pathname.includes("user")){
+            const tmp = window.location.pathname.split("/");
+            const username = tmp[tmp.length-1];
+            await this.setState({
+                userLoadByPage: username
+            })
+            // setTimeout(function(){ document.getElementById("historyFilterCharacters").value = tag }, 3000);
+            // window.history.pushState({}, null, window.location.href.substring(0, window.location.href.indexOf("/character")));
+        }
+
         this.getHistories();
         this.getAutoCompleteHistories();
         this.setColumnsConfig()
@@ -67,7 +81,6 @@ class HistoriesListPage extends React.Component{
         if(historyId > 0 && this.state.characterLoadByPage === "" ){
             this.setState({historyWithoutPreviousOrNext: true})
             this.setState({isPopupOpen: true, idPopupHistory: historyId})
-            window.history.pushState({}, null, window.location.href.substring(0, window.location.href.lastIndexOf("/")));
 
         }
     }
@@ -86,7 +99,7 @@ class HistoriesListPage extends React.Component{
 
     setColumnsConfig = async () => {
         await this.setState({
-            columnsConfig: columnConfig(this.state.autocompleteData, this.state.characterLoadByPage)
+            columnsConfig: columnConfig(this.state.autocompleteData, this.state.characterLoadByPage, this.state.userLoadByPage)
         })
     }
 
@@ -122,9 +135,14 @@ class HistoriesListPage extends React.Component{
 
     onFilter = async data => {
         let filterObject = {};
+        
 
         const createdBy = document.getElementById('historyCreatedBy');
         if(createdBy && createdBy.value!=="") filterObject = {...filterObject, createdBy: createdBy.value};
+
+        const historyTitle = document.getElementById('historyTitle');
+        if(historyTitle && historyTitle.value!=="") filterObject = {...filterObject, historyTitle: historyTitle.value};
+
 
         const historyDay = document.getElementById('historyDay');
         if(historyDay && historyDay.value!=="") filterObject = {...filterObject, historyDay: historyDay.value};
@@ -162,13 +180,18 @@ class HistoriesListPage extends React.Component{
             rowsPerPage: this.state.countPerPage
         }
 
-        if(this.state.characterLoadByPage !== "") {
+        if(this.state.characterLoadByPage && this.state.characterLoadByPage !== "") {
             requestBody.filters = {
                 ...requestBody.filters,
                 historyFilterCharacters: this.state.characterLoadByPage
             };
         }
-
+        if(this.state.userLoadByPage && this.state.userLoadByPage !== "") {
+            requestBody.filters = {
+                ...requestBody.filters,
+                createdBy: this.state.userLoadByPage
+            };
+        }
 
         return historyService.getHistories(requestBody)
             .then(r => this.getHistoriesSuccessHandler(r))
@@ -205,14 +228,33 @@ class HistoriesListPage extends React.Component{
         if(isNext && this.state.page * this.state.countPerPage + indexOfCurrentHistory +1 === this.state.count) return;
 
         if(isNext){
-            if(indexOfCurrentHistory+1 < this.state.countPerPage) this.setState({idPopupHistory: this.state.data[indexOfCurrentHistory+1].id})
-            else await this.onChangePage(this.state.page+1).then(r => this.setState({idPopupHistory: this.state.data[0].id}))
+            if(indexOfCurrentHistory+1 < this.state.countPerPage) {
+                this.setState({idPopupHistory: this.state.data[indexOfCurrentHistory+1].id})
+                window.history.pushState({}, null, this.getUrl() + "/" + this.state.data[indexOfCurrentHistory+1].id);
+            }
+            else await this.onChangePage(this.state.page+1).then(r => {
+                this.setState({idPopupHistory: this.state.data[0].id})
+                window.history.pushState({}, null, this.getUrl() + "/" + this.state.data[0].id);
+            })
         }
         else{
-            if(indexOfCurrentHistory-1 >= 0) this.setState({idPopupHistory: this.state.data[indexOfCurrentHistory-1].id})
-            else await this.onChangePage(this.state.page-1).then(r => this.setState({idPopupHistory: this.state.data[this.state.countPerPage-1].id}))
+            if(indexOfCurrentHistory-1 >= 0) {
+                this.setState({idPopupHistory: this.state.data[indexOfCurrentHistory-1].id});
+                window.history.pushState({}, null, this.getUrl() + "/" +this.state.data[indexOfCurrentHistory-1].id );
+
+            }
+            else await this.onChangePage(this.state.page-1).then(r => {
+                this.setState({idPopupHistory: this.state.data[this.state.countPerPage-1].id});
+                window.history.pushState({}, null, this.getUrl() + "/" + this.state.data[indexOfCurrentHistory-1].id );
+            })
 
         }
+
+    }
+
+    getUrl = () => {
+        return fronendUrls.historyList + (this.state.userLoadByPage ? "/user/" + this.state.userLoadByPage : "") +
+            (this.state.characterLoadByPage ? "/character/" + this.state.characterLoadByPage : "")
     }
 
     render(){
@@ -223,7 +265,7 @@ class HistoriesListPage extends React.Component{
                     <HistoryDetailsPopup
                     isOpen={this.state.isPopupOpen}
                     title={"Szczegóły"}
-                    onRequestClose={() => this.setState({isPopupOpen: false, idPopupHistory: 0, historyWithoutPreviousOrNext: false})}
+                    onRequestClose={() => {this.setState({isPopupOpen: false, idPopupHistory: 0}); window.history.pushState({}, null, this.getUrl());}}
                     historyId={this.state.idPopupHistory}
                     changeHistoryToNext={this.changeHistoryFromDetails}
                     isPreviousButtonHidden={this.state.page === 0 && this.state.data.indexOf(this.state.data.filter(h => h.id === this.state.idPopupHistory)[0]) === 0}
@@ -240,6 +282,8 @@ class HistoriesListPage extends React.Component{
 
                     <div>
                         {this.state.characterLoadByPage && "Historie postaci " + this.state.characterLoadByPage}
+                        {this.state.userLoadByPage && "Historie użytkownika " + this.state.userLoadByPage}
+
                     </div>
                     <div className="table">
                         <Table
@@ -256,6 +300,7 @@ class HistoriesListPage extends React.Component{
                             count={this.state.count}
                             onDetailsClick={this.onDetailsClick}
                             // onDetailsClick={() => console.log("onDetailsClick")}
+                            detailsLink={this.getUrl()}
                             onOrderChange={this.onOrderChange}
                         />
                     </div>

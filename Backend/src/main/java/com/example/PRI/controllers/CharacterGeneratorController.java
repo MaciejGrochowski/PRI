@@ -5,13 +5,13 @@ import com.example.PRI.controllers.annotations.Get;
 import com.example.PRI.controllers.annotations.Post;
 import com.example.PRI.dtos.characters.CharacterDetailsOutputDto;
 import com.example.PRI.dtos.characters.CharacterInputDto;
+import com.example.PRI.entities.character.Character;
 import com.example.PRI.services.character.generator.CharacterGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
-import com.example.PRI.entities.character.Character;
 
 import javax.validation.Valid;
-import java.util.Date;
 
 
 @RestController
@@ -54,9 +54,10 @@ public class CharacterGeneratorController {
     }
 
     @Post("/save")
-    public long save(@Valid @RequestBody CharacterInputDto character){
+//    @RequestMapping(value = "/save", method = RequestMethod.POST)
+    public long save(@Valid @RequestBody CharacterInputDto character, Authentication auth){
         character = this.trimCharacter(character);
-        return characterGenerator.save(character);
+        return characterGenerator.save(character, auth);
     }
 
     private CharacterInputDto trimCharacter(CharacterInputDto character) {

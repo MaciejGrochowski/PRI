@@ -9,12 +9,13 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 
@@ -67,7 +68,7 @@ public class DeserializationController {
     CareerTalentService careerTalentService;
 
 
-    final String path = "/home/janietakiork/projekt/PRI/Backend/";
+    final String path = "./";
 
     @RequestMapping("/json/name")
     public void nameDeserializationAndDatabaseUpdate() throws IOException {
@@ -82,21 +83,41 @@ public class DeserializationController {
     }
 
     public static void main(String[] args) throws IOException {
-        ObjectMapper objectMapper = new ObjectMapper();
+//        ObjectMapper objectMapper = new ObjectMapper();
+//
+//        String path = "src/jsons/name.json";
+//        String contents = Files.readString(Paths.get(path));
+//        List<Name> listName = objectMapper.readValue(contents, new TypeReference<List<Name>>() {
+//        });
+//
+//        List<Name> humanMaleNames = listName.stream().filter(n -> n.isHuman() && n.isMale()).collect(Collectors.toList());
+//        List<Name> humanFemaleNames = listName.stream().filter(n -> n.isHuman() && n.isFemale()).collect(Collectors.toList());
+//        objectMapper.writeValue(new File("target/maleNames.json"), humanMaleNames);
+//        objectMapper.writeValue(new File("target/femaleNames.json"), humanFemaleNames);
 
-        String path = "src/jsons/name.json";
-        String contents = Files.readString(Paths.get(path));
-        List<Name> listName = objectMapper.readValue(contents, new TypeReference<List<Name>>() {
-        });
+//        ArrayList<String> al = new ArrayList<String>();
+//        al.add("kiasarin99@gmail.com");
+//        System.out.println("start");
+//        try {
+//            EmailService es = new EmailService();
+//            es.sendMail(al, "Temat", "text", "janietakiork@gmail.com");
+//            System.out.println("poszło");
+//        } catch (MessagingException e) {
+//            e.printStackTrace();
+//        }
 
-        List<Name> humanMaleNames = listName.stream().filter(n -> n.isHuman() && n.isMale()).collect(Collectors.toList());
-        List<Name> humanFemaleNames = listName.stream().filter(n -> n.isHuman() && n.isFemale()).collect(Collectors.toList());
-        objectMapper.writeValue(new File("target/maleNames.json"), humanMaleNames);
-        objectMapper.writeValue(new File("target/femaleNames.json"), humanFemaleNames);
-
-
+        // ^^^
+//        Random r = new Random(1234);
+//        for(int i=0; i<4; i++) {
+//        //    System.out.println(r.ints(2, 20).findFirst().getAsInt());
+//            System.out.println(r.ints(2, 20).findFirst().getAsInt());
+//        //System.err.println(r.doubles().findFirst().getAsDouble());
+//        }
+//        System.out.println(r.ints(2, 20).findFirst().getAsInt());
 //
 //
+
+        //doubles().findFirst().getAsDouble()
 //
 //        List<Name> malePopularNames = listName.stream().filter(n -> n.isHuman() && n.getProbabilityNotGentry() > 0.01 && n.isMale()).collect(Collectors.toList());
 //        List<Name> femalePopularNames = listName.stream().filter(n -> n.isHalfling() && n.getProbabilityNotGentry() > 0.01 && n.isFemale()).collect(Collectors.toList());

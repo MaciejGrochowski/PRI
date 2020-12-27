@@ -1,7 +1,7 @@
 package com.example.PRI.entities.session;
 
 import com.example.PRI.entities.GeneralEntity;
-import com.example.PRI.entities.User;
+import com.example.PRI.entities.UserOfApp;
 import com.example.PRI.entities.character.Character;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,7 +19,7 @@ import java.util.List;
 public class ImportantCharacter extends GeneralEntity {
 
     @ManyToOne
-    User user;
+    UserOfApp userOFApp;
 
     @ManyToOne
     Session session;

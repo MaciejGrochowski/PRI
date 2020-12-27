@@ -1,22 +1,28 @@
 package com.example.PRI.converters;
 
-import com.example.PRI.dtos.characters.CharacterDefaultAttributesOutputDto;
-import com.example.PRI.dtos.characters.CharacterDetailsOutputDto;
-import com.example.PRI.dtos.characters.SkillOutputDto;
-import com.example.PRI.dtos.characters.StatisticsOutputDto;
+import com.example.PRI.dtos.characters.*;
 import com.example.PRI.entities.character.*;
 import com.example.PRI.entities.character.Character;
-import com.example.PRI.enums.Race;
-import com.example.PRI.enums.Religion;
-import com.example.PRI.enums.Sex;
 
-import javax.persistence.ManyToMany;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class CharacterConverter {
+
+
+    public static UserOfAppCharacterOutputDto convertToUserProfileCharacter(Character character){
+        UserOfAppCharacterOutputDto output = new UserOfAppCharacterOutputDto();
+        output.setName(character.getName().getName());
+        output.setSurname(character.getSurname()==null ? "" : character.getSurname().getSurname());
+        output.setId(character.getId());
+        output.setRace(character.getRace().getName());
+        output.setSex(character.getSex().getName());
+        output.setCareer(character.getCurrentCareer().getName());
+        output.setLivePlace(character.getLivePlace().getName());
+        return output;
+
+    }
 
     public static CharacterDefaultAttributesOutputDto convert(Character character) {
         CharacterDefaultAttributesOutputDto output = new CharacterDefaultAttributesOutputDto();

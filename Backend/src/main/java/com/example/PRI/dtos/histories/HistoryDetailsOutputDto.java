@@ -16,6 +16,7 @@ public class HistoryDetailsOutputDto {
     String place;
     String creator;
     String description;
+    String title;
 
 
 }

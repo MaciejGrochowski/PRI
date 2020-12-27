@@ -32,7 +32,7 @@ class CharacterDetailsPage extends React.Component {
         }
     }
 
-    getCharacterId = () => {
+    getCharacterId = () => { //ToDo refactor with react-router
         const tmp = window.location.pathname.split("/");
         if(Number.isInteger(parseInt(tmp[tmp.length-1]))){
             return parseInt(tmp[tmp.length-1])
@@ -67,11 +67,11 @@ class CharacterDetailsPage extends React.Component {
 
         this.setState({isVisibleGlobalStats: global, isVisibleCombatStats: combat, isVisibleHistory: history})
     }
-
-    onGetMoreHistoriesClick = () => {
+    
+    getLinkToMoreHistories = () => {
         let characterTag = this.state.characterData.name + (this.state.characterData.surname ? "-" + this.state.characterData.surname : "");
         let id = this.getCharacterId();
-        window.location.assign(fronendUrls.historyList + "/character/" + characterTag + "/" + id);
+        return fronendUrls.historyList + "/character/" + characterTag + "/" + id;
     }
 
 
@@ -98,8 +98,9 @@ class CharacterDetailsPage extends React.Component {
                 </div>
             }
             {this.state.isVisibleHistory &&
-                <CharacterDetailsHistoryView historyData={this.state.historyData} onGetMoreHistoriesClick={this.onGetMoreHistoriesClick} />
+                <CharacterDetailsHistoryView historyData={this.state.historyData} getLinkToMoreHistories={this.getLinkToMoreHistories} />
             }
+
             </div>
             </div>
             </div>

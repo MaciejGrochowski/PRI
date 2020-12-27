@@ -31,6 +31,11 @@ font-size: initial;
 color: black !important;
 }
 
+.title-history-creator {
+  width: -moz-fit-content;
+  width: -webkit-fit-content;
+}
+
 .demo-wrapper li{
 color: black !important;
 }

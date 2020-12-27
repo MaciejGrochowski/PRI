@@ -25,7 +25,7 @@ public class CharacterController {
     }
 
     @Get("/paged")
-    public CharacterListOutputDto getSomeCharactersPaged(CharacterListFilterInputStringDto characterListInput) {
+    public CharacterListOutputDto getSomeCharactersPaged(CharacterListFilterInputStringDto characterListInput) throws Throwable {
         Map<String, String> map = this.getMapFromString(characterListInput.getFilters());
         //ToDo konwersja ta powinna być niejawna, zapewniona przez mechanizmy springa
         CharacterListFilterInputDto characterListInputDto = new CharacterListFilterInputDto(characterListInput.getSortedBy(), characterListInput.getIsAscending(),

@@ -10,7 +10,11 @@ import {months} from "../../enums/Months";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import "../../styles/historyCreator.css";
 import ErrorGenerator from "../../components/ErrorLayout/ErrorGenerator";
-import {polishCodeErrors} from "../../commons/texts-pl";
+import {polishCodeErrors, textsPolish} from "../../commons/texts-pl";
+import NeedLoginInformation from "../../components/NeedLoginInformation/NeedLoginInformation";
+import {loginStatusChange} from "../../actions";
+import {connect} from "react-redux";
+import {getToken, isValidToken} from "../../services/util";
 
 class HistoryCreatorPage extends React.Component {
 
@@ -25,6 +29,7 @@ class HistoryCreatorPage extends React.Component {
             day: "",
             month: "",
             year: "",
+            title: "",
             isError: false,
             errorText: ''
 
@@ -32,6 +37,8 @@ class HistoryCreatorPage extends React.Component {
     }
 
     componentDidMount() {
+        if(!this.props.isLogged && getToken() && isValidToken(getToken())) this.props.loginStatusChange(true);
+        if(this.props.isLogged && !getToken() || !isValidToken(getToken())) this.props.loginStatusChange(false);
         historyService.getCharactersCreatingHistory()
             .then(r => this.getCharactersCreatingHistorySuccessHandler(r))
             .catch(e => this.getCharactersCreatingHistoryErrorHandler(e))
@@ -65,11 +72,12 @@ class HistoryCreatorPage extends React.Component {
             place: this.state.place,
             day: this.state.day,
             month: this.state.month,
-            year: this.state.year
+            year: this.state.year,
+            title: this.state.title
         };
 
         historyService.createHistory(data)
-            .then(r => window.open(fronendUrls.historyList + "/" + r.data))
+            .then(r => window.open(fronendUrls.historyList + "/" + r.data)) //ToDo to jakoś inaczej zrobić...
             .catch(e => this.saveHistoryErrorHandler(e))
     };
 
@@ -86,6 +94,9 @@ class HistoryCreatorPage extends React.Component {
         return (<div className="globalStyles">
 
             <header className="App-header">
+
+                {!this.props.isLogged &&
+                <NeedLoginInformation text={textsPolish.needLoginToSaveHistory}/>}
 
             <div className = "History-creator-main-div">
                         <div className="History-creator-upper">
@@ -114,6 +125,7 @@ class HistoryCreatorPage extends React.Component {
 </div>
 </div>
 </div>
+
            <div className = "history-column">
            Miejsce:
             <div className="History-buttons-line">
@@ -126,14 +138,25 @@ class HistoryCreatorPage extends React.Component {
                     }}
                 /></div>
 </div>
-</div></div>
+</div>
 
+                        </div>
+
+<div className = "History-creator-upper">
+            <div className = "history-column">
+                Tytuł:
+                <div className="title-history-creator History-creator-upper item-div">
+                <TextField value={this.state.title} onChange={(event) => {
+                    this.setState({title: event.target.value});
+                }}  label="Tytuł"/>
+                </div></div></div>
                 <div className="block-element">{this.state.isError &&
-                <ErrorGenerator errorText={polishCodeErrors[this.state.errorText]}/>}</div>
+                <ErrorGenerator errorText={"Błąd: " + polishCodeErrors[this.state.errorText]}/>}</div>
 
                 <Wysiwyg
                 characterTags={this.state.characters}
                 saveHistory={this.saveHistory}
+                disabledSave={!this.props.isLogged}
 
                 />
 
@@ -145,4 +168,12 @@ class HistoryCreatorPage extends React.Component {
 }
 
 
-export default HistoryCreatorPage;
+const mapStateToProps = (state) => {
+    return {
+        isLogged: state.isLogged // (1)
+    }
+};
+const mapDispatchToProps = { loginStatusChange }; // (2)
+
+
+export default HistoryCreatorPage = connect(mapStateToProps, mapDispatchToProps)(HistoryCreatorPage);

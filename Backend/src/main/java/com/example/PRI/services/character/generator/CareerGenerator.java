@@ -20,21 +20,16 @@ public class CareerGenerator extends GeneralService {
     CareerService careerService;
     //ToDo Strongly test after get data jsons
 
-
+    //ToDo This should get properties of birthplaces and careers to choose best career
     private Career getFirstCareer(Map<String, String> properties){
         List<Career> careerList = careerService.findAllBaseCareers();
         List<String> careerNames = careerList.stream().map(Career::getName).collect(Collectors.toList());
         double probability = 0;
-//        System.err.println(character.getRace().getName());
-//        System.err.println(character.getBirthPlace().getProperties());
-//        System.err.println(character.getBirthPlace().getPlaceType());
         for(String careerName : careerNames){
             if(properties.containsKey(careerName)){
                 probability += Double.parseDouble(properties.get(careerName));
-//                System.out.println(careerName + ": " + properties.get(careerName));
             }
         }
-//        System.err.println(probability);
         double randomRoll = new Random().nextDouble() * probability;
         Career randomCareer = null;
 
@@ -56,8 +51,27 @@ public class CareerGenerator extends GeneralService {
         for(Career career : careerList){
             String chanceStr = properties.get(career.getName());
             Double chance = 0.0;
+
             if(chanceStr == null) chance = 0.001;
             else chance = Double.valueOf(chanceStr);
+
+
+            Map<String, String> careerProperties = mapJsonStringToMap(career.getProperties());
+
+            if(careerProperties.get("isNotVilliage")!=null && properties.get("isVilliage")!=null){
+                chance = chance/10;
+            }
+            else{
+                for(String careerProperty : careerProperties.keySet()){
+                    if(properties.get(careerProperty)!=null && careerProperty.startsWith("is")){
+                        chance = chance*2;
+                    }
+                }
+            }
+
+
+
+
             int dominatingStatsCount = this.getDominatingStatsCount(career.getDominatingStat());
             Double dominatingStatMultiplier = 2 - 0.1*dominatingStatsCount;
             Double antiDominatingStatMultiplier = 0.4 + 0.1*dominatingStatsCount;

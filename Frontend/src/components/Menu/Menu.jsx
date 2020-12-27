@@ -5,6 +5,8 @@ import {ItemMenu} from "./ExampleMenu.style";
 import "../../styles/menu.css";
 import "../../styles/globalStyles.css";
 import AppBar from "@material-ui/core/AppBar";
+import {getInfoFromToken, getToken} from "../../services/util";
+import LoginButton from "../LoginButton/LoginButton";
 
 const menuKatalogItems = [
     {
@@ -69,6 +71,10 @@ class Menu extends React.Component {
                 }
                 
                 </div>
+<div className= "menu-column">
+                    <LoginButton
+                    notLoggedShowComponent={<Link className="menuLink" to={fronendUrls.loginPage}><ItemMenu>Zaloguj się</ItemMenu></Link>}
+                    /> </div>
             </nav>)}
                 <button className="menubutton" onClick={this.onExpanded}>Menu</button>
             </div>

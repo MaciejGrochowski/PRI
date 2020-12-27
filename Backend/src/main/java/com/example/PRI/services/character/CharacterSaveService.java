@@ -3,8 +3,8 @@ package com.example.PRI.services.character;
 import com.example.PRI.dtos.characters.CharacterInputDto;
 import com.example.PRI.entities.ImperialDate;
 import com.example.PRI.entities.Place;
-import com.example.PRI.entities.character.*;
 import com.example.PRI.entities.character.Character;
+import com.example.PRI.entities.character.*;
 import com.example.PRI.enums.*;
 import com.example.PRI.exceptions.CharacterSaveException;
 import com.example.PRI.services.ImperialDateService;
@@ -14,10 +14,11 @@ import com.example.PRI.services.character.generator.EyeColorGenerator;
 import com.example.PRI.services.character.generator.SurnameGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.HttpClientErrorException;
 
-import javax.validation.constraints.Min;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -78,7 +79,7 @@ public class CharacterSaveService {
     private StatisticsService statisticsService;
 
 
-    public Surname surnameConvert(String surNew) {
+    public Surname surnameConvert(String surNew) { //ToDo converters to converter class
         String prefix = "";
         if (surNew == null || surNew.equals("")) {
             return new Surname();
@@ -193,8 +194,8 @@ public class CharacterSaveService {
     public Sex sexConverter(String sexInput) {
         if (sexInput == null)  throw new CharacterSaveException("Wybierz płeć swojej postaci.", new IllegalArgumentException());
         Sex newSex = null;
-        if (sexInput.equals("Kobieta")) newSex = Sex.FEMALE;
-        if (sexInput.equals("Mężczyzna")) newSex = Sex.MALE;
+        if (sexInput.equals(Sex.FEMALE.getName())) newSex = Sex.FEMALE;
+        if (sexInput.equals(Sex.MALE.getName())) newSex = Sex.MALE;
         if (newSex == null) throw new IllegalArgumentException();
         return newSex;
     }
@@ -202,10 +203,10 @@ public class CharacterSaveService {
     public Race raceConverter(String raceInput) {
         if (raceInput == null) throw new CharacterSaveException("Wybierz rase swojej postaci.", new IllegalArgumentException());
         Race newRace = null;
-        if (raceInput.equals("Elf")) newRace = Race.ELF;
-        else if (raceInput.equals("Krasnolud")) newRace = Race.DWARF;
-        else if (raceInput.equals("Niziołek")) newRace = Race.HALFLING;
-        else if (raceInput.equals("Człowiek")) newRace = Race.HUMAN;
+        if (raceInput.equals(Race.ELF.getName())) newRace = Race.ELF;
+        else if (raceInput.equals(Race.DWARF.getName())) newRace = Race.DWARF;
+        else if (raceInput.equals(Race.HALFLING.getName())) newRace = Race.HALFLING;
+        else if (raceInput.equals(Race.HUMAN.getName())) newRace = Race.HUMAN;
         if (newRace == null) throw new CharacterSaveException("Nieprawidłowa rasa.", new IllegalArgumentException());
         return newRace;
     }
@@ -393,7 +394,7 @@ public class CharacterSaveService {
                 return false;
         }
     }
-
+        //ToDo exception texts in other class
     public Integer endWeaponSkillConvert(String WeaponSkill) {
         if (WeaponSkill == null) throw new CharacterSaveException("Podaj statystyke dla obecnej walki wręcz.", new IllegalArgumentException());
         Integer newWeaponSkill = null;
@@ -515,7 +516,7 @@ public class CharacterSaveService {
     }
 
 
-    public boolean checkSpecialCharacter (String inputName){
+    public boolean checkSpecialCharacter (String inputName){ //ToDo how they massacred my orc... refactor that
         return inputName.contains("!") || inputName.contains("@") || inputName.contains("#") || inputName.contains("$") ||
                 inputName.contains("%") || inputName.contains("^") || inputName.contains("&") || inputName.contains("*") ||
                 inputName.contains("(") || inputName.contains(")") || inputName.contains("_") || inputName.contains("-") ||

@@ -1,36 +1,41 @@
 package com.example.PRI.entities;
 
+import com.example.PRI.entities.character.Character;
 import com.example.PRI.entities.history.History;
 import com.example.PRI.entities.session.Session;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import com.example.PRI.entities.character.Character;
+import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.List;
 
+@EqualsAndHashCode(callSuper = true)
 @Entity(name ="users")
 @Data
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class User extends GeneralEntity {
+public class UserOfApp extends GeneralEntity {
 
+    @Column(unique = true)
     String username;
+
     String password;
     String description;
+
+    @Column(unique = true)
     String mail;
     String discord;
     String facebook;
+    String token;
 
-    @OneToMany
+
+    @OneToMany(mappedBy="createdBy")
     List<Character> characters;
 
-    @OneToMany
+    @OneToMany(mappedBy="createdBy")
     List<History> histories;
 
-    @OneToMany
+    @OneToMany(mappedBy="createdUserOfApp")
     List<Session> sessions;
 
 }

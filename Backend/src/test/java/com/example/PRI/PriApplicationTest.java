@@ -1,20 +1,16 @@
 package com.example.PRI;
 
 import com.example.PRI.entities.character.Character;
-import com.example.PRI.entities.character.Statistics;
 import com.example.PRI.enums.Race;
-import com.example.PRI.enums.Sex;
 import com.example.PRI.services.character.generator.*;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.jupiter.api.Disabled;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -50,6 +46,15 @@ public class PriApplicationTest {
     @Autowired
     ApperanceGenerator apperanceGenerator;
 
+    @Autowired
+    PersonalityGenerator personalityGenerator;
+
+    @Autowired
+    TalentGenerator talentGenerator;
+
+    @Autowired
+    SkillGenerator skillGenerator;
+
 
     RaceGenerator raceGenerator = new RaceGenerator();
     SexGenerator sexGenerator = new SexGenerator();
@@ -82,10 +87,10 @@ public class PriApplicationTest {
 
     @Test
     public void raceSeedCheck(){
-        raceGenerator.generateRace(characterBuilder.getCharacter(),characterBuilder.getRandomService(),characterBuilder.getProperties());
-        characterBuilder.buildRace(raceGenerator);
+        Character c1 = characterBuilder.buildRace(raceGenerator).buildRace(raceGenerator).getCharacter();
+        Character c2 = characterBuilder.buildRace(raceGenerator).buildRace(raceGenerator).getCharacter();
 
-        assertEquals(Race.DWARF,characterBuilder.getCharacter().getRace());
+        assertEquals(c1,c2);
     }
 
 
@@ -216,13 +221,52 @@ public class PriApplicationTest {
     }
 
     @Test
-    public void apperanceSeedCheck(){
+    public void apperenceSeedCheck(){
         Character c1 = characterBuilder.buildRace(raceGenerator).buildBirthPlace(characterBirthPlaceGenerator).
                 buildBaseStats(statisticsGenerator).buildCareers(careerGenerator).buildSex(sexGenerator).buildReligion(religionGenerator).
                 buildHeight(heightGenerator).buildWeight(weightGenerator).buildApperances(apperanceGenerator).getCharacter();
         Character c2 = characterBuilder.buildRace(raceGenerator).buildBirthPlace(characterBirthPlaceGenerator).
                 buildBaseStats(statisticsGenerator).buildCareers(careerGenerator).buildSex(sexGenerator).buildReligion(religionGenerator).
                 buildHeight(heightGenerator).buildWeight(weightGenerator).buildApperances(apperanceGenerator).getCharacter();
+
+        assertEquals(c1,c2);
+    }
+
+    @Test
+    public void personalitySeedCheck(){
+        Character c1 = characterBuilder.buildRace(raceGenerator).buildSex(sexGenerator).buildBirthPlace(characterBirthPlaceGenerator).
+                buildBaseStats(statisticsGenerator).buildCareers(careerGenerator).buildReligion(religionGenerator)
+                .buildPersonalities(personalityGenerator).getCharacter();
+        Character c2 = characterBuilder.buildRace(raceGenerator).buildSex(sexGenerator).buildBirthPlace(characterBirthPlaceGenerator).
+                buildBaseStats(statisticsGenerator).buildCareers(careerGenerator).buildReligion(religionGenerator)
+                .buildPersonalities(personalityGenerator).getCharacter();
+
+        assertEquals(c1,c2);
+    }
+
+    @Test
+    public void talentSeedCheck(){
+        Character c1 = characterBuilder.buildRace(raceGenerator).buildBaseStats(statisticsGenerator).buildCareers(careerGenerator).buildTalents(talentGenerator).getCharacter();
+        Character c2 = characterBuilder.buildRace(raceGenerator).buildBaseStats(statisticsGenerator).buildCareers(careerGenerator).buildTalents(talentGenerator).getCharacter();
+
+        assertEquals(c1,c2);
+    }
+
+    @Test
+    public void skillSeedCheck(){
+        Character c1 = characterBuilder.buildRace(raceGenerator).buildBaseStats(statisticsGenerator).buildCareers(careerGenerator).buildSkills(skillGenerator).getCharacter();
+        Character c2 = characterBuilder.buildRace(raceGenerator).buildBaseStats(statisticsGenerator).buildCareers(careerGenerator).buildSkills(skillGenerator).getCharacter();
+
+        assertEquals(c1,c2);
+    }
+
+    @Test
+    public void careerStatisticsSeedCheck(){
+        CareerStatisticsGenerator careerStatisticsGenerator = new CareerStatisticsGenerator();
+        Character c1 = characterBuilder.buildRace(raceGenerator).buildBaseStats(statisticsGenerator).buildCareers(careerGenerator)
+                .buildTalents(talentGenerator).buildCareerStatistics(careerStatisticsGenerator).getCharacter();
+        Character c2 = characterBuilder.buildRace(raceGenerator).buildBaseStats(statisticsGenerator).buildCareers(careerGenerator)
+                .buildTalents(talentGenerator).buildCareerStatistics(careerStatisticsGenerator).getCharacter();
 
         assertEquals(c1,c2);
     }

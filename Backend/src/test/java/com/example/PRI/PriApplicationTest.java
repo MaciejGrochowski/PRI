@@ -12,6 +12,7 @@ import com.example.PRI.enums.Sex;
 import com.example.PRI.repositories.PlaceRepository;
 import com.example.PRI.services.PlaceService;
 import com.example.PRI.services.character.CareerService;
+import com.example.PRI.services.character.EmotionService;
 import com.example.PRI.services.character.generator.*;
 import org.junit.Before;
 import org.junit.Test;
@@ -40,10 +41,17 @@ import static org.junit.Assert.*;
 public class PriApplicationTest {
 
     @Autowired
-    PlaceService placeService;
+    CharacterBirthPlaceGenerator characterBirthPlaceGenerator;
 
     @Autowired
-    CareerService careerService;
+    EmotionGenerator emotionGenerator;
+
+    @Autowired
+    PredictionGenerator predictionGenerator;
+
+    @Autowired
+    CareerGenerator careerGenerator;
+
 
 
     public CharacterBuilder characterBuilder = new CharacterBuilder();
@@ -59,14 +67,10 @@ public class PriApplicationTest {
 
     @Test
     public void birthPlaceSeedCheck(){
-        Optional<Place> testPlaceOptional = placeService.findByName("Waldenhof");
-        Place testPlace = null;
-        if (testPlaceOptional.isPresent()) {testPlace = testPlaceOptional.get();};
+        Character c1 = characterBuilder.buildBirthPlace(characterBirthPlaceGenerator).getCharacter();
+        Character c2 = characterBuilder.buildBirthPlace(characterBirthPlaceGenerator).getCharacter();
 
-        CharacterBirthPlaceGenerator characterBirthPlaceGenerator = new CharacterBirthPlaceGenerator(placeService);
-        characterBirthPlaceGenerator.generateBirthPlace(characterBuilder.getCharacter(),characterBuilder.getRandomService());
-        characterBuilder.buildBirthPlace(characterBirthPlaceGenerator);
-        assertEquals(testPlace,characterBuilder.getCharacter().getBirthPlace());
+        assertEquals(c1,c2);
     }
 
 
@@ -219,52 +223,29 @@ public class PriApplicationTest {
 
 
     //TODO to samo co wyżej
-    @Disabled
+    @Test
     public void emotionSeedCheck(){
-        RaceGenerator raceGenerator = new RaceGenerator();
-        raceGenerator.generateRace(characterBuilder.getCharacter(),characterBuilder.getRandomService(),characterBuilder.getProperties());
-        characterBuilder.buildRace(raceGenerator);
+        Character c1 = characterBuilder.buildEmotions(emotionGenerator).getCharacter();
+        Character c2 = characterBuilder.buildEmotions(emotionGenerator).getCharacter();
 
-        EmotionGenerator emotionGenerator = new EmotionGenerator();
-        emotionGenerator.generateEmotions(characterBuilder.getCharacter(),characterBuilder.getRandomService(),characterBuilder.getProperties());
-        characterBuilder.buildEmotions(emotionGenerator);
-
-        System.out.println(characterBuilder.getCharacter().getDominatingEmotions());
+        assertEquals(c1,c2);
     }
 
-    @Disabled
+    @Test
     public void predictionSeedCheck(){
-        PredictionGenerator predictionGenerator = new PredictionGenerator();
-        predictionGenerator.generatePrediction(characterBuilder.getCharacter(),characterBuilder.getRandomService());
-        characterBuilder.buildPrediction(predictionGenerator);
+        Character c1 = characterBuilder.buildPrediction(predictionGenerator).getCharacter();
+        Character c2 = characterBuilder.buildPrediction(predictionGenerator).getCharacter();
 
-        System.out.println(characterBuilder.getCharacter().getPrediction());
+        assertEquals(c1,c2);
     }
 
 
-    @Disabled
+    @Test
     public void currentCareerSeedCheck(){
-        RaceGenerator raceGenerator = new RaceGenerator();
-        raceGenerator.generateRace(characterBuilder.getCharacter(),characterBuilder.getRandomService(),characterBuilder.getProperties());
-        characterBuilder.buildRace(raceGenerator);
+        Character c1 = characterBuilder.buildCareers(careerGenerator).getCharacter();
+        Character c2 = characterBuilder.buildCareers(careerGenerator).getCharacter();
 
-        SexGenerator sexGenerator = new SexGenerator();
-        sexGenerator.generateSex(characterBuilder.getCharacter(),characterBuilder.getRandomService(),characterBuilder.getProperties());
-        characterBuilder.buildSex(sexGenerator);
-
-        StatisticsGenerator statisticsGenerator = new StatisticsGenerator();
-        statisticsGenerator.generateBaseStats(characterBuilder.getCharacter(),characterBuilder.getRandomService(),characterBuilder.getProperties());
-        characterBuilder.buildBaseStats(statisticsGenerator);
-
-        CharacterBirthPlaceGenerator characterBirthPlaceGenerator = new CharacterBirthPlaceGenerator(placeService);
-        characterBirthPlaceGenerator.generateBirthPlace(characterBuilder.getCharacter(),characterBuilder.getRandomService());
-        characterBuilder.buildBirthPlace(characterBirthPlaceGenerator);
-
-        CareerGenerator careerGenerator = new CareerGenerator();
-        careerGenerator.buildFirstCareer(characterBuilder.getCharacter(),characterBuilder.getRandomService(),characterBuilder.getProperties());
-        characterBuilder.buildCareers(careerGenerator);
-
-        System.out.println(characterBuilder.getCharacter().getCurrentCareer());
+        assertEquals(c1,c2);
     }
 
 }

@@ -89,8 +89,10 @@ class HistoryDetailsPopup extends React.Component {
                     style={customStyles}
                 >
                 <div className = "flex-component">
-                    <div className = "auto-margin"><button className = "detaleButton small" disabled={isPreviousButtonHidden} onClick={() => changeHistoryToNext(this.props.historyId, false)}><span>{elementPrev}</span> Poprzednia</button></div>
-                    <div className = "auto-margin"><button className = "detaleButton small" disabled={isNextButtonHidden} onClick={() => changeHistoryToNext(this.props.historyId, true)}>Następna <span>{elementNext}</span></button></div>
+                    {!this.props.removeButtons &&
+                    <div className = "auto-margin"><button className = "detaleButton small" disabled={isPreviousButtonHidden} onClick={() => changeHistoryToNext(this.props.historyId, false)}><span>{elementPrev}</span> Poprzednia</button></div>}
+                    {!this.props.removeButtons &&
+                    <div className = "auto-margin"><button className = "detaleButton small" disabled={isNextButtonHidden} onClick={() => changeHistoryToNext(this.props.historyId, true)}>Następna <span>{elementNext}</span></button></div>}
                 </div>
                 <div className="historyDetailBody">
                 <div className="historyDetailHeader">

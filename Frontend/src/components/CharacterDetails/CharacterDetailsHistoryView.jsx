@@ -14,6 +14,7 @@ class CharacterDetailsHistoryView extends React.Component {
 
     render(){
         const {historyData=[], getLinkToMoreHistories} = this.props;
+
         return (
             <div className = "globalStyles">
             <div className = "pageWithContext">

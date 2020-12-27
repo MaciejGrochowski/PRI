@@ -1,40 +1,20 @@
 package com.example.PRI;
 
-import com.example.PRI.controllers.PlaceController;
-import com.example.PRI.entities.ImperialDate;
-import com.example.PRI.entities.Place;
-import com.example.PRI.entities.character.*;
 import com.example.PRI.entities.character.Character;
-import com.example.PRI.enums.Month;
-import com.example.PRI.enums.PlaceType;
+import com.example.PRI.entities.character.Statistics;
 import com.example.PRI.enums.Race;
 import com.example.PRI.enums.Sex;
-import com.example.PRI.repositories.PlaceRepository;
-import com.example.PRI.services.PlaceService;
-import com.example.PRI.services.character.CareerService;
-import com.example.PRI.services.character.EmotionService;
 import com.example.PRI.services.character.generator.*;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.jupiter.api.Disabled;
 import org.junit.runner.RunWith;
-import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.context.annotation.aspectj.EnableSpringConfigured;
-import org.springframework.stereotype.Service;
-import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.test.web.servlet.MockMvc;
 
-import javax.persistence.Access;
-
-import java.util.Optional;
-
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -52,6 +32,8 @@ public class PriApplicationTest {
     @Autowired
     CareerGenerator careerGenerator;
 
+    @Autowired
+    HairColorGenerator hairColorGenerator;
 
 
     public CharacterBuilder characterBuilder = new CharacterBuilder();
@@ -193,32 +175,18 @@ public class PriApplicationTest {
     @Disabled
     public void hairColorSeedCheck(){
         RaceGenerator raceGenerator = new RaceGenerator();
-        raceGenerator.generateRace(characterBuilder.getCharacter(),characterBuilder.getRandomService(),characterBuilder.getProperties());
-        characterBuilder.buildRace(raceGenerator);
-
-        HairColorGenerator hairColorGenerator = new HairColorGenerator();
-        hairColorGenerator.generateHairColor(characterBuilder.getCharacter(),characterBuilder.getRandomService(),characterBuilder.getProperties());
-        characterBuilder.buildHairColor(hairColorGenerator);
-
-        System.out.println(characterBuilder.getCharacter().getHairColor());
+        Character c1 = characterBuilder.buildRace(raceGenerator).buildHairColor(hairColorGenerator).getCharacter();
+        Character c2 = characterBuilder.buildRace(raceGenerator).buildHairColor(hairColorGenerator).getCharacter();
     }
 
     @Test
     public void birthDateSeedCheck(){
-        ImperialDate imperialDateTest = new ImperialDate();
-        imperialDateTest.setDay(27);
-        imperialDateTest.setMonth(Month.VORGEHEIM);
-        imperialDateTest.setYear(2416);
-
-        RaceGenerator raceGenerator = new RaceGenerator();
-        raceGenerator.generateRace(characterBuilder.getCharacter(),characterBuilder.getRandomService(),characterBuilder.getProperties());
-        characterBuilder.buildRace(raceGenerator);
-
         BirthDateGenerator birthDateGenerator = new BirthDateGenerator();
-        birthDateGenerator.generateBirthDate(characterBuilder.getCharacter(),characterBuilder.getRandomService(),characterBuilder.getProperties());
-        characterBuilder.buildBirthDate(birthDateGenerator);
+        RaceGenerator raceGenerator = new RaceGenerator();
+        Character c1 = characterBuilder.buildRace(raceGenerator).buildBirthDate(birthDateGenerator).getCharacter();
+        Character c2 = characterBuilder.buildRace(raceGenerator).buildBirthDate(birthDateGenerator).getCharacter();
 
-        assertEquals(imperialDateTest, characterBuilder.getCharacter().getBirthDate());
+        assertEquals(c1,c2);
     }
 
 
@@ -242,8 +210,10 @@ public class PriApplicationTest {
 
     @Test
     public void currentCareerSeedCheck(){
-        Character c1 = characterBuilder.buildCareers(careerGenerator).getCharacter();
-        Character c2 = characterBuilder.buildCareers(careerGenerator).getCharacter();
+        StatisticsGenerator statisticsGenerator = new StatisticsGenerator();
+
+        Character c1 = characterBuilder.buildBaseStats(statisticsGenerator).buildCareers(careerGenerator).getCharacter();
+        Character c2 = characterBuilder.buildBaseStats(statisticsGenerator).buildCareers(careerGenerator).getCharacter();
 
         assertEquals(c1,c2);
     }

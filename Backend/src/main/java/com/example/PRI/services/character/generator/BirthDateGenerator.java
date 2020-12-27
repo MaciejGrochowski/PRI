@@ -145,8 +145,8 @@ public class BirthDateGenerator {
     }
 
     private Map<String, String> generateAdultCharacter(Character character, HashMap<String, String> properties) {
-        Integer minimumAge = Integer.parseInt(properties.get("adultAge"));
-        Integer maximumAge = Integer.parseInt(properties.get("elderAge"));
+        Integer minimumAge = (int)Double.parseDouble(properties.get("adultAge"));
+        Integer maximumAge = (int)Double.parseDouble(properties.get("elderAge"));
         Integer yearOfBirth = defaultGameYear - minimumAge - randomService.nextInt(maximumAge-minimumAge);
         Map<String, String> output = new HashMap<>();
         output.put("Młody", "0.1");

@@ -30,13 +30,13 @@ export const textsPolish = {
     needLoginToSaveCharacter: "Aby zapisać postać w bazie danych, musisz być zalogowany.",
     needLoginToSaveHistory: "Aby zapisać historię, musisz być zalogowany.",
     register: {
-        username: 'Nazwa użytkownika',
-        password: 'Hasło',
-        confirmPassword: 'Powtórz hasło',
+        username: 'Nazwa użytkownika*',
+        password: 'Hasło*',
+        confirmPassword: 'Powtórz hasło*',
         facebook: 'Link do facebooka',
         discord: 'Discord',
         description: 'Opis profilu',
-        mail: 'Adres e-mail',
+        mail: 'Adres e-mail*',
         notSamePasswords: 'Hasła nie są takie same.'
     },
     registerTooltipTexts: {
@@ -107,5 +107,19 @@ export const polishCodeErrors = {
     YEAR_OF_HISTORY_NOT_REGEXP: 'Rok historii musi być maksymalnie czterocyfrową liczbą.',
     NO_HISTORY_PLACE: 'Historia musi mieć miejsce.',
     NO_HISTORY_DESCRIPTION: 'Historia musi mieć opis.',
-    NO_HISTORY_TITLE: 'Historia musi mieć tytuł.'
+    NO_HISTORY_TITLE: 'Historia musi mieć tytuł.',
+
+    registerErrors: {
+        usernameTooShort: 'Nazwa użytkownika jest zbyt krótka.',
+        usernameTooLong: 'Nazwa użytkownika jest zbyt długa.',
+        emailNotCorrect: 'Podaj poprawny adres email.',
+        passwordTooShort: 'Hasło jest zbyt krótkie.',
+        passwordTooLong: 'Hasło jest zbyt długie.',
+        passwordMissingNumber: 'Hasło musi posiadać co najmniej jedną liczbę.',
+        passwordMissingSpecialSign: 'Hasło musi posiadać co najmniej jeden znak specjalny.',
+        passwordMissingCapitalLetter: 'Hasło musi posiadać co najmniej jedną wielką litere.',
+        facebookNotCorrect: 'Podaj poprawny adres do profilu na facebooku.',
+        discordNotCorrect: 'Podaj poprawną nazwę użytkownika discord.',
+        descriptionTooLong: 'Opis jest zbyt długi.'
+    }
 }

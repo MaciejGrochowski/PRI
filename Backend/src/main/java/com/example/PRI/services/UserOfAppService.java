@@ -26,6 +26,9 @@ public class UserOfAppService extends GeneralService {
     @Autowired
     PasswordEncoder passwordEncoder;
 
+    @Autowired
+    EmailService emailService;
+
     public UserOfApp findByUsername(String username) {
         return userOfAppRepository.findByUsername(username);
     }
@@ -134,6 +137,17 @@ public class UserOfAppService extends GeneralService {
             }
         else{
             throw new notUniqueArgumentException("Nazwa lub email istnieją już w bazie", new Exception());
+        }
+
+    }
+
+    public void sendPasswordRemainder(String email) {
+        UserOfApp uoa = userOfAppRepository.findByMail(email);
+        if(uoa != null){
+            emailService.sendPasswordRemainder(uoa.getUsername(), uoa.getMail(), uoa.getPassword());
+        }
+        else{
+            System.err.println("nie ma takiego maia w bazie");
         }
 
     }

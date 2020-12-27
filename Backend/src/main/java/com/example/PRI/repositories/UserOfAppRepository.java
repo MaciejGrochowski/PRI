@@ -15,4 +15,5 @@ public interface UserOfAppRepository extends CrudRepository<UserOfApp, Long> {
     UserOfApp findByPassword(String encode);
 
     UserOfApp findByMail(String mail);
+
 }

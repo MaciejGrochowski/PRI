@@ -79,7 +79,7 @@ public class CharacterSaveService {
     private StatisticsService statisticsService;
 
 
-    public Surname surnameConvert(String surNew) {
+    public Surname surnameConvert(String surNew) { //ToDo converters to converter class
         String prefix = "";
         if (surNew == null || surNew.equals("")) {
             return new Surname();
@@ -194,8 +194,8 @@ public class CharacterSaveService {
     public Sex sexConverter(String sexInput) {
         if (sexInput == null)  throw new CharacterSaveException("Wybierz płeć swojej postaci.", new IllegalArgumentException());
         Sex newSex = null;
-        if (sexInput.equals("Kobieta")) newSex = Sex.FEMALE;
-        if (sexInput.equals("Mężczyzna")) newSex = Sex.MALE;
+        if (sexInput.equals(Sex.FEMALE.getName())) newSex = Sex.FEMALE;
+        if (sexInput.equals(Sex.MALE.getName())) newSex = Sex.MALE;
         if (newSex == null) throw new IllegalArgumentException();
         return newSex;
     }
@@ -203,10 +203,10 @@ public class CharacterSaveService {
     public Race raceConverter(String raceInput) {
         if (raceInput == null) throw new CharacterSaveException("Wybierz rase swojej postaci.", new IllegalArgumentException());
         Race newRace = null;
-        if (raceInput.equals("Elf")) newRace = Race.ELF;
-        else if (raceInput.equals("Krasnolud")) newRace = Race.DWARF;
-        else if (raceInput.equals("Niziołek")) newRace = Race.HALFLING;
-        else if (raceInput.equals("Człowiek")) newRace = Race.HUMAN;
+        if (raceInput.equals(Race.ELF.getName())) newRace = Race.ELF;
+        else if (raceInput.equals(Race.DWARF.getName())) newRace = Race.DWARF;
+        else if (raceInput.equals(Race.HALFLING.getName())) newRace = Race.HALFLING;
+        else if (raceInput.equals(Race.HUMAN.getName())) newRace = Race.HUMAN;
         if (newRace == null) throw new CharacterSaveException("Nieprawidłowa rasa.", new IllegalArgumentException());
         return newRace;
     }
@@ -296,7 +296,6 @@ public class CharacterSaveService {
         } else throw new CharacterSaveException("Niepoprawny format wagi.", new IllegalArgumentException());
         return newWeight;
     }
-    //TODO THIS SHOULD BE IN CONVERTER CLASS!!!
 
     public List<Personality> personalityListConvert(String inputPersonality) {
         if (inputPersonality == null) return null;
@@ -395,7 +394,7 @@ public class CharacterSaveService {
                 return false;
         }
     }
-
+        //ToDo exception texts in other class
     public Integer endWeaponSkillConvert(String WeaponSkill) {
         if (WeaponSkill == null) throw new CharacterSaveException("Podaj statystyke dla obecnej walki wręcz.", new IllegalArgumentException());
         Integer newWeaponSkill = null;
@@ -517,7 +516,7 @@ public class CharacterSaveService {
     }
 
 
-    public boolean checkSpecialCharacter (String inputName){
+    public boolean checkSpecialCharacter (String inputName){ //ToDo how they massacred my orc... refactor that
         return inputName.contains("!") || inputName.contains("@") || inputName.contains("#") || inputName.contains("$") ||
                 inputName.contains("%") || inputName.contains("^") || inputName.contains("&") || inputName.contains("*") ||
                 inputName.contains("(") || inputName.contains(")") || inputName.contains("_") || inputName.contains("-") ||

@@ -1,7 +1,10 @@
 package com.example.PRI.services;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.thymeleaf.TemplateEngine;
+import org.thymeleaf.context.Context;
 
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
@@ -10,11 +13,20 @@ import java.util.Properties;
 
 @Service
 public class EmailService {
-//    @Value("${mail.username}")
-    final String serverUsername = "janietakiork@gmail.com";
+    @Value("${mail.username}")
+    String serverUsername;
 
-//    @Value("${mail.password}")
-    final String serverPassword = "$^996B%*4%x@";
+    @Value("${mail.password}")
+    String serverPassword;
+
+    @Value("${url.application}")
+    String url;
+
+    @Autowired
+    TemplateEngine templateEngine;
+
+    public EmailService() {
+    }
 
     public void sendMail(String sendTo, String title, String text){
         Properties prop = new Properties();
@@ -40,7 +52,7 @@ public class EmailService {
                     InternetAddress.parse(sendTo)
             );
             message.setSubject(title);
-            message.setText(text);
+            message.setContent(text, "text/html");
 
             Transport.send(message);
 
@@ -52,11 +64,31 @@ public class EmailService {
     }
 
     public void sendPasswordRemainder(String username, String email, String password) {
+        Context context = new Context();
+        context.setVariable("username", username);
+        context.setVariable("pageToChangePassword", url+ "/" + username+ "/" + password);
+        String body = templateEngine.process("passwordRemaind", context);
+
+
         StringBuilder title = new StringBuilder()
-                .append("[JaNieTakiOrk]")
-                .append(" Password remainder for ")
+                .append("[JaNieTakiOrk] ")
+                .append(" Przypomnienie hasła dla konta ")
                 .append(username);
-        String message = "Hello " + username + "!" + "Your password is: " + password;
-        sendMail(email, title.toString(), message);
+        sendMail(email, title.toString(), body);
+    }
+
+    public void sendWelcomeMail(String username, String email, String password) {
+        Context context = new Context();
+        context.setVariable("username", username);
+        context.setVariable("password", password);
+        context.setVariable("pathToLogin", url + "/" + "login");
+        String body = templateEngine.process("welcomeEmail", context);
+
+
+        StringBuilder title = new StringBuilder()
+                .append("[JaNieTakiOrk] ")
+                .append(" Witaj ")
+                .append(username);
+        sendMail(email, title.toString(), body);
     }
 }

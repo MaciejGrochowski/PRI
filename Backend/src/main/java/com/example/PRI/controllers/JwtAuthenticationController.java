@@ -83,6 +83,7 @@ public class JwtAuthenticationController {
     @Post("/register")
     public void register(@RequestBody UserOfAppInputDto userOfAppInputDto) throws notUniqueArgumentException {
         userOfAppService.register(userOfAppInputDto);
+        userOfAppService.sendHelloEmail(userOfAppInputDto);
     }
 
     @Post("/forgot-password")

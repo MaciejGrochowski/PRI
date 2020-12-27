@@ -151,4 +151,8 @@ public class UserOfAppService extends GeneralService {
         }
 
     }
+
+    public void sendHelloEmail(UserOfAppInputDto userOfAppInputDto) {
+        emailService.sendWelcomeMail(userOfAppInputDto.getUsername(), userOfAppInputDto.getMail(), userOfAppInputDto.getPassword());
+    }
 }

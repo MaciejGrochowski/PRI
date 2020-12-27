@@ -35,8 +35,14 @@ public class PriApplicationTest {
     @Autowired
     HairColorGenerator hairColorGenerator;
 
+    @Autowired
+    EyeColorGenerator eyeColorGenerator;
 
-    public CharacterBuilder characterBuilder = new CharacterBuilder();
+    @Autowired
+    SurnameGenerator surnameGenerator;
+
+    RaceGenerator raceGenerator = new RaceGenerator();
+    CharacterBuilder characterBuilder = new CharacterBuilder();
 
         @Test
         public void contextLoads() {
@@ -56,15 +62,12 @@ public class PriApplicationTest {
     }
 
 
-
         @Test
         public void raceSeedCheck(){
-            RaceGenerator raceGenerator = new RaceGenerator();
             raceGenerator.generateRace(characterBuilder.getCharacter(),characterBuilder.getRandomService(),characterBuilder.getProperties());
             characterBuilder.buildRace(raceGenerator);
 
             assertEquals(Race.DWARF,characterBuilder.getCharacter().getRace());
-
         }
 
     @Test
@@ -77,112 +80,65 @@ public class PriApplicationTest {
 
     }
 
-    //TODO Tu nie działa
-    @Disabled
+    @Test
     public void surnameSeedCheck(){
-        RaceGenerator raceGenerator = new RaceGenerator();
-        raceGenerator.generateRace(characterBuilder.getCharacter(),characterBuilder.getRandomService(),characterBuilder.getProperties());
-        characterBuilder.buildRace(raceGenerator);
+        Character c1 = characterBuilder.buildRace(raceGenerator).buildSurname(surnameGenerator).getCharacter();
+        Character c2 = characterBuilder.buildRace(raceGenerator).buildSurname(surnameGenerator).getCharacter();
 
-        SexGenerator sexGenerator = new SexGenerator();
-        sexGenerator.generateSex(characterBuilder.getCharacter(),characterBuilder.getRandomService(),characterBuilder.getProperties());
-        characterBuilder.buildSex(sexGenerator);
-
-        SurnameGenerator surnameGenerator = new SurnameGenerator();
-        surnameGenerator.generateSurname(characterBuilder.getCharacter(),characterBuilder.getRandomService(),characterBuilder.getProperties());
-        characterBuilder.buildSurname(surnameGenerator);
-
-        System.out.println(characterBuilder.getCharacter().getRace());
-
-        assertNull(characterBuilder.getCharacter().getSurname());
+        assertEquals(c1,c2);
     }
 
 
     @Test
     public void baseStatsSeedCheck(){
-        Statistics testStats = new Statistics();
-        testStats.setWeaponSkill(31);
-        testStats.setBallisticSkill(33);
-        testStats.setStrength(38);
-        testStats.setToughness(36);
-        testStats.setAgility(37);
-        testStats.setIntelligence(27);
-        testStats.setWillPower(36);
-        testStats.setWillPower(36);
-        testStats.setFellowship(30);
-        testStats.setAttacks(1);
-        testStats.setWounds(12);
-        testStats.setMagic(0);
-        testStats.setMovement(4);
-
         StatisticsGenerator statisticsGenerator = new StatisticsGenerator();
-        statisticsGenerator.generateBaseStats(characterBuilder.getCharacter(),characterBuilder.getRandomService(),characterBuilder.getProperties());
-        characterBuilder.buildBaseStats(statisticsGenerator);
+        Character c1 = characterBuilder.buildBaseStats(statisticsGenerator).getCharacter();
+        Character c2 = characterBuilder.buildBaseStats(statisticsGenerator).getCharacter();
 
-        assertEquals(testStats,characterBuilder.getCharacter().getBaseStats());
+        assertEquals(c1,c2);
     }
 
     @Test
     public void weightSeedCheck(){
-        RaceGenerator raceGenerator = new RaceGenerator();
-        raceGenerator.generateRace(characterBuilder.getCharacter(),characterBuilder.getRandomService(),characterBuilder.getProperties());
-        characterBuilder.buildRace(raceGenerator);
-
-        SexGenerator sexGenerator = new SexGenerator();
-        sexGenerator.generateSex(characterBuilder.getCharacter(),characterBuilder.getRandomService(),characterBuilder.getProperties());
-        characterBuilder.buildSex(sexGenerator);
-
         WeightGenerator weightGenerator = new WeightGenerator();
-        weightGenerator.generateWeight(characterBuilder.getCharacter(),characterBuilder.getRandomService(),characterBuilder.getProperties());
-        characterBuilder.buildWeight(weightGenerator);
+        Character c1 = characterBuilder.buildRace(raceGenerator).buildWeight(weightGenerator).getCharacter();
+        Character c2 = characterBuilder.buildRace(raceGenerator).buildWeight(weightGenerator).getCharacter();
 
-        assertEquals(59,characterBuilder.getCharacter().getWeight().intValue());
+        assertEquals(c1,c2);
     }
 
 
     @Test
     public void heightSeedCheck(){
-        RaceGenerator raceGenerator = new RaceGenerator();
-        raceGenerator.generateRace(characterBuilder.getCharacter(),characterBuilder.getRandomService(),characterBuilder.getProperties());
-        characterBuilder.buildRace(raceGenerator);
-
-        SexGenerator sexGenerator = new SexGenerator();
-        sexGenerator.generateSex(characterBuilder.getCharacter(),characterBuilder.getRandomService(),characterBuilder.getProperties());
-        characterBuilder.buildSex(sexGenerator);
-
         HeightGenerator heightGenerator = new HeightGenerator();
-        heightGenerator.generateHeight(characterBuilder.getCharacter(),characterBuilder.getRandomService(),characterBuilder.getProperties());
-        characterBuilder.buildHeight(heightGenerator);
+        Character c1 = characterBuilder.buildRace(raceGenerator).buildHeight(heightGenerator).getCharacter();
+        Character c2 = characterBuilder.buildRace(raceGenerator).buildHeight(heightGenerator).getCharacter();
 
-        assertEquals(142,characterBuilder.getCharacter().getHeight().intValue());
+        assertEquals(c1,c2);
     }
 
-    //TODO findall daje null pointer
-    @Disabled
+
+    @Test
     public void eyeColorSeedCheck(){
-        RaceGenerator raceGenerator = new RaceGenerator();
-        raceGenerator.generateRace(characterBuilder.getCharacter(),characterBuilder.getRandomService(),characterBuilder.getProperties());
-        characterBuilder.buildRace(raceGenerator);
+        Character c1 = characterBuilder.buildRace(raceGenerator).buildEyeColor(eyeColorGenerator).getCharacter();
+        Character c2 = characterBuilder.buildRace(raceGenerator).buildEyeColor(eyeColorGenerator).getCharacter();
 
-        EyeColorGenerator eyeColorGenerator = new EyeColorGenerator();
-        eyeColorGenerator.generateEyeColor(characterBuilder.getCharacter(),characterBuilder.getRandomService(),characterBuilder.getProperties());
-        characterBuilder.buildEyeColor(eyeColorGenerator);
-
-        System.out.println(characterBuilder.getCharacter().getEyeColor());
+        assertEquals(c1,c2);
     }
 
-    //TODO to samo co wyżej
-    @Disabled
+
+    @Test
     public void hairColorSeedCheck(){
         RaceGenerator raceGenerator = new RaceGenerator();
         Character c1 = characterBuilder.buildRace(raceGenerator).buildHairColor(hairColorGenerator).getCharacter();
         Character c2 = characterBuilder.buildRace(raceGenerator).buildHairColor(hairColorGenerator).getCharacter();
+
+        assertEquals(c1,c2);
     }
 
     @Test
     public void birthDateSeedCheck(){
         BirthDateGenerator birthDateGenerator = new BirthDateGenerator();
-        RaceGenerator raceGenerator = new RaceGenerator();
         Character c1 = characterBuilder.buildRace(raceGenerator).buildBirthDate(birthDateGenerator).getCharacter();
         Character c2 = characterBuilder.buildRace(raceGenerator).buildBirthDate(birthDateGenerator).getCharacter();
 
@@ -209,9 +165,8 @@ public class PriApplicationTest {
 
 
     @Test
-    public void currentCareerSeedCheck(){
+    public void CareerSeedCheck(){
         StatisticsGenerator statisticsGenerator = new StatisticsGenerator();
-
         Character c1 = characterBuilder.buildBaseStats(statisticsGenerator).buildCareers(careerGenerator).getCharacter();
         Character c2 = characterBuilder.buildBaseStats(statisticsGenerator).buildCareers(careerGenerator).getCharacter();
 

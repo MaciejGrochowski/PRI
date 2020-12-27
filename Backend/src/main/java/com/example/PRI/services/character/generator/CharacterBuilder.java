@@ -230,7 +230,7 @@ public class CharacterBuilder {
         for(Career career : previousCareers){
             putAllProperties(mapJsonStringToMap(career.getProperties()));
         }
-        newProps = service.buildCurrentCareer(previousCareers, properties, character);
+        newProps = service.buildCurrentCareer(previousCareers, randomService, properties, character);
         putAllProperties(newProps);
         character.setPreviousCareers(previousCareers);
         return this;

@@ -1,10 +1,8 @@
 import {polishCodeErrors, textsPolish} from "../../commons/texts-pl";
 
 
-//ToDo validation functions
-
 export const validationUsername = username => {
-    if(username.match("^(?![\\s\\S])") || username.match("^.{3,20}$")){
+    if(username.match("^(?![\\s\\S])") || username.match("^\\w{3,20}$")){
         return {errorText: "", errorState: false}
     }
     if ((username.match("^.{0,2}$"))){

@@ -8,6 +8,7 @@ import org.thymeleaf.context.Context;
 
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import java.util.Properties;
 
@@ -52,7 +53,11 @@ public class EmailService {
                     InternetAddress.parse(sendTo)
             );
             message.setSubject(title);
-            message.setContent(text, "text/html");
+//            message.setContent(text, "text/html");
+            MimeBodyPart messageBodyPart = new MimeBodyPart();
+            messageBodyPart.setText(text, "utf-8", "html");
+            message.setContent(text, "text/html; charset=utf-8");
+
 
             Transport.send(message);
 
@@ -68,6 +73,7 @@ public class EmailService {
         context.setVariable("username", username);
         context.setVariable("pageToChangePassword", url+ "/" + username+ "/" + password);
         String body = templateEngine.process("passwordRemaind", context);
+
 
 
         StringBuilder title = new StringBuilder()

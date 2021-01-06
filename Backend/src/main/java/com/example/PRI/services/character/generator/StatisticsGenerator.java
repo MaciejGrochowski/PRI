@@ -2,25 +2,27 @@ package com.example.PRI.services.character.generator;
 
 import com.example.PRI.entities.character.Character;
 import com.example.PRI.entities.character.Statistics;
+import com.example.PRI.services.RandomService;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
 public class StatisticsGenerator {
 
+    RandomService randomService;
 
-    public Map<String, String> generateBaseStats(Character character, HashMap<String, String> properties) {
+    public Map<String, String> generateBaseStats(Character character,RandomService randomService, HashMap<String, String> properties) {
         Statistics generated = new Statistics();
         Map<String, String> output = new HashMap<>();
-        Random rand = new Random();
-        generated.setWeaponSkill(22 + rand.nextInt(10) + rand.nextInt(10));
-        generated.setBallisticSkill(22 + rand.nextInt(10) + rand.nextInt(10));
-        generated.setStrength(22 + rand.nextInt(10) + rand.nextInt(10));
-        generated.setToughness(22 + rand.nextInt(10) + rand.nextInt(10));
-        generated.setIntelligence(22 + rand.nextInt(10) + rand.nextInt(10));
-        generated.setAgility(22 + rand.nextInt(10) + rand.nextInt(10));
-        generated.setWillPower(22 + rand.nextInt(10) + rand.nextInt(10));
-        generated.setFellowship(22 + rand.nextInt(10) + rand.nextInt(10));
+        this.randomService = randomService;
+        generated.setWeaponSkill(22 + randomService.nextInt(10) + randomService.nextInt(10));
+        generated.setBallisticSkill(22 + randomService.nextInt(10) + randomService.nextInt(10));
+        generated.setStrength(22 + randomService.nextInt(10) + randomService.nextInt(10));
+        generated.setToughness(22 + randomService.nextInt(10) + randomService.nextInt(10));
+        generated.setIntelligence(22 + randomService.nextInt(10) + randomService.nextInt(10));
+        generated.setAgility(22 + randomService.nextInt(10) + randomService.nextInt(10));
+        generated.setWillPower(22 + randomService.nextInt(10) + randomService.nextInt(10));
+        generated.setFellowship(22 + randomService.nextInt(10) + randomService.nextInt(10));
         generated.setAttacks(1);
         generated.setMovement(4);
         generated.setMagic(0);
@@ -110,7 +112,7 @@ public class StatisticsGenerator {
     }
 
     private int randomWounds() {
-        int randomRoll = new Random().nextInt(10) + 1;
+        int randomRoll = randomService.nextInt(10) + 1;
         if (randomRoll <= 3) return 10;
         if (randomRoll <= 6) return 11;
         if (randomRoll <= 9) return 12;

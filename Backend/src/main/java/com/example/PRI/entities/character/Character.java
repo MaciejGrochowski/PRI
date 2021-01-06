@@ -36,13 +36,13 @@ public class Character extends GeneralEntity {
     @JoinColumn(name="hair_color")
     HairColor hairColor;
 
-    @ManyToOne(cascade = {CascadeType.MERGE},fetch = FetchType.LAZY)
+    @ManyToOne(cascade = {CascadeType.MERGE},fetch = FetchType.EAGER)
     @JoinColumn(name="birth_date")
     ImperialDate birthDate;
 
     StarSign starSign;
 
-    @OneToOne(cascade = {CascadeType.MERGE},fetch = FetchType.LAZY)
+    @OneToOne(cascade = {CascadeType.MERGE},fetch = FetchType.EAGER)
     Statistics baseStats;
 
     @ManyToMany
@@ -70,7 +70,7 @@ public class Character extends GeneralEntity {
     @ManyToMany
     List<Career> previousCareers;
 
-    @ManyToOne(cascade = {CascadeType.MERGE},fetch = FetchType.LAZY)
+    @ManyToOne(cascade = {CascadeType.MERGE},fetch = FetchType.EAGER)
     @JoinColumn(name = "currentCareer")
     Career currentCareer;
 

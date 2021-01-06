@@ -5,7 +5,7 @@ import java.util.Random;
 
 public class RandomService {
 
-    private Random r;
+    private final Random r;
 
 
     public RandomService(){
@@ -14,6 +14,10 @@ public class RandomService {
 
     public RandomService(long seed){
         this.r = new Random(seed);
+    }
+
+    public Random getRandom(){
+        return this.r;
     }
 
     public Double nextDouble(){
@@ -31,5 +35,7 @@ public class RandomService {
     public Integer nextInt(int minValue, int maxValue){
         return r.ints(minValue, maxValue).findFirst().getAsInt();
     }
+
+    public Double nextGaussian(){return r.nextGaussian();}
 
 }

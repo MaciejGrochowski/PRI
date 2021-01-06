@@ -4,6 +4,7 @@ import com.example.PRI.entities.character.Character;
 import com.example.PRI.entities.character.EyeColor;
 import com.example.PRI.enums.Race;
 import com.example.PRI.services.GeneralService;
+import com.example.PRI.services.RandomService;
 import com.example.PRI.services.character.EyeColorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,12 +18,15 @@ public class EyeColorGenerator extends GeneralService {
     @Autowired
     EyeColorService eyeColorService;
 
-    public Map<String, String> generateEyeColor(Character character, HashMap<String, String> properties) {
+    RandomService randomService;
+
+    public Map<String, String> generateEyeColor(Character character,RandomService randomService, HashMap<String, String> properties) {
+        this.randomService = randomService;
         List<EyeColor> eyeColors = eyeColorService.findAll();
-        Collections.shuffle(eyeColors);
+        Collections.shuffle(eyeColors, randomService.getRandom());
         Map<String, String> newProps = new HashMap<>();
-        double randomRoll = new Random().nextDouble();
-        boolean strangeColor = (new Random().nextDouble() ) < 0.0005;
+        double randomRoll = randomService.nextDouble();
+        boolean strangeColor = (randomService.nextDouble()) < 0.0005;
         EyeColor generated = null;
         if(!strangeColor) {
             for (EyeColor eyeColor : eyeColors) {
@@ -40,7 +44,7 @@ public class EyeColorGenerator extends GeneralService {
         }
         else{
             List<EyeColor> notNormalColors = eyeColors.stream().filter(e -> e.getChanceIfHuman() == 0 && e.getChanceIfDwarf() == 0 && e.getChanceIfElf() == 0 && e.getChangeIfHalfling() == 0).collect(Collectors.toList());
-            generated = notNormalColors.get(new Random().nextInt(notNormalColors.size()));
+            generated = notNormalColors.get(randomService.nextInt(notNormalColors.size()));
             //ToDo dopisać do JSON ultra-rzadkie kolory
             newProps.put("eyeColor", generated.getColor());
         }

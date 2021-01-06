@@ -5,6 +5,7 @@ import com.example.PRI.entities.character.EyeColor;
 import com.example.PRI.entities.character.HairColor;
 import com.example.PRI.enums.Race;
 import com.example.PRI.services.GeneralService;
+import com.example.PRI.services.RandomService;
 import com.example.PRI.services.character.HairColorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,18 +19,21 @@ public class HairColorGenerator extends GeneralService {
     @Autowired
     HairColorService hairColorService;
 
-    public Map<String, String> generateHairColor(Character character, HashMap<String, String> properties) {
+    RandomService randomService;
+
+    public Map<String, String> generateHairColor(Character character, RandomService randomService, HashMap<String, String> properties) {
+        this.randomService = randomService;
+        Double hairColorTypeRand = randomService.nextDouble();
         List<HairColor> hairColors = hairColorService.findAll();
-        Collections.shuffle(hairColors);
+        Collections.shuffle(hairColors, randomService.getRandom());
         Map<String, String> newProps = new HashMap<>();
-        double randomRoll = new Random().nextDouble();
-        boolean strangeColor = (new Random().nextDouble()) < 0.0002;
+        boolean strangeColor = (hairColorTypeRand < 0.0002);
         HairColor generated = null;
         if (!strangeColor) {
             for (HairColor hairColor : hairColors) {
                 if (properties.containsKey("Włosy " + hairColor.getColor())) {
                     double chance = Double.parseDouble(properties.get("Włosy " + hairColor.getColor()));
-                    if (new Random().nextDouble() < chance) {
+                    if (randomService.nextDouble() < chance) {
                         generated = hairColor;
                     }
                 }
@@ -42,8 +46,8 @@ public class HairColorGenerator extends GeneralService {
                     if (character.getRace().equals(Race.HALFLING)) chance = hairColor.getChangeIfHalfling();
                     if (character.getRace().equals(Race.DWARF)) chance = hairColor.getChanceIfDwarf();
                     if (character.getRace().equals(Race.HUMAN)) chance = hairColor.getChanceIfHuman();
-                    randomRoll -= chance;
-                    if (randomRoll <= 0) {
+                    hairColorTypeRand -= chance;
+                    if (hairColorTypeRand <= 0) {
                         generated = hairColor;
                         break;
                     }
@@ -51,7 +55,7 @@ public class HairColorGenerator extends GeneralService {
             }
         } else {
             List<HairColor> notNormalColors = hairColors.stream().filter(e -> e.getChanceIfHuman() == 0 && e.getChanceIfDwarf() == 0 && e.getChanceIfElf() == 0 && e.getChangeIfHalfling() == 0).collect(Collectors.toList());
-            generated = notNormalColors.get(new Random().nextInt(notNormalColors.size()));
+            generated = notNormalColors.get(randomService.nextInt(notNormalColors.size()));
             //ToDo dopisać do JSON ultra-rzadkie kolory
             newProps.put("hairColor", generated.getColor());
         }

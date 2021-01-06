@@ -60,6 +60,9 @@ public class UserOfAppService extends GeneralService {
     private void logoutUser(String username, Authentication auth, String token){
         UserOfApp userOFApp = findByUsername(username);
         Token tok = userOFApp.getSingleToken(token);
+        List<Token> tmp = userOFApp.getToken();
+        tmp.remove(tok);
+        userOFApp.setToken(tmp);
         tokenRepository.delete(tok);
         userOfAppRepository.save(userOFApp);
     }

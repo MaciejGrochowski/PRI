@@ -205,7 +205,7 @@
     "talents": null,
     "careerExits": [{"id": 13},{"id": 20},{"id": 42},{"id": 99},{"id": 50},{"id": 52},{"id": 113},{"id": 59}],
     "dominatingStat": "US+15",
-    "properties": "isForest:1,Bystry:0.05,Włosy w nieładzie:0.025,Podstępny:0.025,Opanowany:0.025,Spokojny:0.025,Dociekliwy:0.025,Brudas:0.025,Mrukliwy głos:0.025,Małomówny:0.025,Uważny:0.05,Odważny:0.025,Zawzięty:0.025,Przekrwione oczy:0.025,Skołtunione włosy:0.025,Muskularny:0.025,Spokojny:0.025,Solidny:0.025,Samotnik:0.025,Atletyczny:0.025,Smukły:0.025",
+    "properties": "isForest:1,Bystry:0.05,Włosy w nieładzie:0.025,Podstępny:0.025,Opanowany:0.025,Spokojny:0.05,Dociekliwy:0.025,Brudas:0.025,Mrukliwy głos:0.025,Małomówny:0.025,Uważny:0.05,Odważny:0.025,Zawzięty:0.025,Przekrwione oczy:0.025,Skołtunione włosy:0.025,Muskularny:0.025,Solidny:0.025,Samotnik:0.025,Atletyczny:0.025,Smukły:0.025",
     "bestNextCareer": "Strzelec"},
   {"id": 20,
     "name": "Łowca nagród",

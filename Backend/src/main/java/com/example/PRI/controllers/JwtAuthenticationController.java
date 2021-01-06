@@ -81,8 +81,10 @@ public class JwtAuthenticationController {
 
     //@RequestMapping(value = "/register", method = RequestMethod.POST)
     @Post("/register")
-    public void register(@RequestBody UserOfAppInputDto userOfAppInputDto) throws notUniqueArgumentException {
-        userOfAppService.register(userOfAppInputDto);
+    public ResponseEntity<String> register(@RequestBody UserOfAppInputDto userOfAppInputDto) throws notUniqueArgumentException {
+        String usernameOrError = userOfAppService.register(userOfAppInputDto);
+        if(usernameOrError.equals(userOfAppInputDto.getUsername())) return ResponseEntity.ok(usernameOrError);
+        else return ResponseEntity.badRequest().body(usernameOrError);
     }
 
     @Post("/forgot-password")

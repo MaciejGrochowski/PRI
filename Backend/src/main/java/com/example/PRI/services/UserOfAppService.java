@@ -115,16 +115,16 @@ public class UserOfAppService extends GeneralService {
 
     }
 
-    public void register(UserOfAppInputDto userOfAppInputDto) throws notUniqueArgumentException {
+    public String register(UserOfAppInputDto userOfAppInputDto) throws notUniqueArgumentException {
         if(!userOfAppInputDto.getPassword().equals(userOfAppInputDto.getConfirmPassword())){
             throw new notUniqueArgumentException("Hasła nie są identyczne", new Exception());
         }
         else {
-            saveNewUser(userOfAppInputDto);
+            return saveNewUser(userOfAppInputDto);
         }
     }
 
-    private void saveNewUser(UserOfAppInputDto userOfAppInputDto) throws notUniqueArgumentException {
+    private String saveNewUser(UserOfAppInputDto userOfAppInputDto) throws notUniqueArgumentException {
         if(userOfAppRepository.findByMail(userOfAppInputDto.getMail())==null && userOfAppRepository.findByUsername(userOfAppInputDto.getUsername())==null){
                 UserOfApp user = new UserOfApp();
                 user.setUsername(userOfAppInputDto.getUsername());
@@ -133,10 +133,10 @@ public class UserOfAppService extends GeneralService {
                 user.setDiscord(userOfAppInputDto.getDiscord());
                 user.setMail(userOfAppInputDto.getMail());
                 user.setFacebook(userOfAppInputDto.getFacebook());
-                userOfAppRepository.save(user);
+                return userOfAppRepository.save(user).getUsername();
             }
         else{
-            throw new notUniqueArgumentException("Nazwa lub email istnieją już w bazie", new Exception());
+            return "MAIL_EXISTS"; //ToDo to enum
         }
 
     }

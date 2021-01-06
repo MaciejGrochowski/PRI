@@ -13,10 +13,9 @@ const login = (username, password) => {
     return request.post(url, {username: username, password: password});
 }
 
-const logout = token => {
-    console.log(token);
+const logout = (token) => {
     const url = baseApiUrl + "/logout-user";
-    return authorizationRequest().post(url, {token: token});
+    return authorizationRequest().post(url, {token: token);
 }
 
 const register = requestBody => {

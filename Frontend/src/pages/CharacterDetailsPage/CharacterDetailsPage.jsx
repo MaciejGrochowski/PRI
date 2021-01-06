@@ -48,6 +48,18 @@ class CharacterDetailsPage extends React.Component {
     }
 
     getHistoriesByCharacterSuccessHandler = response => {
+        for(let item of response.data){
+            let tmp = item.beginDescription;
+            while(tmp.match('@')) {
+                tmp=tmp.replace('@','');
+            }
+            while(tmp.match(/#\d+/g)){
+                tmp=tmp.replace(/#\d+/g, '');
+            }
+            item.beginDescription = tmp;
+        }
+
+
         this.setState({historyData: response.data})
     }
 

@@ -1,5 +1,6 @@
 package com.example.PRI.controllers;
 
+import com.example.PRI.services.EmailService;
 import com.example.PRI.controllers.annotations.Get;
 import com.example.PRI.controllers.annotations.Put;
 import com.example.PRI.dtos.users.UserOfAppCredentialsInputDto;
@@ -20,6 +21,8 @@ public class UserOfAppController {
     @Autowired
     UserOfAppService userOfAppService;
 
+    @Autowired
+    EmailService emailService;
 
 
         @Get("/user/{username}")
@@ -37,6 +40,7 @@ public class UserOfAppController {
         public void updateUserDetails(@Valid @RequestBody UserOfAppCredentialsInputDto user, Authentication auth) throws notUniqueArgumentException {
             userOfAppService.updateUserCredentials(user, auth);
         }
+
 
 
 }

@@ -6,10 +6,7 @@ import com.example.PRI.entities.Place;
 import com.example.PRI.entities.UserOfApp;
 import com.example.PRI.entities.character.Character;
 import com.example.PRI.entities.character.*;
-import com.example.PRI.enums.Race;
-import com.example.PRI.enums.Religion;
-import com.example.PRI.enums.Sex;
-import com.example.PRI.enums.StarSign;
+import com.example.PRI.enums.*;
 import com.example.PRI.repositories.character.CharacterRepository;
 import com.example.PRI.services.GeneralService;
 import com.example.PRI.services.PlaceService;
@@ -101,11 +98,7 @@ public class CharacterService extends GeneralService {
     }
 
     public CharacterListOutputDto getSomeCharactersPaged(CharacterListFilterInputDto requestInfo) throws Throwable {
-        System.out.println("BEFORE");
-        System.out.println(Runtime.getRuntime().totalMemory());
-        System.out.println(Runtime.getRuntime().freeMemory());
-
-        System.out.println("------");
+        if(requestInfo.getRowsPerPage() > 100) requestInfo.setRowsPerPage(100);
         Pageable pageable;
         if (requestInfo.getSortedBy() == null)
             pageable = PageRequest.of(requestInfo.getCurrentPage(), requestInfo.getRowsPerPage(), Sort.by("id").descending());
@@ -125,16 +118,8 @@ public class CharacterService extends GeneralService {
         CharacterListOutputDto output = new CharacterListOutputDto();
         List<CharacterDefaultAttributesOutputDto> outputData = new ArrayList<>();
         charactersFilteredPage.get().forEach(c -> outputData.add(CharacterConverter.convert(c)));
-
         output.setList(outputData);
         output.setTotalCount(charactersFilteredPage.getTotalElements());
-        System.out.println("AFTER");
-        System.out.println(Runtime.getRuntime().totalMemory());
-        System.out.println(Runtime.getRuntime().freeMemory());
-
-        super.finalize();
-
-
         return output;
     }
 
@@ -143,59 +128,51 @@ public class CharacterService extends GeneralService {
 
     private Specification<Character> getSpecificationsFromFilter(CharacterListFilterInputDto requestInfo) {
         Specification<Character> specifications = CharacterSpecifications.getAll();
+        if (requestInfo.getFilters() == null || requestInfo.getFilters().size() == 0) return specifications;
 
-
-
-
-
-//        specifications = specifications.and(CharacterSpecifications.getByUsername(Collections.singletonList(userService.findByUsername("chomik123"))));
-
-        if(requestInfo.getFilters().containsKey("createdBy")){
-            String username = requestInfo.getFilters().get("createdBy");
+        if(requestInfo.getFilters().containsKey(CharacterAttribute.CREATEDBY.getName())){
+            String username = requestInfo.getFilters().get(CharacterAttribute.CREATEDBY.getName());
             UserOfApp user = userService.findByUsername(username);
             if(user != null) specifications = specifications.and(CharacterSpecifications.getByUser(Collections.singletonList(user)));
             else return specifications.and(CharacterSpecifications.GetNoone());
         }
 
-
-        if (requestInfo.getFilters() == null || requestInfo.getFilters().size() == 0) return specifications;
-
-        if (requestInfo.getFilters().containsKey("name")) {
-            Optional<Name> name = nameService.findByName(requestInfo.getFilters().get("name"));
+        if (requestInfo.getFilters().containsKey(CharacterAttribute.NAME.getName())) {
+            Optional<Name> name = nameService.findByName(requestInfo.getFilters().get(CharacterAttribute.NAME.getName()));
             if (name.isPresent()) specifications = specifications.and(CharacterSpecifications.getByName(name.get()));
             else return specifications.and(CharacterSpecifications.GetNoone());
         }
 
-        if (requestInfo.getFilters().containsKey("surname")) {
-            Optional<Surname> surname = surnameService.findBySurname(requestInfo.getFilters().get("surname"));
+        if (requestInfo.getFilters().containsKey(CharacterAttribute.SURNAME.getName())) {
+            Optional<Surname> surname = surnameService.findBySurname(requestInfo.getFilters().get(CharacterAttribute.SURNAME.getName()));
             if (surname.isPresent())
                 specifications = specifications.and(CharacterSpecifications.getBySurname(surname.get()));
             else return specifications.and(CharacterSpecifications.GetNoone());
         }
 
-        if (requestInfo.getFilters().containsKey("race")) {
-            List<String> racesList = Arrays.asList(requestInfo.getFilters().get("race").split(","));
+        if (requestInfo.getFilters().containsKey(CharacterAttribute.RACE.getName())) {
+            List<String> racesList = Arrays.asList(requestInfo.getFilters().get(CharacterAttribute.RACE.getName()).split(","));
             List<Race> races = racesList.stream().map(Race::valueOf).collect(Collectors.toList());
             if(races.size() > 0) specifications = specifications.and(CharacterSpecifications.getByRaces(races));
             else return specifications.and(CharacterSpecifications.GetNoone());
         }
 
-        if (requestInfo.getFilters().containsKey("eyeColor")) {
-            Optional<EyeColor> eyeColor = eyeColorService.findByName(requestInfo.getFilters().get("eyeColor"));
+        if (requestInfo.getFilters().containsKey(CharacterAttribute.EYECOLOR.getName())) {
+            Optional<EyeColor> eyeColor = eyeColorService.findByName(requestInfo.getFilters().get(CharacterAttribute.EYECOLOR.getName()));
             if (eyeColor.isPresent())
                 specifications = specifications.and(CharacterSpecifications.getByEyeColor(eyeColor.get()));
             else return specifications.and(CharacterSpecifications.GetNoone());
         }
 
-        if (requestInfo.getFilters().containsKey("hairColor")) {
-            Optional<HairColor> hairColor = hairColorService.findByName(requestInfo.getFilters().get("hairColor"));
+        if (requestInfo.getFilters().containsKey(CharacterAttribute.HAIRCOLOR.getName())) {
+            Optional<HairColor> hairColor = hairColorService.findByName(requestInfo.getFilters().get(CharacterAttribute.HAIRCOLOR.getName()));
             if (hairColor.isPresent())
                 specifications = specifications.and(CharacterSpecifications.getByHairColor(hairColor.get()));
             else return specifications.and(CharacterSpecifications.GetNoone());
         }
 
-        if (requestInfo.getFilters().containsKey("birthPlace")) {
-            String birthPlaceData = requestInfo.getFilters().get("birthPlace");
+        if (requestInfo.getFilters().containsKey(CharacterAttribute.BIRTHPLACE.getName())) {
+            String birthPlaceData = requestInfo.getFilters().get(CharacterAttribute.BIRTHPLACE.getName());
             List<String> birthPlacesListString = new ArrayList<>(Arrays.asList(birthPlaceData.split(",")));
             List<Place> birthPlaces = placeService.findByNameIn(birthPlacesListString);
             if (birthPlaces.size() > 0)
@@ -206,16 +183,16 @@ public class CharacterService extends GeneralService {
 
         //ToDo Filtrowanie po dacie urodzenia
 
-        if (requestInfo.getFilters().containsKey("starSign")) {
-            String starSign = requestInfo.getFilters().get("starSign");
+        if (requestInfo.getFilters().containsKey(CharacterAttribute.STARSIGN.getName())) {
+            String starSign = requestInfo.getFilters().get(CharacterAttribute.STARSIGN.getName());
             List<String> starSignListString = new ArrayList(Arrays.asList(starSign.split(",")));
             List<StarSign> starSigns = starSignListString.stream().map(StarSign::findByName).collect(Collectors.toList());
             if (starSigns.size() > 0) specifications = specifications.and(CharacterSpecifications.getByStarSigns(starSigns));
             else return specifications.and(CharacterSpecifications.GetNoone());
         }
 
-        if (requestInfo.getFilters().containsKey("religion")) {
-            String religionsData = requestInfo.getFilters().get("religion");
+        if (requestInfo.getFilters().containsKey(CharacterAttribute.RELIGION.getName())) {
+            String religionsData = requestInfo.getFilters().get(CharacterAttribute.RELIGION.getName());
             List<String> religionsListString = new ArrayList(Arrays.asList(religionsData.split(",")));
             List<Religion> religions = religionsListString.stream().map(Religion::findByGodName).collect(Collectors.toList());
             if (religions.size() > 0)
@@ -223,8 +200,8 @@ public class CharacterService extends GeneralService {
             else return specifications.and(CharacterSpecifications.GetNoone());
         }
 
-        if (requestInfo.getFilters().containsKey("dominatingEmotions")) {
-            String dominatingEmotionsData = requestInfo.getFilters().get("dominatingEmotions");
+        if (requestInfo.getFilters().containsKey(CharacterAttribute.DOMINATINGEMOTIONS.getName())) {
+            String dominatingEmotionsData = requestInfo.getFilters().get(CharacterAttribute.DOMINATINGEMOTIONS.getName());
             List<String> dominatingEmotionsListString = new ArrayList<>(Arrays.asList(dominatingEmotionsData.split(",")));
             List<Emotion> dominatingEmotions = emotionService.findByNameIn(dominatingEmotionsListString);
             if (dominatingEmotions.size() > 0)
@@ -232,20 +209,20 @@ public class CharacterService extends GeneralService {
             else return specifications.and(CharacterSpecifications.GetNoone());
         }
 
-        if (requestInfo.getFilters().containsKey("sex")) {
-            Sex sex = Sex.valueOf(requestInfo.getFilters().get("sex"));
+        if (requestInfo.getFilters().containsKey(CharacterAttribute.SEX.getName())) {
+            Sex sex = Sex.valueOf(requestInfo.getFilters().get(CharacterAttribute.SEX.getName()));
             specifications = specifications.and(CharacterSpecifications.getBySex(sex));
         }
 
-        if (requestInfo.getFilters().containsKey("prediction")) {
-            Optional<Prediction> prediction = predictionService.findByText(requestInfo.getFilters().get("prediction"));
+        if (requestInfo.getFilters().containsKey(CharacterAttribute.PREDICTION.getName())) {
+            Optional<Prediction> prediction = predictionService.findByText(requestInfo.getFilters().get(CharacterAttribute.PREDICTION.getName()));
             if (prediction.isPresent())
                 specifications = specifications.and(CharacterSpecifications.getByPrediction(prediction.get()));
             else return specifications.and(CharacterSpecifications.GetNoone());
         }
 
-        if (requestInfo.getFilters().containsKey("careers")) { //ToDo to jest po profesjach końcowych!!
-            String careerData = requestInfo.getFilters().get("careers");
+        if (requestInfo.getFilters().containsKey(CharacterAttribute.CURRENTCAREER.getName())) { //ToDo filter in all careers or only end?
+            String careerData = requestInfo.getFilters().get(CharacterAttribute.CURRENTCAREER.getName());
             List<String> careersListString = new ArrayList<>(Arrays.asList(careerData.split(",")));
             List<Career> careers = careerService.findByNameIn(careersListString);
             if (careers.size() > 0) specifications = specifications.and(CharacterSpecifications.getByCareer(careers));
@@ -253,16 +230,16 @@ public class CharacterService extends GeneralService {
         }
 
 
-        if (requestInfo.getFilters().containsKey("skills")) {
-            String skillsData = requestInfo.getFilters().get("skills");
+        if (requestInfo.getFilters().containsKey(CharacterAttribute.SKILLS.getName())) {
+            String skillsData = requestInfo.getFilters().get(CharacterAttribute.SKILLS.getName());
             List<String> skillsListString = new ArrayList<>(Arrays.asList(skillsData.split(",")));
             List<Skill> skills = skillService.findByNameIn(skillsListString);
             if (skills.size() > 0) specifications = specifications.and(CharacterSpecifications.getBySkills(skills));
             else return specifications.and(CharacterSpecifications.GetNoone());
         }
 
-        if (requestInfo.getFilters().containsKey("personalities")) {
-            String personalityData = requestInfo.getFilters().get("personalities");
+        if (requestInfo.getFilters().containsKey(CharacterAttribute.PERSONALITY.getName())) {
+            String personalityData = requestInfo.getFilters().get(CharacterAttribute.PERSONALITY.getName());
             List<String> personalityListString = new ArrayList<>(Arrays.asList(personalityData.split(",")));
             List<Personality> personalities = personalityService.findByNameIn(personalityListString);
             if (personalities.size() > 0)
@@ -270,8 +247,8 @@ public class CharacterService extends GeneralService {
             else return specifications.and(CharacterSpecifications.GetNoone());
         }
 
-        if (requestInfo.getFilters().containsKey("apperances")) {
-            String apperanceData = requestInfo.getFilters().get("apperances");
+        if (requestInfo.getFilters().containsKey(CharacterAttribute.APPERANCE.getName())) {
+            String apperanceData = requestInfo.getFilters().get(CharacterAttribute.APPERANCE.getName());
             List<String> apperanceListString = new ArrayList<>(Arrays.asList(apperanceData.split(",")));
             List<Apperance> apperances = apperanceService.findByNameIn(apperanceListString);
             if (apperances.size() > 0)
@@ -279,24 +256,18 @@ public class CharacterService extends GeneralService {
             else return specifications.and(CharacterSpecifications.GetNoone());
         }
 
-        if (requestInfo.getFilters().containsKey("livePlace")) {
-            String livePlacesData = requestInfo.getFilters().get("livePlace");
+        if (requestInfo.getFilters().containsKey(CharacterAttribute.LIVEPLACE.getName())) {
+            String livePlacesData = requestInfo.getFilters().get(CharacterAttribute.LIVEPLACE.getName());
             List<String> livePlacesListString = new ArrayList<>(Arrays.asList(livePlacesData.split(",")));
             List<Place> places = placeService.findByNameIn(livePlacesListString);
             if (places.size() > 0) {
                 specifications = specifications.and(CharacterSpecifications.getByLivePlaces(places));
             } else return specifications.and(CharacterSpecifications.GetNoone());
         }
-
-
         //ToDo Filtry po statystykach liczbowych (Wzrost, waga, statystyki)
-
-
-        if (requestInfo.getFilters().containsKey("talents")) {
-            String talentsData = requestInfo.getFilters().get("talents");
-            //Przerabiam String[] na Arraylistę, pozbywając się przy okazji przecinków
+        if (requestInfo.getFilters().containsKey(CharacterAttribute.TALENTS.getName())) {
+            String talentsData = requestInfo.getFilters().get(CharacterAttribute.TALENTS.getName());
             List<String> talentsListString = new ArrayList<String>(Arrays.asList(talentsData.split(",")));
-            //Pobieram listę obiektów typu talents
             List<Talent> talentsList = talentService.findByNameIn(talentsListString);
             if (talentsList.size() > 0)
                 specifications = specifications.and(CharacterSpecifications.getByTalents(talentsList));
@@ -343,7 +314,6 @@ public class CharacterService extends GeneralService {
 
     public List<CharacterTagOutputDto> getDataForTags() {
         Page<Character> allCharacters = characterRepository.findAll(PageRequest.of(0, (int) characterRepository.count()));
-        //ToDo its limited by int, maybe it is better method?
         List<CharacterTagOutputDto> output = new ArrayList<>();
 
         for(Character c : allCharacters ){

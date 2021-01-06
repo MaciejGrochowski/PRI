@@ -11,7 +11,6 @@ import {
 } from "./validation";
 import loginService from "../../services/loginService";
 import PasswordField from "../../components/PasswordField/PasswordField";
-import GeneratorTooltip from "../../components/Tooltip/GeneratorTooltip";
 import RegisterTooltip from "../../components/Tooltip/RegisterTooltip";
 
 
@@ -118,7 +117,7 @@ class RegisterPage extends React.Component {
                 />
                     <RegisterTooltip tooltipTextName={textsPolish.registerTooltipTexts.mail}/>
 </div>
-                {/*ToDo why showing text-validation not work in PasswordField??*/}
+
                 <div className="block-component">
 
                     <PasswordField

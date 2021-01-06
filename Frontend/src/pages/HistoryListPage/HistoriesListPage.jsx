@@ -79,6 +79,7 @@ class HistoriesListPage extends React.Component{
 
         let historyId = this.getHistoryId();
         if(historyId > 0 && this.state.characterLoadByPage === "" ){
+            this.setState({historyWithoutPreviousOrNext: true})
             this.setState({isPopupOpen: true, idPopupHistory: historyId})
 
         }
@@ -269,6 +270,7 @@ class HistoriesListPage extends React.Component{
                     changeHistoryToNext={this.changeHistoryFromDetails}
                     isPreviousButtonHidden={this.state.page === 0 && this.state.data.indexOf(this.state.data.filter(h => h.id === this.state.idPopupHistory)[0]) === 0}
                     isNextButtonHidden={this.state.page * this.state.countPerPage + 1 + this.state.data.indexOf(this.state.data.filter(h => h.id === this.state.idPopupHistory)[0]) === this.state.count}
+                    removeButtons={this.state.historyWithoutPreviousOrNext} //ToDo refactor that
 
                     />
 

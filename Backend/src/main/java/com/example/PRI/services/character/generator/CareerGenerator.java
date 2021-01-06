@@ -53,6 +53,19 @@ public class CareerGenerator extends GeneralService {
         this.randomService = randomService;
         List<Career> careerList = careerService.findAllBaseCareers();
 
+        List<Career> tmp = careerService.findAll();
+        for(Career c : tmp){
+            try{
+                Map<String, String> careerProperties = mapJsonStringToMap(c.getProperties());
+            }
+            catch (Exception e){
+                System.out.println(c.getName());
+                System.out.println(e.getMessage());
+                System.out.println("----");
+            }
+
+        }
+
         for(Career career : careerList){
             String chanceStr = properties.get(career.getName());
             Double chance = 0.0;

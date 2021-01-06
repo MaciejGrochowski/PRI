@@ -14,7 +14,7 @@ class GeneratorTooltip extends React.Component {
         }
     }
 
-    tooltipTextGenerator(typeName){
+    tooltipTextGenerator(typeName){ //ToDo how they massacred my orc... refactor that
         switch(typeName) {
             case 'Imię':
                 return nameText(this.props.raceTooltipAtribute,this.props.sexTooltipAtribute,this.props.content)
@@ -67,7 +67,7 @@ class GeneratorTooltip extends React.Component {
     render() {
         let tooltipClassName = 'CoolTooltip';
         if (this.props.showIt && this.props.tooltipTypeName!=="Poprzednie profesje") {
-            tooltipClassName += '-NonActive';
+            tooltipClassName += '-NonActive'; //ToDo refactor
         }
     return(
         <div className={tooltipClassName}>

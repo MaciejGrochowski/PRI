@@ -4,11 +4,9 @@ import java.util.Objects;
 
 import com.example.PRI.config.JwtTokenUtil;
 import com.example.PRI.controllers.annotations.Post;
-import com.example.PRI.dtos.users.JwtRequest;
-import com.example.PRI.dtos.users.JwtResponse;
-import com.example.PRI.dtos.users.UserOfAppInputDto;
-import com.example.PRI.entities.UserOfApp;
+import com.example.PRI.dtos.users.*;
 import com.example.PRI.exceptions.notUniqueArgumentException;
+import com.example.PRI.services.EmailService;
 import com.example.PRI.services.UserOfAppService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -19,13 +17,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
-
-import javax.validation.Valid;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin
@@ -42,6 +34,9 @@ public class JwtAuthenticationController {
 
     @Autowired
     UserOfAppService userOfAppService;
+
+    @Autowired
+    EmailService emailService;
 
     //@RequestMapping(value = "/authenticate", method = RequestMethod.POST)
     @Post("/authenticate")
@@ -73,10 +68,11 @@ public class JwtAuthenticationController {
         }
     }
 
-    @Post("/logout-user")
-    //@RequestMapping(value = "/logout-user", method = RequestMethod.POST)
-    private void logout(Authentication auth){
-     userOfAppService.logoutUser(auth);
+//    @Post("/logout-user")
+    @RequestMapping(value = "/logout-user", method = RequestMethod.POST)
+    public void logout(Authentication auth,@RequestBody TokenInputDto tokenInputDto){
+
+        userOfAppService.logoutUser(auth, tokenInputDto.getToken());
     }
 
     //@RequestMapping(value = "/register", method = RequestMethod.POST)
@@ -85,4 +81,6 @@ public class JwtAuthenticationController {
         userOfAppService.register(userOfAppInputDto);
     }
 
+    @Post("/forgot-password")
+    public void forgotPassword(@RequestBody emailInputDto email){ userOfAppService.sendPasswordRemainder(email.getEmail());}
 }

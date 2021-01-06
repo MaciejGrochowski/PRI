@@ -38,7 +38,7 @@ public class CharacterBuilder {
         character = new Character();
         properties = new HashMap<>();
         randomService = new RandomService(seed);
-        System.out.println("Seed: " + seed);
+        System.out.println("Generating character, seed: " + seed);
         System.out.println(new Date());
         return this;
     }
@@ -54,8 +54,6 @@ public class CharacterBuilder {
             System.out.println("CharacterCareer: " + character.getCurrentCareer().getName());
         }
         System.out.println("Generated character");//ToDo better logs in other class
-
-
         return character;
     }
 

@@ -32,8 +32,6 @@ const validInputAttributes = character => {
 }
 
 const generateOneAttribute = (name, character) => {
-    name = name.replace(/\s+/g, '-').toLowerCase();
-    // character = encodeURI(JSON.stringify(character));
     character = validInputAttributes(character)
     const url = generatorUrl + "/attribute/" + name;
     return request.get(url, {params: character});

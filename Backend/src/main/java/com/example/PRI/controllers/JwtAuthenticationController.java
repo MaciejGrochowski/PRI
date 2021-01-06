@@ -4,10 +4,7 @@ import java.util.Objects;
 
 import com.example.PRI.config.JwtTokenUtil;
 import com.example.PRI.controllers.annotations.Post;
-import com.example.PRI.dtos.users.emailInputDto;
-import com.example.PRI.dtos.users.JwtRequest;
-import com.example.PRI.dtos.users.JwtResponse;
-import com.example.PRI.dtos.users.UserOfAppInputDto;
+import com.example.PRI.dtos.users.*;
 import com.example.PRI.exceptions.notUniqueArgumentException;
 import com.example.PRI.services.EmailService;
 import com.example.PRI.services.UserOfAppService;
@@ -73,8 +70,9 @@ public class JwtAuthenticationController {
 
 //    @Post("/logout-user")
     @RequestMapping(value = "/logout-user", method = RequestMethod.POST)
-    public void logout(Authentication auth){
-     userOfAppService.logoutUser(auth);
+    public void logout(Authentication auth,@RequestBody TokenInputDto tokenInputDto){
+
+        userOfAppService.logoutUser(auth, tokenInputDto.getToken());
     }
 
     //@RequestMapping(value = "/register", method = RequestMethod.POST)

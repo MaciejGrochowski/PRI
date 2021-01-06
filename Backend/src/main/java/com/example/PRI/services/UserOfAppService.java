@@ -12,11 +12,13 @@ import com.example.PRI.repositories.TokenRepository;
 import com.example.PRI.repositories.UserOfAppRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.validation.Valid;
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -55,17 +57,10 @@ public class UserOfAppService extends GeneralService {
         return tokenRepository.findByName(token) == null;
     }
 
-    private void logoutUser(String username, Authentication auth){
+    private void logoutUser(String username, Authentication auth, String token){
         UserOfApp userOFApp = findByUsername(username);
-        Token tok = userOFApp.getSingleToken(auth.toString());
-
-
-        List<Token> tmp = userOFApp.getToken();
-        tmp.remove(tok);
-        userOFApp.setToken(tmp);
-        //tok.setTokenUser(null);
-        //tokenRepository.delete(tok);
-        //userOFApp.setToken(null); //ToDo token should let more logged sessions
+        Token tok = userOFApp.getSingleToken(token);
+        tokenRepository.delete(tok);
         userOfAppRepository.save(userOFApp);
     }
 
@@ -74,9 +69,9 @@ public class UserOfAppService extends GeneralService {
         return user.getUsername();
     }
 
-    public void logoutUser(Authentication auth) {
+    public void logoutUser(Authentication auth, String token) {
         if(auth==null) return;
-        logoutUser(auth.getName(), auth);
+        logoutUser(auth.getName(), auth, token);
     }
 
 //    private void changeMailOfUser(String username){

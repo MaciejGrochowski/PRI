@@ -20,7 +20,6 @@ public class CareerGenerator extends GeneralService {
     CareerService careerService;
     //ToDo Strongly test after get data jsons
 
-    //ToDo This should get properties of birthplaces and careers to choose best career
     private Career getFirstCareer(Map<String, String> properties){
         List<Career> careerList = careerService.findAllBaseCareers();
         List<String> careerNames = careerList.stream().map(Career::getName).collect(Collectors.toList());
@@ -47,6 +46,19 @@ public class CareerGenerator extends GeneralService {
 
     public Map<String, String> buildFirstCareer(Character character, HashMap<String, String> properties) {
         List<Career> careerList = careerService.findAllBaseCareers();
+
+        List<Career> tmp = careerService.findAll();
+        for(Career c : tmp){
+            try{
+                Map<String, String> careerProperties = mapJsonStringToMap(c.getProperties());
+            }
+            catch (Exception e){
+                System.out.println(c.getName());
+                System.out.println(e.getMessage());
+                System.out.println("----");
+            }
+
+        }
 
         for(Career career : careerList){
             String chanceStr = properties.get(career.getName());

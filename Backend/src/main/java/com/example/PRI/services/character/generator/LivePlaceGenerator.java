@@ -33,10 +33,10 @@ public class LivePlaceGenerator extends GeneralService {
             nationJourneyChance += Double.parseDouble(properties.get("nationJourney"));
         }
 
-        if(new Random().nextDouble() < nationJourneyChance){
+        if(randomService.nextDouble() < nationJourneyChance){
             character.setLivePlace(this.generateLiveNationPlace(character, properties));
         }
-        else if(new Random().nextDouble() < landJourneyChance){
+        else if(randomService.nextDouble() < landJourneyChance){
             character.setLivePlace(this.generateLiveLandPlace(character, properties));
         }
         if(character.getLivePlace()==null) character.setLivePlace(character.getBirthPlace());
@@ -96,8 +96,7 @@ public class LivePlaceGenerator extends GeneralService {
     }
 
     private Place getPlace(Character character, List<Place> probablyPlaces) {
-        Random rand = new Random();
-        double randomRoll = rand.nextDouble();
+        double randomRoll = randomService.nextDouble();
         if(randomRoll < 0.25) return this.randomPlace(probablyPlaces);
         Career career = character.getCurrentCareer();
         Place place = this.getRandomPlaceByProperties(career, probablyPlaces);

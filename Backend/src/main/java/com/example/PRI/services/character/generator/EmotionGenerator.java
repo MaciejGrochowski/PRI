@@ -42,7 +42,7 @@ public class EmotionGenerator extends GeneralService {
             if (noMatch) characterEmotions.add(newEmotion);
         }
         if(characterEmotions.size() > emotionCount){
-            Collections.shuffle(characterEmotions);
+            Collections.shuffle(characterEmotions, randomService.getRandom());
             characterEmotions = characterEmotions.subList(0, emotionCount);
         }
         character.setDominatingEmotions(characterEmotions);

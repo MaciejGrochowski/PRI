@@ -54,7 +54,7 @@ public class SurnameGenerator extends GeneralService {
         Double surnameTypeRand = randomService.nextDouble();
         surnames = surnames.stream().filter(Surname::isUsedByGenerator).collect(Collectors.toList());
         double randRoll = surnameTypeRand;
-        Collections.shuffle(surnames);
+        Collections.shuffle(surnames, randomService.getRandom());
 
         for (Surname surname : surnames) {
             randRoll -= surname.getProbability();
@@ -68,7 +68,7 @@ public class SurnameGenerator extends GeneralService {
         Double surnameTypeRand = randomService.nextDouble();
         List<Name> names = nameService.findByIsDwarf();
         names = names.stream().filter(Name::isUsedByGenerator).collect(Collectors.toList());
-        Collections.shuffle(names);
+        Collections.shuffle(names, randomService.getRandom());
         double randomRoll = surnameTypeRand;
         Name generatedName = null;
         for (Name name : names) {

@@ -49,7 +49,7 @@ public class ApperanceGenerator extends GeneralService {
             if (noMatch) characterApperances.add(newApperance);
         }
         if(characterApperances.size() > apperanceCount){
-            Collections.shuffle(characterApperances);
+            Collections.shuffle(characterApperances, randomService.getRandom());
             characterApperances = characterApperances.subList(0, apperanceCount);
         }
         character.setApperance(characterApperances);

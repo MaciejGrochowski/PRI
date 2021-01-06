@@ -44,7 +44,7 @@ public class PersonalityGenerator extends GeneralService {
             if (noMatch) characterPersonalities.add(newPersonality);
         }
         if(characterPersonalities.size() > personalityCount){
-            Collections.shuffle(characterPersonalities);
+            Collections.shuffle(characterPersonalities, randomService.getRandom());
             characterPersonalities = characterPersonalities.subList(0, personalityCount);
         }
         character.setPersonality(characterPersonalities);

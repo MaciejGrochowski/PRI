@@ -145,7 +145,7 @@ public class CareerGenerator extends GeneralService {
     private Career getNextBaseCareer(Career currentCareer,RandomService randomService, HashMap<String, String> properties) {
         this.randomService = randomService;
         List<Career> careers = currentCareer.getCareerExits().stream().filter(Career::isBaseProfession).collect(Collectors.toList());
-        Collections.shuffle(careers);
+        Collections.shuffle(careers, randomService.getRandom());
         for(Career career : careers){
             if(properties.containsKey(career.getName())){
                 if(randomService.nextDouble() < Double.parseDouble(properties.get(career.getName()))) return career;

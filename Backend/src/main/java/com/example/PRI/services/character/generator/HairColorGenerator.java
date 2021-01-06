@@ -25,7 +25,7 @@ public class HairColorGenerator extends GeneralService {
         this.randomService = randomService;
         Double hairColorTypeRand = randomService.nextDouble();
         List<HairColor> hairColors = hairColorService.findAll();
-        Collections.shuffle(hairColors);
+        Collections.shuffle(hairColors, randomService.getRandom());
         Map<String, String> newProps = new HashMap<>();
         boolean strangeColor = (hairColorTypeRand < 0.0002);
         HairColor generated = null;
@@ -33,7 +33,7 @@ public class HairColorGenerator extends GeneralService {
             for (HairColor hairColor : hairColors) {
                 if (properties.containsKey("Włosy " + hairColor.getColor())) {
                     double chance = Double.parseDouble(properties.get("Włosy " + hairColor.getColor()));
-                    if (new Random().nextDouble() < chance) {
+                    if (randomService.nextDouble() < chance) {
                         generated = hairColor;
                     }
                 }
@@ -55,7 +55,7 @@ public class HairColorGenerator extends GeneralService {
             }
         } else {
             List<HairColor> notNormalColors = hairColors.stream().filter(e -> e.getChanceIfHuman() == 0 && e.getChanceIfDwarf() == 0 && e.getChanceIfElf() == 0 && e.getChangeIfHalfling() == 0).collect(Collectors.toList());
-            generated = notNormalColors.get(new Random().nextInt(notNormalColors.size()));
+            generated = notNormalColors.get(randomService.nextInt(notNormalColors.size()));
             //ToDo dopisać do JSON ultra-rzadkie kolory
             newProps.put("hairColor", generated.getColor());
         }

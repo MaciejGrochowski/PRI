@@ -14,6 +14,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.Access;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -37,10 +38,24 @@ public class CharacterBuilder {
         character = new Character();
         properties = new HashMap<>();
         randomService = new RandomService(seed);
+        System.out.println("Seed: " + seed);
+        System.out.println(new Date());
         return this;
     }
 
     public Character getCharacter(){
+        if(character.getName() != null){
+            System.out.println("CharacterName: " + character.getName().getName());
+        }
+        if(character.getSurname()!=null){
+            System.out.println("CharacterSurname: " + character.getName().getName());
+        }
+        if(character.getCurrentCareer()!=null){
+            System.out.println("CharacterCareer: " + character.getCurrentCareer().getName());
+        }
+        System.out.println("Generated character");//ToDo better logs in other class
+
+
         return character;
     }
 

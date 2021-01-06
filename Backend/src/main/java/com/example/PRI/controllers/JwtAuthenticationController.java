@@ -79,8 +79,8 @@ public class JwtAuthenticationController {
 
     @Post("/logout-user")
     //@RequestMapping(value = "/logout-user", method = RequestMethod.POST)
-    private void logout(Authentication auth){
-     userOfAppService.logoutUser(auth);
+    private void logout(Authentication auth) {
+        userOfAppService.logoutUser(auth);
     }
 
     //@RequestMapping(value = "/register", method = RequestMethod.POST)
@@ -91,17 +91,7 @@ public class JwtAuthenticationController {
     }
 
     @Post("/forgot-password")
-    public void forgotPassword(@RequestBody emailInputDto email){ userOfAppService.sendPasswordRemainder(email.getEmail());}
-
-
-    @RequestMapping(value = "/logo.png", method = RequestMethod.GET,
-            produces = MediaType.IMAGE_JPEG_VALUE)
-
-    public void getImage(HttpServletResponse response) throws IOException {
-
-        var imgFile = new ClassPathResource("content/logo.png");
-
-        response.setContentType(MediaType.IMAGE_JPEG_VALUE);
-        StreamUtils.copy(imgFile.getInputStream(), response.getOutputStream());
+    public void forgotPassword(@RequestBody emailInputDto email) {
+        userOfAppService.sendPasswordRemainder(email.getEmail());
     }
 }

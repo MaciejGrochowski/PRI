@@ -1,5 +1,6 @@
 package com.example.PRI.controllers;
 
+import java.io.IOException;
 import java.util.Objects;
 
 import com.example.PRI.config.JwtTokenUtil;
@@ -12,6 +13,8 @@ import com.example.PRI.exceptions.notUniqueArgumentException;
 import com.example.PRI.services.EmailService;
 import com.example.PRI.services.UserOfAppService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -20,9 +23,10 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.util.StreamUtils;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletResponse;
 
 @RestController
 @CrossOrigin
@@ -88,4 +92,16 @@ public class JwtAuthenticationController {
 
     @Post("/forgot-password")
     public void forgotPassword(@RequestBody emailInputDto email){ userOfAppService.sendPasswordRemainder(email.getEmail());}
+
+
+    @RequestMapping(value = "/logo.png", method = RequestMethod.GET,
+            produces = MediaType.IMAGE_JPEG_VALUE)
+
+    public void getImage(HttpServletResponse response) throws IOException {
+
+        var imgFile = new ClassPathResource("content/logo.png");
+
+        response.setContentType(MediaType.IMAGE_JPEG_VALUE);
+        StreamUtils.copy(imgFile.getInputStream(), response.getOutputStream());
+    }
 }

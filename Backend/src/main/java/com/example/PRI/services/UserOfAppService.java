@@ -5,16 +5,21 @@ import com.example.PRI.dtos.users.UserOfAppCredentialsInputDto;
 import com.example.PRI.dtos.users.UserOfAppDetailsInputDto;
 import com.example.PRI.dtos.users.UserOfAppDetailsOutputDto;
 import com.example.PRI.dtos.users.UserOfAppInputDto;
+import com.example.PRI.entities.Token;
 import com.example.PRI.entities.UserOfApp;
 import com.example.PRI.exceptions.notUniqueArgumentException;
+import com.example.PRI.repositories.TokenRepository;
 import com.example.PRI.repositories.UserOfAppRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.validation.Valid;
+import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -29,27 +34,33 @@ public class UserOfAppService extends GeneralService {
     @Autowired
     EmailService emailService;
 
+    @Autowired
+    TokenRepository tokenRepository;
+
     public UserOfApp findByUsername(String username) {
         return userOfAppRepository.findByUsername(username);
     }
 
     public void saveTokenToUser(String username, String token) {
         UserOfApp userOFApp = findByUsername(username);
-        userOFApp.setToken(token);
+        Token token1 = new Token(userOFApp, token);
+        tokenRepository.save(token1);
         userOfAppRepository.save(userOFApp);
     }
 
     private UserOfApp findByToken(String token){
-        return userOfAppRepository.findByToken(token);
+        //tokenRepository.findByTokenName(token);
+        return userOfAppRepository.findByToken(tokenRepository.findByName(token));
     }
 
     public Boolean isTokenExpired(String token) {
-        return findByToken(token) == null;
+        return tokenRepository.findByName(token) == null;
     }
 
-    private void logoutUser(String username){
+    private void logoutUser(String username, Authentication auth, String token){
         UserOfApp userOFApp = findByUsername(username);
-        userOFApp.setToken(null); //ToDo token should let more logged sessions
+        Token tok = userOFApp.getSingleToken(token);
+        tokenRepository.delete(tok);
         userOfAppRepository.save(userOFApp);
     }
 
@@ -58,9 +69,9 @@ public class UserOfAppService extends GeneralService {
         return user.getUsername();
     }
 
-    public void logoutUser(Authentication auth) {
+    public void logoutUser(Authentication auth, String token) {
         if(auth==null) return;
-        logoutUser(getUsernameFromAuthentication(auth));
+        logoutUser(auth.getName(), auth, token);
     }
 
 //    private void changeMailOfUser(String username){

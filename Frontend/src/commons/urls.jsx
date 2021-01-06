@@ -12,5 +12,8 @@ export const fronendUrls = {
     historyCreator: '/history/create',
     loginPage: "/login",
     userProfilePage: "/user",
-    registerPage: '/register'
+    registerPage: '/register',
+    forgotPasswordPage: '/forgotPassword',
+    newPasswordPage: "/newPassword",
+    sessionList: '/sessions'
 }

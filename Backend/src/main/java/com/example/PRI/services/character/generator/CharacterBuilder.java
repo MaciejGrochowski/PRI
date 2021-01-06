@@ -33,10 +33,12 @@ public class CharacterBuilder {
         character = new Character();
         properties = new HashMap<>();
         randomService = new RandomService(seed);
+        System.out.println("Generating character, seed: " + seed);
         return this;
     }
 
     public Character getCharacter(){
+        System.out.println("Generated character and got it, id: " + character.getId() + ", name: " + character.getName() + " " + character.getSurname());
         return character;
     }
 

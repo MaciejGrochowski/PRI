@@ -7,7 +7,7 @@ import {Link} from "react-router-dom";
 import {fronendUrls} from "../../commons/urls";
 import "../../styles/userProfile.css";
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
-import ChangeCredentialsModal from "../../components/ChangeCredentialsModal/ChangeCredentialsModal";
+import ChangeCredentialsModal from "../../components/Popup/ChangeCredentialsModal/ChangeCredentialsModal";
 
 
 class UserProfilePage extends React.Component {

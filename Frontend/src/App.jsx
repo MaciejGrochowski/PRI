@@ -13,7 +13,11 @@ import CharacterGeneratorPage from "./pages/CharacterGeneratorPage/CharacterGene
 import HistoryCreatorPage from "./pages/HistoryCreatorPage/HistoryCreatorPage";
 import UserProfilePage from "./pages/UserProfilePage/UserProfilePage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
+import ForgotPasswordPage from "./pages/ForgotPasswordPage";
+import NewPasswordPage from "./pages/NewPasswordPage";
 import SessionListPage from "./pages/SessionListPage/SessionListPage";
+import ActivateUserPage from "./pages/ActivateUserPage";
+
 
 class App extends React.Component{
 
@@ -31,9 +35,10 @@ class App extends React.Component{
         <Route path={fronendUrls.loginPage} component={LoginPage} />
         <Route path={fronendUrls.userProfilePage + "/:username"} component={UserProfilePage} />
         <Route path={fronendUrls.registerPage} component={RegisterPage} />
-                <Route path={fronendUrls.sessionList + "/:username"} component={SessionListPage} />
-
-
+        <Route path={fronendUrls.forgotPasswordPage} component={ForgotPasswordPage} />
+        <Route path={fronendUrls.newPasswordPage + "/:username?/:hashcode?"} component={NewPasswordPage} />
+        <Route path={fronendUrls.sessionList + "/:username"} component={SessionListPage} />
+        <Route path={fronendUrls.activateUser + "/:username/:uuid"} component={ActivateUserPage} />
 
             </BrowserRouter>
         )

@@ -1,10 +1,7 @@
 package com.example.PRI.services;
 
 import com.example.PRI.converters.UserOfAppConverter;
-import com.example.PRI.dtos.users.UserOfAppCredentialsInputDto;
-import com.example.PRI.dtos.users.UserOfAppDetailsInputDto;
-import com.example.PRI.dtos.users.UserOfAppDetailsOutputDto;
-import com.example.PRI.dtos.users.UserOfAppInputDto;
+import com.example.PRI.dtos.users.*;
 import com.example.PRI.entities.UserOfApp;
 import com.example.PRI.exceptions.notUniqueArgumentException;
 import com.example.PRI.repositories.UserOfAppRepository;
@@ -14,8 +11,10 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import javax.mail.MessagingException;
 import javax.validation.Valid;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class UserOfAppService extends GeneralService {
@@ -115,36 +114,40 @@ public class UserOfAppService extends GeneralService {
 
     }
 
-    public void register(UserOfAppInputDto userOfAppInputDto) throws notUniqueArgumentException {
+    public String register(UserOfAppInputDto userOfAppInputDto) throws notUniqueArgumentException {
         if(!userOfAppInputDto.getPassword().equals(userOfAppInputDto.getConfirmPassword())){
             throw new notUniqueArgumentException("Hasła nie są identyczne", new Exception());
         }
         else {
-            saveNewUser(userOfAppInputDto);
+            return saveNewUser(userOfAppInputDto);
         }
     }
 
-    private void saveNewUser(UserOfAppInputDto userOfAppInputDto) throws notUniqueArgumentException {
+    private String saveNewUser(UserOfAppInputDto userOfAppInputDto) throws notUniqueArgumentException {
         if(userOfAppRepository.findByMail(userOfAppInputDto.getMail())==null && userOfAppRepository.findByUsername(userOfAppInputDto.getUsername())==null){
                 UserOfApp user = new UserOfApp();
                 user.setUsername(userOfAppInputDto.getUsername());
+                user.setIsActive(false);
+                user.setUUIDActivation(UUID.randomUUID().toString());
                 user.setPassword(passwordEncoder.encode(userOfAppInputDto.getPassword()));
                 user.setDescription(userOfAppInputDto.getDescription());
                 user.setDiscord(userOfAppInputDto.getDiscord());
                 user.setMail(userOfAppInputDto.getMail());
                 user.setFacebook(userOfAppInputDto.getFacebook());
-                userOfAppRepository.save(user);
+                return userOfAppRepository.save(user).getUsername();
             }
         else{
-            throw new notUniqueArgumentException("Nazwa lub email istnieją już w bazie", new Exception());
+            return "MAIL_EXISTS"; //ToDo to enum
         }
 
     }
 
-    public void sendPasswordRemainder(String email) {
+    public void sendPasswordRemainder(String email) throws MessagingException {
         UserOfApp uoa = userOfAppRepository.findByMail(email);
         if(uoa != null){
-            emailService.sendPasswordRemainder(uoa.getUsername(), uoa.getMail(), uoa.getPassword());
+            uoa.setUUIDActivation(UUID.randomUUID().toString());
+            userOfAppRepository.save(uoa);
+            emailService.sendPasswordRemainder(uoa.getUsername(), uoa.getMail(), uoa.getUUIDActivation());
         }
         else{
             System.err.println("nie ma takiego maia w bazie");
@@ -152,7 +155,30 @@ public class UserOfAppService extends GeneralService {
 
     }
 
-    public void sendHelloEmail(UserOfAppInputDto userOfAppInputDto) {
-        emailService.sendWelcomeMail(userOfAppInputDto.getUsername(), userOfAppInputDto.getMail(), userOfAppInputDto.getPassword());
+    public void sendHelloEmail(UserOfApp uapp) throws MessagingException {
+        emailService.sendWelcomeMail(uapp.getUsername(), uapp.getMail(), uapp.getPassword(), uapp.getUUIDActivation());
+    }
+
+    public Long activateUser(String username, String uuid) {
+        UserOfApp user = findByUsername(username);
+        if(user != null && user.getUUIDActivation().equals(uuid)){
+            user.setIsActive(true);
+            userOfAppRepository.save(user);
+            return user.getId();
+        }
+        return -1L;
+    }
+
+    public Long changePassword(ChangePasswordInputDto changePasswordInputDto) {
+        UserOfApp user = findByUsername(changePasswordInputDto.getUsername());
+
+        if (user.getUUIDActivation().equals(changePasswordInputDto.getHashcode())){
+            user.setPassword(passwordEncoder.encode(changePasswordInputDto.getNewPassword()));
+            userOfAppRepository.save(user);
+            return user.getId();
+        }
+        else return -1L;
+
+
     }
 }

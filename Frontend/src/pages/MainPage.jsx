@@ -2,6 +2,7 @@ import React from "react";
 import {Link} from "react-router-dom";
 import "../styles/globalStyles.css";
 import {fronendUrls} from "../commons/urls";
+import CookieConsent from "react-cookie-consent";
 
 
 class MainPage extends React.Component {

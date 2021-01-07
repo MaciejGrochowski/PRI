@@ -4,7 +4,8 @@ import {apiUrl, authorizationRequest, baseApiUrl, placeUrl, request} from "./uti
 const loginService = {
     login: (username, password) => login(username, password),
     logout: () => logout(),
-    register: requestBody => register(requestBody)
+    register: requestBody => register(requestBody),
+    forgetPassword: requestBody => forgetPassword(requestBody)
 }
 
 const login = (username, password) => {
@@ -19,6 +20,11 @@ const logout = () => {
 
 const register = requestBody => {
     const url = baseApiUrl + "/register";
+    return request.post(url, requestBody);
+}
+
+const forgetPassword = requestBody => {
+    const url = baseApiUrl + "/forgot-password";
     return request.post(url, requestBody);
 }
 

@@ -20,7 +20,7 @@ class ForgotPasswordPage extends React.Component {
     }
 
     forgotPassword = () => {
-        const requestBody = {mail: this.state.mail};
+        const requestBody = {email: this.state.mail};
 
         loginService.forgetPassword(requestBody)
             .then(r => this.forgotPasswordSuccessHandler(r))
@@ -41,6 +41,11 @@ class ForgotPasswordPage extends React.Component {
 
 
     render(){
+
+
+
+
+
         return (
             <div className = "plainPage">
                 <div className="block-component">

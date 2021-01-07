@@ -24,6 +24,8 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.mail.MessagingException;
+
 @RestController
 @CrossOrigin
 public class JwtAuthenticationController {
@@ -81,11 +83,11 @@ public class JwtAuthenticationController {
 
     //@RequestMapping(value = "/register", method = RequestMethod.POST)
     @Post("/register")
-    public void register(@RequestBody UserOfAppInputDto userOfAppInputDto) throws notUniqueArgumentException {
+    public void register(@RequestBody UserOfAppInputDto userOfAppInputDto) throws notUniqueArgumentException, MessagingException {
         userOfAppService.register(userOfAppInputDto);
         userOfAppService.sendHelloEmail(userOfAppInputDto);
     }
 
     @Post("/forgot-password")
-    public void forgotPassword(@RequestBody emailInputDto email){ userOfAppService.sendPasswordRemainder(email.getEmail());}
+    public void forgotPassword(@RequestBody emailInputDto email) throws MessagingException { userOfAppService.sendPasswordRemainder(email.getEmail());}
 }

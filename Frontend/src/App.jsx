@@ -15,6 +15,8 @@ import UserProfilePage from "./pages/UserProfilePage/UserProfilePage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import ForgotPasswordPage from "./pages/ForgotPasswordPage";
 import NewPasswordPage from "./pages/NewPasswordPage";
+import SessionListPage from "./pages/SessionListPage/SessionListPage";
+
 
 class App extends React.Component{
 
@@ -33,7 +35,8 @@ class App extends React.Component{
         <Route path={fronendUrls.userProfilePage + "/:username"} component={UserProfilePage} />
         <Route path={fronendUrls.registerPage} component={RegisterPage} />
         <Route path={fronendUrls.forgotPasswordPage} component={ForgotPasswordPage} />
-                <Route path={fronendUrls.newPasswordPage + "/:username?/:hashcode?"} component={NewPasswordPage} />
+        <Route path={fronendUrls.newPasswordPage + "/:username?/:hashcode?"} component={NewPasswordPage} />
+        <Route path={fronendUrls.sessionList + "/:username"} component={SessionListPage} />
 
             </BrowserRouter>
         )

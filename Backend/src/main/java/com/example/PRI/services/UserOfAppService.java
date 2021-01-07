@@ -14,6 +14,7 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import javax.mail.MessagingException;
 import javax.validation.Valid;
 import java.util.Optional;
 
@@ -141,7 +142,7 @@ public class UserOfAppService extends GeneralService {
 
     }
 
-    public void sendPasswordRemainder(String email) {
+    public void sendPasswordRemainder(String email) throws MessagingException {
         UserOfApp uoa = userOfAppRepository.findByMail(email);
         if(uoa != null){
             emailService.sendPasswordRemainder(uoa.getUsername(), uoa.getMail(), uoa.getPassword());
@@ -150,5 +151,9 @@ public class UserOfAppService extends GeneralService {
             System.err.println("nie ma takiego maia w bazie");
         }
 
+    }
+
+    public void sendHelloEmail(UserOfAppInputDto userOfAppInputDto) throws MessagingException {
+        emailService.sendWelcomeMail(userOfAppInputDto.getUsername(), userOfAppInputDto.getMail(), userOfAppInputDto.getPassword());
     }
 }

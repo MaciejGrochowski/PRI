@@ -45,12 +45,13 @@ export const getInfoFromToken = token => {
     return jwt.decode(token);
 }
 
-export const baseApiUrl = "http://localhost:8080";
 
- export const localApiUrl = baseApiUrl + "/app";
- // export const localApiUrl = "https://janietakiork.projektstudencki.pl:8443/PRI-0.0.1-SNAPSHOT/app";
+export const baseApiUrl = "https://janietakiork.projektstudencki.pl:8443/PRI-0.0.1-SNAPSHOT/";
+// export const baseApiUrl = "http://localhost:8080";
 
-//export const localApiUrl = "https://localhost:443/app"
+
+export const localApiUrl = baseApiUrl + "/app";
+
 
 export const apiUrl = localApiUrl;
 

@@ -14,5 +14,6 @@ export const fronendUrls = {
     userProfilePage: "/user",
     registerPage: '/register',
     forgotPasswordPage: '/forgotPassword',
-    newPasswordPage: "/newPassword"
+    newPasswordPage: "/newPassword",
+    sessionList: '/sessions'
 }

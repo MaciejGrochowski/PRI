@@ -68,7 +68,7 @@ public class DeserializationController {
     CareerTalentService careerTalentService;
 
 
-    final String path = "./";
+    final String path = "/home/janietakiork/projekt/PRI/Backend/";
 
     @RequestMapping("/json/name")
     public void nameDeserializationAndDatabaseUpdate() throws IOException {

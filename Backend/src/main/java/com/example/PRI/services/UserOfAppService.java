@@ -153,7 +153,7 @@ public class UserOfAppService extends GeneralService {
 
     }
 
-    public void sendHelloEmail(UserOfAppInputDto userOfAppInputDto) throws MessagingException {
-        emailService.sendWelcomeMail(userOfAppInputDto.getUsername(), userOfAppInputDto.getMail(), userOfAppInputDto.getPassword());
+    public void sendHelloEmail(UserOfApp uapp) throws MessagingException {
+        emailService.sendWelcomeMail(uapp.getUsername(), uapp.getMail(), uapp.getPassword(), "1234");
     }
 }

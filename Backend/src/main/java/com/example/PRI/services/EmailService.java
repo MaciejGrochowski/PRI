@@ -97,12 +97,12 @@ public class EmailService {
         sendMail(email, title.toString(),  ctx, "passwordRemaind");
     }
 
-    public void sendWelcomeMail(String username, String email, String password) throws MessagingException {
+    public void sendWelcomeMail(String username, String email, String password, String uuid) throws MessagingException {
         Context context = new Context();
         context.setVariable("username", username);
         context.setVariable("password", password);
-        context.setVariable("pathToLogin", url + "/" + "login");
-
+        //context.setVariable("pathToLogin", url + "/" + "login");
+        context.setVariable("pathToActivateAccount", url + "/activate-user/" + username + "/" + uuid);
         StringBuilder title = new StringBuilder()
                 .append("[JaNieTakiOrk] ")
                 .append(" Witaj ")

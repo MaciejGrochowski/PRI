@@ -8,6 +8,7 @@ import com.example.PRI.dtos.users.emailInputDto;
 import com.example.PRI.dtos.users.JwtRequest;
 import com.example.PRI.dtos.users.JwtResponse;
 import com.example.PRI.dtos.users.UserOfAppInputDto;
+import com.example.PRI.entities.UserOfApp;
 import com.example.PRI.exceptions.notUniqueArgumentException;
 import com.example.PRI.services.EmailService;
 import com.example.PRI.services.UserOfAppService;
@@ -83,9 +84,13 @@ public class JwtAuthenticationController {
 
     //@RequestMapping(value = "/register", method = RequestMethod.POST)
     @Post("/register")
-    public ResponseEntity<String> register(@RequestBody UserOfAppInputDto userOfAppInputDto) throws notUniqueArgumentException {
+    public ResponseEntity<String> register(@RequestBody UserOfAppInputDto userOfAppInputDto) throws notUniqueArgumentException, MessagingException {
         String usernameOrError = userOfAppService.register(userOfAppInputDto);
-        if(usernameOrError.equals(userOfAppInputDto.getUsername())) return ResponseEntity.ok(usernameOrError);
+        UserOfApp uapp = userOfAppService.findByUsername(userOfAppInputDto.getUsername());
+        if(usernameOrError.equals(userOfAppInputDto.getUsername())) {
+            userOfAppService.sendHelloEmail(uapp);
+            return ResponseEntity.ok(usernameOrError);
+        }
         else return ResponseEntity.badRequest().body(usernameOrError);
     }
 

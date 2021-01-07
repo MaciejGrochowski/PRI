@@ -186,7 +186,7 @@ public class CharacterGenerator extends GeneralService {
     public Character generateFullCharacter(){
 
         CharacterBuilder characterBuilder = new CharacterBuilder();
-        characterBuilder.initialize(587L)
+        characterBuilder.initialize()
                 .buildBirthPlace(characterBirthPlaceGenerator)
                 .buildRace(new RaceGenerator())
                 .buildSex(new SexGenerator())

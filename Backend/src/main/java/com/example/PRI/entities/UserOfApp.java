@@ -28,6 +28,9 @@ public class UserOfApp extends GeneralEntity {
     String facebook;
     String token;
 
+    Boolean isActive;
+    String UUIDActivation;
+
 
     @OneToMany(mappedBy="createdBy")
     List<Character> characters;

@@ -86,10 +86,10 @@ public class EmailService {
 
     }
 
-    public void sendPasswordRemainder(String username, String email, String password) throws MessagingException {
+    public void sendPasswordRemainder(String username, String email, String activateCode) throws MessagingException {
         final Context ctx = new Context();
         ctx.setVariable("username", username);
-        ctx.setVariable("pageToChangePassword", url+ "/" + username+ "/" + password);
+        ctx.setVariable("pageToChangePassword", url+ "/newPassword/" + username+ "/" + activateCode);
         StringBuilder title = new StringBuilder()
                 .append("[JaNieTakiOrk] ")
                 .append(" Przypomnienie hasła dla konta ")

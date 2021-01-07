@@ -2,8 +2,7 @@ package com.example.PRI.entities.history;
 
 import com.example.PRI.entities.GeneralEntity;
 import com.example.PRI.entities.ImperialDate;
-import com.example.PRI.entities.User;
-import com.example.PRI.entities.character.Character;
+import com.example.PRI.entities.UserOfApp;
 import com.example.PRI.entities.Place;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -11,10 +10,9 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import java.util.Date;
-import java.util.List;
 
 @Entity(name ="histories")
 @Data
@@ -26,12 +24,15 @@ public class History extends GeneralEntity {
     ImperialDate date;
 
     @ManyToOne
-    User createdBy; //Potem to bedzie uzytkownik
+    @JoinColumn(name="created_by", nullable=false)
+    UserOfApp createdBy; //Potem to bedzie uzytkownik
 
     Date createdDate;
 
     @Type(type="text")
     String description;
+
+    String title;
 
     @ManyToOne
     Place place;

@@ -2,7 +2,7 @@ import React from 'react';
 import Modal from 'react-modal';
 import style from './../../styles/popup.css';
 
-// Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
+// ToDo if we dont use that, delete it
 
 class OwnPopup extends React.Component {
 

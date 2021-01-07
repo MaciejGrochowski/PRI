@@ -6,6 +6,7 @@ import com.example.PRI.entities.character.Character;
 import com.example.PRI.entities.character.Skill;
 import com.example.PRI.enums.Race;
 import com.example.PRI.services.GeneralService;
+import com.example.PRI.services.RandomService;
 import com.example.PRI.services.character.CareerSkillService;
 import com.example.PRI.services.character.SkillService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,14 +24,16 @@ public class SkillGenerator extends GeneralService {
     @Autowired
     CareerSkillService careerSkillService;
 
-    public Map<String, String> generateSkills(Character character, HashMap<String, String> properties) {
+    RandomService randomService;
+
+    public Map<String, String> generateSkills(Character character, RandomService randomService, HashMap<String, String> properties) {
+        this.randomService = randomService;
         List<Skill> skills = skillService.findAll();
         List<String> skillNames = getRaceSkills(character.getRace());
-        Random rand = new Random();
 
         for(Skill skill : skills.stream().filter(s -> s.getLevel().equals(0)).collect(Collectors.toList())){
             if(properties.containsKey(skill.getName())){
-                if(rand.nextDouble() < Double.parseDouble(properties.get(skill.getName()))){
+                if(randomService.nextDouble() < Double.parseDouble(properties.get(skill.getName()))){
                     skillNames.add(skill.getName());
                 }
             }
@@ -64,7 +67,7 @@ public class SkillGenerator extends GeneralService {
         List<Integer> types = careerSkills.stream().map(CareerSkill::getType).distinct().collect(Collectors.toList());
         List<String> output = new ArrayList<>();
         for(int type: types){
-            if(new Random().nextDouble() < 0.5) continue;
+            if(randomService.nextDouble() < 0.5) continue;
             List<CareerSkill> skillsToChosen = careerSkills.stream().filter(c -> c.getType() == type).collect(Collectors.toList());
             CareerSkill chosenSkill = this.chooseSkill(skillsToChosen);
             if(chosenSkill==null) continue;
@@ -89,7 +92,7 @@ public class SkillGenerator extends GeneralService {
 
     private CareerSkill chooseSkill(List<CareerSkill> skillsToChosen) {
         double maxRoll = skillsToChosen.stream().mapToDouble(CareerSkill::getProbability).sum();
-        double randomRoll = new Random().nextDouble() * maxRoll;
+        double randomRoll = randomService.nextDouble() * maxRoll;
 
         for(CareerSkill skill : skillsToChosen){
             randomRoll-=skill.getProbability();
@@ -114,14 +117,14 @@ public class SkillGenerator extends GeneralService {
         if(race.equals(Race.DWARF)){
             output.add("Wiedza (krasnoludy)");
             output.add("Znajomość języka (Khazalid)");
-            double randomRoll = new Random().nextDouble();
+            double randomRoll = randomService.nextDouble();
             if(randomRoll <= 1.0/3.0) output.add("Rzemiosło (górnictwo)");
             else if (randomRoll <= 2.0/3.0) output.add("Rzemiosło (kamieniarstwo)");
             else output.add("Rzemiosło (kowalstwo)");
         }
         if(race.equals(Race.HALFLING)){
             output.add("Nauka (genealogia/heraldyka)");
-            if(new Random().nextDouble() < 0.5) output.add("Rzemiosło (gotowanie)");
+            if(randomService.nextDouble() < 0.5) output.add("Rzemiosło (gotowanie)");
             else output.add("Rzemiosło (uprawa ziemi)");
             output.add("Plotkowanie");
             output.add("Wiedza (niziołki)");
@@ -136,14 +139,14 @@ public class SkillGenerator extends GeneralService {
         int countTotallyRandomSkills = getCountTotallyRandomSkills();
         List<String> output = new ArrayList<>();
         while(output.size() < countTotallyRandomSkills){
-            Skill skillToAdd = skillsZeroLevel.get(new Random().nextInt(skillsZeroLevel.size()));
+            Skill skillToAdd = skillsZeroLevel.get(randomService.nextInt(skillsZeroLevel.size()));
             if(!output.contains(skillToAdd.getName())) output.add(skillToAdd.getName());
         }
         return output;
     }
 
     private int getCountTotallyRandomSkills() {
-        double randomRoll = new Random().nextDouble();
+        double randomRoll = randomService.nextDouble();
         if(randomRoll < 0.85) return 0;
         if(randomRoll < 0.95) return 1;
         if(randomRoll < 0.99) return 2;

@@ -1,0 +1,84 @@
+.container-login-page{
+}
+
+.login-body{
+    display: block;
+    width: 40%;
+    margin: auto;
+
+}
+
+.margin-login-body{
+  margin-right: 10%;
+  margin-left: 10%;
+}
+.login-title{
+color: white;
+font-weight: bold;
+font-size: xxx-large;
+margin-bottom: 5%;
+margin-top: 5%;
+border-top: solid #FFD859 5px;
+}
+.block-component .MuiFormControl-root {
+    width: -webkit-fill-available!important;
+    width: -moz-available!important
+}
+
+.block-component .MuiInput-root {
+    width: -webkit-fill-available!important;
+    width: -moz-available!important
+}
+
+.block-component{
+margin-top: 5%;
+margin-bottom: 5%;
+    display:flex;
+    flex-direction:row;
+}
+
+.block-component a{
+margin: auto !important;
+position: center;
+text-decoration: none!important;
+}
+
+.zaloguj-button{
+    border: none;
+    color: white;
+    width: max-content;
+    margin: auto;
+    font-size: large;
+    text-decoration: none;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: flex;
+    margin: auto!important;
+    padding: 5%;
+    background-color: #292F2F;
+
+}
+
+.zaloguj-button:disabled{
+    color: grey !important;
+    border: none !important;
+}
+
+
+.zaloguj-button:hover{
+    color: #FFD859;
+    border-bottom: 3px solid #FFD859;
+}
+
+.login-description{
+color: white;
+}
+
+
+.registerTooltip button.MuiButtonBase-root.MuiIconButton-root{
+    padding: 0;
+    top: 50%;
+    margin-left: 5px;
+}

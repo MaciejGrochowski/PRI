@@ -1,14 +1,6 @@
 package com.example.PRI.dtos.characters;
 
-import com.example.PRI.entities.GeneralEntity;
-import com.example.PRI.entities.ImperialDate;
-import com.example.PRI.entities.Place;
-import com.example.PRI.entities.User;
 import com.example.PRI.entities.character.*;
-import com.example.PRI.enums.Race;
-import com.example.PRI.enums.Religion;
-import com.example.PRI.enums.Sex;
-import com.example.PRI.enums.StarSign;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

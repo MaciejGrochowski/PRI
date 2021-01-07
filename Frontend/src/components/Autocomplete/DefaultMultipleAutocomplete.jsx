@@ -158,7 +158,6 @@ render()
 {
     const {labelName, id, defaultValue} = this.props;
     const width = this.props.width ? this.props.width : 300;
-    console.log(defaultValue);
     return (
         <careerContext.Consumer>
             {v =>

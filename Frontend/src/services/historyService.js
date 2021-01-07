@@ -1,4 +1,4 @@
-import {historyUrl, request} from "./util";
+import {authorizationRequest, historyUrl, request} from "./util";
 
 
 const historyService = {
@@ -19,7 +19,7 @@ const getHistoriesByCharacter = (name, id) => {
 
 const createHistory = data => {
     const url = historyUrl;
-    return request.post(url, data);
+    return authorizationRequest().post(url, data);
 }
 
 const getHistoryDetails = historyId => {

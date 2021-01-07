@@ -1,17 +1,18 @@
 package com.example.PRI.services.character.generator;
 
 import com.example.PRI.entities.Place;
+import com.example.PRI.entities.character.Character;
 import com.example.PRI.enums.PlaceType;
+import com.example.PRI.exceptions.CharacterGenerationException;
 import com.example.PRI.services.GeneralService;
 import com.example.PRI.services.PlaceService;
+import com.example.PRI.services.RandomService;
 import org.springframework.beans.factory.annotation.Autowired;
-
-import com.example.PRI.exceptions.*;
-import com.example.PRI.entities.character.Character;
 import org.springframework.stereotype.Service;
 
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import static com.example.PRI.services.character.generator.MapperJsonStringToMap.mapJsonStringToMap;
 
@@ -21,10 +22,13 @@ public class CharacterBirthPlaceGenerator extends GeneralService {
     @Autowired
     PlaceService placeService;
 
-    public HashMap<String, String> generateBirthPlace(Character character){
+    RandomService randomService;
 
-        Random rand = new Random();
-        Double placeTypeRand = rand.nextDouble();
+
+    public HashMap<String, String> generateBirthPlace(Character character, RandomService randomService){
+        this.randomService = randomService;
+
+        Double placeTypeRand = randomService.nextDouble();
         Place generatedPlace;
 
         if(placeTypeRand < 0.1) generatedPlace = generateBirthPlace(PlaceType.VILLIAGE);
@@ -49,7 +53,7 @@ public class CharacterBirthPlaceGenerator extends GeneralService {
     private Place generateBirthPlace(PlaceType type) {
         List<Place> places = placeService.getByType(type);
         if(places.size() > 0){
-            int random = new Random().nextInt(places.size());
+            int random = randomService.nextInt(places.size());
             return places.get(random);
         }
         return null;
@@ -62,13 +66,12 @@ public class CharacterBirthPlaceGenerator extends GeneralService {
     private Place generateBirthPlaceCapitol() {
         List<Place> capitols = placeService.getCapitols();
         if(capitols.size() > 0){
-            int random = new Random().nextInt(capitols.size());
+            int random = randomService.nextInt(capitols.size());
             return capitols.get(random);
         }
         return null;
     }
 
-    //ToDo Kasia
     public Map<String, String> getProperties(Place place) {
         return mapJsonStringToMap(place.getProperties());
     }

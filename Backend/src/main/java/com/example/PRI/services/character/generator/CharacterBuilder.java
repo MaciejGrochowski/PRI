@@ -2,17 +2,22 @@ package com.example.PRI.services.character.generator;
 
 import com.example.PRI.entities.ImperialDate;
 import com.example.PRI.entities.Place;
-import com.example.PRI.entities.character.*;
 import com.example.PRI.entities.character.Character;
+import com.example.PRI.entities.character.*;
 import com.example.PRI.enums.Race;
 import com.example.PRI.enums.Religion;
 import com.example.PRI.enums.Sex;
+import com.example.PRI.services.PlaceService;
+import com.example.PRI.services.RandomService;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 
+import javax.persistence.Access;
+import java.util.Date;
 import java.util.HashMap;
-import java.util.Map;
 import java.util.List;
+import java.util.Map;
 
 import static com.example.PRI.services.character.generator.MapperJsonStringToMap.mapJsonStringToMap;
 
@@ -20,16 +25,35 @@ import static com.example.PRI.services.character.generator.MapperJsonStringToMap
 @AllArgsConstructor
 public class CharacterBuilder {
 
+
     private Character character;
     private HashMap<String, String> properties;
+    private RandomService randomService;
 
     public CharacterBuilder initialize(){
+        return this.initialize(System.currentTimeMillis());
+    }
+
+    public CharacterBuilder initialize(Long seed){
         character = new Character();
         properties = new HashMap<>();
+        randomService = new RandomService(seed);
+        System.out.println("Generating character, seed: " + seed);
+        System.out.println(new Date());
         return this;
     }
 
     public Character getCharacter(){
+        if(character.getName() != null){
+            System.out.println("CharacterName: " + character.getName().getName());
+        }
+        if(character.getSurname()!=null){
+            System.out.println("CharacterSurname: " + character.getName().getName());
+        }
+        if(character.getCurrentCareer()!=null){
+            System.out.println("CharacterCareer: " + character.getCurrentCareer().getName());
+        }
+        System.out.println("Generated character");//ToDo better logs in other class
         return character;
     }
 
@@ -37,9 +61,11 @@ public class CharacterBuilder {
         return properties;
     }
 
+    public RandomService getRandomService() { return randomService;}
+
 
     public CharacterBuilder buildBirthPlace(CharacterBirthPlaceGenerator service){
-        HashMap<String, String> newProps = service.generateBirthPlace(character);
+        HashMap<String, String> newProps = service.generateBirthPlace(character, randomService); //ToDo use randomService in all generators.
         this.putAllProperties(newProps);
         Place parent = character.getBirthPlace().getParent();
         while(parent != null){
@@ -57,7 +83,7 @@ public class CharacterBuilder {
     }
 
     public CharacterBuilder buildRace(RaceGenerator service){
-        Map<String, String> newProps = service.generateRace(character, properties);
+        HashMap<String, String> newProps = service.generateRace(character, randomService, properties);
         this.putAllProperties(newProps);
         return this;
     }
@@ -71,7 +97,7 @@ public class CharacterBuilder {
     }
 
     public CharacterBuilder buildSex(SexGenerator service) {
-        Map<String, String> newProps = service.generateSex(character, properties);
+        HashMap<String, String> newProps = service.generateSex(character,randomService, properties);
         this.putAllProperties(newProps);
         return this;
     }
@@ -84,7 +110,7 @@ public class CharacterBuilder {
     }
 
     public CharacterBuilder buildSurname(SurnameGenerator service) {
-        Map<String, String> newProps = service.generateSurname(character, properties);
+        Map<String, String> newProps = service.generateSurname(character, randomService, properties);
         this.putAllProperties(newProps);
         return this;
     }
@@ -96,7 +122,7 @@ public class CharacterBuilder {
     return this;
     }
     public CharacterBuilder buildBaseStats(StatisticsGenerator service) {
-        Map<String, String> newProps = service.generateBaseStats(character, properties);
+        Map<String, String> newProps = service.generateBaseStats(character, randomService, properties);
         putAllProperties(newProps);
         return this;
     }
@@ -109,7 +135,7 @@ public class CharacterBuilder {
     }
 
     public CharacterBuilder buildName(NameGenerator service) {
-        Map<String, String> newProps = service.generateName(character, properties);
+        Map<String, String> newProps = service.generateName(character, randomService, properties);
         putAllProperties(newProps);
         return this;
     }
@@ -122,7 +148,7 @@ public class CharacterBuilder {
     }
 
     public CharacterBuilder buildWeight(WeightGenerator service) {
-        Map<String, String> newProps = service.generateWeight(character, properties);
+        Map<String, String> newProps = service.generateWeight(character, randomService, properties);
         putAllProperties(newProps);
         return this;
     }
@@ -135,7 +161,7 @@ public class CharacterBuilder {
     }
 
     public CharacterBuilder buildHeight(HeightGenerator service) {
-        Map<String, String> newProps = service.generateHeight(character, properties);
+        Map<String, String> newProps = service.generateHeight(character, randomService, properties);
         putAllProperties(newProps);
         return this;
     }
@@ -147,7 +173,7 @@ public class CharacterBuilder {
         return this;
     }
     public CharacterBuilder buildEyeColor(EyeColorGenerator service) {
-        Map<String, String> newProps = service.generateEyeColor(character, properties);
+        Map<String, String> newProps = service.generateEyeColor(character, randomService, properties);
         putAllProperties(newProps);
         return this;
     }
@@ -160,7 +186,7 @@ public class CharacterBuilder {
     }
 
     public CharacterBuilder buildHairColor(HairColorGenerator service) {
-        Map<String, String> newProps = service.generateHairColor(character, properties);
+        Map<String, String> newProps = service.generateHairColor(character,randomService, properties);
         putAllProperties(newProps);
         return this;
     }
@@ -173,7 +199,7 @@ public class CharacterBuilder {
     }
 
     public CharacterBuilder buildBirthDate(BirthDateGenerator service) {
-        Map<String, String> newProps = service.generateBirthDate(character, properties);
+        Map<String, String> newProps = service.generateBirthDate(character, randomService, properties);
         putAllProperties(newProps);
         return this;
     }
@@ -186,7 +212,7 @@ public class CharacterBuilder {
     }
 
     public CharacterBuilder buildEmotions(EmotionGenerator service) {
-        Map<String, String> newProps = service.generateEmotions(character, properties);
+        Map<String, String> newProps = service.generateEmotions(character,randomService, properties);
         putAllProperties(newProps);
         return this;
     }
@@ -199,7 +225,7 @@ public class CharacterBuilder {
     }
 
     public CharacterBuilder buildPrediction(PredictionGenerator service) {
-        Map<String, String> newProps = service.generatePrediction(character);
+        Map<String, String> newProps = service.generatePrediction(character, randomService);
         putAllProperties(newProps);
         return this;
     }
@@ -217,7 +243,7 @@ public class CharacterBuilder {
         for(Career career : previousCareers){
             putAllProperties(mapJsonStringToMap(career.getProperties()));
         }
-        newProps = service.buildCurrentCareer(previousCareers, properties, character);
+        newProps = service.buildCurrentCareer(previousCareers, randomService, properties, character);
         putAllProperties(newProps);
         character.setPreviousCareers(previousCareers);
         return this;
@@ -226,9 +252,9 @@ public class CharacterBuilder {
     public CharacterBuilder buildCareers(CareerGenerator service) {
         Map<String, String> newProps = FirstCareerPropertiesMapper.map(character, properties);
         putAllProperties(newProps);
-        newProps = service.buildFirstCareer(character, properties);
+        newProps = service.buildFirstCareer(character,randomService, properties);
         putAllProperties(newProps);
-        List<Map<String, String>> newPropsList = service.buildNextCareers(character, properties);
+        List<Map<String, String>> newPropsList = service.buildNextCareers(character,randomService, properties);
         for(Map<String, String> props : newPropsList){
             this.putAllProperties(props);
         }
@@ -246,7 +272,7 @@ public class CharacterBuilder {
     }
 
     public CharacterBuilder buildCareerStatistics(CareerStatisticsGenerator service) {
-        Map<String, String> newProps = service.generateCareerStatisticsGenerator(character, properties);
+        Map<String, String> newProps = service.generateCareerStatisticsGenerator(character, randomService, properties);
         putAllProperties(newProps);
         return this;
     }
@@ -269,7 +295,7 @@ public class CharacterBuilder {
     }
 
     public CharacterBuilder buildLivePlace(LivePlaceGenerator service) {
-        Map<String, String> newProps = service.generateLivePlace(character, properties);
+        Map<String, String> newProps = service.generateLivePlace(character,randomService, properties);
         putAllProperties(newProps);
         return this;
     }
@@ -282,7 +308,7 @@ public class CharacterBuilder {
     }
 
     public CharacterBuilder buildApperances(ApperanceGenerator service) {
-        Map<String, String> newProps = service.generateApperances(character, properties);
+        Map<String, String> newProps = service.generateApperances(character, randomService, properties);
         putAllProperties(newProps);
         return this;
     }
@@ -295,7 +321,7 @@ public class CharacterBuilder {
     }
 
     public CharacterBuilder buildPersonalities(PersonalityGenerator service) {
-        Map<String, String> newProps = service.generatePersonalities(character, properties);
+        Map<String, String> newProps = service.generatePersonalities(character, randomService, properties);
         putAllProperties(newProps);
         return this;
     }
@@ -308,7 +334,7 @@ public class CharacterBuilder {
     }
 
     public CharacterBuilder buildTalents(TalentGenerator service) {
-        Map<String, String> newProps = service.generateTalents(character, properties);
+        Map<String, String> newProps = service.generateTalents(character, randomService, properties);
         putAllProperties(newProps);
         return this;
     }
@@ -321,7 +347,7 @@ public class CharacterBuilder {
     }
 
     public CharacterBuilder buildSkills(SkillGenerator service) {
-        Map<String, String> newProps = service.generateSkills(character, properties);
+        Map<String, String> newProps = service.generateSkills(character, randomService, properties);
         putAllProperties(newProps);
         return this;
     }
@@ -336,7 +362,7 @@ public class CharacterBuilder {
     public CharacterBuilder buildReligion(ReligionGenerator service) {
         Map<String, String> newProps = service.prepareProps(character, properties);
         putAllProperties(newProps);
-        newProps = service.generateReligion(character, properties);
+        newProps = service.generateReligion(character, randomService, properties);
         putAllProperties(newProps);
         return this;
     }

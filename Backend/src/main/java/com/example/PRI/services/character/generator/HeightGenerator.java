@@ -2,17 +2,21 @@ package com.example.PRI.services.character.generator;
 
 import com.example.PRI.entities.character.Character;
 import com.example.PRI.enums.Race;
+import com.example.PRI.services.RandomService;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
 public class HeightGenerator {
-    public Map<String, String> generateHeight(Character character, HashMap<String, String> properties) {
+
+    RandomService randomService;
+    public Map<String, String> generateHeight(Character character, RandomService randomService, HashMap<String, String> properties) {
+        this.randomService = randomService;
+        Double heightTypeRand = randomService.nextGaussian();
         double averageHeight = Double.parseDouble(properties.get("averageHeight"));
-        Random rand = new Random();
-        double height = averageHeight + rand.nextGaussian()*7;
-        while(height < 0.6*averageHeight || height > averageHeight*1.4) height = averageHeight + rand.nextGaussian()*5;
+        double height = averageHeight + heightTypeRand*7;
+        while(height < 0.6*averageHeight || height > averageHeight*1.4) height = averageHeight + heightTypeRand*5;
         character.setHeight((int) Math.round(height));
         Map<String, String> newProps = this.generateProperties(height, averageHeight);
         return newProps;

@@ -49,7 +49,7 @@
     padding: 6px 6px 5px 6px;
     height: fit-content;
     margin-top: auto;
-
+    width: max-content;
     text-overflow: ellipsis;
     white-space: nowrap;
     display: flex;
@@ -71,7 +71,7 @@
 
   .detaleButton:hover {
     background-color: #FFD859;
-    color: #292F2F;
+    color: #292F2F !important;
   }
 
   .stats-button-element{

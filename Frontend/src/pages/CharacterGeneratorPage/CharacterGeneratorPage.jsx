@@ -15,8 +15,6 @@ import {
     generateOneAttributeSuccessHandler,
     mapArrayToStringWithoutSpaces,
     mapFilterArrayToString,
-    mapSkillsArrayToString,
-    mapTalentsArrayToString
 } from "./util";
 import {
     validationDayOfBorn,
@@ -25,6 +23,15 @@ import {
     validationSurname, validationWeight,
     validationYearOfBorn
 } from "./validation";
+import {Link} from "react-router-dom";
+import {loginStatusChange} from "../../actions";
+import {connect} from "react-redux";
+import {fronendUrls} from "../../commons/urls";
+import {ItemMenu} from "../../components/Menu/ExampleMenu.style";
+import NeedLoginInformation from "../../components/NeedLoginInformation/NeedLoginInformation";
+import {getToken, isValidToken} from "../../services/util";
+import {CharacterAttribute} from "../../enums/CharacterAttribute";
+import {Redirect} from "react-router";
 
 //TODO refactor 
 const mygrid = {
@@ -43,7 +50,7 @@ class CharacterGeneratorPage extends React.Component {
     constructor() {
         super();
         this.state = {
-            autocompleteData: { //To będzie z bazy danych pobierane na podobieństwo filtrów
+            autocompleteData: {
                 careerNames: [],
                 placeNames: [],
                 eyeColors: [],
@@ -59,6 +66,8 @@ class CharacterGeneratorPage extends React.Component {
     }
 
     componentDidMount() {
+        if(!this.props.isLogged && getToken() && isValidToken(getToken())) this.props.loginStatusChange(true);
+        if(this.props.isLogged && !getToken() || !isValidToken(getToken())) this.props.loginStatusChange(false);
         characterService.getAutocompleteFilters()
             .then(r => this.getAutocompleteSuccessHandler(r))
     }
@@ -68,7 +77,7 @@ class CharacterGeneratorPage extends React.Component {
     }
 
     getDataFromForm = () => {
-        let output = {
+        return {
             currentCareer: this.state.currentCareer,
             sex: this.state.sex,
             race: this.state.race,
@@ -100,7 +109,6 @@ class CharacterGeneratorPage extends React.Component {
             baseMovement: this.state.baseMovement, endMovement: this.state.endMovement,
             baseMagic: this.state.baseMagic, endMagic: this.state.endMagic
         };
-        return output;
     }
 
 
@@ -145,9 +153,16 @@ class CharacterGeneratorPage extends React.Component {
     generateOneAttributeSuccessHandler = (attrName, response) => {this.setState(generateOneAttributeSuccessHandler(attrName, response));}
 
     render() {
+        if (this.state.generated) {
+            return <Redirect push to={this.state.href} />
+        }
+
+
         return (
             <div className="pageWithContext">
                 <div className="pageName">Tworzenie postaci</div>
+                {!this.props.isLogged &&
+                <NeedLoginInformation text={textsPolish.needLoginToSaveCharacter}/>}
                 <div className="block-element">
                     <div className="flex-component space-between-component">
                         <div className="white-caption">Statystyki:</div>
@@ -159,7 +174,7 @@ class CharacterGeneratorPage extends React.Component {
                 <div className = "container-stats">
                         <div className = "column-1">
                             <careerContext.Provider value={{update: (val) => {this.setState({name: val})},}}>
-                                <GeneratorTextField label="Imię" generated={this.state.name} canBeGenerated onRandomClick={() => this.generateOneAttribute("Imię")}
+                                <GeneratorTextField label="Imię" generated={this.state.name} canBeGenerated onRandomClick={() => this.generateOneAttribute(CharacterAttribute.NAME.name)}
                                                     disabled={this.state.race===undefined || this.state.race==="" || this.state.race === null ||
                                                     this.state.sex===undefined || this.state.sex==="" || this.state.sex === null }
                                                     tooltip tootipText={textsPolish.toolTipName}
@@ -171,7 +186,7 @@ class CharacterGeneratorPage extends React.Component {
 
                             <careerContext.Provider value={{
                                 update: (val) => {this.setState({surname: val})},}}>
-                                <GeneratorTextField label="Nazwisko" generated={this.state.surname} canBeGenerated onRandomClick={() => this.generateOneAttribute("Nazwisko")}
+                                <GeneratorTextField label="Nazwisko" generated={this.state.surname} canBeGenerated onRandomClick={() => this.generateOneAttribute(CharacterAttribute.SURNAME.name)} //ToDo dont use polish names of attributes! (Frontend and backend)
                                                     disabled={this.state.race===undefined || this.state.race==="" || this.state.race === null ||
                                                     this.state.sex===undefined || this.state.sex==="" || this.state.sex === null}
                                                     validationFunc={validationSurname}
@@ -193,7 +208,7 @@ class CharacterGeneratorPage extends React.Component {
                                 canBeGenerated
                                 disablePortal={true}
                                 generated={this.state.race}
-                                onRandomClick={() => this.generateOneAttribute("Rasa")}
+                                onRandomClick={() => this.generateOneAttribute(CharacterAttribute.RACE.name)}
                                 disabled={this.state.birthPlace===undefined || this.state.birthPlace==="" || this.state.birthPlace === null}
                                 tooltip tootipText={textsPolish.toolTipRace}
                                 ifTooltipBirthPlace={this.state.birthPlace===undefined || this.state.birthPlace==="" || this.state.birthPlace === null}
@@ -211,7 +226,7 @@ class CharacterGeneratorPage extends React.Component {
                                 canBeGenerated
                                 disablePortal
                                 generated={this.state.sex}
-                                onRandomClick={() => this.generateOneAttribute("Płeć")}
+                                onRandomClick={() => this.generateOneAttribute(CharacterAttribute.SEX.name)}
                                 disabled={this.state.race === undefined || this.state.race === "" || this.state.race === null}
                                 ifTooltipRace={(this.state.race===undefined || this.state.race==="" || this.state.race === null)}
                             /></careerContext.Provider>
@@ -226,7 +241,7 @@ class CharacterGeneratorPage extends React.Component {
                                     disablePortal
                                     tooltip tootipText={textsPolish.toolTipProfession}
                                     generated={this.state.currentCareer}
-                                    onRandomClick={() => this.generateOneAttribute("Profesja")}
+                                    onRandomClick={() => this.generateOneAttribute(CharacterAttribute.CURRENTCAREER.name)}
                                     disabled={this.state.race === undefined || this.state.race === "" || this.state.race === null
                                     || this.state.sex === undefined || this.state.sex === "" || this.state.sex === null ||
                                     this.state.birthPlace === undefined || this.state.birthPlace === "" || this.state.birthPlace === null ||
@@ -272,7 +287,7 @@ class CharacterGeneratorPage extends React.Component {
                                 canBeGenerated
                                 disablePortal
                                 generated={this.state.livePlace}
-                                onRandomClick={() => this.generateOneAttribute("Miejsce pobytu")}
+                                onRandomClick={() => this.generateOneAttribute(CharacterAttribute.LIVEPLACE.name)}
                                 disabled={this.state.birthPlace === undefined || this.state.birthPlace === "" || this.state.birthPlace === null ||
                                 this.state.currentCareer === undefined || this.state.currentCareer === "" || this.state.currentCareer === null ||
                                 this.state.religion === undefined || this.state.religion === "" || this.state.religion === null ||
@@ -296,7 +311,7 @@ class CharacterGeneratorPage extends React.Component {
                                 generated={this.state.birthPlace}
                                 canBeGenerated
                                 disablePortal
-                                onRandomClick={() => this.generateOneAttribute("Miejsce urodzenia")}
+                                onRandomClick={() => this.generateOneAttribute(CharacterAttribute.BIRTHPLACE.name)}
                             />
                             </careerContext.Provider>
                                 <careerContext.Provider value={{
@@ -324,10 +339,9 @@ class CharacterGeneratorPage extends React.Component {
                                     update: (val) => {this.setState({yearOfBirth: val})},}}>
                                     <GeneratorTextField label="Rok urodzenia" generated={this.state.yearOfBirth}
                                                         canBeGenerated
-                                                        onRandomClick={() => this.generateOneAttribute("Data urodzenia")}
+                                                        onRandomClick={() => this.generateOneAttribute(CharacterAttribute.BIRTHDATE.name)}
                                                         disabled={this.state.race===undefined || this.state.race==="" || this.state.race === null}
                                                         validationFunc={validationYearOfBorn}
-                                                        disabled={this.state.race===undefined || this.state.race==="" || this.state.race === null} 
                                                         tooltip tootipText={textsPolish.toolTipYearOfBorn}
                                                         ifTooltipRace={(this.state.race===undefined || this.state.race==="" || this.state.race === null)}
                                     />
@@ -342,7 +356,7 @@ class CharacterGeneratorPage extends React.Component {
                                 disablePortal
                                 tooltip tootipText={textsPolish.toolTipReligion}
                                 generated={this.state.religion}
-                                onRandomClick={() => this.generateOneAttribute("Religia")}
+                                onRandomClick={() => this.generateOneAttribute(CharacterAttribute.RELIGION.name)}
                                 notSortOptions
                                 disabled={this.state.race === undefined || this.state.race === "" || this.state.race === null ||
                                 this.state.sex === undefined || this.state.sex === "" || this.state.sex === null ||
@@ -359,7 +373,7 @@ class CharacterGeneratorPage extends React.Component {
                 <div className = "column-1">
                                 <careerContext.Provider value={{
                                     update: (val) => {this.setState({height: val})},}}>
-                                    <GeneratorTextField label="Wzrost" generated={this.state.height} canBeGenerated onRandomClick={() => this.generateOneAttribute("Wzrost")} disabled={this.state.race===undefined || this.state.race==="" || this.state.race === null || this.state.sex===undefined || this.state.sex==="" || this.state.sex === null} tooltip tootipText={textsPolish.toolTipHeight}
+                                    <GeneratorTextField label="Wzrost" generated={this.state.height} canBeGenerated onRandomClick={() => this.generateOneAttribute(CharacterAttribute.HEIGHT.name)} disabled={this.state.race===undefined || this.state.race==="" || this.state.race === null || this.state.sex===undefined || this.state.sex==="" || this.state.sex === null} tooltip tootipText={textsPolish.toolTipHeight}
                                                         ifTooltipRace={(this.state.race===undefined || this.state.race==="" || this.state.race === null)}
                                                         ifTooltipSex={(this.state.sex===undefined || this.state.sex==="" || this.state.sex === null)}
                                                         validationFunc={validationHeight}
@@ -367,7 +381,7 @@ class CharacterGeneratorPage extends React.Component {
                                 </careerContext.Provider>
                                 <careerContext.Provider value={{
                                     update: (val) => {this.setState({weight: val})},}}>
-                                <GeneratorTextField label="Waga" generated={this.state.weight} canBeGenerated onRandomClick={() => this.generateOneAttribute("Waga")} disabled={this.state.race===undefined || this.state.race==="" || this.state.race === null || this.state.sex===undefined || this.state.sex==="" || this.state.sex === null} tooltip tootipText={textsPolish.toolTipWeight}
+                                <GeneratorTextField label="Waga" generated={this.state.weight} canBeGenerated onRandomClick={() => this.generateOneAttribute(CharacterAttribute.WEIGHT.name)} disabled={this.state.race===undefined || this.state.race==="" || this.state.race === null || this.state.sex===undefined || this.state.sex==="" || this.state.sex === null} tooltip tootipText={textsPolish.toolTipWeight}
                                                     ifTooltipRace={(this.state.race===undefined || this.state.race==="" || this.state.race === null)}
                                                     ifTooltipSex={(this.state.sex===undefined || this.state.sex==="" || this.state.sex === null)}
                                                     validationFunc={validationWeight}
@@ -383,7 +397,7 @@ class CharacterGeneratorPage extends React.Component {
                                 canBeGenerated
                                 disablePortal
                                 generated={this.state.eyeColor}
-                                onRandomClick={() => this.generateOneAttribute("Kolor oczu")}
+                                onRandomClick={() => this.generateOneAttribute(CharacterAttribute.EYECOLOR.name)}
                                 disabled={this.state.race===undefined || this.state.race==="" || this.state.race === null}
                                 ifTooltipRace={(this.state.race===undefined || this.state.race==="" || this.state.race === null)}
                             /></careerContext.Provider>
@@ -398,7 +412,7 @@ class CharacterGeneratorPage extends React.Component {
                                 disablePortal
                                 tooltip tootipText={textsPolish.toolTipColorOfHair}
                                 generated={this.state.hairColor}
-                                onRandomClick={() => this.generateOneAttribute("Kolor włosów")}
+                                onRandomClick={() => this.generateOneAttribute(CharacterAttribute.HAIRCOLOR.name)}
                                 disabled={this.state.race===undefined || this.state.race==="" || this.state.race === null}
                                 ifTooltipRace={(this.state.race===undefined || this.state.race==="" || this.state.race === null)}
                             /></careerContext.Provider>
@@ -413,7 +427,7 @@ class CharacterGeneratorPage extends React.Component {
                                 tooltip tootipText={textsPolish.toolTipCharacter}
                                 canBeGenerated
                                 generated={this.state.personalities}
-                                onRandomClick={() => this.generateOneAttribute("Cechy charakteru")}
+                                onRandomClick={() => this.generateOneAttribute(CharacterAttribute.PERSONALITY.name)}
                                 disabled={this.state.religion === undefined || this.state.religion === "" || this.state.religion === null ||
                                 this.state.race === undefined || this.state.race === "" || this.state.race === null ||
                                 this.state.yearOfBirth === undefined || this.state.yearOfBirth === "" || this.state.yearOfBirth === null ||
@@ -436,7 +450,7 @@ class CharacterGeneratorPage extends React.Component {
                                 canBeGenerated
                                 disablePortal
                                 generated={this.state.apperances}
-                                onRandomClick={() => this.generateOneAttribute("Cechy wyglądu")}
+                                onRandomClick={() => this.generateOneAttribute(CharacterAttribute.APPERANCE.name)}
                                 disabled={this.state.religion === undefined || this.state.religion === "" || this.state.religion === null ||
                                 this.state.race === undefined || this.state.race === "" || this.state.race === null ||
                                 this.state.yearOfBirth === undefined || this.state.yearOfBirth === "" || this.state.yearOfBirth === null ||
@@ -478,7 +492,7 @@ class CharacterGeneratorPage extends React.Component {
                                 disablePortal
                                 canBeGenerated
                                 generated={this.state.dominatingEmotions}
-                                onRandomClick={() => this.generateOneAttribute("Dominujące emocje")}
+                                onRandomClick={() => this.generateOneAttribute(CharacterAttribute.DOMINATINGEMOTIONS.name)}
                                 disabled={this.state.race===undefined || this.state.race==="" || this.state.race === null ||
                                     this.state.yearOfBirth===undefined || this.state.yearOfBirth==="" || this.state.yearOfBirth === null
                                 }
@@ -497,7 +511,7 @@ class CharacterGeneratorPage extends React.Component {
                                 disablePortal
                                 canBeGenerated
                                 generated={this.state.skills}
-                                onRandomClick={() => this.generateOneAttribute("Umiejętności")}
+                                onRandomClick={() => this.generateOneAttribute(CharacterAttribute.SKILLS.name)}
                                 disabled={this.state.currentCareer === undefined || this.state.currentCareer === "" || this.state.currentCareer === null ||
                                 this.state.race === undefined || this.state.race === "" || this.state.race === null}
                                     ifTooltipRace={this.state.race===undefined || this.state.race==="" || this.state.race === null}
@@ -516,7 +530,7 @@ class CharacterGeneratorPage extends React.Component {
                                 disablePortal
                                 canBeGenerated
                                 generated={this.state.talents}
-                                onRandomClick={() => this.generateOneAttribute("Zdolności")}
+                                onRandomClick={() => this.generateOneAttribute(CharacterAttribute.TALENTS.name)}
                                 disabled={this.state.currentCareer === undefined || this.state.currentCareer === "" || this.state.currentCareer === null ||
                                 this.state.race === undefined || this.state.race === "" || this.state.race === null
                                 }
@@ -530,7 +544,7 @@ class CharacterGeneratorPage extends React.Component {
                             }}>
                                 <GeneratorTextField label="Przepowiednia" canBeGenerated
                                                     generated={this.state.prediction}
-                                                    onRandomClick={() => this.generateOneAttribute("Przepowiednia")}
+                                                    onRandomClick={() => this.generateOneAttribute(CharacterAttribute.PREDICTION.name)}
                                                     disabled={false}
                                                     tooltip tootipText={textsPolish.toolTipProphecy}
                                 />
@@ -540,9 +554,9 @@ class CharacterGeneratorPage extends React.Component {
                         <div className = "flex-component space-between-component">
                         <div className="white-caption">Umiejętności bojowe:</div>
                         <div className="flex-element">
-                            <button className="detaleButton reverse" onClick={() => this.generateOneAttribute("Bazowe statystyki")} disabled={this.state.race===undefined || this.state.race==="" || this.state.race === null}><div className = "text-with-fafa">Wylosuj statystyki Bazowe </div><span>{element}</span>
+                            <button className="detaleButton reverse" onClick={() => this.generateOneAttribute(CharacterAttribute.BASESTATS.name)} disabled={this.state.race===undefined || this.state.race==="" || this.state.race === null}><div className = "text-with-fafa">Wylosuj statystyki Bazowe </div><span>{element}</span>
                             </button>
-                            <button className="detaleButton reverse" onClick={() => this.generateOneAttribute("Statystyki końcowe")} disabled={this.state.baseWeaponSkills === undefined || this.state.baseWeaponSkills === "" || this.state.baseWeaponSkills === null ||
+                            <button className="detaleButton reverse" onClick={() => this.generateOneAttribute(CharacterAttribute.ENDSTATS.name)} disabled={this.state.baseWeaponSkills === undefined || this.state.baseWeaponSkills === "" || this.state.baseWeaponSkills === null ||
                                 this.state.baseBallisticSkills === undefined || this.state.baseBallisticSkills === "" || this.state.baseBallisticSkills === null ||
                                 this.state.baseStrength === undefined || this.state.baseStrength === "" || this.state.baseStrength === null ||
                                 this.state.baseToughness === undefined || this.state.baseToughness === "" || this.state.baseToughness === null ||
@@ -781,10 +795,10 @@ class CharacterGeneratorPage extends React.Component {
                         </div>
                         </div>
                         <div className="block-element">{this.state.generated &&
-                        <div className="positive-message">Aby zobaczyć wygenerowaną postać, kliknij <a href={this.state.href}>tutaj</a></div>}</div>
+                        <div className="positive-message">Aby zobaczyć wygenerowaną postać, kliknij <Link to={this.state.href}>tutaj</Link></div>}</div>
                         <div className="block-element">{this.state.isError &&
-                        <ErrorGenerator errorText={polishCodeErrors[this.state.errorText]}/>}</div>
-                            <button disabled={this.state.generated} className="green-button" onClick={this.save}>Zapisz</button>
+                        <ErrorGenerator errorText={"Błąd: " + polishCodeErrors[this.state.errorText]}/>}</div>
+                            <button disabled={this.state.generated || !this.props.isLogged} className="green-button" onClick={this.save}>Zapisz</button>
                         </div>
                     </div>
                 </div>
@@ -792,4 +806,14 @@ class CharacterGeneratorPage extends React.Component {
         )
     }
 }
-export default CharacterGeneratorPage;
+
+
+const mapStateToProps = (state) => {
+    return {
+        isLogged: state.isLogged // (1)
+    }
+};
+const mapDispatchToProps = { loginStatusChange }; // (2)
+
+
+export default CharacterGeneratorPage = connect(mapStateToProps, mapDispatchToProps)(CharacterGeneratorPage);

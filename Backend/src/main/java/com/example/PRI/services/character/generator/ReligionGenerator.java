@@ -5,14 +5,17 @@ import com.example.PRI.enums.PlaceType;
 import com.example.PRI.enums.Race;
 import com.example.PRI.enums.Religion;
 import com.example.PRI.enums.Sex;
+import com.example.PRI.services.RandomService;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
 public class ReligionGenerator {
 
+    RandomService randomService;
 
-    public Map<String, String> generateReligion(Character character, HashMap<String, String> properties) {
+    public Map<String, String> generateReligion(Character character, RandomService randomService, HashMap<String, String> properties) {
+        this.randomService = randomService;
         List<String> religionList = Arrays.stream(Religion.values()).map(Religion::getGodName).collect(Collectors.toList());;
 
         List<String> propertiesKeySetReligions = properties.keySet().stream().filter(religionList::contains).collect(Collectors.toList());
@@ -24,7 +27,7 @@ public class ReligionGenerator {
             maxRandomRoll += Double.parseDouble(properties.get(religionKey));
             religionProperties.put(religionKey, properties.get(religionKey));
         }
-        double randomRoll = new Random().nextDouble() * maxRandomRoll;
+        double randomRoll = randomService.nextDouble() * maxRandomRoll;
         for(String religionKey : religionProperties.keySet()){
             randomRoll -= Double.parseDouble(religionProperties.get(religionKey));
             if(randomRoll <= 0) {
@@ -66,7 +69,7 @@ public class ReligionGenerator {
             if(character.getReligion().equals(Religion.MORR) || character.getReligion().equals(Religion.GAZUL)) character.setReligion(Religion.SARRIEL);
             if(character.getReligion().equals(Religion.SIGMAR) || character.getReligion().equals(Religion.ULRIC)) character.setReligion(Religion.ASURYAN);
             if(character.getReligion().equals(Religion.TAALRHYA)){
-                if(new Random().nextDouble()<0.5) character.setReligion(Religion.KURNOUS);
+                if(randomService.nextDouble()<0.5) character.setReligion(Religion.KURNOUS);
                 else character.setReligion(Religion.ISHA);
             }
             if(character.getReligion().equals(Religion.VERENA)) character.setReligion(Religion.HOETH);

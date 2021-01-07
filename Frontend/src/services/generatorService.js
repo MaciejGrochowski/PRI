@@ -1,4 +1,4 @@
-import {generatorUrl, request} from "./util";
+import {authorizationRequest, generatorUrl, request} from "./util";
 
 
 const generatorService = {
@@ -9,7 +9,7 @@ const generatorService = {
 
 const save = characterInput => {
     const url = generatorUrl + "/save";
-    return request.post(url, characterInput);
+    return authorizationRequest().post(url, characterInput);
 }
 
 const fullRandomGenerate = () => {
@@ -32,8 +32,6 @@ const validInputAttributes = character => {
 }
 
 const generateOneAttribute = (name, character) => {
-    name = name.replace(/\s+/g, '-').toLowerCase();
-    // character = encodeURI(JSON.stringify(character));
     character = validInputAttributes(character)
     const url = generatorUrl + "/attribute/" + name;
     return request.get(url, {params: character});

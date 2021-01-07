@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {apiUrl, characterUrl, request} from "./util";
+import {apiUrl, authorizationRequest, characterUrl, request} from "./util";
 
 
 const characterService = {
@@ -24,7 +24,7 @@ const getAutocompleteFilters = () => {
 
 const getCharacters = requestBody => {
     const url = characterUrl + "/paged";
-    return request.get(url, {params: requestBody} )
+    return authorizationRequest().get(url, {params: requestBody} )
 }
 
 const getCountOfCharacters = () => {

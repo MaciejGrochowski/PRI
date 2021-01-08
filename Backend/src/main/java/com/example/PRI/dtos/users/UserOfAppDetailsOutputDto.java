@@ -3,6 +3,7 @@ package com.example.PRI.dtos.users;
 
 import com.example.PRI.dtos.characters.UserOfAppCharacterOutputDto;
 import com.example.PRI.dtos.histories.HistoryListCharacterDetailsOutputDto;
+import com.example.PRI.dtos.sessions.SessionOutputDto;
 import com.example.PRI.entities.session.Session;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -26,5 +27,5 @@ public class UserOfAppDetailsOutputDto {
 
     List<HistoryListCharacterDetailsOutputDto> histories;
 
-    List<Session> sessions;
+    List<SessionOutputDto> sessions;
 }

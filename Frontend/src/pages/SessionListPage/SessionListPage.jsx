@@ -1,10 +1,10 @@
 import React from "react";
 import {Link} from "react-router-dom";
 import "../../styles/globalStyles.css";
-import CloseIcon from "@material-ui/icons/Close";
-import {ColorTag} from "../../components/Autocomplete/DefaultMultipleAutocomplete.style";
 import {getInfoFromToken, getToken} from "../../services/util";
 import NewSessionModal from "../../components/Popup/NewSessionModal/NewSessionModal";
+import sessionService from "../../services/sessionService";
+import {fronendUrls} from "../../commons/urls";
 
 
 class SessionListPage extends React.Component {
@@ -12,13 +12,23 @@ class SessionListPage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            sessions: [
-                {name: "Sesja1", description: "Przykładowa sesja1"},
-                {name: "Sesja2", description: "Przykładowa sesja2"},
-                {name: "Sesja3", description: "Przykładowa sesja3"}
-            ],
+            sessions: [],
             newSessionModalVisible: false
         }
+    }
+
+    componentDidMount() {
+        this.getSessions();
+    }
+
+    getSessions = () => {
+        sessionService.getSessionsByUsername(this.props.match.params.username)
+            .then(r => this.getSessionsSuccessHandler(r))
+            .catch(e => console.log(e))
+    }
+
+    getSessionsSuccessHandler = response => {
+        this.setState({sessions: response.data})
     }
 
     isLoggedUser = () => {
@@ -30,10 +40,10 @@ class SessionListPage extends React.Component {
         this.setState({newSessionModalVisible: true})
     }
 
-    saveNewSession = (title, description) => {
+    saveNewSession = (name, description) => {
         this.setState({newSessionModalVisible: false})
-        console.log(title);
-        console.log(description);
+        this.getSessions();
+        sessionService.createSession(name, description);
     }
 
 
@@ -56,10 +66,12 @@ class SessionListPage extends React.Component {
                     <div>
                         <span>{item.name}</span>
                         <span>{item.description}</span>
+                        <span>{item.createdUserBy}</span>
+                        <span>{item.createdDate}</span>
+                        <span>{item.lastModifieKdDate}</span>
+                        <Link to={fronendUrls.sessionDetails + "/" + item.id}>Więcej</Link>
                     </div>
                 ))}
-
-
 
             </div>
         )

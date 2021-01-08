@@ -28,7 +28,7 @@ class NewSessionModal extends React.Component {
     constructor() {
         super();
         this.state = {
-            title: "",
+            name: "",
             description: ""
         }
     }
@@ -46,7 +46,7 @@ class NewSessionModal extends React.Component {
                     >
                         <div>{title}</div>
 
-                        <TextField label="Tytuł" value={this.state.title} onChange={event => this.setState({title: event.target.value})}/>
+                        <TextField label="Tytuł" value={this.state.name} onChange={event => this.setState({name: event.target.value})}/>
 
 
                         <TextField
@@ -60,7 +60,7 @@ class NewSessionModal extends React.Component {
                             variant="outlined"
                             onChange={(event) => this.setState({description: event.target.value})} value={this.state.description}/>
 
-                            <button onClick={() => onSave(this.state.title, this.state.description)}>Zapisz</button>
+                            <button onClick={() => onSave(this.state.name, this.state.description)}>Zapisz</button>
                     </Modal>
                 </div></div>
         );

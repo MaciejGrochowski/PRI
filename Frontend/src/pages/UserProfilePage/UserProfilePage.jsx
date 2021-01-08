@@ -185,6 +185,26 @@ class UserProfilePage extends React.Component {
                 ))
                 }
                 <Link className="detaleButton" to={fronendUrls.historyList + "/user/" + this.state.username}>Więcej historii</Link>
+
+                <div>Lista Sesji:</div>
+
+    {this.state.sessions && this.state.sessions.slice(0,10).map((item, i) => (
+        <div className = "one-element-brief">
+            {/*<div>{item.id}</div>*/}
+            <div>{item.name}</div>
+            <div>{item.description}</div>
+            <div>{item.createdUserBy}</div>
+            <div>{item.createdDate}</div>
+            <div>{item.lastModifiedDate}</div>
+            <Link to={fronendUrls.sessionDetails + "/" + item.id}>Więcej</Link>
+            {/*<Link className = "detaleButton" to={fronendUrls.historyList + "/" + item.id}><div className = "normal-text">Więcej</div></Link>*/}
+        </div>
+    ))
+    }
+
+
+
+
 </div>
 </div>
 </div>

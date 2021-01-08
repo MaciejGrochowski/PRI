@@ -68,7 +68,7 @@ class SessionListPage extends React.Component {
                         <span>{item.description}</span>
                         <span>{item.createdUserBy}</span>
                         <span>{item.createdDate}</span>
-                        <span>{item.lastModifieKdDate}</span>
+                        <span>{item.lastModifiedDate}</span>
                         <Link to={fronendUrls.sessionDetails + "/" + item.id}>Więcej</Link>
                     </div>
                 ))}

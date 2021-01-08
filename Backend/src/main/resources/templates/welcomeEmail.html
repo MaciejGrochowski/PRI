@@ -166,8 +166,7 @@
                                 style="line-height: 1.2; font-size: 12px; color: #f6f6f6; font-family: Lato, Tahoma, Verdana, Segoe, sans-serif; mso-line-height-alt: 14px;">
                             <p
                                     style="font-size: 26px; line-height: 1.2; word-break: break-word; mso-line-height-alt: 19px; margin: 0;">
-                                    <span>Witaj <span style="font-size: 24px;"
-                                                      th:text="${username}">username</span></span>
+                                    <span style="font-size: 24px;">DZIĘKUJEMY ZA REJESTRACJĘ!</span>
                             </p>
                             <p
                                     style="font-size: 16px; line-height: 1.2; word-break: break-word; mso-line-height-alt: 19px; margin: 0;">
@@ -175,11 +174,9 @@
                             </p>
                             <p
                                     style="font-size: 14px; line-height: 1.2; word-break: break-word; mso-line-height-alt: 19px; margin: 0; text-align: justify;">
-                                    <span style="color: #f6f6f6; font-size: 14px;"> DZIĘKUJEMY ZA REJESTRACJĘ!<br><br>
-                                        <span> Login: <p th:text="${username}">username</p></span>
-                            <span> Hasło: Ustalone przy rejestracji</span>
+                                        <span> Login: <span th:text="${username}">username</span></span>
                             <br><br>
-                            Aby aktywować konto kliknij poniższy link: </span>
+                            Żeby w pełni korzystać z możliwości aplikacji musisz aktywować swoje konto. By to zrobić kliknij poniższy link: </span>
                             </p><br>
                             <table style="margin-left: auto; margin-right: auto;">
                                 <tr class="button" style="align-content: center">
@@ -191,7 +188,7 @@
                                                 <center style="color:#ffffff;font-family:Helvetica, Arial,sans-serif;font-size:16px;">I am a button &rarr;</center>
                                               </v:roundrect>
                                             <![endif]-->
-                                            <a th:href="${pathToLogin}" style="text-decoration: none;" href="pathToLogin">Aktywuj konto</a>
+                                            <a th:href="${pathToActivateAccount}" style="text-decoration: none;" href="pathToActivateAccount">Aktywuj konto</a>
                                         </div>
                                     </td>
                                 </tr>

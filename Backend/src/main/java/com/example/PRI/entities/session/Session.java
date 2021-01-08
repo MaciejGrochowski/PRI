@@ -6,6 +6,7 @@ import com.example.PRI.entities.UserOfApp;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -26,6 +27,8 @@ public class Session extends GeneralEntity {
     Date createdDate;
     Date lastModifiedDate;
     String name;
+
+    @Type(type="text")
     String description;
     String randomIdSession; //id dla udostępniania sesji
 

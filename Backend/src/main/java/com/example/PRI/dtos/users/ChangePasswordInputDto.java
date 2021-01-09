@@ -11,11 +11,11 @@ import javax.validation.constraints.Pattern;
 @AllArgsConstructor
 public class ChangePasswordInputDto {
 
-    @Pattern(regexp = "^.{3,20}$", message = "WRONG_EMAIL_LENGTH")
+    @Pattern(regexp = "^.{3,20}$", message = "WRONG_USERNAME_LENGTH")
     String username;
 
     String hashcode;
 
-    @Pattern(regexp = "^([a-zA-Z0-9_\\-\\.]+)@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.)|(([a-zA-Z0-9\\-]+\\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\\]?)$", message = "WRONG_PASSWORD_FORM")
+    @Pattern(regexp = "^.{2,21}$", message = "WRONG_PASSWORD_FORM")
     String newPassword;
 }

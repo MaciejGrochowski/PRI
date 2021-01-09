@@ -54,7 +54,7 @@ export const validationPassword = password => {
 };
 
 export const validationFacebook = facebook => {
-    if (facebook.match("https://www.facebook.com/.*") || facebook.match("^(?![\\s\\S])")) {
+    if (facebook.match(("https://www.facebook.com/.*") || facebook.match("^(?![\\s\\S])")) &&(facebook.match("^.{10,1000}$"))) {
         return {errorText: "", errorState: false}
     } else {
         return {errorState: true, errorText: polishCodeErrors.registerErrors.facebookNotCorrect}

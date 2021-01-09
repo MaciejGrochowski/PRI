@@ -14,6 +14,7 @@ public class ChangePasswordInputDto {
     @Pattern(regexp = "^.{3,20}$", message = "WRONG_USERNAME_LENGTH")
     String username;
 
+    @Pattern(regexp = "",message = "")
     String hashcode;
 
     @Pattern(regexp = "^.{2,21}$", message = "WRONG_PASSWORD_FORM")

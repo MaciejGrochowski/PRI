@@ -32,8 +32,14 @@ class NewSessionModal extends React.Component {
             description: ""
         }
     }
+
+    onSave = (name, description) => {
+        this.setState({name: "", description: ""})
+        this.props.onSave(name, description);
+    }
+
     render() {
-        const {isOpen, onRequestClose, onSave, title} = this.props;
+        const {isOpen, onRequestClose, title} = this.props;
 
 
         return (
@@ -60,7 +66,7 @@ class NewSessionModal extends React.Component {
                             variant="outlined"
                             onChange={(event) => this.setState({description: event.target.value})} value={this.state.description}/>
 
-                            <button onClick={() => onSave(this.state.name, this.state.description)}>Zapisz</button>
+                            <button onClick={() => this.onSave(this.state.name, this.state.description)}>Zapisz</button>
                     </Modal>
                 </div></div>
         );

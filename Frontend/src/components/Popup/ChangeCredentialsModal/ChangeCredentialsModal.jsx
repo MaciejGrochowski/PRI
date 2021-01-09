@@ -89,7 +89,7 @@ class ChangeCredentialsModal extends React.Component {
 <div className="block-component">
     <PasswordField
         handleChangePassword={this.handleChangePassword}
-        label={"Stare hasło"}
+        label={isUsernameChanging ? "Hasło" : "Stare hasło"}
         value={this.state.oldPassword}
     />
 </div>

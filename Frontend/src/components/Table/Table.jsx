@@ -72,7 +72,7 @@ class Table extends React.Component {
                     }
                 }}
                 onOrderChange={(orderedColumnId, orderDirection) => onOrderChange(orderedColumnId, orderDirection)}
-
+                onSelectionChange={(rows) => this.props.onSelectionChange(rows)}
 
                 components={{
                     // Row: props => (<div>{console.log(props)}<span>{props.data.name}</span><span>{props.data.surname}</span></div>),

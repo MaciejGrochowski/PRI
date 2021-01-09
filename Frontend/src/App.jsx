@@ -14,6 +14,7 @@ import HistoryCreatorPage from "./pages/HistoryCreatorPage/HistoryCreatorPage";
 import UserProfilePage from "./pages/UserProfilePage/UserProfilePage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import SessionListPage from "./pages/SessionListPage/SessionListPage";
+import SessionDetailsPage from "./pages/SessionDetailsPage/SessionDetailsPage";
 
 class App extends React.Component{
 
@@ -32,7 +33,7 @@ class App extends React.Component{
         <Route path={fronendUrls.userProfilePage + "/:username"} component={UserProfilePage} />
         <Route path={fronendUrls.registerPage} component={RegisterPage} />
                 <Route path={fronendUrls.sessionList + "/:username"} component={SessionListPage} />
-
+                <Route path={fronendUrls.sessionDetails + "/:hashcode"} component={SessionDetailsPage} />
 
 
             </BrowserRouter>

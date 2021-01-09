@@ -14,6 +14,9 @@ import {table} from "../../styles/tables.css"
 import button from "../../styles/buttons.css";
 import Modal from "react-modal";
 import {fronendUrls} from "../../commons/urls";
+import {getInfoFromToken, getToken} from "../../services/util";
+import AddCharactersToSessionModal from "../../components/Popup/AddCharactersToSessionModal/AddCharactersToSessionModal";
+import sessionService from "../../services/sessionService";
 
 class CharactersListPage extends React.Component {
 
@@ -37,7 +40,8 @@ class CharactersListPage extends React.Component {
                 race: true,
                 currentCareer: true
             },
-            columnsConfig: []
+            columnsConfig: [],
+            idsSelectedCharacters: []
         }
     }
 
@@ -293,6 +297,31 @@ class CharactersListPage extends React.Component {
         return fronendUrls.characterDetails + "/" + rowData.id;
     }
 
+
+    onSelectionChange = rows => {
+        const idsSelectedCharacters = rows.map(row => row.id);
+        this.setState({idsSelectedCharacters: idsSelectedCharacters})
+    }
+
+    isLogged = () => {
+        return getInfoFromToken(getToken());
+    }
+
+    getUsername = () => {
+        return getInfoFromToken(getToken()).sub;
+    }
+
+    openAddCharacterToSessionModal = () => {
+        this.setState({characterToSessionModalVisible: true})
+    }
+
+    addCharactersToSession = (selectedSessionId) => {
+        sessionService.addCharactersToSession(this.state.idsSelectedCharacters, selectedSessionId)
+            .then(r => this.setState({characterToSessionModalVisible: false}))
+            .catch(e => console.log(e))
+    }
+
+
     render() {
         return (
             <div className="globalStyles">
@@ -313,9 +342,20 @@ class CharactersListPage extends React.Component {
                         onSave={this.saveChangeColumns}
                         overlayClassName="Overlay"
                         columnsConfig={this.state.columnsConfig}
-                        title="Przykład"
+                        title="Dostosuj filtry"
                         isOpen={this.state.isFilterListExpanded}
                     />
+
+                    {this.isLogged() && <button onClick={this.openAddCharacterToSessionModal}>Dodaj zaznaczone do sesji</button>}
+
+                    <AddCharactersToSessionModal
+                    onRequestClose={() => this.setState({characterToSessionModalVisible: false})}
+                    isOpen={this.state.characterToSessionModalVisible}
+                    onSave={this.addCharactersToSession}
+                    username={this.isLogged() ? this.getUsername() : ""}
+
+                    />
+
                     <div className="table">
                         <Table
                             style={table}
@@ -332,6 +372,7 @@ class CharactersListPage extends React.Component {
                             detailsLink={fronendUrls.characterDetails}
                             onOrderChange={this.onOrderChange}
                             selection
+                            onSelectionChange={this.onSelectionChange}
                         />
                     </div>
                 </header>

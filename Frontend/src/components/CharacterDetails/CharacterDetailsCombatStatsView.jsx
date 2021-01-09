@@ -78,7 +78,7 @@ class CharacterDetailsCombatStatsView extends React.Component {
                             <div className = "grid-element" style= {mygrid}><div style ={test}>{data.endWillPower}</div></div>
                         </div>
                         <div className="grid-column">
-                            <div className = "grid-name-element title-column">ODG</div>
+                            <div className = "grid-name-element title-column">OGD</div>
                             <div className = "grid-element"style= {mygrid}><div style ={test}>{data.baseFellowship}</div></div>
                             <div className = "grid-element" style= {mygrid}><div style ={test}>{data.careerFellowship}</div></div>
                             <div className = "grid-element" style= {mygrid}><div style ={test}>{data.endFellowship}</div></div>

@@ -7,8 +7,10 @@ import "../../styles/globalStyles.css";
 import AppBar from "@material-ui/core/AppBar";
 import {getInfoFromToken, getToken} from "../../services/util";
 import LoginButton from "../LoginButton/LoginButton";
+import {loginStatusChange} from "../../actions";
+import {connect} from "react-redux";
 
-const menuKatalogItems = [
+const menuCatalogItems = [
     {
         label: 'Postacie',
         link: fronendUrls.characterList
@@ -32,12 +34,31 @@ const menuGeneratorItems = [
     }
 ]
 
+const menuOwnItems = [
+
+    {
+        label: "Postacie",
+        link: getInfoFromToken(getToken()) ? fronendUrls.characterList + '/' + getInfoFromToken(getToken()).sub : ""
+    },
+    {
+        label: "Historie",
+        link: getInfoFromToken(getToken()) ? fronendUrls.historyList + '/user/' + getInfoFromToken(getToken()).sub : ""
+    },
+    {
+        label: "Sesje",
+        link: getInfoFromToken(getToken()) ? fronendUrls.sessionList + '/' + getInfoFromToken(getToken()).sub : ""
+    }
+
+
+]
+
 class Menu extends React.Component {
 
     constructor() {
         super();
         this.state = {
-            isExpanded: false
+            isExpanded: false,
+            randomId: 1
         }
     }
 
@@ -54,10 +75,19 @@ class Menu extends React.Component {
             <div className ="globalStyles">
                 {this.state.isExpanded && (<nav className="menuBody">
 
+                    {this.props.isLogged && <div className= "menu-column">
+                        <div className = "menu-title">Moje</div>
+                        {
+                            this.state.isExpanded ? menuOwnItems && menuOwnItems.map((item, i) => (
+                                <Link className="menuLink" to={item.link}><ItemMenu>{item.label}</ItemMenu></Link>
+                            )) : ""
+                        }
+                    </div>}
+
                 <div className= "menu-column">
                     <div className = "menu-title">Katalog</div>
                     {
-                    this.state.isExpanded ? menuKatalogItems && menuKatalogItems.map((item, i) => (
+                    this.state.isExpanded ? menuCatalogItems && menuCatalogItems.map((item, i) => (
                     <Link className="menuLink" to={item.link}><ItemMenu>{item.label}</ItemMenu></Link>
                 )) : ""
                 }
@@ -82,10 +112,19 @@ class Menu extends React.Component {
             <div className ="globalStyles">
             {this.state.isExpanded && (<nav className="menuBody">
 
+                {getInfoFromToken(getToken()) && <div className= "menu-column">
+                    <div className = "menu-title">Moje</div>
+                    {
+                        this.state.isExpanded ? menuOwnItems && menuOwnItems.map((item, i) => (
+                            <Link className="menuLink" to={item.link}><ItemMenu>{item.label}</ItemMenu></Link>
+                        )) : ""
+                    }
+                </div>}
+
                     <div className= "menu-column">
                         <div className = "menu-title">Katalog</div>
                         {
-                            this.state.isExpanded ? menuKatalogItems && menuKatalogItems.map((item, i) => (
+                            this.state.isExpanded ? menuCatalogItems && menuCatalogItems.map((item, i) => (
                                 <Link className="menuLink" to={item.link}><ItemMenu>{item.label}</ItemMenu></Link>
                             )) : ""
                         }
@@ -109,4 +148,12 @@ class Menu extends React.Component {
 
 }
 
-export default Menu;
+const mapStateToProps = (state) => {
+    return {
+        isLogged: state.isLogged // (1)
+    }
+};
+const mapDispatchToProps = { loginStatusChange }; // (2)
+
+
+export default Menu = connect(mapStateToProps, mapDispatchToProps)(Menu);

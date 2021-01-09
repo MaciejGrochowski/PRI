@@ -42,8 +42,8 @@ class SessionListPage extends React.Component {
 
     saveNewSession = (name, description) => {
         this.setState({newSessionModalVisible: false})
-        this.getSessions();
-        sessionService.createSession(name, description);
+        sessionService.createSession(name, description)
+            .then(r => this.getSessions())
     }
 
 
@@ -52,7 +52,7 @@ class SessionListPage extends React.Component {
             <div className = "plainPage">
                 <div>Sesje użytkownika {this.props.match.params.username}</div>
 
-                {this.isLoggedUser && <button onClick={this.handleClickNewSession}>Nowa sesja</button>}
+                {this.isLoggedUser() && <button onClick={this.handleClickNewSession}>Nowa sesja</button>}
 
                 <NewSessionModal
                     title={"Nowa sesja"}
@@ -69,7 +69,7 @@ class SessionListPage extends React.Component {
                         <span>{item.createdUserBy}</span>
                         <span>{item.createdDate}</span>
                         <span>{item.lastModifiedDate}</span>
-                        <Link to={fronendUrls.sessionDetails + "/" + item.id}>Więcej</Link>
+                        <Link to={fronendUrls.sessionDetails + "/" + item.hashcode}>Więcej</Link>
                     </div>
                 ))}
 

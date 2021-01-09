@@ -8,10 +8,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Type;
 
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
@@ -30,13 +27,15 @@ public class Session extends GeneralEntity {
 
     @Type(type="text")
     String description;
+
+    @Column(unique=true)
     String randomIdSession; //id dla udostępniania sesji
 
 //    @ManyToOne
 //    UserOfApp userOfAppMg;
 
-    @ManyToOne
-    AttributesVisibility globalAttiributes;
+//    @ManyToOne
+//    AttributesVisibility globalAttiributes;
 
     @ManyToMany
     List<SessionCharacter> sessionCharacterList;

@@ -3,6 +3,8 @@ package com.example.PRI.controllers;
 
 import com.example.PRI.controllers.annotations.Get;
 import com.example.PRI.controllers.annotations.Post;
+import com.example.PRI.dtos.sessions.CharactersSessionInputDto;
+import com.example.PRI.dtos.sessions.SessionDetailsOutputDto;
 import com.example.PRI.dtos.sessions.SessionInputDto;
 import com.example.PRI.dtos.sessions.SessionOutputDto;
 import com.example.PRI.dtos.users.JwtResponse;
@@ -36,9 +38,28 @@ public class SessionController {
     }
 
     @Get("/{username}")
-    public List<SessionOutputDto> getSessionsByUser(@PathVariable String username){
-        List<SessionOutputDto> sessionListOutputDto = sessionService.getSessionsByUser(username);
+    public List<SessionOutputDto> getSessionsByUser(@PathVariable String username, Authentication auth){
+        List<SessionOutputDto> sessionListOutputDto = sessionService.getSessionsByUser(username, auth);
         return sessionListOutputDto;
+    }
+
+
+    @Post("/characters")
+    public ResponseEntity<?> addCharactersToSession(@RequestBody CharactersSessionInputDto charactersSessionInputDto, Authentication auth){
+        Long id = sessionService.addCharactersToSession(charactersSessionInputDto, auth);
+
+        if(id.equals(-1L)) return ResponseEntity.badRequest().body("BAD_REQUEST");
+
+        return ResponseEntity.ok(new JwtResponse(id.toString()));
+    }
+
+    @Get("/details/{hashcode}")
+    public ResponseEntity<SessionDetailsOutputDto> getSessionDetailsByHashString(@PathVariable String hashcode, Authentication auth){
+        SessionDetailsOutputDto output = sessionService.getSessionDetailsByHashString(hashcode, auth);
+
+        if(output==null) return ResponseEntity.badRequest().body(null);
+
+        return ResponseEntity.ok(output);
     }
 
 }

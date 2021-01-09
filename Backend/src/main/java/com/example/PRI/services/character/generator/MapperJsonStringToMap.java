@@ -22,10 +22,18 @@ public class MapperJsonStringToMap {
         Stream<String> tmp1 = Arrays.stream(properties.split(","));
         Stream<String[]> tmp2 = tmp1.map(s -> s.split(":"));
         String tmp4 = tmp2.toString();
-        Map<String, String> tmp3 = tmp2.collect(Collectors.toMap(s -> s[0], s -> s[1]));
-        return Arrays.stream(properties.split(","))
-                .map(s -> s.split(":"))
-                .collect(Collectors.toMap(s -> s[0], s -> s[1]));
+        try{
+            Map<String, String> tmp3 = tmp2.collect(Collectors.toMap(s -> s[0], s -> s[1]));
+            return Arrays.stream(properties.split(","))
+                    .map(s -> s.split(":"))
+                    .collect(Collectors.toMap(s -> s[0], s -> s[1]));
+        }
+        catch (Exception e){
+            System.err.println("Error mapStringToMap with properties: ");
+            System.err.println(properties);
+            return new HashMap<>();
+        }
+
     }
 
 

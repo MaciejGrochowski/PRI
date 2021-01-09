@@ -3,6 +3,8 @@ package com.example.PRI.converters;
 import com.example.PRI.dtos.characters.*;
 import com.example.PRI.entities.character.*;
 import com.example.PRI.entities.character.Character;
+import com.example.PRI.entities.session.AttributesVisibility;
+import com.example.PRI.entities.session.SessionCharacter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -192,6 +194,151 @@ public class CharacterConverter {
         output.setWounds(stats.stream().map(Statistics::getWounds).max(Integer::compareTo).orElse(0));
         output.setMovement(stats.stream().map(Statistics::getMovement).max(Integer::compareTo).orElse(0));
         output.setMagic(stats.stream().map(Statistics::getMagic).max(Integer::compareTo).orElse(0));
+        return output;
+    }
+
+
+    public static CharacterSessionOutputDto convertToSessionCharacter(SessionCharacter sessionCharacter) {
+        AttributesVisibility attributesVisibility = sessionCharacter.getAttributesVisibility();
+        Character character = sessionCharacter.getCharacter();
+
+        CharacterSessionOutputDto output = new CharacterSessionOutputDto();
+
+
+        if(attributesVisibility.isBirthPlace() && character.getBirthPlace()!=null){
+            output.setBirthPlace(character.getBirthPlace().getName());
+        }
+
+        if(attributesVisibility.isRace() && character.getRace()!=null){
+            output.setRace(character.getRace().getName());
+        }
+
+        if(attributesVisibility.isEyeColor() && character.getEyeColor()!=null){
+            output.setEyeColor(character.getEyeColor().getColor());
+        }
+
+        if(attributesVisibility.isHairColor() && character.getHairColor()!=null){
+            output.setHairColor(character.getHairColor().getColor());
+        }
+
+        if(attributesVisibility.isBirthDate() && character.getBirthDate()!=null){
+            output.setDayOfBirth(character.getBirthDate().getDay().toString());
+            output.setMonthOfBirth(character.getBirthDate().getMonth().getMonthName());
+            output.setYearOfBird(character.getBirthDate().getYear().toString());
+        }
+
+        if(attributesVisibility.isStarSign() && character.getStarSign()!=null){
+            output.setStarSign(character.getStarSign().getName());
+        }
+
+        if(attributesVisibility.isSex() && character.getSex()!=null){
+            output.setSex(character.getSex().getName());
+        }
+
+        if(attributesVisibility.isLivePlace() && character.getLivePlace()!=null){
+            output.setLivePlace(character.getLivePlace().getName());
+        }
+
+        if(attributesVisibility.isReligion() && character.getReligion()!=null){
+            output.setReligion(character.getReligion().getGodName());
+        }
+
+        if(attributesVisibility.isWeight() && character.getWeight()!=null){
+            output.setWeight(character.getWeight());
+        }
+
+        if(attributesVisibility.isHeight() && character.getHeight()!=null){
+            output.setHeight(character.getHeight());
+        }
+
+        if(attributesVisibility.isSurname() && character.getSurname()!=null){
+            output.setSurname(character.getSurname().getSurname());
+        }
+
+        if(attributesVisibility.isName() && character.getName()!=null){
+            output.setName(character.getName().getName());
+        }
+
+        if(attributesVisibility.isPrediction() && character.getPrediction()!=null){
+            output.setPrediction(character.getPrediction().getText());
+        }
+
+        if(attributesVisibility.isCurrentCareer() && character.getCurrentCareer()!=null){
+            output.setCurrentCareer(character.getCurrentCareer().getName());
+        }
+
+        if(attributesVisibility.isPreviousCareers() && character.getPreviousCareers()!=null){
+            output.setPreviousCareers(getStringFromArrayProperties(character.getPreviousCareers().stream().map(Career::getName).collect(Collectors.toList())));
+        }
+
+        if(attributesVisibility.isWeaponSkill() && character.getEndWeaponSkills()!=null){
+            output.setEndWeaponSkills(character.getEndWeaponSkills());
+        }
+
+        if(attributesVisibility.isBallisticSkill() && character.getEndBallisticSkills()!=null){
+            output.setEndBallisticSkills(character.getEndBallisticSkills());
+        }
+
+        if(attributesVisibility.isStrength() && character.getEndStrength()!=null){
+            output.setEndStrength(character.getEndStrength());
+        }
+
+        if(attributesVisibility.isToughness() && character.getEndToughness()!=null){
+            output.setEndToughness(character.getEndToughness());
+        }
+
+        if(attributesVisibility.isAgility() && character.getEndAgility()!=null){
+            output.setEndAgility(character.getEndAgility());
+        }
+
+        if(attributesVisibility.isIntelligence() && character.getEndIntelligence()!=null){
+            output.setEndIntelligence(character.getEndIntelligence());
+        }
+
+        if(attributesVisibility.isWillPower() && character.getEndWillPower()!=null){
+            output.setEndWillPower(character.getEndWillPower());
+        }
+
+        if(attributesVisibility.isFellowship() && character.getEndFellowship()!=null){
+            output.setEndFellowship(character.getEndFellowship());
+        }
+
+        if(attributesVisibility.isAttacks() && character.getEndAttacks()!=null){
+            output.setEndAttacks(character.getEndAttacks());
+        }
+
+        if(attributesVisibility.isWounds() && character.getEndWounds()!=null){
+            output.setEndWounds(character.getEndWounds());
+        }
+
+        if(attributesVisibility.isMagic() && character.getEndMagic()!=null){
+            output.setEndWounds(character.getEndMagic());
+        }
+
+        if(attributesVisibility.isMovement() && character.getEndMovement()!=null){
+            output.setEndMovement(character.getEndMovement());
+        }
+
+        if(attributesVisibility.isSkills() && character.getSkills()!=null){
+            output.setSkills(getStringFromArrayProperties(character.getSkills().stream().map(Skill::getName).collect(Collectors.toList())));
+        }
+
+
+        if(attributesVisibility.isTalents() && character.getTalents()!=null){
+            output.setTalents(getStringFromArrayProperties(character.getTalents().stream().map(Talent::getName).collect(Collectors.toList())));
+        }
+
+        if(attributesVisibility.isPersonality() && character.getPersonality()!=null){
+            output.setPersonality(getStringFromArrayProperties(character.getPersonality().stream().map(Personality::getName).collect(Collectors.toList())));
+        }
+
+        if(attributesVisibility.isApperance() && character.getApperance()!=null){
+            output.setApperance(getStringFromArrayProperties(character.getApperance().stream().map(Apperance::getName).collect(Collectors.toList())));
+        }
+
+        if(attributesVisibility.isEmotion() && character.getDominatingEmotions()!=null){
+            output.setDominatingEmotions(getStringFromArrayProperties(character.getDominatingEmotions().stream().map(Emotion::getName).collect(Collectors.toList())));
+        }
         return output;
     }
 }

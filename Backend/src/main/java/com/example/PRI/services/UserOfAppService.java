@@ -54,6 +54,7 @@ public class UserOfAppService extends GeneralService {
     }
 
     public String getUsernameFromAuthentication(Authentication auth){
+        if(auth==null) return null;
         User user = (User)auth.getPrincipal();
         return user.getUsername();
     }

@@ -325,4 +325,9 @@ public class CharacterService extends GeneralService {
         }
         return output;
     }
+
+    public List<Character> getCharactersByIdIn(List<Long> characterIds) {
+        return characterRepository.findByIdIn(characterIds);
+
+    }
 }

@@ -1,25 +1,24 @@
 package com.example.PRI.dtos.sessions;
 
+
+import com.example.PRI.dtos.characters.CharacterSessionOutputDto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
-
+import java.util.List;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class SessionOutputDto {
+public class SessionDetailsOutputDto {
 
-    String id;
     String name;
     String description;
-    Date lastModifiedDate;
+    String createdBy;
     Date createdDate;
-    String createdUserBy;
-    String hashcode;
-
+    List<CharacterSessionOutputDto> characters;
 
 
 }

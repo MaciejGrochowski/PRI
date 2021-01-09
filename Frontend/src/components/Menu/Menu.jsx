@@ -7,6 +7,8 @@ import "../../styles/globalStyles.css";
 import AppBar from "@material-ui/core/AppBar";
 import {getInfoFromToken, getToken} from "../../services/util";
 import LoginButton from "../LoginButton/LoginButton";
+import {loginStatusChange} from "../../actions";
+import {connect} from "react-redux";
 
 const menuCatalogItems = [
     {
@@ -55,7 +57,8 @@ class Menu extends React.Component {
     constructor() {
         super();
         this.state = {
-            isExpanded: false
+            isExpanded: false,
+            randomId: 1
         }
     }
 
@@ -72,7 +75,7 @@ class Menu extends React.Component {
             <div className ="globalStyles">
                 {this.state.isExpanded && (<nav className="menuBody">
 
-                    {getInfoFromToken(getToken()) && <div className= "menu-column">
+                    {this.props.isLogged && <div className= "menu-column">
                         <div className = "menu-title">Moje</div>
                         {
                             this.state.isExpanded ? menuOwnItems && menuOwnItems.map((item, i) => (
@@ -145,4 +148,12 @@ class Menu extends React.Component {
 
 }
 
-export default Menu;
+const mapStateToProps = (state) => {
+    return {
+        isLogged: state.isLogged // (1)
+    }
+};
+const mapDispatchToProps = { loginStatusChange }; // (2)
+
+
+export default Menu = connect(mapStateToProps, mapDispatchToProps)(Menu);

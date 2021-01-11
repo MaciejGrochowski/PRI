@@ -74,6 +74,44 @@
     color: #292F2F !important;
   }
 
+.sessionButton{
+  background-color: #292F2F;
+  color: #FFD859;
+  border-radius: 20px;
+  border: 2px solid #FFD859;
+  font-size: large;
+  text-decoration: none;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  padding: 10px 10px 10px 10px;
+  height: fit-content;
+  margin-top: auto;
+  width: max-content;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: flex;
+
+}
+
+.sessionButton:disabled {
+  color: grey;
+  border:solid 2px grey;
+  background-color: #292F2F;
+}
+
+.sessionButton:disabled:hover {
+  color: gray;
+  border:solid 2px gray;
+  background-color: #292F2F;
+}
+
+
+.sessionButton:hover {
+  background-color: #FFD859;
+  color: #292F2F !important;
+}
+
+
   .stats-button-element{
     width: 40%;
     display: flex;

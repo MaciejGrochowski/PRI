@@ -196,3 +196,32 @@ color: #FFD859!important;
         width: 130px;
     }
 }
+
+.flex-container-session{
+    display: flex;
+    flex-wrap: nowrap;
+    background-color: transparent;
+    align-content: center;
+    width: 100%;
+}
+
+
+.flex-container-session > div {
+    background-color: dodgerblue;
+    width: 60%;
+    margin: 5px;
+    text-align: left;
+    line-height: 75px;
+    font-size: 30px;
+}
+
+.flex-container-session > div.flex-button{
+    background-color: brown;
+    max-width: 10%;
+    height: 10%;
+}
+
+.plainPage{
+overflow-y: scroll;
+position: absolute;
+}

@@ -47,32 +47,40 @@ class SessionListPage extends React.Component {
     }
 
 
-    render(){
+    render() {
         return (
-            <div className = "plainPage">
-                <div>Sesje użytkownika {this.props.match.params.username}</div>
+            <div className="pageWithContext">
+                <div className="pageName">Sesje użytkownika {this.props.match.params.username}</div>
+                <div className="plainPage">
 
-                {this.isLoggedUser() && <button onClick={this.handleClickNewSession}>Nowa sesja</button>}
+                    <div className="flex-container-session">
+                        <div>
+                            {this.state.sessions && this.state.sessions.map((item, i) => (
+                                <div>
 
-                <NewSessionModal
-                    title={"Nowa sesja"}
-                    isOpen={this.state.newSessionModalVisible}
-                    onRequestClose={() => this.setState({newSessionModalVisible: false})}
-                    onSave={this.saveNewSession}
-                />
+                                    <span>{item.name}</span> <br/>
+                                    <span>{item.description}</span><br/>
+                                    <span>{item.createdUserBy}</span><br/>
+                                    <span>{item.createdDate}</span><br/>
+                                    <span>{item.lastModifiedDate}</span><br/>
+                                    <Link to={fronendUrls.sessionDetails + "/" + item.hashcode}>Więcej</Link>
+                                </div>
+                            ))}
+                        </div>
+                        <div className="flex-button">
+                            {this.isLoggedUser() &&
+                            <button className="sessionButton" onClick={this.handleClickNewSession}>Nowa sesja</button>}
 
+                            <NewSessionModal
+                                title={"Nowa sesja"}
+                                isOpen={this.state.newSessionModalVisible}
+                                onRequestClose={() => this.setState({newSessionModalVisible: false})}
+                                onSave={this.saveNewSession}
+                            />
+                        </div>
 
-                {this.state.sessions && this.state.sessions.map((item, i) => (
-                    <div>
-                        <span>{item.name}</span>
-                        <span>{item.description}</span>
-                        <span>{item.createdUserBy}</span>
-                        <span>{item.createdDate}</span>
-                        <span>{item.lastModifiedDate}</span>
-                        <Link to={fronendUrls.sessionDetails + "/" + item.hashcode}>Więcej</Link>
                     </div>
-                ))}
-
+                </div>
             </div>
         )
     }

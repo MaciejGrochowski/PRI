@@ -160,7 +160,7 @@ class CharacterGeneratorPage extends React.Component {
                 <div className="block-element">
                     <div className="flex-component space-between-component">
                         <div className="white-caption">Statystyki:</div>
-                        <button className="detaleButton" onClick={() => this.fullRandomGenerate()}><div className = "text-with-fafa">Generuj losowe statystyki
+                        <button className="sessionButton" onClick={() => this.fullRandomGenerate()}><div className = "text-with-fafa">Generuj losowe statystyki
                         </div><span>{element}</span>
                         </button>
                     </div>

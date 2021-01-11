@@ -70,7 +70,7 @@ class SessionListPage extends React.Component {
                                     {/*// <span>{item.createdUserBy}</span><br/>*/}
                                     {/*// <span>{item.createdDate}</span><br/>*/}
                                     {/*// <span>{item.lastModifiedDate}</span>*/}
-                                    <button className="moreSessionButton"><Link to={fronendUrls.sessionDetails + "/" + item.hashcode}>Więcej</Link></button>
+                                    <button className="sessionButton"><Link className="session-link" to={fronendUrls.sessionDetails + "/" + item.hashcode}>Więcej</Link></button>
 
                                 </div>
                             ))}

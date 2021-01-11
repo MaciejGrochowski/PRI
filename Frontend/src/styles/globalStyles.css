@@ -250,3 +250,7 @@ color: #FFD859!important;
 .session-box{
     margin-bottom: 80px;
 }
+
+.session-link{
+    text-decoration: none;
+}

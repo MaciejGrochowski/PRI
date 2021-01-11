@@ -233,10 +233,17 @@ color: #FFD859!important;
     max-width: 30%;
 }
 
+.session-box{
+    margin-bottom: 100px;
+}
 
 .underline-box{
     border-bottom: solid white 1px;
     margin-left: 5px;
+}
+
+.session-button-box{
+    text-align: right;
 }
 
 .session-description{
@@ -247,8 +254,9 @@ color: #FFD859!important;
     height: 60%;
 }
 
-.session-box{
-    margin-bottom: 80px;
+.session-button{
+    text-align: right;
+    font-size: medium;
 }
 
 .session-link{

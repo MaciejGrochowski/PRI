@@ -202,13 +202,12 @@ color: #FFD859!important;
     flex-wrap: nowrap;
     background-color: transparent;
     align-content: center;
-    width: 100%;
 }
 
 
 .flex-container-session > div {
     background-color: dodgerblue;
-    width: 60%;
+    width: 80%;
     margin: 5px;
     text-align: left;
     line-height: 75px;
@@ -217,11 +216,10 @@ color: #FFD859!important;
 
 .flex-container-session > div.flex-button{
     background-color: brown;
-    max-width: 10%;
+    max-width: 15%;
     height: 10%;
+    margin: 5px 15px 15px 30px;
 }
 
-.plainPage{
-overflow-y: scroll;
-position: absolute;
+.session-box{
 }

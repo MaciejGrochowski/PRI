@@ -51,19 +51,24 @@ class SessionListPage extends React.Component {
         return (
             <div className="pageWithContext">
                 <div className="pageName">Sesje użytkownika {this.props.match.params.username}</div>
-                <div className="plainPage">
+
+                <div className="globalStyles">
 
                     <div className="flex-container-session">
                         <div>
                             {this.state.sessions && this.state.sessions.map((item, i) => (
-                                <div>
-
-                                    <span>{item.name}</span> <br/>
-                                    <span>{item.description}</span><br/>
-                                    <span>{item.createdUserBy}</span><br/>
-                                    <span>{item.createdDate}</span><br/>
-                                    <span>{item.lastModifiedDate}</span><br/>
-                                    <Link to={fronendUrls.sessionDetails + "/" + item.hashcode}>Więcej</Link>
+                                <div className="flex-container-session">
+                                    <div className="session-title">
+                                        <span>{item.name}</span>
+                                    </div>
+                                    <div>
+                                        <span>{item.lastModifiedDate}</span>
+                                    </div>
+                                    {/*<span>{item.description}</span><br/>*/}
+                                    {/*<span>{item.createdUserBy}</span><br/>*/}
+                                    {/*<span>{item.createdDate}</span><br/>*/}
+                                    {/*<span>{item.lastModifiedDate}</span>*/}
+                                    {/*<Link to={fronendUrls.sessionDetails + "/" + item.hashcode}>Więcej</Link>*/}
                                 </div>
                             ))}
                         </div>

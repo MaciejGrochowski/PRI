@@ -4,7 +4,6 @@ import Wysiwyg from "../../components/Wysiwyg/Wysiwyg";
 import historyService from "../../services/historyService";
 import {fronendUrls} from "../../commons/urls";
 import placeService from "../../services/placeService";
-import DefaultMultipleAutocomplete from "../../components/Autocomplete/DefaultMultipleAutocomplete";
 import TextField from "@material-ui/core/TextField";
 import {months} from "../../enums/Months";
 import Autocomplete from "@material-ui/lab/Autocomplete";

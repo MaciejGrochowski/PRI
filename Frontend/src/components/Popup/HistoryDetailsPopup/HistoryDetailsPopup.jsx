@@ -1,8 +1,6 @@
 import React from 'react';
 import Modal from 'react-modal';
-import test from '../../../styles/popup.css';
 import button from "../../../styles/buttons.css";
-import popup from "../../../styles/popup.css";
 import historyService from "../../../services/historyService";
 import parse from "html-react-parser";
 

@@ -5,6 +5,7 @@ import {getInfoFromToken, getToken} from "../../services/util";
 import NewSessionModal from "../../components/Popup/NewSessionModal/NewSessionModal";
 import sessionService from "../../services/sessionService";
 import {fronendUrls} from "../../commons/urls";
+import SessionTittle from "./SessionTittle";
 
 
 class SessionListPage extends React.Component {
@@ -46,6 +47,11 @@ class SessionListPage extends React.Component {
             .then(r => this.getSessions())
     }
 
+    shorterDate(date){
+        let shorterDate = date.substring(0,10)
+        return shorterDate
+    }
+
 
     render() {
         return (
@@ -57,18 +63,15 @@ class SessionListPage extends React.Component {
                     <div className="flex-container-session">
                         <div>
                             {this.state.sessions && this.state.sessions.map((item, i) => (
-                                <div className="flex-container-session">
-                                    <div className="session-title">
-                                        <span>{item.name}</span>
-                                    </div>
-                                    <div>
-                                        <span>{item.lastModifiedDate}</span>
-                                    </div>
-                                    {/*<span>{item.description}</span><br/>*/}
-                                    {/*<span>{item.createdUserBy}</span><br/>*/}
-                                    {/*<span>{item.createdDate}</span><br/>*/}
-                                    {/*<span>{item.lastModifiedDate}</span>*/}
-                                    {/*<Link to={fronendUrls.sessionDetails + "/" + item.hashcode}>Więcej</Link>*/}
+                                <div className="session-box">
+                                    <SessionTittle name={item.name} date={item.lastModifiedDate} />
+                                    <div className="underline-box"></div>
+                                    <div className="session-description">{item.description}</div>
+                                    {/*// <span>{item.createdUserBy}</span><br/>*/}
+                                    {/*// <span>{item.createdDate}</span><br/>*/}
+                                    {/*// <span>{item.lastModifiedDate}</span>*/}
+                                    <button className="moreSessionButton"><Link to={fronendUrls.sessionDetails + "/" + item.hashcode}>Więcej</Link></button>
+
                                 </div>
                             ))}
                         </div>

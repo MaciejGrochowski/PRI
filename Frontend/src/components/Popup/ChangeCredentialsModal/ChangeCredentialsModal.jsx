@@ -3,7 +3,6 @@ import Modal from 'react-modal';
 import button from "../../../styles/buttons.css";
 import {TextField} from "@material-ui/core";
 import PasswordField from "../../PasswordField/PasswordField";
-import {textsPolish} from "../../../commons/texts-pl";
 import {validationPassword} from "../../../pages/RegisterPage/validation";
 
 

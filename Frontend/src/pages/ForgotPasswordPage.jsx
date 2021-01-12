@@ -20,7 +20,7 @@ class ForgotPasswordPage extends React.Component {
     }
 
     forgotPassword = () => {
-        const requestBody = {mail: this.state.mail};
+        const requestBody = {email: this.state.mail};
 
         loginService.forgetPassword(requestBody)
             .then(r => this.forgotPasswordSuccessHandler(r))
@@ -41,23 +41,33 @@ class ForgotPasswordPage extends React.Component {
 
 
     render(){
+
+
+
+
+
         return (
-            <div className = "plainPage">
-                <div className="block-component">
+            <div className = "container-login-page">
+            <div className = "login-body">
+            <div className = "margin-login-body">
+            <div className = "login-title">Zapomniałeś hasła?</div>
+            Wpisz adres e-mail na który zostało założone konto. Dostaniesz od nas e-mail z linkiem do zmiany hasła.
+            <div className="block-component">
                     <TextField
                                label={textsPolish.register.mail}
                                value={this.state.mail}
                                onChange={event => this.setState({mail: event.target.value})}
                     />
-                </div>
 
-                {this.state.errorForgetPassword && <div>Niepoprawny mail!</div>}
-                {this.state.successForgetPassword && <div>Na Twojego maila wysłaliśmy linka do zresetowania hasła!</div>}
+</div>
+<div className="block-component">
+                {this.state.errorForgetPassword && <div className = "error-message">Niepoprawny mail!</div>}
+                {this.state.successForgetPassword && <div className = "positive-message">Na Twojego maila wysłaliśmy linka do zresetowania hasła! <i class="fas fa-envelope"></i></div>}
                 {/*ToDo style it*/}
-
-
+</div>
+<div className="block-component">
                 <button className = "zaloguj-button" disabled={!this.state.mail || this.validationMail() || this.state.successForgetPassword} onClick={() => this.forgotPassword()}>Przypomnij hasło</button>
-            </div>
+            </div></div></div></div>
         )
     }
 

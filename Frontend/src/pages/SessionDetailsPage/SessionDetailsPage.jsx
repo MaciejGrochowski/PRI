@@ -5,6 +5,10 @@ import sessionService from "../../services/sessionService";
 import CharacterSessionView from "../../components/CharacterSessionView/CharacterSessionView";
 import {getInfoFromToken, getToken} from "../../services/util";
 import {fronendUrls} from "../../commons/urls";
+import {TextField} from "@material-ui/core";
+import ChangeCredentialsModal from "../../components/Popup/ChangeCredentialsModal/ChangeCredentialsModal";
+import ChangeVisibilityModal
+    from "../../components/Popup/ChangeGlobalVisibilityModal/ChangeVisibilityModal";
 
 
 class SessionDetailsPage extends React.Component {
@@ -16,7 +20,9 @@ class SessionDetailsPage extends React.Component {
             title: "",
             description: "",
             createdBy: "",
-            createdDate: ""
+            createdDate: "",
+            isChanging: false,
+            isGlobalVisibleChanging: false
 
         }
     }
@@ -33,8 +39,6 @@ class SessionDetailsPage extends React.Component {
 
     getSessionDetailsSuccessHandler = response => {
         const data = response.data;
-        console.log(data)
-
         this.setState({
             characters: data.characters,
             createdBy: data.createdBy,
@@ -45,31 +49,79 @@ class SessionDetailsPage extends React.Component {
 
     }
 
-    isMG(){
+    isMG() {
         let user = getInfoFromToken(getToken());
         let username = ""
-        if(user) username=user.sub;
-        return username===this.state.createdBy;
+        if (user) username = user.sub;
+        return username === this.state.createdBy;
     }
 
-    render(){
+
+    editSession = () => {
+        this.setState({isChanging: false});
+        sessionService.editSession(this.props.match.params.hashcode, this.state.name, this.state.description)
+            .then(r => console.log(r))
+            .catch(e => console.log(e))
+    }
+
+    deleteCharacter = characterId => {
+        sessionService.deleteCharacterFromSession(this.props.match.params.hashcode, characterId)
+            .then(r => this.getSessionDetails())
+            .catch(e => console.log(e))
+    }
+
+    saveGlobalVisibility = data => {
+        sessionService.setGlobalVisibility(this.props.match.params.hashcode, data)
+            .then(r => this.saveGlobalVisibilitySuccessHandler(r))
+            .catch(e => console.log(e))
+    }
+
+    saveGlobalVisibilitySuccessHandler = response => {
+        this.setState({isGlobalVisibleChanging: false})
+        this.getSessionDetails();
+    }
+
+    render() {
         return (
-            <div className = "plainPage">
-                <h1>{this.state.name}</h1>
-                <p>{this.state.description}</p>
+            <div className="plainPage">
+                {/*ToDo this should be in more smaller components, not in one giant*/}
+
+                <TextField
+                    onChange={(event) => this.setState({name: event.target.value})}
+                    disabled={!this.state.isChanging} value={this.state.name}/>
+
+                <TextField
+                    onChange={(event) => this.setState({description: event.target.value})}
+                    disabled={!this.state.isChanging} value={this.state.description}/>
+
+                {this.isMG() && (this.state.isChanging ?
+                    <button onClick={this.editSession}>Zapisz zmiany</button> :
+                    <button onClick={() => this.setState({isChanging: true})}>Edytuj sesję</button>)}
+
+                {this.isMG() && <button onClick={() => this.setState({isGlobalVisibleChanging: true})}>Globalna widoczność</button>}
+
+                <ChangeVisibilityModal
+                    title={"Edytuj globalną widoczność postaci"}
+                    isOpen={this.state.isGlobalVisibleChanging}
+                    onRequestClose={() => this.setState({isGlobalVisibleChanging: false})}
+                    onSave={this.saveGlobalVisibility}
+                    isGlobal={true}
+                />
+
                 <p>{this.state.createdBy}</p>
                 <p>{this.state.createdDate}</p>
 
-                <div>Link do udostępnienia: {fronendUrls.sessionDetails + "/" + this.props.match.params.hashcode}</div>
+
+                <div>Link do udostępnienia: <Link to={window.location.href}>{window.location.href}</Link></div>
 
                 {this.state.characters && this.state.characters.map((character, i) => (
                     <CharacterSessionView
                         character={character}
-                        isMg={this.isMG()}
+                        isMG={this.isMG()}
+                        onDeleteCharacter={this.deleteCharacter}
 
                     />
                 ))}
-
 
 
             </div>

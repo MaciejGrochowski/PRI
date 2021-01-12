@@ -152,4 +152,8 @@ public class UserOfAppService extends GeneralService {
         }
 
     }
+
+    public UserOfApp getUserByAuthentication(Authentication auth){
+        return this.findByUsername(this.getUsernameFromAuthentication(auth));
+    }
 }

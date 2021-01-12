@@ -7,13 +7,15 @@ import {fronendUrls} from "../../commons/urls";
 class CharacterSessionView extends React.Component {
 
     render(){
-        const {character, isMG} = this.props;
+        const {character, isMG, onDeleteCharacter} = this.props;
+        console.log(isMG);
 
 
 
 
         return (
             <div>
+                {/*ToDo refactor (as other columnConfigs)*/}
 
                 <div>Godność: {character.name || character.surname ? character.name + (character.surname ? " " + character.surname: "") : "Nieznana"}</div>
 
@@ -87,6 +89,7 @@ class CharacterSessionView extends React.Component {
 
 
                 {isMG && <Link to={fronendUrls.characterDetails + "/" + character.id}>Więcej</Link>}
+                {isMG && <button onClick={() => onDeleteCharacter(character.id)}>Usuń postać</button>}
 
 
 

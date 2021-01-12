@@ -1,4 +1,5 @@
 .container-login-page{
+color: white;
 }
 
 .login-body{
@@ -42,22 +43,26 @@ margin: auto !important;
 position: center;
 text-decoration: none!important;
 }
-
+.zaloguj-button a{
+color: white!important;
+}
 .zaloguj-button{
-    border: none;
+    min-width: 160px !important;
+    border: solid 1px white;
     color: white;
-    width: max-content;
-    margin: auto;
+    padding: 16px 32px;
     font-size: large;
+    text-align: center;
     text-decoration: none;
     transition-duration: 0.4s;
     cursor: pointer;
     text-overflow: ellipsis;
     white-space: nowrap;
-    display: flex;
+    display: inline-block;
     margin: auto!important;
     padding: 5%;
     background-color: #292F2F;
+    cursor: pointer;
 
 }
 
@@ -66,11 +71,44 @@ text-decoration: none!important;
     border: none !important;
 }
 
-
+.zaloguj-button:hover a{
+    color: #FFD859 !important;
+}
 .zaloguj-button:hover{
     color: #FFD859;
-    border-bottom: 3px solid #FFD859;
+    border-color: #FFD859 !important;
 }
+
+.button {
+  background-color: #FFD859;
+  border: none;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.button1 {
+  background-color: hidden;
+  color: black;
+  border: 2px solid #FFD859;
+}
+
+.button1:hover {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.button1:disabled {
+  color: #e7e7e7;
+  border: 2px solid #e7e7e7;
+}
+
+
 
 .login-description{
 color: white;

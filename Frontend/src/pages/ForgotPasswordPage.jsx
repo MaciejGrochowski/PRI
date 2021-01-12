@@ -41,11 +41,6 @@ class ForgotPasswordPage extends React.Component {
 
 
     render(){
-
-
-
-
-
         return (
             <div className = "plainPage">
                 <div className="block-component">

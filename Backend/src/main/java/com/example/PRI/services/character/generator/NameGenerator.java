@@ -5,6 +5,7 @@ import com.example.PRI.entities.character.Name;
 import com.example.PRI.enums.Race;
 import com.example.PRI.enums.Sex;
 import com.example.PRI.services.GeneralService;
+import com.example.PRI.services.RandomService;
 import com.example.PRI.services.character.NameService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,7 +22,10 @@ public class NameGenerator extends GeneralService {
     @Autowired
     NameService nameService;
 
-    public Map<String, String> generateName(Character character, HashMap<String, String> properties) {
+    RandomService randomService;
+
+    public Map<String, String> generateName(Character character, RandomService randomService, HashMap<String, String> properties) {
+        this.randomService = randomService;
         List<Name> allNames = nameService.findAll(); //ToDo mikrooptymalizacja w zapytaniu, findNameBySexAndRaceAndIsUsedByGenerator
 
 
@@ -39,7 +43,7 @@ public class NameGenerator extends GeneralService {
 
     private Name generateNotGentryName(List<Name> allNames) {
         double maxRandomRoll = allNames.stream().mapToDouble(Name::getProbabilityNotGentry).sum();
-        double randomRoll = new Random().nextDouble() * maxRandomRoll;
+        double randomRoll = randomService.nextDouble() * maxRandomRoll;
         for(Name name : allNames){
             randomRoll -= name.getProbabilityNotGentry();
             if(randomRoll <= 0) return name;
@@ -49,7 +53,7 @@ public class NameGenerator extends GeneralService {
 
     private Name generateGentryName(List<Name> allNames) {
         double maxRandomRoll = allNames.stream().mapToDouble(Name::getProbabilityGentry).sum();
-        double randomRoll = new Random().nextDouble() * maxRandomRoll;
+        double randomRoll = randomService.nextDouble() * maxRandomRoll;
 
         for(Name name : allNames){
             randomRoll -= name.getProbabilityGentry();

@@ -26,11 +26,12 @@ public class UserOfApp extends GeneralEntity {
     String mail;
     String discord;
     String facebook;
-    String token;
 
     Boolean isActive;
     String UUIDActivation;
 
+    @OneToMany(mappedBy="tokenUser")
+    List <Token> token;
 
     @OneToMany(mappedBy="createdBy")
     List<Character> characters;
@@ -41,4 +42,10 @@ public class UserOfApp extends GeneralEntity {
     @OneToMany(mappedBy="createdUserOfApp")
     List<Session> sessions;
 
+    public Token getSingleToken(String username) {
+        for(Token t: this.token){
+            if(t.getName().equals(username)){ return t;};
+        }
+        return null;
+    }
 }

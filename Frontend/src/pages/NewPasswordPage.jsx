@@ -58,7 +58,6 @@ class NewPasswordPage extends React.Component {
     }
 
     changePassword = () => {
-
         if(this.state.password === this.state.confirmPassword){
             loginService.changePassword(this.props.match.params.username, this.props.match.params.hashcode, this.state.password)
                 .then(r => this.setState({success: true, error: false}))
@@ -67,7 +66,6 @@ class NewPasswordPage extends React.Component {
     }
 
     render(){
-
         if(this.state.success)
             return (<div className="plainPage">
                 Zmieniłeś hasło. Możesz teraz się <Link to={fronendUrls.loginPage}>zalogować.</Link>
@@ -75,8 +73,6 @@ class NewPasswordPage extends React.Component {
 
         if(this.state.error)
             return (<div classname="plainPage">Coś poszło nie tak! Jeśli nie możesz zmienić swojego hasła, skontaktuj się z administracją.</div>)
-
-
 
         return (
             <div className = "plainPage">

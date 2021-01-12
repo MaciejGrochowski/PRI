@@ -15,6 +15,7 @@ import NeedLoginInformation from "../../components/NeedLoginInformation/NeedLogi
 import {loginStatusChange} from "../../actions";
 import {connect} from "react-redux";
 import {getToken, isValidToken} from "../../services/util";
+import {Redirect} from "react-router";
 
 class HistoryCreatorPage extends React.Component {
 
@@ -77,7 +78,7 @@ class HistoryCreatorPage extends React.Component {
         };
 
         historyService.createHistory(data)
-            .then(r => window.open(fronendUrls.historyList + "/" + r.data)) //ToDo to jakoś inaczej zrobić...
+            .then(r => this.setState({createdHistoryId: r.data}))
             .catch(e => this.saveHistoryErrorHandler(e))
     };
 
@@ -91,6 +92,12 @@ class HistoryCreatorPage extends React.Component {
 
 
     render(){
+
+        if (this.state.createdHistoryId) {
+            return <Redirect push to={fronendUrls.historyList + "/" + this.state.createdHistoryId} />
+        }
+
+
         return (<div className="globalStyles">
 
             <header className="App-header">

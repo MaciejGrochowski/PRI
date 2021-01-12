@@ -16,9 +16,9 @@ const login = (username, password) => {
     return request.post(url, {username: username, password: password});
 }
 
-const logout = () => {
+const logout = (token) => {
     const url = baseApiUrl + "/logout-user";
-    return authorizationRequest().post(url);
+    return authorizationRequest().post(url, {token: token});
 }
 
 const register = requestBody => {
@@ -40,6 +40,5 @@ const changePassword = (username, hashcode, newPassword) => {
     const url = baseApiUrl + "/change-password";
     return request.post(url, {username: username, hashcode: hashcode, newPassword: newPassword})
 }
-
 
 export default loginService;

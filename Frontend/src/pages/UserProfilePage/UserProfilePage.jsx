@@ -2,12 +2,16 @@ import React from "react";
 import "../../styles/globalStyles.css";
 import userService from "../../services/userService";
 import {TextField} from "@material-ui/core";
-import {getInfoFromToken, getToken} from "../../services/util";
+import {getInfoFromToken, getToken, logoutCookie} from "../../services/util";
 import {Link} from "react-router-dom";
 import {fronendUrls} from "../../commons/urls";
 import "../../styles/userProfile.css";
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 import ChangeCredentialsModal from "../../components/Popup/ChangeCredentialsModal/ChangeCredentialsModal";
+import loginService from "../../services/loginService";
+import {loginStatusChange} from "../../actions";
+import {connect} from "react-redux";
+import {Redirect} from "react-router";
 
 
 class UserProfilePage extends React.Component {
@@ -72,7 +76,7 @@ class UserProfilePage extends React.Component {
         let input;
         if(newPassword){
             input = {
-                username: this.state.username, //ToDo zmiana uzytkownika LUB
+                username: this.state.username,
                 oldPassword: password,
                 newPassword: newPassword
             }
@@ -86,14 +90,29 @@ class UserProfilePage extends React.Component {
         }
 
         userService.editCredentials(input)
-            .then(r => console.log(r))
+            .then(r => this.logout())
             .catch(e => console.log(e))
 
 
         this.setState({
             isPasswordChanging: false,
-            isUsernameChanging: false
+            isUsernameChanging: false,
+            usernameOrPasswordChanged: true
         })
+
+    }
+
+    logout = () => {
+        loginService.logout(getToken())
+            .then(r => {
+                this.props.loginStatusChange(false);
+                logoutCookie();
+            })
+            .catch(e => {
+                this.props.loginStatusChange(false);
+                logoutCookie();
+            })
+
 
     }
 
@@ -102,6 +121,11 @@ class UserProfilePage extends React.Component {
     }
 
     render(){
+
+        if (this.state.usernameOrPasswordChanged) {
+            return <Redirect push to={fronendUrls.mainPage} />
+        }
+
         return (
             <div className = "user-profile-main-div">
             <div className = "page-title"> {this.state.username} </div>
@@ -193,4 +217,12 @@ class UserProfilePage extends React.Component {
 
 }
 
-export default UserProfilePage;
+
+const mapStateToProps = (state) => {
+    return {
+        isLogged: state.isLogged // (1)
+    }
+};
+const mapDispatchToProps = { loginStatusChange }; // (2)
+
+export default UserProfilePage = connect(mapStateToProps, mapDispatchToProps)(UserProfilePage);

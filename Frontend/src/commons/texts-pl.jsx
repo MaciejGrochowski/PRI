@@ -123,5 +123,7 @@ export const polishCodeErrors = {
         facebookNotCorrect: 'Podaj poprawny adres do profilu na facebooku.',
         discordNotCorrect: 'Podaj poprawną nazwę użytkownika discord.',
         descriptionTooLong: 'Opis jest zbyt długi.'
-    }
+    },
+
+    BAD_CREDENTIALS_ERROR: 'Nazwa użytkownika lub hasło jest nieprawidłowe.'
 }

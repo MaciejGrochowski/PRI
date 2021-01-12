@@ -66,3 +66,5 @@ export const userUrl = apiUrl + "/users"
 export const historyUrl = apiUrl + "/histories"
 
 export const generatorUrl = apiUrl + "/generator";
+
+export const sessionUrl = apiUrl + "/sessions"

@@ -10,7 +10,7 @@ class MainPage extends React.Component {
     render(){
         return (
             <div className = "plainPage">
-                        <h1>Welcome!</h1>
+                        <h1>Welcome!</h1><img src={process.env.PUBLIC_URL + '/logo.png'}/>
                         <p>Click  to see a greeting.</p>
                 <Link to={fronendUrls.registerPage}>Zarejestruj się!</Link>
             </div>

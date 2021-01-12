@@ -21,9 +21,6 @@ public class UserOfAppController {
     @Autowired
     UserOfAppService userOfAppService;
 
-    @Autowired
-    EmailService emailService;
-
 
         @Get("/user/{username}")
         public UserOfAppDetailsOutputDto getDetailsByUsername(@PathVariable String username){

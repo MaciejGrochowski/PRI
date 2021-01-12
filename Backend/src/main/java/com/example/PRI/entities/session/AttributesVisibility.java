@@ -20,10 +20,11 @@ public class AttributesVisibility extends GeneralEntity {
     boolean livePlace;
     boolean currentCareer;
     boolean previousCareers;
-    boolean oldcareers;
     boolean race;
     boolean sex;
-    boolean birthDate;
+    boolean dayOfBirth;
+    boolean monthOfBirth;
+    boolean yearOfBirth;
     boolean height;
     boolean weight;
     boolean starSign;

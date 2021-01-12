@@ -221,9 +221,15 @@ public class CharacterConverter {
             output.setHairColor(character.getHairColor().getColor());
         }
 
-        if(attributesVisibility.isBirthDate() && character.getBirthDate()!=null){
+        if(attributesVisibility.isDayOfBirth() && character.getBirthDate().getDay()!=null){
             output.setDayOfBirth(character.getBirthDate().getDay().toString());
+        }
+
+        if(attributesVisibility.isMonthOfBirth() && character.getBirthDate().getMonth().getMonthName()!=null){
             output.setMonthOfBirth(character.getBirthDate().getMonth().getMonthName());
+        }
+
+        if(attributesVisibility.isYearOfBirth() && character.getBirthDate().getYear()!=null){
             output.setYearOfBird(character.getBirthDate().getYear().toString());
         }
 

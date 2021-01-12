@@ -75,10 +75,11 @@ class NewPasswordPage extends React.Component {
             return (<div classname="plainPage">Coś poszło nie tak! Jeśli nie możesz zmienić swojego hasła, skontaktuj się z administracją.</div>)
 
         return (
-            <div className = "plainPage">
-
+                <div className = "container-login-page">
+                <div className = "login-body">
+                <div className = "margin-login-body">
+                <div className = "login-title">Zmień hasło</div>
                 <div className="block-component">
-
                     <PasswordField
                         error={this.state.errorState.password}
                         label={textsPolish.register.password}
@@ -102,10 +103,11 @@ class NewPasswordPage extends React.Component {
                         setStateFunction={ element => this.setState({ confirmPassword: element})}
                     />
                 </div>
-
+<div className="block-component">
                 <button className = "zaloguj-button" disabled={!this.canChangePassword()} onClick={() => this.changePassword()}>Zmień hasło</button>
-
-
+</div>
+            </div>
+            </div>
             </div>
         )
     }

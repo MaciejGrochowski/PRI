@@ -23,14 +23,28 @@ padding-right: 5%;
 
 .user-profile-container{
 display: flex;
+justify-content: space-between;
 }
-.user-profile-block{
-display: block;
+
+.user-profile-container-s{
+display: flex;
 }
+
+.mail-fb-dc-component{
+ width: 70%;
+ margin: auto;
+ padding: auto;
+}
+.margin-auto{
+margin: auto !important;
+}
+
 .user-profile-block{
-display: block;
-padding: 5%;
-width: 50%;
+width: -webkit-fill-available;
+    margin: 3%;
+}
+.min-width-50{
+min-width: 50% !important;
 }
 
 .user-profile-subtitle{

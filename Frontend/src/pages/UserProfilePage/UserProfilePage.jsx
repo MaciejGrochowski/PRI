@@ -12,7 +12,13 @@ import loginService from "../../services/loginService";
 import {loginStatusChange} from "../../actions";
 import {connect} from "react-redux";
 import {Redirect} from "react-router";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faEnvelope} from "@fortawesome/free-solid-svg-icons";
+import{faFacebook, faDiscord} from "@fortawesome/free-brands-svg-icons";
 
+const mail = <FontAwesomeIcon icon={faEnvelope}/>
+const fb = <FontAwesomeIcon icon={faFacebook}/>
+const discord = <FontAwesomeIcon icon={faDiscord}/>
 
 class UserProfilePage extends React.Component {
 
@@ -130,11 +136,12 @@ class UserProfilePage extends React.Component {
             <div className = "user-profile-main-div">
             <div className = "page-title"> {this.state.username} </div>
 
+
+
             <div className = "user-profile-container">
 
-{/*                <div>Nazwa użytkownika: <TextField disabled value={this.state.username}/></div> */}
 
-            <div className = "user-profile-block">
+            <div className = "user-profile-block min-width-50">
             {/*<div className="user-profile-subtitle">Opis: </div>*/}
             <div>       <TextField
                         id="outlined-textarea"
@@ -148,8 +155,18 @@ class UserProfilePage extends React.Component {
                             onChange={(event) => this.setState({description: event.target.value})} disabled={!this.state.isEditingProfile} value={this.state.description}/></div>
             </div>
 
-            <div className = "user-profile-block">
-                {this.isProfileLoggedUser() && <div className = "user-profile-container">
+            <div className = "mail-fb-dc-component">
+
+
+                <div className = "user-profile-container"><div className = "text"><span>{mail}</span> <TextField disabled value={this.state.mail}/></div></div>
+
+                <div className = "user-profile-container"><div className = "text"><span>{fb}</span> <TextField onChange={(event) => this.setState({facebook: event.target.value})} disabled={!this.state.isEditingProfile} value={this.state.facebook}/></div></div>
+
+                <div className = "user-profile-container"><div className = "text"><span>{discord}</span>  <TextField onChange={(event) => this.setState({discord: event.target.value})} disabled={!this.state.isEditingProfile} value={this.state.discord}/></div></div>
+
+
+</div>
+                {this.isProfileLoggedUser() && <div className = "user-profile-block margin-auto">
                     <button className = "detaleButton" onClick={() => this.setState({isPasswordChanging: true})}>Edytuj hasło</button>
                     <button className = "detaleButton" onClick={() => this.setState({isUsernameChanging: true})}>Edytuj nazwę użytkownika</button>
                     {!this.state.isEditingProfile && <button className = "detaleButton" onClick={this.onClickEditButton}>Edytuj profil</button>}
@@ -168,14 +185,6 @@ class UserProfilePage extends React.Component {
                 />
 
 
-                <div className = "user-profile-container"><div className = "text">Mail: <TextField disabled value={this.state.mail}/></div></div>
-
-                <div className = "user-profile-container"><div className = "text">Facebook: <TextField onChange={(event) => this.setState({facebook: event.target.value})} disabled={!this.state.isEditingProfile} value={this.state.facebook}/></div></div>
-
-                <div className = "user-profile-container"><div className = "text">Discord: <TextField onChange={(event) => this.setState({discord: event.target.value})} disabled={!this.state.isEditingProfile} value={this.state.discord}/></div></div>
-
-
-</div>
 </div>
 <div className = "user-profile-container">
 <div className = "user-profile-block">
@@ -184,12 +193,12 @@ class UserProfilePage extends React.Component {
                 {this.state.characters && this.state.characters.slice(0,10).map((item, i) => (
                     <div className = "one-element-brief">
                         <div className = "yellow-color">#{item.id}</div>
-                        <div className = "user-profile-container"><div className = "yellow-color">Imię: </div>	&nbsp; {item.name}</div>
-                        <div className = "user-profile-container"><div className = "yellow-color">Nazwisko:	&nbsp; </div>{item.surname}</div>
-                        <div className = "user-profile-container"><div className = "yellow-color">Rasa:	&nbsp; </div>{item.race}</div>
-                        <div className = "user-profile-container" ><div className = "yellow-color">Płeć: 	&nbsp;</div>{item.sex}</div>
-                        <div className = "user-profile-container"><div className = "yellow-color">Profesja: 	&nbsp;</div>{item.career}</div>
-                        <div className = "user-profile-container"><div className = "yellow-color">Miejsce pobytu:	&nbsp; </div>{item.livePlace}</div>
+                        <div className = "user-profile-container-s"><div className = "yellow-color">Imię: </div>	&nbsp; {item.name}</div>
+                        <div className = "user-profile-container-s"><div className = "yellow-color">Nazwisko:	&nbsp; </div>{item.surname}</div>
+                        <div className = "user-profile-container-s"><div className = "yellow-color">Rasa:	&nbsp; </div>{item.race}</div>
+                        <div className = "user-profile-container-s" ><div className = "yellow-color">Płeć: 	&nbsp;</div>{item.sex}</div>
+                        <div className = "user-profile-container-s"><div className = "yellow-color">Profesja: 	&nbsp;</div>{item.career}</div>
+                        <div className = "user-profile-container-s"><div className = "yellow-color">Miejsce pobytu:	&nbsp; </div>{item.livePlace}</div>
                         {/*<Link className = "detaleButton" to={fronendUrls.historyList + "/" + item.id}><div className = "normal-text">Więcej</div></Link>*/}
                     </div>
                 ))

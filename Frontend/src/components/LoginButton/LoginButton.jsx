@@ -24,7 +24,7 @@ class LoginButton extends React.Component {
         let username = getInfoFromToken(getToken());
         if(username) username=username.sub;
 
-        let welcome = <>Witaj, <Link to={fronendUrls.userProfilePage + "/" + username}>{username}</Link></>;
+        let welcome = <div className = "menu-title">Witaj, <Link to={fronendUrls.userProfilePage + "/" + username}>{username}</Link></div>;
 
 
         return (<div>{this.props.isLogged ? <div>{welcome} <LogoutButton/> </div> : this.props.notLoggedShowComponent}</div>

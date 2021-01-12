@@ -3,6 +3,9 @@ import "../styles/globalStyles.css";
 import PasswordField from "../components/PasswordField/PasswordField";
 import {textsPolish} from "../commons/texts-pl";
 import {validationPassword} from "./RegisterPage/validation";
+import loginService from "../services/loginService";
+import {Link} from "react-router-dom";
+import {fronendUrls} from "../commons/urls";
 
 
 class NewPasswordPage extends React.Component {
@@ -13,7 +16,9 @@ class NewPasswordPage extends React.Component {
             password: "",
             confirmPassword: "",
             errorState: {},
-            errorText: {}
+            errorText: {},
+            error: false,
+            success: false
         }
     }
 
@@ -53,11 +58,22 @@ class NewPasswordPage extends React.Component {
     }
 
     changePassword = () => {
-        console.log(this.props.match.params);
-        console.log(this.state);
+        if(this.state.password === this.state.confirmPassword){
+            loginService.changePassword(this.props.match.params.username, this.props.match.params.hashcode, this.state.password)
+                .then(r => this.setState({success: true, error: false}))
+                .catch(e => this.setState({success: false, error: true}))
+        }
     }
 
     render(){
+        if(this.state.success)
+            return (<div className="plainPage">
+                Zmieniłeś hasło. Możesz teraz się <Link to={fronendUrls.loginPage}>zalogować.</Link>
+            </div>)
+
+        if(this.state.error)
+            return (<div classname="plainPage">Coś poszło nie tak! Jeśli nie możesz zmienić swojego hasła, skontaktuj się z administracją.</div>)
+
         return (
             <div className = "plainPage">
 

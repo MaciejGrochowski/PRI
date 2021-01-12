@@ -27,6 +27,9 @@ public class UserOfApp extends GeneralEntity {
     String discord;
     String facebook;
 
+    Boolean isActive;
+    String UUIDActivation;
+
     @OneToMany(mappedBy="tokenUser")
     List <Token> token;
 

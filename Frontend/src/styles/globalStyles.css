@@ -206,7 +206,7 @@ color: #FFD859!important;
 
 
 .flex-container-session > div {
-    width: 70%;
+    width: 80%;
     margin-bottom: 10px;
     margin-top: 15px;
     line-height: 18px;
@@ -215,12 +215,15 @@ color: #FFD859!important;
 .flex-container-session > div.flex-button{
     max-width: 25%;
     height: 10%;
-    margin: 5px 15px 15px 50px;
+    position: fixed;
+    left: 83%;
+    top: 27%;
+
 }
 
 .session-title{
     text-align: left;
-    font-size: 25px;
+    font-size: 30px;
     width: 100%;
     padding-left: 10px;
 }
@@ -235,23 +238,27 @@ color: #FFD859!important;
 
 .session-box{
     margin-bottom: 100px;
+    margin-left: 15%;
 }
 
 .underline-box{
     border-bottom: solid white 1px;
-    margin-left: 5px;
 }
 
 .session-button-box{
-    text-align: right;
+    float: right;
 }
 
 .session-description{
-    padding: 15px 60px 15px 60px;
+    padding: 15px 60px 5px 60px;
     font-size: 18px;
+    color: #d2d2d2;
     line-height: 25px;
     text-align: justify;
     height: 60%;
+    margin-bottom: 10px;
+    /*background-image: linear-gradient(to bottom, #343c3c, #303737,#292F2F);*/
+    /*background-color: #2f3535;*/
 }
 
 .session-button{

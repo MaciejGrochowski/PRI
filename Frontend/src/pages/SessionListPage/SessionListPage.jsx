@@ -6,6 +6,7 @@ import NewSessionModal from "../../components/Popup/NewSessionModal/NewSessionMo
 import sessionService from "../../services/sessionService";
 import {fronendUrls} from "../../commons/urls";
 import SessionTittle from "./SessionTittle";
+import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 
 
 class SessionListPage extends React.Component {

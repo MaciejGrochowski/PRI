@@ -196,3 +196,76 @@ color: #FFD859!important;
         width: 130px;
     }
 }
+
+.flex-container-session{
+    display: flex;
+    flex-wrap: nowrap;
+    background-color: transparent;
+    align-content: center;
+}
+
+
+.flex-container-session > div {
+    width: 80%;
+    margin-bottom: 10px;
+    margin-top: 15px;
+    line-height: 18px;
+}
+
+.flex-container-session > div.flex-button{
+    max-width: 25%;
+    height: 10%;
+    position: fixed;
+    left: 83%;
+    top: 27%;
+
+}
+
+.session-title{
+    text-align: left;
+    font-size: 30px;
+    width: 100%;
+    padding-left: 10px;
+}
+
+.last-modified{
+    font-size: 15px;
+    color: #8B8B8B;
+    text-align: right;
+    padding-right: 10px;
+    max-width: 30%;
+}
+
+.session-box{
+    margin-bottom: 100px;
+    margin-left: 15%;
+}
+
+.underline-box{
+    border-bottom: solid white 1px;
+}
+
+.session-button-box{
+    float: right;
+}
+
+.session-description{
+    padding: 15px 60px 5px 60px;
+    font-size: 18px;
+    color: #d2d2d2;
+    line-height: 25px;
+    text-align: justify;
+    height: 60%;
+    margin-bottom: 10px;
+    /*background-image: linear-gradient(to bottom, #343c3c, #303737,#292F2F);*/
+    /*background-color: #2f3535;*/
+}
+
+.session-button{
+    text-align: right;
+    font-size: medium;
+}
+
+.session-link{
+    text-decoration: none;
+}

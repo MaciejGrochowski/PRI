@@ -22,7 +22,7 @@ public class UserOfAppConverter {
         udod.setHistories(userOFApp.getHistories().stream()
                 .map(HistoryConverter::convertForCharacterDetails)
                 .collect(Collectors.toCollection(ArrayList::new)));
-        udod.setSessions(userOFApp.getSessions());
+//        udod.setSessions(userOFApp.getSessions()); ToDo uncomment this
 
         return udod;
     }

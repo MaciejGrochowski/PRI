@@ -26,5 +26,5 @@ public class UserOfAppDetailsOutputDto {
 
     List<HistoryListCharacterDetailsOutputDto> histories;
 
-    List<Session> sessions;
+//    List<Session> sessions; ToDo uncomment this
 }

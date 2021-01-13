@@ -19,7 +19,8 @@ class LoginPage extends React.Component {
         super();
         this.state = {
             username: "",
-            password: ""
+            password: "",
+            badCredentialsError: false
         }
     }
 
@@ -45,7 +46,11 @@ class LoginPage extends React.Component {
     }
 
     handleChangePassword = event => {
-        this.setState({password: event.target.value})
+        this.setState({password: event.target.value, badCredentialsError: false})
+    }
+    
+    handleChangeUsername = event => {
+        this.setState({username: event.target.value, badCredentialsError: false})
     }
 
     enterListener = event => {
@@ -65,7 +70,7 @@ class LoginPage extends React.Component {
 <div className = "login-title">Zaloguj się</div>
     {this.state.badCredentialsError && <div className = "error-message">{polishCodeErrors.BAD_CREDENTIALS_ERROR}</div>}
                 <div className="block-component">
-                <TextField label="Login" value={this.state.username} onChange={event => this.setState({username:event.target.value})} />
+                <TextField label="Login" value={this.state.username} onChange={this.handleChangeUsername})} />
                 </div>
                 <div className="block-component">
                     <PasswordField

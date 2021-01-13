@@ -83,51 +83,59 @@ class SessionDetailsPage extends React.Component {
 
     render() {
         return (
-            <div className="plainPage">
+            <div className="pageWithContext">
                 {/*ToDo this should be in more smaller components, not in one giant*/}
 
-                <TextField
-                    onChange={(event) => this.setState({name: event.target.value})}
-                    disabled={!this.state.isChanging} value={this.state.name}/>
+                <div className="pageName">{this.state.name}</div>
 
-                <TextField
-                    onChange={(event) => this.setState({description: event.target.value})}
-                    disabled={!this.state.isChanging} value={this.state.description}/>
+                <div className="flex-container-session">
 
-                {this.isMG() && (this.state.isChanging ?
-                    <button onClick={this.editSession}>Zapisz zmiany</button> :
-                    <button onClick={() => this.setState({isChanging: true})}>Edytuj sesję</button>)}
+                    <div className="session-box">
+                    Nazwa sesji:<br/>
+                        <TextField
+                            onChange={(event) => this.setState({name: event.target.value})}
+                            disabled={!this.state.isChanging} value={this.state.name}/>
+                        <br/><br/>
+                            Opis sesji:<br/>
+                            <TextField
+                                onChange={(event) => this.setState({description: event.target.value})}
+                                disabled={!this.state.isChanging} value={this.state.description}/>
 
-                {this.isMG() && <button onClick={() => this.setState({isGlobalVisibleChanging: true})}>Globalna widoczność</button>}
+                    </div>
+                    <div className="session-button-box">
+                        {this.isMG() && (this.state.isChanging ?
+                            <button onClick={this.editSession}>Zapisz zmiany</button> :
+                            <button onClick={() => this.setState({isChanging: true})}>Edytuj sesję</button>)}
 
-                <ChangeVisibilityModal
-                    title={"Edytuj globalną widoczność postaci"}
-                    isOpen={this.state.isGlobalVisibleChanging}
-                    onRequestClose={() => this.setState({isGlobalVisibleChanging: false})}
-                    onSave={this.saveGlobalVisibility}
-                    isGlobal={true}
-                />
+                        {this.isMG() && <button onClick={() => this.setState({isGlobalVisibleChanging: true})}>Globalna
+                            widoczność</button>}
 
-                <p>{this.state.createdBy}</p>
-                <p>{this.state.createdDate}</p>
+                        <ChangeVisibilityModal
+                            title={"Edytuj globalną widoczność postaci"}
+                            isOpen={this.state.isGlobalVisibleChanging}
+                            onRequestClose={() => this.setState({isGlobalVisibleChanging: false})}
+                            onSave={this.saveGlobalVisibility}
+                            isGlobal={true}
+                        />
 
+                        <p>{this.state.createdBy}</p>
+                        <p>{this.state.createdDate}</p>
+                        </div>
+                </div>
+                    <span>Link do udostępnienia: <Link to={window.location.href}>{window.location.href}</Link></span>
 
-                <div>Link do udostępnienia: <Link to={window.location.href}>{window.location.href}</Link></div>
-
-                {this.state.characters && this.state.characters.map((character, i) => (
-                    <CharacterSessionView
-                        character={character}
-                        isMG={this.isMG()}
-                        onDeleteCharacter={this.deleteCharacter}
-
-                    />
-                ))}
-
+                    {this.state.characters && this.state.characters.map((character, i) => (
+                        <CharacterSessionView
+                            character={character}
+                            isMG={this.isMG()}
+                            onDeleteCharacter={this.deleteCharacter}/>
+                    ))}
 
             </div>
-        )
+
+    )
     }
 
-}
+    }
 
-export default SessionDetailsPage;
+    export default SessionDetailsPage;

@@ -90,19 +90,23 @@ class SessionDetailsPage extends React.Component {
 
                 <div className="flex-container-session">
 
-                    <div className="session-box">
+                    <div className="">
                     Nazwa sesji:<br/>
                         <TextField
                             onChange={(event) => this.setState({name: event.target.value})}
                             disabled={!this.state.isChanging} value={this.state.name}/>
                         <br/><br/>
+                        Autor sesji:<br/>
+                        <TextField disabled={true} value={this.state.createdBy}/>
+                    </div>
+                    <div className="">
                             Opis sesji:<br/>
-                            <TextField
+                            <TextField fullWidth={true} variant={"outlined"}
                                 onChange={(event) => this.setState({description: event.target.value})}
                                 disabled={!this.state.isChanging} value={this.state.description}/>
 
                     </div>
-                    <div className="session-button-box">
+                    <div className="">
                         {this.isMG() && (this.state.isChanging ?
                             <button onClick={this.editSession}>Zapisz zmiany</button> :
                             <button onClick={() => this.setState({isChanging: true})}>Edytuj sesję</button>)}
@@ -124,13 +128,14 @@ class SessionDetailsPage extends React.Component {
                 </div>
                     <span>Link do udostępnienia: <Link to={window.location.href}>{window.location.href}</Link></span>
 
+                <div className="character-box-list">
                     {this.state.characters && this.state.characters.map((character, i) => (
                         <CharacterSessionView
                             character={character}
                             isMG={this.isMG()}
                             onDeleteCharacter={this.deleteCharacter}/>
                     ))}
-
+                </div>
             </div>
 
     )

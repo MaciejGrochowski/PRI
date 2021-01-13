@@ -22,13 +22,15 @@ class SessionDetailsPage extends React.Component {
             createdBy: "",
             createdDate: "",
             isChanging: false,
-            isGlobalVisibleChanging: false
+            isGlobalVisibleChanging: false,
+            location: ""
 
         }
     }
 
     componentDidMount() {
         this.getSessionDetails();
+        this.setState({location: window.location.href})
     }
 
     getSessionDetails = () => {
@@ -112,7 +114,7 @@ class SessionDetailsPage extends React.Component {
                 <p>{this.state.createdDate}</p>
 
 
-                <div>Link do udostępnienia: <Link to={window.location.href}>{window.location.href}</Link></div>
+                <div>Link do udostępnienia: <Link to={this.state.location}>{this.state.location}</Link></div>
 
                 {this.state.characters && this.state.characters.map((character, i) => (
                     <CharacterSessionView

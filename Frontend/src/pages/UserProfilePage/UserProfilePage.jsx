@@ -136,7 +136,12 @@ class UserProfilePage extends React.Component {
             <div className = "user-profile-main-div">
             <div className = "page-title"> {this.state.username} </div>
 
-
+                {this.isProfileLoggedUser() && <div className = "flex-element">
+                    <button className = "detaleButton" onClick={() => this.setState({isPasswordChanging: true})}>Edytuj hasło</button>
+                    <button className = "detaleButton" onClick={() => this.setState({isUsernameChanging: true})}>Edytuj nazwę użytkownika</button>
+                    {!this.state.isEditingProfile && <button className = "detaleButton" onClick={this.onClickEditButton}>Edytuj profil</button>}
+                    {this.state.isEditingProfile && <button className = "detaleButton" onClick={() => this.saveProfile()}>Zapisz</button>}
+                </div>}
 
             <div className = "user-profile-container">
 
@@ -154,7 +159,7 @@ class UserProfilePage extends React.Component {
                         variant="outlined"
                             onChange={(event) => this.setState({description: event.target.value})} disabled={!this.state.isEditingProfile} value={this.state.description}/></div>
             </div>
-
+<div className="mail-fb-discord-center">
             <div className = "mail-fb-dc-component">
 
 
@@ -164,14 +169,9 @@ class UserProfilePage extends React.Component {
 
                 <div className = "user-profile-container"><div className = "text"><span>{discord}</span>  <TextField onChange={(event) => this.setState({discord: event.target.value})} disabled={!this.state.isEditingProfile} value={this.state.discord}/></div></div>
 
-
+            </div>
 </div>
-                {this.isProfileLoggedUser() && <div className = "user-profile-block margin-auto">
-                    <button className = "detaleButton" onClick={() => this.setState({isPasswordChanging: true})}>Edytuj hasło</button>
-                    <button className = "detaleButton" onClick={() => this.setState({isUsernameChanging: true})}>Edytuj nazwę użytkownika</button>
-                    {!this.state.isEditingProfile && <button className = "detaleButton" onClick={this.onClickEditButton}>Edytuj profil</button>}
-                    {this.state.isEditingProfile && <button className = "detaleButton" onClick={() => this.saveProfile()}>Zapisz</button>}
-                </div>}
+
 
                 <ChangeCredentialsModal
                 title={this.state.isPasswordChanging? "Edytuj hasło": "Edytuj nazwę użytkownika"}

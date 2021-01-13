@@ -9,7 +9,7 @@ class MainPage extends React.Component {
 
     render(){
         return (
-            <div className = "container">
+            <div className = "container-homepage">
             <div className = "logo">
                         <img src={process.env.PUBLIC_URL + '/logo.png'}/>
             </div>

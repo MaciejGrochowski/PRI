@@ -44,7 +44,7 @@ class SessionDetailsPage extends React.Component {
         this.setState({
             characters: data.characters,
             createdBy: data.createdBy,
-            createdDate: data.createdDate,
+            createdDate: data.createdDate.substr(0,10),
             description: data.description,
             name: data.name
         })

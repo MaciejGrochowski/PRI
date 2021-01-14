@@ -94,25 +94,28 @@ class SessionDetailsPage extends React.Component {
                     <div className="session-detail-info">
                         <div className="flex-container-session">
                             <div className="info-container-tittle">
-                    Nazwa sesji:<br/>
-                    <TextField fullWidth="true"
-                        onChange={(event) => this.setState({name: event.target.value})}
-                        disabled={!this.state.isChanging} value={this.state.name}/>
+                                Nazwa sesji:<br/>
+                                <TextField fullWidth="true"
+                                           onChange={(event) => this.setState({name: event.target.value})}
+                                           disabled={!this.state.isChanging} value={this.state.name}/>
                             </div>
                             <div className="info-container">
-                    Autor sesji:<br/> <TextField disabled={true} value={this.state.createdBy}/>
+                                Autor sesji:<br/> <TextField disabled={true} value={this.state.createdBy}/>
                             </div>
                             <div className="info-container">
-                    Data stworzenia:<br/> <TextField disabled={true} value={this.state.createdDate}/>
+                                Data stworzenia:<br/> <TextField disabled={true} value={this.state.createdDate}/>
+                            </div>
                         </div>
-                    </div>
                     </div>
                     <div className="session-detail-button">
                         {this.isMG() && (this.state.isChanging ?
-                            <button className="sessionButton addSessionButton" onClick={this.editSession}>Zapisz zmiany</button> :
-                            <button className="sessionButton addSessionButton" onClick={() => this.setState({isChanging: true})}>Edytuj sesję</button>)}
+                            <button className="sessionButton addSessionButton" onClick={this.editSession}>Zapisz
+                                zmiany</button> :
+                            <button className="sessionButton addSessionButton"
+                                    onClick={() => this.setState({isChanging: true})}>Edytuj sesję</button>)}
 
-                        {this.isMG() && <button className="sessionButton" onClick={() => this.setState({isGlobalVisibleChanging: true})}>Globalna
+                        {this.isMG() && <button className="sessionButton"
+                                                onClick={() => this.setState({isGlobalVisibleChanging: true})}>Globalna
                             widoczność</button>}
 
                         <ChangeVisibilityModal
@@ -127,31 +130,31 @@ class SessionDetailsPage extends React.Component {
                 <div className="flex-container-session">
 
                     <div className="">
-                            Opis sesji:<br/>
-                            <TextField fullWidth={true} variant={"outlined"}
-                                onChange={(event) => this.setState({description: event.target.value})}
-                                disabled={!this.state.isChanging} value={this.state.description}/>
+                        Opis sesji:<br/>
+                        <TextField fullWidth={true} variant={"outlined"}
+                                   onChange={(event) => this.setState({description: event.target.value})}
+                                   disabled={!this.state.isChanging} value={this.state.description}/>
 
                     </div>
+                </div>
+                    <span>Link do udostępnienia: <Link to={this.state.location}>{this.state.location}</Link></span>
 
-                <span>Link do udostępnienia: <Link to={this.state.location}>{this.state.location}</Link></span>
 
-
-                <div className="flex-container-session-2">
-                    {this.state.characters && this.state.characters.map((character, i) => (
-                        <div className="character-box">
-                        <CharacterSessionView
-                            character={character}
-                            isMG={this.isMG()}
-                            onDeleteCharacter={this.deleteCharacter}/>
-                        </div>
-                    ))}
+                    <div className="flex-container-session-2">
+                        {this.state.characters && this.state.characters.map((character, i) => (
+                            <div className="character-box">
+                                <CharacterSessionView
+                                    character={character}
+                                    isMG={this.isMG()}
+                                    onDeleteCharacter={this.deleteCharacter}/>
+                            </div>
+                        ))}
                     </div>
-            </div>
+                </div>
 
-    )
-    }
+                )
+                }
 
-    }
+                }
 
-    export default SessionDetailsPage;
+                export default SessionDetailsPage;

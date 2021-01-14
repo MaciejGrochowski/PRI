@@ -91,26 +91,26 @@ class SessionDetailsPage extends React.Component {
                 <div className="flex-container-session">
                     <div className="session-detail-info">
                         <div className="flex-container-session">
-                            <div>
+                            <div className="info-container-tittle">
                     Nazwa sesji:<br/>
-                    <TextField
+                    <TextField fullWidth="true"
                         onChange={(event) => this.setState({name: event.target.value})}
                         disabled={!this.state.isChanging} value={this.state.name}/>
                             </div>
-                            <div>
+                            <div className="info-container">
                     Autor sesji:<br/> <TextField disabled={true} value={this.state.createdBy}/>
                             </div>
-                            <div>
+                            <div className="info-container">
                     Data stworzenia:<br/> <TextField disabled={true} value={this.state.createdDate}/>
                         </div>
                     </div>
                     </div>
                     <div className="session-detail-button">
                         {this.isMG() && (this.state.isChanging ?
-                            <button className="" onClick={this.editSession}>Zapisz zmiany</button> :
-                            <button className="" onClick={() => this.setState({isChanging: true})}>Edytuj sesję</button>)}
+                            <button className="sessionButton" onClick={this.editSession}>Zapisz zmiany</button> :
+                            <button className="sessionButton" onClick={() => this.setState({isChanging: true})}>Edytuj sesję</button>)}
 
-                        {this.isMG() && <button onClick={() => this.setState({isGlobalVisibleChanging: true})}>Globalna
+                        {this.isMG() && <button className="sessionButton" onClick={() => this.setState({isGlobalVisibleChanging: true})}>Globalna
                             widoczność</button>}
 
                         <ChangeVisibilityModal
@@ -133,10 +133,10 @@ class SessionDetailsPage extends React.Component {
                     </div>
 
                 </div>
-                    <span>Link do udostępnienia: <Link to={window.location.href}>{window.location.href}</Link></span>
+                    <span >Link do udostępnienia: <Link to={window.location.href}>{window.location.href}</Link></span>
 
-                <div className="flex-container-session">
 
+                <div className="flex-container-session-2">
                     {this.state.characters && this.state.characters.map((character, i) => (
                         <div className="character-box">
                         <CharacterSessionView

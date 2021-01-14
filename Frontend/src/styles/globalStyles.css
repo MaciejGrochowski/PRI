@@ -269,9 +269,7 @@ color: #FFD859!important;
 .session-link{
     text-decoration: none;
 }
-.character-box{
-    text-align: center;
-}
+
 .session-detail-info{
     width: 70%;
     margin-bottom: 10px;
@@ -284,4 +282,30 @@ color: #FFD859!important;
 
 .span-session{
     margin: 10px
+}
+
+.flex-container-session > div.info-container{
+    width: 20%;
+    margin-left: 20px;
+}
+
+.flex-container-session > div.info-container-tittle{
+    width: 50%;
+    margin-right: 5%;
+}
+
+.session-link-copy{
+    margin-bottom: 40px;
+}
+
+.flex-container-session-2{
+    display: flex;
+    flex-wrap: wrap;
+    background-color: transparent;
+    align-content: center;
+}
+
+.character-box{
+    text-align: center;
+    margin: 5% 5% 5% 5%;
 }

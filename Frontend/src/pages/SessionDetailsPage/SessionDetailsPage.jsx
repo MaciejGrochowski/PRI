@@ -22,13 +22,15 @@ class SessionDetailsPage extends React.Component {
             createdBy: "",
             createdDate: "",
             isChanging: false,
-            isGlobalVisibleChanging: false
+            isGlobalVisibleChanging: false,
+            location: ""
 
         }
     }
 
     componentDidMount() {
         this.getSessionDetails();
+        this.setState({location: window.location.href})
     }
 
     getSessionDetails = () => {
@@ -132,8 +134,7 @@ class SessionDetailsPage extends React.Component {
 
                     </div>
 
-                </div>
-                    <span >Link do udostępnienia: <Link to={window.location.href}>{window.location.href}</Link></span>
+                <span>Link do udostępnienia: <Link to={this.state.location}>{this.state.location}</Link></span>
 
 
                 <div className="flex-container-session-2">

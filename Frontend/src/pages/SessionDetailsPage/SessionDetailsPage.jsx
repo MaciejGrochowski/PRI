@@ -89,27 +89,26 @@ class SessionDetailsPage extends React.Component {
                 <div className="pageName">{this.state.name}</div>
 
                 <div className="flex-container-session">
-
-                    <div className="">
+                    <div className="session-detail-info">
+                        <div className="flex-container-session">
+                            <div>
                     Nazwa sesji:<br/>
-                        <TextField
-                            onChange={(event) => this.setState({name: event.target.value})}
-                            disabled={!this.state.isChanging} value={this.state.name}/>
-                        <br/><br/>
-                        Autor sesji:<br/>
-                        <TextField disabled={true} value={this.state.createdBy}/>
+                    <TextField
+                        onChange={(event) => this.setState({name: event.target.value})}
+                        disabled={!this.state.isChanging} value={this.state.name}/>
+                            </div>
+                            <div>
+                    Autor sesji:<br/> <TextField disabled={true} value={this.state.createdBy}/>
+                            </div>
+                            <div>
+                    Data stworzenia:<br/> <TextField disabled={true} value={this.state.createdDate}/>
+                        </div>
                     </div>
-                    <div className="">
-                            Opis sesji:<br/>
-                            <TextField fullWidth={true} variant={"outlined"}
-                                onChange={(event) => this.setState({description: event.target.value})}
-                                disabled={!this.state.isChanging} value={this.state.description}/>
-
                     </div>
-                    <div className="">
+                    <div className="session-detail-button">
                         {this.isMG() && (this.state.isChanging ?
-                            <button onClick={this.editSession}>Zapisz zmiany</button> :
-                            <button onClick={() => this.setState({isChanging: true})}>Edytuj sesję</button>)}
+                            <button className="" onClick={this.editSession}>Zapisz zmiany</button> :
+                            <button className="" onClick={() => this.setState({isChanging: true})}>Edytuj sesję</button>)}
 
                         {this.isMG() && <button onClick={() => this.setState({isGlobalVisibleChanging: true})}>Globalna
                             widoczność</button>}
@@ -121,21 +120,32 @@ class SessionDetailsPage extends React.Component {
                             onSave={this.saveGlobalVisibility}
                             isGlobal={true}
                         />
+                    </div>
+                </div>
+                <div className="flex-container-session">
 
-                        <p>{this.state.createdBy}</p>
-                        <p>{this.state.createdDate}</p>
-                        </div>
+                    <div className="">
+                            Opis sesji:<br/>
+                            <TextField fullWidth={true} variant={"outlined"}
+                                onChange={(event) => this.setState({description: event.target.value})}
+                                disabled={!this.state.isChanging} value={this.state.description}/>
+
+                    </div>
+
                 </div>
                     <span>Link do udostępnienia: <Link to={window.location.href}>{window.location.href}</Link></span>
 
-                <div className="character-box-list">
+                <div className="flex-container-session">
+
                     {this.state.characters && this.state.characters.map((character, i) => (
+                        <div className="character-box">
                         <CharacterSessionView
                             character={character}
                             isMG={this.isMG()}
                             onDeleteCharacter={this.deleteCharacter}/>
+                        </div>
                     ))}
-                </div>
+                    </div>
             </div>
 
     )

@@ -269,3 +269,19 @@ color: #FFD859!important;
 .session-link{
     text-decoration: none;
 }
+.character-box{
+    text-align: center;
+}
+.session-detail-info{
+    width: 70%;
+    margin-bottom: 10px;
+}
+
+.session-detail-button{
+    max-width: 15%;
+    margin-bottom: 10px;
+}
+
+.span-session{
+    margin: 10px
+}

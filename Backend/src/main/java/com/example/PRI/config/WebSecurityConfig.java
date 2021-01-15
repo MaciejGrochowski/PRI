@@ -3,6 +3,7 @@ package com.example.PRI.config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -58,21 +59,23 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
-        // We don't need CSRF for this example
         httpSecurity.csrf().disable()
-                // dont authenticate this particular request
-                .authorizeRequests().antMatchers("/authenticate").permitAll().
-                antMatchers("/app/characters/autocomplete/*").permitAll().
-                antMatchers("/logout-user").authenticated().
-                antMatchers("/app/generator/save").authenticated().
-                // all other requests need to be authenticated
-                        anyRequest().permitAll().and().
-                // make sure we use stateless session; session won't be used to
-                // store user's state.
+                .authorizeRequests()
+                .antMatchers(HttpMethod.POST, "/logout-user").authenticated()
+                .antMatchers(HttpMethod.POST, "/app/generator/save").authenticated()
+                .antMatchers(HttpMethod.POST, "/app/histories").authenticated()
+                .antMatchers(HttpMethod.PUT, "/app/users").authenticated()
+                .antMatchers(HttpMethod.PUT, "/app/users/credentials").authenticated()
+                .antMatchers(HttpMethod.POST, "/app/sessions").authenticated()
+                .antMatchers(HttpMethod.POST, "/app/sessions/characters").authenticated()
+                .antMatchers(HttpMethod.PUT, "/app/sessions").authenticated()
+                .antMatchers(HttpMethod.DELETE, "/app/sessions/**").authenticated()
+                .antMatchers(HttpMethod.PUT, "/app/sessions/*/visibility/*").authenticated()
+                .antMatchers(HttpMethod.PUT, "/app/sessions/*/visibility").authenticated()
+                .anyRequest().permitAll().and().
                         exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint).and().sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
-        // Add a filter to validate the tokens with every request
         httpSecurity.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
         httpSecurity.cors().configurationSource(corsConfigurationSource());
     }

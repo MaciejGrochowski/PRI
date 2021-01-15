@@ -63,7 +63,7 @@ public class SessionController {
     }
 
 
-    @Put
+    @Put //ToDo should we get hashcode session from url?
     public ResponseEntity<?> editSession(@RequestBody SessionEditInputDto sessionEditInputDto, Authentication auth) {
         ResponseEntity<?> output = sessionService.editSession(sessionEditInputDto, auth);
         return output;

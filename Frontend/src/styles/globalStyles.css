@@ -336,14 +336,28 @@ color: #FFD859!important;
 .short-info{
     text-align: left;
     margin: 10px;
-}
-
-.flex-container-session-2 > .inside-character-1 .inside-character-2{
-    text-align: left;
-    justify-content:left;
+    width: 100%;
 }
 
 .inside-character-1{
     padding-right: 10px;
     text-align: left;
+    width: 40%;
+}
+
+.inside-character-2{
+    width: 40%;
+}
+
+.inside-character-3{
+    margin-top: 10px;
+    text-align: center;
+    width: 100%;
+}
+
+.inside-character-4{
+    text-align: center;
+    width: 100%;
+    padding-right: 10px;
+    padding-left: 10px;
 }

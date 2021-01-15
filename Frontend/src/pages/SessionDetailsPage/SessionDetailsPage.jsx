@@ -9,6 +9,7 @@ import {TextField} from "@material-ui/core";
 import ChangeCredentialsModal from "../../components/Popup/ChangeCredentialsModal/ChangeCredentialsModal";
 import ChangeVisibilityModal
     from "../../components/Popup/ChangeGlobalVisibilityModal/ChangeVisibilityModal";
+import characterService from "../../services/characterService";
 
 
 class SessionDetailsPage extends React.Component {
@@ -78,9 +79,42 @@ class SessionDetailsPage extends React.Component {
             .catch(e => console.log(e))
     }
 
+    saveCharacterVisibility = data => {
+        sessionService.setCharacterVisibility(this.props.match.params.hashcode, data, this.state.characterVisibleChangingId)
+            .then(r => this.saveCharacterVisibilitySuccessHandler(r))
+            .catch(e => console.log(e));
+    }
+
+    saveCharacterVisibilitySuccessHandler = response => {
+        this.setState({isCharacterVisibleChanging: false, characterVisibleChangingId: undefined})
+        this.getSessionDetails();
+    }
+
     saveGlobalVisibilitySuccessHandler = response => {
         this.setState({isGlobalVisibleChanging: false})
         this.getSessionDetails();
+    }
+
+    changeVisibilityCharacter = async characterId => {
+        await this.setState({isCharacterVisibleChanging: true, characterVisibleChangingId: characterId})
+    }
+
+    getCharacterFromId = characterId => {
+        return this.state.characters.filter(c => c.id === characterId)[0];
+    }
+
+    getCharacterNameFromId = characterId => {
+        let character = this.getCharacterFromId(characterId);
+        let output = ""
+        if(character && character.name) {
+            output += character.name;
+            if(character.surname) output += " " + character.surname;
+            return output;
+        }
+        else {
+            return "o nieznanym imieniu.";
+        }
+
     }
 
     render() {
@@ -137,7 +171,7 @@ class SessionDetailsPage extends React.Component {
 
                     </div>
                 </div>
-                    <span>Link do udostępnienia: <Link to={this.state.location}>{this.state.location}</Link></span>
+                    <span>Link do udostępnienia: <Link to={fronendUrls.sessionDetails + "/" + this.props.match.params.hashcode }>{this.state.location}</Link></span>
 
 
                     <div className="flex-container-session-2">
@@ -146,10 +180,20 @@ class SessionDetailsPage extends React.Component {
                                 <CharacterSessionView
                                     character={character}
                                     isMG={this.isMG()}
-                                    onDeleteCharacter={this.deleteCharacter}/>
+                                    onDeleteCharacter={this.deleteCharacter}
+                                    onChangeVisibilityClick={this.changeVisibilityCharacter}
+                                />
                             </div>
                         ))}
                     </div>
+                <ChangeVisibilityModal
+                    title={"Edytuj widoczność postaci " + this.getCharacterNameFromId(this.state.characterVisibleChangingId)}
+                    isOpen={this.state.isCharacterVisibleChanging}
+                    onRequestClose={() => this.setState({isCharacterVisibleChanging: false})}
+                    onSave={this.saveCharacterVisibility}
+                    isGlobal={false}
+                    initialValues={this.getCharacterFromId(this.state.characterVisibleChangingId)}
+                />
                 </div>
 
                 )

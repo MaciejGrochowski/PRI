@@ -22,7 +22,6 @@ const customStyles = {
 export const columnsConfig = [
     {
         title: "Imię",
-        defaultChecked: true,
         name: "name"
     },
     {
@@ -172,6 +171,14 @@ class ChangeVisibilityModal extends React.Component {
         }
     }
 
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if(!prevProps.initialValues && this.props.initialValues){
+            let tmp = {};
+            Object.keys(this.props.initialValues).forEach(v => tmp[v] = !!this.props.initialValues[v]);
+            this.setState({checkboxData: tmp})
+        }
+    }
+
     onCheckboxClick = (name, value) => {
         let checkboxData = this.state.checkboxData;
         if(!value){
@@ -195,6 +202,7 @@ class ChangeVisibilityModal extends React.Component {
                     style={customStyles}
                     contentLabel={title}
                 >
+                    <div>{title}</div>
                     {isGlobal && <div>UWAGA - te zmiany nadpiszą wszystkie ustawienia widoczności konkretnych postaci!</div>}
                             {columnsConfig && columnsConfig.map((item, i) => (
                                 <div>

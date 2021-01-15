@@ -22,6 +22,7 @@ display: block;
     margin-left: 25%;
     padding: 1%;
     font-size: large;
+    text-align: left;
 }
 .menu-column{
     display: block;

@@ -19,6 +19,10 @@ import ActivateUserPage from "./pages/ActivateUserPage";
 import NewPasswordPage from "./pages/NewPasswordPage";
 import CookiesPage from "./pages/CookiesPage";
 import CookieConsent from "react-cookie-consent";
+import CreateCharacterManual from "./pages/Manuals/CreateCharacterManual";
+import CreateHistoryManual from "./pages/Manuals/CreateHistoryManual";
+import SessionManual from "./pages/Manuals/SessionManual";
+import CharacterHistoryListManual from "./pages/Manuals/CharacterHistoryListManual";
 
 class App extends React.Component{
 
@@ -40,7 +44,11 @@ class App extends React.Component{
         <Route path={fronendUrls.newPasswordPage + "/:username?/:hashcode?"} component={NewPasswordPage} />
         <Route path={fronendUrls.sessionList + "/:username"} component={SessionListPage} />
         <Route path={fronendUrls.activateUser + "/:username/:uuid"} component={ActivateUserPage} />
-                <Route path={fronendUrls.cookiesPage} component={CookiesPage} />
+        <Route path={fronendUrls.cookiesPage} component={CookiesPage} />
+        <Route path={fronendUrls.createCharacterManual} component={CreateCharacterManual} />
+        <Route path={fronendUrls.createHistoryManual} component={CreateHistoryManual} />
+        <Route path={fronendUrls.sessionManual} component={SessionManual} />
+        <Route path={fronendUrls.CharacterHistoryListManual} component={CharacterHistoryListManual} />
                 <CookieConsent>Strona używa plików cookies. Ich polityka jest dostępna <Link to={fronendUrls.cookiesPage}>TU</Link></CookieConsent>
             </BrowserRouter>
         )

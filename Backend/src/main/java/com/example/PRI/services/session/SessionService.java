@@ -93,10 +93,16 @@ public class SessionService extends GeneralService {
 
         if (optionalSession.isPresent() && characters.size() > 0 && user.equals(optionalSession.get().getCreatedUserOfApp())) {
 
+            Session session = optionalSession.get();
             List<SessionCharacter> sessionCharacterList = new ArrayList<>();
 
 
             for (Character c : characters) {
+                Optional<SessionCharacter> existingCharacter = session.getSessionCharacterList().stream().filter(s -> s.getCharacter().getId()==c.getId()).findFirst();
+                if(existingCharacter.isPresent()) {
+                    sessionCharacterList.add(existingCharacter.get());
+                    continue;
+                }
                 SessionCharacter sessionCharacter = new SessionCharacter();
                 sessionCharacter.setCharacter(c);
                 AttributesVisibility atrVis = new AttributesVisibility();
@@ -106,7 +112,7 @@ public class SessionService extends GeneralService {
                 sessionCharacterRepository.save(sessionCharacter);
             }
 
-            Session session = optionalSession.get();
+
             session.setSessionCharacterList(sessionCharacterList);
             session.setLastModifiedDate(new Date());
             sessionRepository.save(session);
@@ -222,13 +228,37 @@ public class SessionService extends GeneralService {
         if (!session.getCreatedUserOfApp().equals(user)) {
             return ResponseEntity.status(401).body("UNAUTHORIZED");
         }
-
         for(SessionCharacter sessionCharacter : session.getSessionCharacterList()){
-            long attributesVisibilityId = sessionCharacter.getAttributesVisibility().getId();
-            AttributesVisibility newAttributesVisibility = convertAttributesVisibilityInput(attributesVisibilityInputDto);
-            newAttributesVisibility.setId(attributesVisibilityId);
-            attributesVisibilityrRepository.save(newAttributesVisibility);
+            this.setAttributesVariablesForCharacterSession(sessionCharacter, attributesVisibilityInputDto);
         }
         return ResponseEntity.ok(String.valueOf(session.getId()));
+    }
+
+    public ResponseEntity<?> changeCharacterVisibilityInSession(String hashcode, Long characterId, AttributesVisibilityInputDto attributesVisibilityInputDto, Authentication auth) {
+        Optional<Session> optionalSession = sessionRepository.findByRandomIdSession(hashcode); //ToDo try to Dont Repeat Yourself
+        UserOfApp user = userOfAppService.getUserByAuthentication(auth);
+
+        if(user == null){
+            return ResponseEntity.badRequest().body("USER_DOESNT_EXIST");
+        }
+        if (optionalSession.isEmpty()) {
+            return ResponseEntity.badRequest().body("SESSION_DOESNT_EXIST");
+        }
+        Session session = optionalSession.get();
+        if (!session.getCreatedUserOfApp().equals(user)) {
+            return ResponseEntity.status(401).body("UNAUTHORIZED");
+        }
+
+        Optional<SessionCharacter> characterSession = session.getSessionCharacterList().stream().filter(ch -> characterId.equals(ch.getCharacter().getId())).findFirst();
+        characterSession.ifPresent(sessionCharacter -> this.setAttributesVariablesForCharacterSession(sessionCharacter, attributesVisibilityInputDto));
+
+        return ResponseEntity.ok(String.valueOf(session.getId()));
+    }
+
+    private void setAttributesVariablesForCharacterSession(SessionCharacter sessionCharacter, AttributesVisibilityInputDto attributesVisibilityInputDto){
+        long attributesVisibilityId = sessionCharacter.getAttributesVisibility().getId();
+        AttributesVisibility newAttributesVisibility = convertAttributesVisibilityInput(attributesVisibilityInputDto);
+        newAttributesVisibility.setId(attributesVisibilityId);
+        attributesVisibilityrRepository.save(newAttributesVisibility);
     }
 }

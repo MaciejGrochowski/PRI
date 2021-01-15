@@ -76,9 +76,15 @@ public class SessionController {
     }
 
 
-    @Put("/{hashcode}/visibility/global")
+    @Put("/{hashcode}/visibility")
     public ResponseEntity<?> changeGlobalVisibilityCharactersDataOfSession(@PathVariable String hashcode, @RequestBody AttributesVisibilityInputDto attributesVisibilityInputDto, Authentication auth){
         return sessionService.changeGlobalVisibilityCharactersDataOfSession(hashcode, attributesVisibilityInputDto, auth);
+    }
+
+    @Put("/{hashcode}/visibility/{characterId}")
+    public ResponseEntity<?> changeCharacterVisibilityInSession(@PathVariable String hashcode, @PathVariable Long characterId,
+                                                                @RequestBody AttributesVisibilityInputDto attributesVisibilityInputDto, Authentication auth){
+        return sessionService.changeCharacterVisibilityInSession(hashcode, characterId, attributesVisibilityInputDto, auth);
     }
 
 }

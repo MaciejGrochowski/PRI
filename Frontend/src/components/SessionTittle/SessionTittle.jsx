@@ -2,7 +2,7 @@ import React from "react";
 import {Link} from "react-router-dom";
 import "../../styles/globalStyles.css";
 import {getInfoFromToken, getToken} from "../../services/util";
-import NewSessionModal from "../../components/Popup/NewSessionModal/NewSessionModal";
+import NewSessionModal from "../Popup/NewSessionModal/NewSessionModal";
 import {fronendUrls} from "../../commons/urls";
 
 class SessionTittle extends React.Component {

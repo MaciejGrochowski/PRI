@@ -5,7 +5,7 @@ import {getInfoFromToken, getToken} from "../../services/util";
 import NewSessionModal from "../../components/Popup/NewSessionModal/NewSessionModal";
 import sessionService from "../../services/sessionService";
 import {fronendUrls} from "../../commons/urls";
-import SessionTittle from "./SessionTittle";
+import SessionTittle from "../../components/SessionTittle/SessionTittle";
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 
 

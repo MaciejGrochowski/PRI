@@ -34,19 +34,19 @@ const menuGeneratorItems = [
     }
 ]
 
-const menuOwnItems = [
+const getMenuOwnItems = username => [
 
     {
         label: "Postacie",
-        link: getInfoFromToken(getToken()) ? fronendUrls.characterList + '/' + getInfoFromToken(getToken()).sub : ""
+        link: username ? fronendUrls.characterList + '/' + username: ""
     },
     {
         label: "Historie",
-        link: getInfoFromToken(getToken()) ? fronendUrls.historyList + '/user/' + getInfoFromToken(getToken()).sub : ""
+        link: username? fronendUrls.historyList + '/user/' + username : ""
     },
     {
         label: "Sesje",
-        link: getInfoFromToken(getToken()) ? fronendUrls.sessionList + '/' + getInfoFromToken(getToken()).sub : ""
+        link: username ? fronendUrls.sessionList + '/' + username : ""
     }
 
 
@@ -58,7 +58,17 @@ class Menu extends React.Component {
         super();
         this.state = {
             isExpanded: false,
-            randomId: 1
+            randomId: 1,
+            username: ""
+        }
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if(!prevProps.isLogged && this.props.isLogged){
+            while(!getInfoFromToken(getToken()).sub){
+                this.setState({menuOwnItems: []})
+            }
+            this.setState({menuOwnItems: getMenuOwnItems(getInfoFromToken(getToken()).sub)})
         }
     }
 
@@ -78,7 +88,7 @@ class Menu extends React.Component {
                     {this.props.isLogged && <div className= "menu-column">
                         <div className = "menu-title">Moje</div>
                         {
-                            this.state.isExpanded ? menuOwnItems && menuOwnItems.map((item, i) => (
+                            this.state.isExpanded ? this.state.menuOwnItems && this.state.menuOwnItems.map((item, i) => (
                                 <Link className="menuLink" to={item.link}><ItemMenu>{item.label}</ItemMenu></Link>
                             )) : ""
                         }
@@ -115,7 +125,7 @@ class Menu extends React.Component {
                 {getInfoFromToken(getToken()) && <div className= "menu-column">
                     <div className = "menu-title">Moje</div>
                     {
-                        this.state.isExpanded ? menuOwnItems && menuOwnItems.map((item, i) => (
+                        this.state.isExpanded ? this.state.menuOwnItems && this.state.menuOwnItems.map((item, i) => (
                             <Link className="menuLink" to={item.link}><ItemMenu>{item.label}</ItemMenu></Link>
                         )) : ""
                     }

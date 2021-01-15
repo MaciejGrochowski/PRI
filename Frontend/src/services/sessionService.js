@@ -8,7 +8,8 @@ const sessionService = {
     getSessionDetails: hashcode => getSessionDetails(hashcode),
     editSession: (hashcode, name, description) => editSession(hashcode, name, description),
     deleteCharacterFromSession: (hashcode, characterId) => deleteCharacterFromSession(hashcode, characterId),
-    setGlobalVisibility: (hashcode, dataVisibility) => setGlobalVisibility(hashcode, dataVisibility)
+    setGlobalVisibility: (hashcode, dataVisibility) => setGlobalVisibility(hashcode, dataVisibility),
+    setCharacterVisibility: (hashcode, dataVisibility, characterId) => setCharacterVisibility(hashcode, dataVisibility, characterId)
 }
 
 const createSession = (name, description) => {
@@ -42,8 +43,14 @@ const deleteCharacterFromSession = (hashcode, characterId) => {
 }
 
 const setGlobalVisibility = (hashcode, dataVisibility) => {
-    const url = sessionUrl + "/" + hashcode + "/visibility/global"
+    const url = sessionUrl + "/" + hashcode + "/visibility"
     return authorizationRequest().put(url, dataVisibility)
+}
+
+const setCharacterVisibility = (hashcode, dataVisibility, characterId) => {
+    const url = sessionUrl + "/"+ hashcode + "/visibility/" + characterId;
+    return authorizationRequest().put(url, dataVisibility);
+
 }
 
 

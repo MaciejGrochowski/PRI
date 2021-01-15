@@ -7,11 +7,7 @@ import {fronendUrls} from "../../commons/urls";
 class CharacterSessionView extends React.Component {
 
     render(){
-        const {character, isMG, onDeleteCharacter} = this.props;
-        console.log(isMG);
-
-
-
+        const {character, isMG, onDeleteCharacter, onChangeVisibilityClick} = this.props;
 
         return (
             <div>
@@ -90,6 +86,7 @@ class CharacterSessionView extends React.Component {
 
                 {isMG && <Link to={fronendUrls.characterDetails + "/" + character.id}>Więcej</Link>}
                 {isMG && <button onClick={() => onDeleteCharacter(character.id)}>Usuń postać</button>}
+                {isMG && <button onClick={() => onChangeVisibilityClick(character.id)}>Zmień widoczność cech</button>}
 
 
 

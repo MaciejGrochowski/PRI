@@ -10,13 +10,12 @@ class CharacterSessionView extends React.Component {
         const {character, isMG, onDeleteCharacter, onChangeVisibilityClick} = this.props;
 
         return (
-            <div>
+            <div className="full-character-box">
                 {/*ToDo refactor (as other columnConfigs)*/}
 
-                <div>Godność: {character.name || character.surname ? character.name + (character.surname ? " " + character.surname: "") : "Nieznana"}</div>
+                <div className="character-name">{character.name || character.surname ? character.name + (character.surname ? " " + character.surname: "") : "Nieznana"}</div>
 
-
-
+                <div className="character-information">
                 {character.race && <div>Rasa: {character.race}</div>}
 
                 {character.sex && <div>Płeć: {character.sex}</div>}
@@ -87,8 +86,7 @@ class CharacterSessionView extends React.Component {
                 {isMG && <Link to={fronendUrls.characterDetails + "/" + character.id}>Więcej</Link>}
                 {isMG && <button onClick={() => onDeleteCharacter(character.id)}>Usuń postać</button>}
                 {isMG && <button onClick={() => onChangeVisibilityClick(character.id)}>Zmień widoczność cech</button>}
-
-
+                </div>
 
 
             </div>

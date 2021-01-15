@@ -16,32 +16,70 @@ class CharacterSessionView extends React.Component {
                 <div className="character-name">{character.name || character.surname ? character.name + (character.surname ? " " + character.surname: "") : "Nieznana"}</div>
 
                 <div className="character-information">
-                {character.race && <div>Rasa: {character.race}</div>}
+                    <div className="flex-container-session-2">
+                        <div className="short-info">
 
-                {character.sex && <div>Płeć: {character.sex}</div>}
+                            <div className="flex-container-session-2">
+                {character.race && <div className="inside-character-1">Rasa: </div>} {character.race && <div className="inside-character-2">{character.race}</div>}
+                            </div>
 
-                {character.currentCareer && <div>Profesja: {character.currentCareer}</div>}
+                            <div className="flex-container-session-2">
+                {character.sex && <div className="inside-character-1">Płeć: </div>} {character.sex && <div className="inside-character-2">{character.sex}</div>}
+                            </div>
 
-                {character.livePlace && <div>Miejsce pobytu: {character.livePlace}</div>}
+                            <div className="flex-container-session-2">
+                {character.currentCareer && <div className="inside-character-1">Profesja: </div>} {character.currentCareer && <div className="inside-character-2">{character.currentCareer}</div>}
+                            </div>
+                {character.livePlace && <div>Miejsce pobytu: </div>}
 
-                {character.birthPlace && <div>Miejsce urodzenia: {character.birthPlace}</div>}
+                {character.birthPlace && <div>Miejsce urodzenia: </div>}
 
-                {character.dayOfBirth && <div>Dzień urodzenia: {character.dayOfBirth}</div>}
+                {character.dayOfBirth && <div>Dzień urodzenia: </div>}
 
-                {character.monthOfBirth && <div>Miesiąc urodzenia: {character.monthOfBirth}</div>}
+                {character.monthOfBirth && <div>Miesiąc urodzenia: </div>}
 
-                {character.yearOfBird && <div>Rok urodzenia: {character.yearOfBird}</div>}
+                {character.yearOfBird && <div>Rok urodzenia: </div>}
 
-                {character.religion && <div>Religia: {character.religion}</div>}
+                {character.religion && <div>Religia: </div>}
 
-                {character.height && <div>Wzrost: {character.height}</div>}
+                {character.height && <div>Wzrost: </div>}
 
-                {character.weight && <div>Waga: {character.weight}</div>}
+                {character.weight && <div>Waga: </div>}
 
-                {character.eyeColor && <div>Kolor oczu: {character.eyeColor}</div>}
+                {character.eyeColor && <div>Kolor oczu: </div>}
 
-                {character.hairColor && <div>Kolor włosów: {character.hairColor}</div>}
+                {character.hairColor && <div>Kolor włosów: </div>}
+                    </div>
 
+                        {/*<div className="short-info">*/}
+                        {/*    {character.race && <div>{character.race}</div>}*/}
+
+                        {/*    {character.sex && <div>{character.sex}</div>}*/}
+
+                        {/*    {character.currentCareer && <div>{character.currentCareer}</div>}*/}
+
+                        {/*    {character.livePlace && <div>{character.livePlace}</div>}*/}
+
+                        {/*    {character.birthPlace && <div>{character.birthPlace}</div>}*/}
+
+                        {/*    {character.dayOfBirth && <div>{character.dayOfBirth}</div>}*/}
+
+                        {/*    {character.monthOfBirth && <div>{character.monthOfBirth}</div>}*/}
+
+                        {/*    {character.yearOfBird && <div>{character.yearOfBird}</div>}*/}
+
+                        {/*    {character.religion && <div>{character.religion}</div>}*/}
+
+                        {/*    {character.height && <div>{character.height}</div>}*/}
+
+                        {/*    {character.weight && <div>{character.weight}</div>}*/}
+
+                        {/*    {character.eyeColor && <div>{character.eyeColor}</div>}*/}
+
+                        {/*    {character.hairColor && <div>{character.hairColor}</div>}*/}
+                        {/*</div>*/}
+
+                    </div>
                 {character.personality && <div>Cechy charakteru: {character.personality}</div>}
 
                 {character.apperance && <div>Cechy wyglądu: {character.apperance}</div>}

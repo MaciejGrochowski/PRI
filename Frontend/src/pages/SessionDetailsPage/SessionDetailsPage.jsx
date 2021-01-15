@@ -165,7 +165,7 @@ class SessionDetailsPage extends React.Component {
 
                     <div className="">
                         Opis sesji:<br/>
-                        <TextField fullWidth={true} variant={"outlined"}
+                        <TextField fullWidth={true} variant={"outlined"}  rows={4} rowsMax={4} multiline
                                    onChange={(event) => this.setState({description: event.target.value})}
                                    disabled={!this.state.isChanging} value={this.state.description}/>
 

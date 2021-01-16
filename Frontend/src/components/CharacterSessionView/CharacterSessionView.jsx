@@ -10,7 +10,7 @@ class CharacterSessionView extends React.Component {
 
     render() {
         const {character, isMG, onDeleteCharacter, onChangeVisibilityClick} = this.props;
-
+        console.log(character.endMagic)
         return (
             <div className="full-character-box">
                 {/*ToDo refactor (as other columnConfigs)*/}
@@ -139,10 +139,10 @@ class CharacterSessionView extends React.Component {
                                 || character.endAgility|| character.endIntelligence|| character.endWillPower|| character.endFellowship
                                 || character.endAttacks|| character.endWounds|| character.endMagic|| character.endMovement) &&
                                 <div className="inside-character-6">Statystyki</div>}
-                                <div className="character-statistic">
-                                    {character.endWeaponSkills && <div className="inside-character-5">WW</div>}
-                                    {character.endWeaponSkills && <div className="inside-character-5">{character.endWeaponSkills}</div>}
-                                </div>
+                                {character.endWeaponSkills && <div className="character-statistic">
+                                    <div className="inside-character-5">WW</div>
+                                    <div className="inside-character-5">{character.endWeaponSkills}</div>
+                                </div>}
 
                                 <div className="character-statistic">
                                     {character.endBallisticSkills && <div className="inside-character-5">US</div>}
@@ -191,8 +191,8 @@ class CharacterSessionView extends React.Component {
 
 
                                 <div className="character-statistic">
-                                    {character.endMagic && <div className="inside-character-5">MAG</div>}
-                                    {character.endMagic && <div className="inside-character-5">{character.endMagic}</div>}
+                                    {(character.endMagic || character.endMagic === 0) && <div className="inside-character-5">MAG</div>}
+                                    {(character.endMagic || character.endMagic === 0) && <div className="inside-character-5">{character.endMagic}</div>}
                                 </div>
 
                                 <div className="character-statistic">

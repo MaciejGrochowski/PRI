@@ -131,7 +131,11 @@ class CharacterSessionView extends React.Component {
                             </div>
 
 
-                            <div className="flex-container-session-2">
+                            <div className="flex-container-session-3">
+                                {(character.endWeaponSkills || character.endBallisticSkills || character.endStrength|| character.endToughness
+                                || character.endAgility|| character.endIntelligence|| character.endWillPower|| character.endFellowship
+                                || character.endAttacks|| character.endWounds|| character.endMagic|| character.endMovement) &&
+                                <div className="inside-character-3">Statystyki</div>}
                                 <div className="character-statistic">
                                     {character.endWeaponSkills && <div className="inside-character-5">WW</div>}
                                     {character.endWeaponSkills && <div className="inside-character-5">{character.endWeaponSkills}</div>}
@@ -197,7 +201,7 @@ class CharacterSessionView extends React.Component {
                         </div>
                     </div>
 
-                    <div>
+                    <div className="character-buttons">
                         {isMG && <Link to={fronendUrls.characterDetails + "/" + character.id}>Więcej</Link>}
                         {isMG && <button onClick={() => onDeleteCharacter(character.id)}>Usuń postać</button>}
                         {isMG &&

@@ -343,6 +343,7 @@ color: #FFD859!important;
     padding-right: 10px;
     text-align: left;
     width: 40%;
+    margin-bottom: 3px;
 }
 
 .inside-character-2{
@@ -354,6 +355,7 @@ color: #FFD859!important;
     text-align: center;
     width: 100%;
     font-size: 18px;
+    font-weight: bold;
 }
 
 .inside-character-4{
@@ -361,6 +363,7 @@ color: #FFD859!important;
     width: 100%;
     padding-right: 10px;
     padding-left: 10px;
+    font-size: 15px;
 }
 
 .character-statistic{
@@ -369,4 +372,17 @@ color: #FFD859!important;
     margin: 2px;
     text-align: center;
     width: 40px;
+}
+
+.flex-container-session-3{
+    display: flex;
+    flex-wrap: wrap;
+    background-color: transparent;
+    justify-content: center;
+    margin: 20px 5px;
+}
+
+.character-buttons{
+    border: #8B8B8B solid 2px;
+    border-radius: 20px;
 }

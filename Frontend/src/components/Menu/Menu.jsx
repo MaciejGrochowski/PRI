@@ -63,6 +63,12 @@ class Menu extends React.Component {
         }
     }
 
+    componentDidMount() {
+        if(!this.props.isLogged && getInfoFromToken(getToken())){
+            this.props.loginStatusChange(true);
+        }
+    }
+
     componentDidUpdate(prevProps, prevState, snapshot) {
         if(!prevProps.isLogged && this.props.isLogged){
             while(!getInfoFromToken(getToken()).sub){

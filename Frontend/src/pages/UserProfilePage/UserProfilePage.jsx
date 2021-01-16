@@ -14,6 +14,7 @@ import {Redirect} from "react-router";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faEnvelope} from "@fortawesome/free-solid-svg-icons";
 import{faFacebook, faDiscord} from "@fortawesome/free-brands-svg-icons";
+import {polishCodeErrors} from "../../commons/texts-pl";
 
 const mail = <FontAwesomeIcon icon={faEnvelope}/>
 const fb = <FontAwesomeIcon icon={faFacebook}/>
@@ -33,7 +34,8 @@ class UserProfilePage extends React.Component {
             histories: [],
             sessions: [],
             isPasswordChanging: false,
-            isUsernameChanging: false
+            isUsernameChanging: false,
+            userDoesntExist: false
         }
     }
 
@@ -44,6 +46,7 @@ class UserProfilePage extends React.Component {
     getUser = () => {
         userService.getUserByUsername(this.props.match.params.username)
             .then(r => this.getUserSuccessHandler(r))
+            .catch(e => this.setState({userDoesntExist: true}))
     }
 
     getUserSuccessHandler = response => {
@@ -129,6 +132,10 @@ class UserProfilePage extends React.Component {
 
         if (this.state.usernameOrPasswordChanged) {
             return <Redirect push to={fronendUrls.mainPage} />
+        }
+
+        if(this.state.userDoesntExist){
+            return <div className = "error-message">{polishCodeErrors.USER_DOESNT_EXIST}</div>
         }
 
         return (

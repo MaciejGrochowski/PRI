@@ -13,7 +13,8 @@ class SessionTittle extends React.Component {
     }
 
     shorterDate(date) {
-        let short = date.substring(0, 10)
+        date = new Date(date);
+        let short = date.toString().substring(0, 10)
         return short
     }
 

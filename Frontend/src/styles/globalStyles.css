@@ -342,12 +342,12 @@ color: #FFD859!important;
 .inside-character-1{
     padding-right: 25px;
     text-align: left;
-    width: 40%;
+    width: 35%;
     margin-bottom: 3px;
 }
 
 .inside-character-2{
-    width: 40%;
+    width: 45%;
 }
 
 .inside-character-3{
@@ -408,4 +408,8 @@ color: #FFD859!important;
 
 span > a {
     color: #bababa!important;
+}
+
+.inside-character-5{
+    margin: 1px;
 }

@@ -8,10 +8,12 @@ import {faEnvelope, faCheckSquare} from "@fortawesome/free-solid-svg-icons";
 import {faFacebook, faDiscord} from "@fortawesome/free-brands-svg-icons";
 import "../styles/homepage.css"
 
+
+const check = <FontAwesomeIcon icon={faCheckSquare}/>
 const fb = <FontAwesomeIcon icon={faFacebook}/>
 const discord = <FontAwesomeIcon icon={faDiscord}/>
 const mail = <FontAwesomeIcon icon={faEnvelope}/>
-const check = <FontAwesomeIcon icon={faCheckSquare}/>
+
 
 class MainPage extends React.Component {
 
@@ -58,9 +60,12 @@ class MainPage extends React.Component {
                 <div className="subsection-container yellow-section">
                     <div className="section-title">Pytania? Problemy? Skontaktuj się z nami!</div>
                     <div className="welcome-text">
+                        <div className="bold">
                         <div className="margin-bottom">W dowolnych przypadkach można się z nami kontaktować przez serwer discord lub email.</div>
+                        </div>
                         <div className="margin-bottom">{mail} <a href="mailto:janietakiork@gmail.com">janietakiork@gmail.com</a></div>
                         <div className="margin-bottom">{discord} <a href="https://discord.gg/mkRcFkeU">Discord</a></div>
+
                     </div>
                 </div>
             </div>

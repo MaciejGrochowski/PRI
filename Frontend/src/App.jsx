@@ -48,7 +48,7 @@ class App extends React.Component{
         <Route path={fronendUrls.createCharacterManual} component={CreateCharacterManual} />
         <Route path={fronendUrls.createHistoryManual} component={CreateHistoryManual} />
         <Route path={fronendUrls.sessionManual} component={SessionManual} />
-        <Route path={fronendUrls.CharacterHistoryListManual} component={CharacterHistoryListManual} />
+        <Route path={fronendUrls.characterHistoryListManual} component={CharacterHistoryListManual} />
                 <CookieConsent>Strona używa plików cookies. Ich polityka jest dostępna <Link to={fronendUrls.cookiesPage}>TU</Link></CookieConsent>
             </BrowserRouter>
         )

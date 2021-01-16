@@ -17,5 +17,9 @@ export const fronendUrls = {
     newPasswordPage: "/newPassword",
     sessionList: '/sessions',
     cookiesPage: '/cookies',
-    activateUser: '/activate-user'
+    activateUser: '/activate-user',
+    createCharacterManual: '/manual/createCharacterManual',
+    createHistoryManual: '/manual/createHistoryManual',
+    sessionManual: '/manual/sessionManual',
+    characterHistoryListManual: '/manual/characterHistoryListManual'
 }

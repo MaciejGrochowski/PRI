@@ -386,3 +386,13 @@ color: #FFD859!important;
     border: #8B8B8B solid 2px;
     border-radius: 20px;
 }
+
+.delete-character .more-of-character .delete-character{
+    cursor: pointer;
+    margin: 5px;
+}
+
+.inside-buttons{
+    margin-top: 6px;
+    margin-bottom: 2px;
+}

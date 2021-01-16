@@ -1,6 +1,9 @@
 import React from "react";
 import {Link} from "react-router-dom";
 import {fronendUrls} from "../../commons/urls";
+import DeleteIcon from '@material-ui/icons/Delete';
+import VisibilityIcon from '@material-ui/icons/Visibility';
+import PersonIcon from '@material-ui/icons/Person';
 
 
 class CharacterSessionView extends React.Component {
@@ -202,10 +205,11 @@ class CharacterSessionView extends React.Component {
                     </div>
 
                     <div className="character-buttons">
-                        {isMG && <Link to={fronendUrls.characterDetails + "/" + character.id}>Więcej</Link>}
-                        {isMG && <button onClick={() => onDeleteCharacter(character.id)}>Usuń postać</button>}
-                        {isMG &&
-                        <button onClick={() => onChangeVisibilityClick(character.id)}>Zmień widoczność cech</button>}
+                        <div className="inside-buttons">
+                        {isMG && <Link className="more-of-character" to={fronendUrls.characterDetails + "/" + character.id}><PersonIcon fontSize={"large"}/></Link>}
+                        {isMG && <DeleteIcon className="delete-character" fontSize={"large"} onClick={() => onDeleteCharacter(character.id)}/>}
+                        {isMG && <VisibilityIcon className="delete-character" fontSize={"large"} onClick={() => onChangeVisibilityClick(character.id)}/>}
+                        </div>
                     </div>
                 </div>
 

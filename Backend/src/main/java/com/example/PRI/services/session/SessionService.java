@@ -95,6 +95,7 @@ public class SessionService extends GeneralService {
 
             Session session = optionalSession.get();
             List<SessionCharacter> sessionCharacterList = new ArrayList<>();
+            sessionCharacterList.addAll(session.getSessionCharacterList());
 
 
             for (Character c : characters) {

@@ -134,72 +134,73 @@ class CharacterSessionView extends React.Component {
                             </div>
 
 
-                            <div className="flex-container-session-3">
-                                {(character.endWeaponSkills || character.endBallisticSkills || character.endStrength|| character.endToughness
+                            {(character.endWeaponSkills || character.endBallisticSkills || character.endStrength|| character.endToughness
                                 || character.endAgility|| character.endIntelligence|| character.endWillPower|| character.endFellowship
                                 || character.endAttacks|| character.endWounds|| character.endMagic|| character.endMovement) &&
-                                <div className="inside-character-6">Statystyki</div>}
+                            <div className="flex-container-session-3">
+                                <div className="inside-character-6">Statystyki</div>
+
                                 {character.endWeaponSkills && <div className="character-statistic">
                                     <div className="inside-character-5">WW</div>
                                     <div className="inside-character-5">{character.endWeaponSkills}</div>
                                 </div>}
 
-                                <div className="character-statistic">
-                                    {character.endBallisticSkills && <div className="inside-character-5">US</div>}
-                                    {character.endBallisticSkills && <div className="inside-character-5">{character.endBallisticSkills}</div>}
-                                </div>
+                                {character.endBallisticSkills && <div className="character-statistic">
+                                    <div className="inside-character-5">US</div>
+                                    <div className="inside-character-5">{character.endBallisticSkills}</div>
+                                </div>}
 
-                                <div className="character-statistic">
-                                    {character.endStrength && <div className="inside-character-5">K</div>}
-                                    {character.endStrength && <div className="inside-character-5">{character.endStrength}</div>}
-                                </div>
+                                {character.endStrength && <div className="character-statistic">
+                                    <div className="inside-character-5">K</div>
+                                    <div className="inside-character-5">{character.endStrength}</div>
+                                </div>}
 
-                                <div className="character-statistic">
-                                    {character.endToughness && <div className="inside-character-5">ODP</div>}
-                                    {character.endToughness && <div className="inside-character-5">{character.endToughness}</div>}
-                                </div>
+                                {character.endToughness && <div className="character-statistic">
+                                    <div className="inside-character-5">ODP</div>
+                                    <div className="inside-character-5">{character.endToughness}</div>
+                                </div>}
 
-                                <div className="character-statistic">
-                                    {character.endAgility && <div className="inside-character-5">ZR</div>}
-                                    {character.endAgility && <div className="inside-character-5">{character.endAgility}</div>}
-                                </div>
+                                {character.endAgility &&  <div className="character-statistic">
+                                   <div className="inside-character-5">ZR</div>
+                                   <div className="inside-character-5">{character.endAgility}</div>
+                                </div>}
 
-                                <div className="character-statistic">
-                                    {character.endIntelligence && <div className="inside-character-5">INT</div>}
-                                    {character.endIntelligence && <div className="inside-character-5">{character.endIntelligence}</div>}
-                                </div>
+                                {character.endIntelligence && <div className="character-statistic">
+                                    <div className="inside-character-5">INT</div>
+                                    <div className="inside-character-5">{character.endIntelligence}</div>
+                                </div>}
 
-                                <div className="character-statistic">
-                                    {character.endWillPower && <div className="inside-character-5">SW</div>}
-                                    {character.endWillPower && <div className="inside-character-5">{character.endWillPower}</div>}
-                                </div>
+                                {character.endWillPower && <div className="character-statistic">
+                                    <div className="inside-character-5">SW</div>
+                                    <div className="inside-character-5">{character.endWillPower}</div>
+                                </div>}
 
-                                <div className="character-statistic">
-                                    {character.endFellowship && <div className="inside-character-5">OGD</div>}
-                                    {character.endFellowship && <div className="inside-character-5">{character.endFellowship}</div>}
-                                </div>
+                                {character.endFellowship && <div className="character-statistic">
+                                    <div className="inside-character-5">OGD</div>
+                                    <div className="inside-character-5">{character.endFellowship}</div>
+                                </div>}
 
-                                <div className="character-statistic">
-                                    {character.endAttacks && <div className="inside-character-5">A</div>}
-                                    {character.endAttacks && <div className="inside-character-5">{character.endAttacks}</div>}
-                                </div>
+                                {character.endAttacks && <div className="character-statistic">
+                                    <div className="inside-character-5">A</div>
+                                    <div className="inside-character-5">{character.endAttacks}</div>
+                                </div>}
 
-                                <div className="character-statistic">
-                                    {character.endWounds && <div className="inside-character-5">ŻYW</div>}
-                                    {character.endWounds && <div className="inside-character-5">{character.endWounds}</div>}
-                                </div>
+                                {character.endWounds && <div className="character-statistic">
+                                    <div className="inside-character-5">ŻYW</div>
+                                    <div className="inside-character-5">{character.endWounds}</div>
+                                </div>}
 
 
-                                <div className="character-statistic">
-                                    {(character.endMagic || character.endMagic === 0) && <div className="inside-character-5">MAG</div>}
-                                    {(character.endMagic || character.endMagic === 0) && <div className="inside-character-5">{character.endMagic}</div>}
-                                </div>
+                                {(character.endMagic || character.endMagic === 0) && <div className="character-statistic">
+                                    <div className="inside-character-5">MAG</div>
+                                    <div className="inside-character-5">{character.endMagic}</div>
+                                </div>}
 
-                                <div className="character-statistic">
-                                    {character.endMovement && <div className="inside-character-5">SZ</div>}
-                                    {character.endMovement && <div className="inside-character-5">{character.endMovement}</div>}
-                                </div>
-                            </div>
+                                {character.endMovement && <div className="character-statistic">
+                                    <div className="inside-character-5">SZ</div>
+                                    <div className="inside-character-5">{character.endMovement}</div>
+                                </div>}
+                            </div>}
 
                         </div>
                     </div>

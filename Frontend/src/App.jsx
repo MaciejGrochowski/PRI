@@ -45,7 +45,6 @@ class App extends React.Component{
         <Route path={fronendUrls.sessionDetails + "/:hashcode"} component={SessionDetailsPage} />
         <Route path={fronendUrls.forgotPasswordPage} component={ForgotPasswordPage} />
         <Route path={fronendUrls.newPasswordPage + "/:username?/:hashcode?"} component={NewPasswordPage} />
-        <Route path={fronendUrls.sessionList + "/:username"} component={SessionListPage} />
         <Route path={fronendUrls.activateUser + "/:username/:uuid"} component={ActivateUserPage} />
         <Route path={fronendUrls.cookiesPage} component={CookiesPage} />
         <Route path={fronendUrls.createCharacterManual} component={CreateCharacterManual} />

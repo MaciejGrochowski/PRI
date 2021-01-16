@@ -1,7 +1,7 @@
 import React from "react";
 import "../../styles/globalStyles.css";
 import {TextField} from "@material-ui/core";
-import {textsPolish} from "../../commons/texts-pl";
+import {polishCodeErrors, textsPolish} from "../../commons/texts-pl";
 import {
     validationConfirmPassword, validationDescription, validationDiscord,
     validationFacebook,
@@ -66,7 +66,7 @@ class RegisterPage extends React.Component {
         const requestBody = this.state.registerData;
         loginService.register(requestBody)
             .then(r => this.setState({registered: true}))
-            .catch(e => console.log(e))
+            .catch(e => this.setState({errorResponse: e.response.data}))
         // this.setState({registered: true})
 
 
@@ -85,7 +85,7 @@ class RegisterPage extends React.Component {
 
         if(this.state.registered)
             return (
-                <div>Zarejestrowałeś się!</div>
+                <div className = "positive-message">Zarejestrowałeś się! Otrzymasz od nas e-mail pozwalający dokończyć rejestrację. Postepuj zgodnie ze wskazówkami w wiadomości.</div>
             )
 
 
@@ -94,6 +94,9 @@ class RegisterPage extends React.Component {
                 <div className = "login-body">
                 <div className = "margin-login-body">
                 <div className = "login-title">Zarejestruj się</div>
+                    {this.state.errorResponse === "MAIL_EXISTS" &&
+                    <div className = "error-message">{polishCodeErrors.MAIL_EXISTS}
+                    </div>}
 
                 <div className="block-component">
                 <TextField error={this.state.errorState.username}

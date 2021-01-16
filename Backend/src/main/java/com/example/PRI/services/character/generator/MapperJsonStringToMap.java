@@ -33,7 +33,6 @@ public class MapperJsonStringToMap {
             System.err.println(properties);
             return new HashMap<>();
         }
-
     }
 
 

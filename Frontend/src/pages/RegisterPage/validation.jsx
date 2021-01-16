@@ -20,8 +20,9 @@ export const validationUsername = username => {
 
 
 export const validationMail = mail => {
-    if (mail.match("^([a-zA-Z0-9_\\-\\.]+)@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.)|(([a-zA-Z0-9\\-]+\\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\\]?)$")
-        || mail.match("^(?![\\s\\S])")) {
+    if (mail.match(("^([a-zA-Z0-9_\\-\\.]+)@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.)|(([a-zA-Z0-9\\-]+\\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\\]?)$")
+        || mail.match("^(?![\\s\\S])"))
+        && mail.match("^.{2,200}$")) {
         return {errorText: "", errorState: false}
     } else {
         return {errorState: true, errorText: polishCodeErrors.registerErrors.emailNotCorrect}
@@ -53,7 +54,7 @@ export const validationPassword = password => {
 };
 
 export const validationFacebook = facebook => {
-    if (facebook.match("https://www.facebook.com/.*") || facebook.match("^(?![\\s\\S])")) {
+    if (facebook.match(("https://www.facebook.com/.*") || facebook.match("^(?![\\s\\S])")) &&(facebook.match("^.{10,1000}$"))) {
         return {errorText: "", errorState: false}
     } else {
         return {errorState: true, errorText: polishCodeErrors.registerErrors.facebookNotCorrect}

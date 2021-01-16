@@ -29,7 +29,7 @@ public class Career extends GeneralEntity {
     List<Talent> talents; //ToDo z uwagi na CareerTalent to jest do usunięcia
 
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.EAGER)
     List<Career> careerExits; //Gdzie można dalej pójść
 
     String dominatingStat;

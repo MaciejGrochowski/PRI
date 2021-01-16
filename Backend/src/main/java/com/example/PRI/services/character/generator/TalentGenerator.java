@@ -6,6 +6,7 @@ import com.example.PRI.entities.character.Character;
 import com.example.PRI.entities.character.Talent;
 import com.example.PRI.enums.Race;
 import com.example.PRI.services.GeneralService;
+import com.example.PRI.services.RandomService;
 import com.example.PRI.services.character.CareerTalentService;
 import com.example.PRI.services.character.TalentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,15 +24,17 @@ public class TalentGenerator extends GeneralService {
     @Autowired
     CareerTalentService careerTalentService;
 
-    public Map<String, String> generateTalents(Character character, HashMap<String, String> properties) {
+    RandomService randomService;
+
+    public Map<String, String> generateTalents(Character character, RandomService randomService, HashMap<String, String> properties) {
+        this.randomService = randomService;
         List<Talent> talents = talentService.findAll();
         List<String> raceTalents = this.generateRaceTalents(character.getRace());
         List<Talent> characterTalents = talents.stream().filter(t -> raceTalents.contains(t.getName())).collect(Collectors.toList());
-        Random rand = new Random();
 
         for(Talent talent: talents){
             if(properties.containsKey(talent.getName())){
-                double chance = rand.nextDouble();
+                double chance = randomService.nextDouble();
                 if(chance < Double.parseDouble(properties.get(talent.getName()))){
                     characterTalents.add(talent);
                 }
@@ -67,9 +70,8 @@ public class TalentGenerator extends GeneralService {
         List<CareerTalent> careerTalentsData = careerTalentService.findByCareer(career);
         careerTalentsData = careerTalentsData.stream().filter(t -> !talentsHad.contains(t.getTalent())).collect(Collectors.toList());
         List<Integer> types = careerTalentsData.stream().map(CareerTalent::getType).distinct().collect(Collectors.toList());
-        Random rand = new Random();
         for(int type: types){
-            if(rand.nextDouble() < 0.5) continue;
+            if(randomService.nextDouble() < 0.5) continue;
             List<CareerTalent> talents = careerTalentsData.stream().filter(c -> c.getType()==type).collect(Collectors.toList());
             output.add(randomTalentFromTalentCarrer(talents));
         }
@@ -78,7 +80,7 @@ public class TalentGenerator extends GeneralService {
 
     private Talent randomTalentFromTalentCarrer(List<CareerTalent> talents) {
         double maxRandom = talents.stream().mapToDouble(CareerTalent::getProbability).sum();
-        double randomRoll = new Random().nextDouble() * maxRandom;
+        double randomRoll = randomService.nextDouble() * maxRandom;
 
         for(CareerTalent careerTalent : talents){
             randomRoll -= careerTalent.getProbability();
@@ -89,7 +91,6 @@ public class TalentGenerator extends GeneralService {
 
     private List<String> generateRaceTalents(Race race) {
         List<String> output = new ArrayList<>();
-        Random rand = new Random();
 
         if(race.equals(Race.HUMAN)){
             output.add(randomHumanTalent(output));
@@ -97,10 +98,10 @@ public class TalentGenerator extends GeneralService {
         }
 
         if(race.equals(Race.ELF)){
-            if(rand.nextDouble() < 0.5) output.add("Broń specjalna (długi łuk)");
+            if(randomService.nextDouble() < 0.5) output.add("Broń specjalna (długi łuk)");
             else output.add("Zmysł magii");
             output.add("Bystry wzrok");
-            if(rand.nextDouble() < 0.5) output.add("Opanowanie");
+            if(randomService.nextDouble() < 0.5) output.add("Opanowanie");
             else output.add("Błyskotliwość");
             output.add("Widzenie w ciemności");
         }
@@ -130,7 +131,7 @@ public class TalentGenerator extends GeneralService {
                 "Opanowanie", "Strzelec wyborowy", "Szczęście", "Szósty zmysł", "Szybki refleks", "Twardziel", "Urodzony wojownik",
                 "Widzenie w ciemności");
         humanTalentNames = humanTalentNames.stream().filter(t -> !talentsHad.contains(t)).collect(Collectors.toList());
-        return humanTalentNames.get(new Random().nextInt(humanTalentNames.size()));
+        return humanTalentNames.get(randomService.nextInt(humanTalentNames.size()));
     }
 
     public Map<String, String> getProperties(Character character, List<Talent> talents) {

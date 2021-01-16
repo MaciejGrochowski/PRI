@@ -9,5 +9,13 @@ export const fronendUrls = {
     userProfilePage: "/user",
     registerPage: '/register',
     sessionList: '/sessions',
-    sessionDetails: '/session'
+    sessionDetails: '/session',
+    forgotPasswordPage: '/forgotPassword',
+    newPasswordPage: "/newPassword",
+    cookiesPage: '/cookies',
+    activateUser: '/activate-user',
+    createCharacterManual: '/manual/createCharacterManual',
+    createHistoryManual: '/manual/createHistoryManual',
+    sessionManual: '/manual/sessionManual',
+    characterHistoryListManual: '/manual/characterHistoryListManual'
 }

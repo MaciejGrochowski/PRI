@@ -2,12 +2,22 @@ import React from "react";
 import "../../styles/globalStyles.css";
 import userService from "../../services/userService";
 import {TextField} from "@material-ui/core";
-import {getInfoFromToken, getToken} from "../../services/util";
+import {getInfoFromToken, getToken, logoutCookie} from "../../services/util";
 import {Link} from "react-router-dom";
 import {fronendUrls} from "../../commons/urls";
 import "../../styles/userProfile.css";
 import ChangeCredentialsModal from "../../components/Popup/ChangeCredentialsModal/ChangeCredentialsModal";
+import loginService from "../../services/loginService";
+import {loginStatusChange} from "../../actions";
+import {connect} from "react-redux";
+import {Redirect} from "react-router";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faEnvelope} from "@fortawesome/free-solid-svg-icons";
+import{faFacebook, faDiscord} from "@fortawesome/free-brands-svg-icons";
 
+const mail = <FontAwesomeIcon icon={faEnvelope}/>
+const fb = <FontAwesomeIcon icon={faFacebook}/>
+const discord = <FontAwesomeIcon icon={faDiscord}/>
 
 class UserProfilePage extends React.Component {
 
@@ -71,7 +81,7 @@ class UserProfilePage extends React.Component {
         let input;
         if(newPassword){
             input = {
-                username: this.state.username, //ToDo zmiana uzytkownika LUB
+                username: this.state.username,
                 oldPassword: password,
                 newPassword: newPassword
             }
@@ -85,14 +95,29 @@ class UserProfilePage extends React.Component {
         }
 
         userService.editCredentials(input)
-            .then(r => console.log(r))
+            .then(r => this.logout())
             .catch(e => console.log(e))
 
 
         this.setState({
             isPasswordChanging: false,
-            isUsernameChanging: false
+            isUsernameChanging: false,
+            usernameOrPasswordChanged: true
         })
+
+    }
+
+    logout = () => {
+        loginService.logout(getToken())
+            .then(r => {
+                this.props.loginStatusChange(false);
+                logoutCookie();
+            })
+            .catch(e => {
+                this.props.loginStatusChange(false);
+                logoutCookie();
+            })
+
 
     }
 
@@ -101,15 +126,26 @@ class UserProfilePage extends React.Component {
     }
 
     render(){
+
+        if (this.state.usernameOrPasswordChanged) {
+            return <Redirect push to={fronendUrls.mainPage} />
+        }
+
         return (
             <div className = "user-profile-main-div">
             <div className = "page-title"> {this.state.username} </div>
 
+                {this.isProfileLoggedUser() && <div className = "flex-element">
+                    <button className = "detaleButton" onClick={() => this.setState({isPasswordChanging: true})}>Edytuj hasło</button>
+                    <button className = "detaleButton" onClick={() => this.setState({isUsernameChanging: true})}>Edytuj nazwę użytkownika</button>
+                    {!this.state.isEditingProfile && <button className = "detaleButton" onClick={this.onClickEditButton}>Edytuj profil</button>}
+                    {this.state.isEditingProfile && <button className = "detaleButton" onClick={() => this.saveProfile()}>Zapisz</button>}
+                </div>}
+
             <div className = "user-profile-container">
 
-{/*                <div>Nazwa użytkownika: <TextField disabled value={this.state.username}/></div> */}
 
-            <div className = "user-profile-block">
+            <div className = "user-profile-block min-width-50">
             {/*<div className="user-profile-subtitle">Opis: </div>*/}
             <div>       <TextField
                         id="outlined-textarea"
@@ -122,14 +158,19 @@ class UserProfilePage extends React.Component {
                         variant="outlined"
                             onChange={(event) => this.setState({description: event.target.value})} disabled={!this.state.isEditingProfile} value={this.state.description}/></div>
             </div>
+<div className="mail-fb-discord-center">
+            <div className = "mail-fb-dc-component">
 
-            <div className = "user-profile-block">
-                {this.isProfileLoggedUser() && <div className = "user-profile-container">
-                    <button className = "detaleButton" onClick={() => this.setState({isPasswordChanging: true})}>Edytuj hasło</button>
-                    <button className = "detaleButton" onClick={() => this.setState({isUsernameChanging: true})}>Edytuj nazwę użytkownika</button>
-                    {!this.state.isEditingProfile && <button className = "detaleButton" onClick={this.onClickEditButton}>Edytuj profil</button>}
-                    {this.state.isEditingProfile && <button className = "detaleButton" onClick={() => this.saveProfile()}>Zapisz</button>}
-                </div>}
+
+                <div className = "user-profile-container"><div className = "text"><span>{mail}</span> <TextField disabled value={this.state.mail}/></div></div>
+
+                <div className = "user-profile-container"><div className = "text"><span>{fb}</span> <TextField onChange={(event) => this.setState({facebook: event.target.value})} disabled={!this.state.isEditingProfile} value={this.state.facebook}/></div></div>
+
+                <div className = "user-profile-container"><div className = "text"><span>{discord}</span>  <TextField onChange={(event) => this.setState({discord: event.target.value})} disabled={!this.state.isEditingProfile} value={this.state.discord}/></div></div>
+
+            </div>
+</div>
+
 
                 <ChangeCredentialsModal
                 title={this.state.isPasswordChanging? "Edytuj hasło": "Edytuj nazwę użytkownika"}
@@ -143,14 +184,6 @@ class UserProfilePage extends React.Component {
                 />
 
 
-                <div className = "user-profile-container"><div className = "text">Mail: <TextField disabled value={this.state.mail}/></div></div>
-
-                <div className = "user-profile-container"><div className = "text">Facebook: <TextField onChange={(event) => this.setState({facebook: event.target.value})} disabled={!this.state.isEditingProfile} value={this.state.facebook}/></div></div>
-
-                <div className = "user-profile-container"><div className = "text">Discord: <TextField onChange={(event) => this.setState({discord: event.target.value})} disabled={!this.state.isEditingProfile} value={this.state.discord}/></div></div>
-
-
-</div>
 </div>
 <div className = "user-profile-container">
 <div className = "user-profile-block">
@@ -159,12 +192,12 @@ class UserProfilePage extends React.Component {
                 {this.state.characters && this.state.characters.slice(0,10).map((item, i) => (
                     <div className = "one-element-brief">
                         <div className = "yellow-color">#{item.id}</div>
-                        <div className = "user-profile-container"><div className = "yellow-color">Imię: </div>	&nbsp; {item.name}</div>
-                        <div className = "user-profile-container"><div className = "yellow-color">Nazwisko:	&nbsp; </div>{item.surname}</div>
-                        <div className = "user-profile-container"><div className = "yellow-color">Rasa:	&nbsp; </div>{item.race}</div>
-                        <div className = "user-profile-container" ><div className = "yellow-color">Płeć: 	&nbsp;</div>{item.sex}</div>
-                        <div className = "user-profile-container"><div className = "yellow-color">Profesja: 	&nbsp;</div>{item.career}</div>
-                        <div className = "user-profile-container"><div className = "yellow-color">Miejsce pobytu:	&nbsp; </div>{item.livePlace}</div>
+                        <div className = "user-profile-container-s"><div className = "yellow-color">Imię: </div>	&nbsp; {item.name}</div>
+                        <div className = "user-profile-container-s"><div className = "yellow-color">Nazwisko:	&nbsp; </div>{item.surname}</div>
+                        <div className = "user-profile-container-s"><div className = "yellow-color">Rasa:	&nbsp; </div>{item.race}</div>
+                        <div className = "user-profile-container-s" ><div className = "yellow-color">Płeć: 	&nbsp;</div>{item.sex}</div>
+                        <div className = "user-profile-container-s"><div className = "yellow-color">Profesja: 	&nbsp;</div>{item.career}</div>
+                        <div className = "user-profile-container-s"><div className = "yellow-color">Miejsce pobytu:	&nbsp; </div>{item.livePlace}</div>
                         {/*<Link className = "detaleButton" to={fronendUrls.historyList + "/" + item.id}><div className = "normal-text">Więcej</div></Link>*/}
                     </div>
                 ))
@@ -212,4 +245,12 @@ class UserProfilePage extends React.Component {
 
 }
 
-export default UserProfilePage;
+
+const mapStateToProps = (state) => {
+    return {
+        isLogged: state.isLogged // (1)
+    }
+};
+const mapDispatchToProps = { loginStatusChange }; // (2)
+
+export default UserProfilePage = connect(mapStateToProps, mapDispatchToProps)(UserProfilePage);

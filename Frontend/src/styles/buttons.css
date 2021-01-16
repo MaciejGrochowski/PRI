@@ -32,7 +32,26 @@
 .reverse{
   color: #292F2F;
   background-color: #FFD859;
+      border: 2px solid #FFD859 !important;
+      border-radius: 20%;
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      transition-duration: 0.4s;
+      cursor: pointer;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    display: flex;
+
 }
+  .reverse:hover {
+    background-color: #292F2F;
+    color: #FFD859;
+  }
 
 .small{
   font-size: small!important;

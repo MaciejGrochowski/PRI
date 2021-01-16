@@ -9,6 +9,7 @@ import {fronendUrls} from "../commons/urls";
 import "../styles/login-page.css";
 import {Redirect} from 'react-router'
 import PasswordField from "../components/PasswordField/PasswordField";
+import {polishCodeErrors} from "../commons/texts-pl";
 
 
 
@@ -34,7 +35,13 @@ class LoginPage extends React.Component {
 
         loginService.login(this.state.username, this.state.password)
             .then(response => this.saveTokenInCookies(response))
-            .catch(error => console.log(error))
+            .catch(error => this.loginErrorHandler(error))
+    }
+
+    loginErrorHandler = error => {
+        if(error.response.status === 401){
+            this.setState({badCredentialsError: true})
+        }
     }
 
     handleChangePassword = event => {
@@ -56,6 +63,7 @@ class LoginPage extends React.Component {
 <div className = "login-body">
 <div className = "margin-login-body">
 <div className = "login-title">Zaloguj się</div>
+    {this.state.badCredentialsError && <div className = "error-message">{polishCodeErrors.BAD_CREDENTIALS_ERROR}</div>}
                 <div className="block-component">
                 <TextField label="Login" value={this.state.username} onChange={event => this.setState({username:event.target.value})} />
                 </div>
@@ -69,7 +77,9 @@ class LoginPage extends React.Component {
 
                 <div className="block-component"><button className = "zaloguj-button"><Link onClick={() => this.login()}>Zaloguj</Link></button></div>
     <div className="login-description">Nie masz jeszcze konta? <Link to={fronendUrls.registerPage}>Zarejestruj się!</Link></div>
-                </div>
+    <div className="login-description"><Link to={fronendUrls.forgotPasswordPage}>Zapomniałeś hasła?</Link></div>
+
+</div>
                 </div>
                 </div>
         )

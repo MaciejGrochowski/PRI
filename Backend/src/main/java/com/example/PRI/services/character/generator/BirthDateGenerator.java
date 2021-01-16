@@ -4,6 +4,7 @@ import com.example.PRI.entities.ImperialDate;
 import com.example.PRI.entities.character.Character;
 import com.example.PRI.enums.Month;
 import com.example.PRI.enums.StarSign;
+import com.example.PRI.services.RandomService;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -12,11 +13,13 @@ public class BirthDateGenerator {
 
     private static final int defaultGameYear = 2522; //ToDo to do propertiesów aplikacji
 
-    public Map<String, String> generateBirthDate(Character character, HashMap<String, String> properties) {
-        double randomRoll = new Random().nextDouble();
+    RandomService randomService;
+
+    public Map<String, String> generateBirthDate(Character character, RandomService randomService, HashMap<String, String> properties) {
+        this.randomService = randomService;
         Map<String, String> output = null;
-        if (randomRoll < 0.7) output = this.generateAdultCharacter(character, properties);
-        else if(randomRoll < 0.9) output = this.generateElderCharacter(character, properties);
+        if (randomService.nextDouble() < 0.7) output = this.generateAdultCharacter(character, properties);
+        else if(randomService.nextDouble() < 0.9) output = this.generateElderCharacter(character, properties);
         else output = this.generateOldCharacter(character, properties);
 
         this.generateStarSign(character);
@@ -93,7 +96,7 @@ public class BirthDateGenerator {
         Integer minimumAge = Integer.parseInt(properties.get("oldAge"));
         Integer maximumAge = Integer.parseInt(properties.get("maxAge"));
 
-        Integer yearOfBirth = defaultGameYear - minimumAge - new Random().nextInt(maximumAge-minimumAge);
+        Integer yearOfBirth = defaultGameYear - minimumAge - randomService.nextInt(maximumAge-minimumAge);
         return generateBirthDayMonthYear(character, yearOfBirth, output);
     }
 
@@ -137,14 +140,14 @@ public class BirthDateGenerator {
         output.put("Stary", "0.4");
         Integer minimumAge = Integer.parseInt(properties.get("elderAge"));
         Integer maximumAge = Integer.parseInt(properties.get("oldAge"));
-        Integer yearOfBirth = defaultGameYear - minimumAge - new Random().nextInt(maximumAge-minimumAge);
+        Integer yearOfBirth = defaultGameYear - minimumAge - randomService.nextInt(maximumAge-minimumAge);
         return generateBirthDayMonthYear(character, yearOfBirth, output);
     }
 
     private Map<String, String> generateAdultCharacter(Character character, HashMap<String, String> properties) {
-        Integer minimumAge = Integer.parseInt(properties.get("adultAge"));
-        Integer maximumAge = Integer.parseInt(properties.get("elderAge"));
-        Integer yearOfBirth = defaultGameYear - minimumAge - new Random().nextInt(maximumAge-minimumAge);
+        Integer minimumAge = (int)Double.parseDouble(properties.get("adultAge"));
+        Integer maximumAge = (int)Double.parseDouble(properties.get("elderAge"));
+        Integer yearOfBirth = defaultGameYear - minimumAge - randomService.nextInt(maximumAge-minimumAge);
         Map<String, String> output = new HashMap<>();
         output.put("Młody", "0.1");
         return generateBirthDayMonthYear(character, yearOfBirth, output);
@@ -152,8 +155,8 @@ public class BirthDateGenerator {
 
     private Map<String, String> generateBirthDayMonthYear(Character character, Integer yearOfBirth, Map<String, String> output) {
         List<Month> months = Arrays.asList(Month.values());
-        Month monthOfBirth = months.get(new Random().nextInt(months.size()));
-        Integer dayOfBirth = new Random().nextInt(this.getDaysOfMonth(monthOfBirth))+1;
+        Month monthOfBirth = months.get(randomService.nextInt(months.size()));
+        Integer dayOfBirth = randomService.nextInt(this.getDaysOfMonth(monthOfBirth))+1;
         character.setBirthDate(new ImperialDate(dayOfBirth, monthOfBirth, yearOfBirth));
         return output;
     }

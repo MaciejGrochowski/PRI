@@ -109,6 +109,8 @@ export const polishCodeErrors = {
     NO_HISTORY_DESCRIPTION: 'Historia musi mieć opis.',
     NO_HISTORY_TITLE: 'Historia musi mieć tytuł.',
 
+    MAIL_EXISTS: 'Istnieje już użytkownik o podanym mailu lub nazwie.',
+
     registerErrors: {
         usernameTooShort: 'Nazwa użytkownika jest zbyt krótka.',
         usernameTooLong: 'Nazwa użytkownika jest zbyt długa.',
@@ -121,5 +123,7 @@ export const polishCodeErrors = {
         facebookNotCorrect: 'Podaj poprawny adres do profilu na facebooku.',
         discordNotCorrect: 'Podaj poprawną nazwę użytkownika discord.',
         descriptionTooLong: 'Opis jest zbyt długi.'
-    }
+    },
+
+    BAD_CREDENTIALS_ERROR: 'Nazwa użytkownika lub hasło jest nieprawidłowe.'
 }

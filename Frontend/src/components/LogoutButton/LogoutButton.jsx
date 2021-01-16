@@ -22,7 +22,7 @@ class LogoutButton extends React.Component {
     }
 
     logout = () => {
-        loginService.logout()
+        loginService.logout(getToken())
             .then(r => {
                 this.setState({logouted: true})
                 this.props.loginStatusChange(false);

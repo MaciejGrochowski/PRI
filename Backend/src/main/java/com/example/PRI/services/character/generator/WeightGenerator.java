@@ -2,17 +2,22 @@ package com.example.PRI.services.character.generator;
 
 import com.example.PRI.entities.character.Character;
 import com.example.PRI.enums.Race;
+import com.example.PRI.services.RandomService;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
 public class WeightGenerator {
-    public Map<String, String> generateWeight(Character character, HashMap<String, String> properties) {
+
+    RandomService randomService;
+
+    public Map<String, String> generateWeight(Character character,RandomService randomService, HashMap<String, String> properties) {
+        this.randomService = randomService;
+        Double weightTypeRand = randomService.nextGaussian();
         double averageWeight = Double.parseDouble(properties.get("averageWeight"));
-        Random rand = new Random();
-        double weight = averageWeight + rand.nextGaussian()*15;
-        while(weight < 0.3*averageWeight || weight < 16 || weight > averageWeight*5) weight = averageWeight + rand.nextGaussian()*10;
+        double weight = averageWeight + weightTypeRand*15;
+        while(weight < 0.3*averageWeight || weight < 16 || weight > averageWeight*5) weight = averageWeight + weightTypeRand*10;
         character.setWeight((int) Math.round(weight));
         Map<String, String> newProps = this.generateProperties(averageWeight, weight);
         return newProps;

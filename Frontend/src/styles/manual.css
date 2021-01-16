@@ -1,0 +1,38 @@
+.container-manual{
+    color: white;
+    margin: 5%;
+    text-align: justify;
+}
+
+.manual-body{
+background-color: #222222;
+margin-left: 10%;
+margin-right: 10%;
+padding-left: 5%;
+padding-right: 5%;
+padding-bottom: 5%;
+padding-top: 1%;
+}
+
+.manual-title{
+color: white;
+font-weight: bold;
+font-size: xxx-large;
+margin-bottom: 5%;
+margin-top: 5%;
+border-top: solid #FFD859 5px;
+}
+
+.manual-paragraf-title{
+color: white;
+font-weight: bold;
+font-size: x-large;
+}
+
+.manual-paragraf {
+    margin-top: 1%;
+}
+
+.yellow{
+    color: #FFD859;
+}

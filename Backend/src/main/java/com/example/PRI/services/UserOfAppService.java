@@ -1,21 +1,29 @@
 package com.example.PRI.services;
 
 import com.example.PRI.converters.UserOfAppConverter;
+import com.example.PRI.dtos.users.*;
 import com.example.PRI.dtos.users.UserOfAppCredentialsInputDto;
 import com.example.PRI.dtos.users.UserOfAppDetailsInputDto;
 import com.example.PRI.dtos.users.UserOfAppDetailsOutputDto;
 import com.example.PRI.dtos.users.UserOfAppInputDto;
+import com.example.PRI.entities.Token;
 import com.example.PRI.entities.UserOfApp;
 import com.example.PRI.exceptions.notUniqueArgumentException;
+import com.example.PRI.repositories.TokenRepository;
 import com.example.PRI.repositories.UserOfAppRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import javax.mail.MessagingException;
 import javax.validation.Valid;
+import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class UserOfAppService extends GeneralService {
@@ -29,27 +37,36 @@ public class UserOfAppService extends GeneralService {
     @Autowired
     EmailService emailService;
 
+    @Autowired
+    TokenRepository tokenRepository;
+
     public UserOfApp findByUsername(String username) {
         return userOfAppRepository.findByUsername(username);
     }
 
     public void saveTokenToUser(String username, String token) {
         UserOfApp userOFApp = findByUsername(username);
-        userOFApp.setToken(token);
+        Token token1 = new Token(userOFApp, token);
+        tokenRepository.save(token1);
         userOfAppRepository.save(userOFApp);
     }
 
     private UserOfApp findByToken(String token){
-        return userOfAppRepository.findByToken(token);
+        //tokenRepository.findByTokenName(token);
+        return userOfAppRepository.findByToken(tokenRepository.findByName(token));
     }
 
     public Boolean isTokenExpired(String token) {
-        return findByToken(token) == null;
+        return tokenRepository.findByName(token) == null;
     }
 
-    private void logoutUser(String username){
+    private void logoutUser(String username, Authentication auth, String token){
         UserOfApp userOFApp = findByUsername(username);
-        userOFApp.setToken(null); //ToDo token should let more logged sessions
+        Token tok = userOFApp.getSingleToken(token);
+        List<Token> tmp = userOFApp.getToken();
+        tmp.remove(tok);
+        userOFApp.setToken(tmp);
+        tokenRepository.delete(tok);
         userOfAppRepository.save(userOFApp);
     }
 
@@ -59,9 +76,9 @@ public class UserOfAppService extends GeneralService {
         return user.getUsername();
     }
 
-    public void logoutUser(Authentication auth) {
+    public void logoutUser(Authentication auth, String token) {
         if(auth==null) return;
-        logoutUser(getUsernameFromAuthentication(auth));
+        logoutUser(auth.getName(), auth, token);
     }
 
 //    private void changeMailOfUser(String username){
@@ -116,36 +133,40 @@ public class UserOfAppService extends GeneralService {
 
     }
 
-    public void register(UserOfAppInputDto userOfAppInputDto) throws notUniqueArgumentException {
+    public String register(UserOfAppInputDto userOfAppInputDto) throws notUniqueArgumentException {
         if(!userOfAppInputDto.getPassword().equals(userOfAppInputDto.getConfirmPassword())){
             throw new notUniqueArgumentException("Hasła nie są identyczne", new Exception());
         }
         else {
-            saveNewUser(userOfAppInputDto);
+            return saveNewUser(userOfAppInputDto);
         }
     }
 
-    private void saveNewUser(UserOfAppInputDto userOfAppInputDto) throws notUniqueArgumentException {
+    private String saveNewUser(UserOfAppInputDto userOfAppInputDto) throws notUniqueArgumentException {
         if(userOfAppRepository.findByMail(userOfAppInputDto.getMail())==null && userOfAppRepository.findByUsername(userOfAppInputDto.getUsername())==null){
                 UserOfApp user = new UserOfApp();
                 user.setUsername(userOfAppInputDto.getUsername());
+                user.setIsActive(false);
+                user.setUUIDActivation(UUID.randomUUID().toString());
                 user.setPassword(passwordEncoder.encode(userOfAppInputDto.getPassword()));
                 user.setDescription(userOfAppInputDto.getDescription());
                 user.setDiscord(userOfAppInputDto.getDiscord());
                 user.setMail(userOfAppInputDto.getMail());
                 user.setFacebook(userOfAppInputDto.getFacebook());
-                userOfAppRepository.save(user);
+                return userOfAppRepository.save(user).getUsername();
             }
         else{
-            throw new notUniqueArgumentException("Nazwa lub email istnieją już w bazie", new Exception());
+            return "MAIL_EXISTS"; //ToDo to enum
         }
 
     }
 
-    public void sendPasswordRemainder(String email) {
+    public void sendPasswordRemainder(String email) throws MessagingException {
         UserOfApp uoa = userOfAppRepository.findByMail(email);
         if(uoa != null){
-            emailService.sendPasswordRemainder(uoa.getUsername(), uoa.getMail(), uoa.getPassword());
+            uoa.setUUIDActivation(UUID.randomUUID().toString());
+            userOfAppRepository.save(uoa);
+            emailService.sendPasswordRemainder(uoa.getUsername(), uoa.getMail(), uoa.getUUIDActivation());
         }
         else{
             System.err.println("nie ma takiego maia w bazie");
@@ -153,7 +174,34 @@ public class UserOfAppService extends GeneralService {
 
     }
 
+
     public UserOfApp getUserByAuthentication(Authentication auth){
         return this.findByUsername(this.getUsernameFromAuthentication(auth));
     }
+  
+    public void sendHelloEmail(UserOfApp uapp) throws MessagingException {
+        emailService.sendWelcomeMail(uapp.getUsername(), uapp.getMail(), uapp.getPassword(), uapp.getUUIDActivation());
+    }
+
+    public Long activateUser(String username, String uuid) {
+        UserOfApp user = findByUsername(username);
+        if(user != null && user.getUUIDActivation().equals(uuid)){
+            user.setIsActive(true);
+            userOfAppRepository.save(user);
+            return user.getId();
+        }
+        return -1L;
+    }
+
+    public Long changePassword(ChangePasswordInputDto changePasswordInputDto) {
+        UserOfApp user = findByUsername(changePasswordInputDto.getUsername());
+
+        if (user.getUUIDActivation().equals(changePasswordInputDto.getHashcode())){
+            user.setPassword(passwordEncoder.encode(changePasswordInputDto.getNewPassword()));
+            userOfAppRepository.save(user);
+            return user.getId();
+        }
+        else return -1L;
+    }
+  
 }

@@ -3,7 +3,7 @@ import './App.css';
 import CharactersListPage from "./pages/CharacterListPage/CharactersListPage";
 import {Route} from 'react-router'
 import Menu from "./components/Menu/Menu";
-import {BrowserRouter} from "react-router-dom";
+import {BrowserRouter, Link} from "react-router-dom";
 import {fronendUrls} from "./commons/urls";
 import HistoriesListPage from "./pages/HistoryListPage/HistoriesListPage";
 import MainPage from "./pages/MainPage";
@@ -13,8 +13,17 @@ import CharacterGeneratorPage from "./pages/CharacterGeneratorPage/CharacterGene
 import HistoryCreatorPage from "./pages/HistoryCreatorPage/HistoryCreatorPage";
 import UserProfilePage from "./pages/UserProfilePage/UserProfilePage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
+import ForgotPasswordPage from "./pages/ForgotPasswordPage";
 import SessionListPage from "./pages/SessionListPage/SessionListPage";
 import SessionDetailsPage from "./pages/SessionDetailsPage/SessionDetailsPage";
+import ActivateUserPage from "./pages/ActivateUserPage";
+import NewPasswordPage from "./pages/NewPasswordPage";
+import CookiesPage from "./pages/CookiesPage";
+import CookieConsent from "react-cookie-consent";
+import CreateCharacterManual from "./pages/Manuals/CreateCharacterManual";
+import CreateHistoryManual from "./pages/Manuals/CreateHistoryManual";
+import SessionManual from "./pages/Manuals/SessionManual";
+import CharacterHistoryListManual from "./pages/Manuals/CharacterHistoryListManual";
 
 class App extends React.Component{
 
@@ -32,10 +41,18 @@ class App extends React.Component{
         <Route path={fronendUrls.loginPage} component={LoginPage} />
         <Route path={fronendUrls.userProfilePage + "/:username"} component={UserProfilePage} />
         <Route path={fronendUrls.registerPage} component={RegisterPage} />
-                <Route path={fronendUrls.sessionList + "/:username"} component={SessionListPage} />
-                <Route path={fronendUrls.sessionDetails + "/:hashcode"} component={SessionDetailsPage} />
-
-
+        <Route path={fronendUrls.sessionList + "/:username"} component={SessionListPage} />
+        <Route path={fronendUrls.sessionDetails + "/:hashcode"} component={SessionDetailsPage} />
+        <Route path={fronendUrls.forgotPasswordPage} component={ForgotPasswordPage} />
+        <Route path={fronendUrls.newPasswordPage + "/:username?/:hashcode?"} component={NewPasswordPage} />
+        <Route path={fronendUrls.sessionList + "/:username"} component={SessionListPage} />
+        <Route path={fronendUrls.activateUser + "/:username/:uuid"} component={ActivateUserPage} />
+        <Route path={fronendUrls.cookiesPage} component={CookiesPage} />
+        <Route path={fronendUrls.createCharacterManual} component={CreateCharacterManual} />
+        <Route path={fronendUrls.createHistoryManual} component={CreateHistoryManual} />
+        <Route path={fronendUrls.sessionManual} component={SessionManual} />
+        <Route path={fronendUrls.characterHistoryListManual} component={CharacterHistoryListManual} />
+                <CookieConsent>Strona używa plików cookies. Ich polityka jest dostępna <Link to={fronendUrls.cookiesPage}>TU</Link></CookieConsent>
             </BrowserRouter>
         )
   }

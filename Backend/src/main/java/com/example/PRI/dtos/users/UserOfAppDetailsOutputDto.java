@@ -17,7 +17,6 @@ import java.util.List;
 public class UserOfAppDetailsOutputDto {
 
     String username;
-//    String password;
     String description;
     String mail;
     String discord;
@@ -26,6 +25,5 @@ public class UserOfAppDetailsOutputDto {
     List<UserOfAppCharacterOutputDto> characters;
 
     List<HistoryListCharacterDetailsOutputDto> histories;
-
     List<SessionOutputDto> sessions;
 }

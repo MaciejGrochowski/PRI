@@ -31,6 +31,7 @@ import {ItemMenu} from "../../components/Menu/ExampleMenu.style";
 import NeedLoginInformation from "../../components/NeedLoginInformation/NeedLoginInformation";
 import {getToken, isValidToken} from "../../services/util";
 import {CharacterAttribute} from "../../enums/CharacterAttribute";
+import {Redirect} from "react-router";
 
 //TODO refactor 
 const mygrid = {
@@ -152,6 +153,11 @@ class CharacterGeneratorPage extends React.Component {
     generateOneAttributeSuccessHandler = (attrName, response) => {this.setState(generateOneAttributeSuccessHandler(attrName, response));}
 
     render() {
+        if (this.state.generated) {
+            return <Redirect push to={this.state.href} />
+        }
+
+
         return (
             <div className="pageWithContext">
                 <div className="pageName">Tworzenie postaci</div>

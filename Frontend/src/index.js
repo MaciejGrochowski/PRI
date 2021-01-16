@@ -37,6 +37,11 @@ const Theme = createMuiTheme({
                     color: "rgba(222, 222, 222, 0.42)"
 
             }
+        },
+        MuiSvgIcon:{
+            root:{
+                cursor: "pointer"
+            }
         }
     }
 });

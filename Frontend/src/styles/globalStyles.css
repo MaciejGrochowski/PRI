@@ -340,7 +340,7 @@ color: #FFD859!important;
 }
 
 .inside-character-1{
-    padding-right: 10px;
+    padding-right: 25px;
     text-align: left;
     width: 40%;
     margin-bottom: 3px;
@@ -369,7 +369,7 @@ color: #FFD859!important;
 .character-statistic{
     border: #8B8B8B solid 1px;
     border-radius: 10px;
-    margin: 2px;
+    margin: 5px;
     text-align: center;
     width: 40px;
 }
@@ -387,12 +387,25 @@ color: #FFD859!important;
     border-radius: 20px;
 }
 
-.delete-character .more-of-character .delete-character{
-    cursor: pointer;
-    margin: 5px;
-}
 
 .inside-buttons{
     margin-top: 6px;
     margin-bottom: 2px;
+}
+
+.inside-character-6{
+    margin-top: 0px;
+    margin-bottom: 5px;
+    text-align: center;
+    width: 100%;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.MuiInputBase-input.Mui-disabled {
+    color: #bababa;
+}
+
+span > a {
+    color: #bababa!important;
 }

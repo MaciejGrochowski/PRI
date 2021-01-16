@@ -138,7 +138,7 @@ class CharacterSessionView extends React.Component {
                                 {(character.endWeaponSkills || character.endBallisticSkills || character.endStrength|| character.endToughness
                                 || character.endAgility|| character.endIntelligence|| character.endWillPower|| character.endFellowship
                                 || character.endAttacks|| character.endWounds|| character.endMagic|| character.endMovement) &&
-                                <div className="inside-character-3">Statystyki</div>}
+                                <div className="inside-character-6">Statystyki</div>}
                                 <div className="character-statistic">
                                     {character.endWeaponSkills && <div className="inside-character-5">WW</div>}
                                     {character.endWeaponSkills && <div className="inside-character-5">{character.endWeaponSkills}</div>}
@@ -204,13 +204,14 @@ class CharacterSessionView extends React.Component {
                         </div>
                     </div>
 
+                    {isMG &&
                     <div className="character-buttons">
                         <div className="inside-buttons">
                         {isMG && <Link className="more-of-character" to={fronendUrls.characterDetails + "/" + character.id}><PersonIcon fontSize={"large"}/></Link>}
                         {isMG && <DeleteIcon className="delete-character" fontSize={"large"} onClick={() => onDeleteCharacter(character.id)}/>}
                         {isMG && <VisibilityIcon className="delete-character" fontSize={"large"} onClick={() => onChangeVisibilityClick(character.id)}/>}
                         </div>
-                    </div>
+                    </div>}
                 </div>
 
 

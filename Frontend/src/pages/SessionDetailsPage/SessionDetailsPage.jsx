@@ -143,7 +143,7 @@ class SessionDetailsPage extends React.Component {
                     </div>
                     <div className="session-detail-button">
                         {this.isMG() && (this.state.isChanging ?
-                            <button className="sessionButton addSessionButton" onClick={this.editSession}>Zapisz
+                            <button className="sessionSaveButton addSessionButton" onClick={this.editSession}>Zapisz
                                 zmiany</button> :
                             <button className="sessionButton addSessionButton"
                                     onClick={() => this.setState({isChanging: true})}>Edytuj sesję</button>)}

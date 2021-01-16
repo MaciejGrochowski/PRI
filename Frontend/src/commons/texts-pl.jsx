@@ -125,5 +125,6 @@ export const polishCodeErrors = {
         descriptionTooLong: 'Opis jest zbyt długi.'
     },
 
-    BAD_CREDENTIALS_ERROR: 'Nazwa użytkownika lub hasło jest nieprawidłowe.'
+    BAD_CREDENTIALS_ERROR: 'Nazwa użytkownika lub hasło jest nieprawidłowe.',
+    USER_DOESNT_EXIST: 'Taki użytkownik nie istnieje.'
 }

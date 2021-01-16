@@ -14,8 +14,7 @@ class SessionTittle extends React.Component {
 
     shorterDate(date) {
         date = new Date(date);
-        let short = date.toString().substring(0, 10)
-        return short
+        return date.getDate().toString() + "-" + ("0" + (date.getMonth() + 1)).slice(-2).toString() + "-" + date.getFullYear().toString();
     }
 
     render() {

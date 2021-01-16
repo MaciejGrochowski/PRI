@@ -42,10 +42,11 @@ class SessionDetailsPage extends React.Component {
 
     getSessionDetailsSuccessHandler = response => {
         const data = response.data;
+        const date = new Date(data.createdDate)
         this.setState({
             characters: data.characters,
             createdBy: data.createdBy,
-            createdDate: new Date(data.createdDate).toString().substr(0,10),
+            createdDate: date.getDate().toString() + "-" + ("0" + (date.getMonth() + 1)).slice(-2).toString() + "-" + date.getFullYear().toString(),
             description: data.description,
             name: data.name
         })

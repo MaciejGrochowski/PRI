@@ -206,18 +206,17 @@ class ChangeVisibilityModal extends React.Component {
                     {isGlobal && <div>UWAGA - te zmiany nadpiszą wszystkie ustawienia widoczności konkretnych postaci!</div>}
                             {columnsConfig && columnsConfig.map((item, i) => (
                                 <div>
-                                    <Checkbox
-                                        onChange={(event) => this.onCheckboxClick(item.name, event.target.checked)}
-                                        key={item.title}
-                                        checked={this.state.checkboxData[item.name]}
-                                    />
-                                    {item.title}
+                                    <label className="container" style={{width: '100%'}}>
+                                        <input type="checkbox" onClick={(event) => this.onCheckboxClick(item.name, event.target.value)} id={item.field + "VisibilityCheckbox"}/>
+                                        <span className="checkmark"/>
+                                        <div className = "label">{item.title}</div>
+                                    </label>
                                 </div>
 
                             ))
                             }
                     <div className="flex-center-element">
-                        <button type="submit" className="button" onClick={() => this.props.onSave(this.state.checkboxData)}>Zastosuj</button>
+                        <button type="submit" className="button reverse" onClick={() => this.props.onSave(this.state.checkboxData)}>Zastosuj</button>
                     </div>
                 </Modal>
             </div>

@@ -44,7 +44,6 @@ class AddCharactersToSessionModal extends React.Component {
 
 
     getSessionNames = () => {
-        console.log(1234)
         sessionService.getSessionsByUsername(this.props.username)
             .then(r => this.getSessionNamesSuccessHandler(r))
             .catch(e => console.log(e))
@@ -55,7 +54,6 @@ class AddCharactersToSessionModal extends React.Component {
     }
 
     handleChange = (event) => {
-        console.log(event)
         this.setState({selected: event.target.value})
     }
 

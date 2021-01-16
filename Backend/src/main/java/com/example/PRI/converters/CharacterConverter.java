@@ -318,7 +318,7 @@ public class CharacterConverter {
         }
 
         if(attributesVisibility.isMagic() && character.getEndMagic()!=null){
-            output.setEndWounds(character.getEndMagic());
+            output.setEndMagic(character.getEndMagic());
         }
 
         if(attributesVisibility.isMovement() && character.getEndMovement()!=null){

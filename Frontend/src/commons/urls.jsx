@@ -1,8 +1,3 @@
-export const apiUrls = {
-    // baseApiUrl: 'localhost:8080', niekorzystane
-    characters: '/characters'
-}
-
 export const fronendUrls = {
     mainPage: '/',
     characterList: '/characters',
@@ -13,9 +8,10 @@ export const fronendUrls = {
     loginPage: "/login",
     userProfilePage: "/user",
     registerPage: '/register',
+    sessionList: '/sessions',
+    sessionDetails: '/session',
     forgotPasswordPage: '/forgotPassword',
     newPasswordPage: "/newPassword",
-    sessionList: '/sessions',
     cookiesPage: '/cookies',
     activateUser: '/activate-user',
     createCharacterManual: '/manual/createCharacterManual',

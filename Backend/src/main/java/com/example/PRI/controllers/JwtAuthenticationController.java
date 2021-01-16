@@ -19,12 +19,11 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.*;
-
 import javax.mail.MessagingException;
 
 @RestController
@@ -91,7 +90,6 @@ public class JwtAuthenticationController {
 //    @Post("/logout-user")
     @RequestMapping(value = "/logout-user", method = RequestMethod.POST)
     public void logout(Authentication auth,@RequestBody TokenInputDto tokenInputDto){
-
         userOfAppService.logoutUser(auth, tokenInputDto.getToken());
     }
 

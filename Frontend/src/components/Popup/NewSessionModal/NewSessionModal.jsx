@@ -2,9 +2,6 @@ import React from 'react';
 import Modal from 'react-modal';
 import button from "../../../styles/buttons.css";
 import {TextField} from "@material-ui/core";
-import PasswordField from "../../PasswordField/PasswordField";
-import {textsPolish} from "../../../commons/texts-pl";
-import {validationPassword} from "../../../pages/RegisterPage/validation";
 
 
 const customStyles = {
@@ -28,12 +25,18 @@ class NewSessionModal extends React.Component {
     constructor() {
         super();
         this.state = {
-            title: "",
+            name: "",
             description: ""
         }
     }
+
+    onSave = (name, description) => {
+        this.setState({name: "", description: ""})
+        this.props.onSave(name, description);
+    }
+
     render() {
-        const {isOpen, onRequestClose, onSave, title} = this.props;
+        const {isOpen, onRequestClose, title} = this.props;
 
 
         return (
@@ -46,7 +49,7 @@ class NewSessionModal extends React.Component {
                     >
                         <div>{title}</div>
 
-                        <TextField label="Tytuł" value={this.state.title} onChange={event => this.setState({title: event.target.value})}/>
+                        <TextField label="Tytuł" value={this.state.name} onChange={event => this.setState({name: event.target.value})}/>
 
 
                         <TextField
@@ -60,7 +63,7 @@ class NewSessionModal extends React.Component {
                             variant="outlined"
                             onChange={(event) => this.setState({description: event.target.value})} value={this.state.description}/>
 
-                            <button onClick={() => onSave(this.state.title, this.state.description)}>Zapisz</button>
+                            <button onClick={() => this.onSave(this.state.name, this.state.description)}>Zapisz</button>
                     </Modal>
                 </div></div>
         );

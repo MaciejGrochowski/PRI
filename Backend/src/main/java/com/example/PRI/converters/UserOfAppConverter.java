@@ -1,9 +1,11 @@
 package com.example.PRI.converters;
 
+import com.example.PRI.dtos.sessions.SessionOutputDto;
 import com.example.PRI.dtos.users.UserOfAppDetailsOutputDto;
 import com.example.PRI.entities.UserOfApp;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class UserOfAppConverter {
@@ -22,8 +24,9 @@ public class UserOfAppConverter {
         udod.setHistories(userOFApp.getHistories().stream()
                 .map(HistoryConverter::convertForCharacterDetails)
                 .collect(Collectors.toCollection(ArrayList::new)));
-//        udod.setSessions(userOFApp.getSessions()); ToDo uncomment this
-
+        udod.setSessions(userOFApp.getSessions().stream()
+                .map(SessionConverter::convert)
+                .collect(Collectors.toCollection(ArrayList::new)));
         return udod;
     }
 }

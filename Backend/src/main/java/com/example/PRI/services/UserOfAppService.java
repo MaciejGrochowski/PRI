@@ -71,6 +71,7 @@ public class UserOfAppService extends GeneralService {
     }
 
     public String getUsernameFromAuthentication(Authentication auth){
+        if(auth==null) return null;
         User user = (User)auth.getPrincipal();
         return user.getUsername();
     }
@@ -173,6 +174,11 @@ public class UserOfAppService extends GeneralService {
 
     }
 
+
+    public UserOfApp getUserByAuthentication(Authentication auth){
+        return this.findByUsername(this.getUsernameFromAuthentication(auth));
+    }
+  
     public void sendHelloEmail(UserOfApp uapp) throws MessagingException {
         emailService.sendWelcomeMail(uapp.getUsername(), uapp.getMail(), uapp.getPassword(), uapp.getUUIDActivation());
     }
@@ -196,7 +202,6 @@ public class UserOfAppService extends GeneralService {
             return user.getId();
         }
         else return -1L;
-
-
     }
+  
 }

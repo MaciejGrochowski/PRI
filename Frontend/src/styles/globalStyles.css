@@ -196,3 +196,220 @@ color: #FFD859!important;
         width: 130px;
     }
 }
+
+.flex-container-session{
+    display: flex;
+    flex-wrap: nowrap;
+    background-color: transparent;
+    align-content: center;
+}
+
+
+.flex-container-session > div {
+    width: 80%;
+    margin-bottom: 10px;
+    margin-top: 15px;
+    line-height: 18px;
+}
+
+.flex-container-session > div.flex-button{
+    max-width: 25%;
+    height: 10%;
+    position: fixed;
+    left: 83%;
+    top: 27%;
+
+}
+
+.session-title{
+    text-align: left;
+    font-size: 30px;
+    width: 100%;
+    padding-left: 10px;
+}
+
+.last-modified{
+    font-size: 15px;
+    color: #8B8B8B;
+    text-align: right;
+    padding-right: 10px;
+    max-width: 30%;
+}
+
+.session-box{
+    margin-bottom: 100px;
+    margin-left: 15%;
+}
+
+.underline-box{
+    border-bottom: solid white 1px;
+}
+
+.session-button-box{
+    float: right;
+}
+
+.session-description{
+    padding: 15px 60px 5px 60px;
+    font-size: 18px;
+    color: #d2d2d2;
+    line-height: 25px;
+    text-align: justify;
+    height: 60%;
+    margin-bottom: 10px;
+    /*background-image: linear-gradient(to bottom, #343c3c, #303737,#292F2F);*/
+    /*background-color: #2f3535;*/
+}
+
+.session-button{
+    text-align: right;
+    font-size: medium;
+}
+
+.session-link{
+    text-decoration: none;
+}
+
+.session-detail-info{
+    width: 70%;
+    margin-bottom: 10px;
+}
+
+.session-detail-button{
+    max-width: 15%;
+    margin-bottom: 10px;
+    margin-left: 20px;
+}
+
+.span-session{
+    margin: 10px
+}
+
+.flex-container-session > div.info-container{
+    width: 20%;
+    margin-left: 20px;
+}
+
+.flex-container-session > div.info-container-tittle{
+    width: 50%;
+    margin-right: 5%;
+}
+
+.session-link-copy{
+    margin-bottom: 40px;
+}
+
+.flex-container-session-2{
+    display: flex;
+    flex-wrap: wrap;
+    background-color: transparent;
+    justify-content: center;
+}
+
+.character-box{
+    text-align: center;
+    padding: 5% 2% 2% 2%;
+    width: 27%;
+
+}
+
+.addSessionButton{
+    margin-bottom: 10px;
+}
+
+.full-character-box{
+    width: 100%;
+
+}
+
+.character-name{
+    font-size: 25px;
+    margin-bottom: 5px;
+    color: #FFD859;
+}
+
+.character-information{
+    border: #8B8B8B solid 1px;
+    border-radius: 20px;
+}
+
+.short-info{
+    text-align: left;
+    margin: 10px;
+    width: 100%;
+}
+
+.inside-character-1{
+    padding-right: 25px;
+    text-align: left;
+    width: 35%;
+    margin-bottom: 3px;
+}
+
+.inside-character-2{
+    width: 45%;
+}
+
+.inside-character-3{
+    margin-top: 20px;
+    text-align: center;
+    width: 100%;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.inside-character-4{
+    text-align: center;
+    width: 100%;
+    padding-right: 10px;
+    padding-left: 10px;
+    font-size: 15px;
+}
+
+.character-statistic{
+    border: #8B8B8B solid 1px;
+    border-radius: 10px;
+    margin: 5px;
+    text-align: center;
+    width: 40px;
+}
+
+.flex-container-session-3{
+    display: flex;
+    flex-wrap: wrap;
+    background-color: transparent;
+    justify-content: center;
+    margin: 20px 5px;
+}
+
+.character-buttons{
+    border: #8B8B8B solid 2px;
+    border-radius: 20px;
+}
+
+
+.inside-buttons{
+    margin-top: 6px;
+    margin-bottom: 2px;
+}
+
+.inside-character-6{
+    margin-top: 0px;
+    margin-bottom: 5px;
+    text-align: center;
+    width: 100%;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.MuiInputBase-input.Mui-disabled {
+    color: #bababa;
+}
+
+span > a {
+    color: #bababa!important;
+}
+
+.inside-character-5{
+    margin: 1px;
+}

@@ -61,10 +61,10 @@ export const careerUrl = apiUrl + "/careers";
 
 export const placeUrl = apiUrl + "/places";
 
-export const userUrl = apiUrl + "/users"
+export const userUrl = apiUrl + "/users";
 
-export const historyUrl = apiUrl + "/histories"
+export const historyUrl = apiUrl + "/histories";
 
 export const generatorUrl = apiUrl + "/generator";
 
-export const sessionUrl = apiUrl + "/sessions"
+export const sessionUrl = apiUrl + "/sessions";

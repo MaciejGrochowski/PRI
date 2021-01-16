@@ -1,6 +1,7 @@
 package com.example.PRI.dtos.characters;
 
-import com.example.PRI.entities.character.*;
+import com.example.PRI.entities.character.Skill;
+import com.example.PRI.entities.character.Talent;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,10 +9,13 @@ import lombok.NoArgsConstructor;
 import javax.persistence.ManyToMany;
 import java.util.List;
 
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CharacterDetailsOutputDto {
+public class CharacterSessionOutputDto {
+
+    Long id;
 
     String birthPlace;
 
@@ -46,11 +50,9 @@ public class CharacterDetailsOutputDto {
 
     String currentCareer;
 
-    @ManyToMany
-    List<Skill> skills; //ToDo use SkillOutputDto
+    String skills;
 
-    @ManyToMany
-    List<Talent> talents; //ToDo use TalentOutputDto
+    String talents;
 
     Integer endWeaponSkills;
     Integer endBallisticSkills;
@@ -65,37 +67,9 @@ public class CharacterDetailsOutputDto {
     Integer endMagic; // magia
     Integer endMovement; // szybkość
 
-
-    Integer baseWeaponSkills;
-    Integer baseBallisticSkills;
-    Integer baseStrength;
-    Integer baseToughness;
-    Integer baseAgility;
-    Integer baseIntelligence;
-    Integer baseWillPower;
-    Integer baseFellowship;
-    Integer baseAttacks;
-    Integer baseWounds; // żywotność
-    Integer baseMagic; // magia
-    Integer baseMovement; // szybkość
-
-    Integer careerWeaponSkills;
-    Integer careerBallisticSkills;
-    Integer careerStrength;
-    Integer careerToughness;
-    Integer careerAgility;
-    Integer careerIntelligence;
-    Integer careerWillPower;
-    Integer careerFellowship;
-    Integer careerAttacks;
-    Integer careerWounds; // żywotność
-    Integer careerMagic; // magia
-    Integer careerMovement; // szybkość
-
     String personality;
 
     String apperance;
 
     String livePlace;
-
 }

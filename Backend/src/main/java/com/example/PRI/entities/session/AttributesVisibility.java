@@ -15,13 +15,16 @@ import javax.persistence.Entity;
 public class AttributesVisibility extends GeneralEntity {
 
     boolean name;
+    boolean birthPlace;
     boolean surname;
     boolean livePlace;
-    boolean career;
-    boolean oldcareers;
+    boolean currentCareer;
+    boolean previousCareers;
     boolean race;
     boolean sex;
-    boolean birthDate;
+    boolean dayOfBirth;
+    boolean monthOfBirth;
+    boolean yearOfBirth;
     boolean height;
     boolean weight;
     boolean starSign;

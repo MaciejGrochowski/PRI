@@ -3,7 +3,6 @@ import Modal from 'react-modal';
 import button from "../../../styles/buttons.css";
 import {TextField} from "@material-ui/core";
 import PasswordField from "../../PasswordField/PasswordField";
-import {textsPolish} from "../../../commons/texts-pl";
 import {validationPassword} from "../../../pages/RegisterPage/validation";
 
 
@@ -89,7 +88,7 @@ class ChangeCredentialsModal extends React.Component {
 <div className="block-component">
     <PasswordField
         handleChangePassword={this.handleChangePassword}
-        label={"Stare hasło"}
+        label={isUsernameChanging ? "Hasło" : "Stare hasło"}
         value={this.state.oldPassword}
     />
 </div>

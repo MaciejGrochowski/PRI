@@ -30,7 +30,7 @@ class Wysiwyg extends React.Component {
 
 
     render() {
-        const {characterTags, saveHistory} = this.props;
+        const {characterTags, saveHistory, disabledSave} = this.props;
         return (<>
             <Editor
                 wrapperClassName="demo-wrapper"
@@ -63,7 +63,7 @@ class Wysiwyg extends React.Component {
                     suggestions: characterTags
                 }}
             />
-                <div className = "center-content"><button className="green-button" onClick={() => saveHistory(draftToHtml(convertToRaw(this.state.editorState.getCurrentContent())))}>Zapisz <span>{element}</span></button></div>
+                <div className = "center-content"><button className="green-button" disabled={disabledSave} onClick={() => saveHistory(draftToHtml(convertToRaw(this.state.editorState.getCurrentContent())))}>Zapisz <span>{element}</span></button></div>
 
 </>
 

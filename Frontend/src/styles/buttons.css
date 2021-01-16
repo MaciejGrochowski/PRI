@@ -76,13 +76,13 @@
   }
 
   .detaleButton:disabled {
-    color: grey;
-    border:solid 2px grey;
+    color: grey !important;
+    border:solid 2px grey !important;
     background-color: #292F2F;
   }
 
   .detaleButton:disabled:hover {
-    color: gray;
+    color: gray !important;
     border:solid 2px gray;
     background-color: #292F2F;
   }
@@ -238,7 +238,11 @@
     margin: 5%;
     padding: 2%;
   }
+.green-button:hover{
+  color: #292F2F;
+  background: greenyellow;
 
+}
   .c:hover{
     background-color: greenyellow;
     color: #292F2F;

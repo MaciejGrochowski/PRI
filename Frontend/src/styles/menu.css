@@ -24,6 +24,11 @@ display: block;
     font-size: large;
     text-align: left;
 }
+
+.menuLinkLogIn{
+    min-width: 200px;
+}
+
 .menu-column{
     display: block;
     padding: 2%;

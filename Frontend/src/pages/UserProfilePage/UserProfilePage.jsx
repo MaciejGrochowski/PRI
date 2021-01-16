@@ -185,6 +185,21 @@ class UserProfilePage extends React.Component {
 
 
 </div>
+<div className = "user-profile-block">
+                <div className = "user-profile-subtitle">Lista sesji:</div>
+
+    {this.state.sessions && this.state.sessions.slice(0,10).map((item, i) => (
+        <div className = "one-element-brief">
+            <div className = "user-profile-container-s"><div className = "yellow-color">Data stworzenia: </div>	&nbsp; {item.createdDate}</div>
+            <div className = "user-profile-container-s"><div className = "yellow-color">Data modyfikacji: </div>	&nbsp; {item.lastModifiedDate}</div>
+            <div className="short-history-title">{item.name}</div>
+            <div>{item.description}</div>
+        </div>
+    ))
+    }
+    <Link className="detaleButton" to={fronendUrls.sessionList + "/" + this.state.username}>Więcej sesji</Link>
+</div>
+
 <div className = "user-profile-container">
 <div className = "user-profile-block">
                 <div className = "user-profile-subtitle">Lista postaci:</div>
@@ -217,24 +232,6 @@ class UserProfilePage extends React.Component {
                 ))
                 }
                 <Link className="detaleButton" to={fronendUrls.historyList + "/user/" + this.state.username}>Więcej historii</Link>
-
-                <div>Lista Sesji:</div>
-
-    {this.state.sessions && this.state.sessions.slice(0,10).map((item, i) => (
-        <div className = "one-element-brief">
-            {/*<div>{item.id}</div>*/}
-            <div>{item.name}</div>
-            <div>{item.description}</div>
-            <div>{item.createdUserBy}</div>
-            <div>{item.createdDate}</div>
-            <div>{item.lastModifiedDate}</div>
-            <Link to={fronendUrls.sessionDetails + "/" + item.id}>Więcej</Link>
-            {/*<Link className = "detaleButton" to={fronendUrls.historyList + "/" + item.id}><div className = "normal-text">Więcej</div></Link>*/}
-        </div>
-    ))
-    }
-
-
 
 
 </div>

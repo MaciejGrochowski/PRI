@@ -21,9 +21,7 @@ class MainPage extends React.Component {
         return (
 
             <div className = "container-homepage">
-                <div className = "logo">
-                    <img src={process.env.PUBLIC_URL + '/logo.png'}/>
-                </div>
+                    <img className="logo" src={process.env.PUBLIC_URL + '/logo.png'}/>
                 <div className="subsection-container black-section">
                     <div className="section-title">O co chodzi?</div>
                     <div className="welcome-text">Aplikacja "Ja Nie Taki Ork " jest interaktywną pomocą dla graczy, jak i mistrzów gry, rozgrywających sesje w systemie Warhammer Fantasy Roleplay. Oferuje rozbudowany generator postaci dostosowany do realiów świata Warhammera i wolny od wielu bolączek losowych generatorów dostępnych na innych stronach. System pozwala przeglądać bogatą listę już stworzonych postaci i dodawać historie symulując żyjący i rozbudowany świat. Możliwość grupowania postaci w sesje  sprawia, że zapanowanie nad bałaganem informacyjnym powstającym przy toczących się online przygodach staje się możliwe.</div>

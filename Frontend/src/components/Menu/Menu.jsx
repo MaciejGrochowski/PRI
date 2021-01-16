@@ -120,7 +120,7 @@ class Menu extends React.Component {
 <div className= "menu-column">
                     <LoginButton
                     notLoggedShowComponent={<Link className="menuLink menuLinkLogIn" to={fronendUrls.loginPage}><ItemMenu>Zaloguj się</ItemMenu></Link>}
-                    /> </div>
+                    /> <Link className="menuLink menuLinkLogIn" to={fronendUrls.mainPage}>Pomoc</Link> </div>
             </nav>)}
                 <button className="menubutton" onClick={this.onExpanded}>Menu</button>
             </div>

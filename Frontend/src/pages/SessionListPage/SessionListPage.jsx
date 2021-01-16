@@ -48,9 +48,9 @@ class SessionListPage extends React.Component {
             .then(r => this.getSessions())
     }
 
-    shorterDate(date){
-        let shorterDate = date.substring(0,10)
-        return shorterDate
+    shorterDate(data){
+        let date = new Date(data)
+        return date.getDate().toString() + "-" + ("0" + (date.getMonth() + 1)).slice(-2).toString() + "-" + date.getFullYear().toString();
     }
 
 

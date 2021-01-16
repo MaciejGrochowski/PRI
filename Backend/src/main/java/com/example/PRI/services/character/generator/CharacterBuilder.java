@@ -48,7 +48,7 @@ public class CharacterBuilder {
             System.out.println("CharacterName: " + character.getName().getName());
         }
         if(character.getSurname()!=null){
-            System.out.println("CharacterSurname: " + character.getName().getName());
+            System.out.println("CharacterSurname: " + character.getSurname().getSurname());
         }
         if(character.getCurrentCareer()!=null){
             System.out.println("CharacterCareer: " + character.getCurrentCareer().getName());

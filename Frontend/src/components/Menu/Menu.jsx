@@ -155,7 +155,7 @@ class Menu extends React.Component {
 
                     </div>
                 </nav>)}
-        <button className="menubutton" onClick={this.onExpanded}>Menu</button>
+        {/*<button className="menubutton" onClick={this.onExpanded}>Menu</button>*/}
         </div>
 
         </div>

@@ -193,7 +193,7 @@ class UserProfilePage extends React.Component {
 
 </div>
 <div className = "user-profile-block">
-                <div className = "user-profile-subtitle">Lista sesji:</div>
+                <div className = "user-profile-subtitle">Prowadzone sesje:</div>
 
     {this.state.sessions && this.state.sessions.slice(0,10).map((item, i) => (
         <div className = "one-element-brief">

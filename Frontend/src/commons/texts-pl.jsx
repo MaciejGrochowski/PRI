@@ -120,8 +120,8 @@ export const polishCodeErrors = {
         passwordMissingNumber: 'Hasło musi posiadać co najmniej jedną liczbę.',
         passwordMissingSpecialSign: 'Hasło musi posiadać co najmniej jeden znak specjalny.',
         passwordMissingCapitalLetter: 'Hasło musi posiadać co najmniej jedną wielką litere.',
-        facebookNotCorrect: 'Podaj poprawny adres do profilu na facebooku.',
-        discordNotCorrect: 'Podaj poprawną nazwę użytkownika discord.',
+        facebookNotCorrect: 'Błędny adres.',
+        discordNotCorrect: 'Błędna nazwa użytkownika.',
         descriptionTooLong: 'Opis jest zbyt długi.'
     },
 

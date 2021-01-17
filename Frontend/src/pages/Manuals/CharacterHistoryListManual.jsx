@@ -39,17 +39,17 @@ class CharacterHistoryListManual extends React.Component {
                 </div>
                 <div className= "manual-paragraf">
                     <div className = "manual-paragraf-title">Zaawansowane filtrowanie</div>
-                    Jeżeli nie odpowiadają ci filtry, które są widoczne na stronie możesz zawsze dostosowac je do swoich potrzeb. Zwróć uwagę, że wybrane filtry odpowiadają kolumnom tabeli w której widzisz postaci. W ten sposób możesz dostosować zarówno filtry jak i kolumny kolumny.
+                    Jeżeli nie odpowiadają ci filtry, które są widoczne na stronie możesz zawsze dostosowac je do swoich potrzeb. Zwróć uwagę, że wybrane filtry odpowiadają kolumnom tabeli w której widzisz postaci. W ten sposób możesz dostosować zarówno filtry jak i kolumny.
                     W tym celu kliknij przycisk <span className="yellow">Dostosuj filtry {tasks} </span>(znajdziesz go obok przycisku "Wyszukaj") otworzy się okienko z wszystkimi możliwymi filtrami. <span className="yellow">Zaznacz {check}</span> interesujące cię i kilknij <span className="yellow">Zastosuj</span>.
                 </div>
                 <div className="manual-paragraf">
                     <div className="manual-paragraf-title">Detale postaci</div>
                     Jeżeli chcesz podejrzec wszystkie statystki danej postaci (w tym również statystyki bojowe czy historie tej postaci) mozesz kliknąc przycisk <span className="yellow">Detale</span> będacy zawsze w najbardziej skrajnej po prawej kolumnie tabeli.
-                    Kliknięcie tego przycisku otworzy nową kartę będacą stroną agregującą wszystkie detale konkretnej postaci.
+                    Kliknięcie tego przycisku otworzy stronę agregującą wszystkie detale konkretnej postaci.
                 </div>
                 <div className="manual-paragraf">
                     <div className="manual-paragraf-title">Katalog historii</div>
-                    Wyszukiwanie historii działa na bardzo podobnej zasadzie co wyszukiwaniepostaci. Należy wybrać z menu opcję <span className="yellow">Katalogi Historii</span>. Po wytworzonej tabelce możemy <span className="yellow">filtrować i sortować</span>, a także zmieniać ilośc historii w liście czy <span className="yellow">wyswietlać detale</span>, aby przeczytać całą historie.
+                    Wyszukiwanie historii działa na bardzo podobnej zasadzie co wyszukiwanie postaci. Należy wybrać z menu opcję <span className="yellow">Katalogi Historii</span>. Po wyświetlonej tabeli możemy <span className="yellow">filtrować i sortować</span>, a także zmieniać ilość historii w liście czy <span className="yellow">wyswietlać detale</span>, aby przeczytać całą historie.
                     Z perspektywy detali historii możemy <span className="yellow">przemieszczać się między kolejnymi historiami</span> w tabelce za pomoca przycisków <span className="yellow"> {elementPrev} Poprzednia i Następna {elementNext}</span> umieszczonych na górze otwartego okna.
                 </div>
             </div>

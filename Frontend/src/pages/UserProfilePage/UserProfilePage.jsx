@@ -248,7 +248,7 @@ class UserProfilePage extends React.Component {
                 <div className = "user-profile-subtitle">Lista postaci:</div>
                 {/*ToDo get only a first 10 characters/histories on backend, not slice it on frontend*/}
                 {this.state.characters && this.state.characters.slice(0,10).map((item, i) => (
-                    <div className = "one-element-brief">
+                    <div className = "one-element-brief" id={"profileColumns"}>
                         <div className="column" id={"profileColumn"}>
                         <div className = "yellow-color">#{item.id}</div>
                         <div className = "user-profile-container-s"><div className = "yellow-color">Imię: </div></div>

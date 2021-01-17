@@ -82,6 +82,11 @@ padding: 3%;
 margin: 3%;
 }
 
+.one-element-brief#profileColumns{
+    width: 100%;
+    display: inline-block;
+}
+
 .short-history-title{
 text-align: center;
 font-weight: bold;

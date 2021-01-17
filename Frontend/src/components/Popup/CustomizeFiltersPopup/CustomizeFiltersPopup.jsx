@@ -1,8 +1,6 @@
 import React from 'react';
 import Modal from 'react-modal';
-import test from '../../../styles/popup.css';
 import button from "../../../styles/buttons.css";
-import popup from "../../../styles/popup.css";
 
 const customStyles = {
     content: {
@@ -45,7 +43,6 @@ class CustomizeFiltersPopup extends React.Component {
             <div className = "customize-button">
                 <Modal
                     isOpen={isOpen}
-                    // onAfterOpen={() => console.log("open")}
                     onRequestClose={() => onRequestClose()}
                     style={customStyles}
                     contentLabel={title}
@@ -53,9 +50,10 @@ class CustomizeFiltersPopup extends React.Component {
                     <form id="visibilityCharactersColumns" style={{zIndex: '100!important'}}>
                         <div className = "popup-body">
                         {columnsConfigReal && columnsConfigReal.map((item, i) => (
-                            <label className="container"><div className = "label">{item.title}</div>
+                            <label className="container">
                                 <input type="checkbox" defaultChecked={!item.hidden} id={item.field + "VisibilityCheckbox"}/>
                                 <span className="checkmark"/>
+                                <div className = "label">{item.title}</div>
                             </label>
                             
                         ))

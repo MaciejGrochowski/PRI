@@ -1,3 +1,5 @@
+import {CharacterAttribute} from "../../enums/CharacterAttribute";
+
 export const mapTalentsArrayToString = talents => {
     let output = ""
     talents = talents.map(s => s.name)
@@ -17,12 +19,15 @@ export const mapSkillsArrayToString = skills => {
 }
 
 export const generateOneAttributeSuccessHandler = (attrName, response) => {
-    if (attrName === "Miejsce urodzenia") return {birthPlace: response.data.birthPlace}
-    if (attrName === "Rasa") return {race: response.data.race}
-    if (attrName === "Płeć") return {sex: response.data.sex}
-    if (attrName === "Nazwisko") return {surname: response.data.surname}
-    if (attrName === "Imię") return {name: response.data.name}
-    if (attrName === "Bazowe statystyki") return {
+    console.log(attrName);
+    console.log(response);
+    console.log(CharacterAttribute.BIRTHPLACE)
+    if (attrName === CharacterAttribute.BIRTHPLACE.name) return {birthPlace: response.data.birthPlace}
+    if (attrName === CharacterAttribute.RACE.name) return {race: response.data.race}
+    if (attrName === CharacterAttribute.SEX.name) return {sex: response.data.sex}
+    if (attrName === CharacterAttribute.SURNAME.name) return {surname: response.data.surname}
+    if (attrName === CharacterAttribute.NAME.name) return {name: response.data.name}
+    if (attrName === CharacterAttribute.BASESTATS.name) return {
         baseWeaponSkills: response.data.baseWeaponSkills, baseBallisticSkills: response.data.baseBallisticSkills,
         baseStrength: response.data.baseStrength, baseToughness: response.data.baseToughness,
         baseAgility: response.data.baseAgility, baseIntelligence: response.data.baseIntelligence,
@@ -30,31 +35,31 @@ export const generateOneAttributeSuccessHandler = (attrName, response) => {
         baseAttacks: response.data.baseAttacks, baseWounds: response.data.baseWounds,
         baseMovement: response.data.baseMovement, baseMagic: response.data.baseMagic
     }
-    if (attrName === "Wzrost") return {height: response.data.height}
-    if (attrName === "Waga") return {weight: response.data.weight}
-    if (attrName === "Kolor oczu") return {eyeColor: response.data.eyeColor}
-    if (attrName === "Kolor włosów") return {hairColor: response.data.hairColor}
-    if (attrName === "Data urodzenia") return {
+    if (attrName === CharacterAttribute.HEIGHT.name) return {height: response.data.height}
+    if (attrName === CharacterAttribute.WEIGHT.name) return {weight: response.data.weight}
+    if (attrName === CharacterAttribute.EYECOLOR.name) return {eyeColor: response.data.eyeColor}
+    if (attrName === CharacterAttribute.HAIRCOLOR.name) return {hairColor: response.data.hairColor}
+    if (attrName === CharacterAttribute.BIRTHDATE.name) return {
         dayOfBirth: response.data.dayOfBirth,
         yearOfBirth: response.data.yearOfBird,
         monthOfBirth: response.data.monthOfBirth
     }
-    if (attrName === "Dominujące emocje") return {dominatingEmotions: response.data.dominatingEmotions}
-    if (attrName === "Przepowiednia") return {prediction: response.data.prediction}
-    if (attrName === "Profesja") return {previousCareers: response.data.previousCareers, currentCareer: response.data.currentCareer}
-    if (attrName === "Statystyki końcowe") return {endWeaponSkills: response.data.endWeaponSkills, endBallisticSkills: response.data.endBallisticSkills,
+    if (attrName === CharacterAttribute.DOMINATINGEMOTIONS.name) return {dominatingEmotions: response.data.dominatingEmotions}
+    if (attrName === CharacterAttribute.PREDICTION.name) return {prediction: response.data.prediction}
+    if (attrName === CharacterAttribute.CURRENTCAREER.name) return {previousCareers: response.data.previousCareers, currentCareer: response.data.currentCareer}
+    if (attrName === CharacterAttribute.ENDSTATS.name) return {endWeaponSkills: response.data.endWeaponSkills, endBallisticSkills: response.data.endBallisticSkills,
         endStrength: response.data.endStrength, endToughness: response.data.endToughness,
         endAgility: response.data.endAgility, endIntelligence: response.data.endIntelligence,
         endWillPower: response.data.endWillPower, endFellowship: response.data.endFellowship,
         endAttacks: response.data.endAttacks, endWounds: response.data.endWounds,
         endMovement: response.data.endMovement, endMagic: response.data.endMagic,
     }
-    if (attrName === "Miejsce pobytu") return {livePlace: response.data.livePlace}
-    if (attrName === "Cechy wyglądu") return {apperances: response.data.apperance}
-    if (attrName === "Cechy charakteru") return {personalities: response.data.personality}
-    if (attrName === "Zdolności") return {talents: mapTalentsArrayToString(response.data.talents)}
-    if (attrName === "Umiejętności") return {skills: mapSkillsArrayToString(response.data.skills)}
-    if (attrName === "Religia") return {religion: response.data.religion}
+    if (attrName === CharacterAttribute.LIVEPLACE.name) return {livePlace: response.data.livePlace}
+    if (attrName === CharacterAttribute.APPERANCE.name) return {apperances: response.data.apperance}
+    if (attrName === CharacterAttribute.PERSONALITY.name) return {personalities: response.data.personality}
+    if (attrName === CharacterAttribute.TALENTS.name) return {talents: mapTalentsArrayToString(response.data.talents)}
+    if (attrName === CharacterAttribute.SKILLS.name) return {skills: mapSkillsArrayToString(response.data.skills)}
+    if (attrName === CharacterAttribute.RELIGION.name) return {religion: response.data.religion}
 }
 
 export const mapArrayToStringWithoutSpaces = array => {

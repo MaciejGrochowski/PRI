@@ -18,6 +18,8 @@ public interface CharacterRepository extends PagingAndSortingRepository<Characte
 
     public Page<Character> findAll();
 
+    public List<Character> findByIdIn(List<Long> ids);
+
 
 
 }

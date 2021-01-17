@@ -57,3 +57,13 @@ color: white !important;
 background:#292F2F;
 border-bottom: none !important;
 }
+
+.rdw-suggestion-dropdown{
+    min-width: 300px;
+}
+
+.rdw-suggestion-option:hover{
+    cursor: pointer;
+    color: #FFD859;
+    background: #434e4e;
+}

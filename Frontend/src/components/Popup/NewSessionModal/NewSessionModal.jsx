@@ -2,9 +2,8 @@ import React from 'react';
 import Modal from 'react-modal';
 import button from "../../../styles/buttons.css";
 import {TextField} from "@material-ui/core";
-import PasswordField from "../../PasswordField/PasswordField";
-import {textsPolish} from "../../../commons/texts-pl";
-import {validationPassword} from "../../../pages/RegisterPage/validation";
+import "../../../styles/login-page.css";
+import {polishCodeErrors} from "../../../commons/texts-pl";
 
 
 const customStyles = {
@@ -28,12 +27,36 @@ class NewSessionModal extends React.Component {
     constructor() {
         super();
         this.state = {
-            title: "",
-            description: ""
+            name: "",
+            description: "",
+            errorName: false,
+            errorNameText: ""
+
         }
     }
+
+    onSave = (name, description) => {
+        if(!name || name === "" || name.length > 128){
+            this.setState({errorName: true, errorNameText: polishCodeErrors.NO_EMPTY_SESSION_NAME})
+        }
+        else{
+            this.setState({name: "", description: ""})
+            this.props.onSave(name, description);
+        }
+
+    }
+
+    handleChangeName = name => {
+        if(!name || name === "" || name.length > 128){
+            this.setState({name: name, errorName: true, errorNameText: polishCodeErrors.NO_EMPTY_SESSION_NAME})
+        }
+        else{
+            this.setState({name: name, errorName: false, errorNameText: ""})
+        }
+    }
+
     render() {
-        const {isOpen, onRequestClose, onSave, title} = this.props;
+        const {isOpen, onRequestClose, title} = this.props;
 
 
         return (
@@ -44,9 +67,10 @@ class NewSessionModal extends React.Component {
                         onRequestClose={() => onRequestClose()}
                         style={customStyles}
                     >
-                        <div>{title}</div>
+                    <div className="popup-margin-container">
+                        <div className="login-title">{title}</div>
 
-                        <TextField label="Tytuł" value={this.state.title} onChange={event => this.setState({title: event.target.value})}/>
+                        <div style={{width: "100%"}}><TextField fullWidth={true} label="Tytuł" value={this.state.name} error={this.state.errorName} helperText = {this.state.errorNameText} onChange={event => this.handleChangeName(event.target.value)}/></div>
 
 
                         <TextField
@@ -59,8 +83,9 @@ class NewSessionModal extends React.Component {
                             multiline
                             variant="outlined"
                             onChange={(event) => this.setState({description: event.target.value})} value={this.state.description}/>
-
-                            <button onClick={() => onSave(this.state.title, this.state.description)}>Zapisz</button>
+<div className="margin-auto">
+                            <div className="block-component"><button className = "zaloguj-button" disabled={this.state.errorName} onClick={() => this.onSave(this.state.name, this.state.description)}>Zapisz</button>
+                            </div></div></div>
                     </Modal>
                 </div></div>
         );

@@ -3,8 +3,8 @@ import Modal from 'react-modal';
 import button from "../../../styles/buttons.css";
 import {TextField} from "@material-ui/core";
 import PasswordField from "../../PasswordField/PasswordField";
-import {textsPolish} from "../../../commons/texts-pl";
 import {validationPassword} from "../../../pages/RegisterPage/validation";
+import {polishCodeErrors} from "../../../commons/texts-pl";
 
 
 const customStyles = {
@@ -31,7 +31,9 @@ class ChangeCredentialsModal extends React.Component {
             username: "",
             password: "",
             newPassword: "",
-            errorNewPassword: {}
+            confirmNewPassword: "",
+            errorNewPassword: {},
+            errorConfirmNewPassword: {}
         }
     }
 
@@ -66,10 +68,46 @@ class ChangeCredentialsModal extends React.Component {
         }
     }
 
+    handleChangeConfirmNewPassword = event => {
+        this.setState({confirmNewPassword: event.target.value})
+        if(event.target.value !== this.state.newPassword){
+            this.setState({
+                errorConfirmNewPassword: {
+                    errorState: true,
+                    errorText: "Hasła nie są identyczne"
+                }
+            })
+        }
+        else{
+            this.setState({errorConfirmNewPassword: {}})
+        }
+    }
+
+    enterListener = event => {
+        if (event.keyCode === 13 && !this.isButtonDisabled()) {
+            this.props.onSave(this.state.username, this.state.password, this.state.newPassword);
+        }
+    }
+
+    isButtonDisabled = () => {
+        if(this.props.isUsernameChanging){
+            return this.state.username==="" || this.state.password===""
+        }
+        else{
+            return this.state.password==="" || this.state.newPassword==="" || this.state.errorNewPassword.errorState ||
+                this.state.errorConfirmNewPassword.errorState || this.state.confirmNewPassword===""
+        }
+    }
+
+    onRequestClose = () => {
+        this.setState({password: "", newPassword: "", username: ""});
+        this.props.onRequestClose();
+    }
+
 
 
     render() {
-        const {isOpen, onRequestClose, isUsernameChanging, isPasswordChanging, onSave} = this.props;
+        const {isOpen, isUsernameChanging, isPasswordChanging, onSave, errorCode} = this.props;
 
 
         return (
@@ -77,7 +115,7 @@ class ChangeCredentialsModal extends React.Component {
                 <div className = "popup-body">
                     <Modal
                         isOpen={isOpen}
-                        onRequestClose={() => onRequestClose()}
+                        onRequestClose={() => this.onRequestClose()}
                         style={customStyles}
                     >
                         <div className = "positive-message">Uwaga - po zmianie użytkownika lub hasła zostaniesz automatycznie wylogowany. Możesz zalogować się ponownie przy użyciu nowych danych.</div>
@@ -89,22 +127,39 @@ class ChangeCredentialsModal extends React.Component {
 <div className="block-component">
     <PasswordField
         handleChangePassword={this.handleChangePassword}
-        label={"Stare hasło"}
+        label={isUsernameChanging ? "Hasło" : "Stare hasło"}
         value={this.state.oldPassword}
+        onKeyDown={(e) => this.enterListener(e)}
     />
 </div>
-<div className="block-component">
+
                         {isPasswordChanging &&
-                        <PasswordField
+                        <>
+                        <div className="block-component"><PasswordField
                             error={this.state.errorNewPassword.errorState}
                             label={"Nowe hasło"}
                             value={this.state.newPassword}
                             errorText={this.state.errorNewPassword.errorText}
                             handleChangePassword={this.handleChangeConfirmPassword}
-                        />}
+                            onKeyDown={(e) => this.enterListener(e)}
+                        />
+                        </div><div className="block-component">
+                            <PasswordField
+                                error={this.state.errorConfirmNewPassword.errorState}
+                                label={"Powtórz nowe hasło"}
+                                value={this.state.confirmNewPassword}
+                                errorText={this.state.errorConfirmNewPassword.errorText}
+                                handleChangePassword={this.handleChangeConfirmNewPassword}
+                                onKeyDown={(e) => this.enterListener(e)}
+                            />
                         </div>
+
+                        </>}
+
+    {errorCode && <div className = "error-message">{polishCodeErrors[errorCode]}</div>}
 <div className="block-component">
-                        <button type="submit" className="zaloguj-button" onClick={() => onSave(this.state.username, this.state.password, this.state.newPassword)}>Zapisz</button>
+
+                        <button type="submit" disabled={this.isButtonDisabled()} className="zaloguj-button" onClick={() => onSave(this.state.username, this.state.password, this.state.newPassword)}>Zapisz</button>
 </div>
 
 </div>

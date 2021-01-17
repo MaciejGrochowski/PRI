@@ -31,7 +31,7 @@ class Table extends React.Component {
                 {
                     title: 'Detale',
                     field: '',
-                    render: rowData => <Link to={this.props.detailsLink + "/" + rowData.id} className = "detaleButton small" onClick={() => this.props.onDetailsClick(rowData)}>Detale</Link>,
+                    render: rowData => <Link to={this.props.detailsLink + "/" + rowData.id} className = "detaleButton auto-margin small" onClick={() => this.props.onDetailsClick(rowData)}>Detale</Link>,
                     sorting: false
                 })
             this.setState({columnsConfig: columnsConfig})
@@ -72,7 +72,7 @@ class Table extends React.Component {
                     }
                 }}
                 onOrderChange={(orderedColumnId, orderDirection) => onOrderChange(orderedColumnId, orderDirection)}
-
+                onSelectionChange={(rows) => this.props.onSelectionChange(rows)}
 
                 components={{
                     // Row: props => (<div>{console.log(props)}<span>{props.data.name}</span><span>{props.data.surname}</span></div>),

@@ -72,7 +72,7 @@ class NewPasswordPage extends React.Component {
             </div>)
 
         if(this.state.error)
-            return (<div classname="plainPage">Coś poszło nie tak! Jeśli nie możesz zmienić swojego hasła, skontaktuj się z administracją.</div>)
+            return (<div className="error-message">Coś poszło nie tak! Jeśli nie możesz zmienić swojego hasła, skontaktuj się z administracją.</div>)
 
         return (
                 <div className = "container-login-page">

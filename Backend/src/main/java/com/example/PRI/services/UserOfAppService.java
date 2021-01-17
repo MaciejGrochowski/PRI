@@ -12,6 +12,7 @@ import com.example.PRI.exceptions.notUniqueArgumentException;
 import com.example.PRI.repositories.TokenRepository;
 import com.example.PRI.repositories.UserOfAppRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
@@ -71,6 +72,7 @@ public class UserOfAppService extends GeneralService {
     }
 
     public String getUsernameFromAuthentication(Authentication auth){
+        if(auth==null) return null;
         User user = (User)auth.getPrincipal();
         return user.getUsername();
     }
@@ -111,23 +113,24 @@ public class UserOfAppService extends GeneralService {
         }
     }
 
-    public void updateUserCredentials(@Valid UserOfAppCredentialsInputDto user, Authentication auth) throws notUniqueArgumentException {
+    public ResponseEntity<?> updateUserCredentials(@Valid UserOfAppCredentialsInputDto user, Authentication auth) throws notUniqueArgumentException {
         String oldUsername = ((User) auth.getPrincipal()).getUsername();
 
         if(passwordEncoder.matches(user.getOldPassword(), ((User) auth.getPrincipal()).getPassword())){
-            updateUserCredentials(oldUsername, user);
+            return updateUserCredentials(oldUsername, user);
         }
-        else throw new notUniqueArgumentException("Niepoprawne stare hasło", new Exception());
+        return ResponseEntity.badRequest().body("BAD_PASSWORD");
     }
-    private void updateUserCredentials(String oldUsername, UserOfAppCredentialsInputDto user) throws notUniqueArgumentException {
+    private ResponseEntity<?> updateUserCredentials(String oldUsername, UserOfAppCredentialsInputDto user) throws notUniqueArgumentException {
         if (userOfAppRepository.findByUsername(user.getUsername()) != null && !oldUsername.equals(userOfAppRepository.findByUsername(user.getUsername()).getUsername())) {
-            throw new notUniqueArgumentException("Już istnieje taka nazwa użytkownika", new Exception());
+            return ResponseEntity.badRequest().body("USER_ALREADY_EXISTS");
         }
         else {
             UserOfApp u = userOfAppRepository.findByUsername(oldUsername);
             u.setUsername(user.getUsername());
             u.setPassword(passwordEncoder.encode(user.getNewPassword()));
             userOfAppRepository.save(u);
+            return ResponseEntity.ok(u.getId());
         }
 
     }
@@ -173,6 +176,11 @@ public class UserOfAppService extends GeneralService {
 
     }
 
+
+    public UserOfApp getUserByAuthentication(Authentication auth){
+        return this.findByUsername(this.getUsernameFromAuthentication(auth));
+    }
+  
     public void sendHelloEmail(UserOfApp uapp) throws MessagingException {
         emailService.sendWelcomeMail(uapp.getUsername(), uapp.getMail(), uapp.getPassword(), uapp.getUUIDActivation());
     }
@@ -196,7 +204,6 @@ public class UserOfAppService extends GeneralService {
             return user.getId();
         }
         else return -1L;
-
-
     }
+  
 }

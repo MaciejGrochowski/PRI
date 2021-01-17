@@ -14,6 +14,9 @@ import {table} from "../../styles/tables.css"
 import button from "../../styles/buttons.css";
 import Modal from "react-modal";
 import {fronendUrls} from "../../commons/urls";
+import {getInfoFromToken, getToken} from "../../services/util";
+import AddCharactersToSessionModal from "../../components/Popup/AddCharactersToSessionModal/AddCharactersToSessionModal";
+import sessionService from "../../services/sessionService";
 
 class CharactersListPage extends React.Component {
 
@@ -37,7 +40,8 @@ class CharactersListPage extends React.Component {
                 race: true,
                 currentCareer: true
             },
-            columnsConfig: []
+            columnsConfig: [],
+            idsSelectedCharacters: []
         }
     }
 
@@ -49,6 +53,11 @@ class CharactersListPage extends React.Component {
 
     componentDidUpdate(prevProps, prevState, snapshot) {
         if (prevState.autocompleteData !== this.state.autocompleteData) this.setColumnsConfig();
+        if(prevProps.match.params.username !== this.props.match.params.username){
+            console.log("Ziemniak")
+            this.getCharacters();
+            this.getAutoCompleteCharacters();
+        }
     }
 
     setColumnsConfig = () => {
@@ -212,6 +221,10 @@ class CharactersListPage extends React.Component {
                 createdBy: username
             }
         })
+        else{
+            let filterObject = this.state.filterObject;
+            delete filterObject.createdBy;
+        }
 
         const requestBody = {
             sortedBy: this.state.sortBy,
@@ -293,14 +306,41 @@ class CharactersListPage extends React.Component {
         return fronendUrls.characterDetails + "/" + rowData.id;
     }
 
+
+    onSelectionChange = rows => {
+        const idsSelectedCharacters = rows.map(row => row.id);
+        this.setState({idsSelectedCharacters: idsSelectedCharacters})
+    }
+
+    isLogged = () => {
+        return getInfoFromToken(getToken());
+    }
+
+    getUsername = () => {
+        return getInfoFromToken(getToken()).sub;
+    }
+
+    openAddCharacterToSessionModal = () => {
+        this.setState({characterToSessionModalVisible: true})
+    }
+
+    addCharactersToSession = (selectedSessionId) => {
+        if(this.state.idsSelectedCharacters.length === 0) {
+            this.setState({characterToSessionModalVisible: false})
+        }
+        else{
+            sessionService.addCharactersToSession(this.state.idsSelectedCharacters, selectedSessionId)
+                .then(r => this.setState({characterToSessionModalVisible: false}))
+                .catch(e => console.log(e))
+        }
+
+    }
+
+
     render() {
         return (
-            <div className="globalStyles">
+            <div className="pageWithContext">
                 <header className="App-header">
-
-                    {this.props.match.params.username &&
-                    <div>Postacie użytkownika {this.props.match.params.username}</div>
-                    }
 
                     <Filter
                         columnsConfig={this.state.columnsConfig}
@@ -313,9 +353,23 @@ class CharactersListPage extends React.Component {
                         onSave={this.saveChangeColumns}
                         overlayClassName="Overlay"
                         columnsConfig={this.state.columnsConfig}
-                        title="Przykład"
+                        title="Dostosuj filtry"
                         isOpen={this.state.isFilterListExpanded}
                     />
+
+                    {this.isLogged() && <button className="reverse addToSeesionButton" onClick={this.openAddCharacterToSessionModal}>Dodaj zaznaczone do sesji</button>}
+
+                    <AddCharactersToSessionModal
+                    onRequestClose={() => this.setState({characterToSessionModalVisible: false})}
+                    isOpen={this.state.characterToSessionModalVisible}
+                    onSave={this.addCharactersToSession}
+                    username={this.isLogged() ? this.getUsername() : ""}
+
+                    />
+                    {this.props.match.params.username &&
+                    <div>Postacie użytkownika {this.props.match.params.username}</div>
+                    }
+
                     <div className="table">
                         <Table
                             style={table}
@@ -332,6 +386,7 @@ class CharactersListPage extends React.Component {
                             detailsLink={fronendUrls.characterDetails}
                             onOrderChange={this.onOrderChange}
                             selection
+                            onSelectionChange={this.onSelectionChange}
                         />
                     </div>
                 </header>

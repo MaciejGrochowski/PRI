@@ -5,6 +5,12 @@
     justify-content: left;
     padding: 5%;
   }
+
+ .popup-margin-container{
+ display: block;
+ margin: auto;
+ width: 70%;
+ }
 .historyDetailBody{
     padding: 5%;
     padding-top: 2%;
@@ -12,8 +18,8 @@
 }
 .auto-margin{
 margin: auto;
-padding-top: 3%;
-padding-bottom: 3%;
+padding-top: 5px;
+padding-bottom: 5px;
 }
 
 .small{

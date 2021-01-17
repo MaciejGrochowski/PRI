@@ -47,10 +47,10 @@ public class CharacterDetailsOutputDto {
     String currentCareer;
 
     @ManyToMany
-    List<Skill> skills;
+    List<Skill> skills; //ToDo use SkillOutputDto
 
     @ManyToMany
-    List<Talent> talents;
+    List<Talent> talents; //ToDo use TalentOutputDto
 
     Integer endWeaponSkills;
     Integer endBallisticSkills;

@@ -14,6 +14,11 @@
     min-width: min-content;
 }
 
+.column#profileColumn{
+    display: inline-block;
+}
+
+
 .column-1{
     display: block;
     width: 35%;

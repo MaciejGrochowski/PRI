@@ -6,7 +6,6 @@ import {getInfoFromToken, getToken, logoutCookie} from "../../services/util";
 import {Link} from "react-router-dom";
 import {fronendUrls} from "../../commons/urls";
 import "../../styles/userProfile.css";
-import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 import ChangeCredentialsModal from "../../components/Popup/ChangeCredentialsModal/ChangeCredentialsModal";
 import loginService from "../../services/loginService";
 import {loginStatusChange} from "../../actions";
@@ -15,6 +14,8 @@ import {Redirect} from "react-router";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faEnvelope} from "@fortawesome/free-solid-svg-icons";
 import{faFacebook, faDiscord} from "@fortawesome/free-brands-svg-icons";
+import {polishCodeErrors} from "../../commons/texts-pl";
+import {validationDiscord, validationFacebook} from "../RegisterPage/validation";
 
 const mail = <FontAwesomeIcon icon={faEnvelope}/>
 const fb = <FontAwesomeIcon icon={faFacebook}/>
@@ -34,7 +35,8 @@ class UserProfilePage extends React.Component {
             histories: [],
             sessions: [],
             isPasswordChanging: false,
-            isUsernameChanging: false
+            isUsernameChanging: false,
+            userDoesntExist: false
         }
     }
 
@@ -45,7 +47,9 @@ class UserProfilePage extends React.Component {
     getUser = () => {
         userService.getUserByUsername(this.props.match.params.username)
             .then(r => this.getUserSuccessHandler(r))
+            .catch(e => this.setState({userDoesntExist: true}))
     }
+
 
     getUserSuccessHandler = response => {
         this.setState({
@@ -97,33 +101,48 @@ class UserProfilePage extends React.Component {
 
         userService.editCredentials(input)
             .then(r => this.logout())
-            .catch(e => console.log(e))
+            .catch(e => this.editCredentialsErrorHandler(e))
+    }
 
-
-        this.setState({
-            isPasswordChanging: false,
-            isUsernameChanging: false,
-            usernameOrPasswordChanged: true
-        })
-
+    editCredentialsErrorHandler = error => {
+        this.setState({errorCode: error.response.data})
     }
 
     logout = () => {
         loginService.logout(getToken())
             .then(r => {
                 this.props.loginStatusChange(false);
+                this.setState({
+                    isPasswordChanging: false,
+                    isUsernameChanging: false,
+                    usernameOrPasswordChanged: true
+                })
                 logoutCookie();
             })
             .catch(e => {
                 this.props.loginStatusChange(false);
+                this.setState({
+                    isPasswordChanging: false,
+                    isUsernameChanging: false,
+                    usernameOrPasswordChanged: true
+                })
                 logoutCookie();
             })
 
 
     }
 
+    shorterDate(data){
+        let date = new Date(data)
+        return date.getDate().toString() + "-" + ("0" + (date.getMonth() + 1)).slice(-2).toString() + "-" + date.getFullYear().toString();
+    }
+
     onClickEditButton = () => {
         this.setState({isEditingProfile: true})
+    }
+
+    isDisabledEditProfileButton = () => {
+        return validationFacebook(this.state.facebook || "").errorState || validationDiscord(this.state.discord || "").errorState
     }
 
     render(){
@@ -132,11 +151,20 @@ class UserProfilePage extends React.Component {
             return <Redirect push to={fronendUrls.mainPage} />
         }
 
+        if(this.state.userDoesntExist){
+            return <div className = "error-message">{polishCodeErrors.USER_DOESNT_EXIST}</div>
+        }
+
         return (
             <div className = "user-profile-main-div">
             <div className = "page-title"> {this.state.username} </div>
 
-
+                {this.isProfileLoggedUser() && <div className = "flex-element">
+                    <button className = "detaleButton buttonOnProfile" onClick={() => this.setState({isPasswordChanging: true})}>Edytuj hasło</button>
+                    <button className = "detaleButton buttonOnProfile" onClick={() => this.setState({isUsernameChanging: true})}>Edytuj nazwę użytkownika</button>
+                    {!this.state.isEditingProfile && <button className = "detaleButton" onClick={this.onClickEditButton}>Edytuj profil</button>}
+                    {this.state.isEditingProfile && <button className = "detaleButton" disabled={this.isDisabledEditProfileButton()} onClick={() => this.saveProfile()}>Zapisz</button>}
+                </div>}
 
             <div className = "user-profile-container">
 
@@ -154,52 +182,91 @@ class UserProfilePage extends React.Component {
                         variant="outlined"
                             onChange={(event) => this.setState({description: event.target.value})} disabled={!this.state.isEditingProfile} value={this.state.description}/></div>
             </div>
-
+<div className="mail-fb-discord-center">
             <div className = "mail-fb-dc-component">
 
 
-                <div className = "user-profile-container"><div className = "text"><span>{mail}</span> <TextField disabled value={this.state.mail}/></div></div>
+                <div className = "user-profile-container"><div className = "text"><span>{mail}</span> <div className="text-2"><a href={"mailto:" + this.state.mail}>Wyślij maila</a></div></div></div>
 
-                <div className = "user-profile-container"><div className = "text"><span>{fb}</span> <TextField onChange={(event) => this.setState({facebook: event.target.value})} disabled={!this.state.isEditingProfile} value={this.state.facebook}/></div></div>
+                <div className = "user-profile-container"><div className = "text"><span>{fb}</span>
+                    {(this.state.isEditingProfile || !this.state.facebook || this.state.facebook==="") ? <TextField
+                    onChange={(event) => this.setState({facebook: event.target.value})}
+                    disabled={!this.state.isEditingProfile}
+                    helperText = {validationFacebook(this.state.facebook || "").errorText}
+                    error={validationFacebook(this.state.facebook || "").errorState}
+                    value={this.state.facebook}/>
 
-                <div className = "user-profile-container"><div className = "text"><span>{discord}</span>  <TextField onChange={(event) => this.setState({discord: event.target.value})} disabled={!this.state.isEditingProfile} value={this.state.discord}/></div></div>
+                    :
+                        <div className="text-2"><a href={this.state.facebook}>Profil na facebook</a></div>}
 
+                    </div></div>
 
+                <div className = "user-profile-container"><div className = "text"><span>{discord}</span> <div className="text-2"><TextField
+                        onChange={(event) => this.setState({discord: event.target.value})}
+                        disabled={!this.state.isEditingProfile}
+                        value={this.state.discord}
+                        helperText = {validationDiscord(this.state.discord || "").errorText}
+                        error={validationDiscord(this.state.discord || "").errorState}
+
+                    /></div></div></div>
+
+            </div>
 </div>
-                {this.isProfileLoggedUser() && <div className = "user-profile-block margin-auto">
-                    <button className = "detaleButton" onClick={() => this.setState({isPasswordChanging: true})}>Edytuj hasło</button>
-                    <button className = "detaleButton" onClick={() => this.setState({isUsernameChanging: true})}>Edytuj nazwę użytkownika</button>
-                    {!this.state.isEditingProfile && <button className = "detaleButton" onClick={this.onClickEditButton}>Edytuj profil</button>}
-                    {this.state.isEditingProfile && <button className = "detaleButton" onClick={() => this.saveProfile()}>Zapisz</button>}
-                </div>}
+
 
                 <ChangeCredentialsModal
                 title={this.state.isPasswordChanging? "Edytuj hasło": "Edytuj nazwę użytkownika"}
                 isOpen={this.state.isPasswordChanging || this.state.isUsernameChanging}
-                onRequestClose={() => this.setState({isPasswordChanging: false, isUsernameChanging: false})}
+                onRequestClose={() => this.setState({isPasswordChanging: false, isUsernameChanging: false, errorCode: ""})}
                 isUsernameChanging={this.state.isUsernameChanging}
                 isPasswordChanging={this.state.isPasswordChanging}
                 onSave={this.saveCredentials}
                 username={this.state.username}
+                errorCode={this.state.errorCode}
 
                 />
 
 
 </div>
+<div className = "user-profile-block">
+                <div className = "user-profile-subtitle">Prowadzone sesje:</div>
+
+    {this.state.sessions && this.state.sessions.slice(0,10).map((item, i) => (
+        <div className = "one-element-brief">
+            <div className = "user-profile-container-s"><div className = "yellow-color">Data stworzenia: </div>	&nbsp; {this.shorterDate(item.createdDate)}</div>
+            <div className = "user-profile-container-s"><div className = "yellow-color">Data modyfikacji: </div>	&nbsp; {this.shorterDate(item.lastModifiedDate)}</div>
+            <div className="short-history-title">{item.name}</div>
+            <div>{item.description}</div>
+        </div>
+    ))
+    }
+    <Link className="detaleButton" to={fronendUrls.sessionList + "/" + this.state.username}>Więcej sesji</Link>
+</div>
+
 <div className = "user-profile-container">
 <div className = "user-profile-block">
                 <div className = "user-profile-subtitle">Lista postaci:</div>
                 {/*ToDo get only a first 10 characters/histories on backend, not slice it on frontend*/}
                 {this.state.characters && this.state.characters.slice(0,10).map((item, i) => (
-                    <div className = "one-element-brief">
+                    <div className = "one-element-brief" id={"profileColumns"}>
+                        <div className="column" id={"profileColumn"}>
                         <div className = "yellow-color">#{item.id}</div>
-                        <div className = "user-profile-container-s"><div className = "yellow-color">Imię: </div>	&nbsp; {item.name}</div>
-                        <div className = "user-profile-container-s"><div className = "yellow-color">Nazwisko:	&nbsp; </div>{item.surname}</div>
-                        <div className = "user-profile-container-s"><div className = "yellow-color">Rasa:	&nbsp; </div>{item.race}</div>
-                        <div className = "user-profile-container-s" ><div className = "yellow-color">Płeć: 	&nbsp;</div>{item.sex}</div>
-                        <div className = "user-profile-container-s"><div className = "yellow-color">Profesja: 	&nbsp;</div>{item.career}</div>
-                        <div className = "user-profile-container-s"><div className = "yellow-color">Miejsce pobytu:	&nbsp; </div>{item.livePlace}</div>
+                        <div className = "user-profile-container-s"><div className = "yellow-color">Imię: </div></div>
+                        <div className = "user-profile-container-s"><div className = "yellow-color">Nazwisko:</div></div>
+                        <div className = "user-profile-container-s"><div className = "yellow-color">Rasa:</div></div>
+                        <div className = "user-profile-container-s" ><div className = "yellow-color">Płeć:</div></div>
+                        <div className = "user-profile-container-s"><div className = "yellow-color">Profesja:</div></div>
+                        <div className = "user-profile-container-s"><div className = "yellow-color">Miejsce pobytu:</div></div>
                         {/*<Link className = "detaleButton" to={fronendUrls.historyList + "/" + item.id}><div className = "normal-text">Więcej</div></Link>*/}
+                        </div>
+                        <div className="column" id={"profileColumn"}>
+                            <div>{item.name}</div>
+                            <div> {item.surname}</div>
+                            <div>{item.race}</div>
+                            <div>{item.sex}</div>
+                            <div>{item.career}</div>
+                            <div>{item.livePlace}</div>
+                        </div>
                     </div>
                 ))
                 }
@@ -218,6 +285,8 @@ class UserProfilePage extends React.Component {
                 ))
                 }
                 <Link className="detaleButton" to={fronendUrls.historyList + "/user/" + this.state.username}>Więcej historii</Link>
+
+
 </div>
 </div>
 </div>

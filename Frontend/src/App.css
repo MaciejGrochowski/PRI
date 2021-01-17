@@ -33,7 +33,9 @@
 /* .MuiInputBase-input{
 overflow-wrap: break-word!important;
 } */
-
+.popup-margin-container .MuiInput-root{
+    width: 100%;
+}
 .MuiFormControl-root{
   margin-top: 2%!important;
   color: white!important;
@@ -224,4 +226,20 @@ background-color: #292F2F;
 
 .CoolTooltip-NonActive{
   display: none;
+}
+
+@media only screen and (max-width: 1359px) {
+  .column#stats{
+    min-width: 60% !important;
+  }
+  .container-stats#statisticContainer{
+    justify-content: center;
+  }
+}
+
+
+@media only screen and (min-width: 1360px) {
+  .column#stats{
+    min-width: 50% !important;
+  }
 }

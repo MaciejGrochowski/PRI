@@ -13,21 +13,21 @@ class CharacterCombatStats extends React.Component{
     {
         const {characterData} = this.props
         return (
-            <div className = "container-stats">
-                <div className = "column">
+            <div className = "container-stats" id={"statisticContainer"}>
+                <div className = "column" id={"stats"}>
             <CharacterDetailsCombatStatsView
                 title="Umiejętności bojowe"
                 data={characterData}
                 />
                 </div>
             <div className = "column-s">
-            <div className = "column">
+            <div className = "column" id={"stats"}>
                 <CharacterDetailsSkillsView
                 title="Umiejętności"
                 data={characterData.skills}
                 />
                 </div>
-                <div className = "column">
+                <div className = "column" id={"stats"}>
                 <CharacterDetailsSkillsView
                     title="Zdolności"
                     data={characterData.talents}

@@ -9,6 +9,7 @@ import com.example.PRI.dtos.users.UserOfAppDetailsInputDto;
 import com.example.PRI.exceptions.notUniqueArgumentException;
 import com.example.PRI.services.UserOfAppService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,9 +24,12 @@ public class UserOfAppController {
 
 
         @Get("/user/{username}")
-        public UserOfAppDetailsOutputDto getDetailsByUsername(@PathVariable String username){
+        public ResponseEntity<?> getDetailsByUsername(@PathVariable String username){
             UserOfAppDetailsOutputDto output = userOfAppService.getDetailsByUsername(username);
-            return output;
+            if(output==null){
+                return ResponseEntity.badRequest().body("USER_DOESNT_EXIST");
+            }
+            return ResponseEntity.ok(output);
         }
 
         @Put
@@ -34,8 +38,8 @@ public class UserOfAppController {
         }
 
         @Put("/credentials")
-        public void updateUserDetails(@Valid @RequestBody UserOfAppCredentialsInputDto user, Authentication auth) throws notUniqueArgumentException {
-            userOfAppService.updateUserCredentials(user, auth);
+        public ResponseEntity<?> updateUserDetails(@Valid @RequestBody UserOfAppCredentialsInputDto user, Authentication auth) throws notUniqueArgumentException {
+            return userOfAppService.updateUserCredentials(user, auth);
         }
 
 

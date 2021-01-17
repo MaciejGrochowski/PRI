@@ -1,14 +1,15 @@
 import React from "react";
-import {Link} from "react-router-dom";
 import characterService from "../../services/characterService";
 import CharacterDetailsStatsView from "../../components/CharacterDetails/CharacterDetailsStatsView";
-import CharacterDetailsSkillsView from "../../components/CharacterDetails/CharacterDetailsSkillsView";
-import CharacterDetailsCombatStatsView from "../../components/CharacterDetails/CharacterDetailsCombatStatsView";
-import pageName from "../../styles/page.css";
 import CharacterCombatStats from "../../components/CharacterDetails/CharacterCombatStats";
 import CharacterDetailsHistoryView from "../../components/CharacterDetails/CharacterDetailsHistoryView";
 import historyService from "../../services/historyService";
 import {fronendUrls} from "../../commons/urls";
+import button from "../../styles/buttons.css";
+import AddCharactersToSessionModal
+    from "../../components/Popup/AddCharactersToSessionModal/AddCharactersToSessionModal";
+import {getInfoFromToken, getToken} from "../../services/util";
+import sessionService from "../../services/sessionService";
 
 class CharacterDetailsPage extends React.Component {
 
@@ -27,15 +28,15 @@ class CharacterDetailsPage extends React.Component {
 
     componentDidMount() {
         const id = this.getCharacterId();
-        if(id){
+        if (id) {
             this.getCharacterById(id)
         }
     }
 
     getCharacterId = () => { //ToDo refactor with react-router
         const tmp = window.location.pathname.split("/");
-        if(Number.isInteger(parseInt(tmp[tmp.length-1]))){
-            return parseInt(tmp[tmp.length-1])
+        if (Number.isInteger(parseInt(tmp[tmp.length - 1]))) {
+            return parseInt(tmp[tmp.length - 1])
         }
         return undefined;
     }
@@ -44,17 +45,17 @@ class CharacterDetailsPage extends React.Component {
         await characterService.getCharacterById(id)
             .then(response => this.getCharacterByIdSuccessHandler(response))
         await historyService.getHistoriesByCharacter(this.state.characterData.name + (this.state.characterData.surname ? "-" + this.state.characterData.surname : ""), id)
-            .then(response =>this.getHistoriesByCharacterSuccessHandler(response))
+            .then(response => this.getHistoriesByCharacterSuccessHandler(response))
     }
 
     getHistoriesByCharacterSuccessHandler = response => {
-        for(let item of response.data){
+        for (let item of response.data) {
             let tmp = item.beginDescription;
-            while(tmp.match('@')) {
-                tmp=tmp.replace('@','');
+            while (tmp.match('@')) {
+                tmp = tmp.replace('@', '');
             }
-            while(tmp.match(/#\d+/g)){
-                tmp=tmp.replace(/#\d+/g, '');
+            while (tmp.match(/#\d+/g)) {
+                tmp = tmp.replace(/#\d+/g, '');
             }
             item.beginDescription = tmp;
         }
@@ -67,46 +68,82 @@ class CharacterDetailsPage extends React.Component {
         this.setState({characterData: response.data})
     }
 
-    changeVisibleState = (global, combat, history ) => {
+    changeVisibleState = (global, combat, history) => {
 
         this.setState({isVisibleGlobalStats: global, isVisibleCombatStats: combat, isVisibleHistory: history})
     }
-    
+
     getLinkToMoreHistories = () => {
         let characterTag = this.state.characterData.name + (this.state.characterData.surname ? "-" + this.state.characterData.surname : "");
         let id = this.getCharacterId();
         return fronendUrls.historyList + "/character/" + characterTag + "/" + id;
     }
 
+    isLogged = () => {
+        return getInfoFromToken(getToken());
+    }
 
-    render(){
+    getUsername = () => {
+        return getInfoFromToken(getToken()).sub;
+    }
+
+    addCharacterToSession = selectedSessionId => {
+        const id = [this.getCharacterId()];
+            sessionService.addCharactersToSession(id, selectedSessionId)
+                .then(r => this.setState({characterToSessionModalVisible: false}))
+                .catch(e => console.log(e))
+        this.setState({})
+    }
+
+
+    render() {
         return (
-            <div className = "globalStyles">
-                <div className = "pageWithContext">
-            <div className = "pageName">{this.state.characterData.name + (this.state.characterData.surname ? " " + this.state.characterData.surname : "") +"#" + this.getCharacterId()} </div>
-            <div className="stats-button-element">
-                <button className = "detailsTypeButton" onClick = {() => this.changeVisibleState(true, false, false)}>Statystyki Ogólne</button>
-                <button className = "detailsTypeButton" onClick = {() => this.changeVisibleState(false, true, false)}>Statystyki Bojowe</button>
-                <button className = "detailsTypeButton" onClick = {() => this.changeVisibleState(false, false, true)}>Historie</button>
-                </div>
-            <div className = "block-element">
-            {this.state.isVisibleGlobalStats &&
-                <CharacterDetailsStatsView
-                title="Statystyki"
-                data={this.state.characterData}
-                />
-            }
-            {this.state.isVisibleCombatStats &&
-                <div>
-                <CharacterCombatStats characterData = {this.state.characterData}/>
-                </div>
-            }
-            {this.state.isVisibleHistory &&
-                <CharacterDetailsHistoryView historyData={this.state.historyData} getLinkToMoreHistories={this.getLinkToMoreHistories} />
-            }
+            <div className="globalStyles">
+                <div className="pageWithContext">
+                    <div
+                        className="pageName">{this.state.characterData.name + (this.state.characterData.surname ? " " + this.state.characterData.surname : "") + "#" + this.getCharacterId()} </div>
 
-            </div>
-            </div>
+                    <div className="stats-button-element">
+                        <button className="detailsTypeButton"
+                                onClick={() => this.changeVisibleState(true, false, false)}>Statystyki Ogólne
+                        </button>
+                        <button className="detailsTypeButton"
+                                onClick={() => this.changeVisibleState(false, true, false)}>Statystyki Bojowe
+                        </button>
+                        <button className="detailsTypeButton"
+                                onClick={() => this.changeVisibleState(false, false, true)}>Historie
+                        </button>
+                        {this.isLogged() &&
+                        <button className="detaleButton" onClick={() => this.setState({characterToSessionModalVisible: true})}>Dodaj do
+                            sesji</button>}
+
+                        <AddCharactersToSessionModal
+                            onRequestClose={() => this.setState({characterToSessionModalVisible: false})}
+                            isOpen={this.state.characterToSessionModalVisible}
+                            onSave={this.addCharacterToSession}
+                            username={this.isLogged() ? this.getUsername() : ""}
+                        />
+
+                    </div>
+                    <div className="block-element">
+                        {this.state.isVisibleGlobalStats &&
+                        <CharacterDetailsStatsView
+                            title="Statystyki"
+                            data={this.state.characterData}
+                        />
+                        }
+                        {this.state.isVisibleCombatStats &&
+                        <div>
+                            <CharacterCombatStats characterData={this.state.characterData}/>
+                        </div>
+                        }
+                        {this.state.isVisibleHistory &&
+                        <CharacterDetailsHistoryView historyData={this.state.historyData}
+                                                     getLinkToMoreHistories={this.getLinkToMoreHistories}/>
+                        }
+
+                    </div>
+                </div>
             </div>
         )
     }

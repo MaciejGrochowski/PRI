@@ -120,10 +120,14 @@ export const polishCodeErrors = {
         passwordMissingNumber: 'Hasło musi posiadać co najmniej jedną liczbę.',
         passwordMissingSpecialSign: 'Hasło musi posiadać co najmniej jeden znak specjalny.',
         passwordMissingCapitalLetter: 'Hasło musi posiadać co najmniej jedną wielką litere.',
-        facebookNotCorrect: 'Podaj poprawny adres do profilu na facebooku.',
-        discordNotCorrect: 'Podaj poprawną nazwę użytkownika discord.',
+        facebookNotCorrect: 'Błędny adres.',
+        discordNotCorrect: 'Błędna nazwa użytkownika.',
         descriptionTooLong: 'Opis jest zbyt długi.'
     },
 
-    BAD_CREDENTIALS_ERROR: 'Nazwa użytkownika lub hasło jest nieprawidłowe.'
+    BAD_CREDENTIALS_ERROR: 'Nazwa użytkownika lub hasło jest nieprawidłowe.',
+    USER_DOESNT_EXIST: 'Taki użytkownik nie istnieje.',
+    NO_EMPTY_SESSION_NAME: 'Sesja nie może mieć pustej nazwy ani nazwy dłuższej niż 128 znaków.',
+    USER_ALREADY_EXISTS: 'Użytkownik o takim nicku już istnieje.',
+    BAD_PASSWORD: 'Złe hasło.'
 }

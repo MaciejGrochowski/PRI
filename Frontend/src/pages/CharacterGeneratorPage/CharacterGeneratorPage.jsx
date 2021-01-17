@@ -32,6 +32,10 @@ import NeedLoginInformation from "../../components/NeedLoginInformation/NeedLogi
 import {getToken, isValidToken} from "../../services/util";
 import {CharacterAttribute} from "../../enums/CharacterAttribute";
 import {Redirect} from "react-router";
+import {Tooltip} from "@material-ui/core";
+import IconButton from "@material-ui/core/IconButton";
+import DeleteIcon from "@material-ui/icons/Delete";
+import InfoOutlinedIcon from "@material-ui/icons/InfoOutlined";
 
 //TODO refactor 
 const mygrid = {
@@ -150,7 +154,10 @@ class CharacterGeneratorPage extends React.Component {
 
     generateOneAttributeErrorHandler = error => {this.setState({isError: true, errorText: error.response.data.message})}
 
-    generateOneAttributeSuccessHandler = (attrName, response) => {this.setState(generateOneAttributeSuccessHandler(attrName, response));}
+    generateOneAttributeSuccessHandler = (attrName, response) => {
+        this.setState(generateOneAttributeSuccessHandler(attrName, response));
+        console.log(generateOneAttributeSuccessHandler(attrName, response))
+    }
 
     render() {
         if (this.state.generated) {
@@ -166,7 +173,7 @@ class CharacterGeneratorPage extends React.Component {
                 <div className="block-element">
                     <div className="flex-component space-between-component">
                         <div className="white-caption">Statystyki:</div>
-                        <button className="detaleButton" onClick={() => this.fullRandomGenerate()}><div className = "text-with-fafa">Generuj losowe statystyki
+                        <button className="sessionButton" onClick={() => this.fullRandomGenerate()}><div className = "text-with-fafa">Generuj losowe statystyki
                         </div><span>{element}</span>
                         </button>
                     </div>
@@ -798,7 +805,12 @@ class CharacterGeneratorPage extends React.Component {
                         <div className="positive-message">Aby zobaczyć wygenerowaną postać, kliknij <Link to={this.state.href}>tutaj</Link></div>}</div>
                         <div className="block-element">{this.state.isError &&
                         <ErrorGenerator errorText={"Błąd: " + polishCodeErrors[this.state.errorText]}/>}</div>
-                            <button disabled={this.state.generated || !this.props.isLogged} className="green-button" onClick={this.save}>Zapisz</button>
+                            <button disabled={this.state.generated || !this.props.isLogged} className="green-button saveButton" onClick={this.save}>Zapisz</button>
+                        <Tooltip arrow={true} placement={"right"} title="Przed zapisem upewnij się, że dane są poprawne. Raz stworzonej postaci nie można łatwo edytować.">
+                            <IconButton aria-label="info">
+                                <InfoOutlinedIcon />
+                            </IconButton>
+                        </Tooltip>
                         </div>
                     </div>
                 </div>

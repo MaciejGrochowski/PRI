@@ -44,7 +44,7 @@ class CharacterHistoryListManual extends React.Component {
                 </div>
                 <div className="manual-paragraf">
                     <div className="manual-paragraf-title">Detale postaci</div>
-                    Jeżeli chcesz podejrzec wszystkie statystki danej postaci (w tym również statystyki bojowe czy historie tej postaci) mozesz kliknąc przycisk <span className="yellow">Detale</span> będacy zawsze w najbardziej skrajnej po prawej kolumnie tabeli.
+                    Jeżeli chcesz podejrzec wszystkie statystyki danej postaci (w tym również jej statystyki bojowe czy historie) możesz kliknąc przycisk <span className="yellow">Detale</span> będacy zawsze w najbardziej skrajnej po prawej kolumnie tabeli.
                     Kliknięcie tego przycisku otworzy stronę agregującą wszystkie detale konkretnej postaci.
                 </div>
                 <div className="manual-paragraf">

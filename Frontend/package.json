@@ -26,6 +26,7 @@
     "material-table": "1.61.0",
     "react": "^16.13.1",
     "react-cookie-consent": "^6.2.1",
+    "react-copy-to-clipboard": "^5.0.3",
     "react-dom": "^16.13.1",
     "react-draft-wysiwyg": "MaciejGrochowski/react-draft-wysiwyg",
     "react-modal": "^3.11.2",

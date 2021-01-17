@@ -49,6 +49,7 @@ class UserProfilePage extends React.Component {
             .catch(e => this.setState({userDoesntExist: true}))
     }
 
+
     getUserSuccessHandler = response => {
         this.setState({
             facebook: response.data.facebook,
@@ -124,6 +125,11 @@ class UserProfilePage extends React.Component {
 
     }
 
+    shorterDate(data){
+        let date = new Date(data)
+        return date.getDate().toString() + "-" + ("0" + (date.getMonth() + 1)).slice(-2).toString() + "-" + date.getFullYear().toString();
+    }
+
     onClickEditButton = () => {
         this.setState({isEditingProfile: true})
     }
@@ -197,8 +203,8 @@ class UserProfilePage extends React.Component {
 
     {this.state.sessions && this.state.sessions.slice(0,10).map((item, i) => (
         <div className = "one-element-brief">
-            <div className = "user-profile-container-s"><div className = "yellow-color">Data stworzenia: </div>	&nbsp; {item.createdDate}</div>
-            <div className = "user-profile-container-s"><div className = "yellow-color">Data modyfikacji: </div>	&nbsp; {item.lastModifiedDate}</div>
+            <div className = "user-profile-container-s"><div className = "yellow-color">Data stworzenia: </div>	&nbsp; {this.shorterDate(item.createdDate)}</div>
+            <div className = "user-profile-container-s"><div className = "yellow-color">Data modyfikacji: </div>	&nbsp; {this.shorterDate(item.lastModifiedDate)}</div>
             <div className="short-history-title">{item.name}</div>
             <div>{item.description}</div>
         </div>

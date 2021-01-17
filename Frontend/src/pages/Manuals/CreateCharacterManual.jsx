@@ -20,7 +20,7 @@ class CreateCharacterManual extends React.Component {
                 <div className="manual-title">
                     Generowanie losowych i tworzenie własnych postaci.
                 </div>
-                Generowanie postaci dostępne jest z poziomu menu. Należy wybrac opcję <span className="yellow">Stwórz postać</span>
+                Generowanie postaci dostępne jest z poziomu menu. Należy wybrac opcję <span className="yellow">Stwórz postać</span>.
                 Postać wygenerować może każdy. Jeżeli jednak chcesz ją zapisać w naszej bazie i używać w czasie sesji wymagane jest abyś zalogował się na swoje konto.
                 O tym, że zapomniałeś się zalogować poinformuje cię stosowna adnotacja.
                 <span className="yellow"> Uwaga! Postaci nie można zmienić ani usunąć po ich zapisaniu. Stają się one ogólnie dostępne i każdy użytkownik aplikacji może z nich korzystać.</span>

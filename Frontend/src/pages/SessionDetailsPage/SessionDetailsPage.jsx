@@ -11,6 +11,7 @@ import ChangeVisibilityModal
     from "../../components/Popup/ChangeGlobalVisibilityModal/ChangeVisibilityModal";
 import characterService from "../../services/characterService";
 import {polishCodeErrors} from "../../commons/texts-pl";
+import {CopyToClipboard} from "react-copy-to-clipboard/lib/Component";
 
 
 class SessionDetailsPage extends React.Component {
@@ -27,7 +28,8 @@ class SessionDetailsPage extends React.Component {
             isGlobalVisibleChanging: false,
             location: "",
             errorName: false,
-            errorNameText: ""
+            errorNameText: "",
+            copied: false
 
         }
     }
@@ -129,6 +131,8 @@ class SessionDetailsPage extends React.Component {
         }
     }
 
+    onCopy = () => this.setState({copied: true})
+
     render() {
         return (
             <div className="pageWithContext">
@@ -174,6 +178,11 @@ class SessionDetailsPage extends React.Component {
                             onSave={this.saveGlobalVisibility}
                             isGlobal={true}
                         />
+
+
+                        {this.isMG() && <CopyToClipboard text={this.state.location} onCopy={this.onCopy}>
+                            <button className="sessionButton">{this.state.copied? "Skopiowano" : "Kopiuj link do udostępniania"}</button>
+                        </CopyToClipboard>}
                     </div>
                 </div>
                 <div className="flex-container-session">
@@ -186,7 +195,7 @@ class SessionDetailsPage extends React.Component {
 
                     </div>
                 </div>
-                    <span>Link do udostępnienia: <Link to={fronendUrls.sessionDetails + "/" + this.props.match.params.hashcode }>{this.state.location}</Link></span>
+                    {/*<span>Link do udostępnienia: <Link to={fronendUrls.sessionDetails + "/" + this.props.match.params.hashcode }>{this.state.location}</Link></span>*/}
 
 
                     <div className="flex-container-session-2">

@@ -74,7 +74,7 @@ class AddCharactersToSessionModal extends React.Component {
                     <div className="textUpToSelect">Wybierz sesję do której chcesz dodać wybrane postacie.<br/></div>
 
                     <div className="session-select">
-                    <Select value={this.state.selected} native onChange={event => this.handleChange(event)}>
+                    <Select id={"session"} value={this.state.selected} native onChange={event => this.handleChange(event)}>
                         <option value=""/>
                         {this.state.sessions && this.state.sessions.map(s => (
                             <option value={s.id}>{s.name}</option>

@@ -21,16 +21,14 @@ class MainPage extends React.Component {
         return (
 
             <div className = "container-homepage">
-                <div className = "logo">
-                    <img src={process.env.PUBLIC_URL + '/logo.png'}/>
-                </div>
+                    <img className="logo" src={process.env.PUBLIC_URL + '/logo.png'}/>
                 <div className="subsection-container black-section">
                     <div className="section-title">O co chodzi?</div>
-                    <div className="welcome-text">Aplikacja "Ja Nie Taki Ork " jest interaktywną pomocą dla graczy, jak i mistrzów gry, rozgrywających sesje w systemie Warhammer Fantasy Roleplay. Oferuje rozbudowany generator postaci dostosowany do realiów świata Warhammera i wolny od wielu bolączek losowych generatorów dostępnych na innych stronach. System pozwala przeglądać bogatą listę już stworzonych postaci i dodawać historie symulując żyjący i rozbudowany świat. Możliwość grupowania postaci w sesje  sprawia, że zapanowanie nad bałaganem informacyjnym powstającym przy toczących się online przygodach staje się możliwe.</div>
+                    <div className="welcome-text">Aplikacja "Ja Nie Taki Ork" jest interaktywną pomocą dla graczy, jak i mistrzów gry, rozgrywających sesje w systemie Warhammer Fantasy Roleplay. Oferuje rozbudowany generator postaci dostosowany do realiów świata Warhammera i wolny od wielu bolączek losowych generatorów dostępnych na innych stronach. System pozwala przeglądać bogatą listę już stworzonych postaci i dodawać historie symulując żyjący i rozbudowany świat. Możliwość grupowania postaci w sesje sprawia, że zapanowanie nad bałaganem informacyjnym powstającym przy toczących się online przygodach staje się możliwe.</div>
                 </div>
                 <div className="subsection-container dark-grey-section">
                     <div className="section-title">Super! Ale jak tego używać?</div>
-                    <div className="welcome-text">Zdajemy sobie sprawę, że być może bedziesz potrzebować kilku wskazówek. Jeżeli chcesz efektywnie korzystać z aplikacji możesz sam się tego nauczyć lub poświęcić chwilę i przejrzec instrukcje. Pamiętaj, że zawsze możesz tu wrócić.
+                    <div className="welcome-text">Zdajemy sobie sprawę, że być może będziesz potrzebować kilku wskazówek. Jeżeli chcesz efektywnie korzystać z aplikacji, możesz sam się tego nauczyć lub poświęcić chwilę i przejrzeć instrukcje. Pamiętaj, że zawsze możesz tu wrócić.
                         <div> Instrukcja - <Link to={fronendUrls.createCharacterManual}>tworzenie postaci</Link> </div>
                         <div> Instrukcja - <Link to={fronendUrls.createHistoryManual}>tworzenie historii</Link></div>
                         <div> Instrukcja - <Link to={fronendUrls.characterHistoryListManual}>katalogi stworzonych postaci i historii</Link></div>

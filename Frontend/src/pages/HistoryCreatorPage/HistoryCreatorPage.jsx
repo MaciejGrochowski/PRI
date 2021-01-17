@@ -101,10 +101,10 @@ class HistoryCreatorPage extends React.Component {
 
             <header className="App-header">
 
-                {!this.props.isLogged &&
-                <NeedLoginInformation text={textsPolish.needLoginToSaveHistory}/>}
 
             <div className = "History-creator-main-div">
+                {!this.props.isLogged &&
+                <NeedLoginInformation text={textsPolish.needLoginToSaveHistory}/>}
                         <div className="History-creator-upper">
            <div className = "history-column">
            Data:

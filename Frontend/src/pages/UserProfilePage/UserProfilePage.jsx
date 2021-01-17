@@ -120,6 +120,11 @@ class UserProfilePage extends React.Component {
             })
             .catch(e => {
                 this.props.loginStatusChange(false);
+                this.setState({
+                    isPasswordChanging: false,
+                    isUsernameChanging: false,
+                    usernameOrPasswordChanged: true
+                })
                 logoutCookie();
             })
 
@@ -189,7 +194,7 @@ class UserProfilePage extends React.Component {
                 <ChangeCredentialsModal
                 title={this.state.isPasswordChanging? "Edytuj hasło": "Edytuj nazwę użytkownika"}
                 isOpen={this.state.isPasswordChanging || this.state.isUsernameChanging}
-                onRequestClose={() => this.setState({isPasswordChanging: false, isUsernameChanging: false})}
+                onRequestClose={() => this.setState({isPasswordChanging: false, isUsernameChanging: false, errorCode: ""})}
                 isUsernameChanging={this.state.isUsernameChanging}
                 isPasswordChanging={this.state.isPasswordChanging}
                 onSave={this.saveCredentials}

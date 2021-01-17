@@ -70,7 +70,7 @@ class NewSessionModal extends React.Component {
                     <div className="popup-margin-container">
                         <div className="login-title">{title}</div>
 
-                        <div style={{width: "100%"}}><TextField label="Tytuł" value={this.state.name} error={this.state.errorName} helperText = {this.state.errorNameText} onChange={event => this.handleChangeName(event.target.value)}/></div>
+                        <div style={{width: "100%"}}><TextField fullWidth={true} label="Tytuł" value={this.state.name} error={this.state.errorName} helperText = {this.state.errorNameText} onChange={event => this.handleChangeName(event.target.value)}/></div>
 
 
                         <TextField

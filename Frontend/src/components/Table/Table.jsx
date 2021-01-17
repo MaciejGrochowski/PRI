@@ -31,7 +31,7 @@ class Table extends React.Component {
                 {
                     title: 'Detale',
                     field: '',
-                    render: rowData => <Link to={this.props.detailsLink + "/" + rowData.id} className = "detaleButton small" onClick={() => this.props.onDetailsClick(rowData)}>Detale</Link>,
+                    render: rowData => <Link to={this.props.detailsLink + "/" + rowData.id} className = "detaleButton auto-margin small" onClick={() => this.props.onDetailsClick(rowData)}>Detale</Link>,
                     sorting: false
                 })
             this.setState({columnsConfig: columnsConfig})

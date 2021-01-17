@@ -56,7 +56,7 @@ class MainPage extends React.Component {
                         </div>
                     </div>
                 <div className="subsection-container yellow-section">
-                    <div className="section-title">Pytania? Problemy? Skontaktuj się z nami!</div>
+                    <div className="section-title yellow-section">Pytania? Problemy? Skontaktuj się z nami!</div>
                     <div className="welcome-text">
                         <div className="bold">
                         <div className="margin-bottom">W dowolnych przypadkach można się z nami kontaktować przez serwer discord lub email.</div>

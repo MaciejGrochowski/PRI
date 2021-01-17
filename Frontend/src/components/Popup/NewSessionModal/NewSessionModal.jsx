@@ -48,10 +48,10 @@ class NewSessionModal extends React.Component {
 
     handleChangeName = name => {
         if(!name || name === "" || name.length > 128){
-            this.setState({errorName: true, errorNameText: polishCodeErrors.NO_EMPTY_SESSION_NAME})
+            this.setState({name: name, errorName: true, errorNameText: polishCodeErrors.NO_EMPTY_SESSION_NAME})
         }
         else{
-            this.setState({name: name})
+            this.setState({name: name, errorName: false, errorNameText: ""})
         }
     }
 

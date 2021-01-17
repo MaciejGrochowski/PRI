@@ -311,3 +311,7 @@
   background-color: #adff2f;
   color: #292F2F !important;
 }
+
+.saveButton{
+  margin: 3% 1%;
+}

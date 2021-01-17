@@ -97,6 +97,7 @@ margin: 0px;
 .center-content{
     margin: auto!important;
     align-items: center;
+    text-align: center;
 }
 
 .flex-component{

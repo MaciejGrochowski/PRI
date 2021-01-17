@@ -8,6 +8,9 @@ import parse from 'html-react-parser';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faCheck, faTimes} from '@fortawesome/free-solid-svg-icons';
 import "../../styles/historyCreator.css";
+import {Tooltip} from "@material-ui/core";
+import IconButton from "@material-ui/core/IconButton";
+import InfoOutlinedIcon from "@material-ui/icons/InfoOutlined";
 const element = <FontAwesomeIcon icon={faCheck}/>
 const element2 = <FontAwesomeIcon icon={faTimes}/>
 class Wysiwyg extends React.Component {
@@ -63,7 +66,13 @@ class Wysiwyg extends React.Component {
                     suggestions: characterTags
                 }}
             />
-                <div className = "center-content"><button className="green-button" disabled={disabledSave} onClick={() => saveHistory(draftToHtml(convertToRaw(this.state.editorState.getCurrentContent())))}>Zapisz <span>{element}</span></button></div>
+                <div className = "center-content"><button className="green-button saveButton" disabled={disabledSave} onClick={() => saveHistory(draftToHtml(convertToRaw(this.state.editorState.getCurrentContent())))}>Zapisz <span>{element}</span></button>
+                    <Tooltip arrow={true} placement={"right"} title="Przed zapisem upewnij się, że dane są poprawne. Raz stworzonej historii nie można łatwo edytować.">
+                        <IconButton aria-label="info">
+                            <InfoOutlinedIcon />
+                        </IconButton>
+                    </Tooltip>
+                </div>
 
 </>
 

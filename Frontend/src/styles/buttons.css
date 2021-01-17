@@ -72,6 +72,7 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     display: flex;
+    margin: auto;
 
   }
 

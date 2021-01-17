@@ -202,10 +202,10 @@ class ChangeVisibilityModal extends React.Component {
                     style={customStyles}
                     contentLabel={title}
                 >
-                    <div>{title}</div>
-                    {isGlobal && <div>UWAGA - te zmiany nadpiszą wszystkie ustawienia widoczności konkretnych postaci!</div>}
+                    <div className="login-title">{title}</div>
+                    {isGlobal && <div className = "positive-message">UWAGA - te zmiany nadpiszą wszystkie ustawienia widoczności konkretnych postaci!</div>}
                             {columnsConfig && columnsConfig.map((item, i) => (
-                                <div>
+                                <div className = "auto-margin">
                                     <label className="container" style={{width: '100%'}}>
                                         <input type="checkbox" onClick={(event) => this.onCheckboxClick(item.name, event.target.value)} id={item.field + "VisibilityCheckbox"}/>
                                         <span className="checkmark"/>

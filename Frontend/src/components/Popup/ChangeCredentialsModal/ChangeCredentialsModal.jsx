@@ -4,6 +4,7 @@ import button from "../../../styles/buttons.css";
 import {TextField} from "@material-ui/core";
 import PasswordField from "../../PasswordField/PasswordField";
 import {validationPassword} from "../../../pages/RegisterPage/validation";
+import {polishCodeErrors} from "../../../commons/texts-pl";
 
 
 const customStyles = {
@@ -65,10 +66,25 @@ class ChangeCredentialsModal extends React.Component {
         }
     }
 
+    enterListener = event => {
+        if (event.keyCode === 13 && !this.isButtonDisabled()) {
+            this.props.onSave(this.state.username, this.state.password, this.state.newPassword);
+        }
+    }
+
+    isButtonDisabled = () => {
+        if(this.props.isUsernameChanging){
+            return this.state.username==="" || this.state.password===""
+        }
+        else{
+            return this.state.password==="" || this.state.newPassword==="" || this.state.errorNewPassword.errorState
+        }
+    }
+
 
 
     render() {
-        const {isOpen, onRequestClose, isUsernameChanging, isPasswordChanging, onSave} = this.props;
+        const {isOpen, onRequestClose, isUsernameChanging, isPasswordChanging, onSave, errorCode} = this.props;
 
 
         return (
@@ -90,6 +106,7 @@ class ChangeCredentialsModal extends React.Component {
         handleChangePassword={this.handleChangePassword}
         label={isUsernameChanging ? "Hasło" : "Stare hasło"}
         value={this.state.oldPassword}
+        onKeyDown={(e) => this.enterListener(e)}
     />
 </div>
 <div className="block-component">
@@ -100,10 +117,13 @@ class ChangeCredentialsModal extends React.Component {
                             value={this.state.newPassword}
                             errorText={this.state.errorNewPassword.errorText}
                             handleChangePassword={this.handleChangeConfirmPassword}
+                            onKeyDown={(e) => this.enterListener(e)}
                         />}
                         </div>
+    {errorCode && <div className = "error-message">{polishCodeErrors[errorCode]}</div>}
 <div className="block-component">
-                        <button type="submit" className="zaloguj-button" onClick={() => onSave(this.state.username, this.state.password, this.state.newPassword)}>Zapisz</button>
+
+                        <button type="submit" disabled={this.isButtonDisabled()} className="zaloguj-button" onClick={() => onSave(this.state.username, this.state.password, this.state.newPassword)}>Zapisz</button>
 </div>
 
 </div>

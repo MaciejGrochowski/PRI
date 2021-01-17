@@ -27,8 +27,8 @@ class Filter extends React.Component {
                     }
                 </div>
                 <div className = "filter-button">
-                    <button className = "button reverse" onClick={onFilter}><div className = "text-with-fafa">Wyszukaj </div><span>{element}</span></button>
-                    {!this.props.isHiddenExpandListButton && <button className="button reverse" onClick={expandFilterList}><div className = "text-with-fafa">Dostosuj filtry</div> <span>{element2}</span> </button> }
+                    <button className = "button reverse" onClick={onFilter}><div className = "text-with-fafa">Wyszukaj <span>{element}</span></div></button>
+                    {!this.props.isHiddenExpandListButton && <button className="button reverse" onClick={expandFilterList}><div className = "text-with-fafa">Dostosuj filtry <span>{element2}</span></div></button> }
                 </div>
                 
             </div>

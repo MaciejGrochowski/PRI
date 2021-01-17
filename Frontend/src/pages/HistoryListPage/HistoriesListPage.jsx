@@ -183,13 +183,13 @@ class HistoriesListPage extends React.Component{
         if(this.state.characterLoadByPage && this.state.characterLoadByPage !== "") {
             requestBody.filters = {
                 ...requestBody.filters,
-                historyFilterCharacters: this.state.characterLoadByPage
+                historyFilterCharacters: decodeURI(this.state.characterLoadByPage)
             };
         }
         if(this.state.userLoadByPage && this.state.userLoadByPage !== "") {
             requestBody.filters = {
                 ...requestBody.filters,
-                createdBy: this.state.userLoadByPage
+                createdBy: decodeURI(this.state.userLoadByPage)
             };
         }
 

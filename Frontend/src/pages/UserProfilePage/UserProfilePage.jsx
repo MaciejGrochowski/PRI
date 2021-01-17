@@ -186,7 +186,7 @@ class UserProfilePage extends React.Component {
             <div className = "mail-fb-dc-component">
 
 
-                <div className = "user-profile-container"><div className = "text"><span>{mail}</span> <TextField disabled value={this.state.mail}/></div></div>
+                <div className = "user-profile-container"><div className = "text"><span>{mail}</span> <a href={"mailto:" + this.state.mail}>Wyślij maila</a></div></div>
 
                 <div className = "user-profile-container"><div className = "text"><span>{fb}</span>
                     {(this.state.isEditingProfile || !this.state.facebook || this.state.facebook==="") ? <TextField

@@ -324,7 +324,7 @@ class CharactersListPage extends React.Component {
 
     render() {
         return (
-            <div className="globalStyles">
+            <div className="pageWithContext">
                 <header className="App-header">
 
                     <Filter
@@ -342,7 +342,7 @@ class CharactersListPage extends React.Component {
                         isOpen={this.state.isFilterListExpanded}
                     />
 
-                    {this.isLogged() && <button className="detaleButton" onClick={this.openAddCharacterToSessionModal}>Dodaj zaznaczone do sesji</button>}
+                    {this.isLogged() && <button className="detaleButton addToSeesionButton" onClick={this.openAddCharacterToSessionModal}>Dodaj zaznaczone do sesji</button>}
 
                     <AddCharactersToSessionModal
                     onRequestClose={() => this.setState({characterToSessionModalVisible: false})}

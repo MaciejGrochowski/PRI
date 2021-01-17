@@ -5,6 +5,7 @@ import button from "../../../styles/buttons.css";
 import popup from "../../../styles/popup.css";
 import DefaultMultipleAutocomplete from "../../Autocomplete/DefaultMultipleAutocomplete";
 import sessionService from "../../../services/sessionService";
+import {InputLabel, NativeSelect} from "@material-ui/core";
 
 const customStyles = {
     content: {
@@ -69,21 +70,25 @@ class AddCharactersToSessionModal extends React.Component {
                     onRequestClose={() => onRequestClose()}
                     style={customStyles}
                 >
+                    <div className="pageNameSessionAdd">Dodanie postaci do sesji</div>
+                    <div className="textUpToSelect">Wybierz sesję do której chcesz dodać wybrane postacie.<br/></div>
 
-                    Wybierz sesję do której chcesz dodać wybrane postacie.
-                    <select value={this.state.selected} onChange={event => this.handleChange(event)}>
+                    <div className="session-select">
+                    <NativeSelect value={this.state.selected} onChange={event => this.handleChange(event)}>
                         <option value=""/>
                         {this.state.sessions && this.state.sessions.map(s => (
                             <option value={s.id}>{s.name}</option>
                         ))}
-                    </select>
+                    </NativeSelect>
+                    </div>
 
 
                     <div className="flex-center-element">
-                        <button disabled={!this.state.selected} type="submit" className="button" onClick={() => onSave(this.state.selected)}>Dodaj wybrane postacie do sesji</button>
+                        <button disabled={!this.state.selected} type="submit" className="detaleButton" onClick={() => onSave(this.state.selected)}>Dodaj wybrane postacie do sesji</button>
                     </div>
                 </Modal>
             </div>
+
         );
     }
 }

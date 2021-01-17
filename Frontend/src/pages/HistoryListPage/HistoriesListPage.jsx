@@ -85,6 +85,27 @@ class HistoriesListPage extends React.Component{
         }
     }
 
+    async componentDidUpdate(prevProps, prevState, snapshot) {
+        if(prevState.autocompleteData !== this.state.autocompleteData) this.setColumnsConfig();
+
+        if(this.state.userLoadByPage && this.state.userLoadByPage!=="" && !window.location.pathname.includes("user")){
+            await this.setState({userLoadByPage: ""})
+            this.getHistories();
+            this.getAutoCompleteHistories();
+        }
+
+        if((!this.state.userLoadByPage || (this.state.userLoadByPage && this.state.userLoadByPage==="")) && window.location.pathname.includes("user")){
+            const tmp = window.location.pathname.split("/");
+            const username = tmp[tmp.length-1];
+            await this.setState({
+                userLoadByPage: username
+            })
+            this.getHistories();
+            this.getAutoCompleteHistories();
+        }
+
+    }
+
     getHistoryId = () => {
         const tmp = window.location.pathname.split("/");
         if(Number.isInteger(parseInt(tmp[tmp.length-1]))){
@@ -93,9 +114,7 @@ class HistoriesListPage extends React.Component{
         return 0;
     }
 
-    componentDidUpdate(prevProps, prevState, snapshot) {
-        if(prevState.autocompleteData !== this.state.autocompleteData) this.setColumnsConfig();
-    }
+
 
     setColumnsConfig = async () => {
         await this.setState({

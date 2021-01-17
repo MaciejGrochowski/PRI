@@ -126,5 +126,6 @@ export const polishCodeErrors = {
     },
 
     BAD_CREDENTIALS_ERROR: 'Nazwa użytkownika lub hasło jest nieprawidłowe.',
-    USER_DOESNT_EXIST: 'Taki użytkownik nie istnieje.'
+    USER_DOESNT_EXIST: 'Taki użytkownik nie istnieje.',
+    NO_EMPTY_SESSION_NAME: 'Sesja nie może mieć pustej nazwy ani nazwy dłuższej niż 128 znaków.'
 }

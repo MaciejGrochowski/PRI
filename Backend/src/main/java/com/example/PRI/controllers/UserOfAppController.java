@@ -38,8 +38,8 @@ public class UserOfAppController {
         }
 
         @Put("/credentials")
-        public void updateUserDetails(@Valid @RequestBody UserOfAppCredentialsInputDto user, Authentication auth) throws notUniqueArgumentException {
-            userOfAppService.updateUserCredentials(user, auth);
+        public ResponseEntity<?> updateUserDetails(@Valid @RequestBody UserOfAppCredentialsInputDto user, Authentication auth) throws notUniqueArgumentException {
+            return userOfAppService.updateUserCredentials(user, auth);
         }
 
 

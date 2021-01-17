@@ -63,7 +63,10 @@ color: white;
 color: white;
 font-size: 40px;
 }
-
+.text a{
+    font-size: large;
+    margin-left: 10px;
+}
 .one-element-brief{
 display: block;
 color: white;

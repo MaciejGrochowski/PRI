@@ -413,3 +413,42 @@ span > a {
 .inside-character-5{
     margin: 1px;
 }
+
+.add-to-session-tittle{
+    font-size: 20px;
+    color: #FFD859;
+}
+
+.addToSeesionButton{
+    margin-bottom: 10px;
+}
+
+.pageNameSessionAdd{
+    font-size: xx-large;
+    color: #FFD859;
+
+}
+
+.session-select{
+    margin: 20px 5px;
+    text-align: center;
+}
+
+.session-label{
+    text-align: left;
+}
+
+.MuiNativeSelect-select.MuiNativeSelect-select{
+    width: 350px;
+}
+
+.MuiNativeSelect-select:not([multiple]) option, .MuiNativeSelect-select:not([multiple]) optgroup{
+    background-color: #292F2F !important;
+    cursor: pointer !important;
+}
+
+.MuiNativeSelect-select:not([multiple]):focus option:focus, .MuiNativeSelect-select:not([multiple]):focus optgroup:focus{
+    cursor: pointer;
+    color: #FFD859;
+    background: #434e4e
+}

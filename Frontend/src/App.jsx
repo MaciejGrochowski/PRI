@@ -23,6 +23,7 @@ import CookieConsent from "react-cookie-consent";
 import CreateCharacterManual from "./pages/Manuals/CreateCharacterManual";
 import CreateHistoryManual from "./pages/Manuals/CreateHistoryManual";
 import SessionManual from "./pages/Manuals/SessionManual";
+import Statute from "./pages/Statute";
 import CharacterHistoryListManual from "./pages/Manuals/CharacterHistoryListManual";
 
 class App extends React.Component{
@@ -50,6 +51,7 @@ class App extends React.Component{
         <Route path={fronendUrls.createCharacterManual} component={CreateCharacterManual} />
         <Route path={fronendUrls.createHistoryManual} component={CreateHistoryManual} />
         <Route path={fronendUrls.sessionManual} component={SessionManual} />
+        <Route path={fronendUrls.statute} component={Statute} />
         <Route path={fronendUrls.characterHistoryListManual} component={CharacterHistoryListManual} />
                 <CookieConsent>Strona używa plików cookies. Ich polityka jest dostępna <Link to={fronendUrls.cookiesPage}>TU</Link></CookieConsent>
             </BrowserRouter>

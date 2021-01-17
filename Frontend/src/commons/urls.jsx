@@ -17,5 +17,6 @@ export const fronendUrls = {
     createCharacterManual: '/manual/createCharacterManual',
     createHistoryManual: '/manual/createHistoryManual',
     sessionManual: '/manual/sessionManual',
-    characterHistoryListManual: '/manual/characterHistoryListManual'
+    characterHistoryListManual: '/manual/characterHistoryListManual',
+    statute: '/statute'
 }

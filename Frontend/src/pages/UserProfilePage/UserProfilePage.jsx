@@ -194,8 +194,7 @@ class UserProfilePage extends React.Component {
 
                     </div></div>
 
-                <div className = "user-profile-container"><div className = "text"><span>{discord}</span>
-                <TextField onChange={(event) => this.setState({discord: event.target.value})} disabled={!this.state.isEditingProfile} value={this.state.discord}/></div></div>
+                <div className = "user-profile-container"><div className = "text"><span>{discord}</span> <TextField onChange={(event) => this.setState({discord: event.target.value})} disabled={!this.state.isEditingProfile} value={this.state.discord}/></div></div>
 
             </div>
 </div>

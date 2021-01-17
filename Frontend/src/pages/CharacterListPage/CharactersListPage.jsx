@@ -324,7 +324,7 @@ class CharactersListPage extends React.Component {
 
     render() {
         return (
-            <div className="globalStyles">
+            <div className="pageWithContext">
                 <header className="App-header">
 
                     <Filter

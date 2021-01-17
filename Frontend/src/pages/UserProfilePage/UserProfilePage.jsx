@@ -160,8 +160,8 @@ class UserProfilePage extends React.Component {
             <div className = "page-title"> {this.state.username} </div>
 
                 {this.isProfileLoggedUser() && <div className = "flex-element">
-                    <button className = "detaleButton" onClick={() => this.setState({isPasswordChanging: true})}>Edytuj hasło</button>
-                    <button className = "detaleButton" onClick={() => this.setState({isUsernameChanging: true})}>Edytuj nazwę użytkownika</button>
+                    <button className = "detaleButton buttonOnProfile" onClick={() => this.setState({isPasswordChanging: true})}>Edytuj hasło</button>
+                    <button className = "detaleButton buttonOnProfile" onClick={() => this.setState({isUsernameChanging: true})}>Edytuj nazwę użytkownika</button>
                     {!this.state.isEditingProfile && <button className = "detaleButton" onClick={this.onClickEditButton}>Edytuj profil</button>}
                     {this.state.isEditingProfile && <button className = "detaleButton" disabled={this.isDisabledEditProfileButton()} onClick={() => this.saveProfile()}>Zapisz</button>}
                 </div>}
@@ -253,10 +253,10 @@ class UserProfilePage extends React.Component {
                         <div className = "yellow-color">#{item.id}</div>
                         <div className = "user-profile-container-s"><div className = "yellow-color">Imię: </div></div>
                         <div className = "user-profile-container-s"><div className = "yellow-color">Nazwisko:</div></div>
-                        <div className = "user-profile-container-s"><div className = "yellow-color">Rasa:	&nbsp; </div></div>
-                        <div className = "user-profile-container-s" ><div className = "yellow-color">Płeć: 	&nbsp;</div></div>
-                        <div className = "user-profile-container-s"><div className = "yellow-color">Profesja: 	&nbsp;</div></div>
-                        <div className = "user-profile-container-s"><div className = "yellow-color">Miejsce pobytu:	&nbsp; </div></div>
+                        <div className = "user-profile-container-s"><div className = "yellow-color">Rasa:</div></div>
+                        <div className = "user-profile-container-s" ><div className = "yellow-color">Płeć:</div></div>
+                        <div className = "user-profile-container-s"><div className = "yellow-color">Profesja:</div></div>
+                        <div className = "user-profile-container-s"><div className = "yellow-color">Miejsce pobytu:</div></div>
                         {/*<Link className = "detaleButton" to={fronendUrls.historyList + "/" + item.id}><div className = "normal-text">Więcej</div></Link>*/}
                         </div>
                         <div className="column" id={"profileColumn"}>

@@ -327,10 +327,6 @@ class CharactersListPage extends React.Component {
             <div className="globalStyles">
                 <header className="App-header">
 
-                    {this.props.match.params.username &&
-                    <div>Postacie użytkownika {this.props.match.params.username}</div>
-                    }
-
                     <Filter
                         columnsConfig={this.state.columnsConfig}
                         onFilter={this.onFilter}
@@ -355,6 +351,9 @@ class CharactersListPage extends React.Component {
                     username={this.isLogged() ? this.getUsername() : ""}
 
                     />
+                    {this.props.match.params.username &&
+                    <div>Postacie użytkownika {this.props.match.params.username}</div>
+                    }
 
                     <div className="table">
                         <Table

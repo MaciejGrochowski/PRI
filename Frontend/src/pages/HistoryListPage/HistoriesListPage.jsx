@@ -281,8 +281,8 @@ class HistoriesListPage extends React.Component{
                     />
 
                     <div>
-                        {this.state.characterLoadByPage && "Historie postaci " + this.state.characterLoadByPage}
-                        {this.state.userLoadByPage && "Historie użytkownika " + this.state.userLoadByPage}
+                        {this.state.characterLoadByPage && "Historie postaci " + decodeURI(this.state.characterLoadByPage)}
+                        {this.state.userLoadByPage && "Historie użytkownika " + decodeURI(this.state.userLoadByPage)}
 
                     </div>
                     <div className="table">

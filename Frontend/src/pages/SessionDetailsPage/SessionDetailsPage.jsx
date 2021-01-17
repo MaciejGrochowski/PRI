@@ -10,6 +10,7 @@ import ChangeCredentialsModal from "../../components/Popup/ChangeCredentialsModa
 import ChangeVisibilityModal
     from "../../components/Popup/ChangeGlobalVisibilityModal/ChangeVisibilityModal";
 import characterService from "../../services/characterService";
+import {polishCodeErrors} from "../../commons/texts-pl";
 
 
 class SessionDetailsPage extends React.Component {
@@ -24,7 +25,9 @@ class SessionDetailsPage extends React.Component {
             createdDate: "",
             isChanging: false,
             isGlobalVisibleChanging: false,
-            location: ""
+            location: "",
+            errorName: false,
+            errorNameText: ""
 
         }
     }
@@ -115,7 +118,15 @@ class SessionDetailsPage extends React.Component {
         else {
             return "o nieznanym imieniu.";
         }
+    }
 
+    handleChangeName = name => {
+        if(!name || name === "" || name.length > 128){
+            this.setState({errorName: true, errorNameText: polishCodeErrors.NO_EMPTY_SESSION_NAME})
+        }
+        else{
+            this.setState({name: name})
+        }
     }
 
     render() {
@@ -131,8 +142,11 @@ class SessionDetailsPage extends React.Component {
                             <div className="info-container-tittle">
                                 Nazwa sesji:<br/>
                                 <TextField fullWidth="true"
-                                           onChange={(event) => this.setState({name: event.target.value})}
-                                           disabled={!this.state.isChanging} value={this.state.name}/>
+                                           onChange={(event) => this.handleChangeName(event.target.value)}
+                                           disabled={!this.state.isChanging}
+                                           error={this.state.errorName}
+                                           helperText = {this.state.errorNameText}
+                                           value={this.state.name}/>
                             </div>
                             <div className="info-container">
                                 Autor sesji:<br/> <TextField disabled={true} value={this.state.createdBy}/>

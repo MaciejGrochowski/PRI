@@ -37,6 +37,7 @@ overflow-wrap: break-word!important;
 .MuiFormControl-root{
   margin-top: 2%!important;
   color: white!important;
+  width: 100%;
 }
 
 .MuiFormControl-root:focus{

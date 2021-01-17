@@ -39,7 +39,7 @@ class LogoutButton extends React.Component {
 
 
     render(){
-        return (<Link to={fronendUrls.mainPage} onClick={() => this.logout()}>Wyloguj</Link>
+        return (<Link className="menuLink" to={fronendUrls.mainPage} onClick={() => this.logout()}>Wyloguj</Link>
 
         )
     }

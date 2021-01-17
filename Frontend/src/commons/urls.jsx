@@ -18,5 +18,6 @@ export const fronendUrls = {
     createHistoryManual: '/manual/createHistoryManual',
     sessionManual: '/manual/sessionManual',
     characterHistoryListManual: '/manual/characterHistoryListManual',
-    statute: '/statute'
+    statute: '/statute',
+    discordUrl: 'https://discord.gg/NjHnayJBFG'
 }

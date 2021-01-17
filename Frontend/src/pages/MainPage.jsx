@@ -41,13 +41,13 @@ class MainPage extends React.Component {
                     <div className="section-title">Uważasz, że to świetny pomysł i chciałbyś jakoś pomóc?</div>
                     <div className="welcome-text">
                         <div> Wspaniale! Jesteśmy Tobą zainteresowani! Aplikacja JaNieTakiOrk wciąż potrzebuje rozwoju i sporej ilości pracy. Jak możesz pomóc? </div>
-                        <div className="margin-bottom"><div className="bold"> {check} <Link to={fronendUrls.registerPage}>Załóż konto!</Link></div>, twórz postacie i historie z rozegranych przez siebie sesji. Dodaj temu miejscu życia!</div>
+                        <div className="margin-bottom"><div className="bold"> {check} <Link to={fronendUrls.registerPage}>Załóż konto!</Link></div> twórz postacie i historie z rozegranych przez siebie sesji. Dodaj temu miejscu życia!</div>
 
-                        <div className="margin-bottom"> <div className="bold"> {check} Dołącz do naszej społeczności na <a href="https://discord.gg/mkRcFkeU">discordzie</a>.</div> Stwórz razem z nami miłą grupę rpgowców, w której będzie można porozmawiać, umówić się na sesję i poznać innych użytkowników aplikacji.</div>
+                        <div className="margin-bottom"> <div className="bold"> {check} Dołącz do naszej społeczności na <a href={fronendUrls.discordUrl}>discordzie</a>.</div> Stwórz razem z nami miłą grupę rpgowców, w której będzie można porozmawiać, umówić się na sesję i poznać innych użytkowników aplikacji.</div>
 
-                        <div className="margin-bottom"><div className="bold"> {check} Pomóż nam w moderacji pojawiających się treści</div>, informując nas o niepożądanych treściach, takich jak złośliwie stworzone postacie lub historie, albo błędy (nawet literówki) w stworzonych materiałach. Poinformować nas o takich błędach możesz przez <a href="https://discord.gg/mkRcFkeU">discorda</a> lub <a href="mailto:janietakiork@gmail.com">maila</a>.</div>
+                        <div className="margin-bottom"><div className="bold"> {check} Pomóż nam w moderacji pojawiających się treści</div> informując nas o niepożądanych treściach, takich jak złośliwie stworzone postacie lub historie, albo błędy (nawet literówki) w stworzonych materiałach. Poinformować nas o takich błędach możesz przez <a href={fronendUrls.discordUrl}>discorda</a> lub <a href="mailto:janietakiork@gmail.com">maila</a>.</div>
 
-                        <div className="margin-bottom"> <div className="bold"> {check} Zostań naszym testerem </div> Jeśli używasz aplikacji i zauważysz jakiś błąd w jej działaniu (niedziałający guzik, nieładująca się strona, etc), zgłoś nam to przez <a href="https://discord.gg/mkRcFkeU">discorda</a> lub <a href="mailto:janietakiork@gmail.com">maila</a>.</div>
+                        <div className="margin-bottom"> <div className="bold"> {check} Zostań naszym testerem </div> Jeśli używasz aplikacji i zauważysz jakiś błąd w jej działaniu (niedziałający guzik, nieładująca się strona, etc), zgłoś nam to przez <a href={fronendUrls.discordUrl}>discorda</a> lub <a href="mailto:janietakiork@gmail.com">maila</a>.</div>
 
                         <div className="margin-bottom"> <div className="bold">{check} Zostań programistą</div> Jesteśmy otwarci na pomoc zarówno od początkujących jak i zaawansowanych adeptów programowania. Aplikacja JaNieTakiOrk powstała w Javascript(Z użyciem frameworku React) oraz Java(z użyciem frameworku Spring). Jeśli języki te nie są Ci obce, a także chcesz pomóc w rozwoju opensourcowej aplikacji, skontaktuj się z nami lub samodzielnie dokonaj zmian i wyślij nam pull requesta na repozytorium: <a href="https://github.com/MaciejGrochowski/PRI">Github</a> (Opcja dla bardziej zaawansowanych, którzy wiedzą co robią)</div>
 
@@ -62,7 +62,7 @@ class MainPage extends React.Component {
                         <div className="margin-bottom">W dowolnych przypadkach można się z nami kontaktować przez serwer discord lub email.</div>
                         </div>
                         <div className="margin-bottom">{mail} <a href="mailto:janietakiork@gmail.com">janietakiork@gmail.com</a></div>
-                        <div className="margin-bottom">{discord} <a href="https://discord.gg/mkRcFkeU">Discord</a></div>
+                        <div className="margin-bottom">{discord} <a href={fronendUrls.discordUrl}>Discord</a></div>
 
                     </div>
                 </div>

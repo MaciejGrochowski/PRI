@@ -100,7 +100,7 @@ class Statute extends React.Component {
 
                 <div className = "manual-paragraf-title">§3 Prawa autorskie</div>
                 <div className= "manual-paragraf">
-                1. Użytkownicy zobligowani są do rozpowszechniania za pośrednictwem Aplikacji wyłącznie treści własnego autorstwa. W przypadku posłużenia się utworami lub wypowiedziami innych osób, Użytkownicy zobligowani są do jednoznacznego wskazania cytatu zgodnie z obowiązującymi przepisami prawa. Ilekroć mowa jest o "Utworze", rozumie się przez to każdą wypowiedź Użytkownika jego autorstwa zamieszczoną przez niego w Aplikacji, którą można uznać za utwór w rozumieniu ustawy z dnia 4 lutego 1994 roku o prawie autorskim i prawach pokrewnych.
+                1. Użytkownicy zobligowani są do rozpowszechniania za pośrednictwem Aplikacji wyłącznie treści własnego autorstwa. W przypadku posłużenia się utworami lub opublikowanymi wypowiedziami innych osób, Użytkownicy zobligowani są do jednoznacznego wskazania cytatu zgodnie z obowiązującymi przepisami prawa. Ilekroć mowa jest o "Utworze", rozumie się przez to każdą wypowiedź Użytkownika jego autorstwa zamieszczoną przez niego w Aplikacji, którą można uznać za utwór w rozumieniu ustawy z dnia 4 lutego 1994 roku o prawie autorskim i prawach pokrewnych.
                 </div><div className= "manual-paragraf">
                 2. W zamian za świadczenie usługi umożliwienia korzystania z Aplikacji Użytkownik upoważnia zespół Ja Nie Taki Ork do korzystania z Utworu bez ograniczeń czasowych, terytorialnych i ilościowych, na wszelkich znanych polach eksploatacji.
                 </div>

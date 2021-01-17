@@ -100,21 +100,22 @@ class UserProfilePage extends React.Component {
 
         userService.editCredentials(input)
             .then(r => this.logout())
-            .catch(e => console.log(e))
+            .catch(e => this.editCredentialsErrorHandler(e))
+    }
 
-
-        this.setState({
-            isPasswordChanging: false,
-            isUsernameChanging: false,
-            usernameOrPasswordChanged: true
-        })
-
+    editCredentialsErrorHandler = error => {
+        this.setState({errorCode: error.response.data})
     }
 
     logout = () => {
         loginService.logout(getToken())
             .then(r => {
                 this.props.loginStatusChange(false);
+                this.setState({
+                    isPasswordChanging: false,
+                    isUsernameChanging: false,
+                    usernameOrPasswordChanged: true
+                })
                 logoutCookie();
             })
             .catch(e => {
@@ -193,6 +194,7 @@ class UserProfilePage extends React.Component {
                 isPasswordChanging={this.state.isPasswordChanging}
                 onSave={this.saveCredentials}
                 username={this.state.username}
+                errorCode={this.state.errorCode}
 
                 />
 

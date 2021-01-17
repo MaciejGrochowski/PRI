@@ -232,6 +232,9 @@ background-color: #292F2F;
   .column#stats{
     min-width: 60% !important;
   }
+  .container-stats#statisticContainer{
+    justify-content: center;
+  }
 }
 
 

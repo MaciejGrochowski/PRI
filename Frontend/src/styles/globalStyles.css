@@ -452,7 +452,7 @@ span > a {
 /*    background: #434e4e*/
 /*}*/
 
-.MuiSelect-select.MuiSelect-select{
+.MuiSelect-select.MuiSelect-select#session{
     padding-right: 300px !important;
 }
 

@@ -33,7 +33,7 @@
   color: #292F2F;
   background-color: #FFD859;
       border: 2px solid #FFD859 !important;
-      border-radius: 20%;
+      border-radius: 20px;
       padding: 10px 20px;
       text-align: center;
       text-decoration: none;
@@ -133,7 +133,7 @@
 
 
   .stats-button-element{
-    width: 40%;
+    width: 60%;
     display: flex;
     justify-content: space-between;
   }
@@ -148,11 +148,7 @@
     color: white;
     background-color: rgb(77, 87, 87);
     border: none;
-    border-radius: 15%;
-    padding-right: 5%;
-    padding-left: 5%;
-    padding-top: 2%;
-    padding-bottom: 2%;
+    border-radius: 20px;
     margin-right: 20px;
     margin-top: 1px;
     margin-bottom: 1px;
@@ -229,7 +225,7 @@
     color: #adff2f;
     border: greenyellow;
     background-color: #292F2F;
-    border-radius: 25%;
+    border-radius: 20px;
     border: 2px solid greenyellow;
     text-decoration: none;
     font-size: large;
@@ -237,7 +233,7 @@
     transition-duration: 0.4s;
     cursor: pointer;
     margin: 5%;
-    padding: 2%;
+    padding: 20px;
   }
 .green-button:hover{
   color: #292F2F;

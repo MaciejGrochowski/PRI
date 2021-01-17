@@ -153,6 +153,10 @@ public class SessionService extends GeneralService {
             CharacterSessionOutputDto characterOutput = CharacterConverter.convertToSessionCharacter(character);
             if (isMG) {
                 characterOutput.setId(character.getCharacter().getId());
+                characterOutput.setName(character.getCharacter().getName().getName());
+                if(character.getCharacter().getSurname() != null){
+                    characterOutput.setSurname(character.getCharacter().getSurname().getSurname());
+                }
             }
             output.add(characterOutput);
         }

@@ -33,11 +33,12 @@
 /* .MuiInputBase-input{
 overflow-wrap: break-word!important;
 } */
-
+.popup-margin-container .MuiInput-root{
+    width: 100%;
+}
 .MuiFormControl-root{
   margin-top: 2%!important;
   color: white!important;
-  width: 100%;
 }
 
 .MuiFormControl-root:focus{

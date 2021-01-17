@@ -87,6 +87,12 @@ class RegisterPage extends React.Component {
         this.setState({isStatuteCheck: event.target.checked})
     }
 
+    enterListener = event => {
+        if (event.keyCode === 13 && this.isPreparedForRegister()) {
+            this.register();
+        }
+    }
+
 
     render(){
 
@@ -182,6 +188,7 @@ class RegisterPage extends React.Component {
                            label={textsPolish.register.description}
                            value={this.state.registerData.description}
                            helperText = {this.state.errorText.description}
+                           onKeyDown={(e) => this.enterListener(e)}
                            onChange={event => this.onChangeFunction(event, "description",
                                element => this.setState({registerData: {...this.state.registerData, description: element}}),
                                validationDescription)}

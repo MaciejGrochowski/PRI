@@ -6,6 +6,9 @@ import {TextField} from "@material-ui/core";
 import {textsPolish} from "../commons/texts-pl";
 import {validationMail} from "./RegisterPage/validation";
 import loginService from "../services/loginService";
+import {loginStatusChange} from "../actions";
+import {connect} from "react-redux";
+import {Redirect} from "react-router";
 
 
 class ForgotPasswordPage extends React.Component {
@@ -39,12 +42,18 @@ class ForgotPasswordPage extends React.Component {
         return validationMail(this.state.mail).errorState;
     }
 
+    enterListener = event => {
+        if (event.keyCode === 13 && !(!this.state.mail || this.validationMail() || this.state.successForgetPassword)) {
+            this.forgotPassword();
+        }
+    }
+
 
     render(){
 
-
-
-
+        if(this.props.isLogged){
+            return <Redirect push to={fronendUrls.mainPage} />
+        }
 
         return (
             <div className = "container-login-page">
@@ -57,6 +66,7 @@ class ForgotPasswordPage extends React.Component {
                                label={textsPolish.register.mail}
                                value={this.state.mail}
                                onChange={event => this.setState({mail: event.target.value})}
+                               onKeyDown={(e) => this.enterListener(e)}
                     />
 
 </div>
@@ -72,5 +82,12 @@ class ForgotPasswordPage extends React.Component {
     }
 
 }
+const mapStateToProps = (state) => {
+    return {
+        isLogged: state.isLogged // (1)
+    }
+};
+const mapDispatchToProps = { loginStatusChange }; // (2)
 
-export default ForgotPasswordPage;
+
+export default ForgotPasswordPage = connect(mapStateToProps, mapDispatchToProps)(ForgotPasswordPage);

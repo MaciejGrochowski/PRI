@@ -12,6 +12,8 @@ import {
 import loginService from "../../services/loginService";
 import PasswordField from "../../components/PasswordField/PasswordField";
 import RegisterTooltip from "../../components/Tooltip/RegisterTooltip";
+import {Link} from "react-router-dom";
+import {fronendUrls} from "../../commons/urls";
 
 
 class RegisterPage extends React.Component {
@@ -22,7 +24,8 @@ class RegisterPage extends React.Component {
             errorState: {},
             errorText: {},
             registerData: {},
-            registered: false
+            registered: false,
+            isStatuteCheck: false
         }
     }
 
@@ -77,7 +80,11 @@ class RegisterPage extends React.Component {
         const errorData = this.state.errorState;
         return !errorData.username && !errorData.password && !errorData.confirmPassword && !errorData.mail && !errorData.discord
         && !errorData.facebook && !errorData.description && registerData.mail && registerData.username && registerData.password &&
-            registerData.confirmPassword;
+            registerData.confirmPassword && this.state.isStatuteCheck;
+    }
+
+    setStatuteCheck = event => {
+        this.setState({isStatuteCheck: event.target.checked})
     }
 
 
@@ -181,6 +188,15 @@ class RegisterPage extends React.Component {
                 />
                     <RegisterTooltip tooltipTextName={textsPolish.registerTooltipTexts.description}/>
 </div>
+
+                    <div>
+                        <label className="container" style={{width: '100%'}}>
+                            <input type="checkbox" onClick={(event) => this.setStatuteCheck(event)}/>
+                            <span className="checkmark"/>
+                            <div className = "label">Akceptuję <Link to={fronendUrls.statute}>Regulamin</Link></div>
+                        </label>
+                    </div>
+
                 <div className="block-component">
                 <button className = "zaloguj-button" disabled={!this.isPreparedForRegister()} onClick={() => this.register()}>Zarejestruj</button>
 </div>

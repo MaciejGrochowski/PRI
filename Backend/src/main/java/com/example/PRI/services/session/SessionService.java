@@ -101,7 +101,7 @@ public class SessionService extends GeneralService {
             for (Character c : characters) {
                 Optional<SessionCharacter> existingCharacter = session.getSessionCharacterList().stream().filter(s -> s.getCharacter().getId()==c.getId()).findFirst();
                 if(existingCharacter.isPresent()) {
-                    sessionCharacterList.add(existingCharacter.get());
+//                    sessionCharacterList.add(existingCharacter.get());
                     continue;
                 }
                 SessionCharacter sessionCharacter = new SessionCharacter();

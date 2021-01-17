@@ -62,10 +62,16 @@ color: white;
 .text{
 color: white;
 font-size: 40px;
+display: flex;
 }
+.text-2{
+    display: block;
+    margin-left: 10px;
+}
+
 .text a{
     font-size: large;
-    margin-left: 10px;
+    margin-left: auto;
 }
 .one-element-brief{
 display: block;

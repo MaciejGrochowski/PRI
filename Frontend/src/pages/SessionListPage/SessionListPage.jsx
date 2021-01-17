@@ -72,7 +72,7 @@ class SessionListPage extends React.Component {
                                     {/*// <span>{item.createdDate}</span><br/>*/}
                                     {/*// <span>{item.lastModifiedDate}</span>*/}
                                     <div className="session-button-box">
-                                        <Link className="sessionButton" to={fronendUrls.sessionDetails + "/" + item.hashcode}>Więcej</Link>
+                                        {this.isLoggedUser() && <Link className="sessionButton" to={fronendUrls.sessionDetails + "/" + item.hashcode}>Więcej</Link>}
                                     </div>
                                 </div>
                             ))}

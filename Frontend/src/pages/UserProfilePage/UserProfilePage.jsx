@@ -249,14 +249,24 @@ class UserProfilePage extends React.Component {
                 {/*ToDo get only a first 10 characters/histories on backend, not slice it on frontend*/}
                 {this.state.characters && this.state.characters.slice(0,10).map((item, i) => (
                     <div className = "one-element-brief">
+                        <div className="column" id={"profileColumn"}>
                         <div className = "yellow-color">#{item.id}</div>
-                        <div className = "user-profile-container-s"><div className = "yellow-color">Imię: </div>	&nbsp; {item.name}</div>
-                        <div className = "user-profile-container-s"><div className = "yellow-color">Nazwisko:	&nbsp; </div>{item.surname}</div>
-                        <div className = "user-profile-container-s"><div className = "yellow-color">Rasa:	&nbsp; </div>{item.race}</div>
-                        <div className = "user-profile-container-s" ><div className = "yellow-color">Płeć: 	&nbsp;</div>{item.sex}</div>
-                        <div className = "user-profile-container-s"><div className = "yellow-color">Profesja: 	&nbsp;</div>{item.career}</div>
-                        <div className = "user-profile-container-s"><div className = "yellow-color">Miejsce pobytu:	&nbsp; </div>{item.livePlace}</div>
+                        <div className = "user-profile-container-s"><div className = "yellow-color">Imię: </div></div>
+                        <div className = "user-profile-container-s"><div className = "yellow-color">Nazwisko:</div></div>
+                        <div className = "user-profile-container-s"><div className = "yellow-color">Rasa:	&nbsp; </div></div>
+                        <div className = "user-profile-container-s" ><div className = "yellow-color">Płeć: 	&nbsp;</div></div>
+                        <div className = "user-profile-container-s"><div className = "yellow-color">Profesja: 	&nbsp;</div></div>
+                        <div className = "user-profile-container-s"><div className = "yellow-color">Miejsce pobytu:	&nbsp; </div></div>
                         {/*<Link className = "detaleButton" to={fronendUrls.historyList + "/" + item.id}><div className = "normal-text">Więcej</div></Link>*/}
+                        </div>
+                        <div className="column" id={"profileColumn"}>
+                            <div>{item.name}</div>
+                            <div> {item.surname}</div>
+                            <div>{item.race}</div>
+                            <div>{item.sex}</div>
+                            <div>{item.career}</div>
+                            <div>{item.livePlace}</div>
+                        </div>
                     </div>
                 ))
                 }

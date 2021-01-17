@@ -186,7 +186,7 @@ class UserProfilePage extends React.Component {
             <div className = "mail-fb-dc-component">
 
 
-                <div className = "user-profile-container"><div className = "text"><span>{mail}</span> <a href={"mailto:" + this.state.mail}>Wyślij maila</a></div></div>
+                <div className = "user-profile-container"><div className = "text"><span>{mail}</span> <div className="text-2"><a href={"mailto:" + this.state.mail}>Wyślij maila</a></div></div></div>
 
                 <div className = "user-profile-container"><div className = "text"><span>{fb}</span>
                     {(this.state.isEditingProfile || !this.state.facebook || this.state.facebook==="") ? <TextField
@@ -197,19 +197,18 @@ class UserProfilePage extends React.Component {
                     value={this.state.facebook}/>
 
                     :
-                        <a href={this.state.facebook}>Profil na facebook</a>}
+                        <div className="text-2"><a href={this.state.facebook}>Profil na facebook</a></div>}
 
                     </div></div>
 
-                <div className = "user-profile-container"><div className = "text"><span>{discord}</span>
-                    <TextField
+                <div className = "user-profile-container"><div className = "text"><span>{discord}</span> <div className="text-2"><TextField
                         onChange={(event) => this.setState({discord: event.target.value})}
                         disabled={!this.state.isEditingProfile}
                         value={this.state.discord}
                         helperText = {validationDiscord(this.state.discord || "").errorText}
                         error={validationDiscord(this.state.discord || "").errorState}
 
-                    /></div></div>
+                    /></div></div></div>
 
             </div>
 </div>

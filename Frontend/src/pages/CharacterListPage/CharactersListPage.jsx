@@ -316,9 +316,15 @@ class CharactersListPage extends React.Component {
     }
 
     addCharactersToSession = (selectedSessionId) => {
-        sessionService.addCharactersToSession(this.state.idsSelectedCharacters, selectedSessionId)
-            .then(r => this.setState({characterToSessionModalVisible: false}))
-            .catch(e => console.log(e))
+        if(this.state.idsSelectedCharacters.length === 0) {
+            this.setState({characterToSessionModalVisible: false})
+        }
+        else{
+            sessionService.addCharactersToSession(this.state.idsSelectedCharacters, selectedSessionId)
+                .then(r => this.setState({characterToSessionModalVisible: false}))
+                .catch(e => console.log(e))
+        }
+
     }
 
 

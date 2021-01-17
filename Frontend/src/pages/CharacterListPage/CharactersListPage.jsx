@@ -342,7 +342,7 @@ class CharactersListPage extends React.Component {
                         isOpen={this.state.isFilterListExpanded}
                     />
 
-                    {this.isLogged() && <button className="detaleButton addToSeesionButton" onClick={this.openAddCharacterToSessionModal}>Dodaj zaznaczone do sesji</button>}
+                    {this.isLogged() && <button className="reverse addToSeesionButton" onClick={this.openAddCharacterToSessionModal}>Dodaj zaznaczone do sesji</button>}
 
                     <AddCharactersToSessionModal
                     onRequestClose={() => this.setState({characterToSessionModalVisible: false})}

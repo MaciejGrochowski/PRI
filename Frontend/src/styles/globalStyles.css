@@ -436,17 +436,36 @@ span > a {
     text-align: left;
 }
 
-.MuiNativeSelect-select.MuiNativeSelect-select{
-    width: 350px;
+/*.MuiNativeSelect-select.MuiNativeSelect-select{*/
+/*    width: 350px;*/
+/*}*/
+
+/*.MuiNativeSelect-select:not([multiple]) option, .MuiNativeSelect-select:not([multiple]) optgroup{*/
+/*    background-color: #292F2F !important;*/
+/*    cursor: pointer !important;*/
+/*}*/
+
+/*.MuiNativeSelect-select:not([multiple]):focus option:focus, .MuiNativeSelect-select:not([multiple]):focus optgroup:focus{*/
+/*    cursor: pointer;*/
+/*    color: #FFD859;*/
+/*    background: #434e4e*/
+/*}*/
+
+.MuiSelect-select.MuiSelect-select{
+    padding-right: 300px !important;
 }
 
-.MuiNativeSelect-select:not([multiple]) option, .MuiNativeSelect-select:not([multiple]) optgroup{
-    background-color: #292F2F !important;
+.MuiSelect-select:not([multiple]) option{
+    color: white !important;
+    background: #292F2F !important;
+}
+
+.MuiSelect-select:not([multiple]) option:focus{
     cursor: pointer !important;
+    color: #FFD859 !important;
+    background: #434e4e !important;
 }
 
-.MuiNativeSelect-select:not([multiple]):focus option:focus, .MuiNativeSelect-select:not([multiple]):focus optgroup:focus{
-    cursor: pointer;
-    color: #FFD859;
-    background: #434e4e
+select.decorated option:hover {
+    box-shadow: 0 0 10px 100px #1882A8 inset;
 }

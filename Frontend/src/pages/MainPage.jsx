@@ -51,7 +51,7 @@ class MainPage extends React.Component {
 
                         <div className="margin-bottom"> <div className="bold">{arrow} Pomóż nam ulepszyć generator.</div> Nasz generator korzysta z ogromnej ilości różnych danych i zauważonych przez nas zależności w świecie Warhammera. Jeśli jesteś doświadczonym graczem (lub MG), niestraszne Ci rozważania na temat prawdopodobieństwa w świecie gry i doskonale wiesz jak powinna rosnąć szansa na posiadanie brody w przypadku wygenerowania mężczyzny krasnoluda, to zapraszamy!</div>
 
-                        <div className="margin-bottom"> <div className="bold">{arrow} Zostań programistą.</div>  Aplikacja JaNieTakiOrk powstała w Javascript (z użyciem frameworku React) oraz Java(z użyciem frameworku Spring). Jeśli chcesz pomóc w rozwoju opensourcowej aplikacji, skontaktuj się z nami lub samodzielnie dokonaj zmian i wyślij nam pull requesta na repozytorium: <a href="https://github.com/MaciejGrochowski/PRI">Github</a> (Opcja dla bardziej zaawansowanych, którzy wiedzą co robią)</div>
+                        <div className="margin-bottom"> <div className="bold">{arrow} Zostań programistą.</div>  Aplikacja JaNieTakiOrk powstała w Javascript (z użyciem frameworku React) oraz Java (z użyciem frameworku Spring). Jeśli chcesz pomóc w rozwoju opensourcowej aplikacji, skontaktuj się z nami lub samodzielnie dokonaj zmian i wyślij nam pull requesta na repozytorium: <a href="https://github.com/MaciejGrochowski/PRI">Github</a> (Opcja dla bardziej zaawansowanych, którzy wiedzą co robią).</div>
 
                         </div>
                     </div>

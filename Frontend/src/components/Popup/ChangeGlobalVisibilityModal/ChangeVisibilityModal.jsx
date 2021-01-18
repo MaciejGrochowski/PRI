@@ -16,6 +16,9 @@ const customStyles = {
         backgroundColor: '#292F2F',
         color: 'white',
         zIndex: '100!important'
+    },
+    overlay:{
+        backgroundColor: 'rgba(63, 63, 63, 0.75)'
     }
 };
 

@@ -20,6 +20,9 @@ const customStyles = {
         zIndex: '100!important',
         height: '50%',
         width: '50%'
+    },
+    overlay:{
+        backgroundColor: 'rgba(63, 63, 63, 0.75)'
     }
 };
 

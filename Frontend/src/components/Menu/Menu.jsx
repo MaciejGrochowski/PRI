@@ -94,7 +94,7 @@ class Menu extends React.Component {
                     {this.props.isLogged && <div className= "menu-column">
                         <div className = "menu-title">Moje</div>
                         {
-                            this.state.isExpanded ? this.state.menuOwnItems && this.state.menuOwnItems.map((item, i) => (
+                            this.state.isExpanded && this.props.isLogged ? this.state.menuOwnItems && this.state.menuOwnItems.map((item, i) => (
                                 <Link className="menuLink" to={item.link}><ItemMenu>{item.label}</ItemMenu></Link>
                             )) : ""
                         }
@@ -132,7 +132,7 @@ class Menu extends React.Component {
                 {getInfoFromToken(getToken()) && <div className= "menu-column">
                     <div className = "menu-title">Moje</div>
                     {
-                        this.state.isExpanded ? this.state.menuOwnItems && this.state.menuOwnItems.map((item, i) => (
+                        this.state.isExpanded && this.props.isLogged ? this.state.menuOwnItems && this.state.menuOwnItems.map((item, i) => (
                             <Link className="menuLink" to={item.link}><ItemMenu>{item.label}</ItemMenu></Link>
                         )) : ""
                     }

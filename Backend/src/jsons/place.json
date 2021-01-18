@@ -2853,5 +2853,26 @@
     "placeType": "VILLIAGE",
     "parent": {"id": 362},
     "properties": "isRoad: 1"
+  },
+  {
+    "id": 409,
+    "name": "Bergsburg",
+    "placeType": "TOWN",
+    "parent": {"id": 46},
+    "properties": "isForest: 1,isRiver: 1, isRoad: 1, isHill: 1"
+  },
+  {
+    "id": 410,
+    "name": "Leszken",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 136},
+    "properties": "isRoad: 1, isHill: 1"
+  },
+  {
+    "id": 411,
+    "name": "Menschenfresserhoffen",
+    "placeType": "VILLIAGE",
+    "parent": {"id": 136},
+    "properties": "isPopularRoad: 1, isHill: 1"
   }
 ]

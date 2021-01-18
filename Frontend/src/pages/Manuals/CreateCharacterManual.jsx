@@ -30,7 +30,7 @@ class CreateCharacterManual extends React.Component {
                 </div>
                 <div className= "manual-paragraf">
                     <div className = "manual-paragraf-title">Generowanie pojedynczej cechy</div>
-                    Innym sposobem używania generatora jest losowanie pojedynczych cech. Gdy jakaś z wygenerowanych cech ci się nie spodoba możesz ją "przerzucić" z pomocą przycisku <span className="yellow">{refresh}</span> znajdującego się koło pola każdej cechy. Zwróć uwage, że większość przycisków jest wyszarzona co oznacza, że bez wypełnienia innych cech nie można wygenerować tej konkretnej. Wiąże się to z logiką generatora. Jeżeli chciałbyś wiedzieć które pola musisz wypełnić zanim wygenerujesz rządaną cechę najedź myszką na ikonę <span className="yellow">{info}</span>
+                    Innym sposobem używania generatora jest losowanie pojedynczych cech. Gdy jakaś z wygenerowanych cech ci się nie spodoba możesz ją "przerzucić" z pomocą przycisku <span className="yellow">{refresh}</span> znajdującego się koło pola każdej cechy. Zwróć uwage, że większość przycisków jest wyszarzona co oznacza, że bez wypełnienia innych cech nie można wygenerować tej konkretnej. Wiąże się to z logiką generatora. Jeżeli chciałbyś wiedzieć które pola musisz wypełnić zanim wygenerujesz żądaną cechę najedź myszką na ikonę <span className="yellow">{info}</span>
                 </div>
                 <div className= "manual-paragraf">
                     <div className = "manual-paragraf-title">Generowanie statystyk bojowych</div>

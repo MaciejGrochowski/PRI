@@ -26,7 +26,7 @@ class CreateCharacterManual extends React.Component {
                 <span className="yellow"> Uwaga! Postaci nie można zmienić ani usunąć po ich zapisaniu. Stają się one ogólnie dostępne i każdy użytkownik aplikacji może z nich korzystać.</span>
                 <div className= "manual-paragraf">
                     <div className = "manual-paragraf-title">Generowanie postaci</div>
-                    Jeżeli chcesz szybko wygenerować postać i nie masz żadnych preferencji co do jej cech możesz skorzystać z przycisku <span className="yellow">Generuj losowe statystyki {refresh}</span>. Uruchomi on zaawansowany generator postaci uwzględniający takie dane jak poprzednie profesje przy wyborze obcenej czy procentowo większa szansa na zarost jeżeli wylosowana rasa to krasnolud. Możesz przejrzeć wynik generowania i zmienić cechy, które uznasz za takie, które ci nie pasują. Pamiętaj, że żeby uzyć postaci w trakcie sesji musisz zapisać postać.
+                    Jeżeli chcesz szybko wygenerować postać i nie masz żadnych preferencji co do jej cech możesz skorzystać z przycisku <span className="yellow">Generuj losowe statystyki {refresh}</span>. Uruchomi on zaawansowany generator postaci uwzględniający takie dane jak poprzednie profesje przy wyborze obecnej czy procentowo większa szansa na zarost jeżeli wylosowana rasa to krasnolud. Możesz przejrzeć wynik generowania i zmienić cechy, które uznasz za takie, które ci nie pasują. Pamiętaj, że żeby uzyć postaci w trakcie sesji musisz zapisać postać.
                 </div>
                 <div className= "manual-paragraf">
                     <div className = "manual-paragraf-title">Generowanie pojedynczej cechy</div>

@@ -53,7 +53,7 @@ class App extends React.Component{
         <Route path={fronendUrls.sessionManual} component={SessionManual} />
         <Route path={fronendUrls.statute} component={Statute} />
         <Route path={fronendUrls.characterHistoryListManual} component={CharacterHistoryListManual} />
-                <CookieConsent>Strona używa plików cookies. Ich polityka jest dostępna <Link to={fronendUrls.cookiesPage}>TU</Link></CookieConsent>
+                <CookieConsent buttonText="Rozumiem">Strona używa plików cookies. Ich polityka jest dostępna <Link to={fronendUrls.cookiesPage}>TU</Link></CookieConsent>
             </BrowserRouter>
         )
   }

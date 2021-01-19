@@ -9,13 +9,12 @@ Warto zwrócić uwagę, że oba foldery należy kompilować osobno.
 Aby poprawnie uruchomić część backendową wymagana jest *Java w wersji 11* i narzędzie - *Maven*. Aby zbudować aplikację serwerową należy wykonać kilka kroków. 
 1. Stworzyć pusta MySQL'ową baze danych o nazwie "orc"   (Dokładną konfiguracje można znaleźć w pliku <code>Backend/src/main/resources/application.properties</code>) kodowaną zgodnie ze standardem UTF-8.
 2. Uzupełnić zmienne środowiskowe:
-<code>DB_PASS=Hasło do bazy danych
-SECRET_KEY=Zmienna potrzebna do generowania tokenów autoryzacyjnych przez Spring Seciurity
-SERVER_IMAGE_PATH=ścieżka do folderu zawierającego pliki graficzne. 
-MAIL_PASSWORD=Zmienna zawierająca hasło do adresu e-mail używanego przez aplikację
-URL_APPLICATION=Zmienna zawierająca adres pod jakim znajduje się aplikacja. 
-</code>
-Trzy ostatnie zmienne służą do prawidłowego wysyłania wiadomości e-mail do użytkowników aplikacji i nie musza być poprawnie uzupełnione do użytkowania aplikacji (z wyłączeniem omawianej funkcjonalności).
+ * DB_PASS=Hasło do bazy danych
+* SECRET_KEY=Zmienna potrzebna do generowania tokenów autoryzacyjnych przez Spring Seciurity
+* SERVER_IMAGE_PATH=ścieżka do folderu zawierającego pliki graficzne. 
+* MAIL_PASSWORD=Zmienna zawierająca hasło do adresu e-mail używanego przez aplikację
+* URL_APPLICATION=Zmienna zawierająca adres pod jakim znajduje się aplikacja. 
+  </br>Trzy ostatnie zmienne służą do prawidłowego wysyłania wiadomości e-mail do użytkowników aplikacji i nie musza być poprawnie uzupełnione do użytkowania aplikacji (z wyłączeniem omawianej funkcjonalności).
 3. Wykonać komendę <code>mvn clean install</clean>
 4. Uruchomić aplikację.
 ## Frontend
@@ -41,4 +40,3 @@ Do obsługi aplikacji wymagane jest otwarcie portów:
 - port:8443 - port tomcata dla https
 - port:8080 - port serwera
 - port:587 - port używany przy komunikacji mailowej. Wiadomości e-mail wysyłane są bezpośrednio z Javy. Nie używamy żadnego zewnętrznego serwera SMTP.
-

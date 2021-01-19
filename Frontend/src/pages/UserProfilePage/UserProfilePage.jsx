@@ -240,7 +240,7 @@ class UserProfilePage extends React.Component {
         </div>
     ))
     }
-    <Link className="detaleButton" to={fronendUrls.sessionList + "/" + this.state.username}>Więcej sesji</Link>
+    {this.state.sessions.length > 0 ? <Link className="detaleButton" to={fronendUrls.sessionList + "/" + this.state.username}>Więcej sesji</Link> : <div style={{color: "white"}}>Ten użytkownik nie stworzył jeszcze sesji.</div>}
 </div>
 
 <div className = "user-profile-container">
@@ -271,7 +271,7 @@ class UserProfilePage extends React.Component {
                 ))
                 }
 
-                <Link className="detaleButton" to={fronendUrls.characterList + "/user/" + this.state.username}>Więcej postaci</Link>
+    {this.state.characters.length > 0 ? <Link className="detaleButton" to={fronendUrls.characterList + "/user/" + this.state.username}>Więcej postaci</Link> : <div style={{color: "white"}}>Ten użytkownik nie stworzył jeszcze postaci.</div>}
 </div>
 <div className = "user-profile-block">
                 <div className = "user-profile-subtitle">Lista historii:</div>
@@ -279,12 +279,12 @@ class UserProfilePage extends React.Component {
                     <div className = "one-element-brief">
                         {/*<div>{item.id}</div>*/}
                         <div className="short-history-title">{item.title}</div>
-                        <div>{item.beginDescription}</div>
+                        <div>{item.beginDescription.substring(0, 250)}...</div>
                         {/*<Link className = "detaleButton" to={fronendUrls.historyList + "/" + item.id}><div className = "normal-text">Więcej</div></Link>*/}
                     </div>
                 ))
                 }
-                <Link className="detaleButton" to={fronendUrls.historyList + "/user/" + this.state.username}>Więcej historii</Link>
+    {this.state.histories.length > 0 ? <Link className="detaleButton" to={fronendUrls.historyList + "/user/" + this.state.username}>Więcej historii</Link> : <div style={{color: "white"}}>Ten użytkownik nie stworzył jeszcze historii.</div>}
 
 
 </div>

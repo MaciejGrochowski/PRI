@@ -15,7 +15,7 @@ Aby poprawnie uruchomić część backendową wymagana jest *Java w wersji 11* i
 * MAIL_PASSWORD=Zmienna zawierająca hasło do adresu e-mail używanego przez aplikację
 * URL_APPLICATION=Zmienna zawierająca adres pod jakim znajduje się aplikacja. 
   </br>Trzy ostatnie zmienne służą do prawidłowego wysyłania wiadomości e-mail do użytkowników aplikacji i nie musza być poprawnie uzupełnione do użytkowania aplikacji (z wyłączeniem omawianej funkcjonalności).
-3. Wykonać komendę <code>mvn clean install</clean>
+3. Wykonać komendę <code>mvn clean install</code>
 4. Uruchomić aplikację.
 ## Frontend
 Aby uruchomić część frontendową wymagana jest instalacja narzędzia *yarn*. A następnie wykonanie kilku kroków. W terminalu należy wpisać poniższe komendy:

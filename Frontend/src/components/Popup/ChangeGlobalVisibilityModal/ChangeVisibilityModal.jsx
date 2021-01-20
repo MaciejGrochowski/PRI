@@ -184,7 +184,10 @@ class ChangeVisibilityModal extends React.Component {
 
     onCheckboxClick = (name, value) => {
         let checkboxData = this.state.checkboxData;
+        console.log(value)
+        console.log(188)
         if(!value){
+            console.log(name);
             delete checkboxData[name];
         }
         if(value){
@@ -210,7 +213,7 @@ class ChangeVisibilityModal extends React.Component {
                             {columnsConfig && columnsConfig.map((item, i) => (
                                 <div className = "auto-margin">
                                     <label className="container" style={{width: '100%'}}>
-                                        <input type="checkbox" onClick={(event) => this.onCheckboxClick(item.name, event.target.value)} id={item.field + "VisibilityCheckbox"}/>
+                                        <input type="checkbox" defaultChecked={this.state.checkboxData[item.name]} onClick={(event) => this.onCheckboxClick(item.name, event.target.checked)}/>
                                         <span className="checkmark"/>
                                         <div className = "label">{item.title}</div>
                                     </label>

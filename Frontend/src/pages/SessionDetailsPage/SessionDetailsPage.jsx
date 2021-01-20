@@ -205,11 +205,15 @@ class SessionDetailsPage extends React.Component {
                             onRequestClose={() => this.setState({copying: false})}
                             style={customStyles}
                         ><>
-
-                            <div>{this.state.location}</div>
+                                    <div className = "container-login-page">
+                                    <div className = "margin-login-body">
+                            <div className="login-title">Skopjuj link udostepnienia sesji</div>
+                            <div className = "flex"><code className="code-message">{this.state.location}</code>
                             <CopyToClipboard text={this.state.location} onCopy={this.onCopy}>
-                                <button>Kopiuj</button>
+                                <button className="detaleButton" style={{marginBottom:"auto"}}>Kopiuj</button>
                             </CopyToClipboard>
+                            </div>
+                            </div></div>
                         </>
 
                         </Modal>

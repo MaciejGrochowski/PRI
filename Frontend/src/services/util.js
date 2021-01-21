@@ -46,8 +46,8 @@ export const getInfoFromToken = token => {
 }
 
 
-export const baseApiUrl = "https://janietakiork.projektstudencki.pl:8443/PRI-0.0.1-SNAPSHOT";
-// export const baseApiUrl = "http://localhost:8080";
+//export const baseApiUrl = "https://janietakiork.projektstudencki.pl:8443/PRI-0.0.1-SNAPSHOT";
+export const baseApiUrl = "http://localhost:8080";
 
 
 export const localApiUrl = baseApiUrl + "/app";

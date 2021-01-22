@@ -369,12 +369,14 @@ public class CharacterConverter {
             output.setTalents(getStringFromArrayProperties(character.getTalents().stream().map(Talent::getName).collect(Collectors.toList())));
         }
 
+        Sex visibleSex = attributesVisibility.isSex() ? character.getSex() : null;
+
         if(attributesVisibility.isPersonality() && character.getPersonality()!=null){
-            output.setPersonality(getStringFromArrayProperties(character.getPersonality().stream().map(p -> convertPersonality(p, character.getSex())).collect(Collectors.toList())));
+            output.setPersonality(getStringFromArrayProperties(character.getPersonality().stream().map(p -> convertPersonality(p, visibleSex)).collect(Collectors.toList())));
         }
 
         if(attributesVisibility.isApperance() && character.getApperance()!=null){
-            output.setApperance(getStringFromArrayProperties(character.getApperance().stream().map(a -> convertApperance(a, character.getSex())).collect(Collectors.toList())));
+            output.setApperance(getStringFromArrayProperties(character.getApperance().stream().map(a -> convertApperance(a, visibleSex)).collect(Collectors.toList())));
         }
 
         if(attributesVisibility.isEmotion() && character.getDominatingEmotions()!=null){

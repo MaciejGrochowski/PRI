@@ -6,6 +6,7 @@ import com.example.PRI.entities.character.Character;
 import com.example.PRI.entities.session.AttributesVisibility;
 import com.example.PRI.entities.session.SessionCharacter;
 import com.example.PRI.enums.CharacterAttribute;
+import com.example.PRI.enums.Sex;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,7 +54,7 @@ public class CharacterConverter {
         output.setCurrentCareer(character.getCurrentCareer().getName());
 //        output.setCareers(character.getCareers().stream().map(Career::getName).collect(Collectors.toList()));
         output.setLivePlace(character.getLivePlace().getName());
-        output.setApperance(character.getApperance().stream().map(Apperance::getName).collect(Collectors.toList()));
+        output.setApperance(character.getApperance().stream().map(a -> convertApperance(a, character.getSex())).collect(Collectors.toList()));
 //        output.setBaseStats(convert(character.getEndStats())); ToDo BaseStats jako odrębne pola w klasie!!
         output.setDayOfBirth(character.getBirthDate().getDay().toString());
         if (character.getBirthDate() != null) {
@@ -72,7 +73,7 @@ public class CharacterConverter {
         output.setEyeColor(character.getEyeColor() == null ? "" : character.getEyeColor().getColor());
         output.setHairColor(character.getHairColor() == null ? "" : character.getHairColor().getColor());
         output.setHeight(character.getHeight());
-        output.setPersonality(character.getPersonality().stream().map(Personality::getName).collect(Collectors.toList()));
+        output.setPersonality(character.getPersonality().stream().map(p -> convertPersonality(p, character.getSex())).collect(Collectors.toList()));
         output.setPrediction(character.getPrediction() == null ? "" : character.getPrediction().getText());
         output.setReligion(character.getReligion() == null ? "" : character.getReligion().getGodName());
         output.setSkills(character.getSkills().stream().map(CharacterConverter::convert).collect(Collectors.toList()));
@@ -102,6 +103,24 @@ public class CharacterConverter {
 
     private static SkillOutputDto convert(Skill skill) {
         return skill == null ? new SkillOutputDto() : new SkillOutputDto(skill.getName(), skill.getLevel());
+    }
+
+    private static String convertPersonality(Personality p, Sex s){
+        if(s==null || s.equals(Sex.MALE)){
+            return p.getName();
+        }
+        else{
+            return p.getFemaleName();
+        }
+    }
+
+    private static String convertApperance(Apperance a, Sex s){
+        if(s==null || s.equals(Sex.MALE)){
+            return a.getName();
+        }
+        else{
+            return a.getFemaleName();
+        }
     }
 
     private static String getStringFromArrayProperties(List<String> properties) {
@@ -167,8 +186,8 @@ public class CharacterConverter {
             output.setBaseMagic(character.getBaseStats().getMagic());
             output.setBaseMovement(character.getBaseStats().getMovement());
         }
-        output.setPersonality(character.getPersonality()==null? "" : getStringFromArrayProperties(character.getPersonality().stream().map(Personality::getName).collect(Collectors.toList())));
-        output.setApperance(character.getApperance()==null? "" : getStringFromArrayProperties(character.getApperance().stream().map(Apperance::getName).collect(Collectors.toList())));
+        output.setPersonality(character.getPersonality()==null? "" : getStringFromArrayProperties(character.getPersonality().stream().map(p -> convertPersonality(p, character.getSex())).collect(Collectors.toList())));
+        output.setApperance(character.getApperance()==null? "" : getStringFromArrayProperties(character.getApperance().stream().map(a -> convertApperance(a, character.getSex())).collect(Collectors.toList())));
         output.setLivePlace(character.getLivePlace()==null? "" : character.getLivePlace().getName());
 
         StatisticsOutputDto careerStats = convertCareersStats(character);
@@ -351,11 +370,11 @@ public class CharacterConverter {
         }
 
         if(attributesVisibility.isPersonality() && character.getPersonality()!=null){
-            output.setPersonality(getStringFromArrayProperties(character.getPersonality().stream().map(Personality::getName).collect(Collectors.toList())));
+            output.setPersonality(getStringFromArrayProperties(character.getPersonality().stream().map(p -> convertPersonality(p, character.getSex())).collect(Collectors.toList())));
         }
 
         if(attributesVisibility.isApperance() && character.getApperance()!=null){
-            output.setApperance(getStringFromArrayProperties(character.getApperance().stream().map(Apperance::getName).collect(Collectors.toList())));
+            output.setApperance(getStringFromArrayProperties(character.getApperance().stream().map(a -> convertApperance(a, character.getSex())).collect(Collectors.toList())));
         }
 
         if(attributesVisibility.isEmotion() && character.getDominatingEmotions()!=null){

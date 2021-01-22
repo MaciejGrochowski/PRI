@@ -15,4 +15,6 @@ public interface PersonalityRepository extends CrudRepository<Personality, Long>
     List<Personality> findAll();
 
     Personality findByName(String name);
+
+    List<Personality> findByFemaleNameIn(List<String> personalityListString);
 }

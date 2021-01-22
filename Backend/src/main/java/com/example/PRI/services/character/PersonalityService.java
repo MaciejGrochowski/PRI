@@ -25,7 +25,11 @@ public class PersonalityService extends GeneralService {
     }
 
     public List<Personality> findByNameIn(List<String> personalityListString) {
-        return personalityRepository.findByNameIn(personalityListString);
+        List<Personality> malePersonalities = personalityRepository.findByNameIn(personalityListString);
+        List<Personality> femalePersonalities = personalityRepository.findByFemaleNameIn(personalityListString);
+        malePersonalities.addAll(femalePersonalities.stream().filter(f -> !f.getName().equals(f.getFemaleName())).collect(Collectors.toList()));
+        return malePersonalities;
+
     }
 
     public List<String> getAllNames() {

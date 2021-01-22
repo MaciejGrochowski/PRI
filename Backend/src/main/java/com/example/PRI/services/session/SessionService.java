@@ -41,7 +41,7 @@ public class SessionService extends GeneralService {
     CharacterService characterService;
 
     @Autowired
-    SessionCharacterRepository sessionCharacterRepository;
+    SessionCharacterRepository sessionCharacterRepository; //ToDo refactor - use services, not repositories
 
     @Autowired
     AttributesVisibilityrRepository attributesVisibilityrRepository;

@@ -74,6 +74,7 @@ public enum Race {
                     "Broda po pas:0," +
                     "Kilkudniowy zarost:0," +
                     "Krótka broda:0," +
+                    "Krótka bródka:0," +
                     "Obfite bokobrody:0," +
                     "Pejsy:0,"+
                     "Skołtuniona broda:0,"+
@@ -217,6 +218,7 @@ public enum Race {
                     "Broda po pas:0," +
                     "Kilkudniowy zarost:0," +
                     "Krótka broda:0," +
+                    "Krótka bródka:0," +
                     "Obfite bokobrody:0," +
                     "Pejsy:0,"+
                     "Skołtuniona broda:0,"+

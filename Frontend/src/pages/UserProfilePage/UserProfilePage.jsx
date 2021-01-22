@@ -52,6 +52,16 @@ class UserProfilePage extends React.Component {
 
 
     getUserSuccessHandler = response => {
+        for (let item of response.data.histories) {
+            let tmp = item.beginDescription;
+            while (tmp.match('@')) {
+                tmp = tmp.replace('@', '');
+            }
+            while (tmp.match(/#\d+/g)) {
+                tmp = tmp.replace(/#\d+/g, '');
+            }
+            item.beginDescription = tmp;
+        }
         this.setState({
             facebook: response.data.facebook,
             discord: response.data.discord,
@@ -236,11 +246,11 @@ class UserProfilePage extends React.Component {
             <div className = "user-profile-container-s"><div className = "yellow-color">Data stworzenia: </div>	&nbsp; {this.shorterDate(item.createdDate)}</div>
             <div className = "user-profile-container-s"><div className = "yellow-color">Data modyfikacji: </div>	&nbsp; {this.shorterDate(item.lastModifiedDate)}</div>
             <div className="short-history-title">{item.name}</div>
-            <div>{item.description}</div>
+            <div>{item.description.substring(0, 1500)}{item.description.length > 1500 &&<>...</>}</div>
         </div>
     ))
     }
-    <Link className="detaleButton" to={fronendUrls.sessionList + "/" + this.state.username}>Więcej sesji</Link>
+    {this.state.sessions.length > 0 ? <Link className="detaleButton" to={fronendUrls.sessionList + "/" + this.state.username}>Więcej sesji</Link> : <div style={{color: "white"}}>Ten użytkownik nie stworzył jeszcze sesji.</div>}
 </div>
 
 <div className = "user-profile-container">
@@ -271,7 +281,7 @@ class UserProfilePage extends React.Component {
                 ))
                 }
 
-                <Link className="detaleButton" to={fronendUrls.characterList + "/user/" + this.state.username}>Więcej postaci</Link>
+    {this.state.characters.length > 0 ? <Link className="detaleButton" to={fronendUrls.characterList + "/user/" + this.state.username}>Więcej postaci</Link> : <div style={{color: "white"}}>Ten użytkownik nie stworzył jeszcze postaci.</div>}
 </div>
 <div className = "user-profile-block">
                 <div className = "user-profile-subtitle">Lista historii:</div>
@@ -279,12 +289,12 @@ class UserProfilePage extends React.Component {
                     <div className = "one-element-brief">
                         {/*<div>{item.id}</div>*/}
                         <div className="short-history-title">{item.title}</div>
-                        <div>{item.beginDescription}</div>
+                        <div>{item.beginDescription.substring(0, 250)}{item.beginDescription.length > 250 && <>...</>}</div>
                         {/*<Link className = "detaleButton" to={fronendUrls.historyList + "/" + item.id}><div className = "normal-text">Więcej</div></Link>*/}
                     </div>
                 ))
                 }
-                <Link className="detaleButton" to={fronendUrls.historyList + "/user/" + this.state.username}>Więcej historii</Link>
+    {this.state.histories.length > 0 ? <Link className="detaleButton" to={fronendUrls.historyList + "/user/" + this.state.username}>Więcej historii</Link> : <div style={{color: "white"}}>Ten użytkownik nie stworzył jeszcze historii.</div>}
 
 
 </div>

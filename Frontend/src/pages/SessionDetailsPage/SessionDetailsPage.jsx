@@ -12,7 +12,25 @@ import ChangeVisibilityModal
 import characterService from "../../services/characterService";
 import {polishCodeErrors} from "../../commons/texts-pl";
 import {CopyToClipboard} from "react-copy-to-clipboard/lib/Component";
+import Modal from "react-modal";
 
+
+const customStyles = {
+    content: {
+        top: '50%',
+        left: '50%',
+        right: 'auto',
+        bottom: 'auto',
+        marginRight: '-50%',
+        transform: 'translate(-50%, -50%)',
+        backgroundColor: '#292F2F',
+        color: 'white',
+        zIndex: '100!important'
+    },
+    overlay:{
+        backgroundColor: 'rgba(63, 63, 63, 0.75)'
+    }
+};
 
 class SessionDetailsPage extends React.Component {
 
@@ -29,7 +47,7 @@ class SessionDetailsPage extends React.Component {
             location: "",
             errorName: false,
             errorNameText: "",
-            copied: false
+            copying: false
 
         }
     }
@@ -69,7 +87,7 @@ class SessionDetailsPage extends React.Component {
     editSession = () => {
         this.setState({isChanging: false});
         sessionService.editSession(this.props.match.params.hashcode, this.state.name, this.state.description)
-            .then(r => console.log(r))
+            // .then(r => console.log(r))
             .catch(e => console.log(e))
     }
 
@@ -131,7 +149,7 @@ class SessionDetailsPage extends React.Component {
         }
     }
 
-    onCopy = () => this.setState({copied: true})
+    onCopy = () => this.setState({copying: false})
 
     render() {
         return (
@@ -180,9 +198,27 @@ class SessionDetailsPage extends React.Component {
                         />
 
 
-                        {this.isMG() && <CopyToClipboard text={this.state.location} onCopy={this.onCopy}>
-                            <button className="sessionButton">{this.state.copied? "Skopiowano" : "Kopiuj link do udostępniania"}</button>
-                        </CopyToClipboard>}
+                        {this.isMG() &&                             <button onClick={() => this.setState({copying: true})} className="sessionButton">Kopiuj link do udostępniania</button>}
+                        {this.state.copying &&
+                        <Modal
+                            isOpen={this.state.copying}
+                            onRequestClose={() => this.setState({copying: false})}
+                            style={customStyles}
+                        ><>
+                                    <div className = "container-login-page">
+                                    <div className = "margin-login-body">
+                            <div className="login-title">Skopjuj link udostepnienia sesji</div>
+                            <div className = "flex"><code className="code-message">{this.state.location}</code>
+                            <CopyToClipboard text={this.state.location} onCopy={this.onCopy}>
+                                <button className="detaleButton" style={{marginBottom:"auto"}}>Kopiuj</button>
+                            </CopyToClipboard>
+                            </div>
+                            </div></div>
+                        </>
+
+                        </Modal>
+
+                        }
                     </div>
                 </div>
                 <div className="flex-container-session">

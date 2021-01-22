@@ -181,13 +181,13 @@ class CharactersListPage extends React.Component {
         const personalities = Array.from(document.getElementsByClassName("characterFilterPersonalities")).map(c => c.textContent)
         if (personalities.length > 0) filterObject = {
             ...filterObject,
-            personalities: this.mapFilterArrayToString(personalities, this.state.autocompleteData.personalityNames)
+            personality: this.mapFilterArrayToString(personalities, this.state.autocompleteData.personalityNames)
         }
 
         const apperances = Array.from(document.getElementsByClassName("characterFilterApperances")).map(c => c.textContent)
         if (apperances.length > 0) filterObject = {
             ...filterObject,
-            apperances: this.mapFilterArrayToString(apperances, this.state.apperanceNames)
+            apperance: this.mapFilterArrayToString(apperances, this.state.apperanceNames)
         }
 
         await this.setState({filterObject: filterObject, page: 0})

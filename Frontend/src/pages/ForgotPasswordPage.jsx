@@ -9,6 +9,8 @@ import loginService from "../services/loginService";
 import {loginStatusChange} from "../actions";
 import {connect} from "react-redux";
 import {Redirect} from "react-router";
+import Loader from 'react-loader-spinner'
+
 
 
 class ForgotPasswordPage extends React.Component {
@@ -23,6 +25,7 @@ class ForgotPasswordPage extends React.Component {
     }
 
     forgotPassword = () => {
+        this.setState({disableButton: true})
         const requestBody = {email: this.state.mail};
 
         loginService.forgetPassword(requestBody)
@@ -73,10 +76,19 @@ class ForgotPasswordPage extends React.Component {
 <div className="block-component">
                 {this.state.errorForgetPassword && <div className = "error-message">Niepoprawny mail!</div>}
                 {this.state.successForgetPassword && <div className = "positive-message">Na Twojego maila wysłaliśmy linka do zresetowania hasła! <i class="fas fa-envelope"></i></div>}
+                {this.state.disableButton && (!this.state.errorForgetPassword && !this.state.successForgetPassword) &&
+                <Loader
+                    type="Puff"
+                    color="#00BFFF"
+                    height={100}
+                    width={100}
+                />
+
+                }
                 {/*ToDo style it*/}
 </div>
 <div className="block-component">
-                <button className = "zaloguj-button" disabled={!this.state.mail || this.validationMail() || this.state.successForgetPassword} onClick={() => this.forgotPassword()}>Przypomnij hasło</button>
+                <button className = "zaloguj-button" disabled={!this.state.mail || this.validationMail() || this.state.successForgetPassword || this.state.disableButton} onClick={() => this.forgotPassword()}>Przypomnij hasło</button>
             </div></div></div></div>
         )
     }

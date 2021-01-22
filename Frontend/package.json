@@ -29,6 +29,7 @@
     "react-copy-to-clipboard": "^5.0.3",
     "react-dom": "^16.13.1",
     "react-draft-wysiwyg": "MaciejGrochowski/react-draft-wysiwyg",
+    "react-loader-spinner": "^3.1.14",
     "react-modal": "^3.11.2",
     "react-redux": "^7.2.2",
     "react-router": "^5.2.0",

@@ -77,12 +77,13 @@ class ForgotPasswordPage extends React.Component {
                 {this.state.errorForgetPassword && <div className = "error-message">Niepoprawny mail!</div>}
                 {this.state.successForgetPassword && <div className = "positive-message">Na Twojego maila wysłaliśmy linka do zresetowania hasła! <i class="fas fa-envelope"></i></div>}
                 {this.state.disableButton && (!this.state.errorForgetPassword && !this.state.successForgetPassword) &&
+                <div className="auto-margin">
                 <Loader
-                    type="Puff"
-                    color="#00BFFF"
-                    height={100}
-                    width={100}
-                />
+                    type="ThreeDots"
+                    color="#FFD859"
+                    height={50}
+                    width={50}
+                /></div>
 
                 }
                 {/*ToDo style it*/}

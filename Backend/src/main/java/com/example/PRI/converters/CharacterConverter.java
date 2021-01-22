@@ -5,6 +5,7 @@ import com.example.PRI.entities.character.*;
 import com.example.PRI.entities.character.Character;
 import com.example.PRI.entities.session.AttributesVisibility;
 import com.example.PRI.entities.session.SessionCharacter;
+import com.example.PRI.enums.CharacterAttribute;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +25,21 @@ public class CharacterConverter {
         output.setLivePlace(character.getLivePlace().getName());
         return output;
 
+    }
+
+    public static String convertFilterAttributeToClassFieldName(String filterAttribute){
+        if(filterAttribute==null) return filterAttribute;
+        if(filterAttribute.equals(CharacterAttribute.LIVEPLACE.getName())) return filterAttribute +".name";
+        if(filterAttribute.equals(CharacterAttribute.BIRTHPLACE.getName())) return filterAttribute +".name";
+        if(filterAttribute.equals(CharacterAttribute.EYECOLOR.getName())) return filterAttribute +".color";
+        if(filterAttribute.equals(CharacterAttribute.HAIRCOLOR.getName())) return filterAttribute +".color";
+        if(filterAttribute.equals(CharacterAttribute.STARSIGN.getName())) return filterAttribute +".name";
+        if(filterAttribute.equals(CharacterAttribute.SEX.getName())) return filterAttribute +".name";
+        if(filterAttribute.equals(CharacterAttribute.RELIGION.getName())) return filterAttribute +".godName";
+        if(filterAttribute.equals(CharacterAttribute.SURNAME.getName())) return filterAttribute +".surname";
+        if(filterAttribute.equals(CharacterAttribute.NAME.getName())) return filterAttribute +".name";
+        if(filterAttribute.equals(CharacterAttribute.CURRENTCAREER.getName())) return filterAttribute +".name";
+        return filterAttribute;
     }
 
     public static CharacterDefaultAttributesOutputDto convert(Character character) {

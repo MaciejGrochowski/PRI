@@ -17,6 +17,7 @@ public class Personality extends GeneralEntity {
     @Column(unique = true)
     String name;
     String type;
+    String femaleName;
     Double probability;
 
     //ToDiscuss - Na cechy wpływa profesja i statystyki. Jak to zbudować architektonicznie?

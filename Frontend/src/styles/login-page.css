@@ -1,11 +1,13 @@
 .container-login-page{
 color: white;
+padding-bottom: inherit;
 }
 
 .login-body{
     display: block;
     width: 40%;
     margin: auto;
+    margin-top: 10%;
 
 }
 

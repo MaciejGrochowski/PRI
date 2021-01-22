@@ -23,6 +23,8 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import static com.example.PRI.converters.CharacterConverter.convertFilterAttributeToClassFieldName;
+
 @Service
 public class CharacterService extends GeneralService {
 
@@ -98,17 +100,27 @@ public class CharacterService extends GeneralService {
     }
 
     public CharacterListOutputDto getSomeCharactersPaged(CharacterListFilterInputDto requestInfo) throws Throwable {
-        if(requestInfo.getRowsPerPage() > 100) requestInfo.setRowsPerPage(100);
+        if(requestInfo.getRowsPerPage() > 100) {
+            requestInfo.setRowsPerPage(100);
+        }
+
+        requestInfo.setSortedBy(convertFilterAttributeToClassFieldName(requestInfo.getSortedBy()));
+
         Pageable pageable;
-        if (requestInfo.getSortedBy() == null)
+        if (requestInfo.getSortedBy() == null){
             pageable = PageRequest.of(requestInfo.getCurrentPage(), requestInfo.getRowsPerPage(), Sort.by("id").descending());
+
+        }
         else {
-            if (requestInfo.getIsAscending())
+            if (requestInfo.getIsAscending()){
                 pageable = PageRequest.of(requestInfo.getCurrentPage(),
                         requestInfo.getRowsPerPage(), Sort.by(requestInfo.getSortedBy()).ascending());
-            else
+            }
+            else {
                 pageable = PageRequest.of(requestInfo.getCurrentPage(),
                         requestInfo.getRowsPerPage(), Sort.by(requestInfo.getSortedBy()).descending());
+            }
+
         }
 
         Specification<Character> specifications = this.getSpecificationsFromFilter(requestInfo);

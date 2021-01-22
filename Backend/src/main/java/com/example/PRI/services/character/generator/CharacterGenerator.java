@@ -21,6 +21,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -231,6 +232,7 @@ public class CharacterGenerator extends GeneralService {
         Character character = new Character();
         character.setCreatedBy(user);
         character.setName(characterSaveService.nameConvert(characterInputDto.getName()));
+        character.setCreatedDate(new Date());
 
         if(!(characterInputDto.getSurname() == null || characterInputDto.getSurname().length() == 0)) {
             character.setSurname(characterSaveService.surnameConvert(characterInputDto.getSurname()));

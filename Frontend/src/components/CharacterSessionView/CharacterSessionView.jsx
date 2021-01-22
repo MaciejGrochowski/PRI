@@ -10,7 +10,6 @@ class CharacterSessionView extends React.Component {
 
     render() {
         const {character, isMG, onDeleteCharacter, onChangeVisibilityClick} = this.props;
-        console.log(character.endMagic)
         return (
             <div className="full-character-box">
                 {/*ToDo refactor (as other columnConfigs)*/}

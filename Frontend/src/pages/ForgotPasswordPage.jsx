@@ -34,7 +34,7 @@ class ForgotPasswordPage extends React.Component {
     }
 
     forgotPasswordErrorHandler = e => {
-        this.setState({errorForgetPassword: true})
+        this.setState({errorForgetPassword: true, disableButton: false})
     }
 
     forgotPasswordSuccessHandler = r => {

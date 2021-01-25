@@ -210,19 +210,21 @@ class ChangeVisibilityModal extends React.Component {
                 >
                     <div className="login-title">{title}</div>
                     {isGlobal && <div className = "positive-message">UWAGA - te zmiany nadpiszą wszystkie ustawienia widoczności konkretnych postaci!</div>}
-                            {columnsConfig && columnsConfig.map((item, i) => (
-                                <div className = "auto-margin">
-                                    <label className="container" style={{width: '100%'}}>
+                    <div className="parent-visibility-box">
+                    {columnsConfig && columnsConfig.map((item, i) => (
+                                <div className = "auto-margin" id={"visibility-box"}>
+                                    <label className="container" id={"visibility-box"} style={{width: '100%'}}>
                                         <input type="checkbox" defaultChecked={this.state.checkboxData[item.name]} onClick={(event) => this.onCheckboxClick(item.name, event.target.checked)}/>
                                         <span className="checkmark"/>
-                                        <div className = "label">{item.title}</div>
+                                        <div className = "label" id={"visibility-box"}>{item.title}</div>
                                     </label>
                                 </div>
 
                             ))
                             }
+                    </div>
                     <div className="flex-center-element">
-                        <button type="submit" className="button reverse" onClick={() => this.props.onSave(this.state.checkboxData)}>Zastosuj</button>
+                        <button type="submit" className="button reverse modal-button-bottom" onClick={() => this.props.onSave(this.state.checkboxData)}>Zastosuj</button>
                     </div>
                 </Modal>
             </div>

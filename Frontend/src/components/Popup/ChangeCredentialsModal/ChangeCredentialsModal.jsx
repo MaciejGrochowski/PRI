@@ -122,12 +122,12 @@ class ChangeCredentialsModal extends React.Component {
                         style={customStyles}
                     >
                         <div className = "positive-message">Uwaga - po zmianie użytkownika lub hasła zostaniesz automatycznie wylogowany. Możesz zalogować się ponownie przy użyciu nowych danych.</div>
-<div className="login-body">
+<div className="modal-tittle">
 <div className = "login-title">{this.props.title}</div>
-<div className="block-component">
+<div className="block-component" id={"shortInput"}>
                         <TextField onChange={this.handleChangeUsername} disabled={!isUsernameChanging} value={this.state.username}/>
 </div>
-<div className="block-component">
+<div className="block-component" id={"shortInput"}>
     <PasswordField
         handleChangePassword={this.handleChangePassword}
         label={isUsernameChanging ? "Hasło" : "Stare hasło"}
@@ -138,7 +138,7 @@ class ChangeCredentialsModal extends React.Component {
 
                         {isPasswordChanging &&
                         <>
-                        <div className="block-component"><PasswordField
+                        <div className="block-component" id={"shortInput"}><PasswordField
                             error={this.state.errorNewPassword.errorState}
                             label={"Nowe hasło"}
                             value={this.state.newPassword}
@@ -146,7 +146,7 @@ class ChangeCredentialsModal extends React.Component {
                             handleChangePassword={this.handleChangeConfirmPassword}
                             onKeyDown={(e) => this.enterListener(e)}
                         />
-                        </div><div className="block-component">
+                        </div><div className="block-component" id={"shortInput"}>
                             <PasswordField
                                 error={this.state.errorConfirmNewPassword.errorState}
                                 label={"Powtórz nowe hasło"}

@@ -208,8 +208,10 @@ class ChangeVisibilityModal extends React.Component {
                     style={customStyles}
                     contentLabel={title}
                 >
+                    <div className="modal-tittle">
                     <div className="login-title">{title}</div>
                     {isGlobal && <div className = "positive-message">UWAGA - te zmiany nadpiszą wszystkie ustawienia widoczności konkretnych postaci!</div>}
+                    </div>
                     <div className="parent-visibility-box">
                     {columnsConfig && columnsConfig.map((item, i) => (
                                 <div className = "auto-margin" id={"visibility-box"}>

@@ -191,3 +191,7 @@ white-space: nowrap;
   .modal-button-bottom{
       margin-bottom: 20px!important;
   }
+
+  .modal-tittle{
+      padding: 5px 50px;
+  }

@@ -27,7 +27,7 @@ public class CharacterSessionOutputDto {
 
     String dayOfBirth;
     String monthOfBirth;
-    String yearOfBird;
+    String yearOfBirth;
 
     String starSign;
 

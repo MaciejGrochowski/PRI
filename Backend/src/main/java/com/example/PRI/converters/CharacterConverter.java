@@ -265,7 +265,7 @@ public class CharacterConverter {
         }
 
         if(attributesVisibility.isYearOfBirth() && character.getBirthDate().getYear()!=null){
-            output.setYearOfBird(character.getBirthDate().getYear().toString());
+            output.setYearOfBirth(character.getBirthDate().getYear().toString());
         }
 
         if(attributesVisibility.isStarSign() && character.getStarSign()!=null){

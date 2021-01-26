@@ -69,10 +69,16 @@ class RegisterPage extends React.Component {
         const requestBody = this.state.registerData;
         loginService.register(requestBody)
             .then(r => this.setState({registered: true}))
-            .catch(e => this.setState({errorResponse: e.response.data}))
+            .catch(e => this.registerErrorHandler(e))
         // this.setState({registered: true})
+    }
 
-
+    registerErrorHandler = e => {
+        if(e.response === undefined){
+            this.setState({errorResponse: "NOT_RESPONSING_ERROR"})
+            return
+        }
+        this.setState({errorResponse: e.response.data})
     }
 
     isPreparedForRegister = () => {
@@ -110,6 +116,10 @@ class RegisterPage extends React.Component {
                     {this.state.errorResponse === "MAIL_EXISTS" &&
                     <div className = "error-message">{polishCodeErrors.MAIL_EXISTS}
                     </div>}
+                    {this.state.errorResponse === "NOT_RESPONSING_ERROR" &&
+                    <div className = "error-message">{polishCodeErrors.NOT_RESPONSING_ERROR}
+                    </div>}
+
 
                 <div className="block-component">
                 <TextField error={this.state.errorState.username}

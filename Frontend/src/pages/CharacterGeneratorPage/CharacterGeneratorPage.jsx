@@ -803,7 +803,7 @@ class CharacterGeneratorPage extends React.Component {
                         </div>
                         <div className="block-element">{this.state.generated &&
                         <div className="positive-message">Aby zobaczyć wygenerowaną postać, kliknij <Link to={this.state.href}>tutaj</Link></div>}</div>
-                        <div className="block-element">{this.state.isError &&
+                        <div className="block-element center-block">{this.state.isError &&
                         <ErrorGenerator errorText={"Błąd: " + polishCodeErrors[this.state.errorText]}/>}</div>
                             <button disabled={this.state.generated || !this.props.isLogged} className="green-button saveButton" onClick={this.save}>Zapisz</button>
                         <Tooltip arrow={true} placement={"right"} title="Przed zapisem upewnij się, że dane są poprawne. Raz stworzonej postaci nie można łatwo edytować.">

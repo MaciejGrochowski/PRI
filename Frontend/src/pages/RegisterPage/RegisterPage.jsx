@@ -200,7 +200,7 @@ class RegisterPage extends React.Component {
                         <label className="container" style={{width: '100%'}}>
                             <input type="checkbox" onClick={(event) => this.setStatuteCheck(event)}/>
                             <span className="checkmark"/>
-                            <div className = "label">Akceptuję <Link to={fronendUrls.statute}>Regulamin</Link></div>
+                            <div className = "label margin-label">Akceptuję <Link to={fronendUrls.statute}>Regulamin</Link></div>
                         </label>
                     </div>
 

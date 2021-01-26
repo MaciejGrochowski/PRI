@@ -13,7 +13,7 @@ class NeedLoginInformation extends React.Component {
         const {text} = this.props;
         return (<div className = "error-message">
                 <div>{text}</div>
-                <Link className="menuLink" to={fronendUrls.loginPage}><ItemMenu>Zaloguj się</ItemMenu></Link>
+                <Link className="center-block" to={fronendUrls.loginPage}><ItemMenu>Zaloguj się</ItemMenu></Link>
 
         </div>
 

@@ -25,7 +25,7 @@ public class History extends GeneralEntity {
 
     @ManyToOne
     @JoinColumn(name="created_by", nullable=false)
-    UserOfApp createdBy; //Potem to bedzie uzytkownik
+    UserOfApp createdBy;
 
     Date createdDate;
 

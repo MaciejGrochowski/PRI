@@ -173,7 +173,7 @@ class UserProfilePage extends React.Component {
                     <button className = "detaleButton buttonOnProfile" onClick={() => this.setState({isPasswordChanging: true})}>Edytuj hasło</button>
                     <button className = "detaleButton buttonOnProfile" onClick={() => this.setState({isUsernameChanging: true})}>Edytuj nazwę użytkownika</button>
                     {!this.state.isEditingProfile && <button className = "detaleButton buttonOnProfile" onClick={this.onClickEditButton}>Edytuj profil</button>}
-                    {this.state.isEditingProfile && <button className = "detaleButton" disabled={this.isDisabledEditProfileButton()} onClick={() => this.saveProfile()}>Zapisz</button>}
+                    {this.state.isEditingProfile && <button className = "detaleButton buttonOnProfile" disabled={this.isDisabledEditProfileButton()} onClick={() => this.saveProfile()}>Zapisz</button>}
                 </div>}
 
             <div className = "user-profile-container">

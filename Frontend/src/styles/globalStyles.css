@@ -484,3 +484,8 @@ select.decorated option:hover {
 .center-block{
     text-align: center;
 }
+
+#margin-label{
+    padding-left: 0;
+    margin-left: 35px;
+}

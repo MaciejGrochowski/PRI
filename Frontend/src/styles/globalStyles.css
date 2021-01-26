@@ -301,7 +301,6 @@ color: #FFD859!important;
 
 .flex-container-session > div.info-container-tittle{
     width: 50%;
-    margin-right: 5%;
 }
 
 .session-link-copy{
@@ -492,4 +491,14 @@ select.decorated option:hover {
 
 .flex-container-session#width-max > div{
     width: 100%;
+}
+
+.flex-container-session > div.info-container-tittle#box-01{
+    padding-right: 5%;
+    padding-left: 10%;
+    width: 40%;
+}
+
+.flex-container-session > div.info-container-tittle#box-02{
+    width: 30%;
 }

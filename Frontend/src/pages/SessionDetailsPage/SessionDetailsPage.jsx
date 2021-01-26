@@ -168,10 +168,10 @@ class SessionDetailsPage extends React.Component {
                                            helperText={this.state.errorNameText}
                                            value={this.state.name}/>
                             </div>
-                            <div className="info-container-tittle">
+                            <div className="info-container-tittle" id={"box-01"}>
                                 Autor sesji:<br/> <TextField disabled={true} value={this.state.createdBy} fullWidth={true}/>
                             </div>
-                            <div className="info-container-tittle">
+                            <div className="info-container-tittle" id={"box-02"}>
                                 Data stworzenia:<br/> <TextField disabled={true} value={this.state.createdDate} fullWidth={true}/>
                             </div>
                         </div>

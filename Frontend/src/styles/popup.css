@@ -48,7 +48,7 @@ white-space: nowrap;
 .container {
     display: block;
     position: relative;
-    padding-left: 3%;
+    padding-left: 10px;
     cursor: pointer;
     font-size: 18px;
     margin: 1%;
@@ -145,4 +145,65 @@ white-space: nowrap;
     .popup{
       width: 70%;
     }
+  }
+
+  .container#visibility-box{
+      margin: 0;
+  }
+
+  .label#visibility-box{
+      padding-left: 5px;
+      padding-top: 3px;
+      margin-left: 35px;
+  }
+
+  .auto-margin#visibility-box{
+      width: 28%;
+      display: inline-block;
+      margin: 2px 20px;
+  }
+
+  .auto-margin#visibility-box:hover{
+      background: linear-gradient(0deg, #292F2F 0%, #2d3434 21%, #3a4343 100%);
+      border-radius: 10px;
+  }
+
+
+  .parent-visibility-box{
+      padding: 5px 50px;
+      display:flex;
+      flex-wrap: wrap;
+      margin-bottom: 25px;
+  }
+
+  @media screen and (min-width: 1200px) {
+      .parent-visibility-box{
+          margin-left: 40px;
+      }
+  }
+
+  @media screen and (min-width: 1500px) {
+      .auto-margin#visibility-box{
+          width: 21%;
+      }
+  }
+
+  .modal-button-bottom{
+      margin-bottom: 20px!important;
+  }
+
+  .modal-tittle{
+      padding: 5px 50px;
+  }
+
+  .block-component#shortInput{
+      padding-left: 25%;
+      padding-right: 25%;
+  }
+
+  @media screen and (max-width: 1300px) {
+      .block-component#shortInput{
+          padding-left: 15%;
+          padding-right: 15%;
+      }
   }

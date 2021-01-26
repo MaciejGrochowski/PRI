@@ -25,7 +25,15 @@ public class PredictionGenerator extends GeneralService {
         this.randomService = randomService;
         if(randomService.nextDouble() < 0.8){
             List<Prediction> predictionList = predictionService.findAll();
-            character.setPrediction(predictionList.get(randomService.nextInt(predictionList.size())));
+            double randomRoll = this.randomService.nextDouble();
+            Prediction chosenPrediction = null;
+            for(Prediction pred: predictionList){
+                randomRoll -= pred.getProbability();
+                if(randomRoll <= 0){
+                    chosenPrediction = pred;
+                }
+            }
+            character.setPrediction(chosenPrediction);
         }
         return new HashMap<>();
     }

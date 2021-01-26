@@ -195,15 +195,15 @@ public class UserOfAppService extends GeneralService {
         return -1L;
     }
 
-    public Long changePassword(ChangePasswordInputDto changePasswordInputDto) {
+    public ResponseEntity<?> changePassword(ChangePasswordInputDto changePasswordInputDto) {
         UserOfApp user = findByUsername(changePasswordInputDto.getUsername());
 
         if (user.getUUIDActivation().equals(changePasswordInputDto.getHashcode())){
             user.setPassword(passwordEncoder.encode(changePasswordInputDto.getNewPassword()));
             userOfAppRepository.save(user);
-            return user.getId();
+            return ResponseEntity.ok("ok");
         }
-        else return -1L;
+        else return ResponseEntity.badRequest().body("BAD_HASH");
     }
   
 }

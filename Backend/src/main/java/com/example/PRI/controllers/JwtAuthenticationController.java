@@ -112,14 +112,8 @@ public class JwtAuthenticationController {
 
 
     @Post("/change-password")
-    public ResponseEntity<String> changePassword(@RequestBody ChangePasswordInputDto changePasswordInputDto){
-        Long id = userOfAppService.changePassword(changePasswordInputDto);
-        if(id==-1L){
-            return ResponseEntity.badRequest().body("BAD CREDENTIALS");
-        }
-        else{
-            return ResponseEntity.ok("OK");
-        }
+    public ResponseEntity<?> changePassword(@RequestBody ChangePasswordInputDto changePasswordInputDto){
+        return userOfAppService.changePassword(changePasswordInputDto);
     }
 
 }

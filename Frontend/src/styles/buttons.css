@@ -29,6 +29,11 @@
     color: grey!important;
     background: none!important;
   }
+
+.Button:focus {
+  outline: none;
+}
+
 .reverse{
   color: #292F2F;
   background-color: #FFD859;
@@ -52,6 +57,10 @@
     background-color: #292F2F;
     color: #FFD859;
   }
+
+.reverse:focus {
+  outline: none;
+}
 
 .small{
   font-size: small!important;
@@ -93,6 +102,11 @@
     color: #292F2F !important;
   }
 
+
+.detaleButton:focus {
+  outline: none;
+}
+
 .sessionButton{
   background-color: #292F2F;
   color: #FFD859;
@@ -131,12 +145,17 @@
   color: #292F2F !important;
 }
 
+.sessionButton:focus {
+  outline: none;
+}
+
 
   .stats-button-element{
     width: 60%;
     display: flex;
     justify-content: space-between;
   }
+
 
   .detailsTypeButton{
     overflow: hidden;
@@ -186,6 +205,7 @@
     margin-top: 0px;
     margin-bottom: 0px;
     margin-right: 19px;
+    outline: none;
   }
 
 
@@ -210,6 +230,10 @@
     background-color: #292F2F;
     color: #FFD859;
   }
+
+.menubutton:focus {
+  outline: none;
+}
 
   .filter-button{
     display: flex;
@@ -239,8 +263,12 @@
 .green-button:hover{
   color: #292F2F;
   background: greenyellow;
-
 }
+
+.green-button:focus {
+  outline: none;
+}
+
   .c:hover{
     background-color: greenyellow;
     color: #292F2F;

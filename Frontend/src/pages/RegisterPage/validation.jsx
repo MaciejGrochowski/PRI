@@ -36,7 +36,7 @@ export const validationPassword = password => {
     if ((password.match("^.{0,2}$"))){
         return {errorState: true, errorText: polishCodeErrors.registerErrors.passwordTooShort}
     }
-    if ((password.match("^.{21,}$"))){
+    if ((password.match("^.{65,}$"))){
         return {errorState: true, errorText: polishCodeErrors.registerErrors.passwordTooLong}
     }
     if (password.match("^([a-zA-Z]*[\\|!@#$%^&*()\\-_\\\\\\/><.,=+~`'\"{}\\[\\]:;\\^]*)*$")) {

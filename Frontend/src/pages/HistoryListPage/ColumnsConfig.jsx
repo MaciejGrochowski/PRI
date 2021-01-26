@@ -10,11 +10,13 @@ export const columnConfig = (autocompleteData={}, isCharacterFilter, isUserFilte
             title: 'Twórca', field: 'createdBy',
             removable: true,
             hidden: isUserFilter,
+            sorting: false,
             filter: <div class="item-div"><TextField label="Twórca" id="historyCreatedBy"/></div>
         },
         {
             title: 'Tytuł', field: 'historyTitle',
             removable: true,
+            sorting: false,
             filter: <div class="item-div"><TextField label="Tytuł" id="historyTitle"/></div>
         },
         {

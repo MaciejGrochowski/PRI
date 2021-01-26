@@ -41,7 +41,7 @@ export const textsPolish = {
     },
     registerTooltipTexts: {
         username: 'Nazwa użytkownika może posiadać łącznie 3-20 liter, liczb i znaków specjalnych.',
-        password: 'Hasło musi zawierać 3-20 znaków dużą literę i znak specjalny.',
+        password: 'Hasło musi zawierać 3-64 znaków, dużą literę i znak specjalny.',
         facebook: 'Link do profilu na Facebooku',
         discord: 'Nazwa użytkownika Discord np. Ork#1234',
         description: 'Opis profilu może mieć maksymalnie 1000 znaków.',
@@ -126,6 +126,7 @@ export const polishCodeErrors = {
     },
 
     BAD_CREDENTIALS_ERROR: 'Nazwa użytkownika lub hasło jest nieprawidłowe.',
+    NOT_RESPONSING_ERROR: 'Wystąpił nieznany błąd. Skontaktuj się z administracją.',
     USER_DOESNT_EXIST: 'Taki użytkownik nie istnieje.',
     NO_EMPTY_SESSION_NAME: 'Sesja nie może mieć pustej nazwy ani nazwy dłuższej niż 128 znaków.',
     USER_ALREADY_EXISTS: 'Użytkownik o takim nicku już istnieje.',

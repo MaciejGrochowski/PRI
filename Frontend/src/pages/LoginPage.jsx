@@ -19,7 +19,9 @@ class LoginPage extends React.Component {
         super();
         this.state = {
             username: "",
-            password: ""
+            password: "",
+            badCredentialsError: false,
+            notResponsingError: false
         }
     }
 
@@ -39,13 +41,18 @@ class LoginPage extends React.Component {
     }
 
     loginErrorHandler = error => {
+        console.log(error);
+        if(error.response === undefined){
+            this.setState({notResponsingError: true})
+            return
+        }
         if(error.response.status === 401){
             this.setState({badCredentialsError: true})
         }
     }
 
     handleChangePassword = event => {
-        this.setState({password: event.target.value})
+        this.setState({password: event.target.value, badCredentialsError: false, notResponsingError: false})
     }
 
     enterListener = event => {
@@ -64,8 +71,9 @@ class LoginPage extends React.Component {
 <div className = "margin-login-body">
 <div className = "login-title">Zaloguj się</div>
     {this.state.badCredentialsError && <div className = "error-message">{polishCodeErrors.BAD_CREDENTIALS_ERROR}</div>}
+    {this.state.notResponsingError && <div className = "error-message">{polishCodeErrors.NOT_RESPONSING_ERROR}</div>}
                 <div className="block-component">
-                <TextField label="Login" value={this.state.username} onChange={event => this.setState({username:event.target.value})} />
+                <TextField label="Login" value={this.state.username} onChange={event => this.setState({username:event.target.value, badCredentialsError: false, notResponsingError: false})} />
                 </div>
                 <div className="block-component">
                     <PasswordField
@@ -74,8 +82,7 @@ class LoginPage extends React.Component {
                         onKeyDown={(e) => this.enterListener(e)}
                     />
                 </div>
-
-                <div className="block-component"><button className = "zaloguj-button"><Link onClick={() => this.login()}>Zaloguj</Link></button></div>
+                <div className="block-component"><button className = "zaloguj-button" onClick={() => this.login()} >Zaloguj</button></div>
     <div className="login-description">Nie masz jeszcze konta? <Link to={fronendUrls.registerPage}>Zarejestruj się!</Link></div>
     <div className="login-description"><Link to={fronendUrls.forgotPasswordPage}>Zapomniałeś hasła?</Link></div>
 

@@ -271,7 +271,8 @@ class UserProfilePage extends React.Component {
                         </div>
                         <div className="column" id={"profileColumn"}>
                             <div>{item.name}</div>
-                            <div> {item.surname}</div>
+                            {item.surname && <div>{item.surname}</div>}
+                            {!item.surname && <div><br/></div>}
                             <div>{item.race}</div>
                             <div>{item.sex}</div>
                             <div>{item.career}</div>

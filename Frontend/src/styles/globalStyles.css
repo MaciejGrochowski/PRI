@@ -169,7 +169,8 @@ margin: 0px;
     margin-top: 2%;
     margin-bottom: 2%;
     /* border: solid 1px white; */
-    background-color: tomato;
+    background-color: rgba(203, 44, 44, 0.6);
+    border-radius: 20px;
     opacity: 0.9;
     color: white;
     text-align: center;
@@ -478,4 +479,13 @@ span > a {
 
 select.decorated option:hover {
     box-shadow: 0 0 10px 100px #1882A8 inset;
+}
+
+.center-block{
+    text-align: center;
+}
+
+#margin-label{
+    padding-left: 0;
+    margin-left: 35px;
 }

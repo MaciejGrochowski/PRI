@@ -489,3 +489,7 @@ select.decorated option:hover {
     padding-left: 0;
     margin-left: 35px;
 }
+
+.flex-container-session#width-max > div{
+    width: 100%;
+}

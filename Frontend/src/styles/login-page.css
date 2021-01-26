@@ -82,6 +82,11 @@ color: white!important;
     border-color: #FFD859 !important;
 }
 
+.zaloguj-button:focus{
+    outline: none!important;
+}
+
+
 .button {
   background-color: #FFD859;
   border: none;
@@ -94,6 +99,11 @@ color: white!important;
   transition-duration: 0.4s;
   cursor: pointer;
 }
+
+.button:focus{
+    outline: none!important;
+}
+
 
 .button1 {
   background-color: hidden;
@@ -111,6 +121,9 @@ color: white!important;
   border: 2px solid #e7e7e7;
 }
 
+.button1:focus{
+    outline: none;
+}
 
 
 .login-description{
@@ -122,6 +135,10 @@ color: white;
     padding: 0;
     top: 50%;
     margin-left: 5px;
+}
+
+button.MuiButtonBase-root.MuiIconButton-root:focus{
+    outline: none;
 }
 
 .ReactModal__Content{

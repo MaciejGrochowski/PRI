@@ -41,7 +41,7 @@ export const textsPolish = {
     },
     registerTooltipTexts: {
         username: 'Nazwa użytkownika może posiadać łącznie 3-20 liter, liczb i znaków specjalnych.',
-        password: 'Hasło musi zawierać 3-20 znaków dużą literę i znak specjalny.',
+        password: 'Hasło musi zawierać 3-64 znaków, dużą literę i znak specjalny.',
         facebook: 'Link do profilu na Facebooku',
         discord: 'Nazwa użytkownika Discord np. Ork#1234',
         description: 'Opis profilu może mieć maksymalnie 1000 znaków.',

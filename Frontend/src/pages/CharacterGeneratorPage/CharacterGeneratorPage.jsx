@@ -156,7 +156,6 @@ class CharacterGeneratorPage extends React.Component {
 
     generateOneAttributeSuccessHandler = (attrName, response) => {
         this.setState(generateOneAttributeSuccessHandler(attrName, response));
-        console.log(generateOneAttributeSuccessHandler(attrName, response))
     }
 
     render() {

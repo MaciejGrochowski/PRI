@@ -54,7 +54,6 @@ class CharactersListPage extends React.Component {
     componentDidUpdate(prevProps, prevState, snapshot) {
         if (prevState.autocompleteData !== this.state.autocompleteData) this.setColumnsConfig();
         if(prevProps.match.params.username !== this.props.match.params.username){
-            console.log("Ziemniak")
             this.getCharacters();
             this.getAutoCompleteCharacters();
         }

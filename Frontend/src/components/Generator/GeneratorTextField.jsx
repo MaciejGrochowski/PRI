@@ -29,13 +29,6 @@ class GeneratorTextField extends React.Component {
         }
     }
 
-    randomValue = v => {
-        this.setState({value: "Los"})
-        v.update("Los");
-    }
-
-
-
     onChangeFunction(event, v){
         this.setState({value:event.target.value});
 
@@ -53,6 +46,18 @@ class GeneratorTextField extends React.Component {
         v.update(event.target.value);
     }
 
+    onRandomClick = async () => {
+
+        await this.props.onRandomClick();
+
+        if(this.props.validationFunc){
+            this.setState({
+                errorText: "",
+                errorState: false
+            })
+        }
+    }
+
 
     render() {
         return (
@@ -67,7 +72,7 @@ class GeneratorTextField extends React.Component {
                                onChange={event => this.onChangeFunction(event, v)}
                                onBlur={(event) => this.onBlur(event, v)}
                     />
-                    {this.props.canBeGenerated && <button className="detaleButton small" onClick={() => this.props.onRandomClick()} disabled={this.props.disabled}><span>{element}</span></button>}
+                    {this.props.canBeGenerated && <button className="detaleButton small" onClick={() => this.onRandomClick()} disabled={this.props.disabled}><span>{element}</span></button>}
                     {this.props.tooltip && <GeneratorTooltip showIt={!this.props.disabled} content={this.props.tootipText}
                                     tooltipTypeName={this.props.label}
                                     raceTooltipAtribute={this.props.ifTooltipRace}

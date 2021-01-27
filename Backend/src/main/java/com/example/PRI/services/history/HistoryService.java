@@ -192,7 +192,7 @@ public class HistoryService extends GeneralService {
         return characterService.getDataForTags();
     }
 
-    public long save(HistoryInputDto historyInputDto, Authentication auth) {
+    public long save(HistoryInputDto historyInputDto, Authentication auth) throws Exception {
         History newHistory = new History();
         ImperialDate imperialDate = new ImperialDate();
 
@@ -202,11 +202,19 @@ public class HistoryService extends GeneralService {
         imperialDate.setDay(Integer.valueOf(historyInputDto.getDay()));
         imperialDate.setYear(Integer.valueOf(historyInputDto.getYear()));
         imperialDate.setMonth(Month.findByMonthName(historyInputDto.getMonth()));
+        if(imperialDate.getDay()==null || imperialDate.getMonth()==null || imperialDate.getYear()==null){
+            throw new Exception();
+        }
         imperialDate = imperialDateService.save(imperialDate);
         newHistory.setDate(imperialDate);
 
         Optional<Place> place = placeService.findByName(historyInputDto.getPlace());
-        place.ifPresent(newHistory::setPlace);
+        if(place.isPresent()){
+            newHistory.setPlace(place.get());
+        }
+        else{
+            throw new Exception();
+        }
 
         newHistory.setCreatedDate(new Date());
         newHistory.setDescription(historyInputDto.getDescription());

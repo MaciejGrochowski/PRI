@@ -69,6 +69,14 @@ class Table extends React.Component {
                 localization={{
                     body: {
                         emptyDataSourceMessage: noRecordsMessage
+                    },
+                    pagination: {
+                        firstAriaLabel: "Pierwsza strona",
+                        firstTooltip: "Pierwsza strona",
+                        previousTooltip: "Poprzednia strona",
+                        nextTooltip: "Następna strona",
+                        lastTooltip: "Ostatnia strona"
+
                     }
                 }}
                 onOrderChange={(orderedColumnId, orderDirection) => onOrderChange(orderedColumnId, orderDirection)}
@@ -89,7 +97,6 @@ class Table extends React.Component {
                             onChangePage={(event, page) => {
                             props.onChangePage(event, page);
                             ownOnChangePage(page)
-
                             }
                             }
                             labelDisplayedRows={row => <div

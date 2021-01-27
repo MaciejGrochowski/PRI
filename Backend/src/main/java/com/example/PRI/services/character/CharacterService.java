@@ -109,7 +109,6 @@ public class CharacterService extends GeneralService {
         Pageable pageable;
         if (requestInfo.getSortedBy() == null){
             pageable = PageRequest.of(requestInfo.getCurrentPage(), requestInfo.getRowsPerPage(), Sort.by("id").descending());
-
         }
         else {
             if (requestInfo.getIsAscending()){

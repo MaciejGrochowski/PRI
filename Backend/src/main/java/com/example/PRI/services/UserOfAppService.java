@@ -205,6 +205,7 @@ public class UserOfAppService extends GeneralService {
 
         if (user.getUUIDActivation().equals(changePasswordInputDto.getHashcode())){
             user.setPassword(passwordEncoder.encode(changePasswordInputDto.getNewPassword()));
+            user.setIsActive(true);
             userOfAppRepository.save(user);
             return ResponseEntity.ok("ok");
         }

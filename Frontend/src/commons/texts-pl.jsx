@@ -130,5 +130,6 @@ export const polishCodeErrors = {
     USER_DOESNT_EXIST: 'Taki użytkownik nie istnieje.',
     NO_EMPTY_SESSION_NAME: 'Sesja nie może mieć pustej nazwy ani nazwy dłuższej niż 128 znaków.',
     USER_ALREADY_EXISTS: 'Użytkownik o takim nicku już istnieje.',
-    BAD_PASSWORD: 'Złe hasło.'
+    BAD_PASSWORD: 'Złe hasło.',
+    USER_NOT_ACTIVE_ERROR: 'Użytkownik ten nie został aktywowany. Aktywuj konto za pomocą wiadomości email.'
 }

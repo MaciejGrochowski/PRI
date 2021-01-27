@@ -40,6 +40,7 @@ public class CharacterController {
             System.out.println(characterListInput.getFilters());
             System.out.println(characterListInput.getSortedBy());
             System.out.println(e);
+            output.setTotalCount(-1L);
         }
         return output;
     }

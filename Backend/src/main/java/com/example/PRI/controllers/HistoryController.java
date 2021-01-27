@@ -58,13 +58,7 @@ public class HistoryController {
         HistoryListFilterInputDto historyListInputDto = new HistoryListFilterInputDto(historyListInput.getSortedBy(), historyListInput.getIsAscending(),
                 map, historyListInput.getCurrentPage(), historyListInput.getRowsPerPage());
         HistoryListOutputDto output = new HistoryListOutputDto();
-        try{
-            output = historyService.getSomeHistoriesPaged(historyListInputDto);
-        }
-        catch (Exception e){
-            System.err.println(e);
-            output.setTotalCount(-1L);
-        }
+        output = historyService.getSomeHistoriesPaged(historyListInputDto);
         return output;
     }
 

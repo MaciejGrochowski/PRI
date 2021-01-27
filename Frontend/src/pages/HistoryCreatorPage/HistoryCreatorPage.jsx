@@ -15,6 +15,7 @@ import {loginStatusChange} from "../../actions";
 import {connect} from "react-redux";
 import {getToken, isValidToken} from "../../services/util";
 import {Redirect} from "react-router";
+import DefaultMultipleAutocomplete from "../../components/Autocomplete/DefaultMultipleAutocomplete";
 
 class HistoryCreatorPage extends React.Component {
 
@@ -89,6 +90,28 @@ class HistoryCreatorPage extends React.Component {
         else this.setState({isError: true, errorText: error.response.data.message})
     };
 
+    filterOptions = (input, state) => {
+        if(this.props.notSortOptions && state.inputValue==="") return input;
+        let optionsContains = []
+        let optionsStartWith = []
+        let allOptions = []
+        let inputValue = state.inputValue.toLowerCase()
+
+        for(let option of input){
+            let optionLowerCase = option.toLowerCase()
+            if(optionLowerCase.startsWith(inputValue))
+                optionsStartWith.push(option)
+            else{
+                if(optionLowerCase.includes(inputValue))
+                    optionsContains.push(option)
+            }
+        }
+        optionsContains.sort()
+        optionsStartWith.sort()
+        allOptions = optionsStartWith.concat(optionsContains)
+        return allOptions;
+    }
+
 
     render(){
 
@@ -135,14 +158,20 @@ class HistoryCreatorPage extends React.Component {
            <div className = "history-column">
            Miejsce:
             <div className="History-buttons-line">
-                <div className="item-div"><Autocomplete
+                <div className="item-div">
+
+                    <Autocomplete
                     renderInput={(params) => <TextField {...params} label="Miejsce" />}
                     options={this.state.places || []}
                     value={this.state.place}
                     onChange={(event, newValue) => {
                         this.setState({place: newValue});
                     }}
-                /></div>
+                    noOptionsText={"Brak opcji"}
+                    filterOptions={(input, state) => this.filterOptions(input, state)}
+                    />
+
+                </div>
 </div>
 </div>
 

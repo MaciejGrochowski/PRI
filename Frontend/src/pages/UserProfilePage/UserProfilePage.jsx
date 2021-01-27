@@ -241,7 +241,7 @@ class UserProfilePage extends React.Component {
 <div className = "user-profile-block">
                 <div className = "user-profile-subtitle">Prowadzone sesje:</div>
 
-    {this.state.sessions && this.state.sessions.slice(0,10).map((item, i) => (
+    {this.state.sessions && this.state.sessions.reverse().slice(0,5).map((item, i) => (
         <div className = "one-element-brief">
             <div className = "user-profile-container-s"><div className = "yellow-color">Data stworzenia: </div>	&nbsp; {this.shorterDate(item.createdDate)}</div>
             <div className = "user-profile-container-s"><div className = "yellow-color">Data modyfikacji: </div>	&nbsp; {this.shorterDate(item.lastModifiedDate)}</div>
@@ -257,7 +257,7 @@ class UserProfilePage extends React.Component {
 <div className = "user-profile-block">
                 <div className = "user-profile-subtitle">Lista postaci:</div>
                 {/*ToDo get only a first 10 characters/histories on backend, not slice it on frontend*/}
-                {this.state.characters && this.state.characters.slice(0,10).map((item, i) => (
+                {this.state.characters && this.state.characters.reverse().slice(0,5).map((item, i) => (
                     <div className = "one-element-brief" id={"profileColumns"}>
                         <div className="column" id={"profileColumn"}>
                         <div className = "yellow-color">#{item.id}</div>
@@ -286,11 +286,11 @@ class UserProfilePage extends React.Component {
 </div>
 <div className = "user-profile-block">
                 <div className = "user-profile-subtitle">Lista historii:</div>
-                {this.state.histories && this.state.histories.slice(0,10).map((item, i) => (
+                {this.state.histories && this.state.histories.reverse().slice(0,5).map((item, i) => (
                     <div className = "one-element-brief">
                         {/*<div>{item.id}</div>*/}
                         <div className="short-history-title">{item.title}</div>
-                        <div>{item.beginDescription.substring(0, 250)}{item.beginDescription.length > 250 && <>...</>}</div>
+                        <div>{item.beginDescription.substring(0, 250)}{item.beginDescription.length >= 250 && <>...</>}</div>
                         {/*<Link className = "detaleButton" to={fronendUrls.historyList + "/" + item.id}><div className = "normal-text">Więcej</div></Link>*/}
                     </div>
                 ))

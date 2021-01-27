@@ -55,7 +55,7 @@ export const columnConfig = (autocompleteData={}, isCharacterFilter, isUserFilte
             field: 'historyCharacters',
             hidden: isCharacterFilter,
             filter: <div className="item-div"><DefaultMultipleAutocomplete
-                labelName="Postacie uczestniczące"
+                labelName="Postać uczestnicząca"
                 options={autocompleteData.characterNames || []}
                 id="historyFilterCharacters"
             /></div>

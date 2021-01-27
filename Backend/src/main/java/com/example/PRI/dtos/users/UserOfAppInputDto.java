@@ -30,7 +30,7 @@ public class UserOfAppInputDto {
     @Size(max=10000)
     String facebook;
 
-    @Pattern(regexp = "^.[^#@:`']{1,31}#\\d\\d\\d\\d$",message = "WRONG_DISCORD_NAME")
+    @Pattern(regexp = "^.[^#@:`']{1,31}#\\d\\d\\d\\d$|^$",message = "WRONG_DISCORD_NAME")
     @Size(max=10000)
     String discord;
 

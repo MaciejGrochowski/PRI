@@ -59,7 +59,7 @@ public class HistoryController {
                 map, historyListInput.getCurrentPage(), historyListInput.getRowsPerPage());
         HistoryListOutputDto output = new HistoryListOutputDto();
         try{
-            historyService.getSomeHistoriesPaged(historyListInputDto);
+            output = historyService.getSomeHistoriesPaged(historyListInputDto);
         }
         catch (Exception e){
             System.err.println(e);

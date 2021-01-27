@@ -52,7 +52,7 @@ public class HistoryController {
     }
 
     @Get("/paged")
-    public HistoryListOutputDto getSomeHistoriesPaged(HistoryListFilterInputStringDto historyListInput) {
+    public HistoryListOutputDto getSomeHistoriesPaged(@Valid HistoryListFilterInputStringDto historyListInput) {
         Map<String, String> map = this.getMapFromString(historyListInput.getFilters());
         //ToDo konwersja ta powinna być niejawna, zapewniona przez mechanizmy springa
         HistoryListFilterInputDto historyListInputDto = new HistoryListFilterInputDto(historyListInput.getSortedBy(), historyListInput.getIsAscending(),

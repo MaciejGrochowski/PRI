@@ -8,6 +8,7 @@ import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 @Data
 @AllArgsConstructor
@@ -28,10 +29,12 @@ public class HistoryInputDto {
     String year;
 
     @NotBlank(message = "NO_HISTORY_PLACE")
+    @Size(max=10000)
     String place;
 
 //    @NotBlank(message = "NO_HISTORY_DESCRIPTION")
     @Length(min = 9, message = "NO_HISTORY_DESCRIPTION")
+    @Size(max=1000000)
     String description;
 
     @Length(min = 1, max = 256, message = "NO_HISTORY_TITLE")

@@ -48,7 +48,7 @@ public class CharacterGeneratorController {
     }
 
     @Get("/attribute/{attrName}")
-    public CharacterDetailsOutputDto getAttribute(@PathVariable String attrName, CharacterInputDto character){
+    public CharacterDetailsOutputDto getAttribute(@PathVariable String attrName, @Valid CharacterInputDto character){
         character = this.trimCharacter(character);
         return characterGenerator.generateAttribute(attrName, character);
     }

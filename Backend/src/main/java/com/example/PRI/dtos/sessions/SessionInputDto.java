@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 @Data
 @AllArgsConstructor
@@ -13,7 +14,10 @@ import javax.validation.constraints.NotBlank;
 public class SessionInputDto {
 
     @NotBlank(message = "NO_SESSION_NAME")
+    @Size(max=10000)
     String name;
+
+    @Size(max=100000)
     String description;
 
 }

@@ -26,6 +26,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import javax.mail.MessagingException;
+import javax.validation.Valid;
 
 @RestController
 @CrossOrigin
@@ -96,13 +97,13 @@ public class JwtAuthenticationController {
 
 //    @Post("/logout-user")
     @RequestMapping(value = "/logout-user", method = RequestMethod.POST)
-    public void logout(Authentication auth,@RequestBody TokenInputDto tokenInputDto){
+    public void logout(Authentication auth,@RequestBody @Valid TokenInputDto tokenInputDto){
         userOfAppService.logoutUser(auth, tokenInputDto.getToken());
     }
 
     //@RequestMapping(value = "/register", method = RequestMethod.POST)
     @Post("/register")
-    public ResponseEntity<String> register(@RequestBody UserOfAppInputDto userOfAppInputDto) throws notUniqueArgumentException, MessagingException {
+    public ResponseEntity<String> register(@RequestBody @Valid UserOfAppInputDto userOfAppInputDto) throws notUniqueArgumentException, MessagingException {
         String usernameOrError = userOfAppService.register(userOfAppInputDto);
         UserOfApp uapp = userOfAppService.findByUsername(userOfAppInputDto.getUsername());
         if(usernameOrError.equals(userOfAppInputDto.getUsername())) {
@@ -119,7 +120,7 @@ public class JwtAuthenticationController {
 
 
     @Post("/change-password")
-    public ResponseEntity<?> changePassword(@RequestBody ChangePasswordInputDto changePasswordInputDto){
+    public ResponseEntity<?> changePassword(@RequestBody @Valid ChangePasswordInputDto changePasswordInputDto){
         return userOfAppService.changePassword(changePasswordInputDto);
     }
 

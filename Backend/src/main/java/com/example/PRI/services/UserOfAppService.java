@@ -67,7 +67,12 @@ public class UserOfAppService extends GeneralService {
         List<Token> tmp = userOFApp.getToken();
         tmp.remove(tok);
         userOFApp.setToken(tmp);
-        tokenRepository.delete(tok);
+        try{
+            tokenRepository.delete(tok);
+        }
+        catch(IllegalArgumentException e){
+            System.out.println("Token doesnt exist, no need to delete.");
+        }
         userOfAppRepository.save(userOFApp);
     }
 

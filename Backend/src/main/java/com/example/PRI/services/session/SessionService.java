@@ -70,6 +70,12 @@ public class SessionService extends GeneralService {
         List<SessionOutputDto> sessionListOutputDto = new ArrayList<>();
         UserOfApp user = userOfAppService.findByUsername(username);
         List<Session> sessions = sessionRepository.findByCreatedUserOfApp(user);
+        Collections.sort(sessions, new Comparator<Session>() {
+            @Override
+            public int compare(Session s1, Session s2) {
+                return s2.getCreatedDate().compareTo(s1.getCreatedDate());
+            }
+        });
         sessions.forEach(c -> sessionListOutputDto.add(SessionConverter.convert(c, this.isHashcodeVisible(username, auth))));
 
 

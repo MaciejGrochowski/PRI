@@ -47,7 +47,7 @@ public class HistoryController {
     }
 
     @Post
-    public long save(@Valid @RequestBody HistoryInputDto historyInputDto, Authentication auth){
+    public long save(@Valid @RequestBody HistoryInputDto historyInputDto, Authentication auth) throws Exception {
         return historyService.save(historyInputDto, auth);
     }
 

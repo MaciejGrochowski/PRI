@@ -154,8 +154,10 @@ public class CharacterSaveService {
         }
     }
 
-    public Career currentCareerConvert(String inputCurrentCareer) {
-        return careerService.findByName(inputCurrentCareer);
+    public Career currentCareerConvert(String inputCurrentCareer) throws Exception {
+        Career c = careerService.findByName(inputCurrentCareer);
+        if(c==null) throw new Exception();
+        return c;
     }
 
     public List<Career> previousCareersConvert(String inputPreviousCareers, String inputCurrentCareer) {

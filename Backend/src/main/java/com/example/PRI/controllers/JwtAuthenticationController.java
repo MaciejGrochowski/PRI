@@ -11,6 +11,7 @@ import com.example.PRI.exceptions.notUniqueArgumentException;
 import com.example.PRI.services.EmailService;
 import com.example.PRI.services.UserOfAppService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -50,7 +51,12 @@ public class JwtAuthenticationController {
     public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtRequest authenticationRequest)
             throws Exception {
 
-        authenticate(authenticationRequest.getUsername(), authenticationRequest.getPassword());
+        try{
+            authenticate(authenticationRequest.getUsername(), authenticationRequest.getPassword());
+        }
+        catch (Exception e){
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(new JwtResponse(e.getMessage()));
+        }
 
         final UserDetails userDetails = jwtInMemoryUserDetailsService
                 .loadUserByUsername(authenticationRequest.getUsername());
@@ -76,14 +82,15 @@ public class JwtAuthenticationController {
         try {
 
             UserOfApp user = userOfAppService.findByUsername(username);
-            if(user!=null && !user.getIsActive()) throw new Exception("INVALID_CREDENTIALS", new BadCredentialsException(""));
+            if(user==null) throw new Exception("INVALID_CREDENTIALS", new BadCredentialsException(""));
+            if(!user.getIsActive()) throw new Exception("USER_NOT_ACTIVE", new BadCredentialsException(""));
 
             UsernamePasswordAuthenticationToken tmp = new UsernamePasswordAuthenticationToken(username, password);
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
         } catch (DisabledException e) {
             throw new Exception("USER_DISABLED", e);
         } catch (BadCredentialsException e) {
-            throw new Exception("INVALID_CREDENTIALS", e);
+            throw new Exception(e.getMessage(), e);
         }
     }
 

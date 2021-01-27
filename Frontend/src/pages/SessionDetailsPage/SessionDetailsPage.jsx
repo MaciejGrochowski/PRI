@@ -27,7 +27,7 @@ const customStyles = {
         color: 'white',
         zIndex: '100!important'
     },
-    overlay:{
+    overlay: {
         backgroundColor: 'rgba(63, 63, 63, 0.75)'
     }
 };
@@ -130,21 +130,19 @@ class SessionDetailsPage extends React.Component {
     getCharacterNameFromId = characterId => {
         let character = this.getCharacterFromId(characterId);
         let output = ""
-        if(character && character.name) {
+        if (character && character.name) {
             output += character.name;
-            if(character.surname) output += " " + character.surname;
+            if (character.surname) output += " " + character.surname;
             return output;
-        }
-        else {
+        } else {
             return "o nieznanym imieniu.";
         }
     }
 
     handleChangeName = name => {
-        if(!name || name === "" || name.length > 128){
+        if (!name || name === "" || name.length > 128) {
             this.setState({errorName: true, errorNameText: polishCodeErrors.NO_EMPTY_SESSION_NAME})
-        }
-        else{
+        } else {
             this.setState({name: name})
         }
     }
@@ -158,27 +156,27 @@ class SessionDetailsPage extends React.Component {
 
                 <div className="pageName">{this.state.name}</div>
 
-                <div className="flex-container-session">
+                <div className="flex-container-session" id={"width-max"}>
                     <div className="session-detail-info">
-                        <div className="flex-container-session">
+                        <div className="flex-container-session" id={"width-max"}>
                             <div className="info-container-tittle">
                                 Nazwa sesji:<br/>
                                 <TextField fullWidth="true"
                                            onChange={(event) => this.handleChangeName(event.target.value)}
                                            disabled={!this.state.isChanging}
                                            error={this.state.errorName}
-                                           helperText = {this.state.errorNameText}
+                                           helperText={this.state.errorNameText}
                                            value={this.state.name}/>
                             </div>
-                            <div className="info-container">
-                                Autor sesji:<br/> <TextField disabled={true} value={this.state.createdBy}/>
+                            <div className="info-container-tittle" id={"box-01"}>
+                                Autor sesji:<br/> <TextField disabled={true} value={this.state.createdBy} fullWidth={true}/>
                             </div>
-                            <div className="info-container">
-                                Data stworzenia:<br/> <TextField disabled={true} value={this.state.createdDate}/>
+                            <div className="info-container-tittle" id={"box-02"}>
+                                Data stworzenia:<br/> <TextField disabled={true} value={this.state.createdDate} fullWidth={true}/>
                             </div>
                         </div>
                     </div>
-                    <div className="session-detail-button">
+                    {this.isMG() && <div className="session-detail-button">
                         {this.isMG() && (this.state.isChanging ?
                             <button className="sessionSaveButton addSessionButton" onClick={this.editSession}>Zapisz
                                 zmiany</button> :
@@ -198,54 +196,58 @@ class SessionDetailsPage extends React.Component {
                         />
 
 
-                        {this.isMG() &&                             <button onClick={() => this.setState({copying: true})} className="sessionButton">Kopiuj link do udostępniania</button>}
+                        {this.isMG() &&
+                        <button onClick={() => this.setState({copying: true})} className="sessionButton">Kopiuj link do
+                            udostępniania</button>}
                         {this.state.copying &&
                         <Modal
                             isOpen={this.state.copying}
                             onRequestClose={() => this.setState({copying: false})}
                             style={customStyles}
                         ><>
-                                    <div className = "container-login-page">
-                                    <div className = "margin-login-body">
-                            <div className="login-title">Skopjuj link udostepnienia sesji</div>
-                            <div className = "flex"><code className="code-message">{this.state.location}</code>
-                            <CopyToClipboard text={this.state.location} onCopy={this.onCopy}>
-                                <button className="detaleButton" style={{marginBottom:"auto"}}>Kopiuj</button>
-                            </CopyToClipboard>
+                            <div className="container-login-page">
+                                <div className="margin-login-body">
+                                    <div className="login-title">Skopjuj link udostepnienia sesji</div>
+                                    <div className="flex"><code className="code-message">{this.state.location}</code>
+                                        <CopyToClipboard text={this.state.location} onCopy={this.onCopy}>
+                                            <button className="detaleButton" style={{marginBottom: "auto"}}>Kopiuj
+                                            </button>
+                                        </CopyToClipboard>
+                                    </div>
+                                </div>
                             </div>
-                            </div></div>
                         </>
 
                         </Modal>
 
                         }
-                    </div>
+                    </div>}
                 </div>
-                <div className="flex-container-session">
+                <div className="flex-container-session" id={"width-max"}>
 
                     <div className="">
                         Opis sesji:<br/>
-                        <TextField fullWidth={true} variant={"outlined"}  rows={4} rowsMax={4} multiline
+                        <TextField fullWidth={true} variant={"outlined"} rows={4} rowsMax={4} multiline
                                    onChange={(event) => this.setState({description: event.target.value})}
                                    disabled={!this.state.isChanging} value={this.state.description}/>
 
                     </div>
                 </div>
-                    {/*<span>Link do udostępnienia: <Link to={fronendUrls.sessionDetails + "/" + this.props.match.params.hashcode }>{this.state.location}</Link></span>*/}
+                {/*<span>Link do udostępnienia: <Link to={fronendUrls.sessionDetails + "/" + this.props.match.params.hashcode }>{this.state.location}</Link></span>*/}
 
 
-                    <div className="flex-container-session-2">
-                        {this.state.characters && this.state.characters.map((character, i) => (
-                            <div className="character-box">
-                                <CharacterSessionView
-                                    character={character}
-                                    isMG={this.isMG()}
-                                    onDeleteCharacter={this.deleteCharacter}
-                                    onChangeVisibilityClick={this.changeVisibilityCharacter}
-                                />
-                            </div>
-                        ))}
-                    </div>
+                <div className="flex-container-session-2">
+                    {this.state.characters && this.state.characters.map((character, i) => (
+                        <div className="character-box">
+                            <CharacterSessionView
+                                character={character}
+                                isMG={this.isMG()}
+                                onDeleteCharacter={this.deleteCharacter}
+                                onChangeVisibilityClick={this.changeVisibilityCharacter}
+                            />
+                        </div>
+                    ))}
+                </div>
                 <ChangeVisibilityModal
                     title={"Edytuj widoczność postaci " + this.getCharacterNameFromId(this.state.characterVisibleChangingId)}
                     isOpen={this.state.isCharacterVisibleChanging}
@@ -254,11 +256,11 @@ class SessionDetailsPage extends React.Component {
                     isGlobal={false}
                     initialValues={this.getCharacterFromId(this.state.characterVisibleChangingId)}
                 />
-                </div>
+            </div>
 
-                )
-                }
+        )
+    }
 
-                }
+}
 
-                export default SessionDetailsPage;
+export default SessionDetailsPage;

@@ -21,7 +21,8 @@ class LoginPage extends React.Component {
             username: "",
             password: "",
             badCredentialsError: false,
-            notResponsingError: false
+            notResponsingError: false,
+            userNotActiveError: false
         }
     }
 
@@ -41,18 +42,22 @@ class LoginPage extends React.Component {
     }
 
     loginErrorHandler = error => {
-        console.log(error);
         if(error.response === undefined){
             this.setState({notResponsingError: true})
             return
         }
         if(error.response.status === 401){
-            this.setState({badCredentialsError: true})
+            if(error.response.data.token === "USER_NOT_ACTIVE"){
+                this.setState({userNotActiveError: true})
+            }
+            else{
+                this.setState({badCredentialsError: true}) //ToDo refactor
+            }
         }
     }
 
     handleChangePassword = event => {
-        this.setState({password: event.target.value, badCredentialsError: false, notResponsingError: false})
+        this.setState({password: event.target.value, badCredentialsError: false, notResponsingError: false, userNotActiveError: false})
     }
 
     enterListener = event => {
@@ -72,8 +77,9 @@ class LoginPage extends React.Component {
 <div className = "login-title">Zaloguj się</div>
     {this.state.badCredentialsError && <div className = "error-message">{polishCodeErrors.BAD_CREDENTIALS_ERROR}</div>}
     {this.state.notResponsingError && <div className = "error-message">{polishCodeErrors.NOT_RESPONSING_ERROR}</div>}
+    {this.state.userNotActiveError && <div className = "error-message">{polishCodeErrors.USER_NOT_ACTIVE_ERROR}</div>}
                 <div className="block-component">
-                <TextField label="Login" value={this.state.username} onChange={event => this.setState({username:event.target.value, badCredentialsError: false, notResponsingError: false})} />
+                <TextField label="Login" value={this.state.username} onChange={event => this.setState({username:event.target.value, badCredentialsError: false, notResponsingError: false, userNotActiveError: false})} />
                 </div>
                 <div className="block-component">
                     <PasswordField

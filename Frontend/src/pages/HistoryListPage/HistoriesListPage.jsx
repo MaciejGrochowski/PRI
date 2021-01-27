@@ -217,6 +217,7 @@ class HistoriesListPage extends React.Component{
     }
 
     getHistoriesSuccessHandler = async response => {
+        if(response.data.list.length === 0) return;
         this.setState({
             count: response.data.totalCount,
             data: response.data.list

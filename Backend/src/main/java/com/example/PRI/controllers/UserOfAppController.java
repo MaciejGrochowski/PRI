@@ -38,7 +38,10 @@ public class UserOfAppController {
         }
 
         @Put("/credentials")
-        public ResponseEntity<?> updateUserDetails(@Valid @RequestBody UserOfAppCredentialsInputDto user, Authentication auth) throws notUniqueArgumentException {
+        public ResponseEntity<?> updateUserDetails(@RequestBody UserOfAppCredentialsInputDto user, Authentication auth) throws notUniqueArgumentException {
+            if(user.getUsername() == null || user.getUsername().equals("") && user.getUsername().length() < 4 ||
+            user.getUsername().length() > 20) return ResponseEntity.badRequest().body("BAD_USERNAME");
+
             return userOfAppService.updateUserCredentials(user, auth);
         }
 

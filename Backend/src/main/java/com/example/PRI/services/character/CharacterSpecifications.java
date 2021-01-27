@@ -48,7 +48,7 @@ public class CharacterSpecifications {
 
     public static Specification<Character> getByTalents(List<Talent> talentList){
         return (root, query, cb) -> {
-            query.distinct(true);
+//            query.distinct(true);
             Join<Character, Talent> talents = root.join("talents");
             return talents.in(talentList); // DZIAŁA!!
             }; //ToDo identyczne zapytania dla innych cech postaci, które mogą być filtrowane przez listę.
@@ -86,7 +86,7 @@ public class CharacterSpecifications {
 
     public static Specification<Character> getByEmotions(List<Emotion> dominatingEmotions) {
         return (root, query, cb) -> {
-            query.distinct(true);
+//            query.distinct(true);
             Join<Character, Emotion> talents = root.join("dominatingEmotions");
             return talents.in(dominatingEmotions);
         };
@@ -112,7 +112,7 @@ public class CharacterSpecifications {
 
     public static Specification<Character> getByCareer(List<Career> careers) {
         return (root, query, cb) -> {
-            query.distinct(true);
+//            query.distinct(true);
             Join<Character, Career> career = root.join("currentCareer");
             return root.get("currentCareer").in(careers);
 //            return career.in(careers);
@@ -121,7 +121,7 @@ public class CharacterSpecifications {
 
     public static Specification<Character> getBySkills(List<Skill> skills) {
         return (root, query, cb) -> {
-            query.distinct(true);
+//            query.distinct(true);
             Join<Character, Skill> career = root.join("skills");
             return career.in(skills);
         };
@@ -129,7 +129,7 @@ public class CharacterSpecifications {
 
     public static Specification<Character> getByPersonalities(List<Personality> personalities) {
         return (root, query, cb) -> {//ToDo te Joiny WYMAGAJĄ W root.join NAZWY z ENTITY!!!!!
-            query.distinct(true);
+//            query.distinct(true);
             Join<Character, Personality> personality = root.join("personality");
             return personality.in(personalities);
         };
@@ -137,7 +137,7 @@ public class CharacterSpecifications {
 
     public static Specification<Character> getByApperances(List<Apperance> apperances) {
         return (root, query, cb) -> {
-            query.distinct(true);
+//            query.distinct(true);
             Join<Character, Apperance> apperance = root.join("apperance");
             return apperance.in(apperances);
         };
@@ -151,7 +151,7 @@ public class CharacterSpecifications {
 
     public static Specification<Character> getByLivePlaces(List<Place> places) {
         return (root, query, cb) -> {
-            query.distinct(true);
+//            query.distinct(true);
 //            Join<Character, Place> places = root.join("livePlace");
             return root.get("livePlace").in(places);
         };
@@ -159,35 +159,35 @@ public class CharacterSpecifications {
 
     public static Specification<Character> getByReligions(List<Religion> religions) {
         return (root, query, cb) -> {
-            query.distinct(true);
+//            query.distinct(true);
             return root.get("religion").in(religions);
         };
     }
 
     public static Specification<Character> getByBirthPlaces(List<Place> birthPlaces) {
         return (root, query, cb) -> {
-            query.distinct(true);
+//            query.distinct(true);
             return root.get("birthPlace").in(birthPlaces);
         };
     }
 
     public static Specification<Character> getByStarSigns(List<StarSign> starSigns) {
         return (root, query, cb) -> {
-            query.distinct(true);
+//            query.distinct(true);
             return root.get("starSign").in(starSigns);
         };
     }
 
     public static Specification<Character> getByRaces(List<Race> races) {
         return (root, query, cb) -> {
-            query.distinct(true);
+//            query.distinct(true);
             return root.get("race").in(races);
         };
     }
 
     public static Specification<Character> getByUser(List<UserOfApp> users) {
         return (root, query, cb) -> {
-            query.distinct(true);
+//            query.distinct(true);
             Join<Character, UserOfApp> usersTab = root.join("createdBy");
             return usersTab.in(users);
         };

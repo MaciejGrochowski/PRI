@@ -83,7 +83,7 @@ public class HistorySpecifications {
 
     public static Specification<History> getByCreator(List<UserOfApp> users) {
         return (root, query, cb) -> {
-            query.distinct(true);
+//            query.distinct(true);
             Join<Character, UserOfApp> usersTab = root.join("createdBy");
             return usersTab.in(users);
         };

@@ -57,10 +57,9 @@ public class HistoryService extends GeneralService {
 
     public HistoryListOutputDto getSomeHistoriesPaged(HistoryListFilterInputDto requestInfo) {
         HistoryListOutputDto output = new HistoryListOutputDto();
-//        produceTestHistories();
 
         if(requestInfo.getSortedBy() != null && requestInfo.getSortedBy().equals("historyDay")) requestInfo.setSortedBy("date.day");
-        if(requestInfo.getSortedBy() != null && requestInfo.getSortedBy().equals("historyMonth")) requestInfo.setSortedBy("date.month.monthName");
+        if(requestInfo.getSortedBy() != null && requestInfo.getSortedBy().equals("historyMonth")) requestInfo.setSortedBy("date.month.name");
         if(requestInfo.getSortedBy() != null && requestInfo.getSortedBy().equals("historyYear")) requestInfo.setSortedBy("date.year");
         if(requestInfo.getSortedBy() != null && requestInfo.getSortedBy().equals("historyPlace")) requestInfo.setSortedBy("place.name");
         if(requestInfo.getSortedBy() != null && requestInfo.getSortedBy().equals("historyTitle")) requestInfo.setSortedBy("title");

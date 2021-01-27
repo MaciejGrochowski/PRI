@@ -30,7 +30,19 @@ public class CharacterController {
         //ToDo konwersja ta powinna być niejawna, zapewniona przez mechanizmy springa
         CharacterListFilterInputDto characterListInputDto = new CharacterListFilterInputDto(characterListInput.getSortedBy(), characterListInput.getIsAscending(),
                 map, characterListInput.getCurrentPage(), characterListInput.getRowsPerPage());
-        return characterService.getSomeCharactersPaged(characterListInputDto);
+        CharacterListOutputDto output = new CharacterListOutputDto();
+
+        try{
+            output = characterService.getSomeCharactersPaged(characterListInputDto);
+        }
+        catch (Exception e){
+            System.out.println("Error with filter/sorting characters");
+            System.out.println(characterListInput.getFilters());
+            System.out.println(characterListInput.getSortedBy());
+            System.out.println(e);
+            output.setTotalCount(-1L);
+        }
+        return output;
     }
 
     private Map<String, String> getMapFromString(String filters) {

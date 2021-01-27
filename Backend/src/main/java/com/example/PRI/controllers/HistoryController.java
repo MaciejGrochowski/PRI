@@ -57,7 +57,15 @@ public class HistoryController {
         //ToDo konwersja ta powinna być niejawna, zapewniona przez mechanizmy springa
         HistoryListFilterInputDto historyListInputDto = new HistoryListFilterInputDto(historyListInput.getSortedBy(), historyListInput.getIsAscending(),
                 map, historyListInput.getCurrentPage(), historyListInput.getRowsPerPage());
-        return historyService.getSomeHistoriesPaged(historyListInputDto);
+        HistoryListOutputDto output = new HistoryListOutputDto();
+        try{
+            output = historyService.getSomeHistoriesPaged(historyListInputDto);
+        }
+        catch (Exception e){
+            System.err.println(e);
+            output.setTotalCount(-1L);
+        }
+        return output;
     }
 
     private Map<String, String> getMapFromString(String filters) {

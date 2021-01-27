@@ -7,6 +7,7 @@ import Cookie from "js-cookie";
 export const request = axios.create({
     headers: {
         'Accept': 'application/json',
+        'Access-Control-Allow-Origin': '*',
         'Content-Type': 'application/json'
     }
 });
@@ -32,6 +33,7 @@ export const authorizationRequest = () => {
     return axios.create({
         headers: {
             'Accept': 'application/json',
+            'Access-Control-Allow-Origin': '*',
             'Content-Type': 'application/json',
             'Authorization': 'Bearer ' + token
         }

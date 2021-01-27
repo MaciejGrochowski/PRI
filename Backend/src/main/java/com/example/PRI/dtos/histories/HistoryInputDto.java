@@ -25,7 +25,7 @@ public class HistoryInputDto {
     String month;
 
     @NotBlank(message = "NO_YEAR_OF_HISTORY")
-    @Pattern(regexp = "^[1-9]$|^[1-9][0-9]$|^[1-9][0-9][0-9]$|^[1-2][0-9][0-9][0-9]$|^3000$", message = "YEAR_OF_HISTORY_NOT_REGEXP")
+    @Pattern(regexp = "^[1-2][0-9][0-9][0-9]$|^3000$", message = "YEAR_OF_HISTORY_NOT_REGEXP")
     String year;
 
     @NotBlank(message = "NO_HISTORY_PLACE")

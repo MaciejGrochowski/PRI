@@ -28,6 +28,7 @@ export const columnConfig = (autocompleteData={}, isCharacterFilter, isUserFilte
         {
             title: 'Miesiąc',
             field: 'historyMonth',
+            sorting: false,
             filter: <div className="item-div"><DefaultMultipleAutocomplete
                 labelName="Miesiąc"
                 options={autocompleteData.monthNames || []}

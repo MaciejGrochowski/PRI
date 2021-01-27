@@ -34,9 +34,9 @@ public class CharacterConverter {
         if(filterAttribute.equals(CharacterAttribute.BIRTHPLACE.getName())) return filterAttribute +".name";
         if(filterAttribute.equals(CharacterAttribute.EYECOLOR.getName())) return filterAttribute +".color";
         if(filterAttribute.equals(CharacterAttribute.HAIRCOLOR.getName())) return filterAttribute +".color";
-        if(filterAttribute.equals(CharacterAttribute.STARSIGN.getName())) return filterAttribute +".name";
-        if(filterAttribute.equals(CharacterAttribute.SEX.getName())) return filterAttribute +".name";
-        if(filterAttribute.equals(CharacterAttribute.RELIGION.getName())) return filterAttribute +".godName";
+//        if(filterAttribute.equals(CharacterAttribute.STARSIGN.getName())) return filterAttribute +".name";
+//        if(filterAttribute.equals(CharacterAttribute.SEX.getName())) return filterAttribute +".name";
+//        if(filterAttribute.equals(CharacterAttribute.RELIGION.getName())) return filterAttribute +".godName";
         if(filterAttribute.equals(CharacterAttribute.SURNAME.getName())) return filterAttribute +".surname";
         if(filterAttribute.equals(CharacterAttribute.NAME.getName())) return filterAttribute +".name";
         if(filterAttribute.equals(CharacterAttribute.CURRENTCAREER.getName())) return filterAttribute +".name";

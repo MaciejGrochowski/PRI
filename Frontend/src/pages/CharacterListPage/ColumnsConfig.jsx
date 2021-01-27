@@ -108,6 +108,7 @@ export const columnConfig = (autocompleteData={}, visibilityProperties={}) => {
             title: 'Znak gwiezdny',
             field: 'starSign',
             hidden: !visibilityProperties.starSign,
+            sorting: false,
             filter: <div className="item-div"><DefaultMultipleAutocomplete
                 labelName="Znak gwiezdny"
                 options={autocompleteData.starSignNames || []}

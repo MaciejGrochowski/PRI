@@ -37,6 +37,7 @@ class Wysiwyg extends React.Component {
         return (<>
             <Editor
                 wrapperClassName="demo-wrapper"
+                placeholder={<div style={{fontSize: '24px'}}>Możesz wpisać @ aby szybko umieścić postać z katalogu postaci w historii.</div>}
                 toolbar={{
                     options: ['inline', 'fontSize', 'list', 'textAlign', 'history'],
                     inline: {

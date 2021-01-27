@@ -69,12 +69,12 @@ public class CharacterInputDto implements Serializable {
     @Size(max=10000)
     String height;
 
-    @Size(max=10000)
+    @Size(max=45, message = "SURNAME_NOT_REGEXP")
     String surname;
 
     @NotBlank (message = "NO_NAME")
     @Pattern(regexp = "[a-zA-Z]*", message = "NAME_NOT_REGEXP")
-    @Size(max=10000)
+    @Size(max=45, message = "NAME_NOT_REGEXP")
     String name;
 
     @Size(max=10000)

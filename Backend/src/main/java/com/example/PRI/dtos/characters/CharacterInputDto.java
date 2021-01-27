@@ -15,65 +15,84 @@ import java.io.Serializable;
 public class CharacterInputDto implements Serializable {
 
     @NotBlank(message = "NO_BIRTH_PLACE")
+    @Size(max=10000)
     String birthPlace;
 
     @NotBlank (message = "NO_RACE")
     @Pattern(regexp ="Elf|Krasnolud|Człowiek|Niziołek", message = "RACE_NOT_REGEXP")
+    @Size(max=10000)
     String race;
 
     @NotBlank(message = "NO_EYE_COLOR")
+    @Size(max=10000)
     String eyeColor;
 
     @NotBlank(message = "NO_HAIR_COLOR")
+    @Size(max=10000)
     String hairColor;
 
     @NotBlank (message = "NO_DAY_OF_BIRTH")
     @Pattern(regexp = "\\d\\d?", message = "DAY_OF_BIRTH_NOT_REGEXP")
+    @Size(max=10000)
     String dayOfBirth;
 
     @NotBlank (message = "NO_MONTH_OF_BIRTH")
     @Pattern(regexp ="Nachexen|Jahrdrung|Pflugzeit|Sigmarzeit|Sommerzeit|Vorgeheim|Nachgeheim|Erntezeit|Brauzeit|Kaldezeit|Ulriczeit|Vorhexen",
             message = "MONTH_OF_BIRTH_NOT_REGEXP")
+    @Size(max=10000)
     String monthOfBirth;
 
     @NotBlank (message = "NO_YEAR_OF_BIRTH")
     @Pattern(regexp = "\\d\\d?\\d?\\d?", message = "YEAR_OF_BIRTH_NOT_REGEXP")
+    @Size(max=10000)
     String yearOfBirth;
 
-
+    @Size(max=10000)
     String dominatingEmotions;
 
     @NotBlank (message = "NO_SEX")
     @Pattern(regexp ="Kobieta||Mężczyzna", message = "SEX_NOT_REGEXP")
+    @Size(max=10000)
     String sex;
 
     @NotBlank(message = "NO_RELIGION")
+    @Size(max=10000)
     String religion;
 
     @NotBlank (message = "NO_WEIGHT")
     @Pattern(regexp = "\\d\\d\\d?", message = "WEIGHT_NOT_REGEXP")
+    @Size(max=10000)
     String weight;
 
     @NotBlank (message = "NO_HEIGHT")
     @Pattern(regexp = "\\d\\d\\d?", message = "HEIGHT_NOT_REGEXP")
+    @Size(max=10000)
     String height;
 
+    @Size(max=45, message = "SURNAME_NOT_REGEXP")
     String surname;
 
     @NotBlank (message = "NO_NAME")
     @Pattern(regexp = "[a-zA-Z]*", message = "NAME_NOT_REGEXP")
+    @Size(max=45, message = "NAME_NOT_REGEXP")
     String name;
 
+    @Size(max=10000)
     String prediction;
+
+    @Size(max=10000)
     String previousCareers;
 
     @NotBlank(message = "NO_CURRENT_CAREER")
+    @Size(max=10000)
     String currentCareer;
 
     @NotBlank (message = "NO_SKILLS")
+    @Size(max=10000)
     String skills;
 
     @NotBlank (message = "NO_TALENTS")
+    @Size(max=10000)
     String talents;
 
     @NotBlank (message = "NO_WEAPON_SKILLS")
@@ -173,12 +192,15 @@ public class CharacterInputDto implements Serializable {
     @Pattern(regexp = "[1-9][0-9]?", message = "MOVEMENT_NOT_REGEXP")
     String baseMovement; // szybkość
 
-
+    @Size(max=10000)
     String personality;
+
+    @Size(max=10000)
     String apperance;
 
 
     @NotBlank(message = "NO_LIVE_PLACE")
+    @Size(max=10000)
     String livePlace;
 
 //    @ManyToOne

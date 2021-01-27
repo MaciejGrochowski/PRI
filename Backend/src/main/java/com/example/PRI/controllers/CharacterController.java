@@ -7,6 +7,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
@@ -25,7 +26,7 @@ public class CharacterController {
     }
 
     @Get("/paged")
-    public CharacterListOutputDto getSomeCharactersPaged(CharacterListFilterInputStringDto characterListInput) throws Throwable {
+    public CharacterListOutputDto getSomeCharactersPaged(@Valid CharacterListFilterInputStringDto characterListInput) throws Throwable {
         Map<String, String> map = this.getMapFromString(characterListInput.getFilters());
         //ToDo konwersja ta powinna być niejawna, zapewniona przez mechanizmy springa
         CharacterListFilterInputDto characterListInputDto = new CharacterListFilterInputDto(characterListInput.getSortedBy(), characterListInput.getIsAscending(),

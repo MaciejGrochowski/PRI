@@ -47,12 +47,12 @@ public class HistoryController {
     }
 
     @Post
-    public long save(@Valid @RequestBody HistoryInputDto historyInputDto, Authentication auth){
+    public long save(@Valid @RequestBody HistoryInputDto historyInputDto, Authentication auth) throws Exception {
         return historyService.save(historyInputDto, auth);
     }
 
     @Get("/paged")
-    public HistoryListOutputDto getSomeHistoriesPaged(HistoryListFilterInputStringDto historyListInput) {
+    public HistoryListOutputDto getSomeHistoriesPaged(@Valid HistoryListFilterInputStringDto historyListInput) {
         Map<String, String> map = this.getMapFromString(historyListInput.getFilters());
         //ToDo konwersja ta powinna być niejawna, zapewniona przez mechanizmy springa
         HistoryListFilterInputDto historyListInputDto = new HistoryListFilterInputDto(historyListInput.getSortedBy(), historyListInput.getIsAscending(),

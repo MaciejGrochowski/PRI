@@ -48,14 +48,14 @@ public class CharacterGeneratorController {
     }
 
     @Get("/attribute/{attrName}")
-    public CharacterDetailsOutputDto getAttribute(@PathVariable String attrName, CharacterInputDto character){
+    public CharacterDetailsOutputDto getAttribute(@PathVariable String attrName, @Valid CharacterInputDto character) throws Exception {
         character = this.trimCharacter(character);
         return characterGenerator.generateAttribute(attrName, character);
     }
 
     @Post("/save")
 //    @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public long save(@Valid @RequestBody CharacterInputDto character, Authentication auth){
+    public long save(@Valid @RequestBody CharacterInputDto character, Authentication auth) throws Exception {
         character = this.trimCharacter(character);
         return characterGenerator.save(character, auth);
     }

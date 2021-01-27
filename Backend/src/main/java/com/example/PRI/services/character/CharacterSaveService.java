@@ -154,8 +154,10 @@ public class CharacterSaveService {
         }
     }
 
-    public Career currentCareerConvert(String inputCurrentCareer) {
-        return careerService.findByName(inputCurrentCareer);
+    public Career currentCareerConvert(String inputCurrentCareer) throws Exception {
+        Career c = careerService.findByName(inputCurrentCareer);
+        if(c==null) throw new CharacterSaveException("Podana profesja nie istnieje.", new IllegalArgumentException());
+        return c;
     }
 
     public List<Career> previousCareersConvert(String inputPreviousCareers, String inputCurrentCareer) {
@@ -244,6 +246,7 @@ public class CharacterSaveService {
 
     public ImperialDate imperialDateConverter(String day, String month, String year) {
         ImperialDate newDate = new ImperialDate(birthDayConverter(day), birthMonthConverter(month), birthYearConverter(year));
+        if(newDate == null) throw new CharacterSaveException("Niepoprawna data.", new IllegalArgumentException());
         imperialDateService.save(newDate);
         return newDate;
     }

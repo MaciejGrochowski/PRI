@@ -76,7 +76,7 @@ public class CharacterGenerator extends GeneralService {
         return CharacterConverter.convertDetails((generateFullCharacter()));
     }
 
-    public CharacterDetailsOutputDto generateAttribute(String attribute, CharacterInputDto character){
+    public CharacterDetailsOutputDto generateAttribute(String attribute, CharacterInputDto character) throws Exception {
         Character c = this.saveGenerate(character);
         return CharacterConverter.convertDetails(generateOneAttribute(attribute, c));
     }
@@ -221,7 +221,7 @@ public class CharacterGenerator extends GeneralService {
 
 
     @Transactional
-    public long save(CharacterInputDto characterInputDto, Authentication auth) {
+    public long save(CharacterInputDto characterInputDto, Authentication auth) throws Exception {
 
         if(auth==null || !auth.isAuthenticated()) return -1; //ToDo check it and do-it
 
@@ -278,7 +278,7 @@ public class CharacterGenerator extends GeneralService {
 
 
     @Transactional
-    public Character saveGenerate(CharacterInputDto characterInputDto){ //ToDo refactor
+    public Character saveGenerate(CharacterInputDto characterInputDto) throws Exception { //ToDo refactor
         Character character = new Character();
         if(characterInputDto.getName() != null && !characterInputDto.getName().equals("") && !characterSaveService.checkSpecialCharacter(characterInputDto.getName())) character.setName(characterSaveService.nameConvert(characterInputDto.getName()));
         if(characterInputDto.getSex() != null) character.setSex(characterSaveService.sexConverter(characterInputDto.getSex()));

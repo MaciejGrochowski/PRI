@@ -257,6 +257,9 @@ class CharactersListPage extends React.Component {
 
     getCharactersSuccessHandler = response => {
         let data = [];
+        if(response && response.data && response.data.totalCount === -1){
+            return;
+        }
         for (const i in response.data.list) {
             let element = response.data.list[i];
             let object = {

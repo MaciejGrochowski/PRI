@@ -25,7 +25,7 @@ public class UserOfAppInputDto {
     @Pattern(regexp = "^(.{3,64})&(([a-zA-Z]*[\\|!@#$%^&*()\\-_\\\\\\/><.,=+~`'\"{}\\[\\]:;\\^]*)*)&(([a-zA-Z]*\\d*)*)&(([a-z]*[\\|!@#$%^&*()\\-_\\\\\\/><.,=+~`'\"{}\\[\\]:;\\^]*\\d*)*)$", message = "WRONG_PASSWORD_FORM")
     String confirmPassword;
 
-    @Pattern(regexp = "https://www.facebook.com/.*", message = "WRONG_FACEBOOK_LINK")
+    @Pattern(regexp = "^(https:\\/\\/www.facebook.com\\/.*)$|^$", message = "WRONG_FACEBOOK_LINK")
     @Size(max=10000)
     String facebook;
 

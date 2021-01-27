@@ -24,7 +24,7 @@ public class UserOfAppDetailsInputDto implements Serializable {
     @Size(max=10000)
     String discord;
 
-    @Pattern(regexp = "https://www.facebook.com/.*", message = "WRONG_FACEBOOK_LINK")
+    @Pattern(regexp = "^(https:\\/\\/www.facebook.com\\/.*)$|^$", message = "WRONG_FACEBOOK_LINK")
     @Size(max=10000)
     String facebook;
 

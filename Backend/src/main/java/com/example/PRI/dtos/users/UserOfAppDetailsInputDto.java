@@ -20,11 +20,11 @@ public class UserOfAppDetailsInputDto implements Serializable {
 //    @NotBlank(message = "NO_EMAIL")
 //    String mail;
 
-    @Pattern(regexp = "^.[^#@:`']{1,31}#\\d\\d\\d\\d$",message = "WRONG_DISCORD_NAME")
+    @Pattern(regexp = "^.[^#@:`']{1,31}#\\d\\d\\d\\d$|^$",message = "WRONG_DISCORD_NAME")
     @Size(max=10000)
     String discord;
 
-    @Pattern(regexp = "https://www.facebook.com/.*", message = "WRONG_FACEBOOK_LINK")
+    @Pattern(regexp = "^(https:\\/\\/www.facebook.com\\/.*)$|^$", message = "WRONG_FACEBOOK_LINK")
     @Size(max=10000)
     String facebook;
 

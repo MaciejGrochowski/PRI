@@ -19,9 +19,6 @@ export const mapSkillsArrayToString = skills => {
 }
 
 export const generateOneAttributeSuccessHandler = (attrName, response) => {
-    console.log(attrName);
-    console.log(response);
-    console.log(CharacterAttribute.BIRTHPLACE)
     if (attrName === CharacterAttribute.BIRTHPLACE.name) return {birthPlace: response.data.birthPlace}
     if (attrName === CharacterAttribute.RACE.name) return {race: response.data.race}
     if (attrName === CharacterAttribute.SEX.name) return {sex: response.data.sex}

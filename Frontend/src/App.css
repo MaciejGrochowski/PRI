@@ -149,11 +149,17 @@ color: #DEDEDE!important;
 
 .MuiAutocomplete-inputRoot[class*="MuiInput-root"] .MuiAutocomplete-input
 {
+
   word-break: break-all;
   -ms-line-break: strict;
   line-break: normal;
   margin: auto;
+
 }
+.MuiAutocomplete-listbox{
+overflow-x: hidden !important;
+}
+
 .MuiTableCell-root{
 background-color: #292F2F;
 width: min-content!important;
@@ -207,6 +213,7 @@ background-color: #292F2F;
 /* wszystko */
 .MuiAutocomplete-option{
   background-color: #292F2F;
+  margin: 0px !important;
 }
 
 @keyframes App-logo-spin {

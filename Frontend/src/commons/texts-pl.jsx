@@ -104,7 +104,7 @@ export const polishCodeErrors = {
     NO_MONTH_OF_HISTORY: 'Historia musi mieć miesiąc.',
     MONTH_OF_HISTORY_NOT_REGEXP: 'Miesiąc historii musi istnieć w świecie Warhammera.',
     NO_YEAR_OF_HISTORY: 'Historia musi mieć rok.',
-    YEAR_OF_HISTORY_NOT_REGEXP: 'Rok historii musi być czterocyfrową liczbą.',
+    YEAR_OF_HISTORY_NOT_REGEXP: 'Rok historii musi być czterocyfrową liczbą mniejszą od 3000.',
     NO_HISTORY_PLACE: 'Historia musi mieć miejsce.',
     NO_HISTORY_DESCRIPTION: 'Historia musi mieć opis.',
     NO_HISTORY_TITLE: 'Historia musi mieć tytuł.',
@@ -131,5 +131,6 @@ export const polishCodeErrors = {
     NO_EMPTY_SESSION_NAME: 'Sesja nie może mieć pustej nazwy ani nazwy dłuższej niż 128 znaków.',
     USER_ALREADY_EXISTS: 'Użytkownik o takim nicku już istnieje.',
     BAD_PASSWORD: 'Złe hasło.',
-    USER_NOT_ACTIVE_ERROR: 'Użytkownik ten nie został aktywowany. Aktywuj konto za pomocą wiadomości email.'
+    USER_NOT_ACTIVE_ERROR: 'Użytkownik ten nie został aktywowany. Aktywuj konto za pomocą wiadomości email.',
+    BAD_USERNAME: 'Nazwa użytkownika może zawierać 3-20 znaków'
 }

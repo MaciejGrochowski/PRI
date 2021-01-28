@@ -14,7 +14,7 @@ import javax.validation.constraints.Size;
 public class SessionInputDto {
 
     @NotBlank(message = "NO_SESSION_NAME")
-    @Size(max=10000)
+    @Size(max=128, message = "TOO_LONG_SESSION_NAME")
     String name;
 
     @Size(max=100000)

@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.Email;
 import javax.validation.constraints.Pattern;
 
 @Data
@@ -11,6 +12,6 @@ import javax.validation.constraints.Pattern;
 @AllArgsConstructor
 public class emailInputDto {
 
-    @Pattern(regexp = "^(([a-zA-Z0-9_\\-\\.]+)@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.)|(([a-zA-Z0-9\\-]+\\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\\]?))&(^.{2,200}$)$", message ="NOT_EMAIL_REGEX" )
+    @Email (message ="NOT_EMAIL_REGEX")
     String email;
 }

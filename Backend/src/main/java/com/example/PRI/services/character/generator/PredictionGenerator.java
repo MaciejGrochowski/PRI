@@ -31,6 +31,7 @@ public class PredictionGenerator extends GeneralService {
                 randomRoll -= pred.getProbability();
                 if(randomRoll <= 0){
                     chosenPrediction = pred;
+                    break;
                 }
             }
             character.setPrediction(chosenPrediction);

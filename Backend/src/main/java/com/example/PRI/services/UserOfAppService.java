@@ -25,6 +25,8 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @Service
 public class UserOfAppService extends GeneralService {
@@ -141,6 +143,18 @@ public class UserOfAppService extends GeneralService {
     }
 
     public String register(UserOfAppInputDto userOfAppInputDto) throws notUniqueArgumentException {
+
+        Pattern p = Pattern.compile("[^a-z0-9 ]", Pattern.CASE_INSENSITIVE);
+        Matcher m = p.matcher(userOfAppInputDto.getPassword());
+        boolean b = m.find();
+
+        if(userOfAppInputDto.getPassword() == null || userOfAppInputDto.getPassword().length() < 6 || userOfAppInputDto.getPassword().length() > 64 ||
+                !userOfAppInputDto.getPassword().matches(".*\\d.*") || !b){
+            return "WRONG_PASSWORD_FORM";
+        }
+
+
+
         if(!userOfAppInputDto.getPassword().equals(userOfAppInputDto.getConfirmPassword())){
             throw new notUniqueArgumentException("Hasła nie są identyczne", new Exception());
         }

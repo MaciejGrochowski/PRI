@@ -44,6 +44,12 @@ class UserProfilePage extends React.Component {
         this.getUser();
     }
 
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if(this.props.match.params.username !== prevProps.match.params.username){
+            this.getUser();
+        }
+    }
+
     getUser = () => {
         userService.getUserByUsername(this.props.match.params.username)
             .then(r => this.getUserSuccessHandler(r))
@@ -245,7 +251,9 @@ class UserProfilePage extends React.Component {
         <div className = "one-element-brief">
             <div className = "user-profile-container-s"><div className = "yellow-color">Data stworzenia: </div>	&nbsp; {this.shorterDate(item.createdDate)}</div>
             <div className = "user-profile-container-s"><div className = "yellow-color">Data modyfikacji: </div>	&nbsp; {this.shorterDate(item.lastModifiedDate)}</div>
-            <div className="short-history-title">{item.name}</div>
+            <div className="short-history-title">
+                {item.name.length > 64 ?
+                    item.name.substring(0,64) + "..." : item.name }</div>
             <div>{item.description.substring(0, 1500)}{item.description.length > 1500 &&<>...</>}</div>
         </div>
     ))

@@ -14,6 +14,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @RestController
 @RequestMapping(value = "/app/users")
@@ -40,7 +42,16 @@ public class UserOfAppController {
         @Put("/credentials")
         public ResponseEntity<?> updateUserDetails(@RequestBody UserOfAppCredentialsInputDto user, Authentication auth) throws notUniqueArgumentException {
             if(user.getUsername() == null || user.getUsername().equals("") && user.getUsername().length() < 4 ||
-            user.getUsername().length() > 20) return ResponseEntity.badRequest().body("BAD_USERNAME");
+                    user.getUsername().length() > 20) return ResponseEntity.badRequest().body("BAD_USERNAME");
+
+            Pattern p = Pattern.compile("[^a-z0-9 ]", Pattern.CASE_INSENSITIVE);
+            Matcher m = p.matcher(user.getNewPassword());
+            boolean b = m.find();
+
+            if(user.getNewPassword() == null || user.getNewPassword().length() < 6 || user.getNewPassword().length() > 64 ||
+                    !user.getNewPassword().matches(".*\\d.*") || !b){
+                return ResponseEntity.badRequest().body("WRONG_PASSWORD_FORM");
+            }
 
             return userOfAppService.updateUserCredentials(user, auth);
         }

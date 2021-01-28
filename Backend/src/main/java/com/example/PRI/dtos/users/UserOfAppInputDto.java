@@ -17,13 +17,13 @@ public class UserOfAppInputDto {
     @Size(max=10000)
     String mail;
 
-    @Pattern(regexp = "^(.{3,64})&(([a-zA-Z]*[\\|!@#$%^&*()\\-_\\\\\\/><.,=+~`'\"{}\\[\\]:;\\^]*)*)&(([a-zA-Z]*\\d*)*)&(([a-z]*[\\|!@#$%^&*()\\-_\\\\\\/><.,=+~`'\"{}\\[\\]:;\\^]*\\d*)*)$", message = "WRONG_PASSWORD_FORM")
+    @Size(max=100)
     String password;
 
     @Pattern(regexp = "^.{3,20}$", message = "WRONG_USERNAME_LENGTH")
     String username;
 
-    @Pattern(regexp = "^(.{3,64})&(([a-zA-Z]*[\\|!@#$%^&*()\\-_\\\\\\/><.,=+~`'\"{}\\[\\]:;\\^]*)*)&(([a-zA-Z]*\\d*)*)&(([a-z]*[\\|!@#$%^&*()\\-_\\\\\\/><.,=+~`'\"{}\\[\\]:;\\^]*\\d*)*)$", message = "WRONG_PASSWORD_FORM")
+    @Size(max=100)
     String confirmPassword;
 
     @Pattern(regexp = "^(https:\\/\\/www.facebook.com\\/.*)$|^$", message = "WRONG_FACEBOOK_LINK")

@@ -26,6 +26,13 @@ class GeneratorTextField extends React.Component {
     componentDidUpdate(prevProps, prevState, snapshot) {
         if(prevProps.generated !== this.props.generated){
             this.setState({value: this.props.generated})
+            if(this.props.validationFunc){
+                let validationEffect = this.props.validationFunc(this.props.generated.toString())
+                this.setState({
+                    errorText: validationEffect.errorText,
+                    errorState: validationEffect.errorState
+                })
+            }
         }
     }
 

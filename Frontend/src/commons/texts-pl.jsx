@@ -40,7 +40,7 @@ export const textsPolish = {
         notSamePasswords: 'Hasła nie są takie same.'
     },
     registerTooltipTexts: {
-        username: 'Nazwa użytkownika może posiadać łącznie 3-20 liter, liczb i znaków specjalnych.',
+        username: 'Nazwa użytkownika może posiadać łącznie 3-20 liter lub cyfr',
         password: 'Hasło musi zawierać 3-64 znaków, dużą literę i znak specjalny.',
         facebook: 'Link do profilu na Facebooku',
         discord: 'Nazwa użytkownika Discord np. Ork#1234',

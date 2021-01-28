@@ -68,6 +68,9 @@ class UserProfilePage extends React.Component {
             }
             item.beginDescription = tmp;
         }
+        if(response.data.facebook === null) response.data.facebook = ""
+        if(response.data.discord === null) response.data.discord = ""
+        if(response.data.description === null) response.data.description = "" //todo refactor
         this.setState({
             facebook: response.data.facebook,
             discord: response.data.discord,

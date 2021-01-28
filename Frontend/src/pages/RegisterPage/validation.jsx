@@ -4,6 +4,13 @@ import {polishCodeErrors, textsPolish} from "../../commons/texts-pl";
 //ToDo validation functions
 
 export const validationUsername = username => {
+
+    const regex = new RegExp(/[a-zA-Z0-9*]/g);
+
+    if(!username.match("^[A-Za-z0-9]*$")){
+        return {errorState: true, errorText: textsPolish.registerTooltipTexts.username}
+    }
+
     if(username.match("^(?![\\s\\S])") || username.match("^.{3,20}$")){
         return {errorText: "", errorState: false}
     }

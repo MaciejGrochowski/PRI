@@ -17,6 +17,10 @@ public class CareerController {
     @Autowired
     CareerService careerService;
 
+    public void test(){
+        System.out.println("Test323442523");
+    }
+
     @Get("/names/all")
     public List<String> getAlCareerNames() {
         return careerService.getAllNames();

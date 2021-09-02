@@ -18,7 +18,7 @@ public class CareerController {
     CareerService careerService;
 
     public void test(){
-        System.out.println("Test123");
+        System.out.println("Test");
     }
 
     @Get("/names/all")
